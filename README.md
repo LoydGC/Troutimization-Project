@@ -11,6 +11,3 @@ Two-person optimization project (Python). Class: From Data to Action.
 ```
 pip install -r requirements.txt
 ```
-
-## Workflow
-Pull before working, commit small, and avoid both editing the same notebook at once (notebook diffs merge badly).
