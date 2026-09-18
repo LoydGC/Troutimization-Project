@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.env
+.DS_Store
+# data: keep folders, ignore contents (share via drive/README notes)
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
