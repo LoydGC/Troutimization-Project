@@ -4,8 +4,7 @@ __pycache__/
 .venv/
 .env
 .DS_Store
-# data: keep folders, ignore contents (share via drive/README notes)
-data/raw/*
+# data:
 data/interim/*
 data/processed/*
 !data/**/.gitkeep
