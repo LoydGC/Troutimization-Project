@@ -1,6 +1,6 @@
 # Trout Optimization Project
 
-Two-person optimization project (Python). Class: From Data to Action.
+Optimization project (Python). Class: From Data to Action.
 
 ## Layout
 - `notebooks/` – run in order: `01_data_prep`, `02_optimization`, `03_sensitivities`
