@@ -1,0 +1,12 @@
+2026-09-26 17:50:49,892 INFO stocked_2026: 1031 features in 1 page(s) from https://fbweb.pa.gov/arcgis/rest/services/PFBC_Map_Services/TroutStockedSections_2026/MapServer/0
+2026-09-26 17:50:50,091 INFO stocked_2026: 1031 rows, 50 columns, 0 null/empty geometries, geom types {'LineString': 987, 'MultiLineString': 44} -> stocked_2026.parquet
+2026-09-26 17:50:54,862 INFO stocked_2025: 1044 features in 1 page(s) from https://fbweb.pa.gov/arcgis/rest/services/PFBC_Map_Services/TroutStocked2025/MapServer/2
+2026-09-26 17:50:54,983 INFO stocked_2025: 1044 rows, 50 columns, 0 null/empty geometries, geom types {'LineString': 1001, 'MultiLineString': 43} -> stocked_2025.parquet
+2026-09-26 17:51:01,688 INFO stocked_2024: 1036 features in 2 page(s) from https://fbweb.pa.gov/arcgis/rest/services/PFBC_Map_Services/TroutStocked2024/MapServer/0
+2026-09-26 17:51:01,812 INFO stocked_2024: 1036 rows, 50 columns, 0 null/empty geometries, geom types {'LineString': 998, 'MultiLineString': 38} -> stocked_2024.parquet
+2026-09-26 17:51:07,898 INFO class_a: 1361 features in 2 page(s) from https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat/MapServer/9
+2026-09-26 17:51:08,033 INFO class_a: 1361 rows, 37 columns, 0 null/empty geometries, geom types {'LineString': 1344, 'MultiLineString': 17} -> class_a.parquet
+2026-09-26 17:51:31,497 INFO nat_repro: 6224 features in 7 page(s) from https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat/MapServer/25
+2026-09-26 17:51:32,133 INFO nat_repro: 6224 rows, 18 columns, 0 null/empty geometries, geom types {'LineString': 5972, 'MultiLineString': 252} -> nat_repro.parquet
+2026-09-26 17:51:34,884 INFO wilderness: 134 features in 1 page(s) from https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat/MapServer/31
+2026-09-26 17:51:34,974 INFO wilderness: 134 rows, 25 columns, 0 null/empty geometries, geom types {'LineString': 128, 'MultiLineString': 6} -> wilderness.parquet

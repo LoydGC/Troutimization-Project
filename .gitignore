@@ -1,10 +1,16 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+.pytest_cache/
 .venv/
 .env
 .DS_Store
-# data:
+# data: raw downloads stay local (manifest.csv is enough to re-fetch); processed tables are committed.
+# Files the partner committed under data/raw/ before this rule stay tracked until we agree to untrack them.
+data/raw/*
+!data/raw/manifest.csv
 data/interim/*
-data/processed/*
 !data/**/.gitkeep
+# trout.app snapshots: local validation only
+data/references/*.html
+data/references/**/*.zip
