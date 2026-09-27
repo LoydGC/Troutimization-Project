@@ -1,6 +1,9 @@
 # PA Trout Stocking Optimization
 
 School project (From Data to Action), two-person repo. `git pull` before starting; commit small.
+**Division of work:** Gavin (LoydGC) owns hatchery and co-op data and hatchery -> section road distances
+(`notebooks/travel_arcs.ipynb`; co-op distances are for maps/context only). This pipeline owns sections, the stocking baseline, environment and demand.
+Join his outputs on `section_id`, don't rebuild them. Hatchery data and branches get merged/synced later.
 **Practical over perfect:** take the simplest defensible approach, label assumptions, and treat
 thorough versions as optional upgrades.
 
@@ -8,7 +11,7 @@ thorough versions as optional upgrades.
 Everything here feeds a multi-objective stocking model (Gurobi, `notebooks/02_optimization.ipynb`):
 
 ```
-x[h, s] = adult trout per year trucked from hatchery h to destination s
+x[h, s] = adult trout per year trucked from PFBC hatchery h to destination s
           (species handled at the destination: keep each section's historical species mix)
 
 objectives, kept separate (never pre-weighted in the data):
@@ -24,7 +27,7 @@ constraints: hatchery supply, per-section density bound, environmental exclusion
 | Base (all components join to it on `section_id`) | Stocked sections 2024–26: ids, location, allocation category, counts, wild-trout overlap; geometry | `sections`, `pa_trout.gpkg` |
 | Baseline | What PFBC actually stocked: section x species x year | `stocking_section_year` |
 | Angler benefit | Survey preference for named waters; population-by-distance for the rest; access | `demand` |
-| Transport cost | Hatchery supply, hatchery -> section distance, cost parameters | `hatcheries`, `cost_matrix`, `parameters` |
+| Transport cost | Hatchery supply, road distance (Gavin, travel_arcs), cost parameters | `hatcheries`, `cost_matrix`, `parameters` |
 | Environment | Exclusions, wild brook trout, natural reproduction, area for density bound, (temperature) | `environment` |
 
 The historical allocation is the **baseline** the optimized plan is compared against. Keep it as observed:
@@ -36,9 +39,14 @@ don't smooth, impute, or "fix" it.
 - **Hatchery supply** = baseline statewide total, split across the 10 trout hatcheries by their share of trout
   production (lbs, `data/raw/pa_hatchery_production.csv`). Pleasant Mount's figure is a fish count
   that likely includes warmwater species: exclude it unless a trout-only number turns up.
-- **Distance** = straight-line x circuity factor, with the factor checked against ~15 routes looked up by
-  hand. A local OpenStreetMap road network is an optional upgrade. No Google Maps API (cost; terms bar
-  storing results).
+- **Co-op nurseries are fixed background, not decisions** (team decision 2026-09-27). The clubs choose their
+  waters and PFBC leaves co-op fish out of its allocation (co-op policy §III.12, §IV.10), so the base model
+  optimizes PFBC hatchery fish only. Co-op waters are a flag on sections (`coop_stocked`, 292 sections, from
+  `scripts/03_coop_stockings.py`). **Extension "what if the state coordinated more?"**: add a fixed co-op
+  fish count per section to the angler-benefit score (needs counts; see `docs/modeling_notes.md`).
+- **Distance** = road distance from each supply node to each section, built by Gavin in
+  `notebooks/travel_arcs.ipynb`. Not on our slate: join it on `section_id`. No Google Maps API (cost;
+  terms bar storing results).
 - **Demand for waters the survey doesn't name** = population weighted by the survey's own travel-distance
   distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
   county tables (p85) is optional.
@@ -58,7 +66,9 @@ don't smooth, impute, or "fix" it.
   across counties. Survey preferences are at this level and are apportioned to sections by length.
 - **Lake** = its own destination with `water_type = "lake"` (~20% of stocked trout). Kept out of stream-only
   covariates; whether lakes are decision variables or fixed is an open question.
-- **Hatchery** = one of the 10 PFBC trout hatcheries. Co-op nurseries and fingerlings are fixed, not decisions.
+- **Supply node** = one of the 10 PFBC trout hatcheries. Co-op nurseries (~160) and fingerlings are fixed, not
+  decisions. Gavin's cleaned layers (`trout_hatcheries.gpkg`, `data/raw/Coop_nurseries.geojson`) are the
+  reference. The `hatcheries` layer in `pa_trout.gpkg` is a placeholder until we merge.
 
 ## Hard rules
 1. Official/public sources only. **Never request anything from trout.app** (robots.txt disallows it).
@@ -72,7 +82,7 @@ don't smooth, impute, or "fix" it.
 5. Verify every endpoint (`?f=pjson` or HEAD) before building on it. Note moved/wrong URLs in
    `docs/source_inventory.md`.
 6. Don't invent values. Missing = NA, with a `*_source` or `*_missing_reason` column where useful.
-7. Parameters no source gives directly (circuity factor, cost per mile, fish per load, impact weights) live in
+7. Parameters no source gives directly (cost per mile, fish per load, impact weights) live in
    `data/processed/parameters.csv` with value, units, low/high range, and `source` (citation, or `assumption`
    plus reasoning). Never hard-code them in notebooks.
 8. Wild-trout overlap is measured as shared river-mile length on the same RFP_WaterID (or > 100 m of overlap in
@@ -83,7 +93,7 @@ don't smooth, impute, or "fix" it.
 ## Stack
 Python 3.11+, venv. pandas, geopandas, shapely, pyproj, requests, requests-cache, beautifulsoup4, lxml, tqdm,
 pyarrow, duckdb, pdfplumber, pynhd (HyRiver). Solver: gurobipy (academic license). Tests: pytest.
-Optional: pyrosm + networkx (OSM routing). CRS: EPSG:26918 for distances/lengths/areas; store in EPSG:4326.
+Road routing lives in Gavin's notebook. CRS: EPSG:26918 for distances/lengths/areas; store in EPSG:4326.
 
 ## Layout
 ```

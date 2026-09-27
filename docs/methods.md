@@ -57,6 +57,25 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
 - **Class A species flags** come from keyword matches on the Class A `Fishery` text: brook, brown,
   rainbow.
 
+**Co-op nursery list** (`scripts/03_coop_stockings.py`, 2026-09-27)
+- **Source:** PFBC's co-op nursery page spreadsheet, used as published. It has no counts or years, and it
+  was identical to a Feb 2025 copy.
+- **Name matching.** Names are lowercased with punctuation removed.
+  - A listing flags a section only on an exact stream + county + section-number match to our sections (349
+    listings, 292 sections).
+  - Other listings are located at stream level: on a PFBC stream, or in the Natural Reproduction / Class A
+    layers by name + county. Those are used only for distances.
+- **Nursery locations** come from Gavin's `Coop_nurseries.geojson`, matched by nursery name, then sponsor
+  name, then a unique name-contains match (e.g. "Kenny Stewart Memorial Nursery" → "Kenny Stewart"). That
+  locates 123 of 133 nurseries.
+- **Distances** are straight lines from the nursery to the nearest point of the matched water.
+- **Manual review:** `logs/03_coop_review.csv` lists the following. Suggested names are same-county names
+  with a string similarity of at least 0.85; they are hints only.
+  - unmatched waters
+  - unlocated nurseries
+  - listings on sections PFBC no longer stocks
+  - listings on Class A sections
+
 **Map layers.** The wild-trout context layers in `pa_trout.gpkg` are simplified to a 5 m tolerance to keep
 the file small. All overlaps are computed from the full-resolution layers first.
 

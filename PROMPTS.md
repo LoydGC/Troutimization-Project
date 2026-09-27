@@ -7,10 +7,11 @@ Order: 0 → 1 → 2 → 3 gets the baseline. 4–7 each build one model compone
 area and river_id). 8–9 assemble and check. Upgrades are at the end, for when time allows.
 
 **Status (2026-09-26):** the "sections pull" (`scripts/01_download_pfbc_layers.py`,
-`scripts/02_build_sections.py`) is BUILT and the Bear Creek checks pass. It is awaiting review and not yet
-committed. It covers part of Prompt 0 (venv, common.py + tests, .gitignore), Prompt 2 for the stocked-section
+`scripts/02_build_sections.py`) is BUILT, the Bear Creek checks pass, and it is committed on branch
+`sections-pull` (not yet pushed or merged). It covers part of Prompt 0 (venv, common.py + tests, .gitignore), Prompt 2 for the stocked-section
 and wild-trout layers, Prompt 3, and Prompt 5's overlap flags and Table 18 rate (`max_trout_per_acre`). Skip
-those parts when sending the prompts.
+those parts when sending the prompts. `scripts/03_coop_stockings.py` (2026-09-27, not yet committed) adds the
+co-op stocking list and the `coop_stocked` flag on sections.
 
 ---
 
@@ -148,20 +149,23 @@ Report: the share of baseline fish on survey-named waters, survey waters with no
 correlation between proximity demand and baseline stocking.
 ```
 
-## Prompt 7: Transport cost
+## Prompt 7: Transport cost (distances come from Gavin)
+
+Road distances from each hatchery to each section are built by Gavin in
+`notebooks/travel_arcs.ipynb`. Don't rebuild them. Run this once his distance table is keyed on `section_id`.
 
 ```
-1. data/processed/hatcheries.parquet: the 10 PFBC trout hatcheries (check data/raw/pa_hatcheries.gpkg
-   against PFBC's Hatcheries layer), production lbs, share of trout production, and supply = baseline
-   statewide total x share. Exclude Pleasant Mount unless a trout-only figure is found, and say so.
-2. data/processed/cost_matrix.parquet (long): hatchery, section_id, straight_mi, est_road_mi =
-   straight_mi x circuity. To set the circuity factor, pick 15 hatchery-section pairs across the state and
-   write them to logs/circuity_check.csv with blank road_mi for me to fill from a map. Use 1.3 as a
-   placeholder until then.
-3. Add the transport parameters to data/processed/parameters.csv (circuity, cost per truck-mile, fish per
-   truckload), each with a source or `assumption` and a low/high range.
-4. baseline_hatchery = the nearest hatchery for each section; report the implied baseline cost and each
-   hatchery's implied load vs its supply.
+1. Supply: merge Gavin's cleaned hatchery layer into data/processed/hatcheries.parquet. Hatchery supply =
+   baseline stream total x share of trout production (exclude Pleasant Mount unless a trout-only figure is
+   found). Co-ops are fixed background, not supply nodes (see CLAUDE.md).
+2. Add the transport parameters from docs/transport_research.md to data/processed/parameters.csv:
+   cost_per_truck_mile, fish_per_load, transport_mortality_pct and the others, each with a low/high range
+   and a source.
+3. data/processed/cost_matrix.parquet (long): node_id, section_id, road_mi (from Gavin), and
+   cost_per_fish = 2 x road_mi x cost_per_truck_mile / fish_per_load.
+4. baseline_node = the nearest hatchery for each section. Report the implied baseline cost and each node's
+   load vs supply. Calibration check: the implied fleet miles vs the ~300,000 mi/yr reported
+   (docs/transport_research.md).
 ```
 
 ## Prompt 8: Assemble model inputs
@@ -188,8 +192,6 @@ missing a cost_matrix row. Write logs/final_qa.md.
 
 ## Upgrades (if time allows)
 
-- **Road distances:** Geofabrik PA extract, major roads only (motorway to tertiary), pyrosm + networkx
-  shortest paths from each hatchery. Replaces est_road_mi.
 - **Thermal flag:** EcoSHEDS temperature model (see docs/env_research.md). Spatially join its catchments to
   sections, compute max 30-day mean temperature, and set thermal_marginal = ≥ 21 °C. Large rivers will be NA;
   record why in temp_missing_reason.

@@ -86,6 +86,29 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | class_a_biomass | Class A layer biomass class | A–E |
 | class_a_wild_brook, class_a_wild_brown, class_a_wild_rainbow | Species named in class_a_fishery | bool (NA if no Class A overlap) |
 
+**Co-op nurseries** (added by `scripts/03_coop_stockings.py`)
+
+| Column | Meaning | Units |
+|---|---|---|
+| coop_stocked | A co-op nursery lists this exact PFBC section (stream + county + section number). The list may be out of date: see `logs/03_coop_review.csv` | bool |
+| coop_species | Species the co-op(s) stock here | e.g. "brown,rainbow" |
+| coop_n_nurseries | Number of nurseries listing this section | int |
+
+## coop_stockings (.parquet, .csv)
+PFBC co-op nursery stocking list (`cnu-stockings-website.xlsx`), one row per nursery × water (786 rows). It
+has no fish counts and no years. Co-op fish are not part of PFBC's allocation.
+
+| Column | Meaning | Values |
+|---|---|---|
+| sponsor, nursery, county, stream, section | As published (section = PFBC section number, blank for ponds) | text / int |
+| brook, brown, rainbow, golden | Species stocked ("X" in the source) | bool |
+| water_type | Name contains lake/pond/dam/reservoir/impoundment | stream, lake_pond |
+| match_method | How the water was located | pfbc_section, pfbc_stream_other_section (PFBC stream, but a section PFBC doesn't stock), wild_layer_stream (Natural Reproduction / Class A layer), unmatched_lake_pond, unmatched |
+| section_id | Our section, when match_method = pfbc_section | text |
+| nursery_located_by | How the nursery was found in Gavin's `Coop_nurseries.geojson` | nursery_name, sponsor_name, name_contains, NA |
+| nursery_lat, nursery_lon | Nursery location (layer precision ~0.01°) | EPSG:4326 |
+| nursery_to_water_mi | Straight-line miles from the nursery to the matched water | mi |
+
 ## pfbc_stocking_rates.csv
 Operational Guidelines Table 18, expanded to one row per allocation code (234 rows).
 
@@ -105,7 +128,7 @@ For mapping and spatial joins; join to the tables on `section_id`.
 | Layer | Features | Contents |
 |---|---|---|
 | sections | 1,045 | Section lines (duplicate pieces unioned) + key fields: section_id, water_name, county, latest_year, years_stocked, allocation_code, pfbc_category, reg_name, length_mi, total_2024–2026, class_a/nat_repro/wilderness flags |
-| hatcheries | 10 | PFBC trout hatcheries (TROUT == "y") from `data/raw/pa_hatcheries.gpkg` |
+| hatcheries | 10 | PFBC trout hatcheries (TROUT == "y") from `data/raw/pa_hatcheries.gpkg`. Placeholder until merged with Gavin's cleaned hatchery and co-op layers |
 | class_a | 1,361 | PASDA PAFishBoat #9, all fields; geometry simplified to 5 m |
 | nat_repro | 6,224 | PASDA PAFishBoat #25, all fields; geometry simplified to 5 m |
 | wilderness | 134 | PASDA PAFishBoat #31, all fields; geometry simplified to 5 m |

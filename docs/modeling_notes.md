@@ -44,7 +44,7 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
   preferences and travel distances are what add new information.
 
 ## Model shape
-- **Decision:** `x[h,s]` = adult trout per year from hatchery `h` to destination `s`. Add a binary
+- **Decision:** `x[h,s]` = adult trout per year from PFBC hatchery `h` to destination `s`. Add a binary
   `y[s]` (section stocked or not) if we use the minimum-stocking rule.
 - **Species** stay out of the transport part. Each section keeps its historical species mix (shares from
   2024–26), except that brook trout are never stocked over wild brook trout. A per-species model is an upgrade.
@@ -63,6 +63,8 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
 - **Hatchery supply:** `Σ_s x[h,s] ≤ supply_h`. `supply_h` = the baseline statewide total × hatchery h's share
   of trout production in pounds (`data/raw/pa_hatchery_production.csv`). Exclude Pleasant Mount (its figure
   is a fish count that likely includes warmwater species).
+- **Co-op nurseries are fixed background** (team decision 2026-09-27), not supply nodes. See "Co-op
+  nurseries" below.
 - **Total fish:** fixed at the baseline total (same fish, better placement), or relaxed as a scenario.
 - **Density bound:** `x_s ≤ rate(category_s) × acres_s`.
   - The rate is now exact: the stocking layer's `AllocationCode` is the full Table 18 category
@@ -99,11 +101,19 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
   benefit falls).
 
 ## Transport cost
-- **Cost per fish:** `cost[h,s] = est_road_mi × cost_per_truck_mile / fish_per_load`, doubled for the round
-  trip. It could also scale with stockings per year.
-- **Distance:** `est_road_mi` = straight-line × circuity. Use 1.3 as a placeholder, then check it against
-  ~15 routes looked up by hand. OpenStreetMap routing (major roads, pyrosm + networkx) is an upgrade.
-  Don't use the Google API: it costs money and its terms bar storing results.
+- **Cost per fish:** `cost[h,s] = 2 × road_mi × cost_per_truck_mile / fish_per_load`.
+  - Central values from `docs/transport_research.md`: $1.90/truck-mile and 2,500 fish/load, i.e. about
+    $0.0015 per fish per one-way mile (range $0.0007–0.0041). A 50-mile haul is about $0.08/fish.
+  - Don't multiply by stockings per year: one truckload is split across sections.
+  - Transit mortality is a flat ~1% (0–2%), or left out.
+  - Truck capital is a fixed cost, left out of the per-mile cost; "+$1/mi" is a sensitivity.
+- **Trucking is small in dollars:** about 4–7% of PFBC's cost per stocked trout. Hatchery output is the
+  scarce resource, which is worth saying in the report.
+- **Distance:** road distance per supply node → section, built by Gavin (`notebooks/travel_arcs.ipynb`) and
+  joined on `section_id`. Not on our slate. Don't use the Google API: it costs money and its terms bar
+  storing results.
+- **Calibration check:** implied fleet miles vs the ~300,000 mi/yr reported (unverified). At 2,500
+  fish/load, that implies ~120 mi one-way hauls, which seems long, so fish_per_load or that figure may be off.
 - **Baseline assignment:** nearest hatchery (the real assignment isn't published).
 - **Simplification to state in the report:** real trucks make multi-stop routes. We model direct
   shipments, a transportation problem, not vehicle routing.
@@ -145,7 +155,41 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
     `logs/02_overlap_check.csv`.
   - No 2026 brook stocking lands on Class A wild-brook water.
 
+## Co-op nurseries
+- **What the policy says** (Cooperative Nursery Statement of Policy, Jan 2017):
+  - PFBC sets how many fingerlings each nursery gets.
+  - The clubs choose waters, dates and numbers: a tentative schedule is due Mar 5, PFBC reviews it, and
+    actual stockings are reported by Jul 15.
+  - Co-op fish "will not be included as part of the PFBC allocation" (§III.12). They should complement
+    PFBC's schedule, e.g. by not stocking the same week.
+- **What the data shows** (`data/processed/coop_stockings`, 786 listings, 133 nurseries):
+  - Nurseries stock close to home: median 4 mi straight-line, 77% within 10 mi.
+  - The list was identical in Feb 2025 and Sep 2026. That means either stable waters or a rarely updated
+    file, and parts of it look out of date (next bullet).
+  - It has no fish counts or years, only which species go to which water.
+  - 292 of our 1,045 PFBC sections (28%) are also co-op waters, and they get 30% of PFBC's 2026 fish.
+  - 10 of the 23 sections PFBC dropped by 2026 are still on the co-op list. 8 of those 10 are wild-trout
+    waters (natural reproduction, biomass B–D). So PFBC likely dropped them to let wild trout take over, and
+    the co-op list is probably stale there; co-ops are not filling a gap.
+  - The same goes for the 4 co-op listings on Class A sections (co-ops may not stock Class A, §VII.2). Two are
+    the exempt Little Lehigh sections PFBC itself still stocks; two only partly overlap.
+  - All of these are in `logs/03_coop_review.csv` for manual review.
+- **Version A, the base model:** optimize PFBC hatchery fish only. Co-op waters are a flag (`coop_stocked`,
+  `coop_species`) that we report but that doesn't affect decisions. This mirrors PFBC's policy today.
+- **Version B, the extension "What if the state coordinated more with co-ops?":**
+  - Each co-op section gets a fixed co-op count `c_s`, and benefit becomes
+    `demand_s × f(PFBC fish + c_s)`. With diminishing returns, PFBC fish shift toward waters co-ops
+    don't cover.
+  - Co-op fish have no PFBC trucking cost, and they are constant in the impact score (report only).
+  - Use only listings that pass manual review; drop the stale ones on wild-trout water.
+  - The per-acre cap applies to PFBC fish only, per policy.
+  - `c_s` needs counts: a records request to the Cooperative Nursery Unit (sponsors report every July),
+    or an assumed per-nursery total split evenly across its waters.
+  - Caveat: this assumes co-ops keep their waters when PFBC shifts fish. Clubs plan after PFBC's schedule;
+    modeling their reaction would be a leader-follower (bilevel) problem, out of scope.
+
 ## Scenarios for 03_sensitivities
+- **Co-op coordination (Version B above):** PFBC counts co-op fish when placing its own.
 - **Goal-swap set:** each is scored on the full scorecard.
   - PFBC baseline (the actual plan)
   - angler demand first (max benefit)
@@ -154,7 +198,7 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
   - balanced (a knee point on the trade-off curve)
 - **Rates revisited:** relax the Table 18 caps (e.g. ×1.25, or no cap) to answer PFBC's "need to be reviewed".
 - ε / λ sweeps (trade-off curves)
-- circuity factor and cost per mile, low vs high
+- cost per truck-mile and fish per load, low vs high
 - stability δ and wild-trout lever ρ
 - converting the non-trout hatcheries (Tionesta, Fairview, Union City) to trout, an idea from `01_data_prep`
 - climate warming (EcoSHEDS +2 °C scenario), if the thermal flag gets built

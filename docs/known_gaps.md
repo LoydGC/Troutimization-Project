@@ -43,3 +43,33 @@ about 83% of the report's adults:
   - a PFBC records request
   - the stocking schedule pages (event lists)
   - treating lakes as fixed demand that uses up hatchery capacity
+
+## Co-op nurseries as supply nodes
+The team decided (2026-09-26) that co-op nurseries are supply points in the model. Still unknown:
+- **How many adult trout each co-op supplies.** The FY23–24 annual report gives only the input: 1,135,658
+  fingerlings distributed to co-ops (brook 100,725; brown 281,214; rainbow 742,999; golden 10,720), across
+  ~160 co-ops.
+- **Co-op stocking is not in our baseline.** PFBC's Cooperative Nursery Statement of Policy (Jan 2017,
+  `data/references/statement_policy.pdf`) §III.12 says "Fish stocked by cooperative nurseries will not be
+  included as part of the PFBC allocation of stocked trout to a water."
+- **Where co-op fish go.** Sponsors (the clubs) choose the waters, dates and numbers. PFBC reviews the list
+  but doesn't allocate it (§IV.9–10, §VII.2–3). Co-op waters need not be stocked trout waters, so many
+  destinations may be outside our 1,045 sections.
+- **Who pays for trucking.** PFBC trucks deliver fingerlings *to* the nurseries (§V). The clubs stock
+  from the nursery to the water.
+- **Co-op destinations are public, but counts aren't.** PFBC's co-op page publishes the stocking list
+  (which waters each nursery stocks, and which species), which is now in `data/processed/coop_stockings`.
+  Numbers per water and per year are reported to the Cooperative Nursery Unit by July 15 (§IV.12) but not
+  published, so they would need a request. They're needed only for the "state coordinates more" extension.
+- **Matching gaps:**
+  - 10 of 133 nurseries have no location in Gavin's layer (names in `logs/03_coop_stockings.log`).
+  - 189 listings didn't match a stream or pond geometry: 57 ponds or lakes, and 132 streams, often
+    non-stocked tributaries or spelling differences.
+  - They don't affect the section flags, which need an exact PFBC section match.
+- **The co-op list may be out of date.**
+  - 10 listed sections were dropped by PFBC by 2026, 8 of them wild-trout waters.
+  - 4 listed sections overlap Class A.
+  - The web file was unchanged from Feb 2025 to Sep 2026.
+- **Manual review file:** `logs/03_coop_review.csv`. It covers everything above, with suggested names for
+  near-miss spellings; fill in `review_note`.
+- **Locations.** Gavin's `data/raw/Coop_nurseries.geojson`.
