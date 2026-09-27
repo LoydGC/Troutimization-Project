@@ -71,7 +71,7 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
     ([biomass A–E][use H/G/L][population M/U/S/R][width]). E.g. Bear Creek DGS3 → 190 trout/acre/yr.
     `max_trout_per_acre` covers 1,034 of 1,045 sections; the 11 without a Table 18 rate are biomass A.
   - Width class also comes from the code: 3 = 4–10 m (621 sections), 2 = 10–20 m (320), 1S (54), 1L (43),
-    4 = <4 m (7). It gives a rough width for estimating area. `Description` ("OPTIMUM YIELD 2 SUBURBAN")
+    4 = <4 m (7). Area = length × width-class midpoint (decision 2026-09-27; NHDPlus is an upgrade). `Description` ("OPTIMUM YIELD 2 SUBURBAN")
     is only a label; its "2" is not a width class.
   - Call it a PFBC policy/crowding bound, not ecological carrying capacity.
 - **Minimum per stocking:** `300·y_s ≤ x_s` (PFBC rule).

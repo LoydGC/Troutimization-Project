@@ -51,7 +51,8 @@ don't smooth, impute, or "fix" it.
   distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
   county tables (p85) is optional.
 - **Density bound** = PFBC's maximum stocking rate (trout/acre/yr, Operational Guidelines Table 18) x
-  estimated area (length x width from drainage area). Call it a policy/crowding bound, not carrying capacity.
+  area. Area = length_mi x PFBC width-class midpoint, from AllocationCode (decision 2026-09-27: no NHDPlus;
+  midpoints and low/high in parameters.csv). Call it a policy/crowding bound, not carrying capacity.
   The rate is an exact lookup on AllocationCode (`max_trout_per_acre` in sections, from
   `data/processed/pfbc_stocking_rates.csv`). 11 biomass-A sections (width 2–3) have no Table 18 rate: NA.
 - **Environment** follows `docs/env_research.md`: exclude Wilderness and non-exempt Class A sections, no stocked
@@ -62,7 +63,8 @@ don't smooth, impute, or "fix" it.
 ## Units of analysis
 - **Section** = PFBC stream section, key `section_id = f"{RFP_WaterID}_{SecNum}"`. Base unit for all joins.
   The 2026 stocked-sections layer has ~1,031 features. trout.app's "3,520 reaches" includes non-stocked reaches.
-- **River** = a named water, key `river_id` (NHD GNIS_ID, else levelpath). Never WtrName alone: names repeat
+- **River** = a named water, key `river_id` = PFBC `RFP_WaterID` (decision 2026-09-27). It is shared across a
+  stream's sections and counties, and distinct for same-named streams. Never WtrName alone: names repeat
   across counties. Survey preferences are at this level and are apportioned to sections by length.
 - **Lake** = its own destination with `water_type = "lake"` (~20% of stocked trout). Kept out of stream-only
   covariates; whether lakes are decision variables or fixed is an open question.
@@ -92,7 +94,7 @@ don't smooth, impute, or "fix" it.
 
 ## Stack
 Python 3.11+, venv. pandas, geopandas, shapely, pyproj, requests, requests-cache, beautifulsoup4, lxml, tqdm,
-pyarrow, duckdb, pdfplumber, pynhd (HyRiver). Solver: gurobipy (academic license). Tests: pytest.
+pyarrow, duckdb, pdfplumber, pynhd (optional NHDPlus upgrade). Solver: gurobipy (academic license). Tests: pytest.
 Road routing lives in Gavin's notebook. CRS: EPSG:26918 for distances/lengths/areas; store in EPSG:4326.
 
 ## Layout

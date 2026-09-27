@@ -10,8 +10,11 @@ area and river_id). 8–9 assemble and check. Upgrades are at the end, for when 
 `scripts/02_build_sections.py`) is BUILT, the Bear Creek checks pass, and it is committed on branch
 `sections-pull` (not yet pushed or merged). It covers part of Prompt 0 (venv, common.py + tests, .gitignore), Prompt 2 for the stocked-section
 and wild-trout layers, Prompt 3, and Prompt 5's overlap flags and Table 18 rate (`max_trout_per_acre`). Skip
-those parts when sending the prompts. `scripts/03_coop_stockings.py` (2026-09-27, not yet committed) adds the
-co-op stocking list and the `coop_stocked` flag on sections.
+those parts when sending the prompts. `scripts/03_coop_stockings.py` (committed 2026-09-27) adds the co-op
+stocking list and the `coop_stocked` flag on sections.
+
+**Next (2026-09-27):** Prompts 4 + 5 as one phase, using the simplified Prompt 4 below. Then Prompt 6 (needs
+Prompt 0's angler-survey leftovers). Prompt 7 waits on Gavin's distances.
 
 ---
 
@@ -94,20 +97,24 @@ total 150 brown + 1,750 rainbow. Overlap flags as in CLAUDE.md Known facts.
 Report: years available, sections per year, total fish by species and year.
 ```
 
-## Prompt 4: Rivers and area (add columns to sections)
+## Prompt 4: River key and area (add columns to sections)
+
+Decision 2026-09-27: use PFBC's own water id and width classes. No NHDPlus (that's an upgrade).
 
 ```
-data/processed/sections.parquet already exists (flat, from 02_build_sections, with length_mi and midpoint);
-geometry is in data/processed/pa_trout.gpkg. ADD columns to sections on section_id, and update the gpkg
-sections layer only if needed:
-1. PFBC region (from County).
-2. NHDPlus V2.1 (pynhd): the COMID at the section midpoint, total drainage area, stream order, and
-   GNIS_ID/levelpath -> river_id. Put failed or ambiguous matches in logs/crosswalk_review.csv.
-3. Estimated width from the Chaplin 2005 PA bankfull regional curve (width vs drainage area; record which
-   curve), next to the PFBC width class already parsed from AllocationCode, and area_acres = length_mi x
-   width. Mark width as an estimate (bankfull is wider than wetted).
-Lakes are added later as rows with water_type = "lake" (surface area from NHD waterbodies).
-Validate: all Bear Creek (Schuylkill) sections share one river_id.
+data/processed/sections.parquet already exists (flat; length_mi, width_class from AllocationCode). ADD
+columns on section_id:
+1. river_id = rfp_water_id. Check it: log any river_id with more than one water_name, and any water_name +
+   county with more than one river_id.
+2. PFBC region (from county).
+3. width_m = PFBC width-class midpoint: 4 (<4 m), 3 (4-10), 2 (10-20), 1S (20-30), 1L (>30, open-ended).
+   Put the midpoints and low/high (the class bounds) in data/processed/parameters.csv with source =
+   Operational Guidelines width classes, midpoint = assumption. area_acres = length_mi x width_m, plus
+   area_acres_low / area_acres_high.
+4. Redo the "stocked vs PFBC cap" check (max_trout_per_acre x area_acres) with these areas.
+Lakes are added later as rows with water_type = "lake".
+Validate: Bear Creek (Schuylkill) sections share river_id 3197.
+Upgrade: NHDPlus COMID + Chaplin 2005 width from drainage area.
 ```
 
 ## Prompt 5: Environment
