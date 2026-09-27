@@ -51,7 +51,7 @@ don't smooth, impute, or "fix" it.
   distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
   county tables (p85) is optional.
 - **Density bound** = PFBC's maximum stocking rate (trout/acre/yr, Operational Guidelines Table 18) x
-  area. Area = PFBC's own length (`Length_MI_`) x PFBC width-class midpoint, from AllocationCode (decision 2026-09-27: no NHDPlus;
+  area. Area = PFBC's own length (`length_mi`: `Length_MI_`, or river miles for 9 sections where stocking says so) x PFBC width-class midpoint, from AllocationCode (decision 2026-09-27: no NHDPlus;
   midpoints and low/high in parameters.csv). Call it a policy/crowding bound, not carrying capacity.
   The rate is an exact lookup on AllocationCode (`max_trout_per_acre` in sections, from
   `data/processed/pfbc_stocking_rates.csv`). 11 biomass-A sections (width 2–3) have no Table 18 rate: NA.
@@ -131,7 +131,7 @@ GeoJSON is for ad-hoc export only (e.g. folium maps). The gpkg's wild-trout cont
   (all 1,045 sections match). Bear Creek DGS3 = D, Good, Suburban, width 3 (4–10 m) → 190 trout/acre/yr.
 - Sections pull: 1,045 sections stocked 2024–26 (1,007 all three years). ~2.6M stream fish/yr. No layer
   reaches 2022. 5–9 sections/year appear as 2 rows (regulation piece or county), each with the FULL total:
-  count once, union geometry (raw sums overcount ~0.7%). TotalAdultStocked_minusBrood = brook + brown +
+  count once, keep the "Stocked Trout Water" row's limits/length/line (raw sums overcount ~0.7%). TotalAdultStocked_minusBrood = brook + brown +
   rainbow; golden and brood are extra. Null brook/brown = 0. Sherman Creek 3306_2 river-mile limits are
   reversed: flagged (`rm_limits_reversed`), not fixed.
 - Class A: the 13 biomass-A sections (all wild brown, none brook) are the proxy for PFBC's ~13 exempt

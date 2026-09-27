@@ -1,8 +1,8 @@
-2026-09-27 16:05:22,455 INFO pfbc_coop/2026-09-27/cnu-stockings-website.xlsx: 786 rows -> 786 with a water name
-2026-09-27 16:05:22,461 INFO duplicate nursery/water rows: 0 (kept)
-2026-09-27 16:05:23,900 INFO water matches: {'pfbc_section': 349, 'wild_layer_stream': 136, 'unmatched': 132, 'pfbc_stream_other_section': 112, 'unmatched_lake_pond': 57}
-2026-09-27 16:05:24,019 INFO nursery location found for 123 of 133 nurseries; missing: ['#1', 'Adams Co Fish and Game', 'Alma Lee Thorton', 'Coventryville Trout Club', 'Hawthorn Rod and Gun Club', 'Orbisonia-Rockhill Sportsmens Assoc', 'Quittaphilla', 'Roulette Fish and Game', 'Springtown', "Waterman's Pond"]
-2026-09-27 16:05:24,021 INFO nursery -> water straight-line miles (n=573): median 4.1, 90% 16.3, max 44.4; within 10 mi 77%
-2026-09-27 16:05:24,179 INFO sections flagged coop_stocked: 292 of 1045
-2026-09-27 16:05:24,323 INFO wrote logs/03_coop_review.csv: {'water not found (stream)': 132, 'water not found (lake/pond)': 57, 'co-op lists a section PFBC no longer stocks (2026)': 11, "nursery not in Gavin's co-op layer": 10, 'co-op lists a section overlapping Class A': 4}
-2026-09-27 16:05:24,324 INFO Yellow Breeches Creek (Cumberland) co-op listings matched to PFBC sections: ['276_2', '276_3', '276_4']
+2026-09-27 18:03:33,991 INFO pfbc_coop/2026-09-27/cnu-stockings-website.xlsx: 786 rows -> 786 with a water name
+2026-09-27 18:03:33,997 INFO duplicate nursery/water rows: 0 (kept)
+2026-09-27 18:03:35,418 INFO water matches: {'pfbc_section': 349, 'wild_layer_stream': 136, 'unmatched': 132, 'pfbc_stream_other_section': 112, 'unmatched_lake_pond': 57}
+2026-09-27 18:03:35,534 INFO nursery location found for 123 of 133 nurseries; missing: ['#1', 'Adams Co Fish and Game', 'Alma Lee Thorton', 'Coventryville Trout Club', 'Hawthorn Rod and Gun Club', 'Orbisonia-Rockhill Sportsmens Assoc', 'Quittaphilla', 'Roulette Fish and Game', 'Springtown', "Waterman's Pond"]
+2026-09-27 18:03:35,535 INFO nursery -> water straight-line miles (n=573): median 4.1, 90% 16.3, max 44.4; within 10 mi 77%
+2026-09-27 18:03:35,696 INFO sections flagged coop_stocked: 292 of 1045
+2026-09-27 18:03:35,843 INFO wrote logs/03_coop_review.csv: {'water not found (stream)': 132, 'water not found (lake/pond)': 57, 'co-op lists a section PFBC no longer stocks (2026)': 11, "nursery not in Gavin's co-op layer": 10, 'co-op lists a section overlapping Class A': 4}
+2026-09-27 18:03:35,844 INFO Yellow Breeches Creek (Cumberland) co-op listings matched to PFBC sections: ['276_2', '276_3', '276_4']

@@ -15,18 +15,34 @@ object id, and the downloaded count matched the server count for every layer.
   `TotalAdultStocked_minusBrood` equals brook + brown + rainbow only when they are 0.
 - **Duplicate rows.** Each year, 5–9 sections appear as two rows: pieces split by regulation (e.g. a DHALO
   stretch) or by county. Both rows carry the full section total, with identical counts. We count them
-  once, union the geometry, take the widest river-mile limits and join the text fields. Summing the raw
+  once. The pair is always one "Stocked Trout Water" row and one "Commonwealth Inland Waters" row, and their
+  lines don't describe the same stretch, so we keep the "Stocked Trout Water" row's limits, length and line
+  (decision 2026-09-27; an earlier build unioned the lines and overstated length). County and regulation
+  text are joined across the two rows, and special regulations count if either row has them. Summing the raw
   layer would overcount by about 0.7%; for example, 2026 rainbow is 1,818,685 raw and 1,800,505 after the
   merge.
+- **Placeholder text.** PFBC's literal `<Null>` in `Wtr_Prog_Name` is read as missing.
 - **County names.** Converted to title case (the layers mix "Cambria" and "CAMBRIA").
 - **No other changes.** Counts are otherwise as published: no smoothing, imputation or corrections.
 
 **Section attributes**
 - **Which year's attributes.** They come from the latest year a section appears in.
-- **Length.** `length_mi` is computed from the line in EPSG:26918, as a check. From Prompt 4 on, area uses PFBC's
-  own `Length_MI_` (decision 2026-09-27), which matches PFBC river miles (median ratio 1.02). Our line length
-  runs ~7% longer at the median.
-  River-mile length is kept separately; GIS length runs about 10% longer at the median.
+- **Length.** `length_mi` (used for area) is one of PFBC's two lengths, and `length_source` says which
+  (decision 2026-09-27: PFBC numbers only).
+  - `pfbc_length_mi` = PFBC's `Length_MI_`. It's the default and matches PFBC river miles (median ratio 1.02).
+  - `rm_length_mi` = upper minus lower river mile, both PFBC fields.
+  - We don't use our own measurement of the line. It runs ~8% longer than `Length_MI_` at the median, more
+    so on lines with more vertices per mile, which suggests PFBC measured an earlier, less detailed version
+    of the line.
+- **Length check.** `length_check_flag` marks the 57 sections where the two PFBC lengths differ by more than
+  25%. PFBC allocates fish as rate × acres, so a section's stocking shows which length PFBC used:
+  - Among the unflagged sections, fish per (Table 18 rate × mile) gives a typical value and a normal range
+    (10th–90th percentile) per width class. Working within a width class avoids needing a width.
+  - A flagged section's mean fish per year then give an expected length range. If only river miles fall in
+    it, `length_mi` uses river miles (9 sections). If only `Length_MI_` does (14), both do (21), or neither
+    does (12, plus 1 with no rate), `Length_MI_` stays.
+  - `length_check_result` records the outcome; the details are in `logs/02_length_check.csv`. This only
+    picks between PFBC's two lengths: the stocking baseline itself is never changed.
 - **Midpoint.** The point halfway along the line.
 - **Sherman Creek 3306_2.** Its river-mile limits are reversed in PFBC's data. We flag it
   (`rm_limits_reversed`) and don't change it.

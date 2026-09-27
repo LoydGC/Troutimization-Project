@@ -13,7 +13,8 @@ and wild-trout layers, Prompt 3, and Prompt 5's overlap flags and Table 18 rate 
 those parts when sending the prompts. `scripts/03_coop_stockings.py` (committed 2026-09-27) adds the co-op
 stocking list and the `coop_stocked` flag on sections.
 
-**Next (2026-09-27):** Prompts 4 + 5 as one phase, using the simplified Prompt 4 below. Then Prompt 6 (needs
+**Next (2026-09-27):** Prompts 4 + 5 as one phase, using the simplified Prompt 4 below. Step 0 (duplicate
+fix) and the section length (`length_mi`, `length_source`) are done; start at river_id, region and width. Then Prompt 6 (needs
 Prompt 0's angler-survey leftovers). Prompt 7 waits on Gavin's distances.
 
 ---
@@ -102,7 +103,7 @@ Report: years available, sections per year, total fish by species and year.
 Decision 2026-09-27: use PFBC's own water id and width classes. No NHDPlus (that's an upgrade).
 
 ```
-0. Fix the duplicate-row merge in scripts/02_build_sections.py (decision 2026-09-27). Duplicate section rows
+0. [DONE 2026-09-27] Fix the duplicate-row merge in scripts/02_build_sections.py (decision 2026-09-27). Duplicate section rows
    are always one "Stocked Trout Water" row + one "Commonwealth Inland Waters" row with the same counts, and
    their lines don't describe the same stretch. Unioning them overstated length and geometry (e.g. Hinckston
    Run 2079_2: merged line 7.4 mi vs 1.9 river miles). Instead, keep the "Stocked Trout Water" row's limits,
@@ -115,12 +116,16 @@ columns on section_id:
    county with more than one river_id.
 2. PFBC region (from county).
 3. pfbc_length_mi = PFBC's own Length_MI_ from the stocked-sections layer (decision 2026-09-27: use PFBC's
-   length for consistency with its per-acre rates). It matches PFBC river miles (median ratio 1.02); our
-   geometric length_mi runs ~7% longer and stays as a check. Duplicate sections use the "Stocked Trout
-   Water" row's Length_MI_ (step 0).
+   length for consistency with its per-acre rates). It matches PFBC river miles (median ratio 1.02). [DONE in
+   step 0; our own geometric length was dropped 2026-09-27: PFBC numbers only. length_mi = Length_MI_, or
+   river miles for the 9 flagged sections whose stocking fits river miles (length_source).] Duplicate
+   sections use the "Stocked Trout Water" row's Length_MI_ (step 0).
    width_m = PFBC width-class midpoint: 4 (<4 m), 3 (4-10), 2 (10-20), 1S (20-30), 1L (>30, open-ended).
+   Proposed for the open-ended classes (assumptions, not yet confirmed by the team): 1L = 40 m, range 30-60
+   (the Guidelines' eligibility rule, p. 45, mentions 40 m average width, loosely worded); 4 = 3 m, range 2-4.
+   No PFBC layer publishes a measured width or acres (searched 2026-09-27; docs/known_gaps.md).
    Put the midpoints and low/high (the class bounds) in data/processed/parameters.csv with source =
-   Operational Guidelines width classes, midpoint = assumption. area_acres = pfbc_length_mi x width_m, plus
+   Operational Guidelines width classes, midpoint = assumption. area_acres = length_mi x width_m, plus
    area_acres_low / area_acres_high.
 4. Redo the "stocked vs PFBC cap" check (max_trout_per_acre x area_acres) with these areas.
 Lakes are added later as rows with water_type = "lake".

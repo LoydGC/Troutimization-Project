@@ -9,7 +9,7 @@ section_id,water_name,county,lower_rm,upper_rm,class_a_rm_mi,class_a_geom_mi,cla
 2968_3,Raystown Branch Juniata River,Bedford,106.8,117.2,0.0,0.0,False,3.9,0.021,True,0.0,0.0,False
 275_2,Fishing Creek,York,1.74,5.13,0.0,0.0,False,0.0,4.664,True,0.0,0.0,False
 2208_2,South Branch Middle Creek,Snyder,0.0,4.3,0.0,0.0,False,0.0,4.821,True,0.0,0.0,False
-2175_6,White Deer Creek,Union,0.0,4.83,0.0,0.0,False,0.0,5.858,True,0.0,0.0,False
+2175_6,White Deer Creek,Union,0.0,2.97,0.0,0.0,False,0.0,3.029,True,0.0,0.0,False
 2192_2,White Deer Hole Creek,Lycoming,7.77,13.54,0.0,0.0,False,0.0,7.074,True,0.0,0.0,False
 2033_4,Muddy Creek,York,10.5,13.2,0.0,0.0,False,0.0,2.939,True,0.0,0.0,False
 275_3,Fishing Creek,York,0.3,1.74,0.0,0.0,False,0.0,1.41,True,0.0,0.0,False

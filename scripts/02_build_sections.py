@@ -29,6 +29,8 @@ MIN_OVERLAP_MI = 100 / M_PER_MI  # CLAUDE.md rule 8: overlap must exceed 100 m t
 CHECK_BUFFER_M = 30  # geometric overlap: section length within 30 m of a same-water wild-trout line
 CONTEXT_SIMPLIFY_M = 5  # wild-trout layers in pa_trout.gpkg (overlaps are computed before simplifying)
 NAT_REPRO_GEOM_MI = 0.5  # nat. repro: some records' river miles cover less than their line and Limits text
+LENGTH_CHECK_TOL = 0.25  # length_check_flag: PFBC Length_MI_ vs river-mile length
+STOCKING_BAND = (0.1, 0.9)  # length check: normal range of fish per (rate x mile) among unflagged sections
 
 USE = {"H": "High", "G": "Good", "L": "Low"}
 POP = {"M": "Metro", "U": "Urban", "S": "Suburban", "R": "Rural"}
@@ -69,10 +71,12 @@ def join_unique(s: pd.Series) -> str | None:
 
 
 def collapse_duplicates(g: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    """Some sections appear as 2 rows (split by regulation or county), each carrying the full section total.
+    """Some sections appear as 2 rows, each carrying the full section total: one "Stocked Trout Water" row and
+    one "Commonwealth Inland Waters" row.
 
-    Counts are identical across the pieces, so they're taken once; geometry is unioned, limits widened,
-    and text fields joined.
+    Counts are identical, so they're taken once. The "Stocked Trout Water" row's limits, Length_MI_ and line
+    are kept (decision 2026-09-27): the two lines don't describe the same stretch, so a union overstated
+    length. County and regulation text are joined (some sections cross a county line).
     """
     year = int(g.year.iloc[0])
     dup = g.section_id.duplicated(keep=False)
@@ -83,14 +87,14 @@ def collapse_duplicates(g: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
         raise ValueError(f"{year}: duplicate sections with different counts: {list(diff[diff].index)}")
     merged = []
     for sid, grp in g[dup].groupby("section_id", sort=False):
-        row = grp.iloc[0].copy()
-        up, lo = grp.SecUpperLi.idxmax(), grp.SecLowerLi.idxmin()
-        row["SecUpperLi"], row["SecUpper_1"] = grp.at[up, "SecUpperLi"], grp.at[up, "SecUpper_1"]
-        row["SecLowerLi"], row["SecLower_1"] = grp.at[lo, "SecLowerLi"], grp.at[lo, "SecLower_1"]
+        stw = grp[grp.Reg_Name.str.strip().eq("Stocked Trout Water")]
+        if len(stw) != 1:
+            log.warning("%d %s: %d 'Stocked Trout Water' rows; keeping the first row", year, sid, len(stw))
+            stw = grp
+        row = stw.iloc[0].copy()
         for c in ("County", "Reg_Name", "Reg_Link"):
             row[c] = join_unique(grp[c])
         row["SpecReg"] = "Y" if (grp.SpecReg == "Y").any() else row["SpecReg"]
-        row["geometry"] = shapely.line_merge(shapely.union_all(grp.geometry.values))
         row["n_pieces"] = len(grp)
         merged.append(row)
     out = pd.concat([g[~dup].assign(n_pieces=1), gpd.GeoDataFrame(merged, crs=g.crs)], ignore_index=True)
@@ -160,6 +164,48 @@ def parse_allocation(sections: pd.DataFrame, rates: pd.DataFrame) -> pd.DataFram
 
 
 # ---------------------------------------------------------------- wild-trout overlap
+def choose_length(s: pd.DataFrame) -> pd.DataFrame:
+    """length_mi = PFBC's Length_MI_, except flagged sections whose stocking fits the river-mile length instead.
+
+    PFBC allocates fish as rate x acres, so fish / (Table 18 rate x length) is similar within a width class.
+    Its normal range (STOCKING_BAND quantiles among unflagged sections) turns a flagged section's fish into an
+    expected length range. Where exactly one of PFBC's two lengths falls in it, that one is kept; otherwise
+    Length_MI_ stays (decision 2026-09-27). Only a length choice: stocking counts are never changed.
+    """
+    fish = s[[f"total_{y}" for y in YEARS]].astype(float).mean(axis=1)  # mean per year stocked
+    k = fish / (s.max_trout_per_acre * s.pfbc_length_mi)
+    ref = k[~s.length_check_flag & (fish > 0)].groupby(s.width_class)
+    q_lo, q_hi = STOCKING_BAND
+    exp_mi = fish / (s.max_trout_per_acre * s.width_class.map(ref.median()))
+    exp_lo = fish / (s.max_trout_per_acre * s.width_class.map(ref.quantile(q_hi)))
+    exp_hi = fish / (s.max_trout_per_acre * s.width_class.map(ref.quantile(q_lo)))
+    fits_p = s.pfbc_length_mi.between(exp_lo, exp_hi).fillna(False).to_numpy(bool)
+    fits_r = s.rm_length_mi.between(exp_lo, exp_hi).fillna(False).to_numpy(bool)
+    no_ref = (exp_mi.isna() | (fish <= 0)).to_numpy(bool)
+    result = pd.Series(np.select([no_ref, fits_p & ~fits_r, fits_r & ~fits_p, fits_p & fits_r],
+                                 ["no_rate_or_fish", "fits_pfbc_length", "fits_river_miles", "both_plausible"],
+                                 "neither"), index=s.index)
+    s["length_check_result"] = result.where(s.length_check_flag, None)
+    use_rm = s.length_check_result.eq("fits_river_miles")
+    s["length_mi"] = s.pfbc_length_mi.where(~use_rm, s.rm_length_mi)
+    s["length_source"] = np.where(use_rm, "river_miles", "pfbc_length")
+
+    flagged = s[s.length_check_flag].assign(
+        pfbc_to_rm_ratio=(s.pfbc_length_mi / s.rm_length_mi.where(s.rm_length_mi > 0)).round(2),
+        mean_fish_per_year=fish.round(0), stocking_expected_mi=exp_mi.round(2),
+        stocking_range_lo_mi=exp_lo.round(2), stocking_range_hi_mi=exp_hi.round(2))
+    flagged[["section_id", "water_name", "county", "n_pieces", "width_class", "max_trout_per_acre",
+             "mean_fish_per_year", "pfbc_length_mi", "rm_length_mi", "pfbc_to_rm_ratio", "stocking_expected_mi",
+             "stocking_range_lo_mi", "stocking_range_hi_mi", "length_check_result", "length_source", "length_mi",
+             "upper_limit", "lower_limit"]].sort_values(["length_check_result", "section_id"]).to_csv(
+        LOG_DIR / "02_length_check.csv", index=False)
+    log.info("length_check_flag: %d sections where PFBC Length_MI_ and river-mile length differ by > %d%%; "
+             "stocking check: %s (logs/02_length_check.csv)", len(flagged), LENGTH_CHECK_TOL * 100,
+             flagged.length_check_result.value_counts().to_dict())
+    log.info("length_source: %s", s.length_source.value_counts().to_dict())
+    return s
+
+
 def merge_intervals(df: pd.DataFrame) -> dict[int, list[tuple[float, float]]]:
     """River-mile intervals per RFP water id, overlapping intervals merged."""
     out: dict[int, list[tuple[float, float]]] = {}
@@ -254,7 +300,7 @@ def build_sections(years: dict[int, gpd.GeoDataFrame], long: pd.DataFrame, rates
         "lower_limit": latest.SecLower_1,
         "upper_rm": latest.SecUpperLi.round(3),
         "lower_rm": latest.SecLowerLi.round(3),
-        "length_mi": (metric.length / M_PER_MI).round(3),
+        "pfbc_length_mi": latest.Length_MI_.round(3),
         "rm_length_mi": (latest.SecUpperLi - latest.SecLowerLi).abs().round(3),
         "rm_limits_reversed": latest.SecUpperLi < latest.SecLowerLi,
         "mid_lat": mids.y.round(6),
@@ -266,8 +312,14 @@ def build_sections(years: dict[int, gpd.GeoDataFrame], long: pd.DataFrame, rates
         "special_reg": latest.SpecReg.eq("Y"),
         "best_fishing_water": latest.Best_Fishing_Wtr.notna() & latest.Best_Fishing_Wtr.astype(str).str.strip().ne(""),
         "mentored_youth_water": latest.Mentored_Youth_Wtr.notna() & latest.Mentored_Youth_Wtr.astype(str).str.strip().ne(""),
-        "program_name": latest.Wtr_Prog_Name.where(latest.Wtr_Prog_Name.astype(str).str.strip().ne(""), None),
+        # "<Null>" is PFBC's own placeholder for an empty value
+        "program_name": latest.Wtr_Prog_Name.where(~latest.Wtr_Prog_Name.astype(str).str.strip().isin(["", "<Null>"]),
+                                                   None),
     }).reset_index(drop=True)
+    # Flag sections where PFBC's Length_MI_ disagrees with PFBC's own river miles (resolved in choose_length).
+    ratio = s.pfbc_length_mi / s.rm_length_mi.where(s.rm_length_mi > 0)
+    s["length_check_flag"] = ~ratio.between(1 / (1 + LENGTH_CHECK_TOL), 1 + LENGTH_CHECK_TOL)
+    s.loc[ratio.isna(), "length_check_flag"] = True
     for c in ("best_fishing_water", "mentored_youth_water"):
         log.info("%s: %d sections flagged (raw values: %s)", c, s[c].sum(),
                  latest[{"best_fishing_water": "Best_Fishing_Wtr", "mentored_youth_water": "Mentored_Youth_Wtr"}[c]]
@@ -285,6 +337,7 @@ def build_sections(years: dict[int, gpd.GeoDataFrame], long: pd.DataFrame, rates
     s["n_years_stocked"] = s.years_stocked.str.count(",") + 1
 
     s = parse_allocation(s, rates)
+    s = choose_length(s)
 
     # Wild-trout overlap: river miles on the same RFP water id (CLAUDE.md rule 8), cross-checked against
     # geometry on the same water id. Class A / Wilderness (exclusions) use river miles only. Natural
@@ -327,6 +380,12 @@ def validate(s: pd.DataFrame, long: pd.DataFrame) -> None:
     assert not b.class_a_flag.any(), "Bear Creek stocked sections must not be flagged Class A"
     assert b.nat_repro_flag.all(), "Bear Creek stocked sections must be flagged natural reproduction"
     log.info("Bear Creek (3197) checks passed: 2026 brown 150 + rainbow 1,750; not Class A; natural reproduction")
+    lc = s.set_index("section_id")
+    assert lc.at["322_3", "length_check_result"] == "fits_pfbc_length" and lc.at["322_3", "length_mi"] < 4, \
+        "Shenango River 322_3 should keep PFBC's 3.5 mi (its river miles say 33.8)"
+    assert lc.at["3117_2", "length_source"] == "river_miles" and lc.at["3117_2", "length_mi"] == 5.6, \
+        "Locust Creek 3117_2 should use its 5.6 river miles (PFBC length 7.8)"
+    assert lc.length_mi.notna().all() and (lc.length_mi > 0).all()
     assert s.section_id.is_unique and long.duplicated(["section_id", "year", "species"]).sum() == 0
     assert (long["count"] >= 0).all()
 
@@ -344,7 +403,7 @@ def write_outputs(sections: gpd.GeoDataFrame, long: pd.DataFrame, rates: pd.Data
     gpkg = PROCESSED_DIR / "pa_trout.gpkg"
     gpkg.unlink(missing_ok=True)
     map_cols = ["section_id", "water_name", "county", "latest_year", "years_stocked", "allocation_code",
-                "pfbc_category", "reg_name", "length_mi", "total_2024", "total_2025", "total_2026",
+                "pfbc_category", "reg_name", "length_mi", "length_source", "total_2024", "total_2025", "total_2026",
                 "class_a_flag", "nat_repro_flag", "wilderness_flag", "geometry"]
     sections[map_cols].to_file(gpkg, layer="sections", driver="GPKG")
     hatch = gpd.read_file(RAW_DIR / "pa_hatcheries.gpkg")

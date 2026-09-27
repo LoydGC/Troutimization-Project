@@ -74,12 +74,36 @@ The team decided (2026-09-26) that co-op nurseries are supply points in the mode
   near-miss spellings; fill in `review_note`.
 - **Locations.** Gavin's `data/raw/Coop_nurseries.geojson`.
 
-## Duplicate section rows: merge overstated length (fix scheduled in Prompt 4, step 0)
+## Duplicate section rows (fixed 2026-09-27)
 - In each year's layer, 5–9 sections appear twice: always one "Stocked Trout Water" row plus one
   "Commonwealth Inland Waters" row, with the same counts. Their lines and limits don't describe the same
   stretch.
-- `02_build_sections.py` currently unions the two lines, which overstates length and geometry. For example,
-  Hinckston Run 2079_2's merged line is 7.4 mi against 1.9 river miles, and Loyalsock Creek 117_3's is
-  11.4 mi against 8.6.
-- The fix: keep the "Stocked Trout Water" row, and flag sections where PFBC's length and the river-mile
-  length disagree by more than 25%.
+- The first build unioned the two lines, which overstated length (Hinckston Run 2079_2: 7.4 mi of line
+  against 1.9 river miles). `02_build_sections.py` now keeps the "Stocked Trout Water" row's limits, length
+  and line (Hinckston Run: 2.2 mi of line, PFBC length 1.97 mi). The "Stocked Trout Water" row also carries
+  the Best Fishing Waters flag for Brodhead Creek 2662_2 and Neshannock Creek 329_3, which the old merge
+  missed.
+
+## PFBC length vs river miles (`length_check_flag`, 57 sections)
+- PFBC's `Length_MI_` (used for area) agrees with its own river-mile limits for most sections (median
+  ratio 1.02). 57 sections differ by more than 25%: 30 longer, 26 shorter, and Muncy Creek 102_6, whose
+  river-mile limits are equal (0 mi).
+- The two are separate PFBC values (a measured line length vs. two recorded river-mile positions), so either
+  can be the wrong one. Spot checks go both ways:
+  - River miles wrong: Shenango River 322_3 (3.5 mi vs 33.8 river miles) and Lackawaxen River 2271_3 have a
+    lower river mile of 0 (the mouth), but their lower limit text isn't the mouth.
+  - Line wrong: Brodhead Creek 2662_2's line is 6.9 mi, but its river miles (1.6) and its other row
+    (2.2 river miles, 1.8 mi PFBC length) both say about 2 mi.
+- Resolved with the stocking check (see `docs/methods.md`): the fish confirm `Length_MI_` for 14 sections
+  (including Shenango 322_3 and Lackawaxen 2271_3), and switch 9 to river miles (e.g. Locust Creek 3117_2:
+  5.6 instead of 7.8 mi). 21 are within normal stocking variation either way, and 12 fit neither (including
+  Brodhead 2662_2); those keep `Length_MI_` and stay flagged, so sensitivity runs can drop them. Together
+  the flagged sections carry about 4% of the fish. `logs/02_length_check.csv` has the details.
+
+## Precise stream width (searched 2026-09-27: none published)
+- No PFBC layer publishes a measured width or surface acres per section: not the stocked-section layers,
+  `Fisheries_AllSections` (all flowing-water sections, length only), or PASDA's Class A, Natural
+  Reproduction and Wilderness layers. Biologist reports give survey-site data for some streams only, not a
+  bulk per-section width.
+- So area uses the width-class midpoint from AllocationCode (Operational Guidelines Table 14), with the
+  class bounds as low/high.

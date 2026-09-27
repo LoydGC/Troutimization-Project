@@ -37,11 +37,15 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | latest_year | Latest year the section is in a stocked layer | year | |
 | upper_limit, lower_limit | Section limits as text | text | SecUpper_1, SecLower_1 |
 | upper_rm, lower_rm | Section limits as river miles from the mouth | mi | SecUpperLi, SecLowerLi |
-| length_mi | GIS length of the section line | mi (EPSG:26918) | computed |
-| rm_length_mi | \|upper_rm − lower_rm\| (GIS length is ~10% longer at the median) | mi | computed |
+| length_mi | Section length used for area: pfbc_length_mi, or rm_length_mi where the stocking check picks it (9 sections) | mi | PFBC (see length_source) |
+| length_source | Which PFBC length length_mi uses: "pfbc_length" (1,036) or "river_miles" (9) | text | computed |
+| pfbc_length_mi | PFBC's own section length | mi | Length_MI_ |
+| rm_length_mi | \|upper_rm − lower_rm\| (PFBC river miles) | mi | computed |
+| length_check_flag | pfbc_length_mi and rm_length_mi differ by more than 25%, or rm_length_mi is 0 (57 sections; `logs/02_length_check.csv`) | bool | computed |
+| length_check_result | Flagged sections only: which length the stocking fits. fits_pfbc_length (14), fits_river_miles (9), both_plausible (21), neither (12), no_rate_or_fish (1); NA if not flagged | text | computed |
 | rm_limits_reversed | upper_rm < lower_rm in PFBC's data (only Sherman Creek 3306_2) | bool | computed |
 | mid_lat, mid_lon | Point halfway along the section line | EPSG:4326 degrees | computed |
-| n_pieces | Rows the section had in the layer (2 = split by regulation or county, merged) | int | computed |
+| n_pieces | Rows the section had in the layer (2 = a "Stocked Trout Water" + a "Commonwealth Inland Waters" row; the first is kept) | int | computed |
 
 **PFBC management category**
 
@@ -59,7 +63,7 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | special_reg | Any special regulation | bool | SpecReg == "Y" |
 | best_fishing_water | PFBC "Best Fishing Waters" | bool | Best_Fishing_Wtr == "Y" |
 | mentored_youth_water | Mentored youth water | bool | Mentored_Youth_Wtr == "Y" |
-| program_name | PFBC program name, if any | text | Wtr_Prog_Name |
+| program_name | PFBC program name, if any (KSSTW = Keystone Select Stocked Trout Waters); PFBC's `<Null>` read as missing | text | Wtr_Prog_Name |
 
 **Stocking history (wide; NA = section not in that year's layer)**
 
@@ -127,7 +131,7 @@ For mapping and spatial joins; join to the tables on `section_id`.
 
 | Layer | Features | Contents |
 |---|---|---|
-| sections | 1,045 | Section lines (duplicate pieces unioned) + key fields: section_id, water_name, county, latest_year, years_stocked, allocation_code, pfbc_category, reg_name, length_mi, total_2024–2026, class_a/nat_repro/wilderness flags |
+| sections | 1,045 | Section lines (duplicate pieces: "Stocked Trout Water" row kept) + key fields: section_id, water_name, county, latest_year, years_stocked, allocation_code, pfbc_category, reg_name, length_mi, length_source, total_2024–2026, class_a/nat_repro/wilderness flags |
 | hatcheries | 10 | PFBC trout hatcheries (TROUT == "y") from `data/raw/pa_hatcheries.gpkg`. Placeholder until merged with Gavin's cleaned hatchery and co-op layers |
 | class_a | 1,361 | PASDA PAFishBoat #9, all fields; geometry simplified to 5 m |
 | nat_repro | 6,224 | PASDA PAFishBoat #25, all fields; geometry simplified to 5 m |
