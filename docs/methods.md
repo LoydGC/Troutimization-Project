@@ -23,7 +23,9 @@ object id, and the downloaded count matched the server count for every layer.
 
 **Section attributes**
 - **Which year's attributes.** They come from the latest year a section appears in.
-- **Length.** Computed from the line in EPSG:26918. PFBC's `Length_MI_` field differs from the line's length by more than 0.1 mi for most rows, so we don't use it.
+- **Length.** `length_mi` is computed from the line in EPSG:26918, as a check. From Prompt 4 on, area uses PFBC's
+  own `Length_MI_` (decision 2026-09-27), which matches PFBC river miles (median ratio 1.02). Our line length
+  runs ~7% longer at the median.
   River-mile length is kept separately; GIS length runs about 10% longer at the median.
 - **Midpoint.** The point halfway along the line.
 - **Sherman Creek 3306_2.** Its river-mile limits are reversed in PFBC's data. We flag it

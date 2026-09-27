@@ -73,3 +73,13 @@ The team decided (2026-09-26) that co-op nurseries are supply points in the mode
 - **Manual review file:** `logs/03_coop_review.csv`. It covers everything above, with suggested names for
   near-miss spellings; fill in `review_note`.
 - **Locations.** Gavin's `data/raw/Coop_nurseries.geojson`.
+
+## Duplicate section rows: merge overstated length (fix scheduled in Prompt 4, step 0)
+- In each year's layer, 5–9 sections appear twice: always one "Stocked Trout Water" row plus one
+  "Commonwealth Inland Waters" row, with the same counts. Their lines and limits don't describe the same
+  stretch.
+- `02_build_sections.py` currently unions the two lines, which overstates length and geometry. For example,
+  Hinckston Run 2079_2's merged line is 7.4 mi against 1.9 river miles, and Loyalsock Creek 117_3's is
+  11.4 mi against 8.6.
+- The fix: keep the "Stocked Trout Water" row, and flag sections where PFBC's length and the river-mile
+  length disagree by more than 25%.

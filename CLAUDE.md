@@ -51,7 +51,7 @@ don't smooth, impute, or "fix" it.
   distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
   county tables (p85) is optional.
 - **Density bound** = PFBC's maximum stocking rate (trout/acre/yr, Operational Guidelines Table 18) x
-  area. Area = length_mi x PFBC width-class midpoint, from AllocationCode (decision 2026-09-27: no NHDPlus;
+  area. Area = PFBC's own length (`Length_MI_`) x PFBC width-class midpoint, from AllocationCode (decision 2026-09-27: no NHDPlus;
   midpoints and low/high in parameters.csv). Call it a policy/crowding bound, not carrying capacity.
   The rate is an exact lookup on AllocationCode (`max_trout_per_acre` in sections, from
   `data/processed/pfbc_stocking_rates.csv`). 11 biomass-A sections (width 2–3) have no Table 18 rate: NA.

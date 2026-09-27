@@ -102,14 +102,25 @@ Report: years available, sections per year, total fish by species and year.
 Decision 2026-09-27: use PFBC's own water id and width classes. No NHDPlus (that's an upgrade).
 
 ```
+0. Fix the duplicate-row merge in scripts/02_build_sections.py (decision 2026-09-27). Duplicate section rows
+   are always one "Stocked Trout Water" row + one "Commonwealth Inland Waters" row with the same counts, and
+   their lines don't describe the same stretch. Unioning them overstated length and geometry (e.g. Hinckston
+   Run 2079_2: merged line 7.4 mi vs 1.9 river miles). Instead, keep the "Stocked Trout Water" row's limits,
+   Length_MI_ and line; count fish once as now. Add length_check_flag to every section where PFBC
+   Length_MI_ and rm_length_mi differ by more than 25% (e.g. Brodhead Creek 2662_2: 6.9 vs 1.6 mi), and write
+   the flagged sections to logs/ for review. Rebuild, then re-run 03.
 data/processed/sections.parquet already exists (flat; length_mi, width_class from AllocationCode). ADD
 columns on section_id:
 1. river_id = rfp_water_id. Check it: log any river_id with more than one water_name, and any water_name +
    county with more than one river_id.
 2. PFBC region (from county).
-3. width_m = PFBC width-class midpoint: 4 (<4 m), 3 (4-10), 2 (10-20), 1S (20-30), 1L (>30, open-ended).
+3. pfbc_length_mi = PFBC's own Length_MI_ from the stocked-sections layer (decision 2026-09-27: use PFBC's
+   length for consistency with its per-acre rates). It matches PFBC river miles (median ratio 1.02); our
+   geometric length_mi runs ~7% longer and stays as a check. Duplicate sections use the "Stocked Trout
+   Water" row's Length_MI_ (step 0).
+   width_m = PFBC width-class midpoint: 4 (<4 m), 3 (4-10), 2 (10-20), 1S (20-30), 1L (>30, open-ended).
    Put the midpoints and low/high (the class bounds) in data/processed/parameters.csv with source =
-   Operational Guidelines width classes, midpoint = assumption. area_acres = length_mi x width_m, plus
+   Operational Guidelines width classes, midpoint = assumption. area_acres = pfbc_length_mi x width_m, plus
    area_acres_low / area_acres_high.
 4. Redo the "stocked vs PFBC cap" check (max_trout_per_acre x area_acres) with these areas.
 Lakes are added later as rows with water_type = "lake".
