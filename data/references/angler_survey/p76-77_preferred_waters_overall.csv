@@ -1,0 +1,224 @@
+rank_order,waterbody,name_base,county_qualifier,pct_overall,lt_0_5_pct,source_page
+1,Yellow Breeches Creek,Yellow Breeches Creek,,5,False,76
+2,Pine Creek (Lycoming or Tioga County),Pine Creek,Lycoming or Tioga,5,False,76
+3,Kettle Creek,Kettle Creek,,3,False,76
+4,Neshannock Creek,Neshannock Creek,,3,False,76
+5,Tulpehocken Creek,Tulpehocken Creek,,2,False,76
+6,Lehigh River,Lehigh River,,2,False,76
+7,Laurel Hill Creek,Laurel Hill Creek,,2,False,76
+8,Oil Creek,Oil Creek,,2,False,76
+9,Youghiogheny River,Youghiogheny River,,2,False,76
+10,Tionesta Creek,Tionesta Creek,,2,False,76
+11,Elk Creek,Elk Creek,,2,False,76
+12,Slippery Rock Creek,Slippery Rock Creek,,2,False,76
+13,Pine Creek (other county or not sure of county),Pine Creek,other/unsure,2,False,76
+14,Allegheny River,Allegheny River,,2,False,76
+15,French Creek,French Creek,,2,False,76
+16,Loyalhanna Creek,Loyalhanna Creek,,2,False,76
+17,Pine Creek (Allegheny County),Pine Creek,Allegheny,2,False,76
+18,Bald Eagle Creek,Bald Eagle Creek,,2,False,76
+19,Penns Creek,Penns Creek,,2,False,76
+20,Jordan Creek,Jordan Creek,,2,False,76
+21,Conococheague Creek,Conococheague Creek,,2,False,76
+22,Kinzua Creek,Kinzua Creek,,2,False,76
+23,Bush Kill,Bush Kill,,2,False,76
+24,Little Lehigh Creek,Little Lehigh Creek,,2,False,76
+25,First Fork Sinnemahoning Creek,First Fork Sinnemahoning Creek,,2,False,76
+26,Clark Creek,Clark Creek,,2,False,76
+27,Brandywine Creek,Brandywine Creek,,1,False,76
+28,Loyalsock Creek,Loyalsock Creek,,1,False,76
+29,Mill Creek,Mill Creek,,1,False,76
+30,Perkiomen Creek,Perkiomen Creek,,1,False,76
+31,Ridley Creek,Ridley Creek,,1,False,76
+32,Muddy Creek,Muddy Creek,,1,False,76
+33,Twin Lakes,Twin Lakes,,1,False,76
+34,Deer Creek,Deer Creek,,1,False,76
+35,Four Mile Run,Four Mile Run,,1,False,76
+36,Raccoon State Park (Lake),Raccoon State Park,Lake,1,False,76
+37,Chest Creek,Chest Creek,,1,False,76
+38,Buffalo Creek (Armstrong County),Buffalo Creek,Armstrong,1,False,76
+39,Swatara Creek,Swatara Creek,,1,False,76
+40,Bobs Creek,Bobs Creek,,1,False,76
+41,Little Pine Creek,Little Pine Creek,,1,False,76
+42,Manatawny Creek,Manatawny Creek,,1,False,76
+43,Canonsburg Lake,Canonsburg Lake,,1,False,76
+44,Little Beaver Creek,Little Beaver Creek,,1,False,76
+45,Skippack Creek,Skippack Creek,,1,False,76
+46,Brodhead Creek,Brodhead Creek,,1,False,76
+47,Keystone Lake,Keystone Lake,,1,False,76
+48,Wissahickon Creek,Wissahickon Creek,,1,False,76
+49,Pennypack Creek,Pennypack Creek,,1,False,76
+50,Lycoming Creek,Lycoming Creek,,1,False,76
+51,White Clay Creek,White Clay Creek,,1,False,76
+52,Bull Creek,Bull Creek,,1,False,76
+53,Salmon Creek,Salmon Creek,,1,False,76
+54,Spring Creek,Spring Creek,,1,False,76
+55,Monocacy Creek,Monocacy Creek,,1,False,76
+56,Bradys Run Lake,Bradys Run Lake,,1,False,76
+57,Clarion River,Clarion River,,1,False,76
+58,Hicks Run,Hicks Run,,1,False,76
+59,Lackawanna River,Lackawanna River,,1,False,76
+60,White Deer Creek,White Deer Creek,,1,False,76
+61,Sugar Creek,Sugar Creek,,1,False,76
+62,Stony Creek (Dauphin County),Stony Creek,Dauphin,1,False,76
+63,Antietam Creek,Antietam Creek,,1,False,76
+64,Yellow Creek (Bedford County),Yellow Creek,Bedford,1,False,76
+65,Chester Creek,Chester Creek,,1,False,76
+66,Little Sandy Creek,Little Sandy Creek,,1,False,76
+67,Harveys Creek,Harveys Creek,,1,False,76
+68,Mountain Creek,Mountain Creek,,1,False,76
+69,Little Juniata River,Little Juniata River,,1,False,76
+70,Brokenstraw Creek,Brokenstraw Creek,,1,False,76
+71,Fishing Creek (Columbia County),Fishing Creek,Columbia,1,False,76
+72,Sherman Creek,Sherman Creek,,1,False,76
+73,Raystown Branch,Raystown Branch,,1,False,76
+74,Lackawaxen River,Lackawaxen River,,1,False,76
+75,Cowans Gap Lake,Cowans Gap Lake,,1,False,76
+76,Buffalo Creek (Butler County),Buffalo Creek,Butler,1,False,76
+77,Unami Creek,Unami Creek,,1,False,76
+78,Dyberry Creek,Dyberry Creek,,1,False,76
+79,Mahantango Creek,Mahantango Creek,,1,False,76
+80,Black Moshannon Creek,Black Moshannon Creek,,1,False,76
+81,Big Cove Creek,Big Cove Creek,,1,False,76
+82,Little Bush Kill,Little Bush Kill,,1,False,76
+83,Trout Creek,Trout Creek,,1,False,76
+84,Big Spring Creek,Big Spring Creek,,1,False,76
+85,Fishing Creek (other county or not sure of county),Fishing Creek,other/unsure,1,False,76
+86,Hammer Creek,Hammer Creek,,1,False,76
+87,Canoe Creek,Canoe Creek,,1,False,76
+88,Locust Lake,Locust Lake,,1,False,76
+89,Medix Run,Medix Run,,1,False,76
+90,Schuylkill River,Schuylkill River,,1,False,76
+91,Octoraro Creek,Octoraro Creek,,1,False,76
+92,Delaware Canal,Delaware Canal,,1,False,76
+93,Yellow Creek (Indiana County),Yellow Creek,Indiana,1,False,76
+94,Lackawanna Lake,Lackawanna Lake,,1,False,76
+95,Tobyhanna Creek,Tobyhanna Creek,,1,False,76
+96,Pine Creek (Schuykill County),Pine Creek,Schuykill,1,False,76
+97,West Branch Susquehanna River,West Branch Susquehanna River,,1,False,76
+98,Deep Creek,Deep Creek,,1,False,76
+99,North Park Lake,North Park Lake,,1,False,76
+100,Virgin Run Lake,Virgin Run Lake,,1,False,76
+101,Tohickon Creek,Tohickon Creek,,1,False,76
+102,Glade Run Lake,Glade Run Lake,,1,False,76
+103,Beaver Creek,Beaver Creek,,1,False,76
+104,Saucon Creek,Saucon Creek,,1,False,76
+105,Shohola Creek,Shohola Creek,,1,False,76
+106,Raccoon Creek,Raccoon Creek,,1,False,76
+107,Twenty Mile Creek,Twenty Mile Creek,,1,False,76
+108,Driftwood Branch Sinnemahoning Creek,Driftwood Branch Sinnemahoning Creek,,1,False,76
+109,Promised Land Lake,Promised Land Lake,,1,False,76
+110,Six Mile Run,Six Mile Run,,1,False,76
+111,Pohopoco Creek,Pohopoco Creek,,1,False,76
+112,Bens Creek,Bens Creek,,1,False,76
+113,Pickering Creek,Pickering Creek,,1,False,76
+114,East Branch Clarion River,East Branch Clarion River,,1,False,76
+115,Lake Pleasant,Lake Pleasant,,1,False,76
+116,Cool Spring Creek,Cool Spring Creek,,1,False,76
+117,Middle Creek (Snyder County),Middle Creek,Snyder,1,False,76
+118,Moon Lake,Moon Lake,,1,False,76
+119,Lizard Creek,Lizard Creek,,1,False,76
+120,Little Mahoney Creek,Little Mahoney Creek,,1,False,76
+121,Darby Creek,Darby Creek,,1,False,77
+122,Kishacoquillas Creek,Kishacoquillas Creek,,1,False,77
+123,Stony Creek (Montgomery County),Stony Creek,Montgomery,1,False,77
+124,Upper Woods Pond,Upper Woods Pond,,,True,77
+125,Aquashicola Creek,Aquashicola Creek,,,True,77
+126,Little Buffalo Creek,Little Buffalo Creek,,,True,77
+127,Dunlap Lake,Dunlap Lake,,,True,77
+128,Nescopeck Creek,Nescopeck Creek,,,True,77
+129,Fishing Creek (Clinton County),Fishing Creek,Clinton,,True,77
+130,Harveys Lake,Harveys Lake,,,True,77
+131,Marquette Lake,Marquette Lake,,,True,77
+132,Middle Creek (Lancaster County),Middle Creek,Lancaster,,True,77
+133,Lilly Lake,Lilly Lake,,,True,77
+134,Towanda Creek,Towanda Creek,,,True,77
+135,Bowman Creek,Bowman Creek,,,True,77
+136,South Branch Tunkhannock Creek,South Branch Tunkhannock Creek,,,True,77
+137,Dunbar Creek,Dunbar Creek,,,True,77
+138,Honey Creek,Honey Creek,,,True,77
+139,Wills Creek,Wills Creek,,,True,77
+140,Cove Creek,Cove Creek,,,True,77
+141,Crooked Creek,Crooked Creek,,,True,77
+142,Levittown Lake,Levittown Lake,,,True,77
+143,Connoquenessing Creek,Connoquenessing Creek,,,True,77
+144,Muncy Creek,Muncy Creek,,,True,77
+145,Spring Creek (Elk County),Spring Creek,Elk,,True,77
+146,Middle Creek (other county or not sure of county),Middle Creek,other/unsure,,True,77
+147,Little Fishing Creek,Little Fishing Creek,,,True,77
+148,Tuscarora Creek,Tuscarora Creek,,,True,77
+149,Blue Jay Creek,Blue Jay Creek,,,True,77
+150,Clover Creek,Clover Creek,,,True,77
+151,Spring Creek (Forest County),Spring Creek,Forest,,True,77
+152,Manada Creek,Manada Creek,,,True,77
+153,Thorn Creek,Thorn Creek,,,True,77
+154,Clear Shade Creek,Clear Shade Creek,,,True,77
+155,Potato Creek,Potato Creek,,,True,77
+156,Marvin Creek,Marvin Creek,,,True,77
+157,Ontelaunee Creek,Ontelaunee Creek,,,True,77
+158,Sandy Lick Creek,Sandy Lick Creek,,,True,77
+159,Martins Creek,Martins Creek,,,True,77
+160,George B Stevenson Reservoir,George B Stevenson Reservoir,,,True,77
+161,Woodcock Creek,Woodcock Creek,,,True,77
+162,Big Swickley Creek,Big Swickley Creek,,,True,77
+163,West Branch Clarion River,West Branch Clarion River,,,True,77
+164,Redbank Creek,Redbank Creek,,,True,77
+165,Hokendauqua Creek,Hokendauqua Creek,,,True,77
+166,Little Pine Lake,Little Pine Lake,,,True,77
+167,Parker Lake,Parker Lake,,,True,77
+168,Otter Creek,Otter Creek,,,True,77
+169,Sunfish Pond,Sunfish Pond,,,True,77
+170,Pithole Creek,Pithole Creek,,,True,77
+171,Millstone Creek,Millstone Creek,,,True,77
+172,Shenango River,Shenango River,,,True,77
+173,Wykoff Run,Wykoff Run,,,True,77
+174,Blacklog Creek,Blacklog Creek,,,True,77
+175,Lake Luxembourg,Lake Luxembourg,,,True,77
+176,Stony Creek (other county or not sure of county),Stony Creek,other/unsure,,True,77
+177,Maiden Creek,Maiden Creek,,,True,77
+178,Beltzville Lake,Beltzville Lake,,,True,77
+179,Poe Lake,Poe Lake,,,True,77
+180,Wolf Creek,Wolf Creek,,,True,77
+181,Little Toby Creek,Little Toby Creek,,,True,77
+182,North Fork Red Bank Creek,North Fork Red Bank Creek,,,True,77
+183,Young Womans Creek,Young Womans Creek,,,True,77
+184,Kettle Creek Lake,Kettle Creek Lake,,,True,77
+185,Halfway Lake,Halfway Lake,,,True,77
+186,Chapman Dam,Chapman Dam,,,True,77
+187,Mix Run,Mix Run,,,True,77
+188,Big Sandy Creek,Big Sandy Creek,,,True,77
+189,Waynesboro Reservoir,Waynesboro Reservoir,,,True,77
+190,Canoe Creek Lake,Canoe Creek Lake,,,True,77
+191,Curry Run,Curry Run,,,True,77
+192,Whipple Lake,Whipple Lake,,,True,77
+193,Little Bald Eagle Creek,Little Bald Eagle Creek,,,True,77
+194,Northkill Creek,Northkill Creek,,,True,77
+195,Shenango Lake,Shenango Lake,,,True,77
+196,Mehoopany Creek,Mehoopany Creek,,,True,77
+197,Shade Creek,Shade Creek,,,True,77
+198,East Licking Creek,East Licking Creek,,,True,77
+199,Little Loyalsock Creek,Little Loyalsock Creek,,,True,77
+200,Bells Gap Run,Bells Gap Run,,,True,77
+201,Buffalo Creek (Perry County),Buffalo Creek,Perry,,True,77
+202,Hereford Manor Lake,Hereford Manor Lake,,,True,77
+203,Yellow Creek (other county or not sure of county),Yellow Creek,other/unsure,,True,77
+204,Fairview Lake,Fairview Lake,,,True,77
+205,Briar Creek,Briar Creek,,,True,77
+206,Maple Creek,Maple Creek,,,True,77
+207,Beaverdale Lake,Beaverdale Lake,,,True,77
+208,Ridgway Reservoir,Ridgway Reservoir,,,True,77
+209,Little Tonoloway Creek,Little Tonoloway Creek,,,True,77
+210,Spring Creek (other county or not sure of county),Spring Creek,other/unsure,,True,77
+211,Genesee River,Genesee River,,,True,77
+212,Kahle Lake,Kahle Lake,,,True,77
+213,Big Poe Creek,Big Poe Creek,,,True,77
+214,Hemlock Run,Hemlock Run,,,True,77
+215,North Branch Little Conemaugh River,North Branch Little Conemaugh River,,,True,77
+216,Buffalo Creek (other county or not sure of county),Buffalo Creek,other/unsure,,True,77
+217,Buffalo Creek (Union County),Buffalo Creek,Union,,True,77
+218,Pleasant Stream,Pleasant Stream,,,True,77
+219,Wysox Creek,Wysox Creek,,,True,77
+220,Bull Run,Bull Run,,,True,77
+221,Pocono Creek,Pocono Creek,,,True,77
+222,Other,Other,,30,False,77
+223,Do not know,Do not know,,8,False,77
