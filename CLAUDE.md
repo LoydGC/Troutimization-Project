@@ -68,8 +68,6 @@ don't smooth, impute, or "fix" it.
   - Call it a policy/crowding bound, not carrying capacity.
 - **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (18 are natural
   reproduction waters; Blue Hole Creek 3656_2 for cadmium/lead) get no fish; a scenario lets them back.
-- **Assumptions register:** `docs/assumptions.md` lists every assumption and judgment call, why, and which
-  scenario tests it. Update it (and `docs/scenarios_and_extensions.md`) whenever a decision changes.
 - **Environment** follows `docs/env_research.md`: exclude Wilderness and Buffalo Creek 3190_2 (Class A since
   Jan 2026, not stocked in 2026), cap the other Class A overlaps at today's stocking, no stocked
   brook trout over wild brook trout. Everything else is the **wild-trout impact objective** (its own goal, not
@@ -170,9 +168,20 @@ GeoJSON is for ad-hoc export only (e.g. folium maps). The gpkg's wild-trout cont
   2026 stocking: 150 brown + 1,750 rainbow (3197_2: 150 brown + 850 rainbow; 3197_3: 900 rainbow).
 
 ## Workflow expectations
-- One phase at a time. At the end of each phase: 5 sample rows per new table, row counts, and null rates for
-  key columns, then stop for review.
-- Commit after each phase with a descriptive message.
-- Keep `docs/data_dictionary.md` updated for every column in `data/processed/`.
-- Credit PFBC per their license: data used unaltered is credited; all modifications are described in
-  `docs/methods.md`.
+- One phase (one PROMPTS.md prompt) at a time. At the end of each phase:
+  1. Update the checkpoint files below that the phase touched.
+  2. Show 5 sample rows per new table, row counts, and null rates for key columns.
+  3. Commit with a descriptive message, then stop for review.
+
+| Checkpoint file | Update when |
+|---|---|
+| `docs/data_dictionary.md` | Any column in `data/processed/` is added or changed |
+| `docs/methods.md` | Source data is modified (PFBC license: credit unaltered data, describe every change) |
+| `docs/assumptions.md` | An assumption or judgment call is added or changed. Keep rows short |
+| `docs/scenarios_and_extensions.md` | A new scenario, sensitivity or extension idea comes up |
+| `docs/known_gaps.md` | Missing data or a source problem is found |
+| `docs/modeling_notes.md` | The model formulation changes |
+| `data/processed/parameters.csv` | A value no source gives directly is used (rule 7) |
+| `docs/source_inventory.md` | A new endpoint is used, or a URL moved or was wrong (rule 5) |
+| `PROMPTS.md` | The prompt is done (mark [DONE date] and update the Status line), or the plan changed |
+| `CLAUDE.md` | A team decision is made (Agreed simplifications) or a fact is verified (Known facts) |
