@@ -108,8 +108,8 @@ for that extension:
   `Fisheries_AllSections` (all flowing-water sections, length only), or PASDA's Class A, Natural
   Reproduction and Wilderness layers. Biologist reports give survey-site data for some streams only, not a
   bulk per-section width.
-- So area uses the width-class midpoint from AllocationCode (Operational Guidelines Table 14), with the
-  class bounds as low/high.
+- So area uses the PFBC width class from AllocationCode (Operational Guidelines Table 14): the class top for
+  the river cap, the midpoint for the tighter sensitivity (`model_design.md` § Density bound).
 
 ## Class A exemptions: which stocked sections are exempt
 - 17 stocked sections overlap Class A (13 coded biomass A); PFBC stocks all of them in 2026. Stocking Class A
@@ -124,7 +124,8 @@ for that extension:
 - **The Jan 2026 batch is a different mechanism** (GoErie, 2026-01-31, reporting the Jan 30 Commission
   meeting; saved locally in `data/references/`): 13 exemptions on 12 Class A sections for outside groups'
   derbies and private stockings, 8 renewals and 5 new, each for up to 5 years. None of the 12 overlaps a PFBC
-  stocked section. One (Marvin Creek 01, McKean) is wild *brook* trout water, which is allowed because only
+  stocked section, though some sit just upstream (Penns Creek 01 ends where our 2207_2 starts; Monocacy,
+  Yellow Creek and Marvin Creek likewise). One (Marvin Creek 01, McKean) is wild *brook* trout water, which is allowed because only
   exemption criterion 4 bars brook trout waters.
 - An earlier note here called the "13 = 13" match a coincidence; that was wrong. The model rule doesn't
   change: Class A sections PFBC stocks are capped at today's stocking, and Buffalo Creek 3190_2 (Class A since

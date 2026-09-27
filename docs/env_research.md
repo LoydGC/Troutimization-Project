@@ -1,5 +1,8 @@
 # Environmental inputs for the stocking model: research notes
 
+**Research snapshot (2026-09-26), not maintained.** Decisions made from it live in `docs/model_design.md`,
+data gaps in `docs/known_gaps.md`.
+
 Web research done 2026-09-26 to decide what environmental data is worth collecting for a class project.
 Claims about PFBC policy link to the source. Anything marked *unverified* wasn't confirmed. The Bear Creek
 finding was checked against our saved trout.app page.
@@ -62,15 +65,7 @@ The 2025–29 plan (Obj. 9.1) says these rates "need to be reviewed," which is a
 - **Class A:** "with rare exceptions… no stocking." Since 2015, stocking a Class A section needs Commission
   approval. Exemptions last at most 5 years
   ([Jan 2026 meeting](https://www.pa.gov/agencies/fishandboat/newsroom/summary-165th-meeting-pfbc-jan2026)).
-  There are two separate groups (Operational Guidelines Appendix A, pp. 118–119):
-  - **PFBC's own continued stocking:** "13 stream sections that support strong Class A wild Brown Trout
-    populations" were designated in 2015–2017 and stocking continued, because they're heavily fished, mostly
-    in high-density areas. Our 13 biomass-A stocked sections very likely are these (not named in the
-    guidelines).
-  - **Exemptions for outside groups** (derbies, private stockings), under four criteria. Only criterion 4 bars
-    waters with wild brook trout. The Jan 2026 meeting approved 13 such exemptions on 12 Class A sections
-    (GoErie, 2026-01-31). None overlaps a PFBC stocked section, and one (Marvin Creek 01) is brook trout water.
-  See `docs/known_gaps.md`.
+  Which stocked sections are exempt, and why: `docs/known_gaps.md` § Class A exemptions.
 - **Wilderness Trout Streams:** never stocked.
 - **Removed sections** are replaced as close as possible, in the same watershed first. That is
   effectively "remove and stock nearby."

@@ -1,5 +1,8 @@
 # Transport cost inputs for the stocking model: research notes
 
+**Research snapshot (2026-09-26), not maintained.** Decisions made from it live in `docs/model_design.md`
+§ Transport cost; the values the model uses go in `data/processed/parameters.csv` (Prompt 7).
+
 Web research done 2026-09-26 for the transport objective in `docs/model_design.md`
 (`cost[h,s] = 2 × est_road_mi × cost_per_truck_mile / fish_per_load`). Distance is out of scope here.
 Every number links to its source. *Unverified* means no official or primary source confirmed it. *Derived*

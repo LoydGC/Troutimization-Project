@@ -12,16 +12,15 @@ Last updated: 2026-09-27
 
 ## Goal-swap scenarios
 
-Each is scored on the full scorecard (angler benefit, transport cost, wild-trout impact), per
-`model_design.md § Scenarios for 03_sensitivities` ("Goal-swap set").
+Each is scored on the full scorecard (angler benefit, transport cost, wild-trout impact).
 
 | Name | What changes vs. base | Question it answers | Status | Needs | Source |
 |---|---|---|---|---|---|
 | PFBC baseline | Nothing — the actual 2024–26 historical allocation, scored on the same 3 objectives | Where does PFBC's current plan sit on cost/benefit/impact? | base | — | model_design.md § Model shape (Baseline) |
-| Angler demand first | Maximize benefit only (subject to constraints) | Best case for anglers if cost and impact aren't weighed? | planned | benefit objective | model_design.md § Scenarios for 03_sensitivities |
-| Wild trout first | Minimize impact, subject to benefit ≥ baseline | Best case for wild trout without losing angler benefit? | planned | impact objective | model_design.md § Scenarios for 03_sensitivities |
-| Lowest cost | Minimize cost, subject to benefit ≥ baseline | Can PFBC spend less trucking without losing benefit? | planned | cost objective, cost_matrix | model_design.md § Scenarios for 03_sensitivities |
-| Balanced | A knee point on the trade-off curve | What's a reasonable compromise plan? | planned | ε-sweep results | model_design.md § Scenarios for 03_sensitivities |
+| Angler demand first | Maximize benefit only (subject to constraints) | Best case for anglers if cost and impact aren't weighed? | planned | benefit objective | model_design.md § Framing |
+| Wild trout first | Minimize impact, subject to benefit ≥ baseline | Best case for wild trout without losing angler benefit? | planned | impact objective | model_design.md § Framing |
+| Lowest cost | Minimize cost, subject to benefit ≥ baseline | Can PFBC spend less trucking without losing benefit? | planned | cost objective, cost_matrix | model_design.md § Framing |
+| Balanced | A knee point on the trade-off curve | What's a reasonable compromise plan? | planned | ε-sweep results | model_design.md § Framing |
 | ε / λ sweeps | Sweep cost cap C and impact cap E instead of one point, to trace the full trade-off curve | How much benefit does a dollar or a wild-trout fish trade for? | base | — | model_design.md § Model shape (Solve method) |
 
 ## Constraint / policy scenarios
@@ -40,8 +39,8 @@ objective.
 | Youghiogheny margin | Idea only, not adopted: allow today's stocking + a margin (e.g. +25%) instead of a hard cap at today's 7,900 fish | Should the one true above-cap tailwater get room to grow instead of being frozen? | idea | — | model_design.md § Constraints (Density bound, Youghiogheny 1327_1); team discussion 2026-09-27 |
 | Wild-trout lever (ρ) | Σ_wild x_s ≤ (1−ρ)·Σ_wild baseline, ρ ∈ {0, .25, .5, 1} | How much benefit or cost does pulling fish off wild-trout water take? | planned | impact objective, simple version | model_design.md § Constraints; § Wild-trout impact |
 | Stability (δ) | x_s ≥ (1−δ)·baseline_s | How much can low-use waters be protected from big cuts? | planned | — (baseline already built) | model_design.md § Constraints; env_research.md § 6 |
-| Total fish fixed vs. flexible | Relax "same total fish as baseline" | Do the objectives actually want more or fewer total fish? | planned | hatchery supply constraint | model_design.md § Constraints (Total fish); § Scenarios for 03_sensitivities |
-| Rates revisited | *Dropped/replaced.* Was: relax Table 18 caps directly (×1.25, or no cap) to test PFBC's "need to be reviewed" language | superseded — the river cap (Density bound, decided 2026-09-27) replaced a direct Table-18 relaxation with a river-based cap; "PFBC formula as cap" and "Tighter cap" above now cover this angle | dropped/replaced | — | model_design.md § Scenarios for 03_sensitivities (stale bullet); replaced by § Constraints (Density bound) |
+| Total fish fixed vs. flexible | Relax "same total fish as baseline" | Do the objectives actually want more or fewer total fish? | planned | hatchery supply constraint | model_design.md § Constraints (Total fish) |
+| Rates revisited | *Dropped/replaced.* Was: relax Table 18 caps directly (×1.25, or no cap) to test PFBC's "need to be reviewed" language | superseded — the river cap (Density bound, decided 2026-09-27) replaced a direct Table-18 relaxation with a river-based cap; "PFBC formula as cap" and "Tighter cap" above now cover this angle | dropped/replaced | — | replaced by model_design.md § Constraints (Density bound) |
 
 ## Sensitivity runs
 
@@ -68,8 +67,8 @@ background (Version A) and lakes and species mix as fixed; these rows are what c
 | Lakes as decision variables | ~20% of PFBC's adult trout (131 lakes) become x[h,s] decisions instead of being left out | Does the model's demand/cost logic extend to lakes, or are they structurally different? | open | per-lake stocking counts (none found in any GIS service yet) | model_design.md § Open questions; § Units of analysis (Lake) |
 | Fairness metric | Scorecard gains a 4th reported number, e.g. share of PA population within X miles of a stocked section | Does an efficient plan on the 3 objectives leave some regions underserved? | idea | proximity demand data (already built for benefit) | model_design.md § Framing ("What we deliver," Scorecard) |
 | Per-species allocation | Model chooses species mix per section instead of keeping each section's historical species shares fixed | Does letting species shift (no brook over wild brook) find a better plan? | idea | per-species benefit/impact weights | model_design.md § Model shape (Species) |
-| Convert non-trout hatcheries | Add Tionesta, Fairview and Union City as supply nodes | Would more/closer supply change the cost-optimal plan? | idea | production/feasibility data for those hatcheries | model_design.md § Scenarios for 03_sensitivities (idea from 01_data_prep) |
-| Climate warming (+2 °C) | Shift the thermal-marginal flag warmer under an EcoSHEDS warming scenario | How much benefit erodes, or how many more sections lose benefit, under warming? | idea | thermal marginality flag built first | model_design.md § Scenarios for 03_sensitivities; env_research.md § 4 |
+| Convert non-trout hatcheries | Add Tionesta, Fairview and Union City as supply nodes | Would more/closer supply change the cost-optimal plan? | idea | production/feasibility data for those hatcheries | idea from `notebooks/01_data_prep.ipynb` |
+| Climate warming (+2 °C) | Shift the thermal-marginal flag warmer under an EcoSHEDS warming scenario | How much benefit erodes, or how many more sections lose benefit, under warming? | idea | thermal marginality flag built first | env_research.md § 4 |
 | Peak-day truck constraint | Add a per-hatchery limit on truckloads/day at the preseason peak | Does the fleet's daily capacity bind before the general supply constraint does? | idea | fleet size, schedule dates | transport_research.md § 7 (Leave as upgrades) |
 | Seasonal fish_per_load | fish_per_load varies by season instead of one annual value (cold hauls carry more, warm hauls less) | Does seasonality change the fish_per_load calibration check? | idea | stocking schedule dates | transport_research.md § 6 |
 | cost_per_stop | Add ~$0.02/fish for crew time at each stocking visit, on top of the per-mile haul cost | Does counting visit time (not just miles) change the cost-optimal plan? | idea | `stockings_per_section_per_year` (already in parameters.csv) | transport_research.md § Proposed parameters (cost_per_stop); § 7 |

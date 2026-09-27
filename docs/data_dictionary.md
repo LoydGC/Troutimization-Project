@@ -127,7 +127,8 @@ Operational Guidelines Table 18, expanded to one row per allocation code (234 ro
 Table 18 has no biomass-A rows for widths 2–4 and no Metro river rows.
 
 ## pa_trout.gpkg (GeoPackage, EPSG:4326)
-For mapping and spatial joins; join to the tables on `section_id`.
+For mapping and spatial joins; join to the tables on `section_id`. Gitignored (16 MB): rebuild it with
+`scripts/01_download_pfbc_layers.py` and `scripts/02_build_sections.py`.
 
 | Layer | Features | Contents |
 |---|---|---|

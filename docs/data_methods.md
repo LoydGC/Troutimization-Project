@@ -57,10 +57,8 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
 - Table 18 has no biomass-A rows for widths 2–4, so 11 of the 13 biomass-A (Class A) sections have NA with
   a reason.
 - The other two are large rivers (1S/1L), where the rate doesn't depend on biomass.
-- The 13 are stocked Class A sections (their Class A key is their own section id), very likely the 13
-  continued-stocking sections in Operational Guidelines Appendix A (p. 118). They are not the Jan 2026
-  exemption batch (GoErie, 2026-01-31), which covers none of PFBC's stocked sections; see
-  `docs/known_gaps.md`.
+- The 13 are stocked Class A sections (their Class A key is their own section id). Which exemption covers
+  them: `docs/known_gaps.md` § Class A exemptions.
 
 **Wild-trout overlap** (CLAUDE.md rule 8)
 - **Primary method:** river miles shared with wild-trout records on the same `RFP_WaterID`. It counts only

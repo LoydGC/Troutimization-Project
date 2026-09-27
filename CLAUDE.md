@@ -116,21 +116,24 @@ Road routing lives in Gavin's notebook. CRS: EPSG:26918 for distances/lengths/ar
 data/raw/<source>/<date>/  untouched downloads. GITIGNORED except manifest.csv, which is enough to re-fetch.
 data/interim/              scratch parsed tables (gitignored, regenerable)
 data/processed/            model-ready tables (parquet + csv), COMMITTED. Keep each file < 50 MB.
-data/references/           trout.app snapshots (local only, validation only)
+                           Exception: pa_trout.gpkg is GITIGNORED (16 MB; rebuilt by scripts 01-02).
+data/references/           reference PDFs and trout.app snapshots. GITIGNORED (local only); where each came
+                           from is in docs/source_inventory.md. angler_survey/ stays tracked until Prompt 0
+                           moves it.
 scripts/                   numbered pipeline scripts, each re-runnable end to end
 tests/                     pytest tests for scripts/
 notebooks/                 01_data_prep (EDA), 02_optimization, 03_sensitivities: read data/processed only
 docs/                      source_inventory, data_dictionary, data_methods (data handling + assumptions),
                            model_design (model + assumptions + open questions), scenarios_and_extensions,
-                           known_gaps, env_research, transport_research
+                           known_gaps; env_research, transport_research (research snapshots, not maintained)
 logs/                      run logs and QA reports
 outputs/                   figures and tables for the report
 ```
 
 **File formats.** Tables are parquet plus a csv copy. Geometry lives only in `data/processed/pa_trout.gpkg`
-(EPSG:4326; layers sections, hatcheries, class_a, nat_repro, wilderness). Join everything on `section_id`.
-GeoJSON is for ad-hoc export only (e.g. folium maps). The gpkg's wild-trout context layers are simplified to
-5 m; compute overlaps from the full-resolution raw data.
+(gitignored, rebuilt by scripts 01-02; EPSG:4326; layers sections, hatcheries, class_a, nat_repro,
+wilderness). Join everything on `section_id`. GeoJSON is for ad-hoc export only (e.g. folium maps). The
+gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from the full-resolution raw data.
 
 ## Known facts
 - Verified 2026-09-26. Stocking counts come from fbweb, not PASDA. PASDA's 2026 stocked layer (#26) has no counts.
@@ -150,13 +153,10 @@ GeoJSON is for ad-hoc export only (e.g. folium maps). The gpkg's wild-trout cont
   count once, keep the "Stocked Trout Water" row's limits/length/line (raw sums overcount ~0.7%). TotalAdultStocked_minusBrood = brook + brown +
   rainbow; golden and brood are extra. Null brook/brown = 0. Sherman Creek 3306_2 river-mile limits are
   reversed: flagged (`rm_limits_reversed`), not fixed.
-- Class A: 18 sections overlap Class A by river mile; none overlap Wilderness. 13 are coded biomass A (all
-  wild brown, 8 Metro/Urban/Suburban) and are Class A sections themselves (Class A key = own section id).
-  They are very likely the Operational Guidelines' "13 stocked Class A wild trout stream sections" (Appendix A,
-  p. 118: strong wild brown populations designated 2015–2017, stocking continued, heavily fished, mostly in
-  high-density areas). The guidelines don't name them, so it's a strong match, not proof. The Jan 2026
-  exemptions (13 on 12 sections, for derbies and private stockings; GoErie 2026-01-31) are a separate mechanism
-  and cover none of PFBC's stocked sections. The other 4 stocked overlaps aren't coded A; their basis is unknown.
+- Class A: 18 sections overlap Class A by river mile (the 17 stocked in 2026 + Buffalo Creek 3190_2); none
+  overlap Wilderness. 13 are coded biomass A and are Class A sections themselves (Class A key = own section
+  id): very likely the Operational Guidelines' 13 continued-stocking sections (Appendix A). The other 4 have
+  no documented basis. Evidence, and the separate Jan 2026 exemptions: `docs/known_gaps.md`.
 - Stream layers ≈ 83% of PFBC's adult trout. The FY23–24 annual report has 3.14M adults + 1.56M fingerlings
   = 4.70M; our 2024 streams total 2.60M. The gap is most likely lakes, which have no counts in any GIS
   service. Scale hatchery supply to the stream total. Details: `docs/known_gaps.md`.

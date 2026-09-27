@@ -2,6 +2,7 @@
 
 The optimization model: objectives, constraints, assumptions and open questions (started 2026-09-26).
 Environmental background and citations are in `docs/env_research.md`. The data pipeline plan is in `PROMPTS.md`.
+Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions.md`.
 
 ## Framing: formula vs optimization
 - **PFBC allocates by formula, not optimization.**
@@ -36,8 +37,9 @@ Environmental background and citations are in `docs/env_research.md`. The data p
   2. **Trade-off curves.** Show where PFBC's plan sits relative to them.
      - Inside the curve: the same fish could do more for anglers at the same cost and impact.
      - On the curve: the formula is close to efficient. That's a legitimate finding too.
-  3. **Goal-swap scenarios.** See "Scenarios" below. Report the sections that gain or lose fish in
-     every scenario (robust changes) separately from those that move only under some goals.
+  3. **Goal-swap scenarios.** See `scenarios_and_extensions.md` § Goal-swap scenarios. Report the sections
+     that gain or lose fish in every scenario (robust changes) separately from those that move only under
+     some goals.
 - **Keep PFBC's physical rules as constraints, not its preferences.** The exclusions and a per-acre
   crowding cap keep plans realistic. The cap drops the parts of PFBC's formula that encode demand (see
   "Density bound"); a "PFBC formula as cap" scenario puts them back.
@@ -99,8 +101,8 @@ Environmental background and citations are in `docs/env_research.md`. The data p
     today's stocking (keep or cut, never add). They are the 13 biomass-A sections plus Mauch Chunk Creek
     2744_2, West Branch Hicks Run 4363_3, Freeman Run 3546_4 and Penns Creek 2207_6 (two of these only
     partly overlap; same rule). Stocking Class A needs Commission approval. The 13 biomass-A sections are very
-    likely the guidelines' 13 continued-stocking Class A sections; the other 4 have no documented basis (see
-    Exclusions).
+    likely the guidelines' 13 continued-stocking Class A sections; the other 4 have no documented basis
+    (`known_gaps.md` § Class A exemptions).
     With the river cap the 13 biomass-A sections alone could take 2.5× today (85k vs 34.5k fish; up to
     5.4× on Yellow Creek 59_4), mostly near Allentown/Bethlehem in an "anglers first" run.
     **Scenario "Class A allowed to grow":** the river cap instead. Table 18 has no biomass-A rate at widths
@@ -117,19 +119,12 @@ Environmental background and citations are in `docs/env_research.md`. The data p
   3190_2 (Class A).
 - **Exclusions:** `x_s = 0` for Wilderness (no stocked section overlaps it) and Buffalo Creek 3190_2, which
   became Class A in Jan 2026 and wasn't stocked in 2026. The other 17 Class A overlaps are capped at
-  today's stocking (see "Density bound").
-  - Why PFBC stocks 17 Class A sections. Operational Guidelines Appendix A (p. 118): "13 stream sections that
-    support strong Class A wild Brown Trout populations were officially designated … during the 2015-2017
-    timeframe …, and stocking was continued", all "heavily fished waters, most located in high-density human
-    population centers". Our 13 biomass-A sections fit (all wild brown, 8 Metro/Urban/Suburban). The
-    guidelines don't name them, so it's a strong match, not proof. The other 4 have no documented basis.
-  - The Jan 2026 exemptions (13 on 12 Class A sections, up to 5 years, for derbies and private stockings;
-    GoErie, 2026-01-31) are a separate mechanism for outside groups and cover none of PFBC's stocked
-    sections. Some sit just upstream (Penns Creek 01 ends where our 2207_2 starts; Monocacy, Yellow Creek,
-    Marvin Creek likewise).
-  - For such exemptions the Commission sets numbers "consistent with … historical stocking rates … to
-    minimize impacts to the Class A wild trout population" (p. 119). By analogy, that supports capping PFBC's
-    own stocked Class A sections at today's stocking.
+  today's stocking (see "Density bound"). Why PFBC stocks them, and how the Jan 2026 exemptions differ:
+  `known_gaps.md` § Class A exemptions.
+  - Why today's stocking is the cap: for outside groups' Class A exemptions, the Commission sets numbers
+    "consistent with … historical stocking rates … to minimize impacts to the Class A wild trout population"
+    (Operational Guidelines p. 119). By analogy, that supports capping PFBC's own stocked Class A sections
+    at today's stocking.
 - **Stability (optional):** `x_s ≥ (1−δ)·baseline_s`. The survey found 43% of anglers oppose dropping
   low-use waters (34% support).
 - **Wild-trout lever (scenario):** `Σ_wild x_s ≤ (1−ρ)·Σ_wild baseline_s`, with ρ ∈ {0, .25, .5, 1}.
@@ -237,24 +232,6 @@ Environmental background and citations are in `docs/env_research.md`. The data p
     or an assumed per-nursery total split evenly across its waters.
   - Caveat: this assumes co-ops keep their waters when PFBC shifts fish. Clubs plan after PFBC's schedule;
     modeling their reaction would be a leader-follower (bilevel) problem, out of scope.
-
-## Scenarios for 03_sensitivities
-The running list of scenarios, sensitivities and extensions is in `docs/scenarios_and_extensions.md`.
-- **Co-op coordination (Version B above):** PFBC counts co-op fish when placing its own.
-- **Goal-swap set:** each is scored on the full scorecard.
-  - PFBC baseline (the actual plan)
-  - angler demand first (max benefit)
-  - wild trout first (min impact, subject to benefit ≥ baseline)
-  - lowest cost (min cost, subject to benefit ≥ baseline)
-  - balanced (a knee point on the trade-off curve)
-- **Rates revisited:** replaced (2026-09-27) by the river cap plus the "PFBC formula as cap" and "tighter
-  cap" scenarios.
-- ε / λ sweeps (trade-off curves)
-- cost per truck-mile and fish per load, low vs high
-- stability δ and wild-trout lever ρ
-- converting the non-trout hatcheries (Tionesta, Fairview, Union City) to trout, an idea from `01_data_prep`
-- climate warming (EcoSHEDS +2 °C scenario), if the thermal flag gets built
-- total fish fixed vs flexible
 
 ## Assumptions no scenario tests
 Decided assumptions that no scenario varies. List them in the report's limitations, and add a scenario to

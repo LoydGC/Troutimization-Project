@@ -6,16 +6,18 @@ the agreed simplifications, and the rules, so the prompts don't repeat them.
 Order: 0 → 1 → 2 → 3 gets the baseline. 4–7 each build one model component (4 first, since 5 and 6 use its
 area and river_id). 8–9 assemble and check. Upgrades are at the end, for when time allows.
 
-**Status (2026-09-26):** the "sections pull" (`scripts/01_download_pfbc_layers.py`,
-`scripts/02_build_sections.py`) is BUILT, the Bear Creek checks pass, and it is committed on branch
-`sections-pull` (not yet pushed or merged). It covers part of Prompt 0 (venv, common.py + tests, .gitignore), Prompt 2 for the stocked-section
-and wild-trout layers, Prompt 3, and Prompt 5's overlap flags and Table 18 rate (`max_trout_per_acre`). Skip
-those parts when sending the prompts. `scripts/03_coop_stockings.py` (committed 2026-09-27) adds the co-op
-stocking list and the `coop_stocked` flag on sections.
+**Status (2026-09-27):** the sections pull (`scripts/01_download_pfbc_layers.py`,
+`scripts/02_build_sections.py`) and the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
+flag) are built, the Bear Creek checks pass, and they are pushed on branch `sections-pull`. Not merged into
+main yet (main has Gavin's newer distance commits). Done so far, so skip these parts when sending the prompts:
+- Prompt 0 steps 1, 3, 4, 5 (step 2 and the manifest rows for the partner's raw files are open)
+- Prompt 1 in part: `docs/source_inventory.md` lists the sources in use
+- Prompt 2 for the stocked-section and wild-trout layers; Prompt 3
+- Prompt 4 step 0 and the section length (`length_mi`, `length_source`)
+- Prompt 5's overlap flags and Table 18 rate (`max_trout_per_acre`)
 
-**Next (2026-09-27):** Prompts 4 + 5 as one phase, using the simplified Prompt 4 below. Step 0 (duplicate
-fix) and the section length (`length_mi`, `length_source`) are done; start at river_id, region and width. Then Prompt 6 (needs
-Prompt 0's angler-survey leftovers). Prompt 7 waits on Gavin's distances.
+**Next:** Prompts 4 + 5 as one phase, starting at river_id, region and width. Then Prompt 6 (needs Prompt 0
+step 2, the angler-survey move). Prompt 7 waits on Gavin's distances.
 
 ---
 
@@ -23,7 +25,9 @@ Prompt 0's angler-survey leftovers). Prompt 7 waits on Gavin's distances.
 
 ```
 Read CLAUDE.md. Tidy the repo to match its Layout section.
-1. Git: gitignore data/raw/** except manifest.csv and .gitkeep files; stop ignoring data/processed/
+1. [DONE 2026-09-26, except the manifest rows for the partner's raw files. 2026-09-27: pa_trout.gpkg and
+   data/references/ (except angler_survey/) are gitignored too.]
+   Git: gitignore data/raw/** except manifest.csv and .gitkeep files; stop ignoring data/processed/
    (keep a rule that blocks files over 50 MB). Also ignore data/references/*.html and the requests-cache
    database. The new rules only affect new raw files. Add each already-committed raw file to
    data/raw/manifest.csv with its source URL so it can be re-downloaded. ON HOLD: untracking them with
@@ -34,20 +38,23 @@ Read CLAUDE.md. Tidy the repo to match its Layout section.
    point it at the new paths, and have it write to data/processed/angler_survey/. Re-run it and confirm
    the CSVs match the current ones exactly, then delete the old copies and files.zip (check the zip
    holds nothing extra first).
-3. requirements.txt: add everything in CLAUDE.md's Stack (01_data_prep already uses geopandas). Create a
+3. [DONE 2026-09-26] requirements.txt: add everything in CLAUDE.md's Stack (01_data_prep already uses geopandas). Create a
    venv and install.
-4. scripts/common.py with:
+4. [DONE 2026-09-26] scripts/common.py with:
    - a cached, rate-limited HTTP session (requests-cache, 1 req/sec per host, retries with backoff)
    - save_raw(source, name, content, url): writes to data/raw/<source>/<date>/ and appends to manifest.csv
    - fetch_layer(layer_url): ArcGIS REST pager. Read ?f=pjson, get the count with returnCountOnly=true,
      page with resultOffset/resultRecordCount, outFields=*, outSR=4326, f=geojson (f=json for tables).
      Save raw pages; assert downloaded count == server count.
    Add pytest tests for the pager with mocked responses.
-5. data/README.md: point to data/raw/manifest.csv and docs/source_inventory.md instead of keeping its own list.
+5. [DONE 2026-09-26] data/README.md: point to data/raw/manifest.csv and docs/source_inventory.md instead of keeping its own list.
 Stop when tests pass and show the resulting tree and `git status`.
 ```
 
 ## Prompt 1: Source inventory (no bulk downloading)
+
+Partly done 2026-09-27: `docs/source_inventory.md` lists the layers and documents already in use. Still to
+do: the crawl in step 1, saving the trout plans in step 2, and step 3. Add to the file; don't rewrite it.
 
 ```
 Build docs/source_inventory.md with one short table per model component. For each source give the
@@ -156,9 +163,11 @@ re-measure.
    not_stocked_2026 only.
 2. wild_brook_present: from the Class A species/Fishery text (log how the text was parsed).
 3. Natural reproduction: use nat_repro_flag as built (river miles OR same-RFP geometry, rule 8).
-4. Density bound: max_trout = max_trout_per_acre (already in sections) x area_acres (from Prompt 4).
-   The 11 sections with no Table 18 rate stay NA with a reason.
-5. historical density (trout/acre) and the ratio to max_trout. Flag sections already stocked above it.
+4. Density bound: already built in Prompt 4 (cap_fish, cap_source; the river cap). Nothing to add here.
+   The "PFBC formula as cap" scenario uses max_trout_per_acre x area_acres directly; the 11 sections with
+   no Table 18 rate stay NA with a reason.
+5. Historical density (trout/acre) and its ratio to max_trout_per_acre. Flag sections stocked above the
+   Table 18 rate. (Baseline vs cap_fish is already logged in Prompt 4.)
 Validate Bear Creek: stocked sections are NOT Class A overlap but ARE natural reproduction.
 Report: excluded sections that were stocked in the baseline, and wild-brook sections stocked with brook trout.
 ```
@@ -206,10 +215,11 @@ Road distances from each hatchery to each section are built by Gavin in
 
 ```
 Build data/processed/model_input.parquet, one row per destination: baseline fish by species, species mix,
-max_trout, exclusion flags, penalty inputs, demand inputs, and a completeness flag per component. Report
-how many destinations are fully usable and what blocks the rest. Write docs/data_dictionary.md (every
-column: meaning, units, source, transformation) and docs/data_methods.md (every change to PFBC data and every
-assumption). Then add a short EDA section to notebooks/01_data_prep.ipynb: baseline density vs demand, vs
+cap_fish (+ cap_fish_mid, max_trout_per_acre for scenarios), exclusion flags, penalty inputs, demand
+inputs, and a completeness flag per component. Report how many destinations are fully usable and what
+blocks the rest. Check that docs/data_dictionary.md covers every column (meaning, units, source,
+transformation) and docs/data_methods.md every change to PFBC data; both are updated at each phase
+checkpoint, so fill gaps only. Then add a short EDA section to notebooks/01_data_prep.ipynb: baseline density vs demand, vs
 hatchery distance, and vs wild-trout flags.
 ```
 
