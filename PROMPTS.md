@@ -59,7 +59,7 @@ verified URL, format, record count, key fields, years covered, and how it joins 
    Select), Access, Hatcheries, and a PFBC regions layer. Add a short "fields by stocking year" comparison
    and say whether any year covers 2022 (the survey year): 2024–26 don't; checking for a 2023 layer is optional.
 2. PFBC documents (save PDFs to data/raw): Operational Guidelines for trout management (5th ed., already in
-   data/raw/pfbc_docs/), the 2020–24 and 2025–29 trout plans, and the current Class A stocking exemption list.
+   data/raw/pfbc_docs/), the 2020–24 and 2025–29 trout plans, and the current Class A stocking exemption list (only the Jan 2026 batch found so far: GoErie 2026-01-31; Guidelines Appendix A describes, without naming, the 13 Class A sections PFBC itself kept stocking).
    Links are in docs/env_research.md.
 3. Population: Census ACS 5-year block-group population and TIGER block-group centroids for PA.
 Do not bulk download.
@@ -120,14 +120,22 @@ columns on section_id:
    step 0; our own geometric length was dropped 2026-09-27: PFBC numbers only. length_mi = Length_MI_, or
    river miles for the 9 flagged sections whose stocking fits river miles (length_source).] Duplicate
    sections use the "Stocked Trout Water" row's Length_MI_ (step 0).
-   width_m = PFBC width-class midpoint: 4 (<4 m), 3 (4-10), 2 (10-20), 1S (20-30), 1L (>30, open-ended).
-   Proposed for the open-ended classes (assumptions, not yet confirmed by the team): 1L = 40 m, range 30-60
-   (the Guidelines' eligibility rule, p. 45, mentions 40 m average width, loosely worded); 4 = 3 m, range 2-4.
-   No PFBC layer publishes a measured width or acres (searched 2026-09-27; docs/known_gaps.md).
-   Put the midpoints and low/high (the class bounds) in data/processed/parameters.csv with source =
-   Operational Guidelines width classes, midpoint = assumption. area_acres = length_mi x width_m, plus
-   area_acres_low / area_acres_high.
-4. Redo the "stocked vs PFBC cap" check (max_trout_per_acre x area_acres) with these areas.
+   Width (decision 2026-09-27): width_top_m = top of the PFBC width class (Guidelines Table 14): 4 -> 4 m,
+   3 -> 10, 2 -> 20, 1S -> 30, 1L -> 60 (1L is open-ended; 60 m is an assumption). width_mid_m = class
+   midpoint for the tighter sensitivity: 3, 7, 15, 25, 40. No PFBC layer publishes a measured width or acres
+   (searched 2026-09-27; docs/known_gaps.md). Put both in data/processed/parameters.csv (source = Guidelines
+   Table 14; 1L top, class-4 midpoint and all midpoints = assumption). area_acres = length_mi x width_top_m;
+   area_acres_mid = length_mi x width_mid_m.
+4. River cap (decision 2026-09-27; docs/modeling_notes.md "Density bound"):
+   river_rate = max Table 18 rate over use potential and population for the section's biomass + width
+   (B 323 at widths 2-3, C-E 361; widths 4/1S/1L 57/137/91). Biomass A at widths 2-3 (no Table 18 rate)
+   uses B's 323 (assumption; only used in the "Class A allowed to grow" scenario, cap_fish_class_a_river).
+   cap_fish = max(river_rate x area_acres, 300); cap_fish_mid the same with
+   area_acres_mid. Sections whose baseline (mean fish/yr) is above cap_fish get cap_fish = baseline and
+   cap_source = "baseline" (expect 3: Youghiogheny 1327_1, Conneauttee 2649_1, Black Moshannon 2254_2).
+   Class A overlaps stocked in 2026 (17) get cap_fish = baseline, cap_source = "class_a". Others
+   cap_source = "river_rate". (Exclusions are set in Prompt 5, not here.) Keep max_trout_per_acre (formula) for the "PFBC formula as cap"
+   scenario. Log baseline / cap per section; report how many exceed cap_fish and cap_fish_mid.
 Lakes are added later as rows with water_type = "lake".
 Validate: Bear Creek (Schuylkill) sections share river_id 3197.
 Upgrade: NHDPlus COMID + Chaplin 2005 width from drainage area.
@@ -140,9 +148,12 @@ Build data/processed/environment.parquet, one row per section. Follow docs/env_r
 The overlap columns (class_a_overlap_mi, Class A species/Fishery, TroutBioma, nat_repro_overlap_mi,
 wilderness_overlap_mi) already exist in sections from 02_build_sections (rule 8). Build on them; don't
 re-measure.
-1. Exclusions: Wilderness and Class A overlap from those columns; class_a_exempt = biomass_class == "A"
-   (13 sections, all wild brown; check against the official exemption list if found); exclude = Wilderness
-   OR (Class A AND not exempt).
+1. Exclusions (decision 2026-09-27): exclude + exclude_reason. "wilderness" (none today);
+   "class_a_not_stocked" = Class A overlap AND not stocked in 2026 (Buffalo Creek 3190_2);
+   "not_stocked_2026" = the other sections stocked in 2024-25 only (22), with Blue Hole Creek 3656_2 also
+   "health" (cadmium/lead). Class A overlaps stocked in 2026 (17, incl. the 2 partial ones) are NOT
+   excluded: Prompt 4 caps them at today's stocking. Scenario "dropped sections back" lifts
+   not_stocked_2026 only.
 2. wild_brook_present: from the Class A species/Fishery text (log how the text was parsed).
 3. Natural reproduction: use nat_repro_flag as built (river miles OR same-RFP geometry, rule 8).
 4. Density bound: max_trout = max_trout_per_acre (already in sections) x area_acres (from Prompt 4).

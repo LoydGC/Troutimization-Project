@@ -50,12 +50,28 @@ don't smooth, impute, or "fix" it.
 - **Demand for waters the survey doesn't name** = population weighted by the survey's own travel-distance
   distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
   county tables (p85) is optional.
-- **Density bound** = PFBC's maximum stocking rate (trout/acre/yr, Operational Guidelines Table 18) x
-  area. Area = PFBC's own length (`length_mi`: `Length_MI_`, or river miles for 9 sections where stocking says so) x PFBC width-class midpoint, from AllocationCode (decision 2026-09-27: no NHDPlus;
-  midpoints and low/high in parameters.csv). Call it a policy/crowding bound, not carrying capacity.
-  The rate is an exact lookup on AllocationCode (`max_trout_per_acre` in sections, from
-  `data/processed/pfbc_stocking_rates.csv`). 11 biomass-A sections (width 2–3) have no Table 18 rate: NA.
-- **Environment** follows `docs/env_research.md`: exclude Wilderness and non-exempt Class A sections, no stocked
+- **Density bound = "river cap"** (decision 2026-09-27; details in `docs/modeling_notes.md`):
+  river rate x `length_mi` x top of the PFBC width class, and at least 300 fish.
+  - River rate = the highest Table 18 rate over use potential and population density for the section's
+    biomass + width. Use and population are PFBC's demand proxies, which our benefit objective replaces.
+  - Biomass still counts: B gets 323/acre at widths 2–3, ~10% below C–E's 361. Widths 4/1S/1L: 57/137/91
+    for all.
+  - Width tops: 4, 10, 20, 30 m, plus 60 m for open-ended 1L (assumption). Midpoints are the tighter
+    sensitivity. No NHDPlus.
+  - Table 18 itself (`max_trout_per_acre`, exact lookup on AllocationCode) is PFBC's allocation formula:
+    sections are stocked at about rate x acres. It's kept for the baseline and a "PFBC formula as cap"
+    scenario.
+  - Class A (decision 2026-09-27): the 17 Class A-overlap sections PFBC stocks in 2026 are capped at today's
+    stocking (keep or cut, never add). Scenario: the river cap instead (biomass A at widths 2–3 uses B's 323).
+  - The 3 sections PFBC stocks above the river cap are capped at today's stocking: Youghiogheny 1327_1 (dam
+    tailwater, open year-round), Conneauttee 2649_1, Black Moshannon 2254_2.
+  - Call it a policy/crowding bound, not carrying capacity.
+- **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (18 are natural
+  reproduction waters; Blue Hole Creek 3656_2 for cadmium/lead) get no fish; a scenario lets them back.
+- **Assumptions register:** `docs/assumptions.md` lists every assumption and judgment call, why, and which
+  scenario tests it. Update it (and `docs/scenarios_and_extensions.md`) whenever a decision changes.
+- **Environment** follows `docs/env_research.md`: exclude Wilderness and Buffalo Creek 3190_2 (Class A since
+  Jan 2026, not stocked in 2026), cap the other Class A overlaps at today's stocking, no stocked
   brook trout over wild brook trout. Everything else is the **wild-trout impact objective** (its own goal, not
   a penalty on benefit): a per-fish weight from biomass class, natural reproduction, wild brook trout, and
   (if time) thermal marginality. Versions are in `docs/modeling_notes.md`.
@@ -106,7 +122,8 @@ data/references/           trout.app snapshots (local only, validation only)
 scripts/                   numbered pipeline scripts, each re-runnable end to end
 tests/                     pytest tests for scripts/
 notebooks/                 01_data_prep (EDA), 02_optimization, 03_sensitivities: read data/processed only
-docs/                      source_inventory, data_dictionary, methods, known_gaps, env_research
+docs/                      source_inventory, data_dictionary, methods, known_gaps, env_research,
+                           assumptions (register of every assumption), scenarios_and_extensions
 logs/                      run logs and QA reports
 outputs/                   figures and tables for the report
 ```
@@ -134,9 +151,13 @@ GeoJSON is for ad-hoc export only (e.g. folium maps). The gpkg's wild-trout cont
   count once, keep the "Stocked Trout Water" row's limits/length/line (raw sums overcount ~0.7%). TotalAdultStocked_minusBrood = brook + brown +
   rainbow; golden and brood are extra. Null brook/brown = 0. Sherman Creek 3306_2 river-mile limits are
   reversed: flagged (`rm_limits_reversed`), not fixed.
-- Class A: the 13 biomass-A sections (all wild brown, none brook) are the proxy for PFBC's ~13 exempt
-  sections; verify if the official list turns up. 18 sections overlap Class A by river mile (the 13 + 5).
-  None overlap Wilderness.
+- Class A: 18 sections overlap Class A by river mile; none overlap Wilderness. 13 are coded biomass A (all
+  wild brown, 8 Metro/Urban/Suburban) and are Class A sections themselves (Class A key = own section id).
+  They are very likely the Operational Guidelines' "13 stocked Class A wild trout stream sections" (Appendix A,
+  p. 118: strong wild brown populations designated 2015–2017, stocking continued, heavily fished, mostly in
+  high-density areas). The guidelines don't name them, so it's a strong match, not proof. The Jan 2026
+  exemptions (13 on 12 sections, for derbies and private stockings; GoErie 2026-01-31) are a separate mechanism
+  and cover none of PFBC's stocked sections. The other 4 stocked overlaps aren't coded A; their basis is unknown.
 - Stream layers ≈ 83% of PFBC's adult trout. The FY23–24 annual report has 3.14M adults + 1.56M fingerlings
   = 4.70M; our 2024 streams total 2.60M. The gap is most likely lakes, which have no counts in any GIS
   service. Scale hatchery supply to the stream total. Details: `docs/known_gaps.md`.

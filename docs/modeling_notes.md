@@ -7,9 +7,12 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
 - **PFBC allocates by formula, not optimization.**
   - Each section gets a category from its own traits: wild biomass class, recreational use potential
     (access, parking, ownership), human population density, and width.
-  - The category sets a max rate (trout/acre/yr, Operational Guidelines Table 18).
-  - Quick check (2026, rough width per class): rate × area tracks actual stocking closely, log-scale
-    correlation 0.86. The median section gets ~0.8 of its cap; redo this once Prompt 4 gives real areas.
+  - The category sets the allocation rate (trout/acre/yr, Operational Guidelines Table 18, "Summary of
+    allocation and distribution options"), which is also the category's ceiling ("will not exceed").
+  - Check (2026-09-27): backing each section's width out of its stocking (fish ÷ its Table 18 rate ÷
+    length) lands in the middle of its width class (class 3: median 6.2 m of 4–10; class 2: 12.4 of
+    10–20; 1S: 24.8 of 20–30). So PFBC stocks most sections at about rate × measured acres: the table is
+    the formula for what they put, not a loose maximum.
 - **What the formula can't see:**
   - **Trade-offs between waters.** Supply is fixed, but each section is judged alone. Nothing asks where
     the marginal fish does the most good.
@@ -35,8 +38,9 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
      - On the curve: the formula is close to efficient. That's a legitimate finding too.
   3. **Goal-swap scenarios.** See "Scenarios" below. Report the sections that gain or lose fish in
      every scenario (robust changes) separately from those that move only under some goals.
-- **Keep PFBC's rules as constraints.** The per-acre caps and the exclusions keep our plans inside
-  current policy. A "rates revisited" scenario relaxes the caps.
+- **Keep PFBC's physical rules as constraints, not its preferences.** The exclusions and a per-acre
+  crowding cap keep plans realistic. The cap drops the parts of PFBC's formula that encode demand (see
+  "Density bound"); a "PFBC formula as cap" scenario puts them back.
 - **One-line pitch:** "PFBC allocates by formula. We make the goals explicit and ask what the formula
   leaves on the table, and what it costs to favour anglers, the budget, or wild trout."
 - **Caveat:** if our demand measure ends up close to population density, the model may just rebuild
@@ -66,20 +70,66 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
 - **Co-op nurseries are fixed background** (team decision 2026-09-27), not supply nodes. See "Co-op
   nurseries" below.
 - **Total fish:** fixed at the baseline total (same fish, better placement), or relaxed as a scenario.
-- **Density bound:** `x_s ≤ rate(category_s) × acres_s`.
-  - The rate is now exact: the stocking layer's `AllocationCode` is the full Table 18 category
-    ([biomass A–E][use H/G/L][population M/U/S/R][width]). E.g. Bear Creek DGS3 → 190 trout/acre/yr.
-    `max_trout_per_acre` covers 1,034 of 1,045 sections; the 11 without a Table 18 rate are biomass A.
-  - Width class also comes from the code: 3 = 4–10 m (621 sections), 2 = 10–20 m (320), 1S (54), 1L (43),
-    4 = <4 m (7). Area = length × width-class midpoint (decision 2026-09-27; NHDPlus is an upgrade). `Description` ("OPTIMUM YIELD 2 SUBURBAN")
-    is only a label; its "2" is not a width class.
-  - Call it a PFBC policy/crowding bound, not ecological carrying capacity.
-- **Minimum per stocking:** `300·y_s ≤ x_s` (PFBC rule).
-- **Exclusions:** `x_s = 0` for Wilderness and non-exempt Class A sections.
-  - The 13 biomass-A sections (all wild brown, none brook) are the exempt Class A sections: fix them at
-    baseline, or treat them as a scenario.
-  - 18 sections overlap Class A by river mile, so 5 are non-exempt. One, Buffalo Creek 3190_2, was stocked
-    in 2024–25 but not 2026. No section overlaps Wilderness.
+- **Density bound ("river cap", decision 2026-09-27):**
+  `x_s ≤ cap_s = max(river_rate_s × length_mi_s × top_width_s, 300)`.
+  - **Why not Table 18 directly.** Table 18 is PFBC's allocation formula, and two of its four inputs, use
+    potential and population density, are PFBC's proxies for angler demand. Our benefit objective models
+    demand, so a formula cap would lock in PFBC's preferences (a rural section could never pass 95/acre).
+    The cap should describe the river, not PFBC's preferences.
+  - **River rate** = the highest Table 18 rate over use and population for the section's biomass + width:
+
+    | Biomass | Width 4 | 3 | 2 | 1S | 1L |
+    |---|---|---|---|---|---|
+    | B | 57 | 323 | 323 | 137 | 91 |
+    | C, D, E | 57 | 361 | 361 | 137 | 91 |
+
+    Biomass still has an effect: B is ~10% lower at widths 2–3. We do not assume "no biomass reduction".
+  - **Width = top of the class** (4, 10, 20, 30 m; 60 m for open-ended 1L, an assumption). It's the most
+    PFBC's rules allow on a stream of that class, so the cap doesn't bind just because our width guess is
+    off. The class midpoints (3, 7, 15, 25, 40 m) are the tighter sensitivity.
+  - **Minimum 300** fish, so any section can take one load (`300·y_s ≤ x_s`).
+  - **Fit to the baseline.** River cap statewide ≈ 2.5× the baseline at midpoints, more at class tops.
+    Stocking exceeds the river cap × class top in only 7 sections: four width-4 streams at exactly 300
+    fish (fixed by the minimum), Conneauttee Creek 2649_1 (a 0.19 mi section), Black Moshannon Creek
+    2254_2 (4% over) and Youghiogheny River 1327_1. Those last 3 are capped at today's stocking.
+  - **Youghiogheny 1327_1** (EHS1L, dam outflow to Casselman River, open year-round): PFBC stocks 7,900
+    fish on 1.1 mi, 3.3× the river cap at 60 m. Table 18 would need a ~250 m wide river. It's a special
+    tailwater fishery that PFBC deliberately stocks above formula, so today's stocking is its cap.
+  - **Class A** (decision 2026-09-27): the 17 Class A-overlap sections PFBC stocks in 2026 are capped at
+    today's stocking (keep or cut, never add). They are the 13 biomass-A sections plus Mauch Chunk Creek
+    2744_2, West Branch Hicks Run 4363_3, Freeman Run 3546_4 and Penns Creek 2207_6 (two of these only
+    partly overlap; same rule). Stocking Class A needs Commission approval. The 13 biomass-A sections are very
+    likely the guidelines' 13 continued-stocking Class A sections; the other 4 have no documented basis (see
+    Exclusions).
+    With the river cap the 13 biomass-A sections alone could take 2.5× today (85k vs 34.5k fish; up to
+    5.4× on Yellow Creek 59_4), mostly near Allentown/Bethlehem in an "anglers first" run.
+    **Scenario "Class A allowed to grow":** the river cap instead. Table 18 has no biomass-A rate at widths
+    2–3 (11 sections), so they use B's 323 (assumption: A has more wild biomass than B, and rates fall as
+    wild biomass rises).
+  - The exact Table 18 rate stays in `max_trout_per_acre` for the baseline and the "PFBC formula as
+    cap" scenario. Width class comes from the code; `Description` ("OPTIMUM YIELD 2 SUBURBAN") is only a
+    label, and its "2" is not a width class.
+  - Call it a policy/crowding bound, not ecological carrying capacity.
+- **Candidate sections** (decision 2026-09-27): the 1,022 sections PFBC stocks in 2026. `x_s = 0` for the
+  23 stocked in 2024–25 only (~37,500 fish/yr). PFBC dropped them for reasons we mostly can't see; 18 are
+  natural-reproduction waters, and Blue Hole Creek 3656_2 was removed for cadmium and lead (GoErie, 2026-01-31, reporting the Jan 30 Commission meeting).
+  **Scenario "dropped sections back":** allow them again, except Blue Hole Creek (health) and Buffalo Creek
+  3190_2 (Class A).
+- **Exclusions:** `x_s = 0` for Wilderness (no stocked section overlaps it) and Buffalo Creek 3190_2, which
+  became Class A in Jan 2026 and wasn't stocked in 2026. The other 17 Class A overlaps are capped at
+  today's stocking (see "Density bound").
+  - Why PFBC stocks 17 Class A sections. Operational Guidelines Appendix A (p. 118): "13 stream sections that
+    support strong Class A wild Brown Trout populations were officially designated … during the 2015-2017
+    timeframe …, and stocking was continued", all "heavily fished waters, most located in high-density human
+    population centers". Our 13 biomass-A sections fit (all wild brown, 8 Metro/Urban/Suburban). The
+    guidelines don't name them, so it's a strong match, not proof. The other 4 have no documented basis.
+  - The Jan 2026 exemptions (13 on 12 Class A sections, up to 5 years, for derbies and private stockings;
+    GoErie, 2026-01-31) are a separate mechanism for outside groups and cover none of PFBC's stocked
+    sections. Some sit just upstream (Penns Creek 01 ends where our 2207_2 starts; Monocacy, Yellow Creek,
+    Marvin Creek likewise).
+  - For such exemptions the Commission sets numbers "consistent with … historical stocking rates … to
+    minimize impacts to the Class A wild trout population" (p. 119). By analogy, that supports capping PFBC's
+    own stocked Class A sections at today's stocking.
 - **Stability (optional):** `x_s ≥ (1−δ)·baseline_s`. The survey found 43% of anglers oppose dropping
   low-use waters (34% support).
 - **Wild-trout lever (scenario):** `Σ_wild x_s ≤ (1−ρ)·Σ_wild baseline_s`, with ρ ∈ {0, .25, .5, 1}.
@@ -172,7 +222,7 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
     waters (natural reproduction, biomass B–D). So PFBC likely dropped them to let wild trout take over, and
     the co-op list is probably stale there; co-ops are not filling a gap.
   - The same goes for the 4 co-op listings on Class A sections (co-ops may not stock Class A, §VII.2). Two are
-    the exempt Little Lehigh sections PFBC itself still stocks; two only partly overlap.
+    Little Lehigh sections (Class A) that PFBC itself still stocks; two only partly overlap.
   - All of these are in `logs/03_coop_review.csv` for manual review.
 - **Version A, the base model:** optimize PFBC hatchery fish only. Co-op waters are a flag (`coop_stocked`,
   `coop_species`) that we report but that doesn't affect decisions. This mirrors PFBC's policy today.
@@ -189,6 +239,7 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
     modeling their reaction would be a leader-follower (bilevel) problem, out of scope.
 
 ## Scenarios for 03_sensitivities
+The running list of scenarios, sensitivities and extensions is in `docs/scenarios_and_extensions.md`.
 - **Co-op coordination (Version B above):** PFBC counts co-op fish when placing its own.
 - **Goal-swap set:** each is scored on the full scorecard.
   - PFBC baseline (the actual plan)
@@ -196,7 +247,8 @@ Decisions and ideas from planning, 2026-09-26. Environmental background and cita
   - wild trout first (min impact, subject to benefit ≥ baseline)
   - lowest cost (min cost, subject to benefit ≥ baseline)
   - balanced (a knee point on the trade-off curve)
-- **Rates revisited:** relax the Table 18 caps (e.g. ×1.25, or no cap) to answer PFBC's "need to be reviewed".
+- **Rates revisited:** replaced (2026-09-27) by the river cap plus the "PFBC formula as cap" and "tighter
+  cap" scenarios.
 - ε / λ sweeps (trade-off curves)
 - cost per truck-mile and fish per load, low vs high
 - stability δ and wild-trout lever ρ

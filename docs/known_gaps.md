@@ -44,8 +44,11 @@ about 83% of the report's adults:
   - the stocking schedule pages (event lists)
   - treating lakes as fixed demand that uses up hatchery capacity
 
-## Co-op nurseries as supply nodes
-The team decided (2026-09-26) that co-op nurseries are supply points in the model. Still unknown:
+## Co-op nurseries (fixed background)
+The team first planned (2026-09-26) to make co-op nurseries supply points, then decided (2026-09-27) to keep
+them as fixed background, with a "state coordinates more" extension (`docs/modeling_notes.md`). Still unknown
+for that extension:
+- **Statewide total:** co-ops add about 1.1 million trout a year to public waters (GoErie, 2026-01-31, reporting the Jan 30 Commission meeting).
 - **How many adult trout each co-op supplies.** The FY23–24 annual report gives only the input: 1,135,658
   fingerlings distributed to co-ops (brook 100,725; brown 281,214; rainbow 742,999; golden 10,720), across
   ~160 co-ops.
@@ -107,3 +110,25 @@ The team decided (2026-09-26) that co-op nurseries are supply points in the mode
   bulk per-section width.
 - So area uses the width-class midpoint from AllocationCode (Operational Guidelines Table 14), with the
   class bounds as low/high.
+
+## Class A exemptions: which stocked sections are exempt
+- 17 stocked sections overlap Class A (13 coded biomass A); PFBC stocks all of them in 2026. Stocking Class A
+  needs Commission approval.
+- **The 13 biomass-A sections: very likely documented.** Operational Guidelines Appendix A (p. 118) says 13
+  sections with strong Class A wild brown trout were designated in 2015–2017 and "stocking was continued";
+  all are "heavily fished waters, most located in high-density human population centers". Ours are all wild
+  brown and 8 of 13 are Metro/Urban/Suburban. The guidelines don't list them by name, so this is a strong
+  match, not proof.
+- **The other 4 (Mauch Chunk 2744_2, West Branch Hicks Run 4363_3, Freeman Run 3546_4, Penns Creek 2207_6):
+  basis unknown.** They aren't coded biomass A, and two only partly overlap Class A.
+- **The Jan 2026 batch is a different mechanism** (GoErie, 2026-01-31, reporting the Jan 30 Commission
+  meeting; saved locally in `data/references/`): 13 exemptions on 12 Class A sections for outside groups'
+  derbies and private stockings, 8 renewals and 5 new, each for up to 5 years. None of the 12 overlaps a PFBC
+  stocked section. One (Marvin Creek 01, McKean) is wild *brook* trout water, which is allowed because only
+  exemption criterion 4 bars brook trout waters.
+- An earlier note here called the "13 = 13" match a coincidence; that was wrong. The model rule doesn't
+  change: Class A sections PFBC stocks are capped at today's stocking, and Buffalo Creek 3190_2 (Class A since
+  Jan 2026, not stocked in 2026) is excluded.
+- Same meeting: Riggles Gap Run (Blair; our 2710_2, stocked 2024 only) and Little Mill Creek (Lycoming)
+  were added to the wild trout list, and Blue Hole Creek 02 (Somerset; our 3656_2) was removed from
+  stocking for cadmium and lead.

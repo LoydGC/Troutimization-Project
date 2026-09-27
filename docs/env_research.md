@@ -60,9 +60,17 @@ The 2025–29 plan (Obj. 9.1) says these rates "need to be reviewed," which is a
 ## 3. PFBC policy on stocking over wild trout
 
 - **Class A:** "with rare exceptions… no stocking." Since 2015, stocking a Class A section needs Commission
-  approval. About 13 Class A wild *brown* trout sections are exempt, and none has wild brook trout
-  (exemption criterion #4). Exemptions last at most 5 years
+  approval. Exemptions last at most 5 years
   ([Jan 2026 meeting](https://www.pa.gov/agencies/fishandboat/newsroom/summary-165th-meeting-pfbc-jan2026)).
+  There are two separate groups (Operational Guidelines Appendix A, pp. 118–119):
+  - **PFBC's own continued stocking:** "13 stream sections that support strong Class A wild Brown Trout
+    populations" were designated in 2015–2017 and stocking continued, because they're heavily fished, mostly
+    in high-density areas. Our 13 biomass-A stocked sections very likely are these (not named in the
+    guidelines).
+  - **Exemptions for outside groups** (derbies, private stockings), under four criteria. Only criterion 4 bars
+    waters with wild brook trout. The Jan 2026 meeting approved 13 such exemptions on 12 Class A sections
+    (GoErie, 2026-01-31). None overlaps a PFBC stocked section, and one (Marvin Creek 01) is brook trout water.
+  See `docs/known_gaps.md`.
 - **Wilderness Trout Streams:** never stocked.
 - **Removed sections** are replaced as close as possible, in the same watershed first. That is
   effectively "remove and stock nearby."
@@ -114,9 +122,12 @@ alternative.
 `A_i` = estimated area in acres, `h_i` = historical count.
 
 **Constraints:**
-- `x_i = 0` for Wilderness and non-exempt Class A sections. Fix exempt sections at `h_i`.
+- `x_i = 0` for Wilderness and for Class A sections PFBC no longer stocks (Buffalo Creek 3190_2). Class A
+  sections PFBC stocks in 2026 are capped at `h_i` (team decision 2026-09-27, `docs/modeling_notes.md`);
+  the normal river cap is a scenario.
 - No stocked brook trout where wild brook trout are present.
 - `300·y_i ≤ x_i ≤ r_max(category_i)·A_i·y_i`. Simple version: 361/acre, or 57/acre if width < 4 m.
+  (Superseded by the river cap, `docs/modeling_notes.md` "Density bound".)
 - Stability (optional): `x_i ≥ (1−δ)·h_i`. The survey found 43% opposed dropping low-use waters.
 
 **Penalty:** `Env = Σ w_i·x_i`, where `w_i` = 1 for natural reproduction, +2 for wild brook trout present,
