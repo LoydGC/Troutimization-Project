@@ -43,14 +43,14 @@ don't smooth, impute, or "fix" it.
   waters and PFBC leaves co-op fish out of its allocation (co-op policy §III.12, §IV.10), so the base model
   optimizes PFBC hatchery fish only. Co-op waters are a flag on sections (`coop_stocked`, 292 sections, from
   `scripts/03_coop_stockings.py`). **Extension "what if the state coordinated more?"**: add a fixed co-op
-  fish count per section to the angler-benefit score (needs counts; see `docs/modeling_notes.md`).
+  fish count per section to the angler-benefit score (needs counts; see `docs/model_design.md`).
 - **Distance** = road distance from each supply node to each section, built by Gavin in
   `notebooks/travel_arcs.ipynb`. Not on our slate: join it on `section_id`. No Google Maps API (cost;
   terms bar storing results).
 - **Demand for waters the survey doesn't name** = population weighted by the survey's own travel-distance
   distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
   county tables (p85) is optional.
-- **Density bound = "river cap"** (decision 2026-09-27; details in `docs/modeling_notes.md`):
+- **Density bound = "river cap"** (decision 2026-09-27; details in `docs/model_design.md`):
   river rate x `length_mi` x top of the PFBC width class, and at least 300 fish.
   - River rate = the highest Table 18 rate over use potential and population density for the section's
     biomass + width. Use and population are PFBC's demand proxies, which our benefit objective replaces.
@@ -72,7 +72,7 @@ don't smooth, impute, or "fix" it.
   Jan 2026, not stocked in 2026), cap the other Class A overlaps at today's stocking, no stocked
   brook trout over wild brook trout. Everything else is the **wild-trout impact objective** (its own goal, not
   a penalty on benefit): a per-fish weight from biomass class, natural reproduction, wild brook trout, and
-  (if time) thermal marginality. Versions are in `docs/modeling_notes.md`.
+  (if time) thermal marginality. Versions are in `docs/model_design.md`.
 
 ## Units of analysis
 - **Section** = PFBC stream section, key `section_id = f"{RFP_WaterID}_{SecNum}"`. Base unit for all joins.
@@ -120,8 +120,9 @@ data/references/           trout.app snapshots (local only, validation only)
 scripts/                   numbered pipeline scripts, each re-runnable end to end
 tests/                     pytest tests for scripts/
 notebooks/                 01_data_prep (EDA), 02_optimization, 03_sensitivities: read data/processed only
-docs/                      source_inventory, data_dictionary, methods, known_gaps, env_research,
-                           assumptions (register of every assumption), scenarios_and_extensions
+docs/                      source_inventory, data_dictionary, data_methods (data handling + assumptions),
+                           model_design (model + assumptions + open questions), scenarios_and_extensions,
+                           known_gaps, env_research, transport_research
 logs/                      run logs and QA reports
 outputs/                   figures and tables for the report
 ```
@@ -176,11 +177,10 @@ GeoJSON is for ad-hoc export only (e.g. folium maps). The gpkg's wild-trout cont
 | Checkpoint file | Update when |
 |---|---|
 | `docs/data_dictionary.md` | Any column in `data/processed/` is added or changed |
-| `docs/methods.md` | Source data is modified (PFBC license: credit unaltered data, describe every change) |
-| `docs/assumptions.md` | An assumption or judgment call is added or changed. Keep rows short |
-| `docs/scenarios_and_extensions.md` | A new scenario, sensitivity or extension idea comes up |
+| `docs/data_methods.md` | Source data is modified or a data-handling assumption is made (PFBC license: credit unaltered data, describe every change) |
+| `docs/scenarios_and_extensions.md` | A new scenario, sensitivity or extension idea comes up (additional analysis only) |
 | `docs/known_gaps.md` | Missing data or a source problem is found |
-| `docs/modeling_notes.md` | The model formulation changes |
+| `docs/model_design.md` | The model formulation changes, an assumption is decided (flag it if no scenario tests it), or an open question comes up |
 | `data/processed/parameters.csv` | A value no source gives directly is used (rule 7) |
 | `docs/source_inventory.md` | A new endpoint is used, or a URL moved or was wrong (rule 5) |
 | `PROMPTS.md` | The prompt is done (mark [DONE date] and update the Status line), or the plan changed |

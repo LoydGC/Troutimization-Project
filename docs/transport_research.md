@@ -1,6 +1,6 @@
 # Transport cost inputs for the stocking model: research notes
 
-Web research done 2026-09-26 for the transport objective in `docs/modeling_notes.md`
+Web research done 2026-09-26 for the transport objective in `docs/model_design.md`
 (`cost[h,s] = 2 × est_road_mi × cost_per_truck_mile / fish_per_load`). Distance is out of scope here.
 Every number links to its source. *Unverified* means no official or primary source confirmed it. *Derived*
 means our own arithmetic, which is shown.
@@ -328,7 +328,7 @@ The line items (FleetOwner's summary of the ATRI report), all in $/mi:
 - Seasonal loads.
 - A peak-day truck constraint per hatchery (fleet trips per day in preseason).
 - Real multi-stop routing (a vehicle routing problem, out of scope).
-- OSM road distances (already listed in `modeling_notes.md`).
+- OSM road distances (already listed in `model_design.md`).
 
 **Mortality: keep it flat, not per mile**
 - The evidence supports a small loss (~1–2%) driven by loading, handling, water quality and release

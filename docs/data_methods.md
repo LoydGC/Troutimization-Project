@@ -1,4 +1,4 @@
-# Methods: changes to source data and assumptions
+# Data methods: changes to PFBC data and data-handling assumptions
 
 Data from the Pennsylvania Fish and Boat Commission (PFBC), via fbweb.pa.gov and PASDA. Anything used
 unaltered is credited to PFBC. Every change is listed here. Raw downloads are kept untouched in

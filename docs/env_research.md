@@ -123,11 +123,11 @@ alternative.
 
 **Constraints:**
 - `x_i = 0` for Wilderness and for Class A sections PFBC no longer stocks (Buffalo Creek 3190_2). Class A
-  sections PFBC stocks in 2026 are capped at `h_i` (team decision 2026-09-27, `docs/modeling_notes.md`);
+  sections PFBC stocks in 2026 are capped at `h_i` (team decision 2026-09-27, `docs/model_design.md`);
   the normal river cap is a scenario.
 - No stocked brook trout where wild brook trout are present.
 - `300·y_i ≤ x_i ≤ r_max(category_i)·A_i·y_i`. Simple version: 361/acre, or 57/acre if width < 4 m.
-  (Superseded by the river cap, `docs/modeling_notes.md` "Density bound".)
+  (Superseded by the river cap, `docs/model_design.md` "Density bound".)
 - Stability (optional): `x_i ≥ (1−δ)·h_i`. The survey found 43% opposed dropping low-use waters.
 
 **Penalty:** `Env = Σ w_i·x_i`, where `w_i` = 1 for natural reproduction, +2 for wild brook trout present,

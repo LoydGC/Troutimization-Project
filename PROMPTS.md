@@ -126,7 +126,7 @@ columns on section_id:
    (searched 2026-09-27; docs/known_gaps.md). Put both in data/processed/parameters.csv (source = Guidelines
    Table 14; 1L top, class-4 midpoint and all midpoints = assumption). area_acres = length_mi x width_top_m;
    area_acres_mid = length_mi x width_mid_m.
-4. River cap (decision 2026-09-27; docs/modeling_notes.md "Density bound"):
+4. River cap (decision 2026-09-27; docs/model_design.md "Density bound"):
    river_rate = max Table 18 rate over use potential and population for the section's biomass + width
    (B 323 at widths 2-3, C-E 361; widths 4/1S/1L 57/137/91). Biomass A at widths 2-3 (no Table 18 rate)
    uses B's 323 (assumption; only used in the "Class A allowed to grow" scenario, cap_fish_class_a_river).
@@ -177,7 +177,7 @@ Build data/processed/demand.parquet.
    stocked sections by length.
 3. Proximity demand per section: sum block-group population x P(angler travels ≥ d), where d is
    straight-line miles and P comes from the p93 statewide travel-distance distribution. Use band
-   midpoints and document the curve in methods.md.
+   midpoints and document the curve in data_methods.md.
 4. Access: count of PFBC access points within 1 km, plus special-regulation flags (DHALO, Keystone Select).
 Report: the share of baseline fish on survey-named waters, survey waters with no stocked section, and the
 correlation between proximity demand and baseline stocking.
@@ -208,7 +208,7 @@ Road distances from each hatchery to each section are built by Gavin in
 Build data/processed/model_input.parquet, one row per destination: baseline fish by species, species mix,
 max_trout, exclusion flags, penalty inputs, demand inputs, and a completeness flag per component. Report
 how many destinations are fully usable and what blocks the rest. Write docs/data_dictionary.md (every
-column: meaning, units, source, transformation) and docs/methods.md (every change to PFBC data and every
+column: meaning, units, source, transformation) and docs/data_methods.md (every change to PFBC data and every
 assumption). Then add a short EDA section to notebooks/01_data_prep.ipynb: baseline density vs demand, vs
 hatchery distance, and vs wild-trout flags.
 ```

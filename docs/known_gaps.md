@@ -46,7 +46,7 @@ about 83% of the report's adults:
 
 ## Co-op nurseries (fixed background)
 The team first planned (2026-09-26) to make co-op nurseries supply points, then decided (2026-09-27) to keep
-them as fixed background, with a "state coordinates more" extension (`docs/modeling_notes.md`). Still unknown
+them as fixed background, with a "state coordinates more" extension (`docs/model_design.md`). Still unknown
 for that extension:
 - **Statewide total:** co-ops add about 1.1 million trout a year to public waters (GoErie, 2026-01-31, reporting the Jan 30 Commission meeting).
 - **How many adult trout each co-op supplies.** The FY23–24 annual report gives only the input: 1,135,658
@@ -97,7 +97,7 @@ for that extension:
     lower river mile of 0 (the mouth), but their lower limit text isn't the mouth.
   - Line wrong: Brodhead Creek 2662_2's line is 6.9 mi, but its river miles (1.6) and its other row
     (2.2 river miles, 1.8 mi PFBC length) both say about 2 mi.
-- Resolved with the stocking check (see `docs/methods.md`): the fish confirm `Length_MI_` for 14 sections
+- Resolved with the stocking check (see `docs/data_methods.md`): the fish confirm `Length_MI_` for 14 sections
   (including Shenango 322_3 and Lackawaxen 2271_3), and switch 9 to river miles (e.g. Locust Creek 3117_2:
   5.6 instead of 7.8 mi). 21 are within normal stocking variation either way, and 12 fit neither (including
   Brodhead 2662_2); those keep `Length_MI_` and stay flagged, so sensitivity runs can drop them. Together

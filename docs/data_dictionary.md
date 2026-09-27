@@ -3,7 +3,7 @@
 Key for every table: `section_id` = `f"{RFP_WaterID}_{SecNum}"` (PFBC water id + section number).
 Source layers: PFBC fbweb stocked sections 2024–26 and the PASDA PAFishBoat wild-trout layers
 (`docs/source_inventory.md`, `data/raw/manifest.csv`). Built by `scripts/02_build_sections.py`. Changes to
-PFBC data are described in `docs/methods.md`.
+PFBC data are described in `docs/data_methods.md`.
 
 ## stocking_section_year (.parquet, .csv)
 The baseline. One row per section × year × species (15,450 rows), including zeros.
@@ -74,7 +74,7 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | years_stocked | Years the section is in a stocked layer | e.g. "2024,2025,2026" |
 | n_years_stocked | Count of those years | 1–3 |
 
-**Wild-trout overlap** (see `docs/methods.md`; a flag needs > 100 m of overlap)
+**Wild-trout overlap** (see `docs/data_methods.md`; a flag needs > 100 m of overlap)
 
 | Column | Meaning | Units |
 |---|---|---|

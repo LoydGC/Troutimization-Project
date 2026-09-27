@@ -1,7 +1,7 @@
-# Modeling notes (to return to)
+# Model design
 
-Decisions and ideas from planning, 2026-09-26. Environmental background and citations are in
-`docs/env_research.md`. The data pipeline plan is in `PROMPTS.md`.
+The optimization model: objectives, constraints, assumptions and open questions (started 2026-09-26).
+Environmental background and citations are in `docs/env_research.md`. The data pipeline plan is in `PROMPTS.md`.
 
 ## Framing: formula vs optimization
 - **PFBC allocates by formula, not optimization.**
@@ -256,6 +256,22 @@ The running list of scenarios, sensitivities and extensions is in `docs/scenario
 - climate warming (EcoSHEDS +2 °C scenario), if the thermal flag gets built
 - total fish fixed vs flexible
 
+## Assumptions no scenario tests
+Decided assumptions that no scenario varies. List them in the report's limitations, and add a scenario to
+`docs/scenarios_and_extensions.md` if one could change the results. Data-handling choices (duplicate rows,
+null counts as 0, overlap by river miles, length choice) are in `docs/data_methods.md` with their checks.
+- The 17 stocked Class A sections are capped at today's stocking, never excluded (an "exclude all Class A"
+  scenario would test it). See Constraints.
+- Benefit has diminishing returns in fish; the curve's shape is chosen, not measured. See Angler benefit.
+- A river's survey preference is split across its sections by length. See Angler benefit.
+- Biomass letter class is the only measure of wild-trout abundance; numeric biomass is only in scattered
+  biologist reports (`docs/env_research.md` § 5).
+- Baseline cost assumes each section is served by its nearest hatchery (PFBC doesn't publish the assignment).
+- Shipments are direct hatchery → section legs, with no multi-stop routes. See Transport cost.
+- Transit mortality is a flat 1%, not scaled by distance (`docs/transport_research.md` § 3).
+- Gavin's road distances are used as given.
+- Hatchery supply is scaled to the stream total, ~83% of PFBC's adult trout (`docs/known_gaps.md`).
+
 ## Report hooks
 - PFBC's 2025–29 trout plan (Obj. 9.1) says allocation rates "need to be reviewed."
 - The survey found 80% support extra stocking on high-use waters.
@@ -266,3 +282,9 @@ The running list of scenarios, sensitivities and extensions is in `docs/scenario
 - Blend weight between survey preference and proximity demand.
 - Include golden and brood in the model's fish total? (PFBC's TotalAdultStocked_minusBrood is brook + brown +
   rainbow only.)
+- Which optional inputs (access points, special regulations, catch importance, thermal suitability) enter the
+  benefit score, beyond being collected in Prompt 6?
+- Transport cost: charge each section for the visit's detour, on top of the hatchery → section haul
+  (team discussion 2026-09-27)? Preferred so far: detour_s = 2 × nearest-neighbour stocked-section miles ×
+  1.3 road circuity × 2 visits × $1.90/truck-mile, added as detour_s·y_s. Upgrade: county-level runs or
+  clusters. Real truck routing stays out of scope.
