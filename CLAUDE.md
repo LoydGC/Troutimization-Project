@@ -61,12 +61,14 @@ don't smooth, impute, or "fix" it.
   - Table 18 itself (`max_trout_per_acre`, exact lookup on AllocationCode) is PFBC's allocation formula:
     sections are stocked at about rate x acres. It's kept for the baseline and a "PFBC formula as cap"
     scenario.
+  - "Today's stocking" = the 2026 count (`total_2026`, decision 2026-09-27). Built in `scripts/04_river_cap.py`
+    (`cap_fish`, `cap_source`).
   - Class A (decision 2026-09-27): the 17 Class A-overlap sections PFBC stocks in 2026 are capped at today's
     stocking (keep or cut, never add). Scenario: the river cap instead (biomass A at widths 2–3 uses B's 323).
-  - The 3 sections PFBC stocks above the river cap are capped at today's stocking: Youghiogheny 1327_1 (dam
-    tailwater, open year-round), Conneauttee 2649_1, Black Moshannon 2254_2.
+  - The 4 sections PFBC stocks above the river cap in 2026 are capped at today's stocking: Youghiogheny 1327_1
+    (dam tailwater, open year-round), Conneauttee 2649_1, Black Moshannon 2254_2, Roaring Brook 1767_5.
   - Call it a policy/crowding bound, not carrying capacity.
-- **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (19 are natural
+- **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (18 are natural
   reproduction waters, including Buffalo Creek 3190_2, now Class A, and Blue Hole Creek 3656_2, removed for
   cadmium/lead) get no fish; a scenario lets them back.
 - **Environment** follows `docs/env_research.md`: exclude Wilderness and Buffalo Creek 3190_2 (Class A since
@@ -102,10 +104,10 @@ don't smooth, impute, or "fix" it.
 7. Parameters no source gives directly (cost per mile, fish per load, impact weights) live in
    `data/processed/parameters.csv` with value, units, low/high range, and `source` (citation, or `assumption`
    plus reasoning). Never hard-code them in notebooks.
-8. Wild-trout overlap is measured as shared river-mile length on the same RFP_WaterID (or > 100 m of overlap in
-   EPSG:26918), never a plain intersect: adjacent sections share endpoints. Exception: some Natural
-   Reproduction river miles understate the line, so `nat_repro_flag` also counts same-RFP geometric overlap
-   ≥ 0.5 mi. Class A and Wilderness stay river-miles only (geometry wrongly flags Bear Creek 3197_2 Class A).
+8. Wild-trout overlap is measured as shared river-mile length (> 100 m) on the same RFP_WaterID, never a plain
+   intersect: adjacent sections share endpoints. River miles only, for every layer (decision 2026-09-27);
+   geometry is just a logged cross-check (it wrongly flags Bear Creek 3197_2 Class A). Some Natural
+   Reproduction river miles are shorter than their own line, so 18 sections are missed (`docs/known_gaps.md`).
 
 ## Stack
 Python 3.11+, venv. pandas, geopandas, shapely, pyproj, requests, requests-cache, beautifulsoup4, lxml, tqdm,
@@ -161,7 +163,9 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
 - Stream layers ≈ 83% of PFBC's adult trout. The FY23–24 annual report has 3.14M adults + 1.56M fingerlings
   = 4.70M; our 2024 streams total 2.60M. The gap is most likely lakes, which have no counts in any GIS
   service. Scale hatchery supply to the stream total. Details: `docs/known_gaps.md`.
-- Bear Creek (Schuylkill) is RFP_WaterID 3197 (sections 3197_2 and 3197_3).
+- Bear Creek (Schuylkill) is RFP_WaterID 3197 (sections 3197_2 and 3197_3), in the Southeast region.
+- PFBC regions by county come from the 2026 Fishing Summary's regulated-waters lists (`county_region.csv`;
+  all 67 counties, matches PFBC's region polygons). No stocked section spans two regions.
 - 2023 angler survey (Responsive Management for PFBC) describes **2022** fishing. Regions are the six PFBC
   regions by angler **home** county, not where they fish. The named-water tables cover ~223 waters.
 - Bear Creek (Schuylkill) test case: Class A (brook trout) is Section 01. The stocked sections 02-03 are

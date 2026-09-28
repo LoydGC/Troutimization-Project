@@ -2,8 +2,9 @@
 
 Key for every table: `section_id` = `f"{RFP_WaterID}_{SecNum}"` (PFBC water id + section number).
 Source layers: PFBC fbweb stocked sections 2024–26 and the PASDA PAFishBoat wild-trout layers
-(`docs/source_inventory.md`, `data/raw/manifest.csv`). Built by `scripts/02_build_sections.py`. Changes to
-PFBC data are described in `docs/data_methods.md`.
+(`docs/source_inventory.md`, `data/raw/manifest.csv`). Built by `scripts/02_build_sections.py`; scripts 03–05
+add columns and tables, as noted per section below. Changes to PFBC data are described in
+`docs/data_methods.md`.
 
 ## stocking_section_year (.parquet, .csv)
 The baseline. One row per section × year × species (15,450 rows), including zeros.
@@ -81,9 +82,7 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | class_a_overlap_mi | River miles shared with Class A sections on the same water | mi |
 | class_a_flag | class_a_overlap_mi > 100 m | bool |
 | nat_repro_overlap_mi | River miles shared with Natural Reproduction reaches on the same water | mi |
-| nat_repro_geom_overlap_mi | Length of the section within 30 m of Natural Reproduction lines on the same water | mi |
-| nat_repro_flag | river-mile overlap > 100 m, or geometric overlap ≥ 0.5 mi | bool |
-| nat_repro_flag_source | Which rule set the flag | river_miles, geometry, NA |
+| nat_repro_flag | nat_repro_overlap_mi > 100 m (river miles only; 18 sections this misses are in `known_gaps.md`) | bool |
 | wilderness_overlap_mi, wilderness_flag | Same as Class A, for Wilderness Trout Streams | mi, bool |
 | class_a_gis_keys | Overlapping Class A sections | "RFP-Sec; …" |
 | class_a_fishery | Class A species text as published (messy) | text |
@@ -97,6 +96,56 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | coop_stocked | A co-op nursery lists this exact PFBC section (stream + county + section number). The list may be out of date: see `logs/03_coop_review.csv` | bool |
 | coop_species | Species the co-op(s) stock here | e.g. "brown,rainbow" |
 | coop_n_nurseries | Number of nurseries listing this section | int |
+
+**River, region, area and density cap** (added by `scripts/04_river_cap.py`; the cap is explained in
+`docs/model_design.md` "Density bound")
+
+| Column | Meaning | Units / values |
+|---|---|---|
+| river_id | River key = rfp_water_id: shared by a stream's sections across counties, distinct for same-named streams (695 rivers) | int |
+| region | PFBC region of the section's county (`county_region.csv`); no section spans two regions | Northwest, Northcentral, Northeast, Southwest, Southcentral, Southeast |
+| width_top_m | Top of the width class (`parameters.csv` width_m value): 4 → 4, 3 → 10, 2 → 20, 1S → 30, 1L → 60 (assumption) | m |
+| width_mid_m | Class midpoint, the tighter sensitivity (`parameters.csv` width_m low): 3, 7, 15, 25, 40 | m |
+| area_acres, area_acres_mid | length_mi × width_top_m (or width_mid_m) × 0.398 acres per mile-metre | acres |
+| river_rate | Highest Table 18 rate over use and population for the section's biomass + width. Biomass A at widths 2–3 (11 sections) has none and uses B's 323 (assumption, `parameters.csv`) | trout/acre/yr |
+| cap_source | What sets cap_fish: "river_rate" (1,024), "class_a" (the 17 Class A overlaps stocked in 2026), "baseline" (4 sections PFBC stocks above their river cap) | text |
+| cap_fish | Density bound for the model: max(river_rate × area_acres, 300); total_2026 where cap_source is class_a or baseline. Exclusions are separate (`environment`) | fish/yr |
+| cap_fish_mid | Same with area_acres_mid (sensitivity); the class_a and baseline sections keep total_2026 | fish/yr |
+| cap_fish_class_a_river | Scenario "Class A allowed to grow": cap_fish, but the 17 Class A sections get max(river cap, total_2026) | fish/yr |
+
+Per-section 2026 stocking vs the river cap (top and midpoint) is in `logs/04_cap_check.csv`.
+
+## environment (.parquet, .csv)
+One row per section (1,045). Built by `scripts/05_environment.py` from `sections`; overlaps aren't re-measured.
+
+| Column | Meaning | Units / values |
+|---|---|---|
+| section_id | Section key | text |
+| exclude | x_s = 0 in the model | bool (23 True) |
+| exclude_reason | "; "-joined: wilderness (none), class_a_not_stocked (Buffalo Creek 3190_2), not_stocked_2026 (the other 22 stocked in 2024–25 only), health (Blue Hole Creek 3656_2, cadmium/lead). Scenario "dropped sections back" lifts rows whose reason is exactly "not_stocked_2026" | text, NA if not excluded |
+| wild_brook_present | Class A Fishery text mentions brook trout. NA where no overlapping Class A record has species text: the other layers have no species, so NA means unknown, not absent | bool (17 False, 1,028 NA) |
+| nat_repro_flag | Copied from sections (river-mile overlap > 100 m) | bool |
+| nat_repro_share | nat_repro_overlap_mi / rm_length_mi, capped at 1 (both PFBC river miles); 0 where not flagged. For the "partial overlap" impact score | 0–1 |
+| biomass_class | Copied from sections (allocation code) | A–E |
+
+## county_region.csv
+The 67 counties and their PFBC region, parsed from the regulated trout waters lists in PFBC's 2026
+Pennsylvania Fishing Summary (`docs/data_methods.md`). Columns: county (title case, as in `sections.county`),
+region, source.
+
+## parameters.csv
+Values no source gives directly, or that we apply beyond what the source says (CLAUDE.md rule 7). One row per
+value; scripts read them from here.
+
+| Column | Meaning |
+|---|---|
+| parameter | Name, e.g. width_m, river_rate_per_acre, min_fish_per_section |
+| applies_to | Width class or biomass/width the row applies to; blank if general |
+| value | Central value used by the scripts |
+| units | Units |
+| low, high | Sensitivity range (for width_m, low is the class midpoint) |
+| source | Citation, or "assumption" |
+| note | Reasoning and how the value is used |
 
 ## coop_stockings (.parquet, .csv)
 PFBC co-op nursery stocking list (`cnu-stockings-website.xlsx`), one row per nursery × water (786 rows). It

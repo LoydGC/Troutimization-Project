@@ -1,31 +1,31 @@
-2026-09-27 19:58:35,408 INFO 02_build_sections run from commit fa98681 + uncommitted changes to scripts/common.py
-2026-09-27 19:58:35,511 INFO 2024: null species counts filled with 0: {'TotalBrookStocked': 10, 'TotalBrownStocked': 2}
-2026-09-27 19:58:35,513 INFO 2024: rows where brook+brown+rainbow != PFBC TotalAdultStocked_minusBrood: 0 (golden and brood are extra to PFBC's total)
-2026-09-27 19:58:35,536 INFO 2024: collapse duplicate section_id rows (10 rows, 5 sections)   1036 ->   1031 rows
-2026-09-27 19:58:35,571 INFO 2025: null species counts filled with 0: {'TotalBrookStocked': 20, 'TotalBrownStocked': 2}
-2026-09-27 19:58:35,573 INFO 2025: rows where brook+brown+rainbow != PFBC TotalAdultStocked_minusBrood: 0 (golden and brood are extra to PFBC's total)
-2026-09-27 19:58:35,597 INFO 2025: collapse duplicate section_id rows (14 rows, 7 sections)   1044 ->   1037 rows
-2026-09-27 19:58:35,628 INFO 2026: null species counts filled with 0: {'TotalBrookStocked': 11, 'TotalBrownStocked': 2}
-2026-09-27 19:58:35,630 INFO 2026: rows where brook+brown+rainbow != PFBC TotalAdultStocked_minusBrood: 0 (golden and brood are extra to PFBC's total)
-2026-09-27 19:58:35,658 INFO 2026: collapse duplicate section_id rows (18 rows, 9 sections)   1031 ->   1022 rows
-2026-09-27 19:58:35,711 INFO 2024 fish by species, layer sum -> after duplicate collapse: {'brook': '74,675 -> 74,675', 'brown': '667,275 -> 664,285', 'rainbow': '1,795,350 -> 1,785,740', 'golden': '11,808 -> 11,723', 'brood': '63,550 -> 63,310'}
-2026-09-27 19:58:35,742 INFO 2025 fish by species, layer sum -> after duplicate collapse: {'brook': '74,925 -> 74,925', 'brown': '663,990 -> 659,400', 'rainbow': '1,820,885 -> 1,806,075', 'golden': '11,943 -> 11,833', 'brood': '63,985 -> 63,595'}
-2026-09-27 19:58:35,773 INFO 2026 fish by species, layer sum -> after duplicate collapse: {'brook': '68,305 -> 68,305', 'brown': '664,110 -> 659,290', 'rainbow': '1,818,685 -> 1,800,505', 'golden': '15,303 -> 15,123', 'brood': '63,735 -> 63,245'}
-2026-09-27 19:58:35,908 INFO union of sections across years (latest year's attributes)   3090 ->   1045 rows
-2026-09-27 19:58:35,973 INFO best_fishing_water: 93 sections flagged (raw values: {nan: 950, 'Y': 93, '': 2})
-2026-09-27 19:58:35,973 INFO mentored_youth_water: 1 sections flagged (raw values: {nan: 1044, 'Y': 1})
-2026-09-27 19:58:36,016 INFO Table 18 rate found for 1034 of 1045 sections; missing reasons: {'biomass class A (Class A wild trout) not in Table 18': 11}
-2026-09-27 19:58:36,030 INFO length_check_flag: 57 sections where PFBC Length_MI_ and river-mile length differ by > 25%; stocking check: {'both_plausible': 21, 'fits_pfbc_length': 14, 'neither': 12, 'fits_river_miles': 9, 'no_rate_or_fish': 1} (logs/02_length_check.csv)
-2026-09-27 19:58:36,030 INFO length_source: {'pfbc_length': 1036, 'river_miles': 9}
-2026-09-27 19:58:36,765 INFO class_a: 18 sections overlap > 100 m by river miles; 19 by geometry; 3 disagree
-2026-09-27 19:58:41,394 INFO nat_repro: 531 sections overlap > 100 m by river miles; 548 by geometry; 21 disagree
-2026-09-27 19:58:41,396 INFO nat_repro: 18 more sections flagged by >= 0.5 mi same-water geometric overlap (549 total)
-2026-09-27 19:58:41,514 INFO wilderness: 0 sections overlap > 100 m by river miles; 0 by geometry; 0 disagree
-2026-09-27 19:58:41,516 INFO wrote 23 sections where the methods disagree to logs/02_overlap_check.csv
-2026-09-27 19:58:43,018 INFO Bear Creek (3197) checks passed: 2026 brown 150 + rainbow 1,750; not Class A; natural reproduction
-2026-09-27 19:58:43,239 INFO Created 1,045 records
-2026-09-27 19:58:43,264 INFO Created 10 records
-2026-09-27 19:58:43,635 INFO Created 1,361 records
-2026-09-27 19:58:45,611 INFO Created 6,224 records
-2026-09-27 19:58:45,689 INFO Created 134 records
-2026-09-27 19:58:45,693 INFO pa_trout.gpkg: sections 1045, hatcheries 10, {'class_a': 1361, 'nat_repro': 6224, 'wilderness': 134}; 16.6 MB
+2026-09-27 20:52:57,943 INFO 02_build_sections run from commit a683b4e + uncommitted changes to scripts/02_build_sections.py, scripts/04_river_cap.py, scripts/05_environment.py
+2026-09-27 20:52:58,139 INFO 2024: null species counts filled with 0: {'TotalBrookStocked': 10, 'TotalBrownStocked': 2}
+2026-09-27 20:52:58,142 INFO 2024: rows where brook+brown+rainbow != PFBC TotalAdultStocked_minusBrood: 0 (golden and brood are extra to PFBC's total)
+2026-09-27 20:52:58,170 INFO 2024: collapse duplicate section_id rows (10 rows, 5 sections)   1036 ->   1031 rows
+2026-09-27 20:52:58,204 INFO 2025: null species counts filled with 0: {'TotalBrookStocked': 20, 'TotalBrownStocked': 2}
+2026-09-27 20:52:58,207 INFO 2025: rows where brook+brown+rainbow != PFBC TotalAdultStocked_minusBrood: 0 (golden and brood are extra to PFBC's total)
+2026-09-27 20:52:58,231 INFO 2025: collapse duplicate section_id rows (14 rows, 7 sections)   1044 ->   1037 rows
+2026-09-27 20:52:58,263 INFO 2026: null species counts filled with 0: {'TotalBrookStocked': 11, 'TotalBrownStocked': 2}
+2026-09-27 20:52:58,266 INFO 2026: rows where brook+brown+rainbow != PFBC TotalAdultStocked_minusBrood: 0 (golden and brood are extra to PFBC's total)
+2026-09-27 20:52:58,294 INFO 2026: collapse duplicate section_id rows (18 rows, 9 sections)   1031 ->   1022 rows
+2026-09-27 20:52:58,355 INFO 2024 fish by species, layer sum -> after duplicate collapse: {'brook': '74,675 -> 74,675', 'brown': '667,275 -> 664,285', 'rainbow': '1,795,350 -> 1,785,740', 'golden': '11,808 -> 11,723', 'brood': '63,550 -> 63,310'}
+2026-09-27 20:52:58,383 INFO 2025 fish by species, layer sum -> after duplicate collapse: {'brook': '74,925 -> 74,925', 'brown': '663,990 -> 659,400', 'rainbow': '1,820,885 -> 1,806,075', 'golden': '11,943 -> 11,833', 'brood': '63,985 -> 63,595'}
+2026-09-27 20:52:58,413 INFO 2026 fish by species, layer sum -> after duplicate collapse: {'brook': '68,305 -> 68,305', 'brown': '664,110 -> 659,290', 'rainbow': '1,818,685 -> 1,800,505', 'golden': '15,303 -> 15,123', 'brood': '63,735 -> 63,245'}
+2026-09-27 20:52:58,555 INFO union of sections across years (latest year's attributes)   3090 ->   1045 rows
+2026-09-27 20:52:58,640 INFO best_fishing_water: 93 sections flagged (raw values: {nan: 950, 'Y': 93, '': 2})
+2026-09-27 20:52:58,640 INFO mentored_youth_water: 1 sections flagged (raw values: {nan: 1044, 'Y': 1})
+2026-09-27 20:52:58,690 INFO Table 18 rate found for 1034 of 1045 sections; missing reasons: {'biomass class A (Class A wild trout) not in Table 18': 11}
+2026-09-27 20:52:58,705 INFO length_check_flag: 57 sections where PFBC Length_MI_ and river-mile length differ by > 25%; stocking check: {'both_plausible': 21, 'fits_pfbc_length': 14, 'neither': 12, 'fits_river_miles': 9, 'no_rate_or_fish': 1} (logs/02_length_check.csv)
+2026-09-27 20:52:58,705 INFO length_source: {'pfbc_length': 1036, 'river_miles': 9}
+2026-09-27 20:52:59,490 INFO class_a: 18 sections overlap > 100 m by river miles; 19 by geometry; 3 disagree
+2026-09-27 20:53:04,427 INFO nat_repro: 531 sections overlap > 100 m by river miles; 548 by geometry; 21 disagree
+2026-09-27 20:53:04,428 INFO nat_repro: river miles only; 18 sections lie >= 0.5 mi along a same-water Natural Reproduction line but share no river miles with it (not flagged): ['209_2', '181_3', '6188_2', '2033_3', '3306_2', '275_2', '2208_2', '2175_6', '2192_2', '2033_4', '275_3', '2086_2', '1818_2', '2744_2', '2253_2', '3117_3', '2216_2', '2887_3']
+2026-09-27 20:53:04,549 INFO wilderness: 0 sections overlap > 100 m by river miles; 0 by geometry; 0 disagree
+2026-09-27 20:53:04,551 INFO wrote 23 sections where the methods disagree to logs/02_overlap_check.csv
+2026-09-27 20:53:06,028 INFO Bear Creek (3197) checks passed: 2026 brown 150 + rainbow 1,750; not Class A; natural reproduction
+2026-09-27 20:53:06,320 INFO Created 1,045 records
+2026-09-27 20:53:06,348 INFO Created 10 records
+2026-09-27 20:53:06,724 INFO Created 1,361 records
+2026-09-27 20:53:08,849 INFO Created 6,224 records
+2026-09-27 20:53:08,930 INFO Created 134 records
+2026-09-27 20:53:08,935 INFO pa_trout.gpkg: sections 1045, hatcheries 10, {'class_a': 1361, 'nat_repro': 6224, 'wilderness': 134}; 16.6 MB

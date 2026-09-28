@@ -17,7 +17,7 @@ PASDA = `https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat
 | Stocked sections 2025 | fbweb `TroutStocked2025/MapServer/2` | 1,044 | same | same | same |
 | Stocked sections 2024 | fbweb `TroutStocked2024/MapServer/0` | 1,036 | same | same | same |
 | Class A | PASDA `9` | 1,361 | RFP_WaterI, TroutBioma, Fishery | river-mile overlap on the same RFP_WaterID (rule 8) | Class A overlap columns |
-| Natural Reproduction | PASDA `25` | 6,224 | AnglerUse (no species) | river miles, plus ≥ 0.5 mi same-water geometry (rule 8) | nat_repro_flag |
+| Natural Reproduction | PASDA `25` | 6,224 | AnglerUse (no species) | river-mile overlap on the same RFP_WaterID (rule 8) | nat_repro_flag |
 | Wilderness Trout Streams | PASDA `31` | 134 | | river-mile overlap | wilderness overlap (none) |
 | Stocked lakes | fbweb `PFBC_Stocked_Trout_Waters/MapServer/5` | 131 polygons | no stocking counts | not used yet | checked 2026-09-26, `known_gaps.md` |
 
@@ -32,6 +32,7 @@ URL notes (rule 5):
 |---|---|---|---|---|
 | Cooperative nursery stocking list (xlsx, 786 rows) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/stocking/coop-nurseries/cnu-stockings-website.xlsx | 2026-09-27 | `data/raw/pfbc_coop/` | coop_stockings, `coop_stocked` (script 03) |
 | Operational Guidelines for the Management of Trout Fisheries, 5th ed. | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/operationguidelinestroutmgt.pdf | 2026-09-26 | `data/raw/pfbc_docs/` | Table 14 widths, Table 18 rates (`pfbc_stocking_rates.csv`), Appendix A (Class A) |
+| 2026 Pennsylvania Fishing Summary (summary book, 42 pages) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/regulations/summarybook.pdf | 2026-09-27 | `data/raw/pfbc_docs/` | county → region (`county_region.csv`, script 04), from the regulated trout waters lists (pdf pp. 25–36) |
 | 2020–24 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/troutplan2020.pdf | not downloaded | | `env_research.md` |
 | 2025–29 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutplan2025.pdf | not downloaded | | `env_research.md`, report hook (Obj. 9.1) |
 | Summary of the 165th Commission meeting (Jan 2026) | https://www.pa.gov/agencies/fishandboat/newsroom/summary-165th-meeting-pfbc-jan2026 | web page, not saved | | Class A exemptions (`env_research.md` § 3) |

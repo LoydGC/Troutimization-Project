@@ -118,6 +118,33 @@ for that extension:
 - So area uses the PFBC width class from AllocationCode (Operational Guidelines Table 14): the class top for
   the river cap, the midpoint for the tighter sensitivity (`model_design.md` § Density bound).
 
+## Natural Reproduction river miles shorter than the line (18 sections missed)
+- Overlap uses PFBC's river miles only (assumption, `data_methods.md` § Wild-trout overlap). But about 191
+  Natural Reproduction records have a line more than 1.5× their river-mile length, and their Limits text
+  agrees with the line, not the river miles. Example: Little Yellow Creek's reach reads "Headwaters to Mouth"
+  but carries river miles 7.85–12.9.
+- So 18 stocked sections lie at least 0.5 mi along a same-water Natural Reproduction line but share no river
+  miles with it, and aren't flagged (`nat_repro_missed_by_rm` in `logs/02_overlap_check.csv`). A geometry rule
+  flagged them until 2026-09-27.
+  - 17 are stocked in 2026 with 29,630 fish (1.1%). West Branch Briar Creek 209_2 is one of the 23 dropped
+    sections, and Mauch Chunk Creek 2744_2 is a Class A overlap (capped at today's stocking anyway).
+  - Biomass: 15 D, 1 C, 2 E. The simple impact score (natural reproduction or biomass B–D) still counts the 16
+    C/D sections as wild-trout water; only Muddy Creek 2033_3 and 2033_4 (York, biomass E) drop out. The
+    weighted score loses its +1 for natural reproduction on all 18.
+  - Others: Mahoning Creek 181_3, Little Yellow Creek 6188_2, Sherman Creek 3306_2, Fishing Creek 275_2 and
+    275_3, South Branch Middle Creek 2208_2, White Deer Creek 2175_6, White Deer Hole Creek 2192_2, Laurel
+    Run 2086_2, Toms Creek 1818_2, Moose Creek 2253_2, Locust Creek 3117_3, North Branch Middle Creek 2216_2,
+    Willow Creek 2887_3.
+- Sensitivity "Natural reproduction by geometry too" (`scenarios_and_extensions.md`) flags them back.
+
+## Wild trout species outside Class A (checked 2026-09-27: not published)
+- Only the Class A layer names species (`Fishery` text). Natural Reproduction and Wilderness have no species
+  field, so `environment.wild_brook_present` is NA (unknown) for 1,028 sections.
+- The 17 Class A overlaps PFBC stocks are all brown trout fisheries, and Buffalo Creek 3190_2's Class A record
+  has no species text. So "no stocked brook trout over wild brook trout" binds on no section with today's
+  data, and the wild-brook term in the weighted impact score is zero everywhere.
+- Possible fill: EcoSHEDS brook trout occupancy (`env_research.md` § 4); it's modelled, not observed.
+
 ## Class A exemptions: which stocked sections are exempt
 - 17 stocked sections overlap Class A (13 coded biomass A); PFBC stocks all of them in 2026. Stocking Class A
   needs Commission approval.

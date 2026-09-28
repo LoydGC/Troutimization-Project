@@ -54,6 +54,8 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   `y[s]` (section stocked or not) if we use the minimum-stocking rule.
 - **Species** stay out of the transport part. Each section keeps its historical species mix (shares from
   2024–26), except that brook trout are never stocked over wild brook trout. A per-species model is an upgrade.
+  Wild brook presence is known only for Class A, and none of the stocked Class A sections is brook water, so
+  this rule binds nowhere today (`known_gaps.md` § Wild trout species outside Class A).
 - **Three objectives, kept separate:** angler benefit (max), transport cost (min), wild-trout impact (min).
   Other docs call the third one the "environmental penalty". It is its own objective, never subtracted
   from benefit.
@@ -90,10 +92,16 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
     PFBC's rules allow on a stream of that class, so the cap doesn't bind just because our width guess is
     off. The class midpoints (3, 7, 15, 25, 40 m) are the tighter sensitivity.
   - **Minimum 300** fish, so any section can take one load (`300·y_s ≤ x_s`).
-  - **Fit to the baseline.** River cap statewide ≈ 2.5× the baseline at midpoints, more at class tops.
-    Stocking exceeds the river cap × class top in only 7 sections: four width-4 streams at exactly 300
-    fish (fixed by the minimum), Conneauttee Creek 2649_1 (a 0.19 mi section), Black Moshannon Creek
-    2254_2 (4% over) and Youghiogheny River 1327_1. Those last 3 are capped at today's stocking.
+  - **Fit to the baseline** (`logs/04_cap_check.csv`). Statewide, `cap_fish` is 3.4× 2026 stocking at
+    class tops and 2.5× at midpoints. 2026 stocking exceeds the river cap in 4 sections, which are capped at
+    their 2026 stocking (`cap_source = "baseline"`): Conneauttee Creek 2649_1 (a 0.19 mi section, 1.8×),
+    Black Moshannon Creek 2254_2 (6% over), Youghiogheny River 1327_1 (3.3×) and Roaring Brook 1767_5
+    (Lackawanna, 22% over; its stocking went 1,315 → 2,660 → 3,965 in 2024–26, so a multi-year mean would
+    have kept it under).
+  - **"Today's stocking" = the 2026 count** (`total_2026`, all five species; decision 2026-09-27), for both
+    the Class A and the above-cap sections.
+  - **Midpoint sensitivity** (`cap_fish_mid`): 39 sections stocked in 2026 are above it and would have to be
+    cut (23 of them width 3, 9 width 1L).
   - **Youghiogheny 1327_1** (EHS1L, dam outflow to Casselman River, open year-round): PFBC stocks 7,900
     fish on 1.1 mi, 3.3× the river cap at 60 m. Table 18 would need a ~250 m wide river. It's a special
     tailwater fishery that PFBC deliberately stocks above formula, so today's stocking is its cap.
@@ -113,7 +121,7 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
     label, and its "2" is not a width class.
   - Call it a policy/crowding bound, not ecological carrying capacity.
 - **Candidate sections** (decision 2026-09-27): the 1,022 sections PFBC stocks in 2026. `x_s = 0` for the
-  23 stocked in 2024–25 only (~37,500 fish/yr). PFBC dropped them for reasons we mostly can't see; 19 are
+  23 stocked in 2024–25 only (~37,500 fish/yr). PFBC dropped them for reasons we mostly can't see; 18 are
   natural-reproduction waters. Two have known reasons: Buffalo Creek 3190_2 became Class A, and Blue Hole
   Creek 3656_2 was removed for cadmium and lead (GoErie, 2026-01-31, reporting the Jan 30 Commission meeting).
   **Scenario "dropped sections back":** allow them again, except Blue Hole Creek (health) and Buffalo Creek
@@ -178,15 +186,18 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
 - **Where they disagree** (so all three are kept):
   - 5 sections coded B–D are partly Class A, e.g. West Branch Hicks Run is coded D but 2.85 of its 3.15
     miles are Class A.
-  - 27 sections coded E ("no wild trout") are on the natural-reproduction list.
-  - 96 sections coded D are not on it.
+  - 25 sections coded E ("no wild trout") are on the natural-reproduction list.
+  - 111 sections coded D are not on it.
 - **Score versions to explore:** each is a different definition of the goal, and all are reported in
   plain units.
   1. **Simple:** fish stocked on any wild-trout water. `w_s` = 1 if `nat_repro_flag` or biomass B–D,
      else 0. Unit: "fish on wild-trout water". Easiest to explain; start here.
   2. **Weighted:** `w_s` = biomass weight (B=3, C=2, D=1, E=0), +1 if natural reproduction, +2 if wild
      brook trout, and optionally +1 if thermally marginal (upgrade: EcoSHEDS max 30-day mean ≥ 21 °C).
-  3. **Partial overlap:** scale `w_s` by the overlapping share of the section (`*_overlap_mi / length_mi`).
+  3. **Partial overlap:** scale `w_s` by the share of the section on natural-reproduction water
+     (`environment.nat_repro_share`, river miles). Most flagged sections are almost fully on it (496 of 531
+     at ≥ 90%), but a few large ones aren't: Kettle Creek 3351_9 (5,900 fish, 1%), Sugar Creek 1898_4
+     (11,620 fish, 11%). Fish on natural-reproduction water in 2026: 1.08M by flag, 1.00M weighted by share.
 
   Weights within a score are a judgement call, so show that the conclusions hold across versions 1–2.
 - **The survey supports the goal:** 58% of anglers support moving stocking off quality wild trout waters
@@ -196,9 +207,10 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   objective's simple version.
 - **Measuring overlap:** use shared river miles (`SecUpperLi`/`SecLowerLi` on the same RFP_WaterID), never
   a plain intersect. The Class A layer also has a `TroutBioma` (biomass) field that could scale `w_s`.
-  - Natural reproduction also counts same-RFP geometric overlap ≥ 0.5 mi, because 191 records have a line
-    more than 1.5× their river-mile length. That adds 18 sections, for 549 flagged. Disagreements are in
-    `logs/02_overlap_check.csv`.
+  - River miles only, for natural reproduction too (assumption, decision 2026-09-27): 531 sections flagged.
+    Some Natural Reproduction records' river miles are shorter than their own line, so 18 sections are
+    missed (`known_gaps.md` § Natural Reproduction river miles shorter than the line); a sensitivity run
+    flags them back.
   - No 2026 brook stocking lands on Class A wild-brook water.
 
 ## Co-op nurseries

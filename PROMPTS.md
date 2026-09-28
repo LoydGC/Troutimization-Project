@@ -6,19 +6,18 @@ the agreed simplifications, and the rules, so the prompts don't repeat them.
 Order: 0 → 1 → 2 → 3 gets the baseline. 4–7 each build one model component (4 first, since 5 and 6 use its
 area and river_id). 8–9 assemble and check. Upgrades are at the end, for when time allows.
 
-**Status (2026-09-27):** the sections pull (`scripts/01_download_pfbc_layers.py`,
-`scripts/02_build_sections.py`) and the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
-flag) are built, the Bear Creek checks pass, and they are pushed on branch `sections-pull`. Gavin's main
-(distance notebooks) was merged into it 2026-09-27; `sections-pull` isn't merged into main yet (next: a pull
-request for Gavin to review). Done so far, so skip these parts when sending the prompts:
+**Status (2026-09-27):** built on branch `sections-pull`: the sections pull (`scripts/01_download_pfbc_layers.py`,
+`scripts/02_build_sections.py`), the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
+flag), the river key, region, area and river cap (`scripts/04_river_cap.py`) and the environment table
+(`scripts/05_environment.py`). Gavin's main (distance notebooks) was merged into it 2026-09-27;
+`sections-pull` isn't merged into main yet (next: a pull request for Gavin to review). Done so far, so skip
+these parts when sending the prompts:
 - Prompt 0 steps 1, 3, 4, 5 (step 2 is open, and 4 partner raw files still need a source from Gavin)
 - Prompt 1 in part: `docs/source_inventory.md` lists the sources in use
-- Prompt 2 for the stocked-section and wild-trout layers; Prompt 3
-- Prompt 4 step 0 and the section length (`length_mi`, `length_source`)
-- Prompt 5's overlap flags and Table 18 rate (`max_trout_per_acre`)
+- Prompt 2 for the stocked-section and wild-trout layers; Prompts 3, 4, 5
 
-**Next:** Prompts 4 + 5 as one phase, starting at river_id, region and width. Then Prompt 6 (needs Prompt 0
-step 2, the angler-survey move). Prompt 7 waits on Gavin's distances.
+**Next:** Prompt 6 (needs Prompt 0 step 2, the angler-survey move). Prompt 7 waits on Gavin's distances.
+Script order: 01 → 02 → 03 → 04 → 05 (03 and 04 add columns to `sections`, so rerun them after 02).
 
 ---
 
@@ -108,6 +107,10 @@ Report: years available, sections per year, total fish by species and year.
 
 ## Prompt 4: River key and area (add columns to sections)
 
+[DONE 2026-09-27, `scripts/04_river_cap.py`. Changes from the text below: "baseline" = the 2026 count, not the
+mean, so 4 sections, not 3, are above the river cap (Roaring Brook 1767_5 added); region comes from PFBC's 2026 Fishing
+Summary (county lists by region). Area converts mi × m to acres in the script.]
+
 Decision 2026-09-27: use PFBC's own water id and width classes. No NHDPlus (that's an upgrade).
 
 ```
@@ -151,6 +154,11 @@ Upgrade: NHDPlus COMID + Chaplin 2005 width from drainage area.
 
 ## Prompt 5: Environment
 
+[DONE 2026-09-27, `scripts/05_environment.py`. wild_brook_present is NA outside Class A (no species data;
+`docs/known_gaps.md`). Step 5 dropped: nothing in the model uses historical density, and with no measured width
+it mostly reflects the width assumption; 2026 stocking vs the cap is in `logs/04_cap_check.csv`. Added
+nat_repro_share (continuous overlap) for the "partial overlap" impact score.]
+
 ```
 Build data/processed/environment.parquet, one row per section. Follow docs/env_research.md.
 The overlap columns (class_a_overlap_mi, Class A species/Fishery, TroutBioma, nat_repro_overlap_mi,
@@ -163,7 +171,7 @@ re-measure.
    excluded: Prompt 4 caps them at today's stocking. Scenario "dropped sections back" lifts
    not_stocked_2026 only.
 2. wild_brook_present: from the Class A species/Fishery text (log how the text was parsed).
-3. Natural reproduction: use nat_repro_flag as built (river miles OR same-RFP geometry, rule 8).
+3. Natural reproduction: use nat_repro_flag as built (river miles only, rule 8).
 4. Density bound: already built in Prompt 4 (cap_fish, cap_source; the river cap). Nothing to add here.
    The "PFBC formula as cap" scenario uses max_trout_per_acre x area_acres directly; the 11 sections with
    no Table 18 rate stay NA with a reason.

@@ -32,8 +32,8 @@ def test_dropped_sections(sections, stocked_2026):
     dropped = sections[~stocked_2026]
     assert len(dropped) == 23, "CLAUDE.md Candidate sections: 23 dropped by 2026"
     assert {"3656_2", "3190_2"} <= set(dropped.index), "Blue Hole Creek and Buffalo Creek are among them"
-    # 18 by river miles + West Branch Briar Creek 209_2 by geometry, including Blue Hole and Buffalo Creek
-    assert dropped["nat_repro_flag"].sum() == 19, "CLAUDE.md Candidate sections: 19 natural-reproduction waters"
+    # including Blue Hole and Buffalo Creek
+    assert dropped["nat_repro_flag"].sum() == 18, "CLAUDE.md Candidate sections: 18 natural-reproduction waters"
 
 
 def test_class_a(sections, stocked_2026):
@@ -48,7 +48,7 @@ def test_class_a(sections, stocked_2026):
 
 
 def test_flags_and_rates(sections):
-    assert sections["nat_repro_flag"].sum() == 549, "data_methods.md: 549 natural-reproduction sections"
+    assert sections["nat_repro_flag"].sum() == 531, "data_methods.md: 531 natural-reproduction sections"
     assert sections["length_check_flag"].sum() == 57, "known_gaps.md: 57 length_check_flag sections"
     assert (sections["length_source"] == "river_miles").sum() == 9, "known_gaps.md: 9 use river miles"
     assert sections["max_trout_per_acre"].isna().sum() == 11, "data_methods.md: 11 with no Table 18 rate"
@@ -64,6 +64,45 @@ def test_bear_creek(sections):
     assert bear["rainbow_2026"].tolist() == [850, 900]
     assert not bear["class_a_flag"].any()
     assert bear["nat_repro_flag"].all()
+
+
+def test_river_region_area(sections):
+    assert (sections["river_id"] == sections["rfp_water_id"]).all()
+    assert sections["river_id"].nunique() == 695, "data_dictionary.md: 695 rivers"
+    assert (sections.loc[["3197_2", "3197_3"], "region"] == "Southeast").all(), "CLAUDE.md Known facts: Bear Creek"
+    regions = pd.read_csv(PROCESSED / "county_region.csv")
+    assert len(regions) == 67 and regions["county"].is_unique, "CLAUDE.md Known facts: all 67 counties"
+    assert regions["region"].nunique() == 6
+    assert sections[["width_top_m", "width_mid_m", "area_acres", "area_acres_mid"]].notna().all().all()
+
+
+def test_river_cap(sections, stocked_2026):
+    assert sections["cap_source"].value_counts().to_dict() == {"river_rate": 1024, "class_a": 17, "baseline": 4}, \
+        "CLAUDE.md Density bound / data_dictionary.md cap_source"
+    assert set(sections.index[sections["cap_source"] == "baseline"]) == {"1327_1", "2649_1", "2254_2", "1767_5"}, \
+        "CLAUDE.md Density bound: the 4 sections above the river cap"
+    fish_2026 = sections["total_2026"].fillna(0)
+    assert (sections["cap_fish"] >= fish_2026).all(), "cap_fish never forces a cut in the base model"
+    assert (sections["cap_fish"] >= 300).all() and (sections["cap_fish_mid"] <= sections["cap_fish"]).all()
+    assert (sections["cap_fish_class_a_river"] >= sections["cap_fish"]).all()
+    capped = sections["cap_source"] != "river_rate"
+    assert (sections.loc[capped, "cap_fish"] == fish_2026[capped]).all(), "CLAUDE.md: capped at 2026 stocking"
+    over_mid = stocked_2026 & ~capped & (fish_2026 > sections["cap_fish_mid"])
+    assert over_mid.sum() == 39, "model_design.md Density bound: 39 above the midpoint cap"
+
+
+def test_environment(sections, stocked_2026):
+    env = pd.read_parquet(PROCESSED / "environment.parquet").set_index("section_id")
+    assert env.index.equals(sections.index)
+    assert (env["exclude"] == ~stocked_2026).all(), "model_design.md Candidate sections: excluded = not stocked 2026"
+    assert env["exclude_reason"].value_counts().to_dict() == {
+        "not_stocked_2026": 21, "not_stocked_2026; health": 1, "class_a_not_stocked": 1}, \
+        "data_dictionary.md environment.exclude_reason"
+    assert env["wild_brook_present"].value_counts(dropna=False).to_dict() == {pd.NA: 1028, False: 17}, \
+        "known_gaps.md Wild trout species outside Class A"
+    share = env["nat_repro_share"]
+    assert share.between(0, 1).all() and ((share > 0) == env["nat_repro_flag"]).all()
+    assert (share >= 0.9).sum() == 496, "model_design.md Wild-trout impact: 496 of 531 at >= 90%"
 
 
 def test_baseline(sections):

@@ -34,3 +34,4 @@ retrieved_at,source,path,url,records,bytes,sha256
 ,partner_loydgc,pa_natural_repro_trout_streams.gpkg,,6224,25743360,1cabc96aa49e48ad9f9b709b193b82c0f4a775226028e72abe60568bfc733e1c
 ,partner_loydgc,pa_stocked_trout_streams.gpkg,,1064,6078464,5959a4cd00e42c15efd5d0af3aedac76145014ec91050d60905ad086ef5de948
 ,partner_loydgc,Coop_nurseries.geojson,,165,64955,082cc97979e307b752af4dfcfb07f5e934561f8ed692e46b432a5df2e707cd40
+2026-09-28T00:25:44+00:00,pfbc_docs,pfbc_docs/2026-09-27/summarybook.pdf,https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/regulations/summarybook.pdf,42,6098898,ff7fdf4303ed4730f4ec2757fae059fb6fa72c7df4de185dc6bd060a4aab0a35

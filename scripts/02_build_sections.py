@@ -28,7 +28,7 @@ M_PER_MI = 1609.344
 MIN_OVERLAP_MI = 100 / M_PER_MI  # CLAUDE.md rule 8: overlap must exceed 100 m to count
 CHECK_BUFFER_M = 30  # geometric overlap: section length within 30 m of a same-water wild-trout line
 CONTEXT_SIMPLIFY_M = 5  # wild-trout layers in pa_trout.gpkg (overlaps are computed before simplifying)
-NAT_REPRO_GEOM_MI = 0.5  # nat. repro: some records' river miles cover less than their line and Limits text
+NAT_REPRO_MISSED_MI = 0.5  # logged only: geometric overlap that river miles miss (some records' river miles are short)
 LENGTH_CHECK_TOL = 0.25  # length_check_flag: PFBC Length_MI_ vs river-mile length
 STOCKING_BAND = (0.1, 0.9)  # length check: normal range of fish per (rate x mile) among unflagged sections
 
@@ -339,10 +339,10 @@ def build_sections(years: dict[int, gpd.GeoDataFrame], long: pd.DataFrame, rates
     s = parse_allocation(s, rates)
     s = choose_length(s)
 
-    # Wild-trout overlap: river miles on the same RFP water id (CLAUDE.md rule 8), cross-checked against
-    # geometry on the same water id. Class A / Wilderness (exclusions) use river miles only. Natural
-    # reproduction (a soft penalty) also counts a >= 0.5 mi geometric overlap, because some of its records'
-    # river miles are shorter than their own line and Limits text (e.g. "Headwaters to Mouth").
+    # Wild-trout overlap: river miles on the same RFP water id for every layer (CLAUDE.md rule 8; decision
+    # 2026-09-27: PFBC's river miles only). Geometry on the same water id is a cross-check written to the log.
+    # Some Natural Reproduction records' river miles are shorter than their own line and Limits text, so river
+    # miles miss those sections: they're logged, not flagged (docs/known_gaps.md).
     geoms = latest.geometry.reset_index(drop=True)
     check = s[["section_id", "water_name", "county", "lower_rm", "upper_rm"]].copy()
     for name, layer in wild.items():
@@ -356,12 +356,11 @@ def build_sections(years: dict[int, gpd.GeoDataFrame], long: pd.DataFrame, rates
         log.info("%s: %d sections overlap > 100 m by river miles; %d by geometry; %d disagree", name,
                  (rm > MIN_OVERLAP_MI).sum(), (geo > MIN_OVERLAP_MI).sum(), disagree.sum())
         if name == "nat_repro":
-            s["nat_repro_geom_overlap_mi"] = geo
-            extra = ~s.nat_repro_flag & (geo >= NAT_REPRO_GEOM_MI)
-            s["nat_repro_flag"] = s.nat_repro_flag | extra
-            s["nat_repro_flag_source"] = np.select([rm > MIN_OVERLAP_MI, extra], ["river_miles", "geometry"], None)
-            log.info("nat_repro: %d more sections flagged by >= %.1f mi same-water geometric overlap (%d total)",
-                     extra.sum(), NAT_REPRO_GEOM_MI, s.nat_repro_flag.sum())
+            missed = ~s.nat_repro_flag & (geo >= NAT_REPRO_MISSED_MI)
+            check["nat_repro_missed_by_rm"] = missed
+            log.info("nat_repro: river miles only; %d sections lie >= %.1f mi along a same-water Natural "
+                     "Reproduction line but share no river miles with it (not flagged): %s", missed.sum(),
+                     NAT_REPRO_MISSED_MI, s.loc[missed, "section_id"].tolist())
     flagged = check.filter(like="_disagree").any(axis=1)
     check[flagged].to_csv(LOG_DIR / "02_overlap_check.csv", index=False)
     log.info("wrote %d sections where the methods disagree to logs/02_overlap_check.csv", flagged.sum())

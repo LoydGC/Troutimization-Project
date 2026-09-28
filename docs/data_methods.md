@@ -61,18 +61,17 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
   them: `docs/known_gaps.md` § Class A exemptions.
 
 **Wild-trout overlap** (CLAUDE.md rule 8)
-- **Primary method:** river miles shared with wild-trout records on the same `RFP_WaterID`. It counts only
-  above 100 m, so sections that only touch share an endpoint and aren't flagged.
-- **Cross-check:** the length of the section within 30 m of wild-trout lines on the same water.
-  Sections where the two methods disagree are in `logs/02_overlap_check.csv`.
-- **Class A and Wilderness** (exclusions) use river miles only. Geometry is imprecise at section
-  boundaries: it puts 0.47 mi of Bear Creek 3197_2 in Class A, when PFBC's listing shows the two only touch.
-- **Natural Reproduction** (a soft penalty) is also flagged when the geometric overlap is ≥ 0.5 mi.
-  - About 191 of its records have a line more than 1.5× their river-mile length. Their Limits text agrees
-    with the line (e.g. "Headwaters to Mouth"), not with the river miles.
-  - For example, Little Yellow Creek's reach is listed as "Headwaters to Mouth" but carries river miles
-    7.85–12.9.
-  - This rule adds 18 sections, for 549 in total.
+- **Method:** river miles shared with wild-trout records on the same `RFP_WaterID`, for Class A, Natural
+  Reproduction and Wilderness alike. It counts only above 100 m, so sections that only touch share an
+  endpoint and aren't flagged. 531 sections are flagged natural reproduction.
+- **Assumption: PFBC's river miles only** (decision 2026-09-27). We use PFBC's recorded river miles even where
+  a record's river miles are shorter than its own line and Limits text, and don't patch them with our own
+  geometry. This misses 18 natural-reproduction sections (~1% of 2026 fish); which ones and what it changes:
+  `docs/known_gaps.md` § Natural Reproduction river miles shorter than the line.
+- **Cross-check (log only):** the length of the section within 30 m of wild-trout lines on the same water.
+  Sections where the two methods disagree are in `logs/02_overlap_check.csv`; `nat_repro_missed_by_rm`
+  marks the 18. Geometry isn't used for flags because it's imprecise at section boundaries: it puts 0.47 mi
+  of Bear Creek 3197_2 in Class A, when PFBC's listing shows the two only touch.
 - **Class A species flags** come from keyword matches on the Class A `Fishery` text: brook, brown,
   rainbow.
 
@@ -94,6 +93,37 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
   - unlocated nurseries
   - listings on sections PFBC no longer stocks
   - listings on Class A sections
+
+**River key, region, area and cap** (`scripts/04_river_cap.py`, 2026-09-27)
+- **River key.** `river_id` = PFBC's `RFP_WaterID` (695 rivers). No river_id has two names. Five name +
+  county pairs have two or three river_ids (e.g. Mill Creek, Berks: 3080, 3180, 3182): different streams with
+  the same name, which is why names are never the key.
+- **Region.** From PFBC's 2026 *Pennsylvania Fishing Summary*, which lists regulated trout waters region by
+  region under county headings ("BERKS:"). A county's region is the region whose list it heads.
+  - Two-county headings ("MIFFLIN/UNION:" for Penns Creek) are boundary waters printed in both regions'
+    lists, so they're skipped.
+  - All 67 counties are found, each in exactly one region. A one-time cross-check against PFBC's
+    law-enforcement region polygons (fbweb `LawEnforcement_Regions`) agreed for all 67 by majority of county
+    area (not kept: the polygons split Northumberland 71/29 and Armstrong 95/5).
+  - Sections spanning two counties never span two regions.
+- **Area.** `area_acres` = `length_mi` × width (m) × 1,609.344 m/mi ÷ 4,046.856 m²/acre. No PFBC layer
+  publishes a measured width or acreage (`known_gaps.md`), so the width is the top of the PFBC width class,
+  or the midpoint for `area_acres_mid` (`parameters.csv`).
+- **River cap.** `river_rate` is taken from `pfbc_stocking_rates.csv` as the highest rate for the section's
+  biomass + width. The "today's stocking" that caps the Class A and above-cap sections is the 2026 count
+  (`total_2026`, all five species; decision 2026-09-27), not a multi-year mean.
+
+**Environment** (`scripts/05_environment.py`, 2026-09-27)
+- **Exclusion reasons** come from rules on the existing columns (`class_a_flag`, `wilderness_flag`,
+  `total_2026`). The one reason not in the data, Blue Hole Creek's cadmium/lead removal (GoErie, 2026-01-31),
+  is written into the script with its source.
+- **Wild brook trout.** `wild_brook_present` comes from the same Class A `Fishery` keyword match as
+  `class_a_wild_brook`. The 17 Class A overlaps PFBC stocks are all brown trout fisheries ("Brown", "Wild
+  Brown Trout Fishery"); Buffalo Creek's Class A record has no species text. Every other section is NA:
+  Natural Reproduction and Wilderness have no species field.
+- **Natural reproduction share.** `nat_repro_share` = shared river miles ÷ the section's river-mile length
+  (`rm_length_mi`, so both are PFBC river miles), capped at 1. It's 0 where the overlap is 100 m or less,
+  matching the flag.
 
 **Map layers.** The wild-trout context layers in `pa_trout.gpkg` are simplified to a 5 m tolerance to keep
 the file small. All overlaps are computed from the full-resolution layers first.
