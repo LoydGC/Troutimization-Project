@@ -76,19 +76,39 @@ def test_river_region_area(sections):
     assert sections[["width_top_m", "width_mid_m", "area_acres", "area_acres_mid"]].notna().all().all()
 
 
-def test_river_cap(sections, stocked_2026):
-    assert sections["cap_source"].value_counts().to_dict() == {"river_rate": 1024, "class_a": 17, "baseline": 4}, \
+def test_density_cap(sections, stocked_2026):
+    assert sections["cap_source"].value_counts().to_dict() == {
+        "access_rate": 1012, "class_a": 17, "program_rate": 9, "baseline": 7}, \
         "CLAUDE.md Density bound / data_dictionary.md cap_source"
-    assert set(sections.index[sections["cap_source"] == "baseline"]) == {"1327_1", "2649_1", "2254_2", "1767_5"}, \
-        "CLAUDE.md Density bound: the 4 sections above the river cap"
+    assert set(sections.index[sections["cap_source"] == "baseline"]) == {
+        "1327_1", "2649_1", "2254_2", "1767_5", "2892_3", "183_9", "4029_7"}, \
+        "model_design.md Density bound: the 7 sections above the cap"
+    assert sections["program"].value_counts().to_dict() == {"DHALO": 56, "tailwater": 2}, \
+        "model_design.md Density bound: Guidelines Tables 45-46"
+    assert sections.loc["1327_1", "program_rate"] == 266, "Table 45: tailwater, High access"
+    assert sections.loc["2649_1", "program_rate"] == 247, "Table 45: tailwater, Good access"
     fish_2026 = sections["total_2026"].fillna(0)
     assert (sections["cap_fish"] >= fish_2026).all(), "cap_fish never forces a cut in the base model"
     assert (sections["cap_fish"] >= 300).all() and (sections["cap_fish_mid"] <= sections["cap_fish"]).all()
-    assert (sections["cap_fish_class_a_river"] >= sections["cap_fish"]).all()
-    capped = sections["cap_source"] != "river_rate"
+    assert (sections["access_rate"] <= sections["cap_rate"]).all()
+    assert (sections["cap_rate"] <= sections["cap_rate_river"]).all()
+    has_program = sections["program_rate"].notna()
+    assert (sections.loc[~has_program, "cap_rate"] == sections.loc[~has_program, "access_rate"]).all()
+    assert (sections["cap_fish_river"] >= sections["cap_fish"]).all()
+    assert (sections["cap_fish_class_a_grow"] >= sections["cap_fish"]).all()
+    capped = sections["cap_source"].isin(["class_a", "baseline"])
     assert (sections.loc[capped, "cap_fish"] == fish_2026[capped]).all(), "CLAUDE.md: capped at 2026 stocking"
+    rate_x_acres = (sections["cap_rate"] * sections["area_acres"]).round().clip(lower=300)
+    assert (sections.loc[~capped, "cap_fish"] - rate_x_acres[~capped]).abs().max() <= 1, \
+        "data_dictionary.md: cap_fish = cap_rate x area_acres, at least 300"
     over_mid = stocked_2026 & ~capped & (fish_2026 > sections["cap_fish_mid"])
-    assert over_mid.sum() == 39, "model_design.md Density bound: 39 above the midpoint cap"
+    assert over_mid.sum() == 49, "model_design.md Density bound: 49 above the midpoint cap"
+    # Better access never lowers the cap: biomass B + High at widths 2-3 gets 323, not Table 18's 147
+    b_high = (sections["biomass_class"] == "B") & (sections["use_potential"] == "High") & \
+        sections["width_class"].isin(["2", "3"])
+    assert b_high.sum() == 17 and (sections.loc[b_high, "access_rate"] == 323).all(), \
+        "model_design.md Density bound: 17 biomass-B High sections"
+    assert sections.loc["3197_2", "cap_rate"] == 323 and sections.loc["3197_2", "cap_rate_river"] == 361
 
 
 def test_environment(sections, stocked_2026):
@@ -112,3 +132,30 @@ def test_baseline(sections):
     assert set(y["section_id"]) == set(sections.index)
     totals = y.groupby("year")["count"].sum().to_dict()
     assert totals == {2024: 2_599_733, 2025: 2_615_828, 2026: 2_606_468}, "known_gaps.md: stream fish per year"
+
+
+def test_angler_survey():
+    survey = PROCESSED / "angler_survey"
+    by_region = ["p93_travel_distance_typical_trip", "p94_travel_distance_farthest", "p95_importance_near_home",
+                 "p115_days_fished_stocked_2022", "p127_stocked_trout_harvest_per_year",
+                 "p140_importance_catching_trout", "p174_support_removing_low_use_waters",
+                 "p175_support_more_stocking_high_use_waters", "p178_support_moving_stocking_off_wild_trout_waters"]
+    expected = {f"{name}_by_region.csv" for name in by_region} | {
+        "p76-77_preferred_waters_overall.csv", "p78-83_preferred_waters_by_region.csv",
+        "p84_preferred_water_county_overall.csv", "p85_preferred_water_county_by_region.csv"}
+    assert {p.name for p in survey.glob("*.csv")} == expected, "angler_survey/README.md file list"
+    waters = pd.read_csv(survey / "p76-77_preferred_waters_overall.csv")
+    assert len(waters) == waters["waterbody"].nunique() == 223, "CLAUDE.md Known facts: ~223 named waters"
+    tables = {}
+    for name in by_region:
+        t = pd.read_csv(survey / f"{name}_by_region.csv")
+        pct = t[t["row_type"] == "percent"].set_index("response")
+        cols = ["northwest", "northcentral", "northeast", "southwest", "southcentral", "southeast", "nonresident",
+                "statewide_all"]
+        assert pct[cols].sum().between(99, 102).all(), f"{name}: percent columns should sum to ~100"
+        tables[name.split("_")[0]] = pct["statewide_all"]
+    assert tables["p140"][["Very important", "Somewhat important"]].sum() == 81, "model_design.md: p140 81%"
+    assert tables["p175"][["Strongly support", "Moderately support"]].sum() == 80, "model_design.md: p175 80%"
+    p178 = tables["p178"]
+    assert p178[["Strongly support", "Moderately support"]].sum() == 58, "model_design.md: p178 58% support"
+    assert p178[["Moderately oppose", "Strongly oppose"]].sum() == 16, "model_design.md: p178 16% oppose"

@@ -6,18 +6,21 @@ the agreed simplifications, and the rules, so the prompts don't repeat them.
 Order: 0 → 1 → 2 → 3 gets the baseline. 4–7 each build one model component (4 first, since 5 and 6 use its
 area and river_id). 8–9 assemble and check. Upgrades are at the end, for when time allows.
 
-**Status (2026-09-27):** built on branch `sections-pull`: the sections pull (`scripts/01_download_pfbc_layers.py`,
+**Status (2026-09-27):** built on branch `sections-pull`: the angler-survey tables
+(`scripts/00_extract_angler_survey.py`), the sections pull (`scripts/01_download_pfbc_layers.py`,
 `scripts/02_build_sections.py`), the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
-flag), the river key, region, area and river cap (`scripts/04_river_cap.py`) and the environment table
+flag), the river key, region, area and density cap (`scripts/04_river_cap.py`) and the environment table
 (`scripts/05_environment.py`). Gavin's main (distance notebooks) was merged into it 2026-09-27;
 `sections-pull` isn't merged into main yet (next: a pull request for Gavin to review). Done so far, so skip
 these parts when sending the prompts:
-- Prompt 0 steps 1, 3, 4, 5 (step 2 is open, and 4 partner raw files still need a source from Gavin)
+- Prompt 0 (4 partner raw files still need a source from Gavin)
 - Prompt 1 in part: `docs/source_inventory.md` lists the sources in use
 - Prompt 2 for the stocked-section and wild-trout layers; Prompts 3, 4, 5
+- Prompt 6 step 1 (p153 skipped by decision)
 
-**Next:** Prompt 6 (needs Prompt 0 step 2, the angler-survey move). Prompt 7 waits on Gavin's distances.
-Script order: 01 → 02 → 03 → 04 → 05 (03 and 04 add columns to `sections`, so rerun them after 02).
+**Next:** the rest of Prompt 6 (plan revised 2026-09-27). Prompt 7 waits on Gavin's distances.
+Script order: 00 → 01 → 02 → 03 → 04 → 05 (00 stands alone; 03 and 04 add columns to `sections`, so rerun them
+after 02).
 
 ---
 
@@ -32,7 +35,7 @@ Read CLAUDE.md. Tidy the repo to match its Layout section.
    database. The new rules only affect new raw files. Add each already-committed raw file to
    data/raw/manifest.csv with its source URL so it can be re-downloaded. ON HOLD: untracking them with
    `git rm --cached` waits for the partner's OK (LoydGC committed some on purpose).
-2. Angler survey: the PDF is an official PFBC source. Move data/references/troutanglersurveyreport-2023.pdf
+2. [DONE 2026-09-27] Angler survey: the PDF is an official PFBC source. Move data/references/troutanglersurveyreport-2023.pdf
    to data/raw/pfbc_angler_survey_2023/ and add its PFBC URL to the manifest. Move
    data/references/angler_survey/extract_angler_survey_2023.py to scripts/00_extract_angler_survey.py,
    point it at the new paths, and have it write to data/processed/angler_survey/. Re-run it and confirm
@@ -109,7 +112,11 @@ Report: years available, sections per year, total fish by species and year.
 
 [DONE 2026-09-27, `scripts/04_river_cap.py`. Changes from the text below: "baseline" = the 2026 count, not the
 mean, so 4 sections, not 3, are above the river cap (Roaring Brook 1767_5 added); region comes from PFBC's 2026 Fishing
-Summary (county lists by region). Area converts mi × m to acres in the script.]
+Summary (county lists by region). Area converts mi × m to acres in the script. Revised 2026-09-27: the cap now counts
+the section's access (step 4 below, rerun); the river cap is kept as the sensitivity cap_fish_river, and
+cap_fish_class_a_river was renamed cap_fish_class_a_grow. Then the Guidelines' special-program rates were added
+(Tables 45-46: program, program_rate), leaving 7 sections above the cap, and the rate cap_fish uses was stored
+as cap_rate (river_rate renamed cap_rate_river; parameter river_rate_per_acre renamed biomass_a_rate_per_acre).]
 
 Decision 2026-09-27: use PFBC's own water id and width classes. No NHDPlus (that's an upgrade).
 
@@ -137,16 +144,22 @@ columns on section_id:
    (searched 2026-09-27; docs/known_gaps.md). Put both in data/processed/parameters.csv (source = Guidelines
    Table 14; 1L top, class-4 midpoint and all midpoints = assumption). area_acres = length_mi x width_top_m;
    area_acres_mid = length_mi x width_mid_m.
-4. River cap (decision 2026-09-27; docs/model_design.md "Density bound"):
-   river_rate = max Table 18 rate over use potential and population for the section's biomass + width
-   (B 323 at widths 2-3, C-E 361; widths 4/1S/1L 57/137/91). Biomass A at widths 2-3 (no Table 18 rate)
-   uses B's 323 (assumption; only used in the "Class A allowed to grow" scenario, cap_fish_class_a_river).
-   cap_fish = max(river_rate x area_acres, 300); cap_fish_mid the same with
-   area_acres_mid. Sections whose baseline (mean fish/yr) is above cap_fish get cap_fish = baseline and
-   cap_source = "baseline" (expect 3: Youghiogheny 1327_1, Conneauttee 2649_1, Black Moshannon 2254_2).
-   Class A overlaps stocked in 2026 (17) get cap_fish = baseline, cap_source = "class_a". Others
-   cap_source = "river_rate". (Exclusions are set in Prompt 5, not here.) Keep max_trout_per_acre (formula) for the "PFBC formula as cap"
-   scenario. Log baseline / cap per section; report how many exceed cap_fish and cap_fish_mid.
+4. Density cap (decision 2026-09-27, replacing the river cap; docs/model_design.md "Density bound"):
+   access_rate = max Table 18 rate over population for the section's biomass + width at its own use potential
+   (access) or any worse one (Low < Good < High), so better access never lowers the cap (Table 18 gives
+   B + High at widths 2-3 a flat 147, below B + Good's 323). cap_rate_river = the max over access too (the
+   sensitivity). Biomass A at widths 2-3 (no Table 18 rate) uses B's 323 (assumption; only used in the
+   "Class A allowed to grow" scenario, cap_fish_class_a_grow).
+   program_rate = the Guidelines' own rate for special programs: Table 46 for Delayed Harvest Artificial Lures
+   Only (reg_name; 190/acre at widths 2-3, 133 at 1S/1L) and Table 45 for tailwaters (Youghiogheny 1327_1
+   and Conneauttee 2649_1, listed by hand; 266 High, 247 Good). cap_rate = the higher of access_rate and program_rate; cap_rate_river likewise includes program_rate.
+   cap_fish = max(cap_rate x area_acres, 300); cap_fish_mid the same with area_acres_mid;
+   cap_fish_river the same with cap_rate_river. Sections whose 2026 stocking is above cap_fish get
+   cap_fish = total_2026 and cap_source = "baseline" (7). Class A overlaps stocked in 2026 (17) get
+   cap_fish = total_2026, cap_source = "class_a". Others cap_source = "program_rate" where the program rate
+   set the cap, else "access_rate". (Exclusions are set in
+   Prompt 5, not here.) Keep max_trout_per_acre (formula) for the "PFBC formula as cap" scenario. Log
+   baseline / cap per section; report how many exceed cap_fish and cap_fish_mid.
 Lakes are added later as rows with water_type = "lake".
 Validate: Bear Creek (Schuylkill) sections share river_id 3197.
 Upgrade: NHDPlus COMID + Chaplin 2005 width from drainage area.
@@ -172,7 +185,7 @@ re-measure.
    not_stocked_2026 only.
 2. wild_brook_present: from the Class A species/Fishery text (log how the text was parsed).
 3. Natural reproduction: use nat_repro_flag as built (river miles only, rule 8).
-4. Density bound: already built in Prompt 4 (cap_fish, cap_source; the river cap). Nothing to add here.
+4. Density bound: already built in Prompt 4 (cap_fish, cap_source; the density cap). Nothing to add here.
    The "PFBC formula as cap" scenario uses max_trout_per_acre x area_acres directly; the 11 sections with
    no Table 18 rate stay NA with a reason.
 5. Historical density (trout/acre) and its ratio to max_trout_per_acre. Flag sections stocked above the
@@ -184,21 +197,48 @@ Report: excluded sections that were stocked in the baseline, and wild-brook sect
 ## Prompt 6: Angler benefit
 
 ```
-Build data/processed/demand.parquet.
-1. Extend scripts/00_extract_angler_survey.py with these stocked-angler tables (PDF pages): near-home
+Build data/processed/demand.parquet: angler-days per section from two signals, kept as separate columns
+(the model blends them). Plan revised 2026-09-27: the decisions and their reasoning are in
+docs/model_design.md § Angler benefit, and the values no source gives are in data/processed/parameters.csv.
+1. [DONE 2026-09-27; p153 skipped by decision]
+   Extend scripts/00_extract_angler_survey.py with these survey tables (PDF pages): near-home
    importance (95), catching-trout importance (140), overall satisfaction (153), more stocking on
-   high-use waters (175), moving stocking off wild trout waters (178). Use the same format and validation.
-2. Survey water crosswalk: match each named survey water to river_id (or lake) using name, county
-   qualifier, and whether it's stocked. Write data/processed/survey_water_crosswalk.csv with
-   match_method and confidence. Put ambiguous names (e.g. several Elk Creeks) in
-   logs/survey_crosswalk_review.csv for me; don't guess. Apportion each water's preference % to its
-   stocked sections by length.
-3. Proximity demand per section: sum block-group population x P(angler travels ≥ d), where d is
-   straight-line miles and P comes from the p93 statewide travel-distance distribution. Use band
-   midpoints and document the curve in data_methods.md.
-4. Access: count of PFBC access points within 1 km, plus special-regulation flags (DHALO, Keystone Select).
-Report: the share of baseline fish on survey-named waters, survey waters with no stocked section, and the
-correlation between proximity demand and baseline stocking.
+   high-use waters (175), moving stocking off wild trout waters (178; asked of all trout anglers). Use the
+   same format and validation.
+2. County anglers: parse PFBC's 2024 license sales by agent county
+   (data/raw/pfbc_docs/2026-09-27/fishinglicensesalesbycounty2024.pdf, pages 1-4). Numbers are
+   right-aligned with blank cells, so assign columns by x position and check every row against the PDF's
+   own totals. anglers = trout + combo permits (annual + multi-year sold in 2024) - non-resident and tourist
+   licenses + online resident permits split by county population (Census 2020 block groups summed).
+   Write data/processed/county_anglers.csv with every input as a column, so a PFBC table of permit
+   holders by home county could replace it later.
+3. Survey water crosswalk: match each named water (p76-77) to a 2026-stocked river_id (or lake) by name
+   and county qualifier. Resolve ambiguous names with the by-home-region table (p78-83), e.g. Elk Creek
+   -> Erie's. Anything still ambiguous goes to logs/survey_crosswalk_review.csv for me; don't guess.
+   Write data/processed/survey_water_crosswalk.csv with match_method and confidence.
+4. Proximity demand (band version), per 2026-stocked section:
+   - angler-days per Census block group = population x county angler rate x mean days fished in its home
+     region (p115, with "over 50 days" from parameters.csv)
+   - distance = straight-line miles from the block group's center of population to the section midpoint
+     x circuity (parameters.csv)
+   - each block group sends its angler-days out by its home region's p93 bands ("Don't know" dropped; the
+     last band runs to the farthest pair in PA). Within a band, split among its sections by length_mi; a
+     band with no section passes its share to the other bands in proportion. Assert the sections sum to
+     the statewide total.
+   - columns: prox_days (regional curves), prox_days_pooled (one in-state curve), prox_days_pop (every
+     county at the state angler rate). Document the method in data_methods.md.
+5. Preference demand: a water's share = its % / all mentions (incl. Other and Don't know; "<0.5%" from
+   parameters.csv) x statewide angler-days, split over its stocked sections by length. Spread the unplaced
+   share (Other, Don't know, lakes, unmatched) like prox_days. Flag, don't cap, waters whose preference per
+   stocked mile exceeds the state's highest prox_days per mile (the Youghiogheny keeps its full share).
+   Add destination_index = preference / proximity for each matched water.
+6. Regulation flags: DHALO, catch-and-release (5 spellings in reg_name), Keystone Select (program_name
+   KSSTW) and open year-round, from the existing regulation columns. Access is not a demand input: PFBC's
+   access rating (use_potential) already sets the density cap (Prompt 4), and no access-point layer is used
+   (decision 2026-09-27, docs/model_design.md § Angler benefit).
+Report: the share of 2026 fish on survey-named waters, survey waters with no stocked section, the flagged
+waters, each home region's share of angler-days landing in its own region vs p85, and rank correlations of
+prox_days with 2026 fish, fish per acre and prox_days_pop.
 ```
 
 ## Prompt 7: Transport cost (distances come from Gavin)
@@ -250,8 +290,8 @@ missing a cost_matrix row. Write logs/final_qa.md.
   record why in temp_missing_reason.
 - **Full PFBC rate table:** done. Exact Table 18 lookup on AllocationCode (`max_trout_per_acre`,
   `data/processed/pfbc_stocking_rates.csv`).
-- **Distance-decay calibration:** fit the proximity curve so predicted county choices by home region match
-  the survey's p85 table.
+- **Distance-decay calibration:** replaced 2026-09-27. Proximity demand now uses each home region's p93
+  bands directly (Prompt 6 step 4), and p85 is a check on it.
 - **Stocking schedule and seasons:** scrape event dates from fbweb.pa.gov/TroutStocking to split decisions by
   pre-season, in-season, and fall/winter.
 - **History:** the 2024–26 layers don't reach 2022. Check for a 2023 layer, then Wayback Machine captures of

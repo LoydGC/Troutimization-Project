@@ -109,9 +109,19 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
 - **Area.** `area_acres` = `length_mi` × width (m) × 1,609.344 m/mi ÷ 4,046.856 m²/acre. No PFBC layer
   publishes a measured width or acreage (`known_gaps.md`), so the width is the top of the PFBC width class,
   or the midpoint for `area_acres_mid` (`parameters.csv`).
-- **River cap.** `river_rate` is taken from `pfbc_stocking_rates.csv` as the highest rate for the section's
-  biomass + width. The "today's stocking" that caps the Class A and above-cap sections is the 2026 count
-  (`total_2026`, all five species; decision 2026-09-27), not a multi-year mean.
+- **Density cap.** `access_rate` is taken from `pfbc_stocking_rates.csv` (Table 18) as the highest rate for
+  the section's biomass + width at its own use potential or a worse one (Low < Good < High), over all
+  population classes. Table 18 gives biomass B + High at widths 2–3 a flat 147/acre, below B + Good's 323;
+  counting worse access levels lifts those 17 sections to 323 so better access never lowers the cap
+  (decision 2026-09-27, `model_design.md` § Density bound). `cap_rate_river` (the sensitivity) is the highest
+  rate for the biomass + width at any access.
+- **Special-program rates.** `program_rate` holds the Guidelines' own rate for programs that replace Table 18,
+  transcribed into `scripts/04_river_cap.py` with the table numbers: Table 46 for Delayed Harvest Artificial
+  Lures Only sections (`reg_name` contains "Delayed Harvest"; 56) and Table 45 for tailwaters. No layer flags
+  tailwaters, so the script lists them by hand: Youghiogheny 1327_1 and Conneauttee Creek 2649_1 (assumption;
+  the other dam sections checked are in `known_gaps.md`). `cap_rate`
+  (the rate `cap_fish` uses) is the higher of `access_rate` and `program_rate`; `cap_rate_river` likewise. The "today's stocking" that caps the Class A and above-cap
+  sections is the 2026 count (`total_2026`, all five species; decision 2026-09-27), not a multi-year mean.
 
 **Environment** (`scripts/05_environment.py`, 2026-09-27)
 - **Exclusion reasons** come from rules on the existing columns (`class_a_flag`, `wilderness_flag`,
@@ -124,6 +134,18 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
 - **Natural reproduction share.** `nat_repro_share` = shared river miles ÷ the section's river-mile length
   (`rm_length_mi`, so both are PFBC river miles), capped at 1. It's 0 where the overlap is 100 m or less,
   matching the flag.
+
+**Angler survey tables** (`scripts/00_extract_angler_survey.py`, 2026-09-27)
+- **Source:** PFBC's 2023 trout angler survey report (Responsive Management), downloaded from pa.gov. Tables
+  are read from the PDF text with pdfplumber; values are as printed.
+- **Statewide values** come from each page's bar chart, typed into the script and checked against the
+  rendered page. A bar the chart doesn't show is NA (p140 "Do not know"), not 0. Regional values come from the
+  page's table.
+- **Changes from the published tables:**
+  - `*` (less than 0.5%) is stored as NA with `lt_0_5_pct = True`.
+  - Water names are split into `name_base` and `county_qualifier` ("Pine Creek (Lycoming or Tioga County)" →
+    "Pine Creek", "Lycoming or Tioga"; "(other county or not sure of county)" → "other/unsure"). The full
+    name is kept in `waterbody`, spelled as printed.
 
 **Map layers.** The wild-trout context layers in `pa_trout.gpkg` are simplified to a 5 m tolerance to keep
 the file small. All overlaps are computed from the full-resolution layers first.

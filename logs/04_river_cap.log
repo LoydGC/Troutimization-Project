@@ -1,18 +1,24 @@
-2026-09-27 20:53:12,761 INFO 04_river_cap run from commit a683b4e + uncommitted changes to scripts/02_build_sections.py, scripts/04_river_cap.py, scripts/05_environment.py
-2026-09-27 20:53:23,539 INFO county -> region from summarybook.pdf: 183 labels, 67 counties; counties per region {'Northcentral': 14, 'Northeast': 11, 'Northwest': 9, 'Southcentral': 13, 'Southeast': 10, 'Southwest': 10}
-2026-09-27 20:53:23,559 INFO river_id with more than one water_name: 0 {}
-2026-09-27 20:53:23,578 INFO water_name + county with more than one river_id: 5 {('Big Run', 'Jefferson'): [np.int64(3378), np.int64(6008)], ('Fishing Creek', 'York'): [np.int64(275), np.int64(63)], ('Laurel Run', 'Cambria'): [np.int64(2086), np.int64(2076)], ('Mill Creek', 'Berks'): [np.int64(3180), np.int64(3080), np.int64(3182)], ('Pine Creek', 'Schuylkill'): [np.int64(3135), np.int64(3199), np.int64(3118)]}
-2026-09-27 20:53:23,578 INFO river_id: 695 rivers for 1045 sections
-2026-09-27 20:53:23,584 INFO sections per region: {'Northcentral': 251, 'Northeast': 144, 'Northwest': 142, 'Southcentral': 190, 'Southeast': 155, 'Southwest': 163}
-2026-09-27 20:53:23,604 INFO river_rate: Table 18 max over use and population for 1034 sections; biomass A at widths 2-3 (no Table 18 rate) use 323 for 11 sections (assumption, parameters.csv)
-2026-09-27 20:53:23,607 INFO cap_source: {'river_rate': 1024, 'class_a': 17, 'baseline': 4}
-2026-09-27 20:53:23,609 INFO   above river cap, capped at 2026 stocking: 2649_1 Conneauttee Creek (EGS2, 0.19 mi): 1000 fish vs river cap 543
-2026-09-27 20:53:23,610 INFO   above river cap, capped at 2026 stocking: 1327_1 Youghiogheny River (EHS1L, 1.11 mi): 7900 fish vs river cap 2419
-2026-09-27 20:53:23,610 INFO   above river cap, capped at 2026 stocking: 2254_2 Black Moshannon Creek (EHR3, 0.56 mi): 850 fish vs river cap 800
-2026-09-27 20:53:23,610 INFO   above river cap, capped at 2026 stocking: 1767_5 Roaring Brook (DGM3, 2.26 mi): 3965 fish vs river cap 3250
-2026-09-27 20:53:23,610 INFO Class A sections whose 2026 stocking exceeds their river cap: 1 ['2717_9']
-2026-09-27 20:53:23,610 INFO 2026-stocked sections above cap_fish: 0; above cap_fish_mid (midpoint widths; the model would have to cut them): 39
-2026-09-27 20:53:23,611 INFO statewide cap vs 2026 stocking (2606468 fish): cap_fish 3.44x, cap_fish_mid 2.51x, cap_fish_class_a_river 3.47x
-2026-09-27 20:53:23,622 INFO wrote logs/04_cap_check.csv (1045 sections)
-2026-09-27 20:53:23,625 INFO Bear Creek (3197) checks passed: river_id 3197, Southeast
-2026-09-27 20:53:23,661 INFO sections: 1045 rows, 81 columns
+2026-09-28 00:01:15,684 INFO 04_river_cap run from commit 9e4adbb + uncommitted changes to scripts/00_extract_angler_survey.py, scripts/04_river_cap.py
+2026-09-28 00:01:26,511 INFO county -> region from summarybook.pdf: 183 labels, 67 counties; counties per region {'Northcentral': 14, 'Northeast': 11, 'Northwest': 9, 'Southcentral': 13, 'Southeast': 10, 'Southwest': 10}
+2026-09-28 00:01:26,534 INFO river_id with more than one water_name: 0 {}
+2026-09-28 00:01:26,558 INFO water_name + county with more than one river_id: 5 {('Big Run', 'Jefferson'): [np.int64(3378), np.int64(6008)], ('Fishing Creek', 'York'): [np.int64(275), np.int64(63)], ('Laurel Run', 'Cambria'): [np.int64(2086), np.int64(2076)], ('Mill Creek', 'Berks'): [np.int64(3180), np.int64(3080), np.int64(3182)], ('Pine Creek', 'Schuylkill'): [np.int64(3135), np.int64(3199), np.int64(3118)]}
+2026-09-28 00:01:26,558 INFO river_id: 695 rivers for 1045 sections
+2026-09-28 00:01:26,565 INFO sections per region: {'Northcentral': 251, 'Northeast': 144, 'Northwest': 142, 'Southcentral': 190, 'Southeast': 155, 'Southwest': 163}
+2026-09-28 00:01:26,623 INFO access_rate above the section's own access row (better access never lowers the cap): 17 sections {('B', '3', 2): 15, ('B', '2', 2): 2}
+2026-09-28 00:01:26,627 INFO cap_rate_river / access_rate: Table 18 for 1034 sections; biomass A at widths 2-3 (no Table 18 rate, all Good or High access) use 323 for 11 sections (assumption, parameters.csv)
+2026-09-28 00:01:26,630 INFO access_rate below cap_rate_river: {'Good': 776, 'Low': 6}
+2026-09-28 00:01:26,636 INFO program rates (Guidelines Tables 45-46): {'DHALO': 56, 'tailwater': 2}; above the Table 18 access rate for 11 sections
+2026-09-28 00:01:26,641 INFO cap_source: {'access_rate': 1012, 'class_a': 17, 'program_rate': 9, 'baseline': 7}
+2026-09-28 00:01:26,643 INFO   above the cap, capped at 2026 stocking: 2649_1 Conneauttee Creek (EGS2, 0.19 mi): 1000 fish vs cap 486, river cap 543
+2026-09-28 00:01:26,643 INFO   above the cap, capped at 2026 stocking: 1327_1 Youghiogheny River (EHS1L, 1.11 mi): 7900 fish vs cap 7070, river cap 7070
+2026-09-28 00:01:26,643 INFO   above the cap, capped at 2026 stocking: 2892_3 Wiconisco Creek (EGS1S, 0.74 mi): 1175 fish vs cap 1174, river cap 1209
+2026-09-28 00:01:26,644 INFO   above the cap, capped at 2026 stocking: 183_9 Fishing Creek (DLS1S, 4.04 mi): 1730 fish vs cap 1637, river cap 6597
+2026-09-28 00:01:26,644 INFO   above the cap, capped at 2026 stocking: 4029_7 West Branch Susquehanna River (EGU1L, 2.77 mi): 3535 fish vs cap 3497, river cap 6004
+2026-09-28 00:01:26,644 INFO   above the cap, capped at 2026 stocking: 2254_2 Black Moshannon Creek (EHR3, 0.56 mi): 850 fish vs cap 800, river cap 800
+2026-09-28 00:01:26,644 INFO   above the cap, capped at 2026 stocking: 1767_5 Roaring Brook (DGM3, 2.26 mi): 3965 fish vs cap 2908, river cap 3250
+2026-09-28 00:01:26,644 INFO Class A sections whose 2026 stocking exceeds their cap: 1 ['2717_9']
+2026-09-28 00:01:26,644 INFO 2026-stocked sections above cap_fish: 0; above cap_fish_mid (midpoint widths; the model would have to cut them): 49
+2026-09-28 00:01:26,645 INFO statewide cap vs 2026 stocking (2606468 fish): cap_fish 3.06x, cap_fish_mid 2.23x, cap_fish_river 3.45x, cap_fish_class_a_grow 3.08x
+2026-09-28 00:01:26,659 INFO wrote logs/04_cap_check.csv (1045 sections)
+2026-09-28 00:01:26,662 INFO Bear Creek (3197) checks passed: river_id 3197, Southeast
+2026-09-28 00:01:26,715 INFO sections: 1045 rows, 86 columns

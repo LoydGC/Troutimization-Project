@@ -47,26 +47,48 @@ don't smooth, impute, or "fix" it.
 - **Distance** = road distance from each supply node to each section, built by Gavin in
   `notebooks/travel_arcs.ipynb`. Not on our slate: join it on `section_id`. No Google Maps API (cost;
   terms bar storing results).
-- **Demand for waters the survey doesn't name** = population weighted by the survey's own travel-distance
-  distribution (p93): the share of anglers willing to travel at least that far. Calibrating against the
-  county tables (p85) is optional.
-- **Density bound = "river cap"** (decision 2026-09-27; details in `docs/model_design.md`):
-  river rate x `length_mi` x top of the PFBC width class, and at least 300 fish.
-  - River rate = the highest Table 18 rate over use potential and population density for the section's
-    biomass + width. Use and population are PFBC's demand proxies, which our benefit objective replaces.
-  - Biomass still counts: B gets 323/acre at widths 2–3, ~10% below C–E's 361. Widths 4/1S/1L: 57/137/91
-    for all.
+- **Angler demand** (decision 2026-09-27; reasoning in `docs/model_design.md` § Angler benefit): angler-days
+  per section from two signals, kept as separate columns and blended in the model with weight `w` (0.5,
+  swept 0 / 0.5 / 1). PA residents only.
+  - **Proximity ("band version"):** each Census block group's angler-days (population × county trout-permit
+    rate from PFBC's 2024 sales by store county × home region's mean days fished, p115) go out by its home
+    region's trip-distance bands (p93; straight-line miles × 1.3), split within each band by section length.
+    Every angler-day is placed once.
+  - **Preference:** each named water's share of survey mentions (p76-77) × statewide angler-days, split over
+    its stocked sections by length; the unplaced share is spread like proximity.
+  - **Benefit** = `D_s × (1 − e^(−r/k))`, r = fish per angler-day, k = 1 (PFBC's "one angler trip per trout").
+- **Density bound** (`cap_fish`; decision 2026-09-27, replacing the "river cap"; details in
+  `docs/model_design.md`): `cap_rate` x `length_mi` x top of the PFBC width class, and at least 300 fish.
+  The rate depends on biomass, width and access, never population. `cap_rate` is the higher of `access_rate`
+  and `program_rate` (below).
+  - `access_rate` = the highest Table 18 rate for the section's biomass + width at its own recreational use
+    potential (access: road frontage, parking, ownership) or any worse one, over all population classes.
+    Population is PFBC's demand proxy, which our benefit objective replaces. Access limits how many anglers a
+    section holds and ties to landowner posting, which nothing else in the model sees.
+  - "Or any worse one": Table 18 gives biomass B + High access at widths 2–3 a flat 147/acre but B + Good up
+    to 323, so taken literally 17 sections would get a lower cap for better access. Better access never
+    lowers the cap: they get 323.
+  - Rates at widths 2–3: C–E High 361, everything else High or Good 323, Low 57. Widths 4/1S/1L: 57 for
+    all; 137/91 High, 84/53 Good, 34/30 Low.
+  - Special programs use their own Guidelines rate where it's higher (`program`, `program_rate`): Delayed
+    Harvest Artificial Lures Only (Table 46: 190/acre at widths 2–3, 133 at 1S/1L; 56 sections by `reg_name`)
+    and tailwaters (Table 45: 266 High, 247 Good; ≤ 2 mi below a cold-water dam release. No layer flags them:
+    Youghiogheny 1327_1 and Conneauttee 2649_1 by hand, other dam sections checked in `docs/known_gaps.md`).
+  - Sensitivity: the "river cap" (`cap_fish_river`, rate `cap_rate_river`), the highest rate over access too (C–E
+    361 at widths 2–3).
   - Width tops: 4, 10, 20, 30 m, plus 60 m for open-ended 1L (assumption). Midpoints are the tighter
     sensitivity. No NHDPlus.
   - Table 18 itself (`max_trout_per_acre`, exact lookup on AllocationCode) is PFBC's allocation formula:
     sections are stocked at about rate x acres. It's kept for the baseline and a "PFBC formula as cap"
     scenario.
   - "Today's stocking" = the 2026 count (`total_2026`, decision 2026-09-27). Built in `scripts/04_river_cap.py`
-    (`cap_fish`, `cap_source`).
+    (`access_rate`, `cap_fish`, `cap_source`).
   - Class A (decision 2026-09-27): the 17 Class A-overlap sections PFBC stocks in 2026 are capped at today's
-    stocking (keep or cut, never add). Scenario: the river cap instead (biomass A at widths 2–3 uses B's 323).
-  - The 4 sections PFBC stocks above the river cap in 2026 are capped at today's stocking: Youghiogheny 1327_1
-    (dam tailwater, open year-round), Conneauttee 2649_1, Black Moshannon 2254_2, Roaring Brook 1767_5.
+    stocking (keep or cut, never add). Scenario: the normal cap instead (`cap_fish_class_a_grow`; biomass A at
+    widths 2–3 uses B's 323).
+  - The 7 sections PFBC stocks above the cap in 2026 are capped at today's stocking: Conneauttee 2649_1 (tailwater),
+    Roaring Brook 1767_5, Youghiogheny 1327_1 (tailwater, 1.1× at our 60 m width), Black Moshannon 2254_2,
+    Fishing Creek 183_9, West Branch Susquehanna 4029_7 and Wiconisco 2892_3 (1 fish over).
   - Call it a policy/crowding bound, not carrying capacity.
 - **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (18 are natural
   reproduction waters, including Buffalo Creek 3190_2, now Class A, and Blue Hole Creek 3656_2, removed for
@@ -120,15 +142,16 @@ data/raw/<source>/<date>/  untouched downloads. GITIGNORED except manifest.csv, 
 data/interim/              scratch parsed tables (gitignored, regenerable)
 data/processed/            model-ready tables (parquet + csv), COMMITTED. Keep each file < 50 MB.
                            Exception: pa_trout.gpkg is GITIGNORED (16 MB; rebuilt by scripts 01-02).
+                           angler_survey/: survey tables, csv only (script 00; column notes in its README).
 data/references/           reference PDFs and trout.app snapshots. GITIGNORED (local only); where each came
-                           from is in docs/source_inventory.md. angler_survey/ stays tracked until Prompt 0
-                           moves it.
+                           from is in docs/source_inventory.md.
 scripts/                   numbered pipeline scripts, each re-runnable end to end
 tests/                     pytest tests for scripts/, and test_processed.py (facts data/processed must match)
 notebooks/                 01_data_prep (EDA), 02_optimization, 03_sensitivities: read data/processed only
 docs/                      source_inventory, data_dictionary, data_methods (data handling + assumptions),
                            model_design (model + assumptions + open questions), scenarios_and_extensions,
-                           known_gaps; env_research, transport_research (research snapshots, not maintained)
+                           known_gaps, figure_ideas (figures to make for the report); env_research,
+                           transport_research (research snapshots, not maintained)
 logs/                      run logs and QA reports
 outputs/                   figures and tables for the report
 ```
@@ -184,6 +207,7 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
 | `docs/data_dictionary.md` | Any column in `data/processed/` is added or changed |
 | `docs/data_methods.md` | Source data is modified or a data-handling assumption is made (PFBC license: credit unaltered data, describe every change) |
 | `docs/scenarios_and_extensions.md` | A new scenario, sensitivity or extension idea comes up (additional analysis only) |
+| `docs/figure_ideas.md` | A figure or report-table idea comes up |
 | `docs/known_gaps.md` | Missing data or a source problem is found |
 | `docs/model_design.md` | The model formulation changes, an assumption is decided (flag it if no scenario tests it), or an open question comes up |
 | `data/processed/parameters.csv` | A value no source gives directly is used (rule 7) |

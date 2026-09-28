@@ -41,13 +41,14 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
      that gain or lose fish in every scenario (robust changes) separately from those that move only under
      some goals.
 - **Keep PFBC's physical rules as constraints, not its preferences.** The exclusions and a per-acre
-  crowding cap keep plans realistic. The cap drops the parts of PFBC's formula that encode demand (see
-  "Density bound"); a "PFBC formula as cap" scenario puts them back.
+  crowding cap keep plans realistic. The cap drops the part of PFBC's formula that encodes demand
+  (population) but keeps access (see "Density bound"); a "PFBC formula as cap" scenario puts population back.
 - **One-line pitch:** "PFBC allocates by formula. We make the goals explicit and ask what the formula
   leaves on the table, and what it costs to favour anglers, the budget, or wild trout."
 - **Caveat:** if our demand measure ends up close to population density, the model may just rebuild
   PFBC's formula. That's a result in itself ("the rules are close to demand-optimal"). The survey
-  preferences and travel distances are what add new information.
+  preferences and travel distances are what add new information. How close demand sits to population
+  depends on the travel curve (see Angler benefit).
 
 ## Model shape
 - **Decision:** `x[h,s]` = adult trout per year from PFBC hatchery `h` to destination `s`. Add a binary
@@ -74,50 +75,97 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
 - **Co-op nurseries are fixed background** (team decision 2026-09-27), not supply nodes. See "Co-op
   nurseries" below.
 - **Total fish:** fixed at the baseline total (same fish, better placement), or relaxed as a scenario.
-- **Density bound ("river cap", decision 2026-09-27):**
-  `x_s ≤ cap_s = max(river_rate_s × length_mi_s × top_width_s, 300)`.
-  - **Why not Table 18 directly.** Table 18 is PFBC's allocation formula, and two of its four inputs, use
-    potential and population density, are PFBC's proxies for angler demand. Our benefit objective models
-    demand, so a formula cap would lock in PFBC's preferences (a rural section could never pass 95/acre).
-    The cap should describe the river, not PFBC's preferences.
-  - **River rate** = the highest Table 18 rate over use and population for the section's biomass + width:
+- **Density bound (`cap_fish`, decision 2026-09-27; replaced the "river cap" the same day):**
+  `x_s ≤ cap_s = max(cap_rate_s × length_mi_s × top_width_s, 300)`. The rate depends on wild biomass, width
+  and access, never population; `cap_rate` is the higher of `access_rate` and `program_rate` (both below).
+  - **Why not Table 18 directly.** Table 18 is PFBC's allocation formula. Its four inputs are wild biomass,
+    recreational use potential (access), human population density and width. Using the section's exact
+    rate as the cap would lock in PFBC's preferences: a rural section could never pass 95/acre.
+  - **Population is dropped** (the cap takes the highest rate over all four population classes). It's purely
+    a guess at how many anglers will come, and our benefit objective models that directly.
+  - **Access is kept.** Recreational use potential (Guidelines printed pp. 41–43, Tables 15–16) is measured on
+    the stream: the share of the section within 100 m or 300 m of a road, parking spaces per km, and bank
+    ownership (public, private, % posted). Nothing else in the model sees those, and they limit a section
+    whatever the demand:
+    - Road frontage and parking limit how many anglers a section can hold at once. Crowding is stocked-trout
+      anglers' top complaint in the 2023 survey (9–17% by home region, survey PDF p. 169).
+    - Ownership is about landowners. The Guidelines cut stocking on posted private water because "continued
+      high intensity stocking on waters with existing posting problems may lead to additional posting and
+      the eventual total closure of these waters" (printed p. 43).
+  - **Finding: Table 18 isn't monotone in access** (checked against the PDF, printed p. 45). For biomass B at
+    widths 2–3, High access gets a flat 147/acre, while Good access gets 323 (Metro), 285, 190 and 95. The
+    Guidelines don't say why; a likely reason is protecting wild trout on easy-to-reach B water, which our
+    wild-trout impact objective already covers. Taken literally, 17 sections (16 stocked in 2026: 14 rural,
+    2 metro; 23,580 fish) would get a lower cap for having better access.
+  - **Decision: better access never lowers the cap.** `access_rate` = the highest Table 18 rate for the
+    section's biomass + width at its own access rating *or any worse one*, over all population classes. It
+    only changes those 17 sections (147 → 323, the same as the Good row). Rates in trout/acre/yr:
 
-    | Biomass | Width 4 | 3 | 2 | 1S | 1L |
-    |---|---|---|---|---|---|
-    | B | 57 | 323 | 323 | 137 | 91 |
-    | C, D, E | 57 | 361 | 361 | 137 | 91 |
+    | Biomass | Access | Width 4 | 3 | 2 | 1S | 1L |
+    |---|---|---|---|---|---|---|
+    | C, D, E | High | 57 | 361 | 361 | 137 | 91 |
+    | B | High | 57 | 323* | 323* | 137 | 91 |
+    | B–E | Good | 57 | 323 | 323 | 84 | 53 |
+    | B–E | Low | 57 | 57 | 57 | 34 | 30 |
 
-    Biomass still has an effect: B is ~10% lower at widths 2–3. We do not assume "no biomass reduction".
+    \* Lifted from Table 18's 147 by the rule above. Biomass A follows the same rows, except that at widths
+    2–3 it has no Table 18 rate and uses B's 323 (all 11 are Good or High; assumption, `parameters.csv`).
+
+    High sections keep the old river cap's rate. Good sections get the Good row's top, 323 at widths 2–3
+    (about 11% below 361 for C–E); the 6 Low sections get 57 or less.
+  - **River cap = the looser sensitivity** (`cap_fish_river`, rate `cap_rate_river`): the highest rate over access too (361 at widths
+    2–3 for C–E, 323 for B). Class A stays at today's stocking, and no section drops below its 2026 count.
+  - **Special programs use their own rate where it's higher** (found and decided 2026-09-27). Table 18 isn't
+    PFBC's only rate table: some programs replace it, and our first cap read Table 18 alone.
+    - **Delayed Harvest Artificial Lures Only (DHALO), Table 46** (Guidelines pdf p. 85): 190/acre at widths
+      2–3, 133 at 1S/1L. 56 sections, flagged by `reg_name`. It matters on big rivers, where Table 18's Good
+      rate is far lower (84 at 1S, 53 at 1L). Before this fix, 5 DHALO rivers sat above their cap: Wiconisco
+      Creek is stocked at exactly 133/acre.
+    - **Tailwater trout fisheries, Table 45** (pdf p. 80): 266/acre at High access, 247 at Good, for "those
+      few short tailwater sections" (≤ 2 mi) below a major reservoir's cold-water outflow. No PFBC layer
+      flags tailwaters, so two are listed by hand: Youghiogheny 1327_1 and Conneauttee Creek 2649_1
+      (assumption). The rate only matters on wide rivers: at widths 2–3 the access rate (323–361) is higher.
+      The other dam sections we checked are too long, not cold-water or already DHALO (`known_gaps.md`
+      § Tailwater sections).
+    - `cap_rate` is the higher of `access_rate` and `program_rate`, and `cap_rate_river` likewise includes
+      the program rate. It raises 11 sections: 10 DHALO rivers at 1S/1L and the
+      Youghiogheny. At widths 2–3, DHALO's 190 is below Table 18's 323, so nothing changes there.
   - **Width = top of the class** (4, 10, 20, 30 m; 60 m for open-ended 1L, an assumption). It's the most
     PFBC's rules allow on a stream of that class, so the cap doesn't bind just because our width guess is
     off. The class midpoints (3, 7, 15, 25, 40 m) are the tighter sensitivity.
   - **Minimum 300** fish, so any section can take one load (`300·y_s ≤ x_s`).
-  - **Fit to the baseline** (`logs/04_cap_check.csv`). Statewide, `cap_fish` is 3.4× 2026 stocking at
-    class tops and 2.5× at midpoints. 2026 stocking exceeds the river cap in 4 sections, which are capped at
-    their 2026 stocking (`cap_source = "baseline"`): Conneauttee Creek 2649_1 (a 0.19 mi section, 1.8×),
-    Black Moshannon Creek 2254_2 (6% over), Youghiogheny River 1327_1 (3.3×) and Roaring Brook 1767_5
-    (Lackawanna, 22% over; its stocking went 1,315 → 2,660 → 3,965 in 2024–26, so a multi-year mean would
-    have kept it under).
+  - **Fit to the baseline** (`logs/04_cap_check.csv`). Statewide, `cap_fish` is 3.06× 2026 stocking at class
+    tops (the river cap 3.45×) and 2.23× at midpoints. 2026 stocking exceeds the cap in 7 sections, which are
+    capped at their 2026 stocking (`cap_source = "baseline"`):
+    - Conneauttee Creek 2649_1 (a 0.19 mi tailwater, 2.1×), Roaring Brook 1767_5 (Lackawanna, 1.4×; its stocking
+      went 1,315 → 2,660 → 3,965 in 2024–26, so a multi-year mean would have kept it under), Youghiogheny
+      River 1327_1 (1.1×, see below), Black Moshannon Creek 2254_2 (6% over), Fishing Creek 183_9 (Low
+      access, 6% over), West Branch Susquehanna River 4029_7 (1% over) and Wiconisco Creek 2892_3 (1 fish
+      over: stocked at exactly its DHALO rate, and the cap rounds down).
+    - The access rule alone put 11 sections over (7 more big Good- or Low-access rivers). The special-program
+      rates brought 5 of those DHALO rivers back under.
   - **"Today's stocking" = the 2026 count** (`total_2026`, all five species; decision 2026-09-27), for both
     the Class A and the above-cap sections.
-  - **Midpoint sensitivity** (`cap_fish_mid`): 39 sections stocked in 2026 are above it and would have to be
-    cut (23 of them width 3, 9 width 1L).
+  - **Midpoint sensitivity** (`cap_fish_mid`): 49 sections stocked in 2026 are above it and would have to be
+    cut (32 of them width 3).
   - **Youghiogheny 1327_1** (EHS1L, dam outflow to Casselman River, open year-round): PFBC stocks 7,900
-    fish on 1.1 mi, 3.3× the river cap at 60 m. Table 18 would need a ~250 m wide river. It's a special
-    tailwater fishery that PFBC deliberately stocks above formula, so today's stocking is its cap.
+    fish on 1.1 mi. It's a tailwater, so its rate is Table 45's 266/acre, not Table 18's. At our assumed
+    60 m top width that caps it at 7,070 (1.1× over); 266/acre fits 7,900 fish at 67 m. (Corrected
+    2026-09-27: read against Table 18's 72/acre it looked 3.3× over, needing a ~250 m wide river.) Today's
+    stocking is its cap.
   - **Class A** (decision 2026-09-27): the 17 Class A-overlap sections PFBC stocks in 2026 are capped at
     today's stocking (keep or cut, never add). They are the 13 biomass-A sections plus Mauch Chunk Creek
     2744_2, West Branch Hicks Run 4363_3, Freeman Run 3546_4 and Penns Creek 2207_6 (two of these only
     partly overlap; same rule). Stocking Class A needs Commission approval. The 13 biomass-A sections are very
     likely the guidelines' 13 continued-stocking Class A sections; the other 4 have no documented basis
     (`known_gaps.md` § Class A exemptions).
-    With the river cap the 13 biomass-A sections alone could take 2.5× today (85k vs 34.5k fish; up to
+    With the normal cap the 13 biomass-A sections alone could take 2.4× today (84k vs 34.5k fish; up to
     5.4× on Yellow Creek 59_4), mostly near Allentown/Bethlehem in an "anglers first" run.
-    **Scenario "Class A allowed to grow":** the river cap instead. Table 18 has no biomass-A rate at widths
-    2–3 (11 sections), so they use B's 323 (assumption: A has more wild biomass than B, and rates fall as
-    wild biomass rises).
+    **Scenario "Class A allowed to grow"** (`cap_fish_class_a_grow`): the normal cap instead, never below
+    today (Monocacy Creek 2717_9 is already above it: 2,815 fish vs 2,357).
   - The exact Table 18 rate stays in `max_trout_per_acre` for the baseline and the "PFBC formula as
-    cap" scenario. Width class comes from the code; `Description` ("OPTIMUM YIELD 2 SUBURBAN") is only a
+    cap" scenario, which uses `program_rate` instead for the 57 special-program sections (PFBC's formula
+    for them). Width class comes from the code; `Description` ("OPTIMUM YIELD 2 SUBURBAN") is only a
     label, and its "2" is not a width class.
   - Call it a policy/crowding bound, not ecological carrying capacity.
 - **Candidate sections** (decision 2026-09-27): the 1,022 sections PFBC stocks in 2026. `x_s = 0` for the
@@ -139,20 +187,119 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
 - **Wild-trout lever (scenario):** `Σ_wild x_s ≤ (1−ρ)·Σ_wild baseline_s`, with ρ ∈ {0, .25, .5, 1}.
 
 ## Angler benefit
-- **Diminishing returns:** make benefit concave in `x_s` (piecewise-linear in Gurobi). The 300th fish is
-  worth more than the 3,000th.
-- **Two demand signals, blended:**
-  1. **Survey preference** (2023 survey, p76–83): % of stocked-trout anglers naming the water in their top
-     three. Covers ~223 waters, matched to river_id and split across sections by length.
-  2. **Proximity demand** for every section: the sum over Census block groups of
-     `population × P(angler travels ≥ d)`, where `d` is the distance to the section and P comes from the
-     survey's travel-distance distribution (p93). In plain terms, nearby people count fully and people
-     100+ miles away barely count.
-- **Optional calibration:** replace the p93 curve with `exp(−d/β)` and choose β so the predicted "county
-  where anglers from region R fish" matches the survey's p85 table.
-- **Other benefit inputs (optional):** access points nearby, special-regulation waters, catch importance
-  (p140: 81% say catching a fish matters), and thermal suitability (fish in warm water die by summer, so
-  benefit falls).
+Decided 2026-09-27. Numbers marked *exploratory* come from scratchpad prototypes; Prompt 6 rebuilds them.
+Values no source gives are in `data/processed/parameters.csv`.
+
+- **Unit: angler-days of stocked-trout fishing.** Both demand signals are angler-days per section and add up
+  to the same statewide total (about 8.8M, *exploratory*).
+  - Why: a common unit makes the blend a fair mix and gives readable results (fish per angler-day,
+    angler-days with a catch). Counting days rather than people gives avid anglers their weight:
+    Northcentral anglers fish about 27 days a year, the other regions 19–22 (p115).
+  - What it gives up: demand is fixed on today's map, and anything missing from the section set pushes its
+    anglers onto our sections (see Assumptions no scenario tests).
+- **Benefit per section:** `benefit_s = D_s × g(x_s / D_s)`, with `g(r) = 1 − e^(−r/k)`. `D_s` is the
+  section's angler-days and `r` is stocked fish per angler-day.
+  - **Why this structure,** rather than `g(x_s)` or `D_s × f(x_s)`: benefit scales with both fish and
+    anglers (double both and benefit doubles), so a busy section needs proportionally more fish before it
+    levels off. With `D_s × f(x_s)`, every section would level off at the same fish count, whether it has
+    100 angler-days or 10,000.
+  - **What it does:** the value of the next fish depends only on the section's fish per angler-day. With no
+    other limits, the model gives every section the same fish per angler-day; caps, transport cost and
+    wild-trout impact are what move it off that. So the structure matters more than the exact curve, which
+    only sets how hard the model trades against those limits.
+  - **Why this curve:** if each stocked fish is caught with probability p and catches fall at random across
+    angler-days, the share of angler-days that catch at least one stocked trout is `1 − e^(−p·r)`. So benefit
+    reads as **angler-days with a catch** (81% of anglers say catching trout matters, p140). It levels off (a
+    day can only succeed once), and its slope at zero is finite, so the model may leave a costly section
+    empty, consistent with the 300-fish minimum. Rejected: a straight line (fills the top sections to their
+    caps and leaves hundreds empty), log and power curves (never level off, and power curves force fish into
+    every section), and an expected-catch curve capped at the creel limit (almost straight at realistic
+    stocking levels).
+  - **k = 1 fish per angler-day,** swept 0.5 and 2. Every stream management option in the Operational
+    Guidelines has the objective "one angler trip generated per trout stocked" (e.g. High Yield, p. 47). The
+    guideline anchors the scale; the curve's shape is our assumption. Upgrade: k = 1 ÷ the share of stocked
+    trout that get caught, if a PFBC return-to-creel figure turns up. The saturating ratio `r/(r + k)` is a
+    one-run shape sensitivity (it penalizes overstocking less).
+  - **In Gurobi:** each section's curve is piecewise linear, with breakpoints at r = 0, 0.25, 0.5, 1, 2, 4, 8
+    (× `D_s`). Maximizing a concave curve keeps it an LP.
+- **Demand:** `D_s = (1 − w) · proximity_s + w · preference_s`, with `w = 0.5`, swept 0 / 0.5 / 1.
+  - The two signals estimate the same thing (where anglers fish), so they form one objective, not a fourth
+    goal. The ends of the sweep read as "near-home anglers first" (w = 0) and "favorite waters first"
+    (w = 1). Cost and impact are handled separately by the ε-constraints.
+  - They measure slightly different things: proximity is where typical trips land (p93 asks about an average
+    trip), while preference is where anglers' favorite waters are, and naming a favorite doesn't mean most
+    days are spent there. w absorbs that.
+- **Proximity demand ("band version")**, for every stocked section:
+  1. **Anglers per Census block group** = 2020 population × the county's trout-permit angler rate: 2024
+     trout + combo permits sold in the county (annual and multi-year), minus non-resident and tourist
+     licenses, plus the county's population share of online resident permits, ÷ population. Permits because
+     they must be bought every year (lifetime license holders still buy one) and are trout-specific. Limits
+     (sales are by store county; online sales have no county): `known_gaps.md` § Angler numbers by county.
+  2. **Angler-days** = anglers × the mean days fished for stocked trout in the block group's home region
+     (p115). The survey publishes only the statewide mean (20.6 days); the open "over 50 days" band is set to
+     105 days, the value that reproduces it.
+  3. **Distance** = straight-line miles from the block group's center of population to the section's
+     midpoint × 1.3, because the survey's travel distances are driving miles.
+  4. **Allocation:** each block group sends its angler-days out by its home region's trip-distance bands
+     (p93, "Don't know" dropped; pooled in-state, 38% of trips are within 10 mi and 25% at 10–20 mi). Within a
+     band, the angler-days are split among the stocked sections in that band by length. A band with no
+     section passes its share to the block group's other bands in proportion. The last band (more than
+     150 mi) runs to the farthest block group–section pair in PA (about 416 road mi), so every section is
+     reachable. Every angler-day is placed exactly once.
+  - **Why not the simpler sum of population × P(travel ≥ d):** it counts each angler at every section within
+    reach (about 58 times, *exploratory*), so it measures "how many people live within a long drive" and every
+    section near a metro scores high: 46% of Bear Creek 3197_2's value came from people 50–100 mi away.
+    Splitting anglers across sections fixes it: 44% of Bear Creek's demand then comes from within 10 mi
+    (*exploratory*). Splitting each block group's anglers in proportion to P(travel ≥ d) didn't help, because
+    P falls off too gently (14% at 50 mi, times millions of people).
+  - **Regional curves,** by the angler's home region (the survey's regions are home regions too). Southeast
+    anglers take 47% of trips within 10 mi, Southwest anglers 28% (mean 40 mi), so Philadelphia-area demand
+    stays close to home and Pittsburgh-area demand spreads 30–100 mi out. The pooled in-state curve is the
+    sensitivity. The survey has no county-level curve (about 33 in-state respondents per county).
+  - **Length split:** a longer section has more water to fish and draws more anglers; survey preference is
+    split the same way.
+  - **The curve decides how local demand is:** a steep curve makes demand track where people live, which
+    pulls the plan toward PFBC's population-density formula (see the caveat in Framing); a flatter one leaves
+    more to cost, impact and the preference signal.
+  - Columns: `prox_days` (default), `prox_days_pooled`, `prox_days_pop` (population only: every county at
+    the state angler rate).
+  - **Check:** each home region's share of angler-days that land inside its own region vs the survey's p85,
+    where 67–88% of each region's favorite-water mentions are in the home region.
+- **Preference demand** (2023 survey, p76–83):
+  - A water's share of anglers = its % ÷ the sum of all mentions (about 220%: up to three waters each, plus
+    "Other" and "Don't know"); "<0.5%" counts as 0.25%. That share × statewide angler-days is split across the
+    water's stocked sections by length. Kettle Creek: 3% → about 1.4% of anglers → about 10× what proximity
+    gives its sections (*exploratory*).
+  - The share we can't place ("Other", "Don't know", lakes, unmatched names, "other county" rows) is spread
+    like `prox_days`, so preference also sums to the statewide total.
+  - Ambiguous names are resolved with the by-home-region table (p78–83): Elk Creek is Erie's (Northwest 10%),
+    Bald Eagle Creek mostly Centre's, and French Creek splits between Chester's and Erie's. The rest go to the
+    review list.
+  - **Per-mile flag:** a water whose preference angler-days per stocked mile exceed the state's highest
+    proximity per mile is flagged for review, not capped. Among the top favorites only the Youghiogheny is
+    flagged: all its preference lands on the 1.1 mi tailwater 1327_1. It keeps its full share (decision
+    2026-09-27): the dam tailwater is among the most heavily fished spots in the state and is open
+    year-round.
+- **Favorite boost: tested and dropped (2026-09-27).** Boosting favorite waters within each distance band
+  until each draws its survey share would honor both survey facts in one number. Remote favorites needed
+  boosts of ×60–1,500 (Kettle Creek ×220), which took about 95% of the demand of small streams next to them
+  (e.g. Cross Fork and Long Run in Potter and Tioga), and a version limited to trips of 30+ mi couldn't reach
+  the targets at all. The two survey facts conflict for remote waters, so the blend is the honest merge. The
+  ratio of preference draw to proximity draw is kept as a **destination index** for the report: about 1× =
+  popular because many people live nearby (Tulpehocken), 5–10× = a true destination (Kettle Creek, Pine
+  Creek) (`figure_ideas.md`).
+- **Access is in the cap, not in demand** (decision 2026-09-27). PFBC's access rating (`use_potential`: road
+  frontage, parking, ownership) limits how many anglers a section holds, so it sets the density bound (see
+  Constraints). It isn't a demand weight: no source says how much parking shifts where anglers go, and the
+  only number to hand, PFBC's High-to-Good stocking ratio, would make demand partly repeat PFBC's formula
+  and the "stocking vs demand" comparison circular. The preference signal already reflects where anglers
+  actually fish, access included. An access-weighted length split is an idea in `scenarios_and_extensions.md`.
+  PFBC's access-point layer isn't used: the rating is measured per section and covers the same thing.
+- **Other benefit inputs (optional):** special-regulation waters, catch importance (p140: 81% say catching a
+  trout matters), and thermal suitability (fish in warm water die by summer, so benefit falls). On
+  catch-and-release and delayed-harvest waters a stocked trout can be caught more than once, which in the
+  benefit curve would mean a smaller k there. Collected in Prompt 6; whether they enter the score is an open
+  question.
 
 ## Transport cost
 - **Cost per fish:** `cost[h,s] = 2 × road_mi × cost_per_truck_mile / fish_per_load`.
@@ -236,7 +383,7 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   `coop_species`) that we report but that doesn't affect decisions. This mirrors PFBC's policy today.
 - **Version B, the extension "What if the state coordinated more with co-ops?":**
   - Each co-op section gets a fixed co-op count `c_s`, and benefit becomes
-    `demand_s × f(PFBC fish + c_s)`. With diminishing returns, PFBC fish shift toward waters co-ops
+    `D_s × g((x_s + c_s) / D_s)`. With diminishing returns, PFBC fish shift toward waters co-ops
     don't cover.
   - Co-op fish have no PFBC trucking cost, and they are constant in the impact score (report only).
   - Use only listings that pass manual review; drop the stale ones on wild-trout water.
@@ -252,8 +399,24 @@ Decided assumptions that no scenario varies. List them in the report's limitatio
 null counts as 0, overlap by river miles, length choice) are in `docs/data_methods.md` with their checks.
 - The 17 stocked Class A sections are capped at today's stocking, never excluded (an "exclude all Class A"
   scenario would test it). See Constraints.
-- Benefit has diminishing returns in fish; the curve's shape is chosen, not measured. See Angler benefit.
-- A river's survey preference is split across its sections by length. See Angler benefit.
+- Benefit scales with anglers: `D_s × g(fish per angler-day)`. The curve's scale k and one alternative shape
+  are swept; the structure isn't. See Angler benefit.
+- Survey preference, and proximity demand within a distance band, are split across sections by length. See
+  Angler benefit.
+- Fish count only where they're stocked. Stocked trout drift downstream, so a tailwater like Youghiogheny
+  1327_1 also serves the reaches below it; the model credits only the stocked section (extension idea
+  "Downstream drift").
+- Demand is fixed on today's section map: the anglers of a section that gets no fish don't move to other
+  sections. Modeling that would need a choice model, where demand depends on the plan.
+- Only Pennsylvania residents create demand (out-of-state anglers are left out, decision 2026-09-27).
+  Sections in neighboring states aren't in the set, so block groups near the border send all their anglers
+  to PA sections. Lakes aren't in the set either (~20% of PFBC's adult trout), so lake anglers are pushed
+  onto streams.
+- License sales by store county stand in for anglers by home county (`known_gaps.md` § Angler numbers by
+  county).
+- Trip distances are per angler (p93), not per day. If avid anglers fish closer to home, trips are more local
+  than modeled; the survey doesn't cross-tabulate days by distance.
+- The survey describes 2022 fishing and is applied to the 2026 sections.
 - Biomass letter class is the only measure of wild-trout abundance; numeric biomass is only in scattered
   biologist reports (`docs/env_research.md` § 5).
 - Baseline cost assumes each section is served by its nearest hatchery (PFBC doesn't publish the assignment).
@@ -265,14 +428,18 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
 ## Report hooks
 - PFBC's 2025–29 trout plan (Obj. 9.1) says allocation rates "need to be reviewed."
 - The survey found 80% support extra stocking on high-use waters.
+- 79% of stocked-trout anglers say fishing near home is important (p95), which supports proximity demand.
+- PFBC's own 2005 study of 28 stocked stream sections found 0.63 angler trips per trout stocked over the first
+  eight weeks of the season, ranging from 0.07 to 2.76 (Operational Guidelines pp. 63–64, citing Greene et al.
+  2006). That's below the guidelines' one-trip-per-trout objective, and a 40-fold spread between sections is
+  exactly what reallocation works on.
 
 ## Open questions
 - Are lakes decisions or fixed? (~20% of fish, 131 stocked waterbodies, no per-lake counts found in GIS yet.)
 - One annual decision, or split by season (pre-season / in-season / fall-winter)?
-- Blend weight between survey preference and proximity demand.
 - Include golden and brood in the model's fish total? (PFBC's TotalAdultStocked_minusBrood is brook + brown +
   rainbow only.)
-- Which optional inputs (access points, special regulations, catch importance, thermal suitability) enter the
+- Which optional inputs (special regulations, catch importance, thermal suitability) enter the
   benefit score, beyond being collected in Prompt 6?
 - Transport cost: charge each section for the visit's detour, on top of the hatchery → section haul
   (team discussion 2026-09-27)? Preferred so far: detour_s = 2 × nearest-neighbour stocked-section miles ×

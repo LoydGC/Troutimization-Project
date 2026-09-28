@@ -116,7 +116,38 @@ for that extension:
   Reproduction and Wilderness layers. Biologist reports give survey-site data for some streams only, not a
   bulk per-section width.
 - So area uses the PFBC width class from AllocationCode (Operational Guidelines Table 14): the class top for
-  the river cap, the midpoint for the tighter sensitivity (`model_design.md` § Density bound).
+  the density cap, the midpoint for the tighter sensitivity (`model_design.md` § Density bound).
+
+## Tailwater sections (checked 2026-09-27: no flag; list assembled 2026-09-28)
+- PFBC stocks "those few short tailwater sections" at their own rate (Operational Guidelines Table 45, pdf
+  p. 80: 266/acre High access, 247 Good) instead of Table 18. A section qualifies if it is ≤ 2 mi long and
+  directly below a major reservoir's cold-water outflow, with trout year-round. Longer tailwater reaches use the
+  normal program rates (criterion 1). No stocked-section field says which sections are tailwaters: not
+  `Description` (category labels only), `reg_name` or `program_name`.
+- Two sections are treated as tailwaters: Youghiogheny 1327_1 (below the Youghiogheny River Lake dam; PFBC
+  stocks it at 297 fish/acre) and Conneauttee Creek 2649_1 (below the Edinboro Lake dam; team knowledge,
+  2026-09-28). Conneauttee's cap doesn't change: its access rate (323) is already above the tailwater rate
+  (247), and at 665 fish/acre today it stays held at its 2026 count.
+- The tailwater rate only raises a cap where the section's own rate is lower: rivers at widths 1S/1L/4 or Low
+  access. At widths 2–3 the access rate (323–361) is already higher, so a missed narrow tailwater loses nothing.
+- Other stocked sections just below dams (web search 2026-09-28, major tailwaters only; fish/acre = 2026
+  stocking over the class-top area):
+
+  | Section | Water (dam) | Length | Why it isn't treated as a Table 45 tailwater |
+  |---|---|---|---|
+  | 2968_11 | Raystown Branch Juniata (Raystown) | 0.90 mi | Short, but the only source (an angler forum) describes a mostly warmwater tailwater; stocked at 66/acre, under Table 18's 91 |
+  | 2923_4 | Tionesta Creek (Tionesta) | 0.90 mi | Open year-round, but no source calls it a trout tailwater; stocked at 75/acre |
+  | 2928_2 | East Branch Clarion (East Branch) | 1.17 mi | A cold bottom-release tailwater, but PFBC runs it as DHALO (176/acre, near DHALO's 190); its access rate (361) is higher anyway |
+  | 2254_2 | Black Moshannon Creek (Black Moshannon) | 0.56 mi | Width 3: its access rate (361) is already higher |
+  | 3351_11 | Kettle Creek (Alvin R. Bush) | 2.15 mi | Over 2 mi, though a PFBC biologist calls this exact reach a coldwater tailwater ([kettlecreek.org](http://www.kettlecreek.org/uploads/2/5/6/0/25607137/4fisheries_compa.pdf)); stocked at 99/acre |
+  | 3072_6 | Tulpehocken Creek (Blue Marsh) | 2.03 mi | Over 2 mi; DHALO |
+  | 1989_2, 6228_4, 2280_6, 1817_3, 2281_4, 2603_3, 2730_6 | N. Br. Little Conemaugh (Wilmore), Pohopoco (Beltzville; Class A), W. Br. Lackawaxen (Prompton), Mahoning (Mahoning Creek; [PFBC "Mahoning Dam Tailrace"](https://pfbc.pa.gov/images/fisheries/afm/2001/afmmdt.html/)), Dyberry (Jadwin, a dry dam), Woodcock ([PFBC "Tailwater Trout Fishery"](https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/conservation/habitat/lake-plans/woodcock_creek.pdf)), Lehigh (F.E. Walter) | 2.5–9.9 mi | Over 2 mi |
+
+- The Allegheny River below Kinzua Dam, a well-known tailwater, has no 2026 stocked section (only the
+  Potter/McKean headwaters do). Fingerling stocking isn't in the adult layers.
+- **Upgrade:** add Raystown Branch 2968_11 and Tionesta 2923_4 if a source shows a year-round cold-water trout
+  fishery (each cap would rise from 1,954 to 5,712 fish at High access). Or get a PFBC list of tailwater
+  sections from the Area Fisheries Managers.
 
 ## Natural Reproduction river miles shorter than the line (18 sections missed)
 - Overlap uses PFBC's river miles only (assumption, `data_methods.md` § Wild-trout overlap). But about 191
@@ -167,3 +198,39 @@ for that extension:
 - Same meeting: Riggles Gap Run (Blair; our 2710_2, stocked 2024 only) and Little Mill Creek (Lycoming)
   were added to the wild trout list, and Blue Hole Creek 02 (Somerset; our 3656_2) was removed from
   stocking for cadmium and lead.
+
+## Angler numbers by county: license sales (checked 2026-09-27)
+PFBC's *2024 Pennsylvania Annual Fishing License & Permit Sales by Agent County*
+(`data/raw/pfbc_docs/2026-09-27/fishinglicensesalesbycounty2024.pdf`) is the only county-level count of anglers
+we found. Proximity demand turns it into a county angler rate (`model_design.md` § Angler benefit). Its limits:
+- **Store county, not home county.** Sales are counted where the license was sold. Some counties look low,
+  probably because residents buy across the county line (Montour, Adams), and visitors' licenses land in
+  destination counties (Pike, Wayne, Tioga, Crawford). We subtract non-resident and tourist licenses from the
+  permit count; this overcorrects a little, since not every visitor buys a trout permit.
+- **Online sales have no county.** 291,065 of 746,726 annual licenses (39%) and 164,051 of 490,514 annual trout
+  and combo permits were sold online. We split online resident permits by population (assumption); splitting
+  them like store sales is a sensitivity. At the median, rural counties come out 1.8× the state's angler rate
+  by population and 2.3× like store sales (*exploratory*).
+- **In-state travel can't be measured.** Anglers who buy their license where they fish inflate destination
+  counties. The survey limits how much this can matter: 67–88% of each region's favorite-water mentions are in
+  its home region (p85), and the median typical trip is 15 mi one way (p93).
+- **Multi-year permits bought before 2024 are missing.** About 20,000 3-, 5- and 10-year trout and combo permits
+  were sold in 2024 and are counted; holders who bought one in an earlier year aren't. That only matters if
+  they cluster in some counties.
+- **Permits cover more than stocked-stream fishing.** Lake and wild-trout anglers buy them too, and Erie
+  County's combo permits are mostly Lake Erie steelhead anglers.
+- **Fix:** a PFBC table of permit holders by home county or ZIP, e.g. through a Right-to-Know request (counts by
+  county aren't personal data). `county_anglers` keeps every input as a column so that table can replace it
+  (`scenarios_and_extensions.md` § Data upgrades).
+
+## Survey favorite waters vs stocked sections (checked 2026-09-27)
+- The survey names waters, not sections: 221 named waters, plus "Other" (30%) and "Do not know" (8%). By name
+  alone, 125 match exactly one river stocked in 2026, 41 match several, and about 55 match none, most of them
+  lakes (*exploratory*; the Prompt 6 crosswalk settles each one).
+- A named river can be much bigger than its stocked part. The Youghiogheny's only stocked section is the
+  1.1 mi dam tailwater 1327_1, so all of its survey preference lands there. Such waters get a per-mile flag
+  (`model_design.md` § Angler benefit).
+- Lakes aren't in the section set, and "other county or not sure" rows (e.g. Pine Creek, 2%) can't be placed.
+  Their share is spread like proximity demand.
+- 98 named waters show as "<0.5%" (counted as 0.25%) and 97 as 1%, so the survey resolves only the 26 waters at
+  2% or more with any precision.

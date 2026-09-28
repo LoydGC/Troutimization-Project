@@ -107,13 +107,18 @@ One row per section stocked in any of 2024–26 (1,045 rows). No geometry; the g
 | width_top_m | Top of the width class (`parameters.csv` width_m value): 4 → 4, 3 → 10, 2 → 20, 1S → 30, 1L → 60 (assumption) | m |
 | width_mid_m | Class midpoint, the tighter sensitivity (`parameters.csv` width_m low): 3, 7, 15, 25, 40 | m |
 | area_acres, area_acres_mid | length_mi × width_top_m (or width_mid_m) × 0.398 acres per mile-metre | acres |
-| river_rate | Highest Table 18 rate over use and population for the section's biomass + width. Biomass A at widths 2–3 (11 sections) has none and uses B's 323 (assumption, `parameters.csv`) | trout/acre/yr |
-| cap_source | What sets cap_fish: "river_rate" (1,024), "class_a" (the 17 Class A overlaps stocked in 2026), "baseline" (4 sections PFBC stocks above their river cap) | text |
-| cap_fish | Density bound for the model: max(river_rate × area_acres, 300); total_2026 where cap_source is class_a or baseline. Exclusions are separate (`environment`) | fish/yr |
+| program | Special program with its own Guidelines stocking rate: "DHALO" (Delayed Harvest Artificial Lures Only, from `reg_name`; 56) or "tailwater" (Youghiogheny 1327_1 and Conneauttee Creek 2649_1; listed by hand, as no layer flags tailwaters); NA otherwise | text |
+| program_rate | The program's rate: Table 46 DHALO 190 at widths 2–3, 133 at 1S/1L; Table 45 tailwater 266 High, 247 Good access. NA outside a program | trout/acre/yr |
+| access_rate | Highest Table 18 rate for the section's biomass + width at its own use potential (access) or any worse one, over all population classes. Lifts 17 biomass-B High sections at widths 2–3 from Table 18's 147 to 323. Biomass A at widths 2–3 (11 sections) has none and uses B's 323 (assumption, `parameters.csv`) | trout/acre/yr |
+| cap_rate | **The rate cap_fish uses:** the higher of access_rate and program_rate | trout/acre/yr |
+| cap_rate_river | The rate cap_fish_river uses: the highest Table 18 rate over access and population for the section's biomass + width (same biomass-A rule), or program_rate if higher | trout/acre/yr |
+| cap_source | What sets cap_fish: "access_rate" (1,012), "program_rate" (9 sections where the program rate is higher), "class_a" (the 17 Class A overlaps stocked in 2026), "baseline" (7 sections PFBC stocks above their cap) | text |
+| cap_fish | Density bound for the model: max(cap_rate × area_acres, 300); total_2026 where cap_source is class_a or baseline. Exclusions are separate (`environment`) | fish/yr |
 | cap_fish_mid | Same with area_acres_mid (sensitivity); the class_a and baseline sections keep total_2026 | fish/yr |
-| cap_fish_class_a_river | Scenario "Class A allowed to grow": cap_fish, but the 17 Class A sections get max(river cap, total_2026) | fish/yr |
+| cap_fish_river | Sensitivity "river cap": max(cap_rate_river × area_acres, 300, total_2026); the 17 Class A sections keep total_2026 | fish/yr |
+| cap_fish_class_a_grow | Scenario "Class A allowed to grow": cap_fish, but the 17 Class A sections get max(cap_rate × area_acres, 300, total_2026) | fish/yr |
 
-Per-section 2026 stocking vs the river cap (top and midpoint) is in `logs/04_cap_check.csv`.
+Per-section 2026 stocking vs the cap (top and midpoint) is in `logs/04_cap_check.csv`.
 
 ## environment (.parquet, .csv)
 One row per section (1,045). Built by `scripts/05_environment.py` from `sections`; overlaps aren't re-measured.
@@ -139,7 +144,7 @@ value; scripts read them from here.
 
 | Column | Meaning |
 |---|---|
-| parameter | Name, e.g. width_m, river_rate_per_acre, min_fish_per_section |
+| parameter | Name, e.g. width_m, biomass_a_rate_per_acre, min_fish_per_section |
 | applies_to | Width class or biomass/width the row applies to; blank if general |
 | value | Central value used by the scripts |
 | units | Units |
@@ -174,6 +179,11 @@ Operational Guidelines Table 18, expanded to one row per allocation code (234 ro
 | source | Citation |
 
 Table 18 has no biomass-A rows for widths 2–4 and no Metro river rows.
+
+## angler_survey/ (.csv)
+Tables from the 2023 PFBC trout angler survey (Responsive Management), one CSV per question, built by
+`scripts/00_extract_angler_survey.py`. Not keyed by `section_id`: survey waters need a crosswalk first
+(Prompt 6). File list, columns and caveats: `data/processed/angler_survey/README.md`.
 
 ## pa_trout.gpkg (GeoPackage, EPSG:4326)
 For mapping and spatial joins; join to the tables on `section_id`. Gitignored (16 MB): rebuild it with
