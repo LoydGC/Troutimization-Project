@@ -1,0 +1,11 @@
+ID,NAME,COUNTY,REGION,MIXED,production_value,production_units,label_on_page
+6,Pleasant Mount,Wayne,Northeast,MIXED,25963170.0,count (fry/fingerling/yearling),Average Fish Production (species not stated on page)
+12,Huntsdale,Cumberland,Southcentral,MIXED,461280.0,lbs,Average Trout Production
+10,Tylersville,Clinton,Northcentral,TROUT ONLY,372782.0,lbs,Average Trout Production
+9,Bellefonte,Centre,Northcentral,TROUT ONLY,338918.0,lbs,Average Trout Production
+8,Benner Spring,Centre,Northcentral,MIXED,336366.0,lbs,Average Trout Production
+7,Pleasant Gap,Centre,Northcentral,TROUT ONLY,256164.0,lbs,Average Fish Production (species not stated on page)
+5,Oswayo,Potter,Northcentral,TROUT ONLY,181261.0,lbs,Average Fish Production (species not stated on page)
+11,Reynoldsdale,Bedford,Southcentral,TROUT ONLY,161932.0,lbs,Average Trout Production
+4,Corry,Erie,Northwest,TROUT ONLY,145851.0,lbs,Average Fish Production (species not stated on page)
+2,Linesville,Crawford,Northwest,MIXED,,,No production figure found on page
