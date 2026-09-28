@@ -8,8 +8,9 @@ area and river_id). 8–9 assemble and check. Upgrades are at the end, for when 
 
 **Status (2026-09-27):** the sections pull (`scripts/01_download_pfbc_layers.py`,
 `scripts/02_build_sections.py`) and the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
-flag) are built, the Bear Creek checks pass, and they are pushed on branch `sections-pull`. Not merged into
-main yet (main has Gavin's newer distance commits). Done so far, so skip these parts when sending the prompts:
+flag) are built, the Bear Creek checks pass, and they are pushed on branch `sections-pull`. Gavin's main
+(distance notebooks) was merged into it 2026-09-27; `sections-pull` isn't merged into main yet (next: a pull
+request for Gavin to review). Done so far, so skip these parts when sending the prompts:
 - Prompt 0 steps 1, 3, 4, 5 (step 2 is open, and 4 partner raw files still need a source from Gavin)
 - Prompt 1 in part: `docs/source_inventory.md` lists the sources in use
 - Prompt 2 for the stocked-section and wild-trout layers; Prompt 3
