@@ -51,6 +51,16 @@ from.
 | `*.html` (2 files) | trout.app pages, saved by hand. Never fetched by a script (robots.txt disallows it). | validation only (Prompt 9) |
 
 ## Partner data (Gavin)
-Files in `data/raw/` committed before the manifest existed: `pa_boundary.gpkg`, `pa_class_a_trout_streams.gpkg`,
-`pa_hatcheries.gpkg`, `pa_hatchery_production.csv`, `pa_natural_repro_trout_streams.gpkg`,
-`pa_stocked_trout_streams.gpkg`, `Coop_nurseries.geojson`. Sources not recorded yet (Prompt 0 step 1).
+Files Gavin committed to `data/raw/` (2026-09-21 and 09-26) before the manifest existed. They are in the
+manifest as `partner_loydgc` rows with record counts and checksums; retrieval dates are unknown. Sources come
+from his `notebooks/01_data_prep.ipynb` where it names them; we haven't verified them.
+
+| File | Records | Source | Used in |
+|---|---|---|---|
+| `pa_hatcheries.gpkg` | 13 | ArcGIS Online `https://services9.arcgis.com/6EuFgO4fLTqfNOhu/arcgis/rest/services/PA_Hatcheries/FeatureServer/0` | placeholder `hatcheries` layer in pa_trout.gpkg (script 02) |
+| `pa_boundary.gpkg` | 1 | Census cartographic boundaries, `https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip`, filtered to PA | his maps |
+| `pa_hatchery_production.csv` | 10 | PFBC hatchery web pages, one per row (`source_url` column) | hatchery supply shares |
+| `pa_class_a_trout_streams.gpkg` | 1,361 | not recorded (same count as PASDA #9) | his maps |
+| `pa_natural_repro_trout_streams.gpkg` | 6,224 | not recorded (same count as PASDA #25) | not referenced |
+| `pa_stocked_trout_streams.gpkg` | 1,064 | not recorded (matches none of our year layers; see `known_gaps.md`) | his maps and `travel_arcs` distances |
+| `Coop_nurseries.geojson` | 165 | not recorded | nursery locations (script 03) |

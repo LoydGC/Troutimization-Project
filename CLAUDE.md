@@ -66,8 +66,9 @@ don't smooth, impute, or "fix" it.
   - The 3 sections PFBC stocks above the river cap are capped at today's stocking: Youghiogheny 1327_1 (dam
     tailwater, open year-round), Conneauttee 2649_1, Black Moshannon 2254_2.
   - Call it a policy/crowding bound, not carrying capacity.
-- **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (18 are natural
-  reproduction waters; Blue Hole Creek 3656_2 for cadmium/lead) get no fish; a scenario lets them back.
+- **Candidate sections:** only the 1,022 sections PFBC stocks in 2026. The 23 it dropped (19 are natural
+  reproduction waters, including Buffalo Creek 3190_2, now Class A, and Blue Hole Creek 3656_2, removed for
+  cadmium/lead) get no fish; a scenario lets them back.
 - **Environment** follows `docs/env_research.md`: exclude Wilderness and Buffalo Creek 3190_2 (Class A since
   Jan 2026, not stocked in 2026), cap the other Class A overlaps at today's stocking, no stocked
   brook trout over wild brook trout. Everything else is the **wild-trout impact objective** (its own goal, not
@@ -121,7 +122,7 @@ data/references/           reference PDFs and trout.app snapshots. GITIGNORED (l
                            from is in docs/source_inventory.md. angler_survey/ stays tracked until Prompt 0
                            moves it.
 scripts/                   numbered pipeline scripts, each re-runnable end to end
-tests/                     pytest tests for scripts/
+tests/                     pytest tests for scripts/, and test_processed.py (facts data/processed must match)
 notebooks/                 01_data_prep (EDA), 02_optimization, 03_sensitivities: read data/processed only
 docs/                      source_inventory, data_dictionary, data_methods (data handling + assumptions),
                            model_design (model + assumptions + open questions), scenarios_and_extensions,
@@ -171,7 +172,7 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
 ## Workflow expectations
 - One phase (one PROMPTS.md prompt) at a time. At the end of each phase:
   1. Update the checkpoint files below that the phase touched.
-  2. Show 5 sample rows per new table, row counts, and null rates for key columns.
+  2. Run pytest. Show 5 sample rows per new table, row counts, and null rates for key columns.
   3. Commit with a descriptive message, then stop for review.
 
 | Checkpoint file | Update when |
@@ -185,3 +186,4 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
 | `docs/source_inventory.md` | A new endpoint is used, or a URL moved or was wrong (rule 5) |
 | `PROMPTS.md` | The prompt is done (mark [DONE date] and update the Status line), or the plan changed |
 | `CLAUDE.md` | A team decision is made (Agreed simplifications) or a fact is verified (Known facts) |
+| `tests/test_processed.py` | A documented count changes on purpose (also fix the doc its failing assert names) |

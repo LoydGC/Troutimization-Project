@@ -27,3 +27,10 @@ retrieved_at,source,path,url,records,bytes,sha256
 2026-09-26T21:51:34+00:00,pfbc_gis,pfbc_gis/2026-09-26/wilderness_page000.geojson,https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat/MapServer/31/query?where=1%3D1&outFields=%2A&outSR=4326&f=geojson&orderByFields=OBJECTID&resultOffset=0&resultRecordCount=1000,134,1335770,8e8567accad264d518c103da77bd06187065d98a0cf668329fe4a55c575b176c
 2026-09-26T21:52:45+00:00,pfbc_docs,pfbc_docs/2026-09-26/operational_guidelines_trout_mgmt_5th_ed.pdf,https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/operationguidelinestroutmgt.pdf,,2343381,8249afe200120143d1ea3c60057d6beef697c4b8a8b7c2e9411cea08e987eaa0
 2026-09-27T19:52:36+00:00,pfbc_coop,pfbc_coop/2026-09-27/cnu-stockings-website.xlsx,https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/stocking/coop-nurseries/cnu-stockings-website.xlsx,786,51290,768715f13bc819ca3f5ad75acebf54db6e35c8e269486f09074c1b4b3835ab6a
+,partner_loydgc,pa_boundary.gpkg,https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip,1,126976,1a5d0f7bcdc78a3f50cbf59ff01225288b44916a13b61bbd0f4f0f27d8f3212c
+,partner_loydgc,pa_class_a_trout_streams.gpkg,,1361,5124096,78cfa1ab50ca4dbed55aa48d0beb1c5f827134e1fd8a2c43fd1dfcb7f46273eb
+,partner_loydgc,pa_hatcheries.gpkg,https://services9.arcgis.com/6EuFgO4fLTqfNOhu/arcgis/rest/services/PA_Hatcheries/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson,13,106496,f973006db194b59982bcbbb28265ccbc676e14d89095fd0e9866c555f56ec386
+,partner_loydgc,pa_hatchery_production.csv,,10,1947,f26bc00b1784f82ffc6397bc3698b4057ffead8f801c09c6f7a2c3e9a3ef0043
+,partner_loydgc,pa_natural_repro_trout_streams.gpkg,,6224,25743360,1cabc96aa49e48ad9f9b709b193b82c0f4a775226028e72abe60568bfc733e1c
+,partner_loydgc,pa_stocked_trout_streams.gpkg,,1064,6078464,5959a4cd00e42c15efd5d0af3aedac76145014ec91050d60905ad086ef5de948
+,partner_loydgc,Coop_nurseries.geojson,,165,64955,082cc97979e307b752af4dfcfb07f5e934561f8ed692e46b432a5df2e707cd40

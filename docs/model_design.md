@@ -113,8 +113,9 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
     label, and its "2" is not a width class.
   - Call it a policy/crowding bound, not ecological carrying capacity.
 - **Candidate sections** (decision 2026-09-27): the 1,022 sections PFBC stocks in 2026. `x_s = 0` for the
-  23 stocked in 2024–25 only (~37,500 fish/yr). PFBC dropped them for reasons we mostly can't see; 18 are
-  natural-reproduction waters, and Blue Hole Creek 3656_2 was removed for cadmium and lead (GoErie, 2026-01-31, reporting the Jan 30 Commission meeting).
+  23 stocked in 2024–25 only (~37,500 fish/yr). PFBC dropped them for reasons we mostly can't see; 19 are
+  natural-reproduction waters. Two have known reasons: Buffalo Creek 3190_2 became Class A, and Blue Hole
+  Creek 3656_2 was removed for cadmium and lead (GoErie, 2026-01-31, reporting the Jan 30 Commission meeting).
   **Scenario "dropped sections back":** allow them again, except Blue Hole Creek (health) and Buffalo Creek
   3190_2 (Class A).
 - **Exclusions:** `x_s = 0` for Wilderness (no stocked section overlaps it) and Buffalo Creek 3190_2, which

@@ -30,8 +30,8 @@ about 83% of the report's adults:
    - Brook trout have the lowest stream share (41%), which fits heavy lake or other non-stream use.
      *Unverified.*
 3. **The years are defined differently.** The report covers fiscal year Jul 2023–Jun 2024 (fall 2023 plus
-   spring 2024); the layer covers the 2024 stocking year. Our three years are similar (2.60M, 2.63M,
-   2.62M), so this likely matters little.
+   spring 2024); the layer covers the 2024 stocking year. Our three years are similar (2.60M, 2.62M,
+   2.61M), so this likely matters little.
 4. **Brood fish** are a separate field in our layer. The report probably counts them within each
    species. *Unverified.*
 
@@ -76,6 +76,13 @@ for that extension:
 - **Manual review file:** `logs/03_coop_review.csv`. It covers everything above, with suggested names for
   near-miss spellings; fill in `review_note`.
 - **Locations.** Gavin's `data/raw/Coop_nurseries.geojson`.
+
+## Gavin's stocked-streams layer vs our sections (checked 2026-09-27)
+- His `travel_arcs` distances are built on `data/raw/pa_stocked_trout_streams.gpkg`: 1,064 rows, 1,059
+  unique `GIS_Key`s, source and year not recorded. It matches none of our layers (2024: 1,036, 2025: 1,044,
+  2026: 1,031 rows).
+- 1,039 of its keys are among our 1,045 sections. 8 of our 1,022 candidate sections (stocked in 2026) are
+  missing from it, so they would have no distance when his table is joined on `section_id` (Prompt 7).
 
 ## Duplicate section rows (fixed 2026-09-27)
 - In each year's layer, 5–9 sections appear twice: always one "Stocked Trout Water" row plus one

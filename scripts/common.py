@@ -10,6 +10,7 @@ import csv
 import hashlib
 import json
 import logging
+import subprocess
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -193,12 +194,28 @@ def fetch_layer(layer_url: str, source: str, name: str, session: PoliteSession |
             "_meta": {"url": layer_url, "count": expected, "oid_field": oid_field, "fields": meta.get("fields", [])}}
 
 
+def code_version() -> str:
+    """Current commit, plus any scripts/ files that differ from it, so a committed log says what code made it."""
+    def git(*args):
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.rstrip()
+    try:
+        head = git("rev-parse", "--short", "HEAD")
+        changed = git("status", "--porcelain", "--", "scripts").splitlines()
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown (not a git checkout)"
+    if not changed:
+        return f"commit {head}"
+    return f"commit {head} + uncommitted changes to {', '.join(line[3:] for line in changed)}"
+
+
 def setup_logging(script_name: str) -> Path:
-    """Log to stdout and logs/<script_name>.log (overwritten each run)."""
+    """Log to stdout and logs/<script_name>.log (overwritten each run). The first line is the code version."""
     LOG_DIR.mkdir(exist_ok=True)
     path = LOG_DIR / f"{script_name}.log"
+    version = code_version()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s",
                         handlers=[logging.StreamHandler(), logging.FileHandler(path, mode="w")], force=True)
+    log.info("%s run from %s", script_name, version)
     return path
 
 

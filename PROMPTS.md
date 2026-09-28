@@ -10,7 +10,7 @@ area and river_id). 8–9 assemble and check. Upgrades are at the end, for when 
 `scripts/02_build_sections.py`) and the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
 flag) are built, the Bear Creek checks pass, and they are pushed on branch `sections-pull`. Not merged into
 main yet (main has Gavin's newer distance commits). Done so far, so skip these parts when sending the prompts:
-- Prompt 0 steps 1, 3, 4, 5 (step 2 and the manifest rows for the partner's raw files are open)
+- Prompt 0 steps 1, 3, 4, 5 (step 2 is open, and 4 partner raw files still need a source from Gavin)
 - Prompt 1 in part: `docs/source_inventory.md` lists the sources in use
 - Prompt 2 for the stocked-section and wild-trout layers; Prompt 3
 - Prompt 4 step 0 and the section length (`length_mi`, `length_source`)
@@ -25,8 +25,8 @@ step 2, the angler-survey move). Prompt 7 waits on Gavin's distances.
 
 ```
 Read CLAUDE.md. Tidy the repo to match its Layout section.
-1. [DONE 2026-09-26, except the manifest rows for the partner's raw files. 2026-09-27: pa_trout.gpkg and
-   data/references/ (except angler_survey/) are gitignored too.]
+1. [DONE 2026-09-26. 2026-09-27: pa_trout.gpkg and data/references/ (except angler_survey/) gitignored
+   too; the partner's raw files are in the manifest, but 4 still need a source from Gavin.]
    Git: gitignore data/raw/** except manifest.csv and .gitkeep files; stop ignoring data/processed/
    (keep a rule that blocks files over 50 MB). Also ignore data/references/*.html and the requests-cache
    database. The new rules only affect new raw files. Add each already-committed raw file to
