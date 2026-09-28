@@ -2,7 +2,7 @@
 
 Every source the pipeline and docs use: where it is, what it holds and how it joins to `section_id`. Each
 download is also logged in `data/raw/manifest.csv` (URL, retrieval time, record count). Started 2026-09-27
-with the sources already in use; Prompt 1 adds the rest (the full GIS crawl, Census population).
+with the sources already in use; Prompt 1 adds the rest (the full GIS crawl).
 
 ## GIS layers (base, baseline, environment)
 Verified with `?f=pjson` and a count query, then paged by object id (`scripts/01_download_pfbc_layers.py`,
@@ -33,9 +33,19 @@ URL notes (rule 5):
 | Cooperative nursery stocking list (xlsx, 786 rows) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/stocking/coop-nurseries/cnu-stockings-website.xlsx | 2026-09-27 | `data/raw/pfbc_coop/` | coop_stockings, `coop_stocked` (script 03) |
 | Operational Guidelines for the Management of Trout Fisheries, 5th ed. | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/operationguidelinestroutmgt.pdf | 2026-09-26 | `data/raw/pfbc_docs/` | Table 14 widths, Table 18 rates (`pfbc_stocking_rates.csv`), Appendix A (Class A) |
 | 2026 Pennsylvania Fishing Summary (summary book, 42 pages) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/regulations/summarybook.pdf | 2026-09-27 | `data/raw/pfbc_docs/` | county → region (`county_region.csv`, script 04), from the regulated trout waters lists (pdf pp. 25–36) |
+| 2023 trout angler survey: Responsive Management for PFBC, *Trout Fishing in Pennsylvania* (PDF, 201 pages; describes 2022 fishing). Byte-identical to the copy saved by hand 2026-09-26 that the tables were first extracted from | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutanglersurveyreport-2023.pdf | 2026-09-27 | `data/raw/pfbc_angler_survey_2023/` | survey tables in `data/processed/angler_survey/` (script 00); demand (Prompt 6) |
+| 2024 Pennsylvania Annual Fishing License & Permit Sales by Agent County (PDF, 4 pages: annual and multi-year licenses and permits by the county of the selling agent, plus Internet and out-of-state rows) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/fishinglicensesalesbycounty2024.pdf | 2026-09-27 | `data/raw/pfbc_docs/` | county angler rate for proximity demand (Prompt 6). Sales are by store county, not home county (`known_gaps.md` § Angler numbers by county) |
 | 2020–24 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/troutplan2020.pdf | not downloaded | | `env_research.md` |
 | 2025–29 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutplan2025.pdf | not downloaded | | `env_research.md`, report hook (Obj. 9.1) |
 | Summary of the 165th Commission meeting (Jan 2026) | https://www.pa.gov/agencies/fishandboat/newsroom/summary-165th-meeting-pfbc-jan2026 | web page, not saved | | Class A exemptions (`env_research.md` § 3) |
+
+## Census
+Verified with a HEAD request before download (2026-09-27).
+
+| Source | URL | Retrieved | Local copy | Used for |
+|---|---|---|---|---|
+| 2020 Census centers of population by block group, Pennsylvania (10,173 block groups: population and population-weighted latitude/longitude) | https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG42.txt | 2026-09-27 | `data/raw/census/` | proximity demand and county population (Prompt 6) |
+| 2020 Census Gazetteer, counties (national file; names, land area) | https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_Gaz_counties_national.zip | 2026-09-27 | `data/raw/census/` | county names and land area (rural-county check) |
 
 ## Local reference copies (`data/references/`, gitignored)
 Saved by hand, not by a script, so they aren't in the manifest. This table is the record of where each came
@@ -43,8 +53,6 @@ from.
 
 | File | Source | Used for |
 |---|---|---|
-| `troutanglersurveyreport-2023.pdf` | Responsive Management for PFBC, *Trout Fishing in Pennsylvania* (2023 trout angler survey). URL from web research, not re-verified: https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutanglersurveyreport-2023.pdf. Prompt 0 moves it to `data/raw/`. | `angler_survey/` extracts; demand (Prompt 6) |
-| `angler_survey/` (tracked in git) | Tables extracted from the survey PDF by `extract_angler_survey_2023.py` | demand (Prompt 6) |
 | `2024annualreport.pdf` | PFBC 2024 Annual Report (fiscal year Jul 2023–Jun 2024). URL not recorded. | stream vs statewide totals (`known_gaps.md`) |
 | `statement_policy.pdf` | PFBC Cooperative Nursery Statement of Policy (Jan 2017). URL not recorded. | co-op rules (`known_gaps.md`, `model_design.md`) |
 | `Stocking exemptions, fishing regulations changes made on Pa waters.pdf` | GoErie, 2026-01-31, reporting the Jan 30 Commission meeting | Class A exemptions, co-op total, Blue Hole Creek |

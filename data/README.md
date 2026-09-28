@@ -7,7 +7,7 @@ rebuilt by `scripts/01` and `02`). Don't keep a separate source list here:
 - `docs/data_dictionary.md` – every column in `data/processed/`
 
 ## Processed outputs
-All keyed by `section_id = f"{RFP_WaterID}_{SecNum}"`.
+All keyed by `section_id = f"{RFP_WaterID}_{SecNum}"`, except `parameters.csv`, `county_region.csv` and `angler_survey/`.
 
 | File | One row per | Contents |
 |---|---|---|
@@ -16,6 +16,7 @@ All keyed by `section_id = f"{RFP_WaterID}_{SecNum}"`.
 | `environment.parquet` + `.csv` | section | exclusions, wild brook presence, wild-trout impact inputs (natural reproduction flag and share, biomass class) |
 | `parameters.csv` | parameter value | values no source gives directly (widths, 300-fish minimum, assumptions), with ranges and sources |
 | `county_region.csv` | county | PFBC region |
+| `angler_survey/*.csv` (csv only) | answer option, named water or county | 13 tables from the 2023 PFBC trout angler survey, mostly by the angler's home region. Columns: its README |
 | `pa_trout.gpkg` (gitignored) | feature, per layer | geometry in EPSG:4326: sections (lines), hatcheries (points), class_a, nat_repro, wilderness |
 
 Later phases add columns to `sections` or separate tables joined on `section_id` (demand, cost_matrix).

@@ -12,9 +12,6 @@ data/raw/*
 data/interim/*
 !data/**/.gitkeep
 # reference documents (PDFs, news articles, trout.app snapshots): local only. Sources: docs/source_inventory.md.
-# angler_survey/ (extraction script + CSVs) stays tracked until Prompt 0 moves it to scripts/ and data/processed/.
 data/references/*
-!data/references/angler_survey/
-data/references/**/*.zip
 # 16 MB and rewritten on every build: regenerate with scripts/01 and 02
 data/processed/pa_trout.gpkg
