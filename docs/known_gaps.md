@@ -208,25 +208,32 @@ we found. Proximity demand turns it into a county angler rate (`model_design.md`
   destination counties (Pike, Wayne, Tioga, Crawford). We subtract non-resident and tourist licenses from the
   permit count; this overcorrects a little, since not every visitor buys a trout permit.
 - **Online sales have no county.** 291,065 of 746,726 annual licenses (39%) and 164,051 of 490,514 annual trout
-  and combo permits were sold online. We split online resident permits by population (assumption); splitting
-  them like store sales is a sensitivity. At the median, rural counties come out 1.8× the state's angler rate
-  by population and 2.3× like store sales (*exploratory*).
+  and combo permits were sold online (172,027 with multi-year permits; 117,500 after subtracting online
+  non-resident and tourist licenses). We split online resident permits by population (assumption); splitting
+  them like store sales is a sensitivity. At the median, rural counties come out 1.9× the state's angler rate
+  by population and 2.2× like store sales.
 - **In-state travel can't be measured.** Anglers who buy their license where they fish inflate destination
-  counties. The survey limits how much this can matter: 67–88% of each region's favorite-water mentions are in
+  counties. The survey limits how much this can matter: 65–89% of each region's favorite-water mentions are in
   its home region (p85), and the median typical trip is 15 mi one way (p93).
 - **Multi-year permits bought before 2024 are missing.** About 20,000 3-, 5- and 10-year trout and combo permits
-  were sold in 2024 and are counted; holders who bought one in an earlier year aren't. That only matters if
-  they cluster in some counties.
+  were sold in 2024 and are counted; holders who bought one in an earlier year aren't. Where they live only
+  matters if they cluster in some counties. They also lower the statewide total: if 2024's sales are typical,
+  3-year permits from 2022–23 and 5-year permits from 2020–23 add about 47,000 anglers (11% of 421,615; 10-year
+  holders unknown). That scales every section's angler-days alike, so it only shifts the benefit curve's
+  fish per angler-day, well inside the k sweep (0.5–2).
 - **Permits cover more than stocked-stream fishing.** Lake and wild-trout anglers buy them too, and Erie
   County's combo permits are mostly Lake Erie steelhead anglers.
 - **Fix:** a PFBC table of permit holders by home county or ZIP, e.g. through a Right-to-Know request (counts by
   county aren't personal data). `county_anglers` keeps every input as a column so that table can replace it
   (`scenarios_and_extensions.md` § Data upgrades).
 
-## Survey favorite waters vs stocked sections (checked 2026-09-27)
-- The survey names waters, not sections: 221 named waters, plus "Other" (30%) and "Do not know" (8%). By name
-  alone, 125 match exactly one river stocked in 2026, 41 match several, and about 55 match none, most of them
-  lakes (*exploratory*; the Prompt 6 crosswalk settles each one).
+## Survey favorite waters vs stocked sections (checked 2026-09-27; crosswalk built 2026-09-28)
+- The survey names waters, not sections: 221 named waters, plus "Other" (30%) and "Do not know" (8%). The
+  crosswalk (`scripts/07_survey_crosswalk.py`) places 63.1% of all mentions on 160 rivers stocked in 2026.
+  The rest: 39 lakes, 2 waters not stocked in 2026, 5 with no PFBC section (e.g. the Clarion and Swatara main
+  stems), and 16 names left for review (6.4% of mentions: e.g. Bush Kill, Mill Creek, Spring Creek, which
+  match several rivers the regional table can't tell apart). Their share is spread like proximity demand
+  until someone decides them in `logs/07_survey_crosswalk_review.csv`.
 - A named river can be much bigger than its stocked part. The Youghiogheny's only stocked section is the
   1.1 mi dam tailwater 1327_1, so all of its survey preference lands there. Such waters get a per-mile flag
   (`model_design.md` § Angler benefit).
@@ -234,3 +241,26 @@ we found. Proximity demand turns it into a county angler rate (`model_design.md`
   Their share is spread like proximity demand.
 - 98 named waters show as "<0.5%" (counted as 0.25%) and 97 as 1%, so the survey resolves only the 26 waters at
   2% or more with any precision.
+
+## Stocking schedule (checked 2026-09-28)
+PFBC's schedule (`scripts/09_stocking_schedule.py`) gives the hatchery and truck meeting for every 2026 event.
+What it lacks:
+- **No fish counts**, only species marks. Per-event and per-hatchery fish come from splitting each section's
+  2026 GIS count equally over its events (assumption, `data_methods.md` § Stocking schedule).
+- **Planned, not actual:** "All stocking events are subject to change without notice."
+- **2026 only.** No schedule is served for 2024–25, so hatchery assignments and runs describe one year.
+- **Lakes:** 372 events on 127 lakes, and no lake counts in any source. Lake fish are NA and the schedule-based
+  hatchery supply is stream fish only (streams are about 83% of adult trout, § Our stocking data vs PFBC's
+  published totals). Lake events per hatchery are in `hatchery_schedule_supply.csv`.
+- **Sections outside the 2026 layer:** the schedule stocks 8 sections that aren't in the 2026 GIS layer (102_5
+  and 102_6 Muncy Creek, whose limits changed; 1326_2, 1767_3, 202_2, 209_2, 2287_2, 52_2) and 4 waters that
+  match nothing (Brush Creek, Beaver; Little Fishing Creek; Yellow Creek, Indiana; North Deer Creek, Mercer:
+  `logs/09_schedule_unmatched.csv`). Their 19 stream events have no 2026 count, so they're missing from the
+  baseline and from hatchery supply.
+- **Hatcheries:** 9 deliver to streams. Tionesta stocks 10 sections (15,257 fish, 0.6%) and 13 lake events,
+  but has no production figure and wasn't among our 10 supply nodes. Linesville and Pleasant Mount stock no
+  scheduled stream section (consistent with Pleasant Mount's figure being fingerlings and warmwater fish).
+- **Runs vs trucks:** a run is one listed meeting. One truck may make several meetings in a day, or several
+  trucks may share one; the schedule can't tell. 74 events give only a week and have no run.
+- **Location QA:** 11 matched sections have the schedule's upper-limit point 0.8–4.2 km from our line although
+  the limit text agrees (kept; `ul_dist_m`).

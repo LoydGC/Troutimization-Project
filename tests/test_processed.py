@@ -159,3 +159,94 @@ def test_angler_survey():
     p178 = tables["p178"]
     assert p178[["Strongly support", "Moderately support"]].sum() == 58, "model_design.md: p178 58% support"
     assert p178[["Moderately oppose", "Strongly oppose"]].sum() == 16, "model_design.md: p178 16% oppose"
+
+
+def test_county_anglers():
+    ca = pd.read_csv(PROCESSED / "county_anglers.csv")
+    regions = pd.read_csv(PROCESSED / "county_region.csv")
+    assert len(ca) == 67 and set(ca["county"]) == set(regions["county"]), "spelled as in sections.county"
+    assert abs(ca["anglers"].sum() - 421_615) < 5, "data_methods.md County anglers: 421,615 resident anglers"
+    assert abs(ca["online_permits"].sum() - 117_500) < 5, "data_dictionary.md county_anglers: 117,500 online"
+    parts = ca["annual_trout_combo"] + ca["multi_trout_combo"] - ca["nonres_licenses"]
+    assert (ca["resident_permits"] == parts).all() and (parts >= 0).all()
+    assert abs(ca["anglers_by_sales"].sum() - ca["anglers"].sum()) < 5, "the sensitivity moves anglers, same total"
+
+
+def test_demand(sections, stocked_2026):
+    d = pd.read_parquet(PROCESSED / "demand.parquet").set_index("section_id")
+    assert set(d.index) == set(sections.index[stocked_2026]), "one row per 2026-stocked section"
+    total = d["prox_days"].sum()
+    assert abs(total - 8_717_541) < 10, "CLAUDE.md Known facts / data_dictionary.md demand: 8,717,541 angler-days"
+    for col in ["prox_days_pooled", "prox_days_pop", "pref_days"]:
+        assert abs(d[col].sum() - total) < 1, f"data_dictionary.md demand: {col} sums to the statewide total"
+    assert (d["prox_days"] > 0).all() and (d["pref_days"] >= d["pref_days_named"]).all()
+    named = d["pref_days_named"].sum() / total
+    assert abs(named - 0.631) < 0.001, "data_methods.md Preference demand: 63.1% of mentions placed"
+    assert list(d.index[d["pref_per_mi_flag"]]) == ["1327_1"], "model_design.md Per-mile flag: Youghiogheny only"
+    flags = d[["dhalo", "catch_release", "keystone_select", "open_year_round"]].sum().to_dict()
+    assert flags == {"dhalo": 56, "catch_release": 30, "keystone_select": 24, "open_year_round": 16}, \
+        "data_methods.md Regulation flags"
+    assert (d["dhalo"] == (sections.loc[d.index, "program"] == "DHALO")).all(), "same 56 as the density cap"
+
+
+def test_survey_crosswalk():
+    cw = pd.read_csv(PROCESSED / "survey_water_crosswalk.csv", dtype={"river_id": "Int64"})
+    waters = pd.read_csv(PROCESSED / "angler_survey" / "p76-77_preferred_waters_overall.csv")
+    assert set(cw["waterbody"]) == set(waters["waterbody"]), "every survey water has a row"
+    shares = cw.dropna(subset=["river_id"]).groupby("waterbody")["match_share"].sum()
+    assert ((shares - 1).abs() < 1e-6).all(), "match_share sums to 1 per matched water"
+    assert (cw.loc[cw["match_method"] == "review", "river_id"].isna()).all(), "undecided names get no river"
+    split = cw[cw["waterbody"] == "French Creek"].set_index("river_id")["match_share"].round(2).to_dict()
+    assert split == {413: 0.75, 1882: 0.25}, "data_methods.md Survey water crosswalk: French Creek"
+
+
+def test_stocking_events(sections, stocked_2026):
+    ev = pd.read_parquet(PROCESSED / "stocking_events.parquet")
+    assert len(ev) == 2474, "data_dictionary.md stocking_events: 2,474 rows (section x date)"
+    assert ev["water_type"].value_counts().to_dict() == {"stream": 2102, "lake": 372}, \
+        "data_methods.md Stocking schedule: 2,102 stream and 372 lake events"
+    assert ev["match_method"].value_counts().to_dict() == {
+        "limits": 1766, "lake": 372, "name_county": 321, "coords": 9, "unmatched": 6}, \
+        "data_methods.md Stocking schedule: match methods"
+    assert not ev.duplicated(["section_id", "date", "week_of"]).loc[ev["section_id"].notna()].any()
+    assert ev["week_of_only"].sum() == 74 and (ev["week_of_only"] == ev["date"].isna()).all(), \
+        "data_methods.md Stocking schedule: 74 week-of-only events"
+    assert (ev["run_id"].isna() == ev["week_of_only"]).all(), "every dated event has a run"
+    assert ev.loc[ev["water_type"] == "lake", "section_id"].isna().all()
+    scheduled = set(ev["section_id"].dropna())
+    assert set(sections.index[stocked_2026]) <= scheduled, "data_methods.md: all 1,022 candidates are scheduled"
+    assert len(scheduled - set(sections.index[stocked_2026])) == 8, \
+        "known_gaps.md Stocking schedule: 8 scheduled sections not stocked in the 2026 layer"
+    assert abs(ev["alloc_fish"].sum() - sections["total_2026"].sum()) < 5, "every 2026 stream fish is placed once"
+    bear = ev[ev["section_id"].isin(["3197_2", "3197_3"])]
+    assert set(bear["hatchery"]) == {"Tylersville"} and len(bear) == 4, "Bear Creek: 2 Tylersville visits each"
+
+
+def test_hatchery_schedule_supply(sections):
+    h = pd.read_csv(PROCESSED / "hatchery_schedule_supply.csv").set_index("hatchery")
+    active = h.index[h["n_stream_events"] > 0]
+    assert set(active) == {"Bellefonte", "Benner Spring", "Corry", "Huntsdale", "Oswayo", "Pleasant Gap",
+                           "Reynoldsdale", "Tionesta", "Tylersville"}, "data_methods.md: 9 hatcheries on the schedule"
+    assert not h.loc[["Linesville", "Pleasant Mount"], "n_stream_events"].any(), \
+        "known_gaps.md: Linesville and Pleasant Mount stock no scheduled stream sections"
+    assert not h.loc["Tionesta", "in_production_csv"], "known_gaps.md: Tionesta has no production figure"
+    assert abs(h["stream_fish_2026"].sum() - sections["total_2026"].sum()) < 10, "shares cover every 2026 fish"
+    assert abs(h["share"].sum() - 1) < 1e-3 and abs(h["lbs_share"].sum() - 1) < 1e-3
+    assert h["n_lake_events"].sum() == 372
+
+
+def test_section_schedule_and_clusters(stocked_2026):
+    ss = pd.read_parquet(PROCESSED / "section_schedule.parquet").set_index("section_id")
+    assert set(ss.index) == set(stocked_2026.index[stocked_2026]), "one row per 2026-stocked section"
+    assert (ss["n_events"] > 0).all() and (ss["cluster_source"] == "schedule").all()
+    assert ss["multi_hatchery"].sum() == 49, "data_dictionary.md section_schedule: 49 multi-hatchery sections"
+    assert ss["cluster_id"].nunique() == 351 and ss["detour_singleton"].sum() == 103, \
+        "data_methods.md Runs and clusters: 351 clusters, 103 singletons"
+    assert ss["cluster_id_strict"].nunique() == 528, "data_methods.md Runs and clusters: 528 under the strict rule"
+    assert (ss.loc[ss["detour_singleton"], "detour_mi"] == 0).all()
+    assert (ss.loc[~ss["detour_singleton"], "detour_mi"] >= ss.loc[~ss["detour_singleton"], "detour_nn_mi"]).all()
+    assert ss.loc["3197_2", "cluster_id"] == ss.loc["3197_3", "cluster_id"], "Bear Creek 02-03 share both runs"
+    c = pd.read_csv(PROCESSED / "clusters.csv").set_index("cluster_id")
+    assert len(c) == 351 and c["n_sections"].sum() == 1022
+    assert (c["n_sections"] == ss["cluster_id"].value_counts().reindex(c.index)).all()
+    assert not c["span_flag"].any(), "data_methods.md Runs and clusters: no cluster spans > 60 road-mi"

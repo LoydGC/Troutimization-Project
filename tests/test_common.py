@@ -1,9 +1,12 @@
 import csv
+import io
 import json
 import sys
 from pathlib import Path
 
 import pytest
+import requests
+import urllib3
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import common  # noqa: E402
@@ -110,3 +113,61 @@ def test_polite_session_waits_between_requests_to_same_host(monkeypatch):
     clock["t"] += 0.25
     session.get(LAYER)
     assert sleeps == [pytest.approx(0.75)]
+
+
+def test_polite_session_post_retries_then_stops(monkeypatch):
+    sleeps = []
+    monkeypatch.setattr(common.time, "sleep", sleeps.append)
+    session = common.PoliteSession(max_retries=2, cache_path=None)
+    sent = []
+    monkeypatch.setattr(session.http, "post", lambda url, **k: sent.append(k["json"]) or FakeResponse({}, status=503))
+    with pytest.raises(common.ServerRefused, match='POST body=\\{"County": "Adams"\\}'):
+        session.post(LAYER, {"County": "Adams"})
+    assert sent == [{"County": "Adams"}] * 3
+    assert [s for s in sleeps if s >= 1] == [1.0, 2.0]  # same backoff as GET
+
+
+def test_polite_session_get_and_post_share_the_host_throttle(monkeypatch):
+    clock = {"t": 100.0}
+    sleeps = []
+    monkeypatch.setattr(common.time, "monotonic", lambda: clock["t"])
+    monkeypatch.setattr(common.time, "sleep", sleeps.append)
+    session = common.PoliteSession(cache_path=None)
+    monkeypatch.setattr(session.http, "get", lambda *a, **k: FakeResponse({"ok": 1}))
+    monkeypatch.setattr(session.http, "post", lambda *a, **k: FakeResponse({"ok": 1}))
+    session.get(LAYER)
+    clock["t"] += 0.4
+    session.post(LAYER, {"a": 1})
+    assert sleeps == [pytest.approx(0.6)]
+
+
+class CountingAdapter(requests.adapters.BaseAdapter):
+    """Transport stub: answers every request with 200 and records the bodies it was sent (no network)."""
+
+    def __init__(self):
+        super().__init__()
+        self.bodies = []
+
+    def send(self, request, **kwargs):
+        self.bodies.append(request.body)
+        raw = urllib3.HTTPResponse(body=io.BytesIO(b"<div>ok</div>"), status=200, preload_content=False,
+                                   headers={"Content-Type": "text/html"})
+        return requests.adapters.HTTPAdapter().build_response(request, raw)
+
+    def close(self):
+        pass
+
+
+def test_polite_session_post_cache_key_includes_body(monkeypatch, tmp_path):
+    monkeypatch.setattr(common.time, "sleep", lambda s: None)
+    session = common.PoliteSession(cache_path=tmp_path / "cache")
+    adapter = CountingAdapter()
+    session.http.mount("https://", adapter)
+    url = "https://example.test/Home/Secondpage"
+    first = session.post(url, {"County": "Adams"})
+    again = session.post(url, {"County": "Adams"})
+    other = session.post(url, {"County": "Bedford"})
+    assert not first.from_cache and again.from_cache and not other.from_cache
+    assert len(adapter.bodies) == 2  # the repeat came from the cache, the new body went to the "server"
+    session.get(url)
+    assert session.get(url).from_cache and len(adapter.bodies) == 3  # GET caching unchanged

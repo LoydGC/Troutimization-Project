@@ -27,6 +27,28 @@ URL notes (rule 5):
 - PASDA's 2026 stocked layer (PAFishBoat #26) has no counts: stocking counts come from fbweb only.
 - No stocked-section layer reaches 2022, the survey year.
 
+## Trout stocking schedule (runs, hatchery per event)
+Found from the page's own script (`/TroutStocking/Scripts/StockedWaters.js`) and checked with small requests
+(2026-09-28), then downloaded by `scripts/09_stocking_schedule.py`: 68 requests, raw responses in
+`data/raw/pfbc_schedule/2026-09-28/` (31 MB, gitignored). `https://fbweb.pa.gov/robots.txt` returns 404, so no
+robots rules apply. The page has no terms-of-use link (footer: "Copyright © 2023 Commonwealth of Pennsylvania").
+It says "All stocking events are subject to change without notice": this is PFBC's **planned** schedule, not a
+record of what was stocked. Only 2026 is served: a 2025 date range returns "No Stockings in this Date Range".
+
+Base URL: `https://fbweb.pa.gov/TroutStocking/`.
+
+| Endpoint | Request | Returns | Verified | Used in |
+|---|---|---|---|---|
+| `Home/GetCountyBySeason?intputSelectedSeasons=` (sic) | GET | JSON list of the 67 counties, each with `IsEnable` | GET | the county list (script 09) |
+| `Home/Secondpage` | POST, JSON body `{"County": "<county>", "StartDate": "", "EndDate": "", "PageNumber": "", "Water": "", "Season": ""}`. Season blank = all (`P,I`, `F`, `W` filter); dates optional | HTML fragment with all of the county's events for the year in one response (the 10-per-page paging is done in the browser). Each `.stocksDiv` has `data-mapatt`, 17 fields separated by `\|`: Water, County, Sec, Upper_Limit, Lower_Limit, StkgingDate, WeekOf, Brook, Brown, Rainbow, Golden (X marks, no counts), MtgPlc, MtgTime, Hatchery, TroutRegulation1, Reg_Link, Season (P/I/F/W); plus upper and lower limit lat/long | POST for 3 counties, then all 67 (2,734 records). A blank County returns no records | stocking_events, hatchery_schedule_supply (09); section_schedule, clusters (10) |
+| `Home/GetDates` | GET | JSON `[start, end]` of the upcoming fall/winter window (`["2026-10-01","2026-12-17"]`) | GET | not used |
+
+URL notes (rule 5):
+- There is no ArcGIS layer for the schedule: `PFBC_Map_Services` (46 services), `PFBC_Stocked_Trout_Waters` and
+  `TroutStockedSections_2026` have no schedule layer or table (checked 2026-09-28).
+- The page's "Print All Trout Stockings" CSV is built in the browser from the same fields; there is no server export.
+- A section on a county line is listed under each of its counties (merged in script 09).
+
 ## PFBC files and documents
 | Source | URL | Retrieved | Local copy | Used for |
 |---|---|---|---|---|

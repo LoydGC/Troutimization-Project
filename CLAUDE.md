@@ -34,11 +34,14 @@ The historical allocation is the **baseline** the optimized plan is compared aga
 don't smooth, impute, or "fix" it.
 
 ## Agreed simplifications
-- **Hatchery -> section assignment isn't published.** The model chooses it; the baseline's cost assumes each
-  section is served by its nearest hatchery.
-- **Hatchery supply** = baseline statewide total, split across the 10 trout hatcheries by their share of trout
-  production (lbs, `data/raw/pa_hatchery_production.csv`). Pleasant Mount's figure is a fish count
-  that likely includes warmwater species: exclude it unless a trout-only number turns up.
+- **Hatchery -> section assignment:** the model chooses it. PFBC's planned 2026 schedule names the hatchery for
+  every event (`section_schedule.primary_hatchery`, found 2026-09-28), so the baseline's cost can use the real
+  hatchery instead of the nearest one. Proposed, to confirm with Gavin; nearest hatchery would be the sensitivity.
+- **Hatchery supply** (decision 2026-09-28) = each hatchery's 2026 stream fish from the schedule
+  (`hatchery_schedule_supply.csv`): each section's 2026 count is split equally over its scheduled events and
+  credited to their hatcheries. Lake fish have no counts, so supply is stream-only. Sensitivity and check: the
+  earlier split by production pounds (`data/raw/pa_hatchery_production.csv`; Pleasant Mount's figure is a fish
+  count, so it's excluded).
 - **Co-op nurseries are fixed background, not decisions** (team decision 2026-09-27). The clubs choose their
   waters and PFBC leaves co-op fish out of its allocation (co-op policy §III.12, §IV.10), so the base model
   optimizes PFBC hatchery fish only. Co-op waters are a flag on sections (`coop_stocked`, 292 sections, from
@@ -107,7 +110,9 @@ don't smooth, impute, or "fix" it.
   across counties. Survey preferences are at this level and are apportioned to sections by length.
 - **Lake** = its own destination with `water_type = "lake"` (~20% of stocked trout). Kept out of stream-only
   covariates; whether lakes are decision variables or fixed is an open question.
-- **Supply node** = one of the 10 PFBC trout hatcheries. Co-op nurseries (~160) and fingerlings are fixed, not
+- **Supply node** = one of the 9 PFBC hatcheries that stock adult trout in streams in the 2026 schedule
+  (Bellefonte, Benner Spring, Corry, Huntsdale, Oswayo, Pleasant Gap, Reynoldsdale, Tionesta, Tylersville;
+  Linesville and Pleasant Mount stock none). Co-op nurseries (~160) and fingerlings are fixed, not
   decisions. Gavin's cleaned layers (`trout_hatcheries.gpkg`, `data/raw/Coop_nurseries.geojson`) are the
   reference. The `hatcheries` layer in `pa_trout.gpkg` is a placeholder until we merge.
 
@@ -191,6 +196,10 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
   all 67 counties, matches PFBC's region polygons). No stocked section spans two regions.
 - 2023 angler survey (Responsive Management for PFBC) describes **2022** fishing. Regions are the six PFBC
   regions by angler **home** county, not where they fish. The named-water tables cover ~223 waters.
+- Angler demand (built 2026-09-28, scripts 06–08): 421,615 resident trout anglers (2024 permits, 3.2 per 100
+  residents), 8.72M angler-days a year, all placed on the 1,022 sections stocked in 2026 (every `demand`
+  angler-day column sums to it). The survey crosswalk puts 63% of favorite-water mentions on 160 stocked
+  rivers; 16 names wait in `logs/07_survey_crosswalk_review.csv`.
 - Bear Creek (Schuylkill) test case: Class A (brook trout) is Section 01. The stocked sections 02-03 are
   downstream and only touch it, so they must NOT be flagged Class A. They do sit inside the Natural
   Reproduction reach, so they MUST be flagged for natural reproduction.

@@ -1,0 +1,11 @@
+query_county,water,county,sec_num,upper_limit,lower_limit,date,week_of,hatchery,ul_lat,ul_lon,same_name_sections
+Beaver,Brush Creek,Beaver,2,SR 588,LOWER END OF BRUSH CREEK PARK PROPERTY,,2026-04-20,Pleasant Gap,,,
+Beaver,Brush Creek,Beaver,2,SR 588,LOWER END OF BRUSH CREEK PARK PROPERTY,2026-03-04,,Corry,,,
+Centre,Little Fishing Creek,Centre,4,4TH BRDG UPST SR0064 BRDG IN HUBLERSBURG,MOUTH,,2026-04-20,Pleasant Gap,,,
+Centre,Little Fishing Creek,Centre,4,4TH BRDG UPST SR0064 BRDG IN HUBLERSBURG,MOUTH,2026-03-11,,Pleasant Gap,,,
+Clinton,Little Fishing Creek,Clinton,4,4TH BRDG UPST SR0064 BRDG IN HUBLERSBURG,MOUTH,,2026-04-20,Pleasant Gap,,,"2251_3 (2024,2025)"
+Clinton,Little Fishing Creek,Clinton,4,4TH BRDG UPST SR0064 BRDG IN HUBLERSBURG,MOUTH,2026-03-11,,Pleasant Gap,,,"2251_3 (2024,2025)"
+Indiana,Yellow Creek,Indiana,5,UNT AT E WHITE/CHERRYHILL TOWNSHIP LINE,SR 954 BRIDGE,2026-03-03,,Bellefonte,,,"4502_2 (2024); 4502_4 (2024); 4502_3 (2025,2026)"
+Indiana,Yellow Creek,Indiana,5,UNT AT E WHITE/CHERRYHILL TOWNSHIP LINE,SR 954 BRIDGE,2026-05-02,,Bellefonte,,,"4502_2 (2024); 4502_4 (2024); 4502_3 (2025,2026)"
+Mercer,North Deer Creek,Mercer,2,BORTZ/LOWER ROAD BRIDGE,MOUTH,2026-03-11,,Tionesta,,,"2911_1 (2024,2025)"
+Mercer,North Deer Creek,Mercer,2,BORTZ/LOWER ROAD BRIDGE,MOUTH,2026-04-23,,Corry,,,"2911_1 (2024,2025)"

@@ -56,7 +56,11 @@ def _cacheable(response) -> bool:
 
 
 class PoliteSession:
-    """requests-cache session with a per-host minimum interval and retries with exponential backoff."""
+    """requests-cache session with a per-host minimum interval and retries with exponential backoff.
+
+    GET and POST share the throttle, backoff and STOP. POSTs are cached too; requests-cache's key includes the
+    request body, so two POSTs to one URL with different bodies are cached separately.
+    """
 
     def __init__(self, min_interval: float = 1.0, max_retries: int = 4, backoff: float = 2.0,
                  cache_path: Path | str | None = CACHE_PATH, timeout: float = 120):
@@ -66,11 +70,20 @@ class PoliteSession:
         else:
             Path(cache_path).parent.mkdir(parents=True, exist_ok=True)
             self.http = requests_cache.CachedSession(
-                str(cache_path), backend="sqlite", expire_after=requests_cache.NEVER_EXPIRE, filter_fn=_cacheable)
+                str(cache_path), backend="sqlite", expire_after=requests_cache.NEVER_EXPIRE, filter_fn=_cacheable,
+                allowable_methods=("GET", "HEAD", "POST"))
         self.http.headers["User-Agent"] = USER_AGENT
         self._last_network: dict[str, float] = {}
 
     def get(self, url: str, params: dict | None = None) -> requests.Response:
+        return self._request(url, params, lambda: self.http.get(url, params=params, timeout=self.timeout))
+
+    def post(self, url: str, json_body: dict, params: dict | None = None) -> requests.Response:
+        """POST a JSON body (Content-Type application/json)."""
+        return self._request(url, params, lambda: self.http.post(url, params=params, json=json_body,
+                                                                 timeout=self.timeout), body=json_body)
+
+    def _request(self, url: str, params: dict | None, send, body: dict | None = None) -> requests.Response:
         host = urlparse(url).netloc
         problem = None
         for attempt in range(self.max_retries + 1):
@@ -78,7 +91,7 @@ class PoliteSession:
             if wait > 0:
                 time.sleep(wait)
             try:
-                r = self.http.get(url, params=params, timeout=self.timeout)
+                r = send()
             except (requests.ConnectionError, requests.Timeout) as e:
                 r, problem = None, repr(e)
             if r is None or not getattr(r, "from_cache", False):
@@ -98,7 +111,8 @@ class PoliteSession:
                 log.warning("%s (attempt %d/%d): %s; retrying in %.0fs",
                             url, attempt + 1, self.max_retries + 1, problem, delay)
                 time.sleep(delay)
-        raise ServerRefused(f"{url} params={params} failed after {self.max_retries + 1} attempts: {problem}")
+        what = f"params={params}" if body is None else f"POST body={json.dumps(body)}"
+        raise ServerRefused(f"{url} {what} failed after {self.max_retries + 1} attempts: {problem}")
 
 
 def full_url(url: str, params: dict | None = None) -> str:

@@ -1,0 +1,15 @@
+2026-09-28 02:15:25,127 INFO 10_runs_clusters run from commit 0df544f + uncommitted changes to scripts/common.py, scripts/06_county_anglers.py, scripts/07_survey_crosswalk.py, scripts/08_demand.py, scripts/09_stocking_schedule.py, scripts/10_runs_clusters.py
+2026-09-28 02:15:25,237 INFO stream events on 2026-stocked sections: 2083 of 2096 matched stream events (13 on sections not stocked in 2026)
+2026-09-28 02:15:25,249 INFO sections whose top two hatcheries tie on events (primary = alphabetical): 31 ['1461_2', '1462_1', '1561_2', '1561_3', '1773_2', '1774_2', '1943_3', '1970_2', '25_2', '2700_2', '2703_4', '2703_5', '2703_6', '2833_2', '2906_2', '2906_3', '2923_1', '2968_2', '2968_4', '2985_2', '2987_3', '300_3', '3012_2', '3032_2', '3033_2', '304_2', '329_1', '3739_2', '3741_2', '3742_3', '54_2']
+2026-09-28 02:15:25,270 INFO sections with events: 1022; more than one hatchery: 49; primary hatchery counts: {'Bellefonte': 196, 'Huntsdale': 179, 'Benner Spring': 148, 'Tylersville': 132, 'Pleasant Gap': 110, 'Corry': 104, 'Oswayo': 80, 'Reynoldsdale': 71, 'Tionesta': 2}
+2026-09-28 02:15:25,294 INFO runs: 1015 (sections per run: {1: 383, 2: 366, 3: 180, 4: 77, 5: 7, 6: 1, 7: 1}); co-run pairs: 1107; share distribution: {0.33: 40, 0.5: 362, 0.67: 30, 1.0: 675}
+2026-09-28 02:15:25,295 INFO pairs at exactly 0.5: 362; at >= 0.50: 1067; at >= 0.51 (strict): 705
+2026-09-28 02:15:25,358 INFO clusters (share >= 0.50): 351; size distribution {1: 103, 2: 93, 3: 56, 4: 45, 5: 18, 6: 10, 7: 11, 8: 7, 9: 3, 11: 1, 15: 2, 16: 1, 18: 1}; singletons 103
+2026-09-28 02:15:25,407 INFO clusters (share >= 0.51): 528; size distribution {1: 237, 2: 153, 3: 88, 4: 40, 5: 7, 6: 1, 7: 2}; singletons 237
+2026-09-28 02:15:25,410 INFO singletons: {'schedule': 103}
+2026-09-28 02:15:25,411 INFO detour_mi (non-singletons) median 3.8, 90% 9.7, max 55.8; detour_nn_mi median 3.3, 90% 7.5, max 21.1
+2026-09-28 02:15:25,858 INFO clusters spanning > 60 road-mi: 0 []
+2026-09-28 02:15:25,859 INFO largest span: [['C0108', 3, 56.91, 56.94, 'Pleasant Gap'], ['C0003', 15, 51.3, 118.69, 'Bellefonte'], ['C0052', 5, 47.43, 51.35, 'Corry']]
+2026-09-28 02:15:25,860 INFO cluster_mi (multi-section clusters): median 10.3, max 118.7
+2026-09-28 02:15:25,861 INFO 3197_2: cluster C0144 (members ['2894_2', '3197_2', '3197_3']), detour_mi 2.66, detour_nn_mi 2.66, runs ['2026-02-26|Tylersville|SUMMITSTATIONFIREHOUSERT895|12:00', '2026-05-07|Tylersville|SUMMITSTATIONFIREHOUSERT895|12:00']; nearest: [('3197_3', 2.7, 'C0144'), ('3199_3', 9.3, 'C0016'), ('3193_8', 9.5, 'C0016'), ('2899_2', 9.9, 'C0204'), ('3180_3', 10.6, 'C0200')]
+2026-09-28 02:15:25,862 INFO 3197_3: cluster C0144 (members ['2894_2', '3197_2', '3197_3']), detour_mi 2.66, detour_nn_mi 2.66, runs ['2026-02-26|Tylersville|SUMMITSTATIONFIREHOUSERT895|12:00', '2026-05-07|Tylersville|SUMMITSTATIONFIREHOUSERT895|12:00']; nearest: [('3197_2', 2.7, 'C0144'), ('3199_3', 6.9, 'C0016'), ('3193_8', 7.0, 'C0016'), ('3180_3', 9.0, 'C0200'), ('2797_3', 11.0, 'C0200')]

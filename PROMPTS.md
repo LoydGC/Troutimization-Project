@@ -6,21 +6,33 @@ the agreed simplifications, and the rules, so the prompts don't repeat them.
 Order: 0 → 1 → 2 → 3 gets the baseline. 4–7 each build one model component (4 first, since 5 and 6 use its
 area and river_id). 8–9 assemble and check. Upgrades are at the end, for when time allows.
 
-**Status (2026-09-27):** built on branch `sections-pull`: the angler-survey tables
+**Status (2026-09-28):** built on branch `sections-pull`: the angler-survey tables
 (`scripts/00_extract_angler_survey.py`), the sections pull (`scripts/01_download_pfbc_layers.py`,
 `scripts/02_build_sections.py`), the co-op stocking list (`scripts/03_coop_stockings.py`, `coop_stocked`
-flag), the river key, region, area and density cap (`scripts/04_river_cap.py`) and the environment table
-(`scripts/05_environment.py`). Gavin's main (distance notebooks) was merged into it 2026-09-27;
-`sections-pull` isn't merged into main yet (next: a pull request for Gavin to review). Done so far, so skip
-these parts when sending the prompts:
+flag), the river key, region, area and density cap (`scripts/04_river_cap.py`), the environment table
+(`scripts/05_environment.py`) and angler demand (`scripts/06_county_anglers.py`,
+`scripts/07_survey_crosswalk.py`, `scripts/08_demand.py`). Gavin's main (distance notebooks) was merged into it
+2026-09-27. `sections-pull` is pushed but not merged into main: the pull request (main ← sections-pull) is
+drafted, not opened yet. Done so far, so skip these parts when sending the prompts:
 - Prompt 0 (4 partner raw files still need a source from Gavin)
 - Prompt 1 in part: `docs/source_inventory.md` lists the sources in use
-- Prompt 2 for the stocked-section and wild-trout layers; Prompts 3, 4, 5
-- Prompt 6 step 1 (p153 skipped by decision)
+- Prompt 2 for the stocked-section and wild-trout layers; Prompts 3, 4, 5, 6 (p153 skipped by decision)
 
-**Next:** the rest of Prompt 6 (plan revised 2026-09-27). Prompt 7 waits on Gavin's distances.
-Script order: 00 → 01 → 02 → 03 → 04 → 05 (00 stands alone; 03 and 04 add columns to `sections`, so rerun them
-after 02).
+**Waiting on Gavin** (questions for the pull request): sources for his 4 raw files (`docs/source_inventory.md`
+§ Partner data); distances for the 8 sections stocked in 2026 that his layer lacks (`docs/known_gaps.md`
+§ Gavin's stocked-streams layer); OK to `git rm --cached` his raw files (Prompt 0 step 1). From the 2026
+schedule (2026-09-28): Tionesta hatchery stocks 10 sections but isn't flagged TROUT in `pa_hatcheries.gpkg`,
+so his distances need it as a node (Linesville and Pleasant Mount stock no streams); and does he agree to cost
+the baseline from the scheduled hatchery and to take supply from the schedule instead of pounds?
+**Waiting on us:** decide the 22 rows of `logs/07_survey_crosswalk_review.csv` (16 undecided names, 6.4% of
+survey mentions, until then spread like proximity) and `logs/03_coop_review.csv`; the detour charge
+(`docs/model_design.md` § Open questions); optionally Raystown/Tionesta as tailwaters (`docs/known_gaps.md`
+§ Tailwater sections).
+
+**Next:** Prompt 7 once Gavin's distances are keyed on `section_id` (its schedule-clusters upgrade is built);
+Prompt 8 can start on everything else.
+Script order: 00 → 01 → 02 → 03 → 04 → 05, then 06 → 07 → 08 and 09 → 10 (00 stands alone; 03 and 04 add
+columns to `sections`, so rerun them after 02; 06–10 read `sections` and don't change it).
 
 ---
 
@@ -205,18 +217,21 @@ docs/model_design.md § Angler benefit, and the values no source gives are in da
    importance (95), catching-trout importance (140), overall satisfaction (153), more stocking on
    high-use waters (175), moving stocking off wild trout waters (178; asked of all trout anglers). Use the
    same format and validation.
-2. County anglers: parse PFBC's 2024 license sales by agent county
+2. [DONE 2026-09-28: scripts/06_county_anglers.py]
+   County anglers: parse PFBC's 2024 license sales by agent county
    (data/raw/pfbc_docs/2026-09-27/fishinglicensesalesbycounty2024.pdf, pages 1-4). Numbers are
    right-aligned with blank cells, so assign columns by x position and check every row against the PDF's
    own totals. anglers = trout + combo permits (annual + multi-year sold in 2024) - non-resident and tourist
    licenses + online resident permits split by county population (Census 2020 block groups summed).
    Write data/processed/county_anglers.csv with every input as a column, so a PFBC table of permit
    holders by home county could replace it later.
-3. Survey water crosswalk: match each named water (p76-77) to a 2026-stocked river_id (or lake) by name
+3. [DONE 2026-09-28: scripts/07_survey_crosswalk.py; 22 rows await review]
+   Survey water crosswalk: match each named water (p76-77) to a 2026-stocked river_id (or lake) by name
    and county qualifier. Resolve ambiguous names with the by-home-region table (p78-83), e.g. Elk Creek
-   -> Erie's. Anything still ambiguous goes to logs/survey_crosswalk_review.csv for me; don't guess.
+   -> Erie's. Anything still ambiguous goes to logs/07_survey_crosswalk_review.csv for me; don't guess.
    Write data/processed/survey_water_crosswalk.csv with match_method and confidence.
-4. Proximity demand (band version), per 2026-stocked section:
+4. [DONE 2026-09-28: scripts/08_demand.py, also steps 5-6]
+   Proximity demand (band version), per 2026-stocked section:
    - angler-days per Census block group = population x county angler rate x mean days fished in its home
      region (p115, with "over 50 days" from parameters.csv)
    - distance = straight-line miles from the block group's center of population to the section midpoint
@@ -227,12 +242,12 @@ docs/model_design.md § Angler benefit, and the values no source gives are in da
      the statewide total.
    - columns: prox_days (regional curves), prox_days_pooled (one in-state curve), prox_days_pop (every
      county at the state angler rate). Document the method in data_methods.md.
-5. Preference demand: a water's share = its % / all mentions (incl. Other and Don't know; "<0.5%" from
+5. [DONE 2026-09-28] Preference demand: a water's share = its % / all mentions (incl. Other and Don't know; "<0.5%" from
    parameters.csv) x statewide angler-days, split over its stocked sections by length. Spread the unplaced
    share (Other, Don't know, lakes, unmatched) like prox_days. Flag, don't cap, waters whose preference per
    stocked mile exceeds the state's highest prox_days per mile (the Youghiogheny keeps its full share).
    Add destination_index = preference / proximity for each matched water.
-6. Regulation flags: DHALO, catch-and-release (5 spellings in reg_name), Keystone Select (program_name
+6. [DONE 2026-09-28] Regulation flags: DHALO, catch-and-release (5 spellings in reg_name), Keystone Select (program_name
    KSSTW) and open year-round, from the existing regulation columns. Access is not a demand input: PFBC's
    access rating (use_potential) already sets the density cap (Prompt 4), and no access-point layer is used
    (decision 2026-09-27, docs/model_design.md § Angler benefit).
@@ -248,16 +263,68 @@ Road distances from each hatchery to each section are built by Gavin in
 
 ```
 1. Supply: merge Gavin's cleaned hatchery layer into data/processed/hatcheries.parquet. Hatchery supply =
-   baseline stream total x share of trout production (exclude Pleasant Mount unless a trout-only figure is
-   found). Co-ops are fixed background, not supply nodes (see CLAUDE.md).
+   stream_fish_2026 from data/processed/hatchery_schedule_supply.csv (decision 2026-09-28: the 9 hatcheries
+   on the 2026 schedule, Tionesta included); the lbs split (baseline stream total x share of production
+   pounds, Pleasant Mount excluded) is the sensitivity. Co-ops are fixed background, not supply nodes (see
+   CLAUDE.md).
 2. Add the transport parameters from docs/transport_research.md to data/processed/parameters.csv:
    cost_per_truck_mile, fish_per_load, transport_mortality_pct and the others, each with a low/high range
    and a source.
 3. data/processed/cost_matrix.parquet (long): node_id, section_id, road_mi (from Gavin), and
    cost_per_fish = 2 x road_mi x cost_per_truck_mile / fish_per_load.
-4. baseline_node = the nearest hatchery for each section. Report the implied baseline cost and each node's
-   load vs supply. Calibration check: the implied fleet miles vs the ~300,000 mi/yr reported
+4. baseline_node = each section's scheduled hatchery (section_schedule; split by event share for the 49
+   multi-hatchery sections), if the team confirms (docs/model_design.md § Transport cost); the nearest
+   hatchery is the sensitivity. Report the implied baseline cost under both and each node's load vs supply. Calibration check: the implied fleet miles vs the ~300,000 mi/yr reported
    (docs/transport_research.md).
+```
+
+### Prompt 7 upgrade: stocking-schedule clusters (added 2026-09-28) [DONE 2026-09-28: scripts/09_stocking_schedule.py, scripts/10_runs_clusters.py]
+
+Built with explicit runs (date + hatchery + meeting place + time) in place of step 6's same-date + 30 mi rule,
+since the schedule names the hatchery and meeting for every event, and a link rule of share ≥ 0.5 (strict
+majority as the sensitivity). It also gives each hatchery's 2026 stream fish (hatchery_schedule_supply.csv),
+now the hatchery supply. Which detour version enters the model is still open (docs/model_design.md § Open
+questions).
+
+Group 2026-stocked sections into the runs PFBC actually makes, so the transport cost can charge per run
+(cluster) instead of per section. Background: `docs/model_design.md` § Open questions (detour charge).
+Clusters are a logistics proxy: sections PFBC stocks on the same day and close together are likely on the
+same truck route. The past bias is acceptable because run structure mostly reflects roads, hatcheries and
+crews, and the model still chooses fish counts and which hatchery serves each section. Label this as an
+assumption. The same download serves the "Stocking schedule and seasons" upgrade below.
+
+```
+Phase 1: inspect only, then stop and report to me.
+1. Look at fbweb.pa.gov/TroutStocking (and any ArcGIS or JSON endpoint behind it). Check robots.txt first.
+   Verify each endpoint (?f=pjson or HEAD) before building on it (rule 5).
+2. Report: what each record holds (date, meeting time/place, water name, section number or GIS key, county,
+   species, counts?); how records key to section_id; which years are available (2026 only, or also
+   2024-25?); how many requests a full pull needs; whether pre-season shows many trucks on the same day.
+3. Don't bulk-download until I OK the plan.
+
+Phase 2: after my OK.
+4. Download the 2026 schedule (plus earlier years if they're available cheaply). Max 1 request/second,
+   exponential backoff, cached, and STOP if the server refuses. Save raw responses untouched under
+   data/raw/pfbc_schedule/<date>/ and log them in manifest.csv. Add the source to docs/source_inventory.md.
+5. data/processed/stocking_events.{parquet,csv}: one row per section x date (plus time/meeting point if
+   given). Log unmatched schedule rows to logs/ for review. Don't guess matches.
+6. Clusters: link two sections if, on the dates both are stocked, they share a date a majority of the time
+   AND are within a road-distance threshold (straight-line midpoint distance x 1.3 circuity; 30 mi
+   default, 20/45 as a sensitivity). Clusters = connected components.
+   - Put the threshold and majority rule in parameters.csv.
+   - Log cluster sizes, singletons, and any cluster wider than ~60 mi (likely two trucks merged).
+   - Hand-check a few, e.g. Bear Creek 3197_2/3197_3's neighbours.
+   - Sections with no schedule record get their own singleton cluster, flagged.
+7. Write cluster_id (and cluster_source) onto sections (or its own table keyed on section_id). Compute
+   detour_s as the distance to the nearest same-cluster neighbour. Also compute a cluster-level trip
+   charge input (cluster centroid, total cluster miles) for the richer version: binary y_c per cluster
+   with x_s <= cap_s * y_c. Hatchery -> section road distances stay Gavin's (travel_arcs): don't rebuild
+   them.
+Checkpoints: data_methods.md (method and the "same day ~ same run" assumption), data_dictionary.md,
+known_gaps.md (whatever the schedule lacks), model_design.md (update the detour open question: cluster
+version proposed, still undecided), scenarios_and_extensions.md (geographic-only clusters as the fallback
+and a comparison), parameters.csv, tests for documented counts. Show sample rows and cluster stats, then
+stop for review before committing.
 ```
 
 ## Prompt 8: Assemble model inputs
@@ -293,7 +360,8 @@ missing a cost_matrix row. Write logs/final_qa.md.
 - **Distance-decay calibration:** replaced 2026-09-27. Proximity demand now uses each home region's p93
   bands directly (Prompt 6 step 4), and p85 is a check on it.
 - **Stocking schedule and seasons:** scrape event dates from fbweb.pa.gov/TroutStocking to split decisions by
-  pre-season, in-season, and fall/winter.
+  pre-season, in-season, and fall/winter. The schedule download is shared with the stocking-schedule clusters
+  (Prompt 7 upgrade).
 - **History:** the 2024–26 layers don't reach 2022. Check for a 2023 layer, then Wayback Machine captures of
   past schedules.
 - **PFBC records request:** hatchery assignments, truck costs, and production by species, to replace our
