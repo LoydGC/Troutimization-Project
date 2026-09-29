@@ -1,6 +1,7 @@
 check,expected,result,status
-Row count,"11,495 (hatcheries x sections)","11,495",PASS
+Row count,"13,585 (hatcheries x sections)","13,585",PASS
 Duplicate hatchery/section pairs,0,0,PASS
+Hatcheries on the 2026 schedule with road distances,all 9,9 of 9,PASS
 Nate's sections covered,"1,045","1,045",PASS
 Sections stocked in 2026 with a road distance,"1,022","1,022",PASS
 Pairs with no road route,0,0,PASS

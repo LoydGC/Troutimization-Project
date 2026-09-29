@@ -1,17 +1,18 @@
-2026-09-29 18:42:07,426 INFO loaded 11 hatcheries, 165 co-op nurseries, 1045 sections
-2026-09-29 18:42:07,599 INFO straight-line table: 11495 rows (11 hatcheries x 1045 sections)
-2026-09-29 18:42:10,494 INFO co-op nearest sections: 330 rows (165 nurseries x 2)
-2026-09-29 18:42:11,529 INFO OSRM: sections 0-99 done
-2026-09-29 18:42:13,943 INFO OSRM: sections 100-199 done
-2026-09-29 18:42:16,415 INFO OSRM: sections 200-299 done
-2026-09-29 18:42:18,814 INFO OSRM: sections 300-399 done
-2026-09-29 18:42:21,165 INFO OSRM: sections 400-499 done
-2026-09-29 18:42:23,547 INFO OSRM: sections 500-599 done
-2026-09-29 18:42:26,059 INFO OSRM: sections 600-699 done
-2026-09-29 18:42:28,397 INFO OSRM: sections 700-799 done
-2026-09-29 18:42:30,836 INFO OSRM: sections 800-899 done
-2026-09-29 18:42:33,256 INFO OSRM: sections 900-999 done
-2026-09-29 18:42:36,161 INFO OSRM: sections 1000-1044 done
-2026-09-29 18:42:37,754 INFO road table: queried OSRM and wrote 11495 rows to data\processed\hatchery_to_section_road_distance.parquet (+ csv)
-2026-09-29 18:42:37,755 INFO road table: 0 pairs with no route
-2026-09-29 18:42:37,790 INFO wrote the road distance (mi) and drive time (min) matrices to data/interim
+2026-09-29 18:59:26,781 INFO loaded 13 hatcheries, 165 co-op nurseries, 1045 sections
+2026-09-29 18:59:26,787 INFO hatcheries on the 2026 schedule: 9; without a node: none
+2026-09-29 18:59:26,989 INFO straight-line table: 13585 rows (13 hatcheries x 1045 sections)
+2026-09-29 18:59:30,121 INFO co-op nearest sections: 330 rows (165 nurseries x 2)
+2026-09-29 18:59:31,074 INFO OSRM: sections 0-99 done
+2026-09-29 18:59:33,469 INFO OSRM: sections 100-199 done
+2026-09-29 18:59:35,846 INFO OSRM: sections 200-299 done
+2026-09-29 18:59:38,334 INFO OSRM: sections 300-399 done
+2026-09-29 18:59:40,779 INFO OSRM: sections 400-499 done
+2026-09-29 18:59:43,193 INFO OSRM: sections 500-599 done
+2026-09-29 18:59:45,648 INFO OSRM: sections 600-699 done
+2026-09-29 18:59:48,631 INFO OSRM: sections 700-799 done
+2026-09-29 18:59:51,105 INFO OSRM: sections 800-899 done
+2026-09-29 18:59:53,540 INFO OSRM: sections 900-999 done
+2026-09-29 18:59:55,863 INFO OSRM: sections 1000-1044 done
+2026-09-29 18:59:57,479 INFO road table: queried OSRM and wrote 13585 rows to data\processed\hatchery_to_section_road_distance.parquet (+ csv)
+2026-09-29 18:59:57,480 INFO road table: 0 pairs with no route
+2026-09-29 18:59:57,512 INFO wrote the road distance (mi) and drive time (min) matrices to data/interim

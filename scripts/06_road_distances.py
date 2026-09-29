@@ -2,7 +2,7 @@
 
 This script builds the data; notebooks/travel_arcs.ipynb only loads these tables to draw maps and validate.
 
-Inputs : data/processed/trout_hatcheries.gpkg        10 trout hatcheries (from notebooks/01_data_prep.ipynb)
+Inputs : data/raw/pa_hatcheries.gpkg                all 13 state fish hatcheries (PFBC's State Fish Hatcheries layer)
          data/processed/sections.parquet             Nate's 1,045 stocked sections, keyed on section_id
          data/processed/pa_trout.gpkg (sections)     section lines (gitignored; rebuilt by Nate's scripts 01-02)
          data/raw/Coop_nurseries.geojson             165 co-op nurseries
@@ -57,12 +57,24 @@ for handler in (logging.FileHandler(LOG_DIR / "06_road_distances.log", mode="w",
 
 
 # %% Load inputs (all in the same projected CRS)
-hatcheries = gpd.read_file(PROCESSED / "trout_hatcheries.gpkg").to_crs(CRS_M)
+# Distances go to ALL 13 hatcheries in PFBC's State Fish Hatcheries layer, the authoritative supply-node set
+# (Nate, decision 2026-09-29). data/raw/pa_hatcheries.gpkg is an older copy of that layer: same 13 points and flags.
+# His base model uses the 9 on the 2026 stocking schedule (in_2026_schedule in his hatcheries table); the other 4
+# (Linesville, Pleasant Mount, Fairview, Union City) are his "more hatcheries" extension, so they need no re-query.
+hatcheries = gpd.read_file(RAW / "pa_hatcheries.gpkg").to_crs(CRS_M)
+hatcheries["NAME"] = hatcheries["NAME"].str.strip()
+assert len(hatcheries) == 13 and hatcheries["ID"].is_unique and hatcheries["NAME"].is_unique
 coop_nurseries = gpd.read_file(RAW / "Coop_nurseries.geojson").to_crs(CRS_M)
 sections = gpd.read_file(PROCESSED / "pa_trout.gpkg", layer="sections")[["section_id", "geometry"]].merge(
     pd.read_parquet(PROCESSED / "sections.parquet"), on="section_id", validate="one_to_one"
 ).to_crs(CRS_M)
 log.info("loaded %d hatcheries, %d co-op nurseries, %d sections", len(hatcheries), len(coop_nurseries), len(sections))
+events_path = PROCESSED / "stocking_events.parquet"
+if events_path.exists():   # every hatchery on the 2026 stocking schedule needs a node (and so road distances)
+    scheduled = set(pd.read_parquet(events_path, columns=["hatchery"]).hatchery.dropna())
+    missing = sorted(scheduled - set(hatcheries["NAME"]))
+    log.info("hatcheries on the 2026 schedule: %d; without a node: %s", len(scheduled), missing or "none")
+    assert not missing, f"scheduled hatcheries missing from the hatchery layer: {missing}"
 
 
 # %% Straight-line distance: every hatchery to every section (nearest point on the section line)
