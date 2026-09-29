@@ -3,9 +3,9 @@
 Optimization project (Python). Class: From Data to Action. Rules, model framing and conventions: `CLAUDE.md`.
 
 ## Layout
-- `scripts/` – numbered data pipeline; run in numeric order
+- `scripts/` – numbered data pipeline (run in numeric order), plus the model scripts `optimization.py` and `sensitivities.py`
 - `tests/` – pytest tests for the scripts
-- `notebooks/` – run in order: `01_data_prep`, `02_optimization`, `03_sensitivities`
+- `notebooks/` – exploration and maps only: `01_data_prep`, `travel_arcs`. Data building and the model are scripts
 - `data/raw` → `interim` → `processed` – raw is git-ignored except `manifest.csv`; interim is git-ignored;
   processed is committed. Sources and outputs: `data/README.md`
 - `outputs/` – figures and tables for the report
