@@ -1,0 +1,233 @@
+waterbody,name_base,county_qualifier,pct_overall,lt_0_5_pct,water_type,river_id,water_name,river_region,match_share,stocked_mi_2026,n_sections_2026,match_method,confidence,note
+Yellow Breeches Creek,Yellow Breeches Creek,,5.0,False,stream,276,Yellow Breeches Creek,Southcentral,1.0,44.638,3,unique_name,high,unique name
+Pine Creek (Lycoming or Tioga County),Pine Creek,Lycoming or Tioga,5.0,False,stream,1339,Pine Creek,Northcentral,1.0,55.958,9,name_county,high,county qualifier pins one river
+Kettle Creek,Kettle Creek,,3.0,False,stream,3351,Kettle Creek,Northcentral,1.0,33.585,8,unique_name,high,unique name
+Neshannock Creek,Neshannock Creek,,3.0,False,stream,329,Neshannock Creek,Northwest,1.0,23.759,4,unique_name,high,unique name
+Tulpehocken Creek,Tulpehocken Creek,,2.0,False,stream,3072,Tulpehocken Creek,Southcentral; Southeast,1.0,17.333,5,unique_name,high,unique name
+Lehigh River,Lehigh River,,2.0,False,stream,2730,Lehigh River,Northeast,1.0,22.974,4,unique_name,medium,unique name; its region supplies 33% of resident mentions
+Laurel Hill Creek,Laurel Hill Creek,,2.0,False,stream,3740,Laurel Hill Creek,Southwest,1.0,30.403,6,unique_name,high,unique name
+Oil Creek,Oil Creek,,2.0,False,stream,1909,Oil Creek,Northwest,1.0,36.865,7,unique_name,high,unique name
+Youghiogheny River,Youghiogheny River,,2.0,False,stream,1327,Youghiogheny River,Southwest,1.0,1.114,1,unique_name,high,unique name
+Tionesta Creek,Tionesta Creek,,2.0,False,stream,2923,Tionesta Creek,Northwest,1.0,22.272,3,unique_name,high,unique name
+Elk Creek,Elk Creek,,2.0,False,stream,3160,Elk Creek,Northwest,1.0,13.037,2,regional_split,medium,home regions attribute 59% of mentions; dropped 1902 (7%); Lake Erie tributary
+Slippery Rock Creek,Slippery Rock Creek,,2.0,False,stream,312,Slippery Rock Creek,Northwest,1.0,21.835,3,unique_name,high,unique name
+Pine Creek (other county or not sure of county),Pine Creek,other/unsure,2.0,False,stream,,,,,,,unplaced,high,county not given
+Allegheny River,Allegheny River,,2.0,False,stream,1785,Allegheny River,Northcentral,1.0,29.766,4,unique_name,medium,unique name; its region supplies 29% of resident mentions
+French Creek,French Creek,,2.0,False,stream,413,French Creek,Southeast,0.7549260657484529,12.897,5,regional_split,medium,home regions attribute 96% of mentions
+French Creek,French Creek,,2.0,False,stream,1882,French Creek,Northwest,0.24507393425154705,4.029,1,regional_split,medium,home regions attribute 96% of mentions
+Loyalhanna Creek,Loyalhanna Creek,,2.0,False,stream,1796,Loyalhanna Creek,Southwest,1.0,13.918,4,unique_name,high,unique name
+Pine Creek (Allegheny County),Pine Creek,Allegheny,2.0,False,stream,1798,Pine Creek,Southwest,1.0,7.919,4,name_county,high,county qualifier pins one river
+Bald Eagle Creek,Bald Eagle Creek,,2.0,False,stream,2199,Bald Eagle Creek,Northcentral,0.7093398425367802,28.687,5,regional_split,medium,home regions attribute 89% of mentions
+Bald Eagle Creek,Bald Eagle Creek,,2.0,False,stream,3136,Bald Eagle Creek,Southcentral,0.2906601574632199,7.243,1,regional_split,medium,home regions attribute 89% of mentions
+Penns Creek,Penns Creek,,2.0,False,stream,2207,Penns Creek,Northcentral,1.0,19.858,3,unique_name,medium,unique name; its region supplies 47% of resident mentions
+Jordan Creek,Jordan Creek,,2.0,False,stream,2716,Jordan Creek,Southeast,1.0,25.877,4,unique_name,high,unique name
+Conococheague Creek,Conococheague Creek,,2.0,False,stream,1819,Conococheague Creek,Southcentral,1.0,24.171,3,unique_name,high,unique name
+Kinzua Creek,Kinzua Creek,,2.0,False,stream,2634,Kinzua Creek,Northcentral,1.0,16.317,4,unique_name,medium,unique name; its region supplies 29% of resident mentions
+Bush Kill,Bush Kill,,2.0,False,stream,,,,,,,review,,"PFBC also stocks Bushkill Creek 653 (Northampton, SE); 89% of mentions are from SE anglers, and 'Bush Kill' may stand for either"
+Little Lehigh Creek,Little Lehigh Creek,,2.0,False,stream,2714,Little Lehigh Creek,Southeast,1.0,16.925,5,unique_name,high,unique name
+First Fork Sinnemahoning Creek,First Fork Sinnemahoning Creek,,2.0,False,stream,3364,First Fork Sinnemahoning Creek,Northcentral,1.0,31.233,6,unique_name,medium,unique name; its region supplies 42% of resident mentions
+Clark Creek,Clark Creek,,2.0,False,stream,3303,Clark Creek,Southcentral,1.0,24.869,4,unique_name,high,unique name
+Brandywine Creek,Brandywine Creek,,1.0,False,stream,,,,,,,review,,no PFBC section on the main stem; its branches are stocked and not listed in the survey
+Loyalsock Creek,Loyalsock Creek,,1.0,False,stream,117,Loyalsock Creek,Northcentral; Northeast,1.0,36.706,5,unique_name,high,unique name
+Mill Creek,Mill Creek,,1.0,False,stream,,,,,,,review,,12 rivers of this name; home regions resolve only 0% of mentions (100% from regions with 2+ candidates)
+Perkiomen Creek,Perkiomen Creek,,1.0,False,stream,407,Perkiomen Creek,Southeast,1.0,3.199,1,unique_name,high,unique name
+Ridley Creek,Ridley Creek,,1.0,False,stream,1943,Ridley Creek,Southeast,1.0,4.676,3,unique_name,high,unique name
+Muddy Creek,Muddy Creek,,1.0,False,stream,422,Muddy Creek,Southeast,0.18391242645425765,1.39,1,regional_split,medium,home regions attribute 100% of mentions
+Muddy Creek,Muddy Creek,,1.0,False,stream,2033,Muddy Creek,Southcentral,0.6966794779616866,6.379,3,regional_split,medium,home regions attribute 100% of mentions
+Muddy Creek,Muddy Creek,,1.0,False,stream,2640,Muddy Creek,Northwest,0.11940809558405578,7.355,1,regional_split,medium,home regions attribute 100% of mentions
+Twin Lakes,Twin Lakes,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Deer Creek,Deer Creek,,1.0,False,stream,345,Deer Creek,Northwest,0.18276818124200556,2.942,1,regional_split,medium,home regions attribute 100% of mentions
+Deer Creek,Deer Creek,,1.0,False,stream,2023,Deer Creek,Southcentral,0.23696670085312496,2.705,1,regional_split,medium,home regions attribute 100% of mentions
+Deer Creek,Deer Creek,,1.0,False,stream,6063,Deer Creek,Southwest,0.5802651179048695,9.923,3,regional_split,medium,home regions attribute 100% of mentions
+Four Mile Run,Four Mile Run,,1.0,False,stream,2260,Fourmile Run,Southwest,1.0,11.78,2,regional_split,high,home regions attribute 100% of mentions; dropped 2608 (8%)
+Raccoon State Park (Lake),Raccoon State Park,Lake,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Chest Creek,Chest Creek,,1.0,False,stream,4028,Chest Creek,Northcentral; Southwest,1.0,36.487,5,unique_name,high,unique name
+Buffalo Creek (Armstrong County),Buffalo Creek,Armstrong,1.0,False,stream,165,Buffalo Creek,Northwest; Southwest,1.0,25.711,5,name_county,high,county qualifier pins one river
+Swatara Creek,Swatara Creek,,1.0,False,stream,,,,,,,no_pfbc_section,high,no PFBC stocked section of this name in 2024-26
+Bobs Creek,Bobs Creek,,1.0,False,stream,62,Bobs Creek,Southcentral,1.0,13.666,2,unique_name,high,unique name
+Little Pine Creek,Little Pine Creek,,1.0,False,stream,3354,Little Pine Creek,Northcentral,1.0,12.486,4,unique_name,medium,unique name; its region supplies 36% of resident mentions
+Manatawny Creek,Manatawny Creek,,1.0,False,stream,3040,Manatawny Creek,Southeast,1.0,10.076,4,unique_name,high,unique name
+Canonsburg Lake,Canonsburg Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Little Beaver Creek,Little Beaver Creek,,1.0,False,stream,,,,,,,review,,"72% of mentions are from NW/SW anglers, where the Little Beaver Creek system is (PFBC stocks North Fork Little Beaver Creek 300, Beaver)"
+Skippack Creek,Skippack Creek,,1.0,False,stream,421,Skippack Creek,Southeast,1.0,8.186,1,unique_name,high,unique name
+Brodhead Creek,Brodhead Creek,,1.0,False,stream,2662,Brodhead Creek,Northeast,1.0,12.867,3,unique_name,medium,unique name; its region supplies 38% of resident mentions
+Keystone Lake,Keystone Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Wissahickon Creek,Wissahickon Creek,,1.0,False,stream,370,Wissahickon Creek,Southeast,1.0,8.445,2,unique_name,high,unique name
+Pennypack Creek,Pennypack Creek,,1.0,False,stream,378,Pennypack Creek,Southeast,1.0,9.939,1,unique_name,high,unique name
+Lycoming Creek,Lycoming Creek,,1.0,False,stream,113,Lycoming Creek,Northcentral,1.0,22.227,4,unique_name,high,unique name
+White Clay Creek,White Clay Creek,,1.0,False,stream,2027,White Clay Creek,Southeast,1.0,1.11,1,unique_name,high,unique name
+Bull Creek,Bull Creek,,1.0,False,stream,1719,Bull Creek,Southwest,1.0,8.711,3,unique_name,high,unique name
+Salmon Creek,Salmon Creek,,1.0,False,stream,2844,Salmon Creek,Northwest,1.0,14.933,2,unique_name,medium,unique name; its region supplies 39% of resident mentions
+Spring Creek,Spring Creek,,1.0,False,stream,,,,,,,review,,4 rivers of this name; home regions resolve only 39% of mentions (38% from regions with 2+ candidates)
+Monocacy Creek,Monocacy Creek,,1.0,False,stream,2717,Monocacy Creek,Southeast,1.0,7.305,4,unique_name,high,unique name
+Bradys Run Lake,Bradys Run Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Clarion River,Clarion River,,1.0,False,stream,,,,,,,no_pfbc_section,high,no PFBC stocked section of this name in 2024-26
+Hicks Run,Hicks Run,,1.0,False,stream,2783,Hicks Run,Northcentral,1.0,2.201,1,unique_name,medium,unique name; its region supplies 28% of resident mentions
+Lackawanna River,Lackawanna River,,1.0,False,stream,1849,Lackawanna River,Northeast,1.0,6.613,1,unique_name,high,unique name
+White Deer Creek,White Deer Creek,,1.0,False,stream,2175,White Deer Creek,Northcentral,1.0,20.178,4,unique_name,high,unique name
+Sugar Creek,Sugar Creek,,1.0,False,stream,1898,Sugar Creek,Northwest,1.0,17.833,2,regional_split,medium,home regions attribute 63% of mentions
+Stony Creek (Dauphin County),Stony Creek,Dauphin,1.0,False,stream,3301,Stony Creek,Southcentral,1.0,19.818,2,name_county,high,county qualifier pins one river
+Antietam Creek,Antietam Creek,,1.0,False,stream,4481,Antietam Creek,Southeast,1.0,3.33,1,unique_name,high,unique name
+Yellow Creek (Bedford County),Yellow Creek,Bedford,1.0,False,stream,59,Yellow Creek,Southcentral,1.0,8.703,3,name_county,high,county qualifier pins one river
+Chester Creek,Chester Creek,,1.0,False,stream,1942,Chester Creek,Southeast,1.0,8.419,2,unique_name,high,unique name
+Little Sandy Creek,Little Sandy Creek,,1.0,False,stream,1974,Little Sandy Creek,Northwest,0.6268460519082111,5.287,2,regional_split,medium,home regions attribute 71% of mentions
+Little Sandy Creek,Little Sandy Creek,,1.0,False,stream,6009,Little Sandy Creek,Southwest,0.3731539480917889,17.622,1,regional_split,medium,home regions attribute 71% of mentions
+Harveys Creek,Harveys Creek,,1.0,False,stream,5995,Harveys Creek,Northeast,1.0,10.481,3,unique_name,high,unique name
+Mountain Creek,Mountain Creek,,1.0,False,stream,61,Mountain Creek,Southcentral,1.0,14.925,3,regional_split,high,home regions attribute 100% of mentions
+Little Juniata River,Little Juniata River,,1.0,False,stream,,,,,,,no_pfbc_section,high,no PFBC stocked section of this name in 2024-26
+Brokenstraw Creek,Brokenstraw Creek,,1.0,False,stream,2655,Brokenstraw Creek,Northwest,1.0,13.979,2,unique_name,high,unique name
+Fishing Creek (Columbia County),Fishing Creek,Columbia,1.0,False,stream,183,Fishing Creek,Northeast,1.0,13.699,4,name_county,high,county qualifier pins one river
+Sherman Creek,Sherman Creek,,1.0,False,stream,3306,Sherman Creek,Southcentral,1.0,14.825,2,unique_name,high,unique name
+Raystown Branch,Raystown Branch,,1.0,False,stream,2968,Raystown Branch Juniata River,Southcentral; Southwest,1.0,31.127,4,manual,high,"survey shortens PFBC's 'Raystown Branch Juniata River', the only Raystown Branch; mentions come from Southwest + Southcentral, its two regions"
+Lackawaxen River,Lackawaxen River,,1.0,False,stream,2271,Lackawaxen River,Northeast,1.0,20.225,4,unique_name,high,unique name
+Cowans Gap Lake,Cowans Gap Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Buffalo Creek (Butler County),Buffalo Creek,Butler,1.0,False,stream,165,Buffalo Creek,Northwest; Southwest,1.0,25.711,5,name_county,high,county qualifier pins one river
+Unami Creek,Unami Creek,,1.0,False,stream,1588,Unami Creek,Southeast,1.0,7.448,3,unique_name,high,unique name
+Dyberry Creek,Dyberry Creek,,1.0,False,stream,2281,Dyberry Creek,Northeast,1.0,7.01,4,unique_name,high,unique name
+Mahantango Creek,Mahantango Creek,,1.0,False,stream,3122,Mahantango Creek,Southcentral; Southeast,1.0,26.756,2,unique_name,medium,unique name; its region supplies 44% of resident mentions
+Black Moshannon Creek,Black Moshannon Creek,,1.0,False,stream,2254,Black Moshannon Creek,Northcentral,1.0,14.573,4,unique_name,high,unique name
+Big Cove Creek,Big Cove Creek,,1.0,False,stream,1834,Big Cove Creek,Southcentral,1.0,13.347,3,unique_name,high,unique name
+Little Bush Kill,Little Bush Kill,,1.0,False,stream,,,,,,,review,,"PFBC also stocks Little Bushkill Creek 1355 (Northampton, SE); 87% of mentions are from SE anglers"
+Trout Creek,Trout Creek,,1.0,False,stream,2734,Trout Creek,Southeast,1.0,6.099,1,unique_name,high,unique name
+Big Spring Creek,Big Spring Creek,,1.0,False,stream,264,Big Spring Creek,Southcentral,1.0,2.248,2,unique_name,high,unique name
+Fishing Creek (other county or not sure of county),Fishing Creek,other/unsure,1.0,False,stream,,,,,,,unplaced,high,county not given
+Hammer Creek,Hammer Creek,,1.0,False,stream,425,Hammer Creek,Southeast,1.0,8.373,3,unique_name,high,unique name
+Canoe Creek,Canoe Creek,,1.0,False,stream,2973,Canoe Creek,Southcentral,1.0,7.317,3,regional_split,medium,home regions attribute 71% of mentions
+Locust Lake,Locust Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Medix Run,Medix Run,,1.0,False,stream,137,Medix Run,Northcentral,1.0,6.205,2,unique_name,high,unique name
+Schuylkill River,Schuylkill River,,1.0,False,stream,,,,,,,no_pfbc_section,high,no PFBC stocked section of this name in 2024-26
+Octoraro Creek,Octoraro Creek,,1.0,False,stream,,,,,,,review,,no PFBC section on the main stem; its branches are stocked and not listed in the survey
+Delaware Canal,Delaware Canal,,1.0,False,stream,399,Delaware Canal,Southeast,1.0,8.908,2,unique_name,high,unique name
+Yellow Creek (Indiana County),Yellow Creek,Indiana,1.0,False,stream,4502,Yellow Creek,Southwest,1.0,5.937,1,name_county,high,county qualifier pins one river
+Lackawanna Lake,Lackawanna Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Tobyhanna Creek,Tobyhanna Creek,,1.0,False,stream,2442,Tobyhanna Creek,Northeast,1.0,6.713,2,unique_name,medium,unique name; its region supplies 38% of resident mentions
+Pine Creek (Schuykill County),Pine Creek,Schuykill,1.0,False,stream,,,,,,,review,,3 rivers of this name; home regions resolve only 0% of mentions (73% from regions with 2+ candidates)
+West Branch Susquehanna River,West Branch Susquehanna River,,1.0,False,stream,4029,West Branch Susquehanna River,Northcentral,1.0,5.625,2,unique_name,high,unique name
+Deep Creek,Deep Creek,,1.0,False,stream,3127,Deep Creek,Southeast,1.0,17.279,2,unique_name,high,unique name
+North Park Lake,North Park Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Virgin Run Lake,Virgin Run Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Tohickon Creek,Tohickon Creek,,1.0,False,stream,2962,Tohickon Creek,Southeast,1.0,5.546,1,unique_name,high,unique name
+Glade Run Lake,Glade Run Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Beaver Creek,Beaver Creek,,1.0,False,stream,,,,,,,review,,5 rivers of this name; home regions resolve only 0% of mentions (0% from regions with 2+ candidates)
+Saucon Creek,Saucon Creek,,1.0,False,stream,2718,Saucon Creek,Southeast,1.0,2.547,1,unique_name,high,unique name
+Shohola Creek,Shohola Creek,,1.0,False,stream,2266,Shohola Creek,Northeast,1.0,5.597,2,unique_name,medium,unique name; its region supplies 48% of resident mentions
+Raccoon Creek,Raccoon Creek,,1.0,False,stream,,,,,,,review,,all mentions from the Southwest; PFBC's only Raccoon Creek is Perry's (SC)
+Twenty Mile Creek,Twenty Mile Creek,,1.0,False,stream,3178,Twentymile Creek,Northwest,1.0,1.78,1,unique_name,high,unique name; Lake Erie tributary
+Driftwood Branch Sinnemahoning Creek,Driftwood Branch Sinnemahoning Creek,,1.0,False,stream,2865,Driftwood Branch Sinnemahoning Creek,Northcentral,1.0,22.468,4,unique_name,low,unique name; its region supplies 23% of resident mentions
+Promised Land Lake,Promised Land Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Six Mile Run,Six Mile Run,,1.0,False,stream,2532,Sixmile Run,Northcentral,1.0,5.189,2,regional_split,high,home regions attribute 100% of mentions
+Pohopoco Creek,Pohopoco Creek,,1.0,False,stream,6228,Pohopoco Creek,Northeast,1.0,2.845,1,unique_name,medium,unique name; its region supplies 38% of resident mentions
+Bens Creek,Bens Creek,,1.0,False,stream,,,,,,,review,,2 rivers of this name; home regions resolve only 0% of mentions (100% from regions with 2+ candidates)
+Pickering Creek,Pickering Creek,,1.0,False,stream,409,Pickering Creek,Southeast,1.0,3.559,2,unique_name,high,unique name
+East Branch Clarion River,East Branch Clarion River,,1.0,False,stream,2928,East Branch Clarion River,Northcentral,1.0,6.083,2,unique_name,high,unique name
+Lake Pleasant,Lake Pleasant,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Cool Spring Creek,Cool Spring Creek,,1.0,False,stream,350,Cool Spring Creek,Northwest,1.0,6.233,3,unique_name,high,unique name
+Middle Creek (Snyder County),Middle Creek,Snyder,1.0,False,stream,2232,Middle Creek,Northcentral,1.0,14.179,3,name_county,high,county qualifier pins one river
+Moon Lake,Moon Lake,,1.0,False,lake,,,,,,,lake,high,lake: not in the section set
+Lizard Creek,Lizard Creek,,1.0,False,stream,495,Lizard Creek,Northeast,1.0,9.13,2,unique_name,medium,unique name; its region supplies 48% of resident mentions
+Little Mahoney Creek,Little Mahoney Creek,,1.0,False,stream,,,,,,,review,,"no PFBC water of this name; reads as Little Mahoning Creek 78 (Indiana, SW) or Little Mahanoy Creek 3818 (Schuylkill, SE)"
+Darby Creek,Darby Creek,,1.0,False,stream,1550,Darby Creek,Southeast,1.0,11.991,2,unique_name,high,unique name
+Kishacoquillas Creek,Kishacoquillas Creek,,1.0,False,stream,2628,Kishacoquillas Creek,Southcentral,1.0,15.381,4,unique_name,high,unique name
+Stony Creek (Montgomery County),Stony Creek,Montgomery,1.0,False,stream,403,Stony Creek,Southeast,1.0,2.755,1,name_county,high,county qualifier pins one river
+Upper Woods Pond,Upper Woods Pond,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Aquashicola Creek,Aquashicola Creek,,,True,stream,6171,Aquashicola Creek,Northeast,1.0,3.378,1,unique_name,medium,unique name; its region supplies 38% of resident mentions
+Little Buffalo Creek,Little Buffalo Creek,,,True,stream,2975,Little Buffalo Creek,Southcentral,1.0,8.568,2,unique_name,high,unique name
+Dunlap Lake,Dunlap Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Nescopeck Creek,Nescopeck Creek,,,True,stream,204,Nescopeck Creek,Northeast,1.0,11.126,3,unique_name,high,unique name
+Fishing Creek (Clinton County),Fishing Creek,Clinton,,True,stream,6226,Fishing Creek,Northcentral,1.0,3.2,2,name_county,high,county qualifier pins one river
+Harveys Lake,Harveys Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Marquette Lake,Marquette Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Middle Creek (Lancaster County),Middle Creek,Lancaster,,True,stream,426,Middle Creek,Southeast,1.0,7.114,1,name_county,high,county qualifier pins one river
+Lilly Lake,Lilly Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Towanda Creek,Towanda Creek,,,True,stream,6052,Towanda Creek,Northeast,1.0,15.697,2,unique_name,high,unique name
+Bowman Creek,Bowman Creek,,,True,stream,2519,Bowman Creek,Northeast,1.0,19.21,4,unique_name,high,unique name
+South Branch Tunkhannock Creek,South Branch Tunkhannock Creek,,,True,stream,456,South Branch Tunkhannock Creek,Northeast,1.0,16.488,4,unique_name,high,unique name
+Dunbar Creek,Dunbar Creek,,,True,stream,2987,Dunbar Creek,Southwest,1.0,6.585,2,unique_name,high,unique name
+Honey Creek,Honey Creek,,,True,stream,313,Honey Creek,Northwest,0.3395800628783772,5.624,1,regional_split,medium,home regions attribute 69% of mentions
+Honey Creek,Honey Creek,,,True,stream,7360,Honey Creek,Southcentral,0.6604199371216228,11.432,2,regional_split,medium,home regions attribute 69% of mentions
+Wills Creek,Wills Creek,,,True,stream,1561,Wills Creek,Southcentral; Southwest,1.0,19.169,2,unique_name,high,unique name
+Cove Creek,Cove Creek,,,True,stream,1622,Cove Creek,Southcentral,1.0,18.022,2,unique_name,high,unique name
+Crooked Creek,Crooked Creek,,,True,stream,,,,,,,review,,3 rivers of this name; home regions resolve only 44% of mentions (56% from regions with 2+ candidates)
+Levittown Lake,Levittown Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Connoquenessing Creek,Connoquenessing Creek,,,True,stream,310,Connoquenessing Creek,Northwest,1.0,6.826,1,unique_name,medium,unique name; its region supplies 30% of resident mentions
+Muncy Creek,Muncy Creek,,,True,stream,102,Muncy Creek,Northcentral; Northeast,1.0,24.402,4,unique_name,high,unique name
+Spring Creek (Elk County),Spring Creek,Elk,,True,stream,1887,Spring Creek,Northcentral,1.0,11.727,1,name_county,high,county qualifier pins one river
+Middle Creek (other county or not sure of county),Middle Creek,other/unsure,,True,stream,,,,,,,unplaced,high,county not given
+Little Fishing Creek,Little Fishing Creek,,,True,stream,2251,Little Fishing Creek,Northcentral,0.3163728555921497,0.0,0,not_stocked_2026,medium,home regions attribute 100% of mentions; river not stocked in 2026 -> unplaced (regional_split)
+Little Fishing Creek,Little Fishing Creek,,,True,stream,4384,Little Fishing Creek,Northeast,0.6836271444078503,12.946,1,regional_split,medium,home regions attribute 100% of mentions
+Tuscarora Creek,Tuscarora Creek,,,True,stream,,,,,,,review,,2 rivers of this name; home regions resolve only 0% of mentions (0% from regions with 2+ candidates)
+Blue Jay Creek,Blue Jay Creek,,,True,stream,2670,Bluejay Creek,Northwest,1.0,4.963,1,unique_name,medium,unique name; its region supplies 30% of resident mentions
+Clover Creek,Clover Creek,,,True,stream,2978,Clover Creek,Southcentral,1.0,13.759,1,unique_name,high,unique name
+Spring Creek (Forest County),Spring Creek,Forest,,True,stream,,,,,,,review,,no PFBC Spring Creek in Forest County
+Manada Creek,Manada Creek,,,True,stream,3284,Manada Creek,Southcentral,1.0,10.669,2,unique_name,high,unique name
+Thorn Creek,Thorn Creek,,,True,stream,304,Thorn Creek,Northwest,1.0,10.917,1,unique_name,high,unique name
+Clear Shade Creek,Clear Shade Creek,,,True,stream,3032,Clear Shade Creek,Southwest,1.0,11.049,3,unique_name,high,unique name
+Potato Creek,Potato Creek,,,True,stream,2561,Potato Creek,Northcentral,1.0,15.154,1,unique_name,low,unique name; its region supplies 0% of resident mentions
+Marvin Creek,Marvin Creek,,,True,stream,2645,Marvin Creek,Northcentral,1.0,12.965,3,unique_name,medium,unique name; its region supplies 28% of resident mentions
+Ontelaunee Creek,Ontelaunee Creek,,,True,stream,1414,Ontelaunee Creek,Southeast,1.0,8.052,2,unique_name,high,unique name
+Sandy Lick Creek,Sandy Lick Creek,,,True,stream,6026,Sandy Lick Creek,Northcentral,1.0,16.036,2,unique_name,high,unique name
+Martins Creek,Martins Creek,,,True,stream,2735,Martins Creek,Southeast,1.0,6.107,2,regional_split,high,home regions attribute 100% of mentions
+George B Stevenson Reservoir,George B Stevenson Reservoir,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Woodcock Creek,Woodcock Creek,,,True,stream,2603,Woodcock Creek,Northwest,1.0,13.199,2,unique_name,high,unique name
+Big Swickley Creek,Big Swickley Creek,,,True,stream,1707,Big Sewickley Creek,Southwest,1.0,4.088,1,manual,medium,"survey misspelling of Big Sewickley Creek (Allegheny), the only Big Sewickley; all mentions from the Southwest, its region"
+West Branch Clarion River,West Branch Clarion River,,,True,stream,2927,West Branch Clarion River,Northcentral,1.0,16.188,3,unique_name,high,unique name
+Redbank Creek,Redbank Creek,,,True,stream,3382,Redbank Creek,Southwest,1.0,19.298,1,unique_name,low,unique name; its region supplies 0% of resident mentions
+Hokendauqua Creek,Hokendauqua Creek,,,True,stream,2728,Hokendauqua Creek,Southeast,1.0,13.981,3,unique_name,high,unique name
+Little Pine Lake,Little Pine Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Parker Lake,Parker Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Otter Creek,Otter Creek,,,True,stream,18,Otter Creek,Southcentral,1.0,9.974,2,unique_name,high,unique name
+Sunfish Pond,Sunfish Pond,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Pithole Creek,Pithole Creek,,,True,stream,2906,Pithole Creek,Northwest,1.0,8.17,2,unique_name,medium,unique name; its region supplies 30% of resident mentions
+Millstone Creek,Millstone Creek,,,True,stream,2282,Millstone Creek,Northcentral,1.0,1.915,1,unique_name,low,unique name; its region supplies 0% of resident mentions
+Shenango River,Shenango River,,,True,stream,322,Shenango River,Northwest,1.0,3.472,1,unique_name,high,unique name
+Wykoff Run,Wykoff Run,,,True,stream,3357,Wykoff Run,Northcentral,1.0,7.038,1,unique_name,low,unique name; its region supplies 0% of resident mentions
+Blacklog Creek,Blacklog Creek,,,True,stream,285,Blacklog Creek,Southcentral,1.0,22.043,1,unique_name,high,unique name
+Lake Luxembourg,Lake Luxembourg,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Stony Creek (other county or not sure of county),Stony Creek,other/unsure,,True,stream,,,,,,,unplaced,high,county not given
+Maiden Creek,Maiden Creek,,,True,stream,2971,Maiden Creek,Southeast,1.0,6.049,2,unique_name,high,unique name
+Beltzville Lake,Beltzville Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Poe Lake,Poe Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Wolf Creek,Wolf Creek,,,True,stream,336,Wolf Creek,Northwest,1.0,3.015,1,unique_name,high,unique name
+Little Toby Creek,Little Toby Creek,,,True,stream,1975,Little Toby Creek,Northcentral,1.0,17.137,2,unique_name,high,unique name
+North Fork Red Bank Creek,North Fork Red Bank Creek,,,True,stream,6025,North Fork Redbank Creek,Northcentral,1.0,16.143,4,unique_name,medium,unique name; its region supplies 35% of resident mentions
+Young Womans Creek,Young Womans Creek,,,True,stream,2767,Young Womans Creek,Northcentral,1.0,11.36,3,unique_name,high,unique name
+Kettle Creek Lake,Kettle Creek Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Halfway Lake,Halfway Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Chapman Dam,Chapman Dam,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Mix Run,Mix Run,,,True,stream,2866,Mix Run,Northcentral,1.0,3.863,1,unique_name,medium,unique name; no regional mentions to check
+Big Sandy Creek,Big Sandy Creek,,,True,stream,,,,,,,review,,all mentions from the Northwest; PFBC's Big Sandy Creek is Fayette's (SW)
+Waynesboro Reservoir,Waynesboro Reservoir,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Canoe Creek Lake,Canoe Creek Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Curry Run,Curry Run,,,True,stream,4042,Curry Run,Northcentral,1.0,8.894,1,unique_name,high,unique name
+Whipple Lake,Whipple Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Little Bald Eagle Creek,Little Bald Eagle Creek,,,True,stream,,,,,,,no_pfbc_section,high,no PFBC stocked section of this name in 2024-26
+Northkill Creek,Northkill Creek,,,True,stream,2797,Northkill Creek,Southeast,1.0,5.847,1,unique_name,high,unique name
+Shenango Lake,Shenango Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Mehoopany Creek,Mehoopany Creek,,,True,stream,462,Mehoopany Creek,Northeast,1.0,7.501,2,unique_name,high,unique name
+Shade Creek,Shade Creek,,,True,stream,278,Shade Creek,Southcentral,1.0,5.595,1,unique_name,high,unique name
+East Licking Creek,East Licking Creek,,,True,stream,2888,East Licking Creek,Southcentral,1.0,22.29,4,unique_name,high,unique name
+Little Loyalsock Creek,Little Loyalsock Creek,,,True,stream,1337,Little Loyalsock Creek,Northeast,1.0,9.292,1,unique_name,medium,unique name; no regional mentions to check
+Bells Gap Run,Bells Gap Run,,,True,stream,6062,Bells Gap Run,Southcentral,1.0,3.663,1,unique_name,high,unique name
+Buffalo Creek (Perry County),Buffalo Creek,Perry,,True,stream,2880,Buffalo Creek,Southcentral,1.0,16.909,1,name_county,high,county qualifier pins one river
+Hereford Manor Lake,Hereford Manor Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Yellow Creek (other county or not sure of county),Yellow Creek,other/unsure,,True,stream,,,,,,,unplaced,high,county not given
+Fairview Lake,Fairview Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Briar Creek,Briar Creek,,,True,stream,202,Briar Creek,Northeast,1.0,0.0,0,not_stocked_2026,high,unique name; river not stocked in 2026 -> unplaced (unique_name)
+Maple Creek,Maple Creek,,,True,stream,2276,Maple Creek,Northcentral,1.0,10.997,1,unique_name,low,unique name; its region supplies 0% of resident mentions
+Beaverdale Lake,Beaverdale Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Ridgway Reservoir,Ridgway Reservoir,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Little Tonoloway Creek,Little Tonoloway Creek,,,True,stream,1829,Little Tonoloway Creek,Southcentral,1.0,11.0,1,unique_name,medium,unique name; no regional mentions to check
+Spring Creek (other county or not sure of county),Spring Creek,other/unsure,,True,stream,,,,,,,unplaced,high,county not given
+Genesee River,Genesee River,,,True,stream,3502,Genesee River,Northcentral,1.0,5.975,1,unique_name,high,unique name
+Kahle Lake,Kahle Lake,,,True,lake,,,,,,,lake,high,lake: not in the section set
+Big Poe Creek,Big Poe Creek,,,True,stream,2488,Big Poe Creek,Northcentral,1.0,3.566,2,unique_name,medium,unique name; no regional mentions to check
+Hemlock Run,Hemlock Run,,,True,stream,2550,Hemlock Run,Northwest,1.0,1.666,1,unique_name,medium,unique name; no regional mentions to check
+North Branch Little Conemaugh River,North Branch Little Conemaugh River,,,True,stream,1989,North Branch Little Conemaugh River,Southwest,1.0,2.514,1,unique_name,medium,unique name; no regional mentions to check
+Buffalo Creek (other county or not sure of county),Buffalo Creek,other/unsure,,True,stream,,,,,,,unplaced,high,county not given
+Buffalo Creek (Union County),Buffalo Creek,Union,,True,stream,3190,Buffalo Creek,Northcentral,1.0,14.993,2,name_county,high,county qualifier pins one river
+Pleasant Stream,Pleasant Stream,,,True,stream,4191,Pleasant Stream,Northcentral,1.0,2.846,1,unique_name,medium,unique name; no regional mentions to check
+Wysox Creek,Wysox Creek,,,True,stream,604,Wysox Creek,Northeast,1.0,8.147,1,unique_name,medium,unique name; no regional mentions to check
+Bull Run,Bull Run,,,True,stream,3292,Bull Run,Southcentral,1.0,2.639,1,unique_name,medium,unique name; no regional mentions to check
+Pocono Creek,Pocono Creek,,,True,stream,2659,Pocono Creek,Northeast,1.0,1.612,1,unique_name,medium,unique name; no regional mentions to check
+Other,Other,,30.0,False,unplaced,,,,,,,unplaced,high,not a named water
+Do not know,Do not know,,8.0,False,unplaced,,,,,,,unplaced,high,not a named water

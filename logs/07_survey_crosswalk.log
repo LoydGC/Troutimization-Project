@@ -1,0 +1,33 @@
+2026-09-28 01:38:57,868 INFO 07_survey_crosswalk run from commit 0df544f + uncommitted changes to scripts/06_county_anglers.py, scripts/07_survey_crosswalk.py, scripts/08_demand.py
+2026-09-28 01:38:58,050 INFO rivers: 695 in sections.parquet, 679 with a 2026-stocked section (1022 sections)
+2026-09-28 01:38:58,054 INFO survey waters: 223 rows in p76-77; regional table rows not in p76-77 (ignored): ['West Branch Hicks Run']
+2026-09-28 01:38:58,058 INFO region weights (share of resident anglers): {'Northcentral': 0.122, 'Northeast': 0.088, 'Northwest': 0.094, 'Southcentral': 0.183, 'Southeast': 0.29, 'Southwest': 0.224}
+2026-09-28 01:38:58,191 INFO waters by match_method (a water can have several rows): {'lake': 39, 'manual': 2, 'name_county': 15, 'no_pfbc_section': 5, 'not_stocked_2026': 2, 'regional_split': 14, 'review': 16, 'unique_name': 122, 'unplaced': 9}
+2026-09-28 01:38:58,196 INFO rows by match_method x confidence:
+confidence        NA  high  low  medium
+match_method                           
+lake               0    39    0       0
+manual             0     1    0       1
+name_county        0    15    0       0
+no_pfbc_section    0     5    0       0
+not_stocked_2026   0     1    0       1
+regional_split     0     4    0      18
+review            16     0    0       0
+unique_name        0    86    6      30
+unplaced           0     9    0       0
+2026-09-28 01:38:58,200 INFO mentions by method (pct_overall with * = 0.25, total 219.5%; resident-weighted in brackets):
+2026-09-28 01:38:58,201 INFO   lake                9.2% of mentions [  8.3%]
+2026-09-28 01:38:58,201 INFO   manual              0.6% of mentions [  0.4%]
+2026-09-28 01:38:58,201 INFO   name_county         7.4% of mentions [  7.1%]
+2026-09-28 01:38:58,202 INFO   no_pfbc_section     1.9% of mentions [  1.8%]
+2026-09-28 01:38:58,202 INFO   not_stocked_2026    0.1% of mentions [  0.1%]
+2026-09-28 01:38:58,202 INFO   regional_split      6.7% of mentions [  7.6%]
+2026-09-28 01:38:58,202 INFO   review              6.4% of mentions [  5.9%]
+2026-09-28 01:38:58,202 INFO   unique_name        48.4% of mentions [ 47.1%]
+2026-09-28 01:38:58,202 INFO   unplaced           19.2% of mentions [ 21.6%]
+2026-09-28 01:38:58,203 INFO mentions landing on 2026-stocked rivers: 63.1% of all (incl. Other/Don't know) [62.2% resident]; unplaced pool 36.9%
+2026-09-28 01:38:58,204 INFO not_stocked_2026: [['Little Fishing Creek', 2251], ['Briar Creek', 202]]
+2026-09-28 01:38:58,204 INFO no_pfbc_section: [['Swatara Creek', <NA>], ['Clarion River', <NA>], ['Little Juniata River', <NA>], ['Schuylkill River', <NA>], ['Little Bald Eagle Creek', <NA>]]
+2026-09-28 01:38:58,205 INFO lakes (39): ['Twin Lakes', 'Raccoon State Park (Lake)', 'Canonsburg Lake', 'Keystone Lake', 'Bradys Run Lake', 'Cowans Gap Lake', 'Locust Lake', 'Lackawanna Lake', 'North Park Lake', 'Virgin Run Lake', 'Glade Run Lake', 'Promised Land Lake', 'Lake Pleasant', 'Moon Lake', 'Upper Woods Pond', 'Dunlap Lake', 'Harveys Lake', 'Marquette Lake', 'Lilly Lake', 'Levittown Lake', 'George B Stevenson Reservoir', 'Little Pine Lake', 'Parker Lake', 'Sunfish Pond', 'Lake Luxembourg', 'Beltzville Lake', 'Poe Lake', 'Kettle Creek Lake', 'Halfway Lake', 'Chapman Dam', 'Waynesboro Reservoir', 'Canoe Creek Lake', 'Whipple Lake', 'Shenango Lake', 'Hereford Manor Lake', 'Fairview Lake', 'Beaverdale Lake', 'Ridgway Reservoir', 'Kahle Lake']
+2026-09-28 01:38:58,205 INFO no survey water names Lake Erie or its tributaries as a group; Lake Erie tributaries matched one by one: ['Elk Creek', 'Twenty Mile Creek']
+2026-09-28 01:38:58,209 INFO survey_water_crosswalk: 232 rows for 223 waters; review file: 22 rows (16 unresolved, 6 low-confidence)

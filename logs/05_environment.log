@@ -1,0 +1,10 @@
+2026-09-27 21:00:28,109 INFO 05_environment run from commit a683b4e + uncommitted changes to scripts/02_build_sections.py, scripts/04_river_cap.py, scripts/05_environment.py
+2026-09-27 21:00:28,306 INFO excluded: 23 of 1045 sections; reasons {'not_stocked_2026': 21, 'not_stocked_2026; health': 1, 'class_a_not_stocked': 1}
+2026-09-27 21:00:28,308 INFO excluded sections were stocked in the baseline: 2024 40140 fish in 22 sections, 2025 27870 fish in 20 sections, 2026 0
+2026-09-27 21:00:28,313 INFO wild_brook_present parsed from Class A Fishery text: {'Brown': False, 'Wild Brown Trout Fishery': False}
+2026-09-27 21:00:28,313 INFO wild_brook_present: {<NA>: 1028, np.False_: 17}
+2026-09-27 21:00:28,314 INFO wild-brook sections stocked with brook trout in 2026: 0 []
+2026-09-27 21:00:28,316 INFO nat_repro_share, flagged sections (n=531): >= 0.9 496, 0.1-0.9 31, < 0.1 4. 2026 fish on natural reproduction water: 1084300 by flag, 1003730 weighted by share
+2026-09-27 21:00:28,316 INFO nat_repro_flag as built in 02 (river miles only): 531 sections
+2026-09-27 21:00:28,317 INFO Bear Creek (3197) checks passed: not excluded, natural reproduction
+2026-09-27 21:00:28,327 INFO environment: 1045 rows, 7 columns

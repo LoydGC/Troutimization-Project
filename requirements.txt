@@ -1,8 +1,29 @@
+# core
 numpy
 pandas
 scipy
+pyarrow
+duckdb
+openpyxl
+# geo
+geopandas
+shapely
+pyproj
+pyogrio
+pynhd
+# fetching / parsing
+requests
+requests-cache
+beautifulsoup4
+lxml
+pdfplumber
+tqdm
+# viz / notebooks
 matplotlib
 seaborn
-openpyxl
+folium
 jupyter
+# optimization
 gurobipy
+# tests
+pytest

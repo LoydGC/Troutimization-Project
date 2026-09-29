@@ -1,0 +1,38 @@
+2026-09-28 02:15:15,112 INFO 09_stocking_schedule run from commit 0df544f + uncommitted changes to scripts/common.py, scripts/06_county_anglers.py, scripts/07_survey_crosswalk.py, scripts/08_demand.py, scripts/09_stocking_schedule.py, scripts/10_runs_clusters.py
+2026-09-28 02:15:15,458 INFO schedules: 67 counties (67 from the HTTP cache), 2734 records
+2026-09-28 02:15:21,453 INFO parsed 2734 records: {'stream': 2359, 'lake': 375}; seasons {'I': 1373, 'P': 1237, 'F': 99, 'W': 25}; week-of only 84
+2026-09-28 02:15:21,930 INFO stream records matched (before dedupe): {'limits': 1980, 'lake': 375, 'name_county': 333, 'coords': 33, 'unmatched': 10, 'same_listing': 3}
+2026-09-28 02:15:21,932 INFO limits matches whose base name differs from the layer's: 0 ([])
+2026-09-28 02:15:21,935 INFO matches whose upper-limit point is > 500 m from the section line: 11 [['2532_2', 'Sixmile Run', 'name_county', 2527], ['2990_2', 'Dunlap Creek', 'limits', 1114], ['329_3', 'Neshannock Creek', 'limits', 1070], ['2628_5', 'Kishacoquillas Creek', 'limits', 4183], ['671_2', 'Indian Creek', 'limits', 766], ['1954_4', 'Cross Fork', 'limits', 2553], ['3735_1', 'Miller Run', 'limits', 1195], ['117_3', 'Loyalsock Creek', 'name_county', 2081], ['2175_6', 'White Deer Creek', 'limits', 2438], ['1364_2', 'Thompson Run', 'name_county', 2927], ['2940_3', 'Dutch Fork', 'limits', 3659]]
+2026-09-28 02:15:21,979 INFO unmatched stream records: 10 (4 distinct waters) -> logs/09_schedule_unmatched.csv
+2026-09-28 02:15:21,987 INFO repeats of a section x date: 228 cross-county (listed under each county it touches), 28 within one county (listed once per regulation piece)
+2026-09-28 02:15:21,990 INFO repeats that disagree on hatchery/meeting place/time/season: 1 [('236_2', Timestamp('2026-04-21 00:00:00'))] (best-matched listing kept)
+2026-09-28 02:15:21,992 INFO repeats whose species marks differ (combined: a mark on any listing counts): 2 [('2777_3', Timestamp('2026-05-15 00:00:00')), ('West Deer Lake - upper deer lake @ 40.6192,-79.821', Timestamp('2026-04-17 00:00:00'))]
+2026-09-28 02:15:22,077 INFO dedupe section x date: 2734 -> 2474 records
+2026-09-28 02:15:22,233 INFO meeting-place spellings merged into another on the same date/hatchery/time: 5
+2026-09-28 02:15:23,789 INFO species with 2026 fish but no event marked (split over all events): 0, 0 fish []
+2026-09-28 02:15:23,789 INFO species marked on an event but with 0 fish in the 2026 layer: 0 section-species []
+2026-09-28 02:15:23,799 INFO 2026 candidate sections with a schedule record: 1022 of 1022; without: 0 []
+2026-09-28 02:15:23,804 INFO 2026 stream fish on sections with a schedule record: 2606468 of 2606468 (100.00%)
+2026-09-28 02:15:23,804 INFO scheduled sections not stocked in the 2026 layer: 8 ['102_5', '102_6', '1326_2', '1767_3', '202_2', '209_2', '2287_2', '52_2']
+2026-09-28 02:15:23,849 INFO stocking_events: 2474 rows ({'stream': 2102, 'lake': 372}; {'limits': 1766, 'lake': 372, 'name_county': 321, 'coords': 9, 'unmatched': 6})
+2026-09-28 02:15:23,861 INFO schedule hatchery names: ['Bellefonte', 'Benner Spring', 'Corry', 'Huntsdale', 'Oswayo', 'Pleasant Gap', 'Reynoldsdale', 'Tionesta', 'Tylersville']; not in pa_hatchery_production.csv: ['Tionesta']; not in pa_hatcheries.gpkg: none
+2026-09-28 02:15:23,878 INFO hatchery_schedule_supply:
+          hatchery  n_sections  n_stream_events  n_stream_events_uncounted  n_lake_events  brook   brown  rainbow  golden  brood  stream_fish_2026   share  production_lbs  lbs_share  share_lbs_set
+0       Bellefonte         198              392                          2             66  32850  152498   282567    2330  11123            481368  0.1847        338918.0     0.1503         0.1858
+1    Benner Spring         151              301                          3             76  16745  101428   258872    2320   8165            387530  0.1487        336366.0     0.1492         0.1496
+2            Corry         112              194                          2             37      0   81383   162688    1324   5895            251290  0.0964        145851.0     0.0647         0.0970
+3        Huntsdale         180              355                          3             49    320   97403   342040    2457   9367            451587  0.1733        461280.0     0.2046         0.1743
+4       Linesville           0                0                          0              0      0       0        0       0      0                 0  0.0000             NaN        NaN            NaN
+5           Oswayo          84              169                          2             17   8640   59587   160398    1385   7238            237248  0.0910        181261.0     0.0804         0.0916
+6     Pleasant Gap         126              256                          3             65   3320   60672   251738    2002   7627            325359  0.1248        256164.0     0.1136         0.1256
+7   Pleasant Mount           0                0                          0              0      0       0        0       0      0                 0  0.0000             NaN        NaN            NaN
+8     Reynoldsdale          77              142                          0             14      0   28410    97330     928   3972            130640  0.0501        161932.0     0.0718         0.0504
+9         Tionesta          10               12                          0             13      0    1515    13328      66    348             15257  0.0059             NaN        NaN            NaN
+10     Tylersville         133              262                          4             35   6430   76393   231543    2310   9510            326186  0.1251        372782.0     0.1653         0.1259
+2026-09-28 02:15:23,880 INFO Bear Creek events:
+     section_id       date season     hatchery                    meeting_place  brown  rainbow  alloc_fish
+1752     3197_2 2026-02-26      P  Tylersville  Summit Station Fire House-RT895  False     True       440.0
+1753     3197_2 2026-05-07      I  Tylersville  Summit Station Fire House-RT895   True     True       590.0
+1754     3197_3 2026-02-26      P  Tylersville  Summit Station Fire House-RT895  False     True       460.0
+1755     3197_3 2026-05-07      I  Tylersville  Summit Station Fire House-RT895  False     True       460.0

@@ -1,0 +1,787 @@
+sponsor,nursery,county,stream,section,brook,brown,rainbow,golden,water_type,match_method,section_id,nursery_located_by,nursery_lat,nursery_lon,nursery_to_water_mi
+3 C's Trout Nursery,3 C's Trout,Cambria,Bakerton Park Pond,,False,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,40.5987,-78.716,
+3 C's Trout Nursery,3 C's Trout,Cambria,Bakerton R&G Dam,,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,40.5987,-78.716,
+3 C's Trout Nursery,3 C's Trout,Cambria,Bender Run,1,False,True,True,True,stream,unmatched,,nursery_name,40.5987,-78.716,
+3 C's Trout Nursery,3 C's Trout,Cambria,Carrolltown Park Dam,,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,40.5987,-78.716,
+3 C's Trout Nursery,3 C's Trout,Cambria,Carrolltown R&G Dam,,False,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,40.5987,-78.716,
+3 C's Trout Nursery,3 C's Trout,Cambria,Chest Creek,2,False,True,True,True,stream,pfbc_section,4028_2,nursery_name,40.5987,-78.716,3.34
+3 C's Trout Nursery,3 C's Trout,Clearfield,Emiegh Sportsmen Club Dam,,False,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,40.5987,-78.716,
+3 C's Trout Nursery,3 C's Trout,Cambria,Laurel Lick Run,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.5987,-78.716,2.4
+3 C's Trout Nursery,3 C's Trout,Cambria,Laurel Lick Run,2,False,True,False,False,stream,pfbc_section,2298_2,nursery_name,40.5987,-78.716,2.4
+3 C's Trout Nursery,3 C's Trout,Cambria,Rembrandt Sportsmen Club Dam,,False,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,40.5987,-78.716,
+Adams County Fish and Game Club,Adams Co Fish and Game,Adams,Little Marsh Creek,3,False,False,True,True,stream,pfbc_section,1837_3,,,,
+Adams County Fish and Game Club,Adams Co Fish and Game,Adams,Marsh Creek,2,False,False,True,True,stream,pfbc_section,1815_2,,,,
+Adams County Fish and Game Club,Adams Co Fish and Game,Adams,Middle Creek,2,False,False,True,True,stream,pfbc_section,1816_2,,,,
+Adams County Fish and Game Club,Adams Co Fish and Game,Adams,Orrtanna Pond,,False,False,True,True,lake_pond,unmatched_lake_pond,,,,,
+Adams County Fish and Game Club,Adams Co Fish and Game,Adams,Toms Creek,3,False,False,True,True,stream,pfbc_stream_other_section,,,,,
+Advanced Disposal,Greentree Landfill,Clearfield,Bennett Branch Sinnemahoning Creek,2,False,True,True,False,stream,pfbc_section,2864_2,nursery_name,41.2756,-78.6484,6.1
+Advanced Disposal,Greentree Landfill,Clearfield,Parker Dam,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,41.2756,-78.6484,
+Advanced Disposal,Greentree Landfill,Jefferson,Rattlesnake Run,3,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.2756,-78.6484,7.6
+Advanced Disposal,Greentree Landfill,Elk,Sawmill Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.2756,-78.6484,1.43
+"Albion Sportsmen Club, Inc.","Albion Sportsmen Club, Inc",Erie,Temple Creek,1,False,True,False,False,stream,unmatched,,nursery_name,41.9025,-80.3593,
+Arnot Sportsmen Assoc,South Spring,Tioga,Arnot Lake,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.6633,-77.1298,
+Arnot Sportsmen Assoc,South Spring,Tioga,Babb Creek,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.6633,-77.1298,3.34
+Arnot Sportsmen Assoc,South Spring,Tioga,Babb Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.6633,-77.1298,3.34
+Arnot Sportsmen Assoc,South Spring,Tioga,Babb Creek,3,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.6633,-77.1298,3.34
+Arnot Sportsmen Assoc,South Spring,Tioga,Blacks Creek,1,False,False,True,True,stream,unmatched,,nursery_name,41.6633,-77.1298,
+Arnot Sportsmen Assoc,South Spring,Tioga,Blockhouse Creek,1,False,True,True,True,stream,unmatched,,nursery_name,41.6633,-77.1298,
+Arnot Sportsmen Assoc,South Spring,Tioga,Corey Creek,2,False,True,True,True,stream,pfbc_section,3777_2,nursery_name,41.6633,-77.1298,10.28
+Arnot Sportsmen Assoc,South Spring,Tioga,Elk Run,1,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.6633,-77.1298,3.67
+Arnot Sportsmen Assoc,South Spring,Tioga,Lambs Creek,1,False,True,True,True,stream,unmatched,,nursery_name,41.6633,-77.1298,
+Arnot Sportsmen Assoc,South Spring,Tioga,Little Fall Creek,1,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.6633,-77.1298,3.95
+Arnot Sportsmen Assoc,South Spring,Tioga,Mill Creek,3,False,False,True,False,stream,pfbc_section,3831_3,nursery_name,41.6633,-77.1298,13.92
+Arnot Sportsmen Assoc,South Spring,Tioga,Mill Creek (Roaring Branch),1,False,False,True,False,stream,unmatched,,nursery_name,41.6633,-77.1298,
+Arnot Sportsmen Assoc,South Spring,Tioga,Sand Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.6633,-77.1298,1.69
+Arnot Sportsmen Assoc,South Spring,Tioga,Zimmerman Creek,1,False,True,True,False,stream,unmatched,,nursery_name,41.6633,-77.1298,
+Arrowhead Trout Nursery,Arrowhead Trout Nursery,Armstrong,Buffalo Creek,3,False,True,True,False,stream,pfbc_section,165_3,nursery_name,40.7963,-79.319,18.13
+Arrowhead Trout Nursery,Arrowhead Trout Nursery,Armstrong,Patterson Creek,2,False,True,True,False,stream,pfbc_section,3660_2,nursery_name,40.7963,-79.319,17.17
+Arrowhead Trout Nursery,Arrowhead Trout Nursery,Armstrong,UNT to Little Pucketa Creek (@RM 4.60),1,False,True,True,False,stream,unmatched,,nursery_name,40.7963,-79.319,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Bald Eagle Creek,2,False,True,True,False,stream,pfbc_section,3136_2,nursery_name,40.7348,-78.1911,1.26
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Bald Eagle Creek,1,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,40.7348,-78.1911,5.46
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Bald Eagle Creek,2,False,True,True,False,stream,pfbc_section,2199_2,nursery_name,40.7348,-78.1911,5.46
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Bald Eagle Creek,3,False,True,True,False,stream,pfbc_section,2199_3,nursery_name,40.7348,-78.1911,8.51
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Bald Eagle Creek,4,False,True,True,False,stream,pfbc_section,2199_4,nursery_name,40.7348,-78.1911,12.14
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Bald Eagle Creek,5,False,True,True,False,stream,pfbc_section,2199_5,nursery_name,40.7348,-78.1911,12.93
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Bell Hollow Creek,1,False,True,True,False,stream,unmatched,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Black Moshannon Creek,4,False,True,True,False,stream,pfbc_section,2254_4,nursery_name,40.7348,-78.1911,15.77
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Black Moshannon Creek,5,False,True,True,False,stream,pfbc_section,2254_5,nursery_name,40.7348,-78.1911,19.32
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Black Moshannon Creek,6,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,40.7348,-78.1911,14.39
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Clearfield,Boy Scout Dam,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,California Hollow Run,1,False,True,True,False,stream,unmatched,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Clearfield,Community Lake,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Cambria,Cresson Club Pond,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Decker Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,40.7348,-78.1911,3.33
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Frankstown Branch Juniata River,2,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,40.7348,-78.1911,27.51
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Frankstown Club Pond,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Huntingdon,Halfmoon Creek,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,40.7348,-78.1911,8.11
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Hutchinson Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,40.7348,-78.1911,5.88
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Reese Hollow Run,1,False,True,True,False,stream,unmatched,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Reservoir Park,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Schell Run,1,False,True,True,False,stream,unmatched,,nursery_name,40.7348,-78.1911,
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Sixmile Run,2,False,True,True,False,stream,pfbc_section,2532_2,nursery_name,40.7348,-78.1911,11.04
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Sixmile Run,3,False,True,True,False,stream,pfbc_section,2532_3,nursery_name,40.7348,-78.1911,12.45
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Blair,Vanscoyoc Run,2,False,True,True,False,stream,pfbc_section,3811_2,nursery_name,40.7348,-78.1911,1.25
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Centre,Wallace Run,3,False,True,True,False,stream,pfbc_section,2522_3,nursery_name,40.7348,-78.1911,23.96
+Bald Eagle Sportsmen Club,Bald Eagle Spts,Huntingdon,Warriors Mark Run (Right Branch),1,False,True,True,False,stream,wild_layer_stream,,nursery_name,40.7348,-78.1911,4.36
+Bear Creek Trout Nursery,Bear Creek,Tioga,Bailey Creek,1,True,True,True,False,stream,unmatched,,nursery_name,41.9567,-76.9536,
+Bear Creek Trout Nursery,Bear Creek,Tioga,Bailey Creek,2,True,True,True,False,stream,unmatched,,nursery_name,41.9567,-76.9536,
+Bear Creek Trout Nursery,Bear Creek,Tioga,Mill Creek,3,True,True,True,False,stream,pfbc_section,3831_3,nursery_name,41.9567,-76.9536,5.91
+Bear Creek Trout Nursery,Bear Creek,Tioga/Bradford,Seeley Creek,1,True,True,True,False,stream,unmatched,,nursery_name,41.9567,-76.9536,
+Bear Creek Trout Nursery,Bear Creek,Tioga/Bradford,Seeley Creek,2,True,True,True,False,stream,unmatched,,nursery_name,41.9567,-76.9536,
+Beartown Sportsmen Assoc,Beartown,Lancaster,Cedar Creek,1,False,True,False,False,stream,unmatched,,nursery_name,40.1045,-76.0069,
+Beartown Sportsmen Assoc,Beartown,Lancaster,Conestoga River,1,False,True,False,False,stream,unmatched,,nursery_name,40.1045,-76.0069,
+Beartown Sportsmen Assoc,Beartown,Lancaster,Farm Pond (Derby),,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,40.1045,-76.0069,
+Beaver Township Rod and Gun Club,Beaver Twp.,Columbia,Beaver Run,2,False,True,True,True,stream,pfbc_section,175_2,nursery_name,40.9526,-76.3006,0.0
+Beaverdam Run Trout Club,Beaverdam Run,Somerset,Beaverdam Run,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.1023,-78.7341,1.91
+Beaverdam Run Trout Club,Beaverdam Run,Somerset,Clear Shade Creek,4,False,True,True,True,stream,pfbc_section,3032_4,nursery_name,40.1023,-78.7341,4.03
+Beaverdam Run Trout Club,Beaverdam Run,Somerset,Piney Run,2,False,True,True,False,stream,pfbc_section,3033_2,nursery_name,40.1023,-78.7341,2.9
+Bellwood Sportsmen Club,Bells Gap Run,Blair,Bells Gap Run,2,False,True,True,True,stream,pfbc_section,6062_2,nursery_name,40.6146,-78.368,0.04
+Blackleggs Trout Nursery,Blackleggs,Indiana,Blacklegs Creek,1,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.5255,-79.3572,1.19
+Blackleggs Trout Nursery,Blackleggs,Indiana,Blacklegs Creek,2,True,True,True,True,stream,pfbc_section,1349_2,nursery_name,40.5255,-79.3572,1.19
+Blain Sportsmen Assoc.,Western Perry Trout,Perry,Browns Run,1,True,True,True,True,stream,wild_layer_stream,,nursery_name,40.3316,-77.5371,5.63
+Blain Sportsmen Assoc.,Western Perry Trout,Perry,Fowler Hollow Run,2,True,True,True,True,stream,pfbc_section,3279_2,nursery_name,40.3316,-77.5371,4.39
+Blain Sportsmen Assoc.,Western Perry Trout,Perry,Shaeffer Run,3,True,True,True,True,stream,wild_layer_stream,,nursery_name,40.3316,-77.5371,2.58
+Blain Sportsmen Assoc.,Western Perry Trout,Perry,Sherman Creek,2,True,True,True,True,stream,pfbc_section,3306_2,nursery_name,40.3316,-77.5371,0.81
+Blairs Mills Sportsmen Club,Blairs Mills,Huntingdon,Tuscarora Creek,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.2311,-77.7684,0.02
+Blairs Mills Sportsmen Club,Blairs Mills,Huntingdon,Tuscarora Creek,2,False,True,True,True,stream,pfbc_section,2890_2,nursery_name,40.2311,-77.7684,0.02
+Brockway Sportsmen Club,Baghdad Run,Jefferson,Curry Run,1,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.2642,-78.7919,1.16
+Brockway Sportsmen Club,Baghdad Run,Jefferson,Jenkins Run,1,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.2642,-78.7919,1.34
+Brockway Sportsmen Club,Baghdad Run,Jefferson,Little Toby Creek,3,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2642,-78.7919,1.88
+Brockway Sportsmen Club,Baghdad Run,Jefferson,Rattlesnake Creek,3,False,False,True,False,stream,pfbc_section,2049_3,nursery_name,41.2642,-78.7919,1.93
+Brockway Sportsmen Club,Baghdad Run,Jefferson,Rattlesnake Run,2,False,False,True,False,stream,pfbc_section,1103_2,nursery_name,41.2642,-78.7919,3.21
+Brockway Sportsmen Club,Baghdad Run,Jefferson,Walburn Run,1,False,False,True,False,stream,pfbc_section,2050_1,nursery_name,41.2642,-78.7919,1.26
+C.V. Anglers Club,C.V Anglers Club,Tioga,Beechwood Lake,,True,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,41.8508,-77.489,
+C.V. Anglers Club,C.V Anglers Club,Tioga,California Brook,1,True,True,True,True,stream,unmatched,,nursery_name,41.8508,-77.489,
+C.V. Anglers Club,C.V Anglers Club,Tioga,Cowanesque River,3,True,True,False,True,stream,pfbc_stream_other_section,,nursery_name,41.8508,-77.489,5.21
+C.V. Anglers Club,C.V Anglers Club,Tioga,Crooked Creek,1,True,True,False,True,stream,pfbc_stream_other_section,,nursery_name,41.8508,-77.489,13.54
+C.V. Anglers Club,C.V Anglers Club,Tioga,Jemison Creek,2,True,True,True,True,stream,wild_layer_stream,,nursery_name,41.8508,-77.489,0.82
+C.V. Anglers Club,C.V Anglers Club,Tioga,Mill Creek,1,True,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.8508,-77.489,19.56
+C.V. Anglers Club,C.V Anglers Club,Tioga,North Fork Cowanesque River,2,True,True,False,True,stream,unmatched,,nursery_name,41.8508,-77.489,
+C.V. Anglers Club,C.V Anglers Club,Tioga,Potter Brook,1,True,True,True,True,stream,unmatched,,nursery_name,41.8508,-77.489,
+C.V. Anglers Club,C.V Anglers Club,Tioga,Thornbottom Creek,1,True,False,False,True,stream,unmatched,,nursery_name,41.8508,-77.489,
+C.V. Anglers Club,C.V Anglers Club,Tioga,Troups Creek,2,True,True,True,False,stream,unmatched,,nursery_name,41.8508,-77.489,
+Camp Owners Assoc,Camp Owners Assoc,Elk,East Branch Clarion River,3,False,True,True,True,stream,pfbc_section,2928_3,nursery_name,41.4116,-78.4461,12.31
+Camp Owners Assoc,Camp Owners Assoc,Elk,Iron Run,1,False,True,True,True,stream,unmatched,,nursery_name,41.4116,-78.4461,
+Camp Owners Assoc,Camp Owners Assoc,Elk,Kersey Run,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4116,-78.4461,8.5
+Camp Owners Assoc,Camp Owners Assoc,Elk,Powers Run,1,False,True,True,True,stream,pfbc_section,2921_1,nursery_name,41.4116,-78.4461,8.77
+Camp Owners Assoc,Camp Owners Assoc,Elk,Sawdust Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4116,-78.4461,1.5
+Camp Owners Assoc,Camp Owners Assoc,Elk,Silver Creek,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4116,-78.4461,13.64
+Camp Owners Assoc,Camp Owners Assoc,Elk,Silver Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4116,-78.4461,13.64
+Casselman River Watershed Assoc,Forestry Pond,Somerset,Casselman River,4,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,39.7655,-79.137,2.4
+Casselman River Watershed Assoc,Forestry Pond,Somerset,Coxes Creek,1,False,False,True,True,stream,unmatched,,nursery_name,39.7655,-79.137,
+Casselman River Watershed Assoc,Forestry Pond,Somerset,Kimberly Run,2,False,False,True,True,stream,pfbc_section,2985_2,nursery_name,39.7655,-79.137,15.79
+Casselman River Watershed Assoc,Forestry Pond,Somerset,Middle Creek,2,False,False,True,True,stream,pfbc_section,3753_2,nursery_name,39.7655,-79.137,9.72
+Casselman River Watershed Assoc,Forestry Pond,Somerset,Rhoads Creek,1,False,False,True,True,stream,unmatched,,nursery_name,39.7655,-79.137,
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Cedar Creek,1,False,False,True,False,stream,pfbc_stream_other_section,,nursery_name,40.5768,-75.5408,2.3
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Coplay Creek,2,False,False,True,True,stream,pfbc_section,2726_2,nursery_name,40.5768,-75.5408,5.82
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Furnace Dam,,False,False,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.5768,-75.5408,
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Johnson's Pond,,False,False,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.5768,-75.5408,
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Jordan Creek,2,False,False,True,True,stream,pfbc_section,2716_2,nursery_name,40.5768,-75.5408,6.81
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Jordan Creek,4,False,False,True,True,stream,pfbc_section,2716_4,nursery_name,40.5768,-75.5408,3.61
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Jordan Creek,6,False,False,True,True,stream,pfbc_section,2716_6,nursery_name,40.5768,-75.5408,3.81
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Laubach Pond,,False,False,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.5768,-75.5408,
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Leibert Creek,1,False,False,True,False,stream,wild_layer_stream,,nursery_name,40.5768,-75.5408,2.94
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Little Lehigh Creek,4,False,False,True,True,stream,pfbc_section,2714_4,nursery_name,40.5768,-75.5408,2.25
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Mill Creek,2,False,False,True,True,stream,wild_layer_stream,,nursery_name,40.5768,-75.5408,7.03
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Seems Pond,,False,False,True,True,lake_pond,unmatched_lake_pond,,nursery_name,40.5768,-75.5408,
+Cedarbrook Sportsmen,Cedarbrook,Lehigh,Swabia Creek,2,False,False,True,True,stream,pfbc_section,2820_2,nursery_name,40.5768,-75.5408,2.81
+Chambersburg R&G Club,Falling Spring,Franklin,Conococheague Creek,2,True,True,True,True,stream,pfbc_section,1819_2,nursery_name,39.9292,-77.6293,6.04
+Chambersburg R&G Club,Falling Spring,Franklin,Conococheague Creek,3,True,True,True,True,stream,pfbc_section,1819_3,nursery_name,39.9292,-77.6293,2.17
+Chambersburg R&G Club,Falling Spring,Franklin,Conococheague Creek,4,True,True,True,True,stream,pfbc_section,1819_4,nursery_name,39.9292,-77.6293,1.87
+Chambersburg R&G Club,Falling Spring,Franklin,Conococheague Creek,5,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.9292,-77.6293,1.87
+Chambersburg R&G Club,Falling Spring,Franklin,Conodoguinet Creek,2,True,True,True,True,stream,pfbc_section,3277_2,nursery_name,39.9292,-77.6293,11.69
+Chambersburg R&G Club,Falling Spring,Franklin,Dennis Creek,2,True,True,True,True,stream,pfbc_section,25_2,nursery_name,39.9292,-77.6293,5.96
+Chambersburg R&G Club,Falling Spring,Franklin,Falling Spring Branch,4,True,True,True,True,stream,pfbc_section,1621_4,nursery_name,39.9292,-77.6293,0.36
+Chambersburg R&G Club,Falling Spring,Franklin,Falling Spring Branch,5,True,True,True,True,stream,pfbc_section,1621_5,nursery_name,39.9292,-77.6293,1.31
+Chester Valley Sportsmen Assoc,Chester Valley,Delaware,Darby Creek,2,True,False,True,False,stream,pfbc_section,1550_2,nursery_name,40.0636,-75.4418,4.09
+Chester Valley Sportsmen Assoc,Chester Valley,Chester,French Creek,4,True,False,True,False,stream,pfbc_section,413_4,nursery_name,40.0636,-75.4418,11.77
+Chester Valley Sportsmen Assoc,Chester Valley,Chester,French Creek,6,True,False,True,False,stream,pfbc_section,413_6,nursery_name,40.0636,-75.4418,10.41
+Chester Valley Sportsmen Assoc,Chester Valley,Chester,French Creek,8,True,False,True,False,stream,pfbc_section,413_8,nursery_name,40.0636,-75.4418,7.18
+Chester Valley Sportsmen Assoc,Chester Valley,Chester,Pickering Creek,2,True,False,True,False,stream,pfbc_section,409_2,nursery_name,40.0636,-75.4418,7.81
+Chester Valley Sportsmen Assoc,Chester Valley,Chester,Pickering Creek,3,True,False,True,False,stream,pfbc_stream_other_section,,nursery_name,40.0636,-75.4418,5.53
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Dunbar Creek,2,False,True,False,False,stream,unmatched,,nursery_name,39.8017,-79.3687,
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Laurel Hill Creek,5,False,False,True,True,stream,pfbc_section,3740_5,nursery_name,39.8017,-79.3687,4.7
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Laurel Hill Creek,6,False,False,True,True,stream,pfbc_section,3740_6,nursery_name,39.8017,-79.3687,4.2
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Laurel Hill Creek,7,False,False,True,True,stream,pfbc_section,3740_7,nursery_name,39.8017,-79.3687,0.93
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Fayette,Mill Run,2,False,False,True,True,stream,pfbc_section,6238_2,nursery_name,39.8017,-79.3687,10.75
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,White's Creek,1,False,False,True,False,stream,pfbc_stream_other_section,,nursery_name,39.8017,-79.3687,2.35
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,White's Creek,2,False,False,True,True,stream,pfbc_section,1461_2,nursery_name,39.8017,-79.3687,2.35
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Youghiogheny River,2,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.8017,-79.3687,0.0
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Youghiogheny River,3,False,True,False,False,stream,pfbc_stream_other_section,,nursery_name,39.8017,-79.3687,0.0
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Youghiogheny River,4,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,39.8017,-79.3687,0.0
+Chestnut Ridge Trout Unlimited,Yough Cage Nursery,Somerset,Youghiogheny River,6,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.8017,-79.3687,0.0
+Collinsville Fish and Game,Collinsville F&G,York,Muddy Creek,3,True,True,True,True,stream,pfbc_section,2033_3,nursery_name,39.8532,-76.4754,4.27
+Collinsville Fish and Game,Collinsville F&G,York,North Branch Muddy Creek,2,True,True,True,True,stream,pfbc_section,1928_2,nursery_name,39.8532,-76.4754,3.12
+Collinsville Fish and Game,Collinsville F&G,York,North Branch Muddy Creek,3,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.8532,-76.4754,2.28
+Collinsville Fish and Game,Collinsville F&G,York,North Branch Muddy Creek,4,True,True,True,True,stream,pfbc_section,1928_4,nursery_name,39.8532,-76.4754,2.28
+Collinsville Fish and Game,Collinsville F&G,York,Otter Creek,3,True,True,True,True,stream,pfbc_section,18_3,nursery_name,39.8532,-76.4754,4.19
+Collinsville Fish and Game,Collinsville F&G,York,South Branch Muddy Creek,3,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.8532,-76.4754,3.98
+Collinsville Fish and Game,Collinsville F&G,York,South Fork Otter Creek,1,True,False,True,True,stream,wild_layer_stream,,nursery_name,39.8532,-76.4754,1.4
+Collinsville Fish and Game,Collinsville F&G,York,Toms Run,1,True,True,True,True,stream,wild_layer_stream,,nursery_name,39.8532,-76.4754,3.17
+Community Fish and Game Assoc,Waterman's Pond,Lehigh,Indian Creek,1,True,False,True,False,stream,wild_layer_stream,,,,,
+Community Fish and Game Assoc,Waterman's Pond,Lehigh,Perkiomen Creek,3,True,True,True,True,stream,unmatched,,,,,
+Community Rod and Gun Club,Whispering Pines,Susquehanna,East Branch Tunkhannock Creek,2,False,True,True,True,stream,pfbc_section,615_2,nursery_name,41.6456,-75.5914,1.03
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Big Run,1,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,21.77
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Big Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,23.96
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Birch Creek,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,17.78
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Birch Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,17.78
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Black Hole Creek,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,12.08
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Black Hole Creek,2,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,8.51
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Black Hole Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,12.08
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Black Hole Creek,3,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,8.51
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Gregs Run,1,False,False,True,True,stream,unmatched,,nursery_name,41.2224,-76.7342,
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Gregs Run,1,False,True,True,True,stream,unmatched,,nursery_name,41.2916,-76.709,
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Laurel Run,1,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,3.83
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Laurel Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,0.83
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Lick Run,1,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,6.95
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Lick Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,2.62
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Little Bear Creek,2,False,True,True,True,stream,pfbc_section,2795_2,nursery_name,41.2916,-76.709,6.61
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Little Muncy Creek,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2916,-76.709,6.57
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Little Muncy Creek,3,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2224,-76.7342,6.55
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Little Muncy Creek,3,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2916,-76.709,6.57
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Lopez Creek,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,18.24
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Mill Creek (Laporte),1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,14.74
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Mill Creek (Montoursville),1,False,True,True,True,stream,unmatched,,nursery_name,41.2916,-76.709,
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Muncy Creek,2,False,True,True,True,stream,pfbc_section,102_2,nursery_name,41.2916,-76.709,13.59
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Sullivan,Muncy Creek,3,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2916,-76.709,13.59
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Roaring Run,1,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,4.7
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Roaring Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,0.01
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Rock Run,3,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2224,-76.7342,22.11
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Rock Run,3,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.2916,-76.709,18.74
+Consolidated Sportsmen of Muncy Creek,Faus,Lycoming,Sugar Run,1,False,False,True,True,stream,wild_layer_stream,,nursery_name,41.2224,-76.7342,1.12
+Consolidated Sportsmen of Muncy Creek,Roaring Run,Lycoming,Sugar Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.2916,-76.709,3.07
+Coventryville Trout Club,Coventryville Trout Club,Chester,French Creek,2,False,False,True,True,stream,pfbc_section,413_2,,,,
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Armstrong Creek,2,False,True,True,False,stream,pfbc_section,2979_2,nursery_name,40.3906,-76.9335,5.18
+Dauphin County Anglers Club,Stackpole Memorial,Perry,Board Run,1,False,True,True,True,stream,unmatched,,nursery_name,40.3906,-76.9335,
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Clark Creek,2,False,True,True,True,stream,pfbc_section,3303_2,nursery_name,40.3906,-76.9335,15.56
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Clark Creek,3,False,True,True,True,stream,pfbc_section,3303_3,nursery_name,40.3906,-76.9335,5.61
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Clark Creek,5,False,True,True,True,stream,pfbc_section,3303_5,nursery_name,40.3906,-76.9335,0.0
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Manada Creek,3,False,True,True,True,stream,pfbc_section,3284_3,nursery_name,40.3906,-76.9335,11.68
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Powell Creek,1,False,True,True,True,stream,pfbc_section,1557_1,nursery_name,40.3906,-76.9335,4.81
+Dauphin County Anglers Club,Stackpole Memorial,Dauphin,Stony Creek,3,False,True,True,True,stream,pfbc_section,3301_3,nursery_name,40.3906,-76.9335,1.36
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Chester Creek,2,True,False,True,False,stream,pfbc_stream_other_section,,sponsor_name,39.942,-75.4194,3.39
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Chester Creek,3,True,False,True,False,stream,pfbc_section,1942_3,sponsor_name,39.942,-75.4194,3.44
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Chester Creek,4,True,False,True,False,stream,pfbc_section,1942_4,sponsor_name,39.942,-75.4194,3.39
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Darby Creek,2,True,False,True,False,stream,pfbc_section,1550_2,sponsor_name,39.942,-75.4194,4.78
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Darby Creek,3,True,False,True,False,stream,pfbc_section,1550_3,sponsor_name,39.942,-75.4194,4.55
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Dismal Run,1,True,False,True,True,stream,wild_layer_stream,,sponsor_name,39.942,-75.4194,0.01
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Ridley Creek,1,True,False,True,False,stream,pfbc_stream_other_section,,sponsor_name,39.942,-75.4194,0.09
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Ridley Creek,2,True,False,True,False,stream,pfbc_section,1943_2,sponsor_name,39.942,-75.4194,0.09
+Delco Anglers & Conservationists,Delco Anglers,Delaware,Ridley Creek,4,True,False,True,False,stream,pfbc_stream_other_section,,sponsor_name,39.942,-75.4194,0.09
+Domtar Fish and Game Club,Domtar,Elk,Big Mill Creek,2,False,True,True,True,stream,pfbc_section,1883_2,nursery_name,41.4925,-78.6766,5.79
+Domtar Fish and Game Club,Domtar,Elk,Big Mill Creek,5,False,True,True,True,stream,pfbc_section,1883_5,nursery_name,41.4925,-78.6766,7.09
+Domtar Fish and Game Club,Domtar,Elk,Crooked Creek,2,False,True,True,True,stream,pfbc_section,2842_2,nursery_name,41.4925,-78.6766,4.53
+Domtar Fish and Game Club,Domtar,Elk,East Branch Clarion River,3,False,True,True,True,stream,pfbc_section,2928_3,nursery_name,41.4925,-78.6766,1.44
+Domtar Fish and Game Club,Domtar,Elk,Hoffman Run,2,False,True,True,True,stream,pfbc_section,2860_2,nursery_name,41.4925,-78.6766,7.72
+Domtar Fish and Game Club,Domtar,Elk,Kersey Run,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4925,-78.6766,11.93
+Domtar Fish and Game Club,Domtar,McKean,Marvin Creek,1,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.4925,-78.6766,15.54
+Domtar Fish and Game Club,Domtar,Elk,Powers Run,1,False,True,True,True,stream,pfbc_section,2921_1,nursery_name,41.4925,-78.6766,2.34
+Domtar Fish and Game Club,Domtar,Elk,Powers Run,2,False,True,True,True,stream,pfbc_section,2921_2,nursery_name,41.4925,-78.6766,0.93
+Domtar Fish and Game Club,Domtar,Elk,Rocky Run,2,False,True,True,True,stream,pfbc_section,2674_2,nursery_name,41.4925,-78.6766,7.67
+Domtar Fish and Game Club,Domtar,Elk,Sawmill Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4925,-78.6766,13.01
+Domtar Fish and Game Club,Domtar,Elk,Silver Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4925,-78.6766,0.46
+Domtar Fish and Game Club,Domtar,Elk,Twin Lakes,,False,True,True,True,stream,unmatched,,nursery_name,41.4925,-78.6766,
+Domtar Fish and Game Club,Domtar,Elk,West Branch Clarion River,2,False,True,True,True,stream,pfbc_section,2927_2,nursery_name,41.4925,-78.6766,3.54
+Domtar Fish and Game Club,Domtar,Elk,West Branch Clarion River,3,False,True,True,True,stream,pfbc_section,2927_3,nursery_name,41.4925,-78.6766,2.96
+Domtar Fish and Game Club,Domtar,Elk,West Branch Clarion River,4,False,True,True,True,stream,pfbc_section,2927_4,nursery_name,41.4925,-78.6766,0.47
+Domtar Fish and Game Club,Domtar,Elk,Wilson Run,2,False,True,True,True,stream,pfbc_section,2849_2,nursery_name,41.4925,-78.6766,5.81
+Domtar Fish and Game Club,Domtar,Elk,Wolf Run Pond,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,41.4925,-78.6766,
+Donegal Fish and Conservation Assoc,Donegal,Lancaster,Donegal Creek,2,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.0964,-76.5044,1.93
+Donegal Fish and Conservation Assoc,Donegal,Lancaster,Donegal Creek,3,False,True,True,True,stream,pfbc_section,386_3,nursery_name,40.0964,-76.5044,1.93
+Donegal Fish and Conservation Assoc,Donegal,Lancaster,Little Chiques Creek,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.0964,-76.5044,1.14
+Donegal Fish and Conservation Assoc,Donegal,Lancaster,Little Chiques Creek,2,False,True,True,True,stream,pfbc_section,388_2,nursery_name,40.0964,-76.5044,1.14
+Duncannon Sportsmen Club,Duncannon,Perry,Fishing Creek,2,False,True,True,False,stream,pfbc_section,1401_2,nursery_name,40.4483,-77.1124,10.07
+Duncannon Sportsmen Club,Duncannon,Perry,Little Juniata Creek,2,False,True,True,True,stream,pfbc_section,3307_2,nursery_name,40.4483,-77.1124,1.19
+Dunlo Rod and Gun Club,Kenny Stewart Memorial Nursery,Cambria,Beaverdam Run Reservoir,,True,False,True,False,lake_pond,unmatched_lake_pond,,name_contains,40.2951,-78.7583,
+Dunlo Rod and Gun Club,Kenny Stewart Memorial Nursery,Cambria,Elton Sportsmen Dam,,False,False,False,True,lake_pond,unmatched_lake_pond,,name_contains,40.2951,-78.7583,
+Dunlo Rod and Gun Club,Kenny Stewart Memorial Nursery,Cambria,Laurel Run,2,True,False,True,False,stream,pfbc_section,2086_2,name_contains,40.2951,-78.7583,10.15
+Dunlo Rod and Gun Club,Kenny Stewart Memorial Nursery,Cambria,Otto Run,2,True,False,True,False,stream,wild_layer_stream,,name_contains,40.2951,-78.7583,0.01
+Dunlo Rod and Gun Club,Kenny Stewart Memorial Nursery,Cambria,South Fork Little Conemaugh River,2,True,False,False,True,stream,wild_layer_stream,,name_contains,40.2951,-78.7583,3.8
+East Fork Sportsmen Assoc,East Fork,Potter,Bailey Run,2,False,False,True,False,stream,pfbc_section,6220_2,nursery_name,41.5573,-77.9504,5.79
+East Fork Sportsmen Assoc,East Fork,Potter,Big Nelson Run,1,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.5573,-77.9504,3.6
+East Fork Sportsmen Assoc,East Fork,Potter,East Fork Sinnemahoning Creek,5,False,False,True,False,stream,pfbc_section,3614_5,nursery_name,41.5573,-77.9504,0.04
+East Fork Sportsmen Assoc,East Fork,Potter,First Fork Sinnemahoning Creek,3,False,False,True,False,stream,pfbc_section,3364_3,nursery_name,41.5573,-77.9504,3.93
+Eldred Conservation Club,Eldred CC,McKean,Baker Run,1,True,True,False,False,stream,unmatched,,nursery_name,41.9532,-78.3359,
+Eldred Conservation Club,Eldred CC,McKean,Barden Brook,1,True,True,False,False,stream,unmatched,,nursery_name,41.9532,-78.3359,
+Eldred Conservation Club,Eldred CC,McKean,Fowler Brook,1,True,True,False,False,stream,unmatched,,nursery_name,41.9532,-78.3359,
+Eldred Conservation Club,Eldred CC,McKean,Indian Creek,1,True,True,False,False,stream,unmatched,,nursery_name,41.9532,-78.3359,
+Eldred Conservation Club,Eldred CC,McKean,Knapp Creek,1,True,True,False,False,stream,unmatched,,nursery_name,41.9532,-78.3359,
+Eldred Conservation Club,Eldred CC,McKean,Mix Creek,1,True,True,False,False,stream,unmatched,,nursery_name,41.9532,-78.3359,
+Eldred Conservation Club,Eldred CC,McKean,Rices Creek,1,True,True,False,False,stream,wild_layer_stream,,nursery_name,41.9532,-78.3359,5.95
+Eldred Conservation Club,Eldred CC,McKean,South Branch Knapp Creek,2,True,True,False,False,stream,wild_layer_stream,,nursery_name,41.9532,-78.3359,8.69
+Farnsworth Trout Club,Farnsworth,Warren,Deer Lick Run,1,True,False,False,False,stream,wild_layer_stream,,nursery_name,41.715,-79.1629,7.38
+Farnsworth Trout Club,Farnsworth,Warren,Elkhorn Run,1,True,False,False,False,stream,wild_layer_stream,,nursery_name,41.715,-79.1629,3.05
+Farnsworth Trout Club,Farnsworth,Warren,Farnsworth Branch,2,True,False,False,False,stream,pfbc_section,2630_2,nursery_name,41.715,-79.1629,0.02
+Farnsworth Trout Club,Farnsworth,Forest,Tom's Run,2,True,False,True,False,stream,wild_layer_stream,,nursery_name,41.715,-79.1629,11.57
+Fiddlers Run Sportsmen Assoc,Fiddlers Run Sportsmen Assoc,Northumberland,Little Shamokin Creek,2,False,True,True,True,stream,pfbc_section,4515_2,nursery_name,40.6732,-76.8311,9.84
+Fiddlers Run Sportsmen Assoc,Fiddlers Run Sportsmen Assoc,Dauphin,Mahantango Creek,2,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.6732,-76.8311,2.27
+Fiddlers Run Sportsmen Assoc,Fiddlers Run Sportsmen Assoc,Dauphin,Mahantango Creek,3,False,True,True,True,stream,pfbc_section,3122_3,nursery_name,40.6732,-76.8311,2.27
+Fiddlers Run Sportsmen Assoc,Fiddlers Run Sportsmen Assoc,Northumberland,Schwaben Creek,2,False,True,True,True,stream,pfbc_section,1459_2,nursery_name,40.6732,-76.8311,3.66
+Fiddlers Run Sportsmen Assoc,Fiddlers Run Sportsmen Assoc,Northumberland,Zerby Pond,,False,False,True,True,lake_pond,unmatched_lake_pond,,nursery_name,40.6732,-76.8311,
+Fishin' & Kids Club,Fishin' & Kids Club,McKean,Marvin Creek,1,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.7063,-78.5911,0.35
+Fishin' & Kids Club,Fishin' & Kids Club,McKean,Marvin Creek,2,False,True,True,True,stream,pfbc_section,2645_2,nursery_name,41.7063,-78.5911,0.35
+Fishin' & Kids Club,Fishin' & Kids Club,McKean,Pond,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.7063,-78.5911,
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Briar Creek,2,False,True,True,False,stream,pfbc_section,202_2,name_contains,41.1255,-76.2217,5.84
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,East Branch Briar Creek,2,False,True,True,False,stream,wild_layer_stream,,name_contains,41.1255,-76.2217,1.35
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Fishing Creek,3,False,True,True,False,stream,pfbc_section,183_3,name_contains,41.1255,-76.2217,9.62
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Fishing Creek,5,False,True,True,False,stream,pfbc_section,183_5,name_contains,41.1255,-76.2217,9.07
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Fishing Creek,7,False,True,True,False,stream,pfbc_section,183_7,name_contains,41.1255,-76.2217,6.95
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Fishing Creek,9,False,True,True,False,stream,pfbc_section,183_9,name_contains,41.1255,-76.2217,10.53
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Fishing Creek,11,False,True,True,False,stream,pfbc_stream_other_section,,name_contains,41.1255,-76.2217,6.95
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Huntington Creek,5,False,True,True,True,stream,pfbc_stream_other_section,,name_contains,41.1255,-76.2217,5.78
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Huntington Creek,6,False,True,True,True,stream,pfbc_section,2218_6,name_contains,41.1255,-76.2217,5.78
+Fishing Creek Sportsmen Assoc,Fishing Creek,Luzerne,Kitchen Creek,2,False,True,True,False,stream,pfbc_section,1988_2,name_contains,41.1255,-76.2217,7.22
+Fishing Creek Sportsmen Assoc,Fishing Creek,Bradford,Laceyville American Legion Pond,,False,True,True,False,lake_pond,unmatched_lake_pond,,name_contains,41.1255,-76.2217,
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Little Fishing Creek,2,False,True,True,True,stream,pfbc_section,4384_2,name_contains,41.1255,-76.2217,13.71
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Mill Race,,False,True,True,True,stream,unmatched,,name_contains,41.1255,-76.2217,
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Millville American Legion Pond,,False,True,True,True,lake_pond,unmatched_lake_pond,,name_contains,41.1255,-76.2217,
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia/ Luzerne,Pine Creek,2,False,True,True,False,stream,unmatched,,name_contains,41.1255,-76.2217,
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Raven Creek,1,False,True,True,False,stream,wild_layer_stream,,name_contains,41.1255,-76.2217,7.44
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,Raven Creek,2,False,True,True,False,stream,wild_layer_stream,,name_contains,41.1255,-76.2217,7.44
+Fishing Creek Sportsmen Assoc,Fishing Creek,Columbia,West Creek,2,False,True,True,False,stream,pfbc_section,287_2,name_contains,41.1255,-76.2217,9.65
+Fort Indiantown Gap Fish and Game Assoc,St. Joseph Spring,Lebanon,Indiantown Run,2,True,False,True,True,stream,pfbc_section,3205_2,nursery_name,40.4447,-76.6154,0.07
+Fort Indiantown Gap Fish and Game Assoc,St. Joseph Spring,Lebanon,Indiantown Run,3,True,False,True,True,stream,pfbc_stream_other_section,,nursery_name,40.4447,-76.6154,0.07
+Fort Indiantown Gap Fish and Game Assoc,St. Joseph Spring,Lebanon,Marquette Lake,,False,False,True,True,lake_pond,unmatched_lake_pond,,nursery_name,40.4447,-76.6154,
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Big Cove Creek,2,False,True,True,True,stream,pfbc_section,1834_2,nursery_name,39.8426,-78.0353,0.66
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Cove Creek,2,False,True,True,True,stream,unmatched,,nursery_name,39.8426,-78.0353,
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Esther Run,2,False,True,True,True,stream,unmatched,,nursery_name,39.8426,-78.0353,
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Laurel Fork,2,False,True,True,True,stream,pfbc_section,47_2,nursery_name,39.8426,-78.0353,16.76
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Licking Creek,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.8426,-78.0353,8.62
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Licking Creek,2,False,True,True,True,stream,pfbc_section,1813_2,nursery_name,39.8426,-78.0353,8.62
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Little Tonoloway Creek,3,False,True,True,True,stream,pfbc_section,1829_3,nursery_name,39.8426,-78.0353,9.2
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,North Branch Little Aughwick Creek,2,False,True,True,True,stream,pfbc_section,1624_2,nursery_name,39.8426,-78.0353,17.74
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Sideling Hill Creek,2,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.8426,-78.0353,16.73
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Spring Run,2,False,True,True,True,stream,pfbc_section,1_2,nursery_name,39.8426,-78.0353,0.98
+Fulton County Sportsmen's League,Fulton Co. Spts.,Fulton,Wooden Bridge Creek,2,False,True,True,True,stream,pfbc_section,54_2,nursery_name,39.8426,-78.0353,13.58
+General Braddock Fish Club,General Braddock,Fayette,Youghiogheny River,6,False,True,True,True,stream,unmatched,,nursery_name,40.0931,-79.5058,
+Glendale Sportsmen Club,Glendale,Clearfield,North Witmer Run,2,False,True,True,True,stream,pfbc_section,2217_2,nursery_name,40.7912,-78.5709,0.0
+Glendale Sportsmen Club,Glendale,Clearfield,South Witmer Run,2,False,True,True,True,stream,pfbc_section,2220_2,nursery_name,40.7912,-78.5709,1.59
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Deep Creek,2,True,True,True,False,stream,pfbc_stream_other_section,,name_contains,40.7185,-76.4212,1.07
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Deep Creek,3,True,True,True,False,stream,pfbc_section,3127_3,name_contains,40.7185,-76.4212,1.07
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Little Mahanoy Creek,2,True,True,True,False,stream,pfbc_section,3818_2,name_contains,40.7185,-76.4212,4.82
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Little Mahanoy Creek,3,True,True,True,False,stream,pfbc_stream_other_section,,name_contains,40.7185,-76.4212,4.82
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Mahantango Creek,1,True,True,True,False,stream,pfbc_stream_other_section,,name_contains,40.7185,-76.4212,6.82
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Mahantango Creek,2,True,True,True,False,stream,pfbc_section,3122_2,name_contains,40.7185,-76.4212,6.82
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Pine Creek,2,True,True,True,False,stream,pfbc_section,3135_2,name_contains,40.7185,-76.4212,4.88
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Pine Creek,3,True,True,True,False,stream,pfbc_section,3135_3,name_contains,40.7185,-76.4212,8.95
+Gordon Game and Fish Assoc,Gordon #1 & #2,Schuylkill,Whipoorwill Dam,,True,True,True,False,lake_pond,unmatched_lake_pond,,name_contains,40.7185,-76.4212,
+Hawthorn Rod and Gun Club,Hawthorn Rod and Gun Club,Clarion,Pine Creek,1,False,False,True,True,stream,unmatched,,,,,
+Hawthorn Rod and Gun Club,Hawthorn Rod and Gun Club,Clarion,Red Bank Creek,2,False,False,True,True,stream,unmatched,,,,,
+Heath Twp. Sportsmen Club,Painter Memorial,Jefferson,Callen Run,2,False,True,True,False,stream,pfbc_section,2278_2,nursery_name,41.2058,-79.0054,8.7
+Heath Twp. Sportsmen Club,Painter Memorial,Jefferspn,Clarion River,4,False,True,True,False,stream,unmatched,,nursery_name,41.2058,-79.0054,
+Heath Twp. Sportsmen Club,Painter Memorial,Jefferson,Clear Creek,2,False,True,True,True,stream,pfbc_section,2371_2,nursery_name,41.2058,-79.0054,8.17
+Heath Twp. Sportsmen Club,Painter Memorial,Jefferson,Millstone Creek,1,False,True,True,False,stream,pfbc_section,2282_1,nursery_name,41.2058,-79.0054,10.77
+Heath Twp. Sportsmen Club,Painter Memorial,Jefferson,North Fork Redbank Creek,6,False,True,True,True,stream,pfbc_section,6025_6,nursery_name,41.2058,-79.0054,3.89
+Henrietta Sportsmen Club,Henrietta,Blair,Clover Creek,1,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.2656,-78.2981,0.55
+Henrietta Sportsmen Club,Henrietta,Blair,Clover Creek,2,True,True,True,True,stream,pfbc_section,2978_2,nursery_name,40.2656,-78.2981,0.55
+Hi-La Sportsmen,Pigs Ear,Elk,Wolf Run,2,True,False,False,False,stream,pfbc_section,2859_2,nursery_name,41.5636,-78.9362,2.4
+Hillside Rod and Gun Club,Taylor Run,Tioga,Blacks Creek,2,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Blockhouse Creek,1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Blockhouse Creek,2,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Blockhouse Creek,3,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Corey Creek,1,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6469,-77.045,9.75
+Hillside Rod and Gun Club,Taylor Run,Tioga,Corey Creek,2,False,True,True,False,stream,pfbc_section,3777_2,nursery_name,41.6469,-77.045,9.75
+Hillside Rod and Gun Club,Taylor Run,Tioga,Corey Creek,3,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6469,-77.045,9.75
+Hillside Rod and Gun Club,Taylor Run,Tioga,East Creek Tioga River,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.6469,-77.045,3.52
+Hillside Rod and Gun Club,Taylor Run,Tioga,Johnson Creek,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.6469,-77.045,2.12
+Hillside Rod and Gun Club,Taylor Run,Tioga,Lambs Creek,1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Liberty VFW Pond,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Mill Creek (Roaring Branch),1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Opossum Run,1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Salt Spring Run,1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,Sugar Works Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.6469,-77.045,4.75
+Hillside Rod and Gun Club,Taylor Run,Tioga,Tioga River,1,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6469,-77.045,2.22
+Hillside Rod and Gun Club,Taylor Run,Tioga,Tioga River,2,False,True,True,False,stream,pfbc_section,3857_2,nursery_name,41.6469,-77.045,2.22
+Hillside Rod and Gun Club,Taylor Run,Tioga,Tioga River,3,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6469,-77.045,2.22
+Hillside Rod and Gun Club,Taylor Run,Tioga,UNT to Towanda Creek (RM 29.29),1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hillside Rod and Gun Club,Taylor Run,Tioga,West Mill Creek,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.6469,-77.045,3.1
+Hillside Rod and Gun Club,Taylor Run,Tioga,West Mill Creek,2,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.6469,-77.045,3.1
+Hillside Rod and Gun Club,Taylor Run,Tioga,Zimmerman Creek,1,False,True,True,False,stream,unmatched,,nursery_name,41.6469,-77.045,
+Hopewell Fish and Game Association,Hopewell F&G,York,Deer Creek,2,True,True,True,True,stream,pfbc_section,2023_2,nursery_name,39.7267,-76.5792,2.02
+Hopewell Fish and Game Association,Hopewell F&G,York,East Branch Codorus Creek,3,True,True,True,True,stream,pfbc_section,232_3,nursery_name,39.7267,-76.5792,9.12
+Hopewell Fish and Game Association,Hopewell F&G,York,Ebaughs Creek,1,True,True,True,True,stream,wild_layer_stream,,nursery_name,39.7267,-76.5792,0.77
+Hopewell Fish and Game Association,Hopewell F&G,York,Muddy Creek,4,True,False,True,True,stream,pfbc_section,2033_4,nursery_name,39.7267,-76.5792,9.45
+Hopewell Fish and Game Association,Hopewell F&G,York,North Branch Muddy Creek,2,True,True,True,True,stream,pfbc_section,1928_2,nursery_name,39.7267,-76.5792,8.31
+Hopewell Fish and Game Association,Hopewell F&G,York,South Branch Codorus Creek,2,True,False,True,True,stream,pfbc_stream_other_section,,nursery_name,39.7267,-76.5792,9.91
+Hopewell Fish and Game Association,Hopewell F&G,York,UNT to Deer Creek (RM 3.18),1,True,False,True,True,stream,unmatched,,nursery_name,39.7267,-76.5792,
+Hopewell Fish and Game Association,Hopewell F&G,York,UNT to Leib's Creek (RM 0.89),1,True,True,True,True,stream,unmatched,,nursery_name,39.7267,-76.5792,
+Hopewell Fish and Game Association,Hopewell F&G,York,UNT to Rambo Run,2,True,False,True,True,stream,wild_layer_stream,,nursery_name,39.7267,-76.5792,3.95
+Hyndman Rod and Gun Club,Hyndman,Bedford,Little Wills Creek,2,True,False,False,False,stream,pfbc_section,1836_2,nursery_name,39.819,-78.713,0.03
+Hyndman Rod and Gun Club,Hyndman,Bedford,Wills Creek,3,True,False,False,False,stream,pfbc_section,1561_3,nursery_name,39.819,-78.713,0.06
+Ickesburg Sportsmen Club,Oscar Bailey,Perry,Buffalo Creek,2,True,True,True,True,stream,pfbc_section,2880_2,nursery_name,40.4496,-77.3415,0.9
+Ickesburg Sportsmen Club,Oscar Bailey,Perry,Panther Creek,2,True,True,True,True,stream,pfbc_section,2966_2,nursery_name,40.4496,-77.3415,0.03
+Ickesburg Sportsmen Club,Oscar Bailey,Perry,Raccoon Creek,2,True,True,True,True,stream,pfbc_section,6140_2,nursery_name,40.4496,-77.3415,4.51
+Island Run Sportsmen Assoc,Island Run,Elk,Bear Run,2,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.3809,-78.7398,7.52
+Island Run Sportsmen Assoc,Island Run,Elk,Belmouth Run,2,False,True,False,False,stream,pfbc_section,2287_2,nursery_name,41.3809,-78.7398,2.69
+Island Run Sportsmen Assoc,Island Run,Elk,Big Mill Creek,2,False,True,False,False,stream,pfbc_section,1883_2,nursery_name,41.3809,-78.7398,6.61
+Island Run Sportsmen Assoc,Island Run,Elk,Big Mill Creek,5,False,True,False,False,stream,pfbc_section,1883_5,nursery_name,41.3809,-78.7398,1.57
+Island Run Sportsmen Assoc,Island Run,Elk,Blue Valley Pond,,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,41.3809,-78.7398,
+Island Run Sportsmen Assoc,Island Run,Jefferson,Eagles Nest Pond,,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,41.3809,-78.7398,
+Island Run Sportsmen Assoc,Island Run,Elk,Elk Creek,3,False,True,False,False,stream,pfbc_section,1902_3,nursery_name,41.3809,-78.7398,2.82
+Island Run Sportsmen Assoc,Island Run,Elk,Laurel Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.3809,-78.7398,1.5
+Island Run Sportsmen Assoc,Island Run,Elk,Little Toby Creek,3,False,True,False,False,stream,pfbc_section,1975_3,nursery_name,41.3809,-78.7398,4.41
+Island Run Sportsmen Assoc,Island Run,Elk,Maxwell Run,2,False,True,False,False,stream,pfbc_section,1881_2,nursery_name,41.3809,-78.7398,7.93
+Island Run Sportsmen Assoc,Island Run,McKean,Meade Run,2,False,True,False,False,stream,pfbc_section,1366_2,nursery_name,41.3809,-78.7398,25.02
+Island Run Sportsmen Assoc,Island Run,Elk,Ridgeway Reservior,,False,True,False,False,stream,unmatched,,nursery_name,41.3809,-78.7398,
+Island Run Sportsmen Assoc,Island Run,Elk,Sawmill Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.3809,-78.7398,6.77
+Island Run Sportsmen Assoc,Island Run,Elk,South Branch Island Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.3809,-78.7398,0.01
+Island Run Sportsmen Assoc,Island Run,Elk,Spring Creek,2,False,True,False,False,stream,pfbc_section,1887_2,nursery_name,41.3809,-78.7398,10.09
+Island Run Sportsmen Assoc,Island Run,Elk,Twin Lakes,,False,True,False,False,stream,unmatched,,nursery_name,41.3809,-78.7398,
+Izaak Walton League York #69,IWLA 67,York,East Branch Codorus Creek,3,True,True,True,True,stream,pfbc_section,232_3,nursery_name,39.8708,-76.6772,0.08
+Izaak Walton League York #70,IWLA 67,York,East Branch Codorus Creek,4,True,True,True,False,stream,pfbc_stream_other_section,,nursery_name,39.8708,-76.6772,0.08
+Izaak Walton League York #71,IWLA 67,York,South Branch Codorus Creek,3,True,True,True,False,stream,pfbc_section,1548_3,nursery_name,39.8708,-76.6772,5.56
+Izaak Walton League York #72,IWLA 67,York,South Branch Codorus Creek,5,True,True,True,False,stream,pfbc_section,1548_5,nursery_name,39.8708,-76.6772,5.03
+Izaak Walton League York #73,IWLA 67,York,Muddy Creek,1,True,False,True,True,stream,pfbc_section,2033_1,nursery_name,39.8708,-76.6772,11.56
+Izaak Walton League York #74,IWLA 67,York,Kiwanis Lake,,True,False,True,True,lake_pond,unmatched_lake_pond,,nursery_name,39.8708,-76.6772,
+Jim Thorpe Sportsmen Club,Jim Thorpe,Carbon,Mauch Chunk Creek,2,True,True,True,True,stream,pfbc_section,2744_2,nursery_name,40.8523,-75.7745,0.0
+Joe Foss Club,Joe Foss Club Nursery,Berks,Tulpehocken Creek,4,True,True,True,True,stream,pfbc_section,3072_4,nursery_name,40.3704,-76.1951,0.07
+Joe Foss Club,Joe Foss Club Nursery,Berks,UNT to Tulpehocken Creek (Wolmelsdorf),2,False,False,True,True,stream,unmatched,,nursery_name,40.3704,-76.1951,
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Big Run,2,False,True,True,False,stream,pfbc_section,6172_2,nursery_name,40.5803,-77.3387,2.22
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Delaware Creek,2,True,True,True,False,stream,pfbc_section,2900_2,nursery_name,40.5803,-77.3387,5.22
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Doe Run,1,False,True,True,False,stream,unmatched,,nursery_name,40.5803,-77.3387,
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,East Licking Creek,5,True,True,True,False,stream,pfbc_section,2888_5,nursery_name,40.5803,-77.3387,4.45
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Horning Run,2,False,True,True,False,stream,pfbc_section,6065_2,nursery_name,40.5803,-77.3387,4.03
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Horse Valley Run,2,False,True,True,False,stream,pfbc_section,3304_2,nursery_name,40.5803,-77.3387,19.86
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Lost Creek,3,False,True,True,False,stream,pfbc_section,2627_3,nursery_name,40.5803,-77.3387,1.92
+Juniata County Sportsmen,Juniata County Sportsmen,Juniata,Minehart Run,1,False,True,True,False,stream,unmatched,,nursery_name,40.5803,-77.3387,
+Kennells Mills Sportsmen Club,Sugar Grove,Somerset,Gladdens Run,1,True,False,True,True,stream,unmatched,,nursery_name,39.7719,-78.8079,
+Laurel Conservation Club,Jamison Run,Lawrence,Big Sewickly Creek,3,True,False,True,True,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Butler,Bonnie Brook,2,True,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.0445,-80.1378,18.39
+Laurel Conservation Club,Jamison Run,Lawerence,Deer Creek,2,True,False,True,True,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawerence,Jamison Run,1,True,False,True,True,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawrence,Laurel Lake,,True,False,False,True,lake_pond,unmatched_lake_pond,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Butler,Little Buffalo Creek,1,True,False,True,True,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Butler,Little Connoquenessing Creek,3,True,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.0445,-80.1378,14.19
+Laurel Conservation Club,Jamison Run,Lawrence,Neshannock Creek,3,False,False,True,False,stream,pfbc_section,329_3,nursery_name,41.0445,-80.1378,7.85
+Laurel Conservation Club,Jamison Run,Lawrence,Neshannock Creek,4,False,False,True,False,stream,pfbc_section,329_4,nursery_name,41.0445,-80.1378,7.78
+Laurel Conservation Club,Jamison Run,Lawerence,Slippery Rock Creek,2,False,False,True,False,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawerence,Slippery Rock Creek,3,False,False,True,False,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawerence,Taylor Run,2,True,False,True,True,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawerence,Taylor Run,4,True,False,True,True,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawerence,UNT to Beaver River (RM 13.91),1,True,False,True,False,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Lawerence,UNT to Slippery Rock Creek,1,True,False,False,False,stream,unmatched,,nursery_name,41.0445,-80.1378,
+Laurel Conservation Club,Jamison Run,Butler,Wolf Creek,3,True,False,True,True,stream,wild_layer_stream,,nursery_name,41.0445,-80.1378,9.02
+Lebanon Valley Sportsmen Assoc,Lebanon Valley,Berks,Mill Creek,1,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,40.3141,-76.133,5.6
+Lebanon Valley Sportsmen Assoc,Lebanon Valley,Berks,Spring Creek,3,False,False,True,True,stream,pfbc_section,3085_3,nursery_name,40.3141,-76.133,3.53
+Lebanon Valley Sportsmen Assoc,Lebanon Valley,Berks,Tulpehocken Creek,4,False,False,True,True,stream,pfbc_section,3072_4,nursery_name,40.3141,-76.133,4.8
+Lebanon Valley Sportsmen Assoc,Lebanon Valley,Berks,Tulpehocken Creek,5,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,40.3141,-76.133,4.8
+Lehigh River Stocking Association,Gyory Pond,Lehigh,Lehigh River,9,False,True,True,False,stream,unmatched,,nursery_name,40.722,-75.574,
+Lititz Sportsmen Assoc,Robert B. Koch,Lancaster,Hammer Creek,3,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.1539,-76.2865,2.05
+Lititz Sportsmen Assoc,Robert B. Koch,Lancaster,Lititz Run,2,True,True,True,True,stream,wild_layer_stream,,nursery_name,40.1539,-76.2865,0.01
+Lititz Sportsmen Assoc,Robert B. Koch,Lancaster,Middle Creek,3,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.1539,-76.2865,3.73
+Lost Creek Trout Club,Cocolamus Creek,Juniata,Big Run,1,True,False,True,False,stream,pfbc_stream_other_section,,nursery_name,40.6402,-77.2104,7.9
+Lost Creek Trout Club,Cocolamus Creek,Juniata,Big Run,2,True,False,True,False,stream,pfbc_section,6172_2,nursery_name,40.6402,-77.2104,7.9
+Lost Creek Trout Club,Cocolamus Creek,Juniata,Cocolamus Creek,2,True,False,True,False,stream,pfbc_stream_other_section,,nursery_name,40.6402,-77.2104,0.02
+Lost Creek Trout Club,Cocolamus Creek,Juniata,Cocolamus Creek,3,True,False,True,False,stream,pfbc_section,2893_3,nursery_name,40.6402,-77.2104,0.02
+Lost Creek Trout Club,Cocolamus Creek,Juniata,Delaware Creek,2,True,False,True,True,stream,pfbc_section,2900_2,nursery_name,40.6402,-77.2104,2.74
+Lost Creek Trout Club,Cocolamus Creek,Juniata,Lost Creek,3,True,False,True,False,stream,pfbc_section,2627_3,nursery_name,40.6402,-77.2104,5.82
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Hoagland Run,2,False,True,True,False,stream,pfbc_section,3366_2,nursery_name,41.4458,-76.948,10.96
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Lycoming Creek,2,False,False,True,True,stream,pfbc_section,113_2,nursery_name,41.4458,-76.948,2.26
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Lycoming Creek,3,False,True,True,True,stream,pfbc_section,113_3,nursery_name,41.4458,-76.948,1.67
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Mill Creek (Roaring Branch),1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.4458,-76.948,8.2
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Pleasant Stream,4,False,False,True,False,stream,pfbc_section,4191_4,nursery_name,41.4458,-76.948,2.19
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Rock Run,2,False,False,True,True,stream,pfbc_section,1967_2,nursery_name,41.4458,-76.948,3.89
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Wallis Run,2,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.4458,-76.948,3.21
+Lycoming Creek Anglers Club,Lycoming Creek Anglers Club,Lycoming,Wallis Run,3,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.4458,-76.948,3.21
+Marienville Rod and Gun Club,Pebble Dell,Forest,Bluejay Creek,2,False,True,False,False,stream,pfbc_section,2670_2,nursery_name,41.5361,-79.0265,1.49
+Marienville Rod and Gun Club,Pebble Dell,Forest,Little Salmon Creek,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.5361,-79.0265,5.3
+Marienville Rod and Gun Club,Pebble Dell,Forest,Maple Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.5361,-79.0265,8.25
+Marienville Rod and Gun Club,Pebble Dell,Forest,Salmon Creek,2,False,True,False,False,stream,pfbc_section,2844_2,nursery_name,41.5361,-79.0265,5.37
+Marienville Rod and Gun Club,Pebble Dell,Forest,Spring Creek,2,False,True,True,True,stream,unmatched,,nursery_name,41.5361,-79.0265,
+Marienville Rod and Gun Club,Pebble Dell,Forest,The Branch,1,False,True,False,False,stream,pfbc_stream_other_section,,nursery_name,41.5361,-79.0265,7.56
+Marienville Rod and Gun Club,Pebble Dell,Forest,The Branch,2,False,True,False,False,stream,pfbc_section,2843_2,nursery_name,41.5361,-79.0265,7.56
+Marienville Rod and Gun Club,Pebble Dell,Forest,Tom's Run,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.5361,-79.0265,14.09
+Marienville Rod and Gun Club,Pebble Dell,Forest,Watson Branch,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.5361,-79.0265,0.26
+Marienville Rod and Gun Club,Pebble Dell,Forest,West Branch Millstone Creek,2,False,True,False,False,stream,pfbc_section,1871_2,nursery_name,41.5361,-79.0265,4.95
+Marienville Rod and Gun Club,Pebble Dell,Forest,Wolf Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.5361,-79.0265,3.48
+Marysville Sportsmen Assoc.,Mel Fortenbaugh Memorial Nursery,Perry,Fishing Creek,2,True,True,True,True,stream,pfbc_section,1401_2,nursery_name,40.3227,-77.0039,0.29
+McSherrystown Fish and Game Assoc,Fairfield H.S.,Adams,Conewago Creek,5,False,False,True,True,stream,pfbc_section,1625_5,nursery_name,39.7812,-77.3747,11.13
+McSherrystown Fish and Game Assoc,Fairfield H.S.,Adams,Little Marsh Creek,3,False,False,True,False,stream,pfbc_section,1837_3,nursery_name,39.7812,-77.3747,4.14
+McSherrystown Fish and Game Assoc,Fairfield H.S.,Adams,Marsh Creek,2,False,False,True,True,stream,pfbc_section,1815_2,nursery_name,39.7812,-77.3747,6.81
+McSherrystown Fish and Game Assoc,Fairfield H.S.,Adams,Middle Creek,2,False,False,True,True,stream,pfbc_section,1816_2,nursery_name,39.7812,-77.3747,0.76
+McSherrystown Fish and Game Assoc,Fairfield H.S.,Adams,Toms Creek,3,False,False,True,False,stream,pfbc_stream_other_section,,nursery_name,39.7812,-77.3747,1.02
+Mercersburg Sportsmen Assoc,T.M. Sironen,Franklin,Buck Run,3,True,True,False,False,stream,wild_layer_stream,,nursery_name,39.8741,-77.9022,0.01
+Mercersburg Sportsmen Assoc,T.M. Sironen,Franklin,Little Cove Creek,2,True,True,False,False,stream,pfbc_section,1820_2,nursery_name,39.8741,-77.9022,6.56
+Mercersburg Sportsmen Assoc,T.M. Sironen,Franklin,West Branch Conococheague Creek,3,True,True,False,False,stream,pfbc_section,1830_3,nursery_name,39.8741,-77.9022,2.55
+Mercersburg Sportsmen Assoc,T.M. Sironen,Franklin,West Branch Conococheague Creek,4,True,True,False,False,stream,pfbc_stream_other_section,,nursery_name,39.8741,-77.9022,2.55
+Mill Creek Rod and Gun Club,Mill Creek,Lebanon,Mill Creek,2,True,True,False,False,stream,unmatched,,nursery_name,40.3401,-76.2144,
+Mill Creek Rod and Gun Club,Mill Creek,Lebanon,UNT to Mill Creek (RM 2.02) West of Newmanstown,1,True,True,False,False,stream,wild_layer_stream,,nursery_name,40.3401,-76.2144,0.01
+Mill Creek Rod and Gun Club,Mill Creek,Lebanon,UNT to Mill Creek (RM 2.02) West of Newmanstown,2,True,True,False,False,stream,wild_layer_stream,,nursery_name,40.3401,-76.2144,0.01
+Millerstown Sportsmen Club,Gilbert Beaver,Perry,Cocalamus Creek,4,True,True,True,True,stream,unmatched,,nursery_name,40.5829,-77.0792,
+Millerstown Sportsmen Club,Gilbert Beaver,Perry,Raccoon Creek,2,True,True,True,True,stream,pfbc_section,6140_2,nursery_name,40.5829,-77.0792,4.78
+Millerstown Sportsmen Club,Gilbert Beaver,Perry,Wildcat Creek,1,True,False,False,False,stream,unmatched,,nursery_name,40.5829,-77.0792,
+Milton Hershey School,Milton Hershey,Dauphin,Manada Creek,3,False,False,True,True,stream,pfbc_section,3284_3,nursery_name,40.2847,-76.6341,3.22
+Mohnton Fish and Game Assoc,Elmer Bender,Berks,Angelica Creek,2,False,False,True,True,stream,wild_layer_stream,,nursery_name,40.2732,-76.0034,2.24
+Mohnton Fish and Game Assoc,Elmer Bender,Berks,Wyomissing Creek,2,False,False,True,True,stream,pfbc_section,3064_2,nursery_name,40.2732,-76.0034,0.84
+Montour County Sportsmen for Kids,Rattlesnake,Montour,Mahoning Creek,3,True,True,True,True,stream,pfbc_section,181_3,nursery_name,40.9463,-76.6938,3.42
+Morris Rod and Gun Club,Morris,Tioga,Babb Creek,3,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,0.36
+Morris Rod and Gun Club,Morris,Tioga,Babb Creek,4,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,0.36
+Morris Rod and Gun Club,Morris,Tioga,Babb Creek,5,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,0.36
+Morris Rod and Gun Club,Morris,Tioga,Big Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,4.19
+Morris Rod and Gun Club,Morris,Tioga,Blacks Creek,1,False,True,True,False,stream,unmatched,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Blockhouse Creek,1,False,True,True,True,stream,unmatched,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Custard Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,1.49
+Morris Rod and Gun Club,Morris,Tioga,East Branch Stony Fork,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.586,-77.2948,4.37
+Morris Rod and Gun Club,Morris,Tioga,East Branch Stony Fork,2,False,True,True,True,stream,pfbc_section,3563_2,nursery_name,41.586,-77.2948,4.37
+Morris Rod and Gun Club,Morris,Tioga,Harrison Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,0.0
+Morris Rod and Gun Club,Morris,Tioga,Hughes Run,1,False,True,True,False,stream,unmatched,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Lake Dick,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Lick Creek,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,7.0
+Morris Rod and Gun Club,Morris,Tioga,Little Fall Creek,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,4.7
+Morris Rod and Gun Club,Morris,Tioga,Long Run,2,False,True,True,False,stream,pfbc_section,3590_2,nursery_name,41.586,-77.2948,16.92
+Morris Rod and Gun Club,Morris,Tioga,Paint Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,2.91
+Morris Rod and Gun Club,Morris,Tioga,Pine Creek,9,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.586,-77.2948,8.5
+Morris Rod and Gun Club,Morris,Tioga,Pine Creek,10,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.586,-77.2948,8.5
+Morris Rod and Gun Club,Morris,Tioga,Sand Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.586,-77.2948,3.73
+Morris Rod and Gun Club,Morris,Tioga,Stony Fork,2,False,True,True,True,stream,pfbc_section,3644_2,nursery_name,41.586,-77.2948,2.36
+Morris Rod and Gun Club,Morris,Tioga,West Branch Stony Fork,1,False,True,True,False,stream,unmatched,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Wilson Creek,1,False,True,True,True,stream,unmatched,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Wilson Creek,2,False,True,True,True,stream,unmatched,,nursery_name,41.586,-77.2948,
+Morris Rod and Gun Club,Morris,Tioga,Zimmerman Creek,1,False,True,True,True,stream,unmatched,,nursery_name,41.586,-77.2948,
+Muddy Creek Chapter TU,Muddy Creek TU,York,Muddy Creek,1,False,True,False,False,stream,pfbc_section,2033_1,nursery_name,39.8424,-76.4708,2.41
+Muddy Creek Chapter TU,Muddy Creek TU,York,Muddy Creek,3,False,True,False,False,stream,pfbc_section,2033_3,nursery_name,39.8424,-76.4708,3.5
+Muddy Creek Chapter TU,Muddy Creek TU,York,Muddy Creek,4,False,True,False,False,stream,pfbc_section,2033_4,nursery_name,39.8424,-76.4708,4.24
+Muddy Creek Chapter TU,Muddy Creek TU,York,North Branch Muddy Creek,4,False,True,False,False,stream,pfbc_section,1928_4,nursery_name,39.8424,-76.4708,1.69
+Muddy Creek Chapter TU,Muddy Creek TU,York,South Branch Muddy Creek,2,False,True,False,False,stream,pfbc_section,1571_2,nursery_name,39.8424,-76.4708,3.29
+Neshannock Chapter TU,Munnell Run,Mercer,Buhl Park Lake,,False,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,41.2483,-80.2538,
+Neshannock Chapter TU,Munnell Run,Mercer,Cool Spring Creek,3,False,True,False,True,stream,pfbc_section,350_3,nursery_name,41.2483,-80.2538,2.48
+Neshannock Chapter TU,Munnell Run,Lawrence,Neshannock Creek,3,False,True,False,True,stream,pfbc_section,329_3,nursery_name,41.2483,-80.2538,5.72
+Neshannock Chapter TU,Munnell Run,Mercer,North Deer Creek,1,False,True,False,True,stream,pfbc_section,2911_1,nursery_name,41.2483,-80.2538,17.02
+Neshannock Chapter TU,Munnell Run,Venango,Sandy Creek,4,False,True,False,True,stream,pfbc_section,2368_4,nursery_name,41.2483,-80.2538,18.94
+New Baltimore Sportsmen Club,Breastworks Run,Somerset,Breastworks Run,2,False,False,True,False,stream,unmatched,,nursery_name,39.9848,-78.792,
+New Baltimore Sportsmen Club,Breastworks Run,Bedford,Raystown Branch Juniata River,3,False,True,True,True,stream,pfbc_section,2968_3,nursery_name,39.9848,-78.792,1.65
+New Baltimore Sportsmen Club,Breastworks Run,Somerset,Raystown Branch Juniata River,2,False,True,True,False,stream,pfbc_section,2968_2,nursery_name,39.9848,-78.792,0.07
+New Baltimore Sportsmen Club,Breastworks Run,Bedford,Sportsmen Pond,,False,False,True,True,lake_pond,unmatched_lake_pond,,nursery_name,39.9848,-78.792,
+New Baltimore Sportsmen Club,Breastworks Run,Somerset,Stonycreek River,2,False,True,True,False,stream,pfbc_section,1326_2,nursery_name,39.9848,-78.792,5.91
+New Baltimore Sportsmen Club,Breastworks Run,Somerset,Three Lick Run,1,False,True,True,False,stream,unmatched,,nursery_name,39.9848,-78.792,
+New Bloomfield Sportsmen Assoc,Keller,Perry,Little Buffalo Creek,2,False,True,True,True,stream,pfbc_section,2975_2,nursery_name,40.4404,-77.166,1.54
+New Bloomfield Sportsmen Assoc,Keller,Perry,Little Buffalo Creek,3,True,True,True,True,stream,pfbc_section,2975_3,nursery_name,40.4404,-77.166,0.99
+New Bloomfield Sportsmen Assoc,Keller,Perry,Little Juniata Creek,2,True,True,True,True,stream,pfbc_section,3307_2,nursery_name,40.4404,-77.166,1.57
+Newton-Wayne Sportsmen Club,Licking Creek,Huntingdon,Blacklog Creek,2,False,True,True,True,stream,pfbc_section,285_2,nursery_name,40.3518,-77.8188,2.5
+Newton-Wayne Sportsmen Club,Licking Creek,Huntingdon,Shade Creek,2,False,True,True,True,stream,pfbc_section,278_2,nursery_name,40.3518,-77.8188,8.81
+Newton-Wayne Sportsmen Club,Licking Creek,Huntingdon,West Licking Creek,3,False,True,True,True,stream,pfbc_section,3300_3,nursery_name,40.3518,-77.8188,0.02
+Newton-Wayne Sportsmen Club,Licking Creek,Mifflin,West Licking Creek,2,False,True,True,True,stream,unmatched,,nursery_name,40.3518,-77.8188,
+Northern Swatara Creek Watershed Assoc,Swatara Co-op,Schuylkill,Lower Little Swatara Creek,2,False,True,True,True,stream,pfbc_section,2894_2,sponsor_name,40.58,-76.3606,2.69
+Northern Swatara Creek Watershed Assoc,Swatara Co-op,Schuylkill,Sweet Arrow Lake,,False,True,True,False,lake_pond,unmatched_lake_pond,,sponsor_name,40.58,-76.3606,
+Northern Swatara Creek Watershed Assoc,Swatara Co-op,Schuylkill,Upper Little Swatara Creek,2,False,False,True,True,stream,pfbc_section,2899_2,sponsor_name,40.58,-76.3606,0.53
+Norwich Township Sportsmen Assoc,#1,McKean,Boyer Brook,1,False,True,True,True,stream,wild_layer_stream,,,,,
+Norwich Township Sportsmen Assoc,#1,McKean,Colegrove Brook,1,False,True,True,True,stream,wild_layer_stream,,,,,
+Norwich Township Sportsmen Assoc,#1,McKean,Robbins Brook,1,False,True,True,True,stream,wild_layer_stream,,,,,
+Norwich Township Sportsmen Assoc,#1,McKean,Walcott Brook,1,False,True,True,True,stream,wild_layer_stream,,,,,
+Norwich Township Sportsmen Assoc,#1,McKean,White Hollow Run,1,False,True,True,True,stream,wild_layer_stream,,,,,
+Orbisonia-Rockhill Sportsmens Assoc,Orbisonia-Rockhill Sportsmens Assoc,Juniata,Blacklog Creek,2,True,False,True,True,stream,unmatched,,,,,
+Orbisonia-Rockhill Sportsmens Assoc,Orbisonia-Rockhill Sportsmens Assoc,Huntingdon,Shade Creek,2,True,False,True,True,stream,pfbc_section,278_2,,,,
+Oswayo Valley Rod and Gun Club,Oswayo Valley,McKean,Bell Run,1,False,True,False,False,stream,pfbc_stream_other_section,,nursery_name,41.9455,-78.0689,7.72
+Oswayo Valley Rod and Gun Club,Oswayo Valley,Potter,Clara Creek,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.9455,-78.0689,2.69
+Oswayo Valley Rod and Gun Club,Oswayo Valley,Potter,Elevenmile Creek,2,False,True,False,False,stream,pfbc_section,2571_2,nursery_name,41.9455,-78.0689,0.1
+Oswayo Valley Rod and Gun Club,Oswayo Valley,Potter,Honeoye Creek,1,False,True,False,False,stream,unmatched,,nursery_name,41.9455,-78.0689,
+Oswayo Valley Rod and Gun Club,Oswayo Valley,Potter,Oswayo Creek,4,False,True,False,False,stream,pfbc_section,3516_4,nursery_name,41.9455,-78.0689,2.5
+Oswayo Valley Rod and Gun Club,Oswayo Valley,Potter,South Branch Oswayo Creek,2,False,True,False,False,stream,pfbc_section,2567_2,nursery_name,41.9455,-78.0689,2.79
+Oswayo Valley Rod and Gun Club,Oswayo Valley,Potter,Taylor Brook,1,False,True,False,False,stream,unmatched,,nursery_name,41.9455,-78.0689,
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Anderson Creek,3,False,True,False,False,stream,pfbc_section,3265_3,nursery_name,41.2245,-78.6348,8.88
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Bennett Branch Sinnemahoning Creek,2,False,True,False,False,stream,pfbc_section,2864_2,nursery_name,41.2245,-78.6348,2.76
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Boy Scout Dam,,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,41.2245,-78.6348,
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Kersey Run,2,False,True,False,False,stream,unmatched,,nursery_name,41.2245,-78.6348,
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Mountain Lick Creek,2,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.2245,-78.6348,0.06
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Mountain Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,41.2245,-78.6348,0.35
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Parker Dam,,False,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,41.2245,-78.6348,
+PA Wildlife Habitat Unlimited,Bucktail Council B.S.A.,Clearfield,Rattlesnake Creek,3,False,True,False,False,stream,unmatched,,nursery_name,41.2245,-78.6348,
+Palmyra Sportsmen Assoc,Palmyra,Dauphin,Bull Frog Pond,,True,True,False,True,lake_pond,unmatched_lake_pond,,nursery_name,40.2791,-76.4874,
+Palmyra Sportsmen Assoc,Palmyra,Lebanon,Quittapahilla Creek,3,True,True,False,False,stream,pfbc_section,3297_3,nursery_name,40.2791,-76.4874,3.46
+Palmyra Sportsmen Assoc,Palmyra,Lebanon,Quittapahilla Creek,5,True,True,False,True,stream,pfbc_section,3297_5,nursery_name,40.2791,-76.4874,3.44
+Palmyra Sportsmen Assoc,Palmyra,Lebanon,Quittapahilla Creek,6,True,True,False,True,stream,pfbc_stream_other_section,,nursery_name,40.2791,-76.4874,3.32
+Palmyra Sportsmen Assoc,Palmyra,Lebanon,Quittapahilla Creek,7,True,True,False,True,stream,pfbc_section,3297_7,nursery_name,40.2791,-76.4874,4.7
+Palmyra Sportsmen Assoc,Palmyra,Lebanon,Snitz Creek,2,True,True,False,False,stream,pfbc_section,3294_2,nursery_name,40.2791,-76.4874,3.24
+Palmyra Sportsmen Assoc,Palmyra,Dauphin,Stony Creek,2,True,True,False,False,stream,pfbc_section,3301_2,nursery_name,40.2791,-76.4874,15.37
+Paradise Sportsmen Assoc,Paradise Trout,Lancaster,Denlingers Pond,,True,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,39.9755,-76.115,
+Paradise Sportsmen Assoc,Paradise Trout,Lancaster,Eshleman Run,2,True,True,True,True,stream,unmatched,,nursery_name,39.9755,-76.115,
+Paradise Sportsmen Assoc,Paradise Trout,Lancaster,Londonland Run,2,True,True,True,True,stream,unmatched,,nursery_name,39.9755,-76.115,
+Paradise Sportsmen Assoc,Paradise Trout,Lancaster,Pequea Creek,3,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,39.9755,-76.115,6.61
+Pavia Sportsmen Assoc,Blue Knob,Bedford,Bobs Creek,3,False,False,True,True,stream,pfbc_section,62_3,nursery_name,40.274,-78.579,0.92
+Pavia Sportsmen Assoc,Blue Knob,Bedford,Bobs Creek,4,False,False,True,True,stream,pfbc_section,62_4,nursery_name,40.274,-78.579,1.16
+Penn-Dutch Sportsmen Assoc,Wenger #6,Lancaster,Mill Creek,2,False,True,True,True,stream,unmatched,,name_contains,40.1012,-76.1299,
+Perry Township Sportsmen (Jefferson),Kunselman,Jefferson,Foundry Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,40.9244,-79.0798,0.32
+Perry Township Sportsmen (Jefferson),Kunselman,Jefferson,Mahoning Creek,2,False,True,True,False,stream,unmatched,,nursery_name,40.9244,-79.0798,
+Pine Creek Sportsmen Club,Pine Creek Spts.,Armstrong,North Fork Pine Creek,3,False,True,True,True,stream,pfbc_section,74_3,nursery_name,40.9125,-79.4592,2.4
+Pine Creek Sportsmen Club,Pine Creek Spts.,Armstrong,South Fork Pine Creek,1,False,True,True,True,stream,pfbc_section,3851_1,nursery_name,40.9125,-79.4592,2.69
+Pine Grove Fish and Game,Pine Grove Landfill Nursery,Schuylkill,Swatara Creek,2,True,False,True,True,stream,wild_layer_stream,,nursery_name,40.5597,-76.4253,4.59
+Pine Grove Sportsmen Club,Pine Grove,Jefferson,Beaver Run,1,False,True,True,True,stream,unmatched,,nursery_name,41.0421,-79.0651,
+Pine Grove Sportsmen Club,Pine Grove,Jefferson,Ferguson Run,1,False,True,True,True,stream,unmatched,,nursery_name,41.0421,-79.0651,
+Pine Grove Sportsmen Club,Pine Grove,Jefferson,Five Mile Run,2,False,True,True,True,stream,unmatched,,nursery_name,41.0421,-79.0651,
+Potter County Anglers Club,Little Fella,Potter,Allegheny River,2,False,True,True,False,stream,pfbc_section,1785_2,nursery_name,41.6942,-78.0876,11.87
+Potter County Anglers Club,Little Fella,Potter,Allegheny River,3,False,True,True,False,stream,pfbc_section,1785_3,nursery_name,41.6942,-78.0876,9.69
+Potter County Anglers Club,Little Fella,Elk,Bennett Branch Sinnemahoning Creek,4,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,30.35
+Potter County Anglers Club,Little Fella,Elk,Bennett Branch Sinnemahoning Creek,5,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,30.35
+Potter County Anglers Club,Little Fella,Elk,Bennett Branch Sinnemahoning Creek,6,False,True,True,True,stream,pfbc_section,2864_6,nursery_name,41.6942,-78.0876,30.35
+Potter County Anglers Club,Little Fella,Elk,Bennett Branch Sinnemahoning Creek,7,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,30.35
+Potter County Anglers Club,Little Fella,Elk,Blue Valley Pond,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Potter,Cowanesque River,1,False,True,True,True,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Tioga,Cowanesque River,2,False,True,True,True,stream,pfbc_section,3854_2,nursery_name,41.6942,-78.0876,28.49
+Potter County Anglers Club,Little Fella,Elk,Crooked Creek,2,False,False,True,False,stream,pfbc_section,2842_2,nursery_name,41.6942,-78.0876,27.94
+Potter County Anglers Club,Little Fella,Potter,Cross Fork,2,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,19.13
+Potter County Anglers Club,Little Fella,Potter,Cross Fork,3,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,19.13
+Potter County Anglers Club,Little Fella,Elk,Dents Run,3,False,True,True,False,stream,pfbc_section,2777_3,nursery_name,41.6942,-78.0876,24.98
+Potter County Anglers Club,Little Fella,Elk,Elk Creek,3,False,True,True,False,stream,pfbc_section,1902_3,nursery_name,41.6942,-78.0876,33.31
+Potter County Anglers Club,Little Fella,Potter,First Fork Sinnemahoning Creek,2,False,True,True,False,stream,pfbc_section,3364_2,nursery_name,41.6942,-78.0876,5.7
+Potter County Anglers Club,Little Fella,Potter,First Fork Sinnemahoning Creek,3,False,True,True,False,stream,pfbc_section,3364_3,nursery_name,41.6942,-78.0876,7.14
+Potter County Anglers Club,Little Fella,Potter,First Fork Sinnemahoning Creek,4,False,True,True,False,stream,pfbc_section,3364_4,nursery_name,41.6942,-78.0876,12.5
+Potter County Anglers Club,Little Fella,Potter,First Fork Sinnemahoning Creek,5,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,5.7
+Potter County Anglers Club,Little Fella,Potter,First Fork Sinnemahoning Creek,6,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,5.7
+Potter County Anglers Club,Little Fella,Elk,Kersey Run,2,False,True,True,False,stream,wild_layer_stream,,nursery_name,41.6942,-78.0876,35.21
+Potter County Anglers Club,Little Fella,Elk,Laurel Run Reservoir,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Elk,Little Toby Creek,2,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,44.4
+Potter County Anglers Club,Little Fella,Elk,Little Toby Creek,3,False,True,True,False,stream,pfbc_section,1975_3,nursery_name,41.6942,-78.0876,44.4
+Potter County Anglers Club,Little Fella,Potter,Marsh Creek,1,False,True,True,True,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Elk,Medix Run,3,False,True,True,False,stream,pfbc_section,137_3,nursery_name,41.6942,-78.0876,32.52
+Potter County Anglers Club,Little Fella,Potter,North Branch Cowanesque River,1,False,True,True,True,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Potter,North Fork Cowanesque River,1,False,True,True,True,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Potter,North Fork Dam,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Potter,Pine Creek,3,False,True,True,False,stream,pfbc_section,1339_3,nursery_name,41.6942,-78.0876,20.09
+Potter County Anglers Club,Little Fella,Potter,Pine Creek,4,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,20.09
+Potter County Anglers Club,Little Fella,Potter,Potter Brook,1,False,True,True,True,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Elk,Powers Run,1,False,False,False,False,stream,pfbc_section,2921_1,nursery_name,41.6942,-78.0876,29.44
+Potter County Anglers Club,Little Fella,Elk,Rocky Run,2,False,False,False,False,stream,pfbc_section,2674_2,nursery_name,41.6942,-78.0876,28.57
+Potter County Anglers Club,Little Fella,Potter,South Branch Oswayo Creek,2,False,True,True,False,stream,pfbc_section,2567_2,nursery_name,41.6942,-78.0876,12.88
+Potter County Anglers Club,Little Fella,Potter,South Woods Branch,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.6942,-78.0876,2.64
+Potter County Anglers Club,Little Fella,Potter,South Woods Branch,2,False,True,True,True,stream,pfbc_section,3560_2,nursery_name,41.6942,-78.0876,2.64
+Potter County Anglers Club,Little Fella,Elk,Twin Lakes,,False,True,True,False,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Potter,West Branch Pine Creek,2,False,True,True,True,stream,pfbc_section,3583_2,nursery_name,41.6942,-78.0876,18.22
+Potter County Anglers Club,Little Fella,Elk,West Creek,1,False,True,True,False,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Potter County Anglers Club,Little Fella,Elk,West Creek,2,False,True,True,False,stream,unmatched,,nursery_name,41.6942,-78.0876,
+Queen City Trout Rearing Comm,Lil-Le-Hi,Lehigh,Cedar Creek,3,True,True,False,False,stream,pfbc_section,2712_3,nursery_name,40.5648,-75.5123,1.75
+Queen City Trout Rearing Comm,Lil-Le-Hi,Lehigh,Jordan Creek,6,True,True,False,False,stream,pfbc_section,2716_6,nursery_name,40.5648,-75.5123,3.67
+Queen City Trout Rearing Comm,Lil-Le-Hi,Lehigh,Little Lehigh Creek,7,True,True,False,False,stream,pfbc_section,2714_7,nursery_name,40.5648,-75.5123,0.13
+Queen City Trout Rearing Comm,Lil-Le-Hi,Lehigh,Little Lehigh Creek,9,True,True,False,False,stream,pfbc_section,2714_9,nursery_name,40.5648,-75.5123,0.69
+Quittapahilla Rod and Gun Club,Quittaphilla,Dauphin,Manada Creek,3,False,True,True,True,stream,pfbc_section,3284_3,,,,
+Quittapahilla Rod and Gun Club,Quittaphilla,Lebanon,Quittapahilla Creek,3,False,True,True,True,stream,pfbc_section,3297_3,,,,
+Quittapahilla Rod and Gun Club,Quittaphilla,Lebanon,Quittapahilla Creek,6,False,True,True,True,stream,pfbc_stream_other_section,,,,,
+Quittapahilla Rod and Gun Club,Quittaphilla,Lebanon,Snitz Creek,2,False,True,True,True,stream,pfbc_section,3294_2,,,,
+Raver's Gap,Bechtel's Beaver Creek,Bedford,Beaver Creek,2,False,True,False,False,stream,pfbc_section,67_2,nursery_name,40.1497,-78.3914,0.15
+Raver's Gap,Bechtel's Beaver Creek,Bedford,Hickory Bottom Creek,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,40.1497,-78.3914,3.06
+Raver's Gap,Bechtel's Beaver Creek,Bedford,Maple Run,2,False,True,False,False,stream,pfbc_section,64_2,nursery_name,40.1497,-78.3914,2.71
+Raver's Gap,Bechtel's Beaver Creek,Bedford,Snake Spring Valley Run,1,False,True,False,False,stream,wild_layer_stream,,nursery_name,40.1497,-78.3914,3.33
+Raver's Gap,Bechtel's Beaver Creek,Bedford,UNT to Beaver Creek (Rm 2.53),1,False,True,False,False,stream,unmatched,,nursery_name,40.1497,-78.3914,
+Raver's Gap,Bechtel's Beaver Creek,Bedford,Yellow Creek,1,False,True,False,False,stream,pfbc_stream_other_section,,nursery_name,40.1497,-78.3914,1.16
+Resica Falls Trout Club BSA,Resica Falls,Monroe,Bushkill,4,False,False,True,True,stream,unmatched,,nursery_name,41.0642,-75.0544,
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Big Run,2,True,True,True,True,stream,pfbc_section,3378_2,name_contains,41.0427,-78.5215,19.52
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Camp Friendship Pond,,True,True,True,True,lake_pond,unmatched_lake_pond,,name_contains,41.0427,-78.5215,
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Elk Run,1,True,True,True,True,stream,wild_layer_stream,,name_contains,41.0427,-78.5215,23.35
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Front Run,1,True,True,True,True,stream,unmatched,,name_contains,41.0427,-78.5215,
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Kyle Run,1,True,True,True,True,stream,wild_layer_stream,,name_contains,41.0427,-78.5215,37.0
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Mill Creek,2,True,True,True,True,stream,pfbc_section,6023_2,name_contains,41.0427,-78.5215,22.72
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,O'Donnell Run,1,True,True,True,True,stream,wild_layer_stream,,name_contains,41.0427,-78.5215,21.92
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Panther Run,1,True,True,True,True,stream,wild_layer_stream,,name_contains,41.0427,-78.5215,19.19
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Sandy Lick Creek,4,True,True,True,True,stream,pfbc_stream_other_section,,name_contains,41.0427,-78.5215,21.32
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Schoolhouse Run,1,True,True,True,True,stream,wild_layer_stream,,name_contains,41.0427,-78.5215,20.8
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Soldier Run,1,True,True,True,True,stream,unmatched,,name_contains,41.0427,-78.5215,
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Sportsmen Pond,,True,True,True,True,lake_pond,unmatched_lake_pond,,name_contains,41.0427,-78.5215,
+Reynoldsville Sportsmen Assoc,Cool Spring,Jefferson,Trout Run,1,True,True,True,True,stream,wild_layer_stream,,name_contains,41.0427,-78.5215,19.65
+Richfield Sportsmen Club,Apple's,Snyder,North Branch Mahantango Creek,1,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.7258,-77.0173,0.01
+Richfield Sportsmen Club,Apple's,Snyder,North Branch Mahantango Creek,2,True,True,True,True,stream,pfbc_section,3130_2,nursery_name,40.7258,-77.0173,0.01
+Richfield Sportsmen Club,Apple's,Snyder,North Branch Mahantango Creek,3,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.7258,-77.0173,0.01
+Richfield Sportsmen Club,Apple's,Juniata,West Branch Mahantango Creek,1,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.7258,-77.0173,3.36
+Richfield Sportsmen Club,Apple's,Juniata,West Branch Mahantango Creek,2,True,True,True,True,stream,pfbc_section,3129_2,nursery_name,40.7258,-77.0173,3.36
+Richfield Sportsmen Club,Apple's,Juniata,West Branch Mahantango Creek,3,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.7258,-77.0173,3.36
+Robesonia Fish and Game Assoc,Robesonia,Berks,Furnace Creek,2,True,False,True,True,stream,pfbc_section,3074_2,nursery_name,40.3395,-76.1462,0.1
+Roulette Fish and Game,Roulette Fish and Game,Potter,East Branch Fishing Creek,2,False,True,True,False,stream,pfbc_section,2641_2,,,,
+Roulette Fish and Game,Roulette Fish and Game,Potter,Fishing Creek,2,False,True,True,True,stream,pfbc_section,2636_2,,,,
+Roulette Fish and Game,Roulette Fish and Game,Potter,Fishing Creek,3,False,True,True,True,stream,pfbc_section,2636_3,,,,
+Roulette Fish and Game,Roulette Fish and Game,Potter,Laninger Creek,1,False,False,True,False,stream,wild_layer_stream,,,,,
+Rouzerville Fish and Game Association,Beaver Nursery,Franklin,East Branch Antietam Creek,4,True,True,True,False,stream,pfbc_section,1824_4,nursery_name,39.7777,-77.5845,2.47
+Rouzerville Fish and Game Association,Beaver Nursery,Franklin,Red Run,1,True,True,True,False,stream,wild_layer_stream,,nursery_name,39.7777,-77.5845,2.89
+Rouzerville Fish and Game Association,Beaver Nursery,Franklin,Red Run,2,True,True,True,False,stream,wild_layer_stream,,nursery_name,39.7777,-77.5845,2.89
+Rouzerville Fish and Game Association,Beaver Nursery,Franklin,Red Run Lake,,True,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,39.7777,-77.5845,
+Rouzerville Fish and Game Association,Beaver Nursery,Franklin,West Branch Antietam Creek,2,True,True,True,False,stream,pfbc_stream_other_section,,nursery_name,39.7777,-77.5845,0.01
+Rouzerville Fish and Game Association,Beaver Nursery,Franklin,West Branch Antietam Creek,3,True,True,True,False,stream,pfbc_section,1825_3,nursery_name,39.7777,-77.5845,0.01
+S.O.N.S of Lake Erie,S.O.N.S,Erie,Presque Isle Bay,,False,True,False,False,stream,unmatched,,nursery_name,42.1333,-80.0978,
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Brush Creek,2,False,True,True,False,stream,pfbc_section,1774_2,name_contains,39.9178,-79.1617,14.42
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Casselman River,1,False,True,True,True,stream,pfbc_section,1462_1,name_contains,39.9178,-79.1617,11.15
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Coxes Creek,1,True,False,False,False,stream,unmatched,,name_contains,39.9178,-79.1617,
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Elklick Creek,2,True,True,False,False,stream,pfbc_stream_other_section,,name_contains,39.9178,-79.1617,8.07
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Flaugherty Creek,2,False,True,True,True,stream,pfbc_section,3741_2,name_contains,39.9178,-79.1617,11.22
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Flaugherty Creek,3,True,False,True,False,stream,pfbc_stream_other_section,,name_contains,39.9178,-79.1617,11.22
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Little Piney Creek,2,True,False,True,False,stream,pfbc_section,3718_2,name_contains,39.9178,-79.1617,14.29
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Middle Creek,2,False,False,True,False,stream,pfbc_section,3753_2,name_contains,39.9178,-79.1617,2.56
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Miller Run,2,True,True,False,False,stream,pfbc_stream_other_section,,name_contains,39.9178,-79.1617,13.13
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Piney Creek,2,False,False,True,True,stream,pfbc_section,3728_2,name_contains,39.9178,-79.1617,14.38
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Piney Creek,4,False,True,True,True,stream,pfbc_section,3728_4,name_contains,39.9178,-79.1617,11.62
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Quemahoning Creek,3,False,False,True,False,stream,unmatched,,name_contains,39.9178,-79.1617,
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Quemahoning Rod and Gun Club Pond,,False,False,True,True,lake_pond,unmatched_lake_pond,,name_contains,39.9178,-79.1617,
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Raystown Branch Juniata River,2,True,False,True,False,stream,pfbc_section,2968_2,name_contains,39.9178,-79.1617,16.07
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Shaffers Run,2,True,False,False,False,stream,pfbc_section,1773_2,name_contains,39.9178,-79.1617,19.77
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Stonycreek River,5,False,False,True,False,stream,pfbc_stream_other_section,,name_contains,39.9178,-79.1617,13.95
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Stonycreek River,6,False,False,True,False,stream,pfbc_stream_other_section,,name_contains,39.9178,-79.1617,13.95
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Tub Mill Run,2,True,True,False,False,stream,pfbc_section,3725_2,name_contains,39.9178,-79.1617,10.94
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Wells Creek,1,False,True,True,False,stream,unmatched,,name_contains,39.9178,-79.1617,
+Salisbury -Elklick Hunting Club,Salisbury -Elklick Hunting Club,Somerset,Whites Creek,2,False,False,True,False,stream,pfbc_section,1461_2,name_contains,39.9178,-79.1617,12.28
+Shannock Valley Sportsmen Club,Shannock Valley Sportsmen,Armstrong,Cowanshannock Creek,2,True,False,True,True,stream,pfbc_stream_other_section,,nursery_name,40.7963,-79.319,2.72
+Shannock Valley Sportsmen Club,Shannock Valley Sportsmen,Armstrong,South Fork Pine Creek,1,True,False,True,True,stream,pfbc_section,3851_1,nursery_name,40.7963,-79.319,3.7
+Sheffield Rod and Gun Club,Sheffield,Warren,Deer Lick Run,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.6761,-79.0246,1.97
+Sheffield Rod and Gun Club,Sheffield,Warren,Fourmile Run,2,False,True,True,True,stream,pfbc_section,2608_2,nursery_name,41.6761,-79.0246,3.66
+Sheffield Rod and Gun Club,Sheffield,Warren,South Branch Tionesta Creek,2,False,True,True,True,stream,pfbc_section,2705_2,nursery_name,41.6761,-79.0246,0.18
+Sheffield Rod and Gun Club,Sheffield,Warren,Twomile Run,2,False,True,True,True,stream,pfbc_section,2711_2,nursery_name,41.6761,-79.0246,1.75
+Shippensburg Fly Fishing Club,Dykeman Spring,Franklin,Conodoguinet Creek,2,True,True,True,False,stream,pfbc_section,3277_2,nursery_name,40.0422,-77.5155,10.65
+Shippensburg Fly Fishing Club,Dykeman Spring,Cumberland,Green Spring Creek,4,True,True,True,False,stream,pfbc_section,69_4,nursery_name,40.0422,-77.5155,8.95
+Shippensburg Fly Fishing Club,Dykeman Spring,Cumberland,Middle Spring Creek,2,True,True,True,False,stream,pfbc_section,52_2,nursery_name,40.0422,-77.5155,1.25
+Shippensburg Fly Fishing Club,Dykeman Spring,Franklin,Muddy Run,1,True,True,True,False,stream,wild_layer_stream,,nursery_name,40.0422,-77.5155,16.32
+Shippensburg Fly Fishing Club,Dykeman Spring,Franklin,Rowe Run,2,True,True,True,True,stream,pfbc_section,43_2,nursery_name,40.0422,-77.5155,4.03
+Short Mountain Conservation Club,Rattling Creek,Dauphin,Rattling Creek,1,False,True,True,True,stream,pfbc_section,2696_1,nursery_name,40.5546,-76.6954,0.01
+Short Mountain Conservation Club,Rattling Creek,Dauphin,West Branch Rattling Creek,2,False,True,True,False,stream,pfbc_section,2897_2,nursery_name,40.5546,-76.6954,0.22
+Short Mountain Conservation Club,Rattling Creek,Dauphin,Wiconisco Creek,2,False,True,True,False,stream,pfbc_section,2892_2,nursery_name,40.5546,-76.6954,6.17
+Southern Lancaster Farmers/ Sportsmen Assoc,SOLANCO,Lancaster,Bowery Run,2,False,True,True,True,stream,pfbc_section,631_2,nursery_name,39.849,-76.0991,2.41
+Southern Lancaster Farmers/ Sportsmen Assoc,SOLANCO,Lancaster,Stehman Run,1,False,True,True,True,stream,unmatched,,nursery_name,39.849,-76.0991,
+Southern Lancaster Farmers/ Sportsmen Assoc,SOLANCO,Lancaster,West Branch Octoraro Creek,2,False,True,True,True,stream,pfbc_section,1931_2,nursery_name,39.849,-76.0991,1.27
+Spring Creek Sportsmen Assoc,Knightsville Nursery,Huntingdon,North Spring Branch,1,True,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.4167,-78.0173,12.06
+Spring Creek Sportsmen Assoc,Knightsville Nursery,Huntingdon,North Spring Branch,2,True,True,True,True,stream,pfbc_section,267_2,nursery_name,40.4167,-78.0173,12.06
+Spring Creek Sportsmen Assoc,Knightsville Nursery,Huntingdon,Three Springs Creek,1,True,True,True,True,stream,pfbc_section,270_1,nursery_name,40.4167,-78.0173,14.81
+Spring Valley Sportsmen Club,Spring Valley,Lehigh,Laurel Run,2,False,True,True,True,stream,pfbc_section,2821_2,nursery_name,40.5544,-75.3594,2.12
+Spring Valley Sportsmen Club,Spring Valley,Northampton,Saucon Creek,3,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.5544,-75.3594,0.68
+Spring Valley Sportsmen Club,Spring Valley,Northampton,Saucon Creek,4,False,True,True,True,stream,pfbc_section,2718_4,nursery_name,40.5544,-75.3594,0.68
+Springside Sportsmen Club,Springside Reservoir,Lehigh,Trout Creek,2,False,True,True,True,stream,pfbc_section,2734_2,nursery_name,40.7461,-75.6106,0.4
+Springtown Rod and Gun Club,Springtown,Bucks,UNT to Cooks Creek (Silver Ck),2,True,True,True,True,stream,wild_layer_stream,,,,,
+St. Marys Sportsmen Club,Flower Valley,Elk,Crooked Creek,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.4878,-78.5887,1.9
+St. Marys Sportsmen Club,Flower Valley,Elk,Crooked Creek,2,False,True,True,True,stream,pfbc_section,2842_2,nursery_name,41.4878,-78.5887,1.9
+St. Marys Sportsmen Club,Flower Valley,Elk,East Branch Clarion River,3,False,True,True,False,stream,pfbc_section,2928_3,nursery_name,41.4878,-78.5887,3.3
+St. Marys Sportsmen Club,Flower Valley,Elk,East Branch Clarion River,4,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,41.4878,-78.5887,3.3
+St. Marys Sportsmen Club,Flower Valley,Elk,Hoffman Run,2,False,True,True,True,stream,pfbc_section,2860_2,nursery_name,41.4878,-78.5887,10.4
+St. Marys Sportsmen Club,Flower Valley,Elk,Laurel Run Reservoir,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.4878,-78.5887,
+St. Marys Sportsmen Club,Flower Valley,Elk,Middle Fork East Branch Clarion River,1,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4878,-78.5887,3.98
+St. Marys Sportsmen Club,Flower Valley,Elk,Powers Run,1,False,True,True,True,stream,pfbc_section,2921_1,nursery_name,41.4878,-78.5887,0.05
+St. Marys Sportsmen Club,Flower Valley,Elk,Rocky Run,2,False,True,True,True,stream,pfbc_section,2674_2,nursery_name,41.4878,-78.5887,8.84
+St. Marys Sportsmen Club,Flower Valley,Elk,Straight Creek,2,False,True,True,True,stream,wild_layer_stream,,nursery_name,41.4878,-78.5887,6.58
+St. Marys Sportsmen Club,Flower Valley,Elk,Twin Lakes,,False,True,True,True,stream,unmatched,,nursery_name,41.4878,-78.5887,
+St. Marys Sportsmen Club,Flower Valley,Elk,UNT to Iron Run (RM 0.99),1,False,True,True,True,stream,unmatched,,nursery_name,41.4878,-78.5887,
+Starview Sportsmen Assoc,Starview,York,Kreutz Creek,1,True,True,True,True,stream,wild_layer_stream,,sponsor_name,40.0289,-76.6751,4.01
+Starview Sportsmen Assoc,Starview,York,Mill Creek,1,True,True,True,True,stream,wild_layer_stream,,sponsor_name,40.0289,-76.6751,4.69
+Starview Sportsmen Assoc,Starview,York,Starview Sportsmen Club Pond,,True,False,True,True,lake_pond,unmatched_lake_pond,,sponsor_name,40.0289,-76.6751,
+Stony Creek Anglers Club,Stony Creek,Montgomery,East Branch Perkiomen Creek,4,True,True,False,False,stream,pfbc_section,3042_4,nursery_name,40.1407,-75.355,8.87
+Stony Creek Anglers Club,Stony Creek,Montgomery,East Branch Perkiomen Creek,5,True,True,False,False,stream,pfbc_stream_other_section,,nursery_name,40.1407,-75.355,8.87
+Stony Creek Anglers Club,Stony Creek,Montgomery,Kepner Creek,2,True,True,False,False,stream,pfbc_section,415_2,nursery_name,40.1407,-75.355,0.34
+Stony Creek Anglers Club,Stony Creek,Montgomery,Manatawny Creek,7,False,False,True,False,stream,pfbc_stream_other_section,,nursery_name,40.1407,-75.355,17.5
+Stony Creek Anglers Club,Stony Creek,Montgomery,Manatawny Creek,8,False,False,True,False,stream,pfbc_section,3040_8,nursery_name,40.1407,-75.355,17.5
+Stony Creek Anglers Club,Stony Creek,Montgomery,Nursery Ponds - Derby,,False,False,True,True,stream,unmatched,,nursery_name,40.1407,-75.355,
+Stony Creek Anglers Club,Stony Creek,Montgomery,Plymouth Pond,,True,False,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.1407,-75.355,
+Stony Creek Anglers Club,Stony Creek,Montgomery,Sprogels Run,1,False,False,True,False,stream,unmatched,,nursery_name,40.1407,-75.355,
+Stony Creek Anglers Club,Stony Creek,Montgomery,Stony Creek,2,True,True,False,False,stream,pfbc_section,403_2,nursery_name,40.1407,-75.355,0.44
+Stony Creek Anglers Club,Stony Creek,Montgomery,Swamp Creek,3,False,False,True,False,stream,wild_layer_stream,,nursery_name,40.1407,-75.355,21.69
+Stony Creek Anglers Club,Stony Creek,Montgomery,Wissahickon Creek,4,True,True,False,False,stream,pfbc_stream_other_section,,nursery_name,40.1407,-75.355,7.06
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Bell Run,1,False,True,True,False,stream,wild_layer_stream,,nursery_name,40.8211,-78.6368,6.39
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Chest Creek,5,False,True,True,False,stream,pfbc_section,4028_5,nursery_name,40.8211,-78.6368,2.84
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Chest Creek,6,False,True,True,False,stream,pfbc_section,4028_6,nursery_name,40.8211,-78.6368,2.23
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Club Pond,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.8211,-78.6368,
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Curry Run,2,False,True,True,False,stream,pfbc_section,4042_2,nursery_name,40.8211,-78.6368,6.28
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Parker Dam,,False,True,True,False,lake_pond,unmatched_lake_pond,,nursery_name,40.8211,-78.6368,
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,West Branch Susquehanna River,4,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,40.8211,-78.6368,12.11
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,West Branch Susquehanna River,6,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,40.8211,-78.6368,12.11
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,West Branch Susquehanna River,7,False,True,True,False,stream,pfbc_section,4029_7,nursery_name,40.8211,-78.6368,15.75
+Susquehanna Valley Rod and Gun Club,Susquehanna Valley,Clearfield,Wilson Run,1,False,True,True,False,stream,pfbc_stream_other_section,,nursery_name,40.8211,-78.6368,0.65
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Beauty Run,1,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,3.03
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Beauty Run,2,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,3.03
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Black Moshannon Creek,5,False,False,True,False,stream,pfbc_section,2254_5,sponsor_name,41.0599,-77.9563,3.16
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Black Moshannon Creek,6,False,False,True,False,stream,pfbc_stream_other_section,,sponsor_name,41.0599,-77.9563,3.16
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre/ Clinton,Eddy Lick Run,1,False,False,True,False,stream,unmatched,,sponsor_name,41.0599,-77.9563,
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre/ Clinton,Eddy Lick Run,2,False,False,True,False,stream,unmatched,,sponsor_name,41.0599,-77.9563,
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Gum Stump Run,1,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,5.45
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Little Sandy Run (Ponds),2,False,False,True,False,stream,unmatched,,sponsor_name,41.0599,-77.9563,
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Little Wolf Run,1,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,3.97
+Three Point Sportsmen Club,Three Point Sportsmen Club,Clearfield,Sandy Creek,2,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,13.43
+Three Point Sportsmen Club,Three Point Sportsmen Club,Clearfield,Sandy Creek,3,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,13.43
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Sandy Run,1,False,False,True,False,stream,wild_layer_stream,,sponsor_name,41.0599,-77.9563,1.93
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,South Fork Beech Creek,2,False,False,True,False,stream,pfbc_section,2259_2,sponsor_name,41.0599,-77.9563,3.11
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Wolf Run,2,False,False,True,False,stream,pfbc_section,2183_2,sponsor_name,41.0599,-77.9563,4.56
+Three Point Sportsmen Club,Three Point Sportsmen Club,Centre,Wolf Run,3,False,False,True,False,stream,pfbc_stream_other_section,,sponsor_name,41.0599,-77.9563,4.56
+Toby Creek Watershed Assoc,Blue Valley,Elk,Bennett Branch Sinnemahoning Creek,6,False,False,True,False,stream,pfbc_section,2864_6,nursery_name,41.3077,-78.6874,13.97
+Toby Creek Watershed Assoc,Blue Valley,Elk,Blue Valley Pond,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,41.3077,-78.6874,
+Toby Creek Watershed Assoc,Blue Valley,Elk,Boggy Run,1,False,True,False,False,stream,pfbc_section,2058_1,nursery_name,41.3077,-78.6874,3.35
+Toby Creek Watershed Assoc,Blue Valley,Elk,Little Toby Creek,3,False,True,False,False,stream,pfbc_section,1975_3,nursery_name,41.3077,-78.6874,6.72
+Toby Creek Watershed Assoc,Blue Valley,Elk/ Jefferson,Little Toby Creek,2,False,False,True,False,stream,unmatched,,nursery_name,41.3077,-78.6874,
+Toby Creek Watershed Assoc,Blue Valley,Elk,Mead Run,2,False,True,False,False,stream,pfbc_section,2062_2,nursery_name,41.3077,-78.6874,2.66
+Toby Creek Watershed Assoc,Blue Valley,Jefferson,North Fork Redbank Creek,2,False,True,False,False,stream,pfbc_section,6025_2,nursery_name,41.3077,-78.6874,12.45
+Toby Creek Watershed Assoc,Blue Valley,Jefferson,North Fork Redbank Creek,3,False,True,False,False,stream,pfbc_section,6025_3,nursery_name,41.3077,-78.6874,17.34
+Toby Creek Watershed Assoc,Blue Valley,Jefferson,North Fork Redbank Creek,4,False,True,False,False,stream,pfbc_section,6025_4,nursery_name,41.3077,-78.6874,19.55
+Toby Creek Watershed Assoc,Blue Valley,Jefferson,North Fork Redbank Creek,5,False,True,False,False,stream,pfbc_stream_other_section,,nursery_name,41.3077,-78.6874,12.45
+Toby Creek Watershed Assoc,Blue Valley,Jefferson,North Fork Redbank Creek,6,False,True,False,False,stream,pfbc_section,6025_6,nursery_name,41.3077,-78.6874,21.89
+Toby Creek Watershed Assoc,Blue Valley,Elk/ Jefferson,Rattlesnake Creek,3,False,False,True,False,stream,unmatched,,nursery_name,41.3077,-78.6874,
+Toby Creek Watershed Assoc,Blue Valley,Jefferson,Rattlesnake Run,2,False,False,True,False,stream,pfbc_section,1103_2,nursery_name,41.3077,-78.6874,7.57
+Toby Creek Watershed Assoc,Blue Valley,Elk,Whetstone Branch,1,False,False,True,False,stream,unmatched,,nursery_name,41.3077,-78.6874,
+Traditional Anglers of PA,Kane Run,Cambria,Bear Rock Run,2,False,False,True,True,stream,wild_layer_stream,,sponsor_name,40.3672,-78.6788,5.64
+Traditional Anglers of PA,Kane Run,Cambria,Bens Creek,2,False,False,True,True,stream,pfbc_section,2012_2,sponsor_name,40.3672,-78.6788,3.34
+Traditional Anglers of PA,Kane Run,Cambria,Little Conemaugh River,1,False,True,True,True,stream,wild_layer_stream,,sponsor_name,40.3672,-78.6788,1.75
+Traditional Anglers of PA,Kane Run,Cambria,Noels Creek,2,False,False,True,True,stream,pfbc_section,2020_2,sponsor_name,40.3672,-78.6788,3.24
+Union County Sportsmen Club,Union Co. Spts.,Union,Laurel Run,3,False,True,False,True,stream,pfbc_section,1541_3,nursery_name,40.8616,-77.2849,4.74
+Union County Sportsmen Club,Union Co. Spts.,Union,Penns Creek,6,False,True,True,True,stream,pfbc_section,2207_6,nursery_name,40.8616,-77.2849,0.16
+Valley View Gun Club,Pine Creek,Schuylkill,Deep Creek,3,True,True,False,False,stream,pfbc_section,3127_3,sponsor_name,40.6385,-76.5483,1.41
+Valley View Gun Club,Pine Creek,Schuylkill,Mahantango Creek,3,True,False,False,True,stream,pfbc_stream_other_section,,sponsor_name,40.6385,-76.5483,2.65
+Valley View Gun Club,Pine Creek,Schuylkill,Pine Creek,3,True,True,False,True,stream,pfbc_section,3135_3,sponsor_name,40.6385,-76.5483,0.42
+Waynesboro Fish and Game Protective Assoc,Waynesboro,Franklin,East Branch Antietam Creek,4,True,False,False,False,stream,pfbc_section,1824_4,nursery_name,39.7798,-77.5092,1.68
+Waynesboro Fish and Game Protective Assoc,Waynesboro,Franklin,East Branch Antietam Creek,5,True,True,False,False,stream,pfbc_section,1824_5,nursery_name,39.7798,-77.5092,3.56
+Waynesboro Fish and Game Protective Assoc,Waynesboro,Franklin,Red Run,2,True,True,False,False,stream,wild_layer_stream,,nursery_name,39.7798,-77.5092,2.67
+Waynesboro Fish and Game Protective Assoc,Waynesboro,Franklin,Red Run Lake,,True,True,False,False,lake_pond,unmatched_lake_pond,,nursery_name,39.7798,-77.5092,
+Waynesboro Fish and Game Protective Assoc,Waynesboro,Franklin,West Branch Antietam Creek,3,True,False,False,False,stream,pfbc_section,1825_3,nursery_name,39.7798,-77.5092,3.67
+West Caln Sportsmen Club,Hibernia Park,Chester,West Branch Brandywine Creek,3,True,True,True,True,stream,pfbc_section,632_3,sponsor_name,40.022,-75.8512,0.18
+West Chester Fish and Game,Paradise Farms,Chester,West Valley Creek,3,True,True,True,True,stream,unmatched,,nursery_name,39.9982,-75.6635,
+West Chester Fish and Game,Paradise Farms,Chester,West Valley Creek,4,True,True,True,True,stream,unmatched,,nursery_name,39.9982,-75.6635,
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Cooks Run,1,False,False,True,False,stream,pfbc_stream_other_section,,nursery_name,41.393,-77.6844,13.84
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Cooks Run,2,False,False,True,False,stream,pfbc_section,134_2,nursery_name,41.393,-77.6844,13.84
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Drury Run,2,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.393,-77.6844,6.54
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Hall Run,2,False,False,True,False,stream,wild_layer_stream,,nursery_name,41.393,-77.6844,7.39
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Hyner Run,1,False,False,True,True,stream,pfbc_stream_other_section,,nursery_name,41.393,-77.6844,3.84
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Hyner Run,2,False,False,True,False,stream,pfbc_section,2862_2,nursery_name,41.393,-77.6844,3.84
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Left Branch Young Womans Creek,2,False,False,True,False,stream,pfbc_section,2812_2,nursery_name,41.393,-77.6844,3.32
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Left Branch Young Womans Creek,3,False,False,True,True,stream,pfbc_section,2812_3,nursery_name,41.393,-77.6844,1.19
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Young Womans Creek,1,False,False,True,False,stream,pfbc_section,2767_1,nursery_name,41.393,-77.6844,4.25
+Western Clinton Sportsmen Assoc,Laurelly Fork,Clinton,Young Womans Creek,3,False,False,True,True,stream,pfbc_section,2767_3,nursery_name,41.393,-77.6844,1.03
+Wilmore Sportsmen,Wilmore Sportsmen Trout Hatchery,Cambria,Howells Run,2,False,False,True,False,stream,pfbc_section,1787_2,name_contains,40.3438,-78.7615,7.35
+Wilmore Sportsmen,Wilmore Sportsmen Trout Hatchery,Cambria,North Branch Little Conemaugh River,2,False,False,True,True,stream,pfbc_section,1989_2,name_contains,40.3438,-78.7615,3.95
+Wilmore Sportsmen,Wilmore Sportsmen Trout Hatchery,Cambria,North Branch Little Conemaugh River,3,False,False,True,True,stream,pfbc_stream_other_section,,name_contains,40.3438,-78.7615,3.95
+Windber Sportsmen Assoc,Ogletown Hatchery,Somerset,Clear Shade Creek,2,False,True,True,True,stream,pfbc_section,3032_2,nursery_name,40.2006,-78.7047,0.14
+Windber Sportsmen Assoc,Ogletown Hatchery,Somerset,Cub Run,2,False,True,True,True,stream,pfbc_section,2937_2,nursery_name,40.2006,-78.7047,1.94
+Windber Sportsmen Assoc,Ogletown Hatchery,Somerset,Paint Creek,1,False,True,True,True,stream,unmatched,,nursery_name,40.2006,-78.7047,
+Windber Sportsmen Assoc,Ogletown Hatchery,Somerset,Piney Run,1,False,True,True,True,stream,pfbc_stream_other_section,,nursery_name,40.2006,-78.7047,4.05
+Windber Sportsmen Assoc,Ogletown Hatchery,Somerset,Windber Sportsmen Assoc Pond,,False,True,True,True,lake_pond,unmatched_lake_pond,,nursery_name,40.2006,-78.7047,
+"Wycoff Run Fish Nursery, Inc.",Wycoff Run,Cameron,Mix Run,3,False,True,True,False,stream,pfbc_section,2866_3,nursery_name,41.1847,-78.0443,12.56
+"Wycoff Run Fish Nursery, Inc.",Wycoff Run,Cameron,Wykoff Run,2,False,True,True,False,stream,pfbc_section,3357_2,nursery_name,41.1847,-78.0443,7.14
+Yellow Breeches Anglers Club,Alma Lee Thorton,Cumberland,Yellow Breeches Creek,2,False,True,True,True,stream,pfbc_section,276_2,,,,
+Yellow Breeches Anglers Club,Alma Lee Thorton,Cumberland,Yellow Breeches Creek,3,False,True,True,True,stream,pfbc_section,276_3,,,,
+Yellow Breeches Anglers Club,Alma Lee Thorton,Cumberland,Yellow Breeches Creek,4,False,True,True,True,stream,pfbc_section,276_4,,,,
+Youth Forestry Camp #3,Youth Forestry Camp #3,Huntingdon,Great Trough Creek,4,False,False,True,True,stream,pfbc_section,3291_4,nursery_name,40.312,-78.1206,0.31
