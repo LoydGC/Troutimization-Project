@@ -1,4 +1,4 @@
-"""Download the PFBC stocked-section and wild-trout GIS layers.
+"""Download the PFBC stocked-section, wild-trout and hatchery GIS layers.
 
 Raw pages -> data/raw/pfbc_gis/<date>/ (+ data/raw/manifest.csv); parsed layers -> data/interim/pfbc_gis/<name>.parquet.
 Layers already parsed are skipped unless --refresh (which also bypasses the HTTP cache).
@@ -27,6 +27,9 @@ LAYERS = {
     "class_a": f"{PASDA}/9",
     "nat_repro": f"{PASDA}/25",
     "wilderness": f"{PASDA}/31",
+    # PFBC state fish hatchery locations: the authoritative hatchery set (decision 2026-09-29). Published on
+    # PennMAP as "State Fish Hatcheries" (hub item 25b8cd8915674873add59c31c5bdfc12, owner PFBC_GIS_Admin2)
+    "hatcheries": f"{FBWEB}/Hatcheries/MapServer/0",
 }
 
 log = logging.getLogger(__name__)

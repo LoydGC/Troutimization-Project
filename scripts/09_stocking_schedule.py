@@ -82,6 +82,12 @@ def download(session: PoliteSession) -> dict[str, str]:
     counties = r.json()
     save_raw(SOURCE, "counties.json", r.content, full_url(COUNTY_URL, params), records=len(counties),
              date=local_date(r))
+    if not counties:
+        # The county list came back empty on 2026-09-29 (all 67 on 2026-09-28) while each county's schedule still
+        # loaded: fall back to our 67 counties, spelled as the schedule spells them
+        log.warning("county list is empty: using the 67 counties in county_region.csv")
+        names = pd.read_csv(PROCESSED_DIR / "county_region.csv").county.replace({"Mckean": "McKean"})
+        counties = [{"County": c, "IsEnable": True} for c in names]
     assert len(counties) == N_COUNTIES and all(c["IsEnable"] for c in counties), counties
     pages, n_cached = {}, 0
     for c in (c["County"] for c in counties):

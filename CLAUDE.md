@@ -110,11 +110,15 @@ don't smooth, impute, or "fix" it.
   across counties. Survey preferences are at this level and are apportioned to sections by length.
 - **Lake** = its own destination with `water_type = "lake"` (~20% of stocked trout). Kept out of stream-only
   covariates; whether lakes are decision variables or fixed is an open question.
-- **Supply node** = one of the 9 PFBC hatcheries that stock adult trout in streams in the 2026 schedule
-  (Bellefonte, Benner Spring, Corry, Huntsdale, Oswayo, Pleasant Gap, Reynoldsdale, Tionesta, Tylersville;
-  Linesville and Pleasant Mount stock none). Co-op nurseries (~160) and fingerlings are fixed, not
-  decisions. Gavin's cleaned layers (`trout_hatcheries.gpkg`, `data/raw/Coop_nurseries.geojson`) are the
-  reference. The `hatcheries` layer in `pa_trout.gpkg` is a placeholder until we merge.
+- **Supply node** = a PFBC state fish hatchery (decision 2026-09-29). The authoritative set and locations are
+  PFBC's State Fish Hatcheries layer (fbweb `Hatcheries/MapServer/0`, published on PennMAP; 13 hatcheries,
+  downloaded by script 01). Initial cut: the 9 on the 2026 stocking schedule (Bellefonte, Benner Spring, Corry,
+  Huntsdale, Oswayo, Pleasant Gap, Reynoldsdale, Tionesta, Tylersville). The layer's `TROUT` flag isn't used:
+  it includes Linesville and Pleasant Mount, which stock no streams, and leaves out Tionesta, which does.
+  Extension: turn on the other 4 (`docs/scenarios_and_extensions.md`). Co-op nurseries (~160) and fingerlings
+  are fixed, not decisions; Gavin's `data/raw/Coop_nurseries.geojson` is the co-op reference.
+  `trout_hatcheries.gpkg` (built on the `TROUT` flag) and the `hatcheries` layer in `pa_trout.gpkg` are
+  placeholders until Prompt 7 builds `hatcheries` from the official layer.
 
 ## Hard rules
 1. Official/public sources only. **Never request anything from trout.app** (robots.txt disallows it).

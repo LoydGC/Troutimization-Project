@@ -258,9 +258,17 @@ What it lacks:
   `logs/09_schedule_unmatched.csv`). Their 19 stream events have no 2026 count, so they're missing from the
   baseline and from hatchery supply.
 - **Hatcheries:** 9 deliver to streams. Tionesta stocks 10 sections (15,257 fish, 0.6%) and 13 lake events,
-  but has no production figure and wasn't among our 10 supply nodes. Linesville and Pleasant Mount stock no
+  but has no production figure and isn't flagged TROUT in PFBC's hatchery layer (it's a supply node anyway
+  since 2026-09-29, `../CLAUDE.md` Units of analysis). Linesville and Pleasant Mount stock no
   scheduled stream section (consistent with Pleasant Mount's figure being fingerlings and warmwater fish).
 - **Runs vs trucks:** a run is one listed meeting. One truck may make several meetings in a day, or several
   trucks may share one; the schedule can't tell. 74 events give only a week and have no run.
 - **Location QA:** 11 matched sections have the schedule's upper-limit point 0.8–4.2 km from our line although
   the limit text agrees (kept; `ul_dist_m`).
+- **Changes over time (rechecked 2026-09-29):** a fresh pull a day later matched 2,731 of 2,734 records. Oil Creek
+  1909_6's upper limit was reworded ("OIL CK STATE PARK HIKING TRAIL BRIDGE") and its two events gained a golden
+  mark; one fall lake event moved from 09:00 to 10:30 (Briar Creek Lake); one fall lake event was added (Lake
+  Took A While, Luzerne). None changes a stream section's hatchery or run (the reworded Oil Creek limit still
+  matches 1909_6 by name, county and section number), so the processed tables stay on the 2026-09-28 pull;
+  the 2026-09-29 raw pull is kept. The schedule is "subject to change", so rerun and compare before relying on
+  late-season events.
