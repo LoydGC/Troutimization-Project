@@ -999,6 +999,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,2555_2,Spring Creek,82.943,51.538,87.2,154.8,71.5
 2,Linesville,Crawford,6072_2,Cascade Creek,76.253,47.382,65.6,21.6,71.5
 2,Linesville,Crawford,1552_2,East Branch Big Elk Creek,543.167,337.508,430.1,217.3,71.5
+13,Tionesta,Forest,4502_2,Yellow Creek,156.398,97.181,145.5,24.0,27.8
+13,Tionesta,Forest,2710_2,Riggles Gap Run,201.114,124.967,169.5,175.4,27.8
+13,Tionesta,Forest,4502_4,Yellow Creek,148.054,91.996,141.8,210.7,27.8
+13,Tionesta,Forest,202_2,Briar Creek,326.643,202.967,244.0,38.4,27.8
+13,Tionesta,Forest,209_2,West Branch Briar Creek,327.7,203.623,244.3,46.4,27.8
+13,Tionesta,Forest,3190_2,Buffalo Creek,261.906,162.741,222.5,113.8,27.8
+13,Tionesta,Forest,2251_3,Little Fishing Creek,208.92,129.817,168.6,67.9,27.8
+13,Tionesta,Forest,1326_2,Stonycreek River,254.767,158.305,219.0,102.4,27.8
+13,Tionesta,Forest,1103_2,Rattlesnake Run,100.332,62.344,90.9,84.9,27.8
+13,Tionesta,Forest,2812_3,Left Branch Young Womans Creek,235.372,146.254,251.8,127.2,27.8
+13,Tionesta,Forest,141_2,Byrnes Run,116.99,72.694,128.0,37.9,27.8
+13,Tionesta,Forest,2911_1,North Deer Creek,71.484,44.418,72.1,238.8,27.8
+13,Tionesta,Forest,52_2,Middle Spring Creek,295.889,183.857,269.7,21.9,27.8
+13,Tionesta,Forest,2050_1,Walburn Run,92.633,57.56,93.3,50.0,27.8
+13,Tionesta,Forest,2812_2,Left Branch Young Womans Creek,226.544,140.768,238.6,39.1,27.8
+13,Tionesta,Forest,1767_3,Roaring Brook,418.304,259.922,312.5,157.5,27.8
+13,Tionesta,Forest,3656_2,Blue Hole Creek,233.731,145.233,219.1,8.3,27.8
+13,Tionesta,Forest,102_5,Muncy Creek,299.962,186.388,231.7,34.1,27.8
+13,Tionesta,Forest,2060_2,Clear Run,56.459,35.082,66.2,103.8,27.8
+13,Tionesta,Forest,2287_2,Belmouth Run,90.079,55.972,103.1,57.1,27.8
+13,Tionesta,Forest,3378_2,Big Run,95.803,59.529,100.0,90.6,27.8
+13,Tionesta,Forest,6294_2,Cornplanter Run,123.708,76.868,121.7,232.7,27.8
+13,Tionesta,Forest,102_6,Muncy Creek,297.393,184.792,229.9,177.4,27.8
+13,Tionesta,Forest,1834_2,Big Cove Creek,323.48,201.001,265.5,59.8,27.8
+13,Tionesta,Forest,117_3,Loyalsock Creek,343.918,213.701,271.7,32.5,27.8
+13,Tionesta,Forest,329_3,Neshannock Creek,101.234,62.904,88.8,88.6,27.8
+13,Tionesta,Forest,2175_6,White Deer Creek,276.703,171.935,210.1,77.5,27.8
+13,Tionesta,Forest,3351_11,Kettle Creek,216.068,134.258,201.0,7.3,27.8
+13,Tionesta,Forest,2662_2,Brodhead Creek,428.122,266.022,320.0,169.1,27.8
+13,Tionesta,Forest,2079_2,Hinckston Run,186.842,116.098,169.9,232.8,27.8
+13,Tionesta,Forest,6063_2,Deer Creek,137.851,85.657,136.5,0.6,27.8
+13,Tionesta,Forest,1546_2,Saddler Creek,225.646,140.21,195.5,231.2,27.8
+13,Tionesta,Forest,1362_2,McLaughlin Creek,37.741,23.451,39.8,235.6,27.8
+13,Tionesta,Forest,2844_2,Salmon Creek,42.046,26.126,40.4,676.7,27.8
+13,Tionesta,Forest,2280_6,West Branch Lackawaxen River,450.245,279.769,339.7,30.4,27.8
+13,Tionesta,Forest,2025_1,Big Elk Creek,443.425,275.531,374.7,189.7,27.8
+13,Tionesta,Forest,137_2,Medix Run,141.193,87.733,139.7,16.9,27.8
+13,Tionesta,Forest,2175_3,White Deer Creek,256.271,159.24,205.1,250.2,27.8
+13,Tionesta,Forest,3127_3,Deep Creek,349.452,217.139,266.3,186.7,27.8
+13,Tionesta,Forest,35_4,Bermudian Creek,367.939,228.627,308.5,219.1,27.8
+13,Tionesta,Forest,1934_2,East Branch Octoraro Creek,425.2,264.207,355.7,289.0,27.8
+13,Tionesta,Forest,2179_3,South Fork Bens Creek,200.393,124.518,189.5,115.9,27.8
+13,Tionesta,Forest,6172_2,Big Run,261.327,162.381,219.3,2.5,27.8
+13,Tionesta,Forest,1561_3,Wills Creek,294.077,182.731,245.7,119.5,27.8
+13,Tionesta,Forest,415_2,Kepner Creek,501.411,311.562,374.7,65.7,27.8
+13,Tionesta,Forest,2524_2,North Branch Buffalo Creek,267.387,166.147,220.0,16.3,27.8
+13,Tionesta,Forest,6022_2,Fivemile Run,70.605,43.872,74.2,81.4,27.8
+13,Tionesta,Forest,2638_2,Fivemile Creek,45.835,28.481,47.2,825.5,27.8
+13,Tionesta,Forest,2218_6,Huntington Creek,328.135,203.894,251.1,67.2,27.8
+13,Tionesta,Forest,165_2,Buffalo Creek,97.196,60.395,100.9,55.3,27.8
+13,Tionesta,Forest,3303_2,Clark Creek,380.04,236.146,289.1,278.0,27.8
+13,Tionesta,Forest,6026_5,Sandy Lick Creek,75.122,46.679,78.0,371.0,27.8
+13,Tionesta,Forest,2232_2,Middle Creek,277.562,172.469,231.3,191.6,27.8
+13,Tionesta,Forest,3297_5,Quittapahilla Creek,368.201,228.789,304.8,112.6,27.8
+13,Tionesta,Forest,495_2,Lizard Creek,398.93,247.884,306.6,10.6,27.8
+13,Tionesta,Forest,3040_2,Manatawny Creek,424.954,264.054,329.5,276.5,27.8
+13,Tionesta,Forest,3351_12,Kettle Creek,209.454,130.148,193.3,338.8,27.8
+13,Tionesta,Forest,328_2,Big Run,120.488,74.868,108.4,294.8,27.8
+13,Tionesta,Forest,1557_1,Powell Creek,327.089,203.244,275.2,225.8,27.8
+13,Tionesta,Forest,312_2,Slippery Rock Creek,108.643,67.507,94.1,66.8,27.8
+13,Tionesta,Forest,2822_2,East Branch Sugar Creek,46.73,29.037,45.4,161.8,27.8
+13,Tionesta,Forest,3834_1,Plum Creek,124.196,77.172,119.5,54.6,27.8
+13,Tionesta,Forest,336_2,Wolf Creek,84.842,52.718,82.1,117.4,27.8
+13,Tionesta,Forest,1909_5,Oil Creek,29.192,18.139,35.1,77.8,27.8
+13,Tionesta,Forest,298_2,South Branch Brady Run,158.619,98.561,136.7,104.7,27.8
+13,Tionesta,Forest,208_2,Big Wapwallopen Creek,363.857,226.09,272.9,59.0,27.8
+13,Tionesta,Forest,2744_2,Mauch Chunk Creek,388.728,241.545,296.2,281.1,27.8
+13,Tionesta,Forest,173_2,Roaring Creek,325.017,201.956,248.5,12.9,27.8
+13,Tionesta,Forest,3354_3,Little Pine Creek,278.221,172.878,229.3,60.0,27.8
+13,Tionesta,Forest,2846_2,Little Hickory Run,8.341,5.183,9.5,24.2,27.8
+13,Tionesta,Forest,2616_2,Sixmile Run,70.793,43.989,65.8,59.4,27.8
+13,Tionesta,Forest,3755_2,Browns Creek,255.63,158.841,209.8,41.7,27.8
+13,Tionesta,Forest,1339_3,Pine Creek,197.781,122.895,185.3,121.7,27.8
+13,Tionesta,Forest,1366_2,Meade Run,102.735,63.837,122.9,229.9,27.8
+13,Tionesta,Forest,631_2,Bowery Run,417.123,259.188,351.5,75.6,27.8
+13,Tionesta,Forest,92_2,Allen Creek,223.375,138.799,210.8,31.4,27.8
+13,Tionesta,Forest,3748_6,Meadow Run,232.796,144.653,212.8,292.3,27.8
+13,Tionesta,Forest,175_2,Beaver Run,330.481,205.351,256.8,376.2,27.8
+13,Tionesta,Forest,413_8,French Creek,459.844,285.734,361.8,63.4,27.8
+13,Tionesta,Forest,3735_1,Miller Run,267.38,166.143,236.8,17.5,27.8
+13,Tionesta,Forest,1625_4,Conewago Creek,338.48,210.322,313.3,274.0,27.8
+13,Tionesta,Forest,3080_2,Mill Creek,405.575,252.013,314.2,74.3,27.8
+13,Tionesta,Forest,64_2,Maple Run,252.199,156.709,215.0,13.9,27.8
+13,Tionesta,Forest,3301_2,Stony Creek,345.06,214.41,298.5,1158.5,27.8
+13,Tionesta,Forest,2716_3,Jordan Creek,419.773,260.835,331.6,28.1,27.8
+13,Tionesta,Forest,2718_4,Saucon Creek,449.44,279.269,345.7,21.7,27.8
+13,Tionesta,Forest,74_3,North Fork Pine Creek,92.687,57.593,93.5,30.2,27.8
+13,Tionesta,Forest,1909_2,Oil Creek,49.544,30.785,49.1,391.8,27.8
+13,Tionesta,Forest,6036_2,Richey Run,57.018,35.43,54.6,90.9,27.8
+13,Tionesta,Forest,3117_2,Locust Creek,366.734,227.878,288.7,137.7,27.8
+13,Tionesta,Forest,2628_5,Kishacoquillas Creek,230.906,143.478,192.0,18.8,27.8
+13,Tionesta,Forest,3835_2,Cherry Run,119.436,74.214,119.9,38.7,27.8
+13,Tionesta,Forest,431_2,Rock Run @Bowmansville,411.28,255.557,327.5,139.6,27.8
+13,Tionesta,Forest,354_3,Little Shenango River,98.637,61.29,98.9,355.7,27.8
+13,Tionesta,Forest,2628_7,Kishacoquillas Creek,238.403,148.137,197.7,0.5,27.8
+13,Tionesta,Forest,1_2,Spring Run,323.54,201.038,261.2,279.3,27.8
+13,Tionesta,Forest,1383_3,Salt Lick Creek,442.138,274.732,344.0,14.9,27.8
+13,Tionesta,Forest,2555_2,Spring Creek,53.374,33.165,65.2,154.8,27.8
+13,Tionesta,Forest,6072_2,Cascade Creek,100.037,62.16,95.3,21.6,27.8
+13,Tionesta,Forest,1552_2,East Branch Big Elk Creek,440.783,273.89,374.2,217.3,27.8
 11,Reynoldsdale,Bedford,5995_4,Harveys Creek,321.46,199.746,244.0,60.6,99.9
 11,Reynoldsdale,Bedford,462_3,Mehoopany Creek,327.602,203.563,255.3,106.8,99.9
 11,Reynoldsdale,Bedford,2840_2,Little Sugar Creek,259.372,161.166,228.7,278.4,99.9
@@ -1999,6 +2099,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,312_3,Slippery Rock Creek,104.909,65.187,86.2,579.8,71.5
 2,Linesville,Crawford,3307_2,Little Juniata Creek,401.678,249.591,306.5,18.0,71.5
 2,Linesville,Crawford,25_2,Dennis Creek,404.793,251.527,302.0,196.9,71.5
+13,Tionesta,Forest,5995_4,Harveys Creek,370.004,229.91,292.2,60.6,27.8
+13,Tionesta,Forest,462_3,Mehoopany Creek,376.147,233.727,303.5,106.8,27.8
+13,Tionesta,Forest,2840_2,Little Sugar Creek,42.566,26.449,41.9,278.4,27.8
+13,Tionesta,Forest,1834_4,Big Cove Creek,331.68,206.097,270.4,832.3,27.8
+13,Tionesta,Forest,1789_2,Stewart Run,175.952,109.332,161.1,171.4,27.8
+13,Tionesta,Forest,3117_3,Locust Creek,377.788,234.747,288.3,230.8,27.8
+13,Tionesta,Forest,2918_3,Coon Creek,18.42,11.445,23.2,315.7,27.8
+13,Tionesta,Forest,134_2,Cooks Run,208.608,129.623,204.4,32.7,27.8
+13,Tionesta,Forest,3644_1,Stony Fork,241.305,149.94,247.2,87.5,27.8
+13,Tionesta,Forest,350_2,Cool Spring Creek,80.921,50.282,82.0,596.9,27.8
+13,Tionesta,Forest,1975_3,Little Toby Creek,97.028,60.29,108.6,68.6,27.8
+13,Tionesta,Forest,399_5,Delaware Canal,550.441,342.028,400.9,46.6,27.8
+13,Tionesta,Forest,596_4,Nesquehoning Creek,384.587,238.971,292.3,178.1,27.8
+13,Tionesta,Forest,2076_2,Laurel Run,190.922,118.633,173.6,83.7,27.8
+13,Tionesta,Forest,3342_2,Laurel Run,116.569,72.432,113.2,38.7,27.8
+13,Tionesta,Forest,3135_2,Pine Creek,354.888,220.517,274.4,231.1,27.8
+13,Tionesta,Forest,2298_2,Laurel Lick Run,160.777,99.902,157.7,7.0,27.8
+13,Tionesta,Forest,6226_13,Fishing Creek,220.202,136.827,173.0,329.5,27.8
+13,Tionesta,Forest,2254_2,Black Moshannon Creek,163.728,101.736,146.0,59.6,27.8
+13,Tionesta,Forest,2628_2,Kishacoquillas Creek,227.338,141.261,200.9,8.1,27.8
+13,Tionesta,Forest,2888_2,East Licking Creek,261.917,162.747,245.4,314.5,27.8
+13,Tionesta,Forest,1622_3,Cove Creek,272.363,169.238,227.8,278.5,27.8
+13,Tionesta,Forest,2049_3,Rattlesnake Creek,99.09,61.571,89.8,226.3,27.8
+13,Tionesta,Forest,2267_5,East Sandy Creek,41.907,26.04,40.9,749.3,27.8
+13,Tionesta,Forest,2655_3,Brokenstraw Creek,53.998,33.553,49.6,183.6,27.8
+13,Tionesta,Forest,3364_4,First Fork Sinnemahoning Creek,185.83,115.469,175.7,24.7,27.8
+13,Tionesta,Forest,3193_3,Little Schuylkill River,377.272,234.426,285.0,55.8,27.8
+13,Tionesta,Forest,2590_2,Leonard Creek,379.75,235.966,309.2,32.0,27.8
+13,Tionesta,Forest,3280_3,Beaverdam Creek,232.52,144.481,192.5,143.6,27.8
+13,Tionesta,Forest,3131_2,Meadow Creek,249.57,155.075,207.8,144.5,27.8
+13,Tionesta,Forest,3752_3,North Fork Dunkard Fork,264.881,164.589,228.7,49.1,27.8
+13,Tionesta,Forest,6246_4,Mosquito Creek,159.89,99.351,145.0,74.8,27.8
+13,Tionesta,Forest,2842_2,Crooked Creek,102.697,63.813,102.6,154.3,27.8
+13,Tionesta,Forest,3725_2,Tub Mill Run,270.192,167.89,231.8,26.9,27.8
+13,Tionesta,Forest,264_2,Big Spring Creek,310.352,192.844,284.5,7.8,27.8
+13,Tionesta,Forest,2519_4,Bowman Creek,381.917,237.312,316.7,91.6,27.8
+13,Tionesta,Forest,425_2,Hammer Creek,385.915,239.796,317.7,82.8,27.8
+13,Tionesta,Forest,3351_6,Kettle Creek,218.801,135.957,213.4,336.6,27.8
+13,Tionesta,Forest,78_4,Little Mahoning Creek,109.124,67.807,108.7,339.1,27.8
+13,Tionesta,Forest,1837_2,Little Marsh Creek,337.027,209.419,312.4,30.9,27.8
+13,Tionesta,Forest,34_2,Clear Creek,282.58,175.587,233.2,198.2,27.8
+13,Tionesta,Forest,2755_2,Jacoby Creek,444.767,276.365,333.6,10.5,27.8
+13,Tionesta,Forest,3857_2,Tioga River,328.66,204.22,272.6,156.7,27.8
+13,Tionesta,Forest,1634_2,South Branch Two Lick Creek,135.792,84.377,138.7,266.4,27.8
+13,Tionesta,Forest,2659_6,Pocono Creek,426.158,264.802,315.9,62.0,27.8
+13,Tionesta,Forest,6031_3,Piney Creek,58.895,36.596,59.2,75.2,27.8
+13,Tionesta,Forest,1943_2,Ridley Creek,491.933,305.673,385.1,65.1,27.8
+13,Tionesta,Forest,165_6,Buffalo Creek,125.289,77.851,122.5,51.2,27.8
+13,Tionesta,Forest,3732_2,Mountain Creek,240.69,149.558,207.6,139.3,27.8
+13,Tionesta,Forest,3364_5,First Fork Sinnemahoning Creek,195.267,121.333,185.2,99.9,27.8
+13,Tionesta,Forest,2767_1,Young Womans Creek,239.139,148.594,232.5,110.0,27.8
+13,Tionesta,Forest,4021_2,Sinking Creek,212.804,132.23,173.3,288.0,27.8
+13,Tionesta,Forest,102_3,Muncy Creek,315.699,196.166,242.8,42.2,27.8
+13,Tionesta,Forest,2628_3,Kishacoquillas Creek,240.522,149.454,204.9,315.1,27.8
+13,Tionesta,Forest,3616_2,Clear Creek,150.019,93.218,148.0,130.5,27.8
+13,Tionesta,Forest,2575_2,Willow Creek,115.365,71.684,110.0,27.9,27.8
+13,Tionesta,Forest,1414_2,Ontelaunee Creek,408.092,253.577,317.9,252.9,27.8
+13,Tionesta,Forest,2968_2,Raystown Branch Juniata River,267.562,166.255,234.9,122.5,27.8
+13,Tionesta,Forest,3516_5,Oswayo Creek,171.324,106.456,157.7,281.2,27.8
+13,Tionesta,Forest,2997_3,Kooser Run,221.345,137.537,197.0,108.9,27.8
+13,Tionesta,Forest,3846_3,Cowanshannock Creek,107.059,66.523,103.2,36.2,27.8
+13,Tionesta,Forest,6129_3,Pine Creek,24.773,15.393,23.0,74.1,27.8
+13,Tionesta,Forest,2662_4,Brodhead Creek,430.981,267.799,320.7,289.1,27.8
+13,Tionesta,Forest,3267_2,Sewickley Creek,185.549,115.295,176.0,176.0,27.8
+13,Tionesta,Forest,2086_2,Laurel Run,180.337,112.056,166.5,39.1,27.8
+13,Tionesta,Forest,1721_2,North Fork Big Sewickley Creek,167.603,104.144,138.1,22.2,27.8
+13,Tionesta,Forest,1796_2,Loyalhanna Creek,193.933,120.504,174.6,45.0,27.8
+13,Tionesta,Forest,3740_2,Laurel Hill Creek,223.1,138.628,202.1,181.1,27.8
+13,Tionesta,Forest,1548_3,South Branch Codorus Creek,391.209,243.086,326.1,15.2,27.8
+13,Tionesta,Forest,1719_4,Bull Creek,140.767,87.468,129.1,209.3,27.8
+13,Tionesta,Forest,102_7,Muncy Creek,301.407,187.286,229.0,426.8,27.8
+13,Tionesta,Forest,300_3,North Fork Little Beaver Creek,143.864,89.393,128.1,66.3,27.8
+13,Tionesta,Forest,4042_2,Curry Run,119.599,74.315,121.1,108.1,27.8
+13,Tionesta,Forest,671_2,Indian Creek,412.613,256.386,316.8,13.3,27.8
+13,Tionesta,Forest,3279_2,Fowler Hollow Run,300.865,186.949,279.9,62.9,27.8
+13,Tionesta,Forest,1414_4,Ontelaunee Creek,405.73,252.109,309.4,171.2,27.8
+13,Tionesta,Forest,2833_2,West Pithole Creek,19.057,11.842,24.5,386.8,27.8
+13,Tionesta,Forest,3748_3,Meadow Run,238.753,148.354,212.3,556.9,27.8
+13,Tionesta,Forest,1339_7,Pine Creek,225.853,140.338,236.3,1079.7,27.8
+13,Tionesta,Forest,2892_4,Wiconisco Creek,328.685,204.235,269.8,61.4,27.8
+13,Tionesta,Forest,1908_2,Horse Creek,22.843,14.194,20.3,35.4,27.8
+13,Tionesta,Forest,2695_2,Havens Run,134.35,83.481,131.8,81.6,27.8
+13,Tionesta,Forest,1827_2,Gladdens Run,297.386,184.787,247.9,8.0,27.8
+13,Tionesta,Forest,1625_3,Conewago Creek,335.534,208.491,307.8,30.6,27.8
+13,Tionesta,Forest,2012_2,Bens Creek,187.544,116.535,177.0,16.0,27.8
+13,Tionesta,Forest,2714_4,Little Lehigh Creek,427.1,265.388,328.0,12.2,27.8
+13,Tionesta,Forest,3351_5,Kettle Creek,215.459,133.88,209.9,53.8,27.8
+13,Tionesta,Forest,102_2,Muncy Creek,333.67,207.333,262.3,13.8,27.8
+13,Tionesta,Forest,1819_2,Conococheague Creek,316.109,196.421,285.7,75.8,27.8
+13,Tionesta,Forest,2651_2,Blue Eye Run,53.623,33.32,71.3,137.1,27.8
+13,Tionesta,Forest,1988_2,Kitchen Creek,350.544,217.818,279.4,66.9,27.8
+13,Tionesta,Forest,3190_3,Buffalo Creek,271.421,168.653,222.9,395.5,27.8
+13,Tionesta,Forest,6227_2,West Branch Fishing Creek,339.28,210.819,285.3,58.6,27.8
+13,Tionesta,Forest,3297_3,Quittapahilla Creek,370.013,229.916,304.2,60.9,27.8
+13,Tionesta,Forest,2860_2,Hoffman Run,93.179,57.898,93.5,50.2,27.8
+13,Tionesta,Forest,384_2,Muddy Run,403.957,251.007,329.7,227.1,27.8
+13,Tionesta,Forest,2068_2,Peters Creek,203.735,126.595,177.0,8.9,27.8
+13,Tionesta,Forest,312_3,Slippery Rock Creek,126.086,78.346,109.8,579.8,27.8
+13,Tionesta,Forest,3307_2,Little Juniata Creek,299.294,185.973,250.6,18.0,27.8
+13,Tionesta,Forest,25_2,Dennis Creek,345.573,214.729,282.9,196.9,27.8
 11,Reynoldsdale,Bedford,135_3,Laurel Run,166.601,103.521,137.1,236.2,99.9
 11,Reynoldsdale,Bedford,2660_3,Mcmichael Creek,380.016,236.131,271.2,114.5,99.9
 11,Reynoldsdale,Bedford,4029_7,West Branch Susquehanna River,139.951,86.961,106.7,55.1,99.9
@@ -2999,6 +3199,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,1561_2,Wills Creek,301.663,187.445,235.2,204.4,71.5
 2,Linesville,Crawford,2849_2,Wilson Run,185.172,115.06,183.4,154.4,71.5
 2,Linesville,Crawford,2728_2,Hokendauqua Creek,521.34,323.946,381.4,161.1,71.5
+13,Tionesta,Forest,135_3,Laurel Run,123.482,76.728,118.1,236.2,27.8
+13,Tionesta,Forest,2660_3,Mcmichael Creek,428.561,266.295,319.4,114.5,27.8
+13,Tionesta,Forest,4029_7,West Branch Susquehanna River,127.029,78.932,108.8,55.1,27.8
+13,Tionesta,Forest,3050_3,Hay Creek,434.484,269.976,352.0,50.7,27.8
+13,Tionesta,Forest,2207_2,Penns Creek,223.507,138.881,186.3,111.3,27.8
+13,Tionesta,Forest,303_2,Little Connoquenessing Creek,114.716,71.281,110.6,248.5,27.8
+13,Tionesta,Forest,613_2,Snake Creek,439.185,272.897,344.1,499.1,27.8
+13,Tionesta,Forest,3869_2,East Branch Wyalusing Creek,400.031,248.568,326.5,54.6,27.8
+13,Tionesta,Forest,2266_4,Shohola Creek,476.719,296.219,357.5,630.3,27.8
+13,Tionesta,Forest,1878_2,Bear Creek,91.541,56.881,108.2,1028.9,27.8
+13,Tionesta,Forest,3306_3,Sherman Creek,303.222,188.413,264.5,97.4,27.8
+13,Tionesta,Forest,3714_2,Big Sandy Creek,238.346,148.101,214.3,37.2,27.8
+13,Tionesta,Forest,3178_2,Twentymile Creek,105.356,65.465,100.2,54.0,27.8
+13,Tionesta,Forest,61_5,Mountain Creek,331.609,206.052,296.7,18.7,27.8
+13,Tionesta,Forest,3199_3,Pine Creek,374.646,232.794,290.3,13.5,27.8
+13,Tionesta,Forest,3454_2,South Branch Canawacta Creek,456.687,283.772,361.6,134.8,27.8
+13,Tionesta,Forest,1821_2,Town Creek,298.28,185.343,246.9,39.2,27.8
+13,Tionesta,Forest,313_2,Honey Creek,175.09,108.796,141.1,318.5,27.8
+13,Tionesta,Forest,1798_5,Pine Creek,143.176,88.966,145.6,137.7,27.8
+13,Tionesta,Forest,2928_2,East Branch Clarion River,102.605,63.756,103.7,53.2,27.8
+13,Tionesta,Forest,1830_3,West Branch Conococheague Creek,286.499,178.022,254.0,475.9,27.8
+13,Tionesta,Forest,2711_1,Twomile Run,78.39,48.709,81.4,136.7,27.8
+13,Tionesta,Forest,3831_3,Mill Creek,267.138,165.992,253.0,225.7,27.8
+13,Tionesta,Forest,113_5,Lycoming Creek,278.693,173.172,218.3,65.9,27.8
+13,Tionesta,Forest,2700_2,East Branch Tionesta Creek,87.257,54.219,108.0,186.1,27.8
+13,Tionesta,Forest,6025_3,North Fork Redbank Creek,56.89,35.35,67.3,386.2,27.8
+13,Tionesta,Forest,2703_5,West Branch Tionesta Creek,67.824,42.144,61.9,86.6,27.8
+13,Tionesta,Forest,3817_2,Havice Creek,237.61,147.644,206.3,122.1,27.8
+13,Tionesta,Forest,2532_3,Sixmile Run,158.543,98.514,139.8,5.5,27.8
+13,Tionesta,Forest,2843_2,The Branch,40.601,25.228,55.1,115.5,27.8
+13,Tionesta,Forest,347_3,West Branch Little Neshannock Creek,106.765,66.341,94.7,196.7,27.8
+13,Tionesta,Forest,2946_2,Mingo Creek,216.024,134.231,188.6,10.7,27.8
+13,Tionesta,Forest,1383_2,Salt Lick Creek,444.63,276.28,346.1,30.9,27.8
+13,Tionesta,Forest,2986_2,Jones Mill Run,220.476,136.997,203.8,237.6,27.8
+13,Tionesta,Forest,1397_3,Kern Run,276.511,171.816,228.1,128.8,27.8
+13,Tionesta,Forest,3718_2,Little Piney Creek,273.384,169.873,235.6,27.4,27.8
+13,Tionesta,Forest,117_7,Loyalsock Creek,286.406,177.964,226.4,43.0,27.8
+13,Tionesta,Forest,1730_2,Mill Creek,180.8,112.344,157.5,93.5,27.8
+13,Tionesta,Forest,1818_2,Toms Creek,343.166,213.233,316.6,69.6,27.8
+13,Tionesta,Forest,1870_2,East Branch Millstone Creek,53.819,33.442,65.8,181.4,27.8
+13,Tionesta,Forest,1339_8,Pine Creek,236.112,146.713,238.9,148.0,27.8
+13,Tionesta,Forest,1550_3,Darby Creek,526.089,326.897,388.9,13.3,27.8
+13,Tionesta,Forest,2489_2,Wilson Run,125.396,77.917,128.3,168.9,27.8
+13,Tionesta,Forest,350_4,Cool Spring Creek,88.129,54.761,86.4,196.7,27.8
+13,Tionesta,Forest,3286_2,Bachman Run,369.929,229.863,305.1,254.9,27.8
+13,Tionesta,Forest,2985_2,Kimberly Run,239.231,148.651,204.7,475.2,27.8
+13,Tionesta,Forest,3304_2,Horse Valley Run,297.959,185.143,257.9,68.2,27.8
+13,Tionesta,Forest,3351_7,Kettle Creek,222.469,138.236,217.3,83.6,27.8
+13,Tionesta,Forest,2859_2,Wolf Run,82.466,51.242,100.0,43.7,27.8
+13,Tionesta,Forest,3751_2,South Fork Dunkard Fork,268.529,166.856,234.1,98.3,27.8
+13,Tionesta,Forest,2260_4,Fourmile Run,191.541,119.018,175.7,206.5,27.8
+13,Tionesta,Forest,1931_4,West Branch Octoraro Creek,424.093,263.519,357.0,242.7,27.8
+13,Tionesta,Forest,1339_4,Pine Creek,204.387,127.0,192.3,57.9,27.8
+13,Tionesta,Forest,2783_1,Hicks Run,153.43,95.337,148.0,48.0,27.8
+13,Tionesta,Forest,1299_3,Decker Brook,469.903,291.984,352.9,52.4,27.8
+13,Tionesta,Forest,5995_2,Harveys Creek,365.867,227.339,296.4,286.5,27.8
+13,Tionesta,Forest,3738_2,Glade Run,255.769,158.928,250.3,998.6,27.8
+13,Tionesta,Forest,2630_2,Farnsworth Branch,71.624,44.505,73.2,193.9,27.8
+13,Tionesta,Forest,3281_2,South Poplar Run,233.448,145.058,193.6,142.4,27.8
+13,Tionesta,Forest,47_2,Laurel Fork,274.09,170.312,237.6,443.2,27.8
+13,Tionesta,Forest,1588_4,Unami Creek,474.428,294.796,352.9,24.8,27.8
+13,Tionesta,Forest,3660_2,Patterson Creek,101.331,62.964,106.3,168.2,27.8
+13,Tionesta,Forest,1942_4,Chester Creek,495.533,307.91,389.4,102.3,27.8
+13,Tionesta,Forest,1989_2,North Branch Little Conemaugh River,183.929,114.288,172.6,44.7,27.8
+13,Tionesta,Forest,2714_7,Little Lehigh Creek,431.594,268.18,330.9,14.9,27.8
+13,Tionesta,Forest,26_3,Little Brush Creek,298.01,185.175,237.8,132.9,27.8
+13,Tionesta,Forest,2435_6,Little Bush Kill,458.774,285.069,355.9,428.1,27.8
+13,Tionesta,Forest,3437_3,Silver Creek,428.616,266.33,343.9,130.6,27.8
+13,Tionesta,Forest,1563_2,Kistler Creek,406.054,252.31,310.5,47.2,27.8
+13,Tionesta,Forest,3206_2,Laurel Run,288.155,179.051,244.5,10.9,27.8
+13,Tionesta,Forest,3032_4,Clear Shade Creek,215.625,133.983,199.8,62.0,27.8
+13,Tionesta,Forest,3197_3,Bear Creek,380.237,236.268,291.0,95.6,27.8
+13,Tionesta,Forest,1824_2,East Branch Antietam Creek,332.914,206.863,308.0,23.4,27.8
+13,Tionesta,Forest,6009_2,Little Sandy Creek,77.142,47.934,79.5,89.9,27.8
+13,Tionesta,Forest,6215_2,Indian Creek,209.079,129.916,187.3,280.5,27.8
+13,Tionesta,Forest,369_2,Little Darby Creek,517.04,321.274,380.0,46.3,27.8
+13,Tionesta,Forest,604_2,Wysox Creek,385.791,239.72,297.2,367.7,27.8
+13,Tionesta,Forest,3740_6,Laurel Hill Creek,241.347,149.966,237.0,241.0,27.8
+13,Tionesta,Forest,2944_2,Linn Run,204.675,127.179,191.7,33.8,27.8
+13,Tionesta,Forest,3135_4,Pine Creek,341.324,212.089,272.4,52.7,27.8
+13,Tionesta,Forest,354_2,Little Shenango River,88.783,55.167,88.0,178.9,27.8
+13,Tionesta,Forest,3776_2,Gaylord Creek,410.447,255.04,328.2,150.0,27.8
+13,Tionesta,Forest,1834_3,Big Cove Creek,327.7,203.624,265.4,10.1,27.8
+13,Tionesta,Forest,1319_2,Turkey Run,57.333,35.625,57.1,139.7,27.8
+13,Tionesta,Forest,3291_4,Great Trough Creek,244.544,151.952,217.8,27.7,27.8
+13,Tionesta,Forest,2975_3,Little Buffalo Creek,293.831,182.578,242.2,76.8,27.8
+13,Tionesta,Forest,32_2,Latimore Creek,363.291,225.739,302.3,178.6,27.8
+13,Tionesta,Forest,287_2,West Creek,339.069,210.688,261.5,105.4,27.8
+13,Tionesta,Forest,456_5,South Branch Tunkhannock Creek,408.291,253.7,330.9,47.4,27.8
+13,Tionesta,Forest,2716_4,Jordan Creek,427.147,265.417,327.8,167.2,27.8
+13,Tionesta,Forest,329_5,Neshannock Creek,115.739,71.917,104.8,241.4,27.8
+13,Tionesta,Forest,3366_2,Hoagland Run,268.141,166.615,217.6,146.2,27.8
+13,Tionesta,Forest,2703_4,West Branch Tionesta Creek,69.58,43.235,65.6,192.9,27.8
+13,Tionesta,Forest,392_2,Swarr Run,383.093,238.043,309.7,156.2,27.8
+13,Tionesta,Forest,35_2,Bermudian Creek,370.71,230.348,312.8,69.7,27.8
+13,Tionesta,Forest,3614_5,East Fork Sinnemahoning Creek,186.493,115.881,179.6,59.3,27.8
+13,Tionesta,Forest,6129_2,Pine Creek,24.045,14.941,24.7,477.3,27.8
+13,Tionesta,Forest,1561_2,Wills Creek,271.763,168.866,245.8,204.4,27.8
+13,Tionesta,Forest,2849_2,Wilson Run,92.388,57.407,89.6,154.4,27.8
+13,Tionesta,Forest,2728_2,Hokendauqua Creek,418.956,260.327,325.6,161.1,27.8
 11,Reynoldsdale,Bedford,1588_2,Unami Creek,320.81,199.342,241.7,128.8,99.9
 11,Reynoldsdale,Bedford,3023_3,Jacobs Creek,116.937,72.661,90.9,25.6,99.9
 11,Reynoldsdale,Bedford,1931_3,West Branch Octoraro Creek,261.132,162.26,205.3,36.8,99.9
@@ -3999,6 +4299,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,3042_4,East Branch Perkiomen Creek,596.298,370.523,421.4,12.1,71.5
 2,Linesville,Crawford,1881_2,Maxwell Run,193.465,120.214,148.9,33.8,71.5
 2,Linesville,Crawford,3118_2,Pine Creek,477.982,297.004,338.0,68.2,71.5
+13,Tionesta,Forest,1588_2,Unami Creek,466.273,289.728,342.4,128.8,27.8
+13,Tionesta,Forest,3023_3,Jacobs Creek,193.962,120.522,175.0,25.6,27.8
+13,Tionesta,Forest,1931_3,West Branch Octoraro Creek,420.236,261.122,352.5,36.8,27.8
+13,Tionesta,Forest,1785_3,Allegheny River,174.796,108.613,165.2,72.4,27.8
+13,Tionesta,Forest,2973_2,Canoe Creek,218.444,135.735,196.3,2301.5,27.8
+13,Tionesta,Forest,183_7,Fishing Creek,327.61,203.567,250.4,65.9,27.8
+13,Tionesta,Forest,3128_3,Laurel Run,206.373,128.234,178.3,364.3,27.8
+13,Tionesta,Forest,409_2,Pickering Creek,469.675,291.842,360.9,34.8,27.8
+13,Tionesta,Forest,3357_2,Wykoff Run,166.62,103.533,158.0,105.1,27.8
+13,Tionesta,Forest,3204_2,Little Swatara Creek,385.83,239.744,296.7,190.4,27.8
+13,Tionesta,Forest,217_2,Huling Run,98.436,61.165,105.5,70.1,27.8
+13,Tionesta,Forest,78_3,Little Mahoning Creek,115.524,71.783,118.8,34.1,27.8
+13,Tionesta,Forest,1849_1,Lackawanna River,446.276,277.303,335.6,132.5,27.8
+13,Tionesta,Forest,1550_2,Darby Creek,518.714,322.314,378.6,26.1,27.8
+13,Tionesta,Forest,3815_2,Lingle Creek,225.284,139.985,197.3,17.9,27.8
+13,Tionesta,Forest,58_1,Sideling Hill Creek,275.658,171.286,233.4,424.8,27.8
+13,Tionesta,Forest,2971_1,Maiden Creek,402.918,250.362,310.3,100.5,27.8
+13,Tionesta,Forest,3835_3,Cherry Run,128.524,79.861,133.4,983.0,27.8
+13,Tionesta,Forest,2729_2,Lehigh Canal,394.315,245.016,301.3,69.4,27.8
+13,Tionesta,Forest,2028_2,East Branch White Clay Creek,447.518,278.075,379.3,37.7,27.8
+13,Tionesta,Forest,3284_2,Manada Creek,338.706,210.462,281.5,70.9,27.8
+13,Tionesta,Forest,1779_2,Kings Creek,211.102,131.173,177.7,101.6,27.8
+13,Tionesta,Forest,2648_2,East Branch Spring Creek,48.517,30.147,53.5,404.1,27.8
+13,Tionesta,Forest,370_2,Wissahickon Creek,508.548,315.997,372.7,39.1,27.8
+13,Tionesta,Forest,2307_2,Cush Cushion Creek,138.477,86.046,137.2,688.9,27.8
+13,Tionesta,Forest,1459_2,Schwaben Creek,327.501,203.499,260.0,16.2,27.8
+13,Tionesta,Forest,2201_1,Bens Creek,191.857,119.214,179.6,95.5,27.8
+13,Tionesta,Forest,602_2,Limestone Run,282.329,175.431,214.8,23.1,27.8
+13,Tionesta,Forest,4029_5,West Branch Susquehanna River,134.172,83.371,114.6,164.9,27.8
+13,Tionesta,Forest,2973_4,Canoe Creek,212.66,132.141,181.9,4.3,27.8
+13,Tionesta,Forest,426_2,Middle Creek,419.561,260.703,320.2,37.0,27.8
+13,Tionesta,Forest,2730_6,Lehigh River,374.46,232.678,276.4,207.9,27.8
+13,Tionesta,Forest,3072_2,Tulpehocken Creek,398.129,247.386,303.8,21.9,27.8
+13,Tionesta,Forest,2207_7,Penns Creek,257.555,160.037,218.9,313.6,27.8
+13,Tionesta,Forest,3265_3,Anderson Creek,107.036,66.509,100.1,206.8,27.8
+13,Tionesta,Forest,3737_1,Chaney Run,232.894,144.714,206.1,49.8,27.8
+13,Tionesta,Forest,298_3,South Branch Brady Run,155.368,96.541,132.0,21.7,27.8
+13,Tionesta,Forest,322_3,Shenango River,99.173,61.623,101.2,362.4,27.8
+13,Tionesta,Forest,2940_2,Dutch Fork,237.045,147.293,190.2,19.4,27.8
+13,Tionesta,Forest,2729_8,Lehigh Canal,445.551,276.853,342.6,116.2,27.8
+13,Tionesta,Forest,1815_2,Marsh Creek,332.452,206.576,299.9,21.2,27.8
+13,Tionesta,Forest,2856_2,Beaver Run,16.45,10.222,14.9,49.4,27.8
+13,Tionesta,Forest,1824_5,East Branch Antietam Creek,368.23,228.808,307.9,174.9,27.8
+13,Tionesta,Forest,3032_2,Clear Shade Creek,212.972,132.334,199.2,216.9,27.8
+13,Tionesta,Forest,1796_4,Loyalhanna Creek,186.389,115.817,167.9,49.2,27.8
+13,Tionesta,Forest,2851_2,East Hickory Creek,21.561,13.397,44.8,226.0,27.8
+13,Tionesta,Forest,2717_5,Monocacy Creek,431.588,268.177,336.2,115.1,27.8
+13,Tionesta,Forest,3300_3,West Licking Creek,238.976,148.493,207.7,1.1,27.8
+13,Tionesta,Forest,3341_1,Little Clearfield Creek,135.601,84.259,131.4,41.8,27.8
+13,Tionesta,Forest,2887_3,Willow Creek,408.342,253.732,311.9,47.5,27.8
+13,Tionesta,Forest,2864_6,Bennett Branch Sinnemahoning Creek,134.181,83.376,125.2,95.4,27.8
+13,Tionesta,Forest,1436_3,Standing Stone Creek,214.412,133.23,188.1,526.3,27.8
+13,Tionesta,Forest,4353_2,Riley Creek,395.636,245.837,323.6,36.1,27.8
+13,Tionesta,Forest,1774_2,Brush Creek,266.561,165.633,237.8,489.1,27.8
+13,Tionesta,Forest,2357_2,Jones Creek,431.73,268.265,323.3,49.2,27.8
+13,Tionesta,Forest,3960_2,Schrader Creek,339.715,211.089,305.4,99.0,27.8
+13,Tionesta,Forest,2442_4,Tobyhanna Creek,405.528,251.984,308.7,404.6,27.8
+13,Tionesta,Forest,3728_2,Piney Creek,271.554,168.736,232.9,263.9,27.8
+13,Tionesta,Forest,1400_2,Shultz Creek,308.844,191.907,271.0,50.3,27.8
+13,Tionesta,Forest,1931_2,West Branch Octoraro Creek,420.412,261.232,355.5,167.6,27.8
+13,Tionesta,Forest,1785_2,Allegheny River,178.291,110.785,167.6,100.4,27.8
+13,Tionesta,Forest,3303_5,Clark Creek,317.213,197.107,259.6,56.4,27.8
+13,Tionesta,Forest,258_4,East Branch Brandywine Creek,466.532,289.89,359.6,44.6,27.8
+13,Tionesta,Forest,3818_2,Little Mahanoy Creek,342.891,213.063,260.4,49.2,27.8
+13,Tionesta,Forest,653_7,Bushkill Creek,450.356,279.838,345.9,26.9,27.8
+13,Tionesta,Forest,2281_1,Dyberry Creek,461.724,286.902,360.7,130.7,27.8
+13,Tionesta,Forest,117_5,Loyalsock Creek,306.166,190.243,250.9,119.2,27.8
+13,Tionesta,Forest,4337_4,Meshoppen Creek,392.156,243.675,315.2,224.5,27.8
+13,Tionesta,Forest,1767_5,Roaring Brook,408.218,253.655,301.6,68.4,27.8
+13,Tionesta,Forest,1996_3,Turtle Creek,168.428,104.656,161.3,42.3,27.8
+13,Tionesta,Forest,1829_3,Little Tonoloway Creek,318.685,198.022,257.4,61.6,27.8
+13,Tionesta,Forest,3590_2,Long Run,210.901,131.048,198.8,78.1,27.8
+13,Tionesta,Forest,2865_3,Driftwood Branch Sinnemahoning Creek,142.396,88.481,134.0,88.1,27.8
+13,Tionesta,Forest,3007_3,Pike Run,219.956,136.674,199.6,44.2,27.8
+13,Tionesta,Forest,2645_4,Marvin Creek,124.517,77.371,114.7,197.3,27.8
+13,Tionesta,Forest,2021_3,Conowingo Creek,424.121,263.537,353.0,210.9,27.8
+13,Tionesta,Forest,6179_2,Mill Creek,50.344,31.283,51.9,197.6,27.8
+13,Tionesta,Forest,3351_3,Kettle Creek,211.359,131.332,205.7,172.1,27.8
+13,Tionesta,Forest,1355_2,Little Bushkill Creek,435.314,270.492,335.4,143.0,27.8
+13,Tionesta,Forest,495_4,Lizard Creek,402.308,249.983,309.6,207.1,27.8
+13,Tionesta,Forest,2928_3,East Branch Clarion River,97.211,60.404,96.8,96.3,27.8
+13,Tionesta,Forest,18_3,Otter Creek,405.834,252.173,340.5,326.4,27.8
+13,Tionesta,Forest,3182_2,Mill Creek,411.144,255.473,314.7,15.9,27.8
+13,Tionesta,Forest,6171_5,Aquashicola Creek,406.911,252.843,313.7,135.1,27.8
+13,Tionesta,Forest,59_7,Yellow Creek,257.12,159.767,218.3,230.8,27.8
+13,Tionesta,Forest,3578_3,Lyman Run,192.765,119.778,202.9,133.9,27.8
+13,Tionesta,Forest,386_3,Donegal Creek,376.002,233.637,308.9,300.3,27.8
+13,Tionesta,Forest,267_2,North Spring Branch,246.731,153.311,218.0,139.8,27.8
+13,Tionesta,Forest,2245_3,Little Muddy Run,155.584,96.676,155.3,275.1,27.8
+13,Tionesta,Forest,2844_3,Salmon Creek,34.094,21.185,44.5,96.0,27.8
+13,Tionesta,Forest,2904_1,Silver Creek,81.708,50.771,81.8,99.1,27.8
+13,Tionesta,Forest,2020_2,Noels Creek,179.303,111.413,170.5,504.0,27.8
+13,Tionesta,Forest,3269_2,Little Paint Creek,197.001,122.411,180.0,38.0,27.8
+13,Tionesta,Forest,2991_2,Back Creek,213.992,132.968,192.7,66.6,27.8
+13,Tionesta,Forest,2519_2,Bowman Creek,369.474,229.58,315.1,22.3,27.8
+13,Tionesta,Forest,344_2,North Branch Slippery Rock Creek,85.951,53.407,79.3,314.5,27.8
+13,Tionesta,Forest,2183_2,Wolf Run,189.446,117.717,173.3,139.9,27.8
+13,Tionesta,Forest,3042_4,East Branch Perkiomen Creek,493.914,306.904,365.5,12.1,27.8
+13,Tionesta,Forest,1881_2,Maxwell Run,75.365,46.83,77.9,33.8,27.8
+13,Tionesta,Forest,3118_2,Pine Creek,375.598,233.386,282.2,68.2,27.8
 11,Reynoldsdale,Bedford,3284_3,Manada Creek,192.213,119.435,144.6,101.0,99.9
 11,Reynoldsdale,Bedford,2937_2,Cub Run,20.123,12.504,26.7,142.6,99.9
 11,Reynoldsdale,Bedford,2199_5,Bald Eagle Creek,121.8,75.683,90.4,209.3,99.9
@@ -4999,6 +5399,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,304_2,Thorn Creek,131.083,81.451,116.7,215.8,71.5
 2,Linesville,Crawford,1798_4,Pine Creek,150.77,93.684,122.4,131.1,71.5
 2,Linesville,Crawford,272_2,Big Beaver Creek,508.117,315.73,393.9,134.0,71.5
+13,Tionesta,Forest,3284_3,Manada Creek,338.525,210.349,278.5,101.0,27.8
+13,Tionesta,Forest,2937_2,Cub Run,215.014,133.604,204.1,142.6,27.8
+13,Tionesta,Forest,2199_5,Bald Eagle Creek,199.366,123.88,158.5,209.3,27.8
+13,Tionesta,Forest,2923_1,Tionesta Creek,58.026,36.056,76.4,34.9,27.8
+13,Tionesta,Forest,2674_2,Rocky Run,101.793,63.251,104.0,51.9,27.8
+13,Tionesta,Forest,421_2,Skippack Creek,495.801,308.077,369.8,49.0,27.8
+13,Tionesta,Forest,412_2,Conewago Creek,366.948,228.011,303.0,133.6,27.8
+13,Tionesta,Forest,3752_2,North Fork Dunkard Fork,267.422,166.168,231.8,74.6,27.8
+13,Tionesta,Forest,2271_5,Lackawaxen River,485.87,301.906,369.0,74.2,27.8
+13,Tionesta,Forest,1967_2,Rock Run,307.724,191.211,246.9,24.1,27.8
+13,Tionesta,Forest,3354_5,Little Pine Creek,261.957,162.772,214.2,89.9,27.8
+13,Tionesta,Forest,2670_2,Bluejay Creek,57.381,35.655,56.3,50.6,27.8
+13,Tionesta,Forest,2175_4,White Deer Creek,254.682,158.252,193.2,144.0,27.8
+13,Tionesta,Forest,3128_2,Laurel Run,208.002,129.247,182.3,69.1,27.8
+13,Tionesta,Forest,4340_2,Horton Creek,442.649,275.049,341.8,82.9,27.8
+13,Tionesta,Forest,2716_2,Jordan Creek,414.053,257.28,320.0,367.7,27.8
+13,Tionesta,Forest,437_2,Tunkhannock Creek,456.595,283.715,341.6,173.7,27.8
+13,Tionesta,Forest,3042_2,East Branch Perkiomen Creek,479.22,297.773,355.1,85.6,27.8
+13,Tionesta,Forest,3840_2,Glade Run,111.274,69.143,109.9,73.3,27.8
+13,Tionesta,Forest,407_3,Perkiomen Creek,439.098,272.843,342.3,55.6,27.8
+13,Tionesta,Forest,3630_3,Little Kettle Creek,208.027,129.262,202.0,70.8,27.8
+13,Tionesta,Forest,1364_2,Thompson Run,37.116,23.063,47.5,107.8,27.8
+13,Tionesta,Forest,1825_3,West Branch Antietam Creek,364.156,226.276,303.9,141.1,27.8
+13,Tionesta,Forest,123_3,Mill Creek (Warrensville),283.59,176.215,228.7,115.0,27.8
+13,Tionesta,Forest,3211_2,Blair Gap Run,193.549,120.266,180.4,47.1,27.8
+13,Tionesta,Forest,2972_2,South Fork Powell Creek,331.877,206.219,284.2,149.4,27.8
+13,Tionesta,Forest,3351_10,Kettle Creek,223.841,139.088,211.8,31.6,27.8
+13,Tionesta,Forest,3122_3,Mahantango Creek,329.409,204.685,255.4,30.7,27.8
+13,Tionesta,Forest,2641_2,East Branch Fishing Creek,154.815,96.197,146.1,103.0,27.8
+13,Tionesta,Forest,3854_2,Cowanesque River,219.24,136.229,208.4,38.5,27.8
+13,Tionesta,Forest,2112_3,Equinunk Creek,481.329,299.084,379.9,99.0,27.8
+13,Tionesta,Forest,3740_4,Laurel Hill Creek,230.419,143.176,209.5,18.2,27.8
+13,Tionesta,Forest,6193_2,Queen Creek,18.442,11.459,26.1,132.5,27.8
+13,Tionesta,Forest,6228_4,Pohopoco Creek,395.808,245.944,302.1,120.3,27.8
+13,Tionesta,Forest,3129_2,West Branch Mahantango Creek,291.605,181.195,251.9,45.4,27.8
+13,Tionesta,Forest,1621_5,Falling Spring Branch,307.444,191.037,278.3,52.4,27.8
+13,Tionesta,Forest,2835_1,East Branch Spring Creek,68.882,42.801,69.2,254.6,27.8
+13,Tionesta,Forest,3748_5,Meadow Run,234.523,145.726,216.2,100.1,27.8
+13,Tionesta,Forest,1339_11,Pine Creek,282.086,175.28,232.4,155.0,27.8
+13,Tionesta,Forest,2436_5,Bush Kill,447.225,277.893,345.5,45.4,27.8
+13,Tionesta,Forest,1928_4,North Branch Muddy Creek,399.601,248.301,337.0,163.9,27.8
+13,Tionesta,Forest,2283_2,Van Auken Creek,446.376,277.365,335.1,44.2,27.8
+13,Tionesta,Forest,1898_4,Sugar Creek,56.472,35.09,55.3,43.0,27.8
+13,Tionesta,Forest,4028_3,Chest Creek,163.094,101.342,155.6,85.7,27.8
+13,Tionesta,Forest,2730_8,Lehigh River,386.464,240.138,296.3,153.8,27.8
+13,Tionesta,Forest,1712_2,Laurel Run,157.183,97.669,141.6,70.2,27.8
+13,Tionesta,Forest,4519_2,East Branch Cowley Run,154.937,96.273,146.2,49.5,27.8
+13,Tionesta,Forest,99_2,Little Muncy Creek,316.815,196.86,244.6,42.8,27.8
+13,Tionesta,Forest,2888_3,East Licking Creek,267.101,165.969,257.9,29.3,27.8
+13,Tionesta,Forest,1548_5,South Branch Codorus Creek,385.808,239.73,319.9,58.5,27.8
+13,Tionesta,Forest,113_4,Lycoming Creek,281.454,174.888,225.0,34.6,27.8
+13,Tionesta,Forest,2368_3,Sandy Creek,63.304,39.335,65.4,32.0,27.8
+13,Tionesta,Forest,2368_4,Sandy Creek,53.511,33.25,55.2,430.4,27.8
+13,Tionesta,Forest,6_2,Enlow Fork,260.257,161.716,230.5,61.4,27.8
+13,Tionesta,Forest,78_2,Little Mahoning Creek,119.345,74.157,128.6,113.1,27.8
+13,Tionesta,Forest,2888_4,East Licking Creek,274.432,170.524,241.6,248.0,27.8
+13,Tionesta,Forest,3740_3,Laurel Hill Creek,224.321,139.386,203.1,178.1,27.8
+13,Tionesta,Forest,2435_8,Little Bush Kill,450.66,280.027,343.6,99.3,27.8
+13,Tionesta,Forest,2661_2,Mud Run,394.955,245.414,290.6,47.2,27.8
+13,Tionesta,Forest,2260_3,Fourmile Run,198.281,123.206,187.1,116.1,27.8
+13,Tionesta,Forest,2023_2,Deer Creek,400.058,248.585,332.3,303.1,27.8
+13,Tionesta,Forest,183_5,Fishing Creek,335.956,208.754,257.4,183.4,27.8
+13,Tionesta,Forest,425_4,Hammer Creek,418.656,260.141,320.3,96.0,27.8
+13,Tionesta,Forest,1401_2,Fishing Creek,324.656,201.732,270.3,86.3,27.8
+13,Tionesta,Forest,1787_2,Howells Run,171.979,106.863,165.8,383.5,27.8
+13,Tionesta,Forest,1970_2,West Creek,130.579,81.138,122.1,47.2,27.8
+13,Tionesta,Forest,6028_2,Canoe Creek,52.343,32.524,53.2,174.7,27.8
+13,Tionesta,Forest,433_2,Indian Run,425.519,264.405,329.0,79.3,27.8
+13,Tionesta,Forest,1781_2,Toms Run,157.928,98.132,141.9,30.5,27.8
+13,Tionesta,Forest,232_2,East Branch Codorus Creek,392.898,244.136,324.4,42.6,27.8
+13,Tionesta,Forest,3277_2,Conodoguinet Creek,287.954,178.926,257.4,111.6,27.8
+13,Tionesta,Forest,1624_2,North Branch Little Aughwick Creek,267.864,166.443,234.1,117.7,27.8
+13,Tionesta,Forest,2940_3,Dutch Fork,241.844,150.275,201.0,129.5,27.8
+13,Tionesta,Forest,1588_5,Unami Creek,478.628,297.405,356.4,53.5,27.8
+13,Tionesta,Forest,2281_3,Dyberry Creek,460.24,285.98,351.0,135.0,27.8
+13,Tionesta,Forest,1436_5,Standing Stone Creek,225.125,139.886,197.2,388.9,27.8
+13,Tionesta,Forest,6237_3,Buckwha Creek,425.281,264.257,321.9,225.0,27.8
+13,Tionesta,Forest,4384_2,Little Fishing Creek,311.636,193.642,245.3,116.4,27.8
+13,Tionesta,Forest,2278_2,Callen Run,64.631,40.16,69.2,170.5,27.8
+13,Tionesta,Forest,3158_2,Crooked Creek,118.616,73.705,109.2,138.5,27.8
+13,Tionesta,Forest,6016_2,Laborde Branch,100.416,62.395,97.4,145.7,27.8
+13,Tionesta,Forest,2906_3,Pithole Creek,20.111,12.496,29.9,1283.5,27.8
+13,Tionesta,Forest,1383_4,Salt Lick Creek,439.335,272.99,339.4,35.0,27.8
+13,Tionesta,Forest,1785_5,Allegheny River,147.727,91.794,137.6,69.3,27.8
+13,Tionesta,Forest,258_5,East Branch Brandywine Creek,469.03,291.442,360.4,68.3,27.8
+13,Tionesta,Forest,7360_2,Honey Creek,247.017,153.489,219.7,55.0,27.8
+13,Tionesta,Forest,3287_2,McCabe Run,303.051,188.307,265.6,46.8,27.8
+13,Tionesta,Forest,104_3,Larrys Creek,253.624,157.595,199.7,131.2,27.8
+13,Tionesta,Forest,3753_2,Middle Creek,235.75,146.488,216.5,113.3,27.8
+13,Tionesta,Forest,1622_2,Cove Creek,280.549,174.325,230.3,74.3,27.8
+13,Tionesta,Forest,3085_3,Spring Creek,405.93,252.233,320.8,86.5,27.8
+13,Tionesta,Forest,2703_7,West Branch Tionesta Creek,62.258,38.685,64.8,205.0,27.8
+13,Tionesta,Forest,2_3,Carbaugh Run,317.975,197.581,287.5,34.1,27.8
+13,Tionesta,Forest,2105_2,Rose Pond Branch,469.465,291.712,361.0,65.0,27.8
+13,Tionesta,Forest,4337_2,Meshoppen Creek,399.703,248.364,325.8,152.2,27.8
+13,Tionesta,Forest,2714_9,Little Lehigh Creek,432.899,268.991,331.9,35.5,27.8
+13,Tionesta,Forest,1875_2,Gifford Run,158.088,98.232,159.9,231.5,27.8
+13,Tionesta,Forest,304_2,Thorn Creek,118.831,73.838,126.5,215.8,27.8
+13,Tionesta,Forest,1798_4,Pine Creek,171.947,106.843,146.0,131.1,27.8
+13,Tionesta,Forest,272_2,Big Beaver Creek,405.734,252.111,338.0,134.0,27.8
 11,Reynoldsdale,Bedford,2199_4,Bald Eagle Creek,111.288,69.151,81.4,195.2,99.9
 11,Reynoldsdale,Bedford,2216_2,North Branch Middle Creek,212.05,131.762,160.2,357.6,99.9
 11,Reynoldsdale,Bedford,2392_5,Starrucca Creek,437.083,271.591,327.6,460.6,99.9
@@ -5999,6 +6499,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,314_3,Bonnie Brook,125.475,77.966,100.5,3.4,71.5
 2,Linesville,Crawford,2662_3,Brodhead Creek,532.11,330.638,376.7,51.2,71.5
 2,Linesville,Crawford,312_4,Slippery Rock Creek,109.319,67.927,88.5,85.8,71.5
+13,Tionesta,Forest,2199_4,Bald Eagle Creek,177.312,110.177,150.5,195.2,27.8
+13,Tionesta,Forest,2216_2,North Branch Middle Creek,277.55,172.461,228.7,357.6,27.8
+13,Tionesta,Forest,2392_5,Starrucca Creek,452.573,281.216,360.8,460.6,27.8
+13,Tionesta,Forest,2645_2,Marvin Creek,113.836,70.735,111.0,168.1,27.8
+13,Tionesta,Forest,310_2,Connoquenessing Creek,102.609,63.758,99.4,143.4,27.8
+13,Tionesta,Forest,2644_2,Skinner Creek,140.304,87.181,133.4,226.8,27.8
+13,Tionesta,Forest,3303_4,Clark Creek,324.865,201.862,268.0,167.0,27.8
+13,Tionesta,Forest,1541_3,Laurel Run,254.032,157.848,214.9,121.1,27.8
+13,Tionesta,Forest,348_2,Pine Run,98.487,61.197,86.8,35.1,27.8
+13,Tionesta,Forest,3222_2,Templeton Fork,255.091,158.506,216.7,134.2,27.8
+13,Tionesta,Forest,3364_2,First Fork Sinnemahoning Creek,176.206,109.489,169.3,253.7,27.8
+13,Tionesta,Forest,2877_2,Trout Run,384.663,239.019,291.5,74.7,27.8
+13,Tionesta,Forest,2696_1,Rattling Creek,345.51,214.69,273.2,84.7,27.8
+13,Tionesta,Forest,3851_1,South Fork Pine Creek,95.392,59.274,98.0,127.5,27.8
+13,Tionesta,Forest,2728_5,Hokendauqua Creek,420.033,260.996,329.5,54.3,27.8
+13,Tionesta,Forest,113_3,Lycoming Creek,291.105,180.884,226.0,205.1,27.8
+13,Tionesta,Forest,2276_2,Maple Creek,38.683,24.037,39.1,535.1,27.8
+13,Tionesta,Forest,3294_2,Snitz Creek,403.154,250.508,306.5,98.8,27.8
+13,Tionesta,Forest,1798_7,Pine Creek,145.5,90.41,146.7,82.5,27.8
+13,Tionesta,Forest,3032_3,Clear Shade Creek,218.449,135.738,209.0,23.6,27.8
+13,Tionesta,Forest,6019_2,Wolf Run,91.045,56.573,83.5,128.2,27.8
+13,Tionesta,Forest,3257_2,Conneaut Creek,102.578,63.739,104.0,165.5,27.8
+13,Tionesta,Forest,2627_3,Lost Creek,260.353,161.776,217.7,31.2,27.8
+13,Tionesta,Forest,1882_1,French Creek,77.733,48.301,74.0,266.1,27.8
+13,Tionesta,Forest,6083_3,Crooked Creek,248.16,154.2,244.6,93.2,27.8
+13,Tionesta,Forest,2611_1,East Branch Oil Creek,47.57,29.559,53.7,495.8,27.8
+13,Tionesta,Forest,2730_3,Lehigh River,413.59,256.993,315.8,34.7,27.8
+13,Tionesta,Forest,1888_3,Twomile Run,43.364,26.945,42.5,104.2,27.8
+13,Tionesta,Forest,3190_4,Buffalo Creek,286.655,178.119,221.8,34.9,27.8
+13,Tionesta,Forest,2199_6,Bald Eagle Creek,192.564,119.654,153.3,324.2,27.8
+13,Tionesta,Forest,2865_6,Driftwood Branch Sinnemahoning Creek,163.626,101.673,151.7,87.5,27.8
+13,Tionesta,Forest,2271_4,Lackawaxen River,479.883,298.186,369.0,41.1,27.8
+13,Tionesta,Forest,2978_2,Clover Creek,224.739,139.646,201.8,621.6,27.8
+13,Tionesta,Forest,329_1,Neshannock Creek,88.693,55.111,86.5,101.0,27.8
+13,Tionesta,Forest,62_3,Bobs Creek,209.905,130.429,194.8,51.6,27.8
+13,Tionesta,Forest,1547_2,Codorus Creek,395.48,245.74,335.5,83.1,27.8
+13,Tionesta,Forest,54_2,Wooden Bridge Creek,268.746,166.991,242.0,341.0,27.8
+13,Tionesta,Forest,6025_2,North Fork Redbank Creek,69.359,43.098,76.2,1049.5,27.8
+13,Tionesta,Forest,2294_2,West Branch Dyberry Creek,460.08,285.881,353.7,1123.0,27.8
+13,Tionesta,Forest,1820_2,Little Cove Creek,337.321,209.601,278.9,259.9,27.8
+13,Tionesta,Forest,1943_3,Ridley Creek,492.589,306.081,384.9,144.3,27.8
+13,Tionesta,Forest,204_2,Nescopeck Creek,368.373,228.897,292.8,287.8,27.8
+13,Tionesta,Forest,4495_2,Little Scrubgrass Creek,67.921,42.204,68.0,667.3,27.8
+13,Tionesta,Forest,2567_2,South Branch Oswayo Creek,185.352,115.173,170.3,97.4,27.8
+13,Tionesta,Forest,2865_5,Driftwood Branch Sinnemahoning Creek,154.878,96.237,143.6,93.3,27.8
+13,Tionesta,Forest,2175_2,White Deer Creek,251.964,156.563,197.6,571.5,27.8
+13,Tionesta,Forest,456_4,South Branch Tunkhannock Creek,432.417,268.692,330.4,113.8,27.8
+13,Tionesta,Forest,2739_3,Princess Run,420.742,261.437,316.1,10.7,27.8
+13,Tionesta,Forest,1719_3,Bull Creek,139.581,86.732,130.5,137.3,27.8
+13,Tionesta,Forest,2259_2,South Fork Beech Creek,171.413,106.511,138.3,188.4,27.8
+13,Tionesta,Forest,2893_3,Cocolamus Creek,278.222,172.879,234.2,167.4,27.8
+13,Tionesta,Forest,2968_3,Raystown Branch Juniata River,275.98,171.486,221.9,119.9,27.8
+13,Tionesta,Forest,3364_6,First Fork Sinnemahoning Creek,182.665,113.503,168.9,45.6,27.8
+13,Tionesta,Forest,3777_2,Corey Creek,260.937,162.139,250.5,48.7,27.8
+13,Tionesta,Forest,1798_2,Pine Creek,169.037,105.035,142.5,23.7,27.8
+13,Tionesta,Forest,1773_2,Shaffers Run,276.143,171.587,249.8,58.1,27.8
+13,Tionesta,Forest,2281_2,Dyberry Creek,463.626,288.084,358.5,72.3,27.8
+13,Tionesta,Forest,345_2,Deer Creek,123.17,76.535,102.9,290.1,27.8
+13,Tionesta,Forest,2048_2,Mill Creek,44.38,27.576,61.9,84.4,27.8
+13,Tionesta,Forest,1785_4,Allegheny River,163.706,101.722,151.9,57.7,27.8
+13,Tionesta,Forest,3739_2,Mcclintock Run,251.809,156.467,239.2,35.7,27.8
+13,Tionesta,Forest,3040_8,Manatawny Creek,441.603,274.4,344.4,24.6,27.8
+13,Tionesta,Forest,165_5,Buffalo Creek,120.745,75.027,118.0,18.1,27.8
+13,Tionesta,Forest,5_2,Fall Creek,231.832,144.054,214.6,232.3,27.8
+13,Tionesta,Forest,2634_2,Kinzua Creek,101.156,62.855,98.6,607.5,27.8
+13,Tionesta,Forest,2649_2,Conneauttee Creek,88.087,54.735,83.5,39.3,27.8
+13,Tionesta,Forest,3292_3,Bull Run,306.168,190.244,263.9,122.4,27.8
+13,Tionesta,Forest,368_2,Beaver Creek,472.587,293.652,366.4,86.9,27.8
+13,Tionesta,Forest,3272_2,Mill Creek,197.2,122.535,178.8,88.3,27.8
+13,Tionesta,Forest,2899_2,Upper Little Swatara Creek,376.4,233.884,285.4,46.3,27.8
+13,Tionesta,Forest,3072_7,Tulpehocken Creek,412.347,256.22,313.3,43.1,27.8
+13,Tionesta,Forest,4363_3,West Branch Hicks Run,157.523,97.88,157.0,6.1,27.8
+13,Tionesta,Forest,285_2,Blacklog Creek,249.022,154.735,222.9,177.1,27.8
+13,Tionesta,Forest,1508_2,Leatherwood Creek,78.321,48.667,79.5,75.1,27.8
+13,Tionesta,Forest,3306_2,Sherman Creek,306.456,190.423,265.3,269.4,27.8
+13,Tionesta,Forest,2726_2,Coplay Creek,423.198,262.963,325.7,78.5,27.8
+13,Tionesta,Forest,1454_3,North Branch Wyalusing Creek,393.191,244.318,320.7,33.6,27.8
+13,Tionesta,Forest,413_6,French Creek,455.421,282.985,357.8,41.9,27.8
+13,Tionesta,Forest,425_6,Hammer Creek,425.782,264.569,326.9,22.9,27.8
+13,Tionesta,Forest,4515_2,Little Shamokin Creek,308.902,191.943,238.6,150.6,27.8
+13,Tionesta,Forest,2556_1,Jackson Run,62.142,38.613,58.2,301.0,27.8
+13,Tionesta,Forest,3001_2,Shafer Run,223.803,139.065,203.8,20.0,27.8
+13,Tionesta,Forest,3200_2,Pine Creek,394.852,245.35,309.3,1.4,27.8
+13,Tionesta,Forest,276_2,Yellow Breeches Creek,331.36,205.898,293.8,36.3,27.8
+13,Tionesta,Forest,30_2,Breastwork Run,249.657,155.13,228.0,52.1,27.8
+13,Tionesta,Forest,1819_4,Conococheague Creek,308.458,191.667,280.4,48.0,27.8
+13,Tionesta,Forest,418_2,West Branch Conestoga River,436.265,271.083,333.2,45.8,27.8
+13,Tionesta,Forest,6128_2,West Branch Tunungwant Creek,114.55,71.178,110.0,34.9,27.8
+13,Tionesta,Forest,2199_2,Bald Eagle Creek,173.178,107.608,146.7,188.5,27.8
+13,Tionesta,Forest,2767_3,Young Womans Creek,223.43,138.833,207.6,65.6,27.8
+13,Tionesta,Forest,3644_2,Stony Fork,298.545,185.507,250.3,61.8,27.8
+13,Tionesta,Forest,2927_4,West Branch Clarion River,93.116,57.86,91.5,44.0,27.8
+13,Tionesta,Forest,258_2,East Branch Brandywine Creek,454.812,282.607,354.6,113.1,27.8
+13,Tionesta,Forest,2434_3,Saw Creek,458.043,284.615,350.6,630.0,27.8
+13,Tionesta,Forest,2866_3,Mix Run,161.587,100.406,160.9,65.7,27.8
+13,Tionesta,Forest,2825_2,Ross Run,25.759,16.006,29.9,60.4,27.8
+13,Tionesta,Forest,4513_2,Sugar Creek,285.605,177.467,270.9,229.7,27.8
+13,Tionesta,Forest,314_3,Bonnie Brook,104.03,64.641,106.0,3.4,27.8
+13,Tionesta,Forest,2662_3,Brodhead Creek,429.726,267.019,320.9,51.2,27.8
+13,Tionesta,Forest,312_4,Slippery Rock Creek,130.496,81.086,112.1,85.8,27.8
 11,Reynoldsdale,Bedford,3733_2,Georges Creek,171.049,106.285,136.8,89.6,99.9
 11,Reynoldsdale,Bedford,403_2,Stony Creek,318.697,198.029,228.9,63.9,99.9
 11,Reynoldsdale,Bedford,3583_2,West Branch Pine Creek,282.615,175.609,249.2,114.2,99.9
@@ -6999,6 +7599,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,49_2,Sherman Valley Run,355.884,221.136,267.1,62.0,71.5
 2,Linesville,Crawford,6140_2,Raccoon Creek,392.576,243.935,293.4,156.9,71.5
 2,Linesville,Crawford,1819_3,Conococheague Creek,420.882,261.524,315.7,162.4,71.5
+13,Tionesta,Forest,3733_2,Georges Creek,239.618,148.891,208.8,89.6,27.8
+13,Tionesta,Forest,403_2,Stony Creek,510.033,316.92,377.3,63.9,27.8
+13,Tionesta,Forest,3583_2,West Branch Pine Creek,205.668,127.796,195.4,114.2,27.8
+13,Tionesta,Forest,2348_2,Pine Run,43.665,27.132,46.0,80.9,27.8
+13,Tionesta,Forest,2563_2,North Branch Sugar Run,105.317,65.441,103.6,498.7,27.8
+13,Tionesta,Forest,3364_1,First Fork Sinnemahoning Creek,181.366,112.695,181.6,109.4,27.8
+13,Tionesta,Forest,3205_2,Indiantown Run,359.142,223.161,295.4,5.7,27.8
+13,Tionesta,Forest,1679_2,Little Neshannock Creek,108.059,67.145,95.3,311.8,27.8
+13,Tionesta,Forest,165_4,Buffalo Creek,105.088,65.299,115.7,70.4,27.8
+13,Tionesta,Forest,6065_2,Horning Run,255.264,158.614,212.0,101.8,27.8
+13,Tionesta,Forest,2436_2,Bush Kill,465.361,289.162,362.0,198.3,27.8
+13,Tionesta,Forest,2634_4,Kinzua Creek,103.765,64.476,96.2,72.1,27.8
+13,Tionesta,Forest,1633_2,Little Catawissa Creek,346.754,215.463,265.8,428.5,27.8
+13,Tionesta,Forest,1943_5,Ridley Creek,535.681,332.857,393.1,24.8,27.8
+13,Tionesta,Forest,413_5,French Creek,455.007,282.728,357.7,116.8,27.8
+13,Tionesta,Forest,3135_3,Pine Creek,349.127,216.937,277.4,33.9,27.8
+13,Tionesta,Forest,2864_2,Bennett Branch Sinnemahoning Creek,110.033,68.371,100.0,41.0,27.8
+13,Tionesta,Forest,43_2,Rowe Run,294.798,183.179,264.1,54.9,27.8
+13,Tionesta,Forest,1306_2,Hannas Run,197.537,122.744,179.5,52.6,27.8
+13,Tionesta,Forest,396_2,Conoy Creek,362.247,225.09,304.0,80.5,27.8
+13,Tionesta,Forest,1883_2,Big Mill Creek,81.79,50.822,80.8,107.8,27.8
+13,Tionesta,Forest,2734_2,Trout Creek,410.484,255.063,317.4,113.4,27.8
+13,Tionesta,Forest,3309_2,Poplar Run,221.533,137.654,187.5,16.1,27.8
+13,Tionesta,Forest,2820_2,Swabia Creek,429.194,266.689,329.6,31.8,27.8
+13,Tionesta,Forest,69_3,Green Spring Creek,303.91,188.841,275.2,5.0,27.8
+13,Tionesta,Forest,3127_4,Deep Creek,360.836,224.213,282.2,24.7,27.8
+13,Tionesta,Forest,2058_1,Boggy Run,102.049,63.41,105.3,637.1,27.8
+13,Tionesta,Forest,2735_1,Martins Creek,441.506,274.339,330.6,6.1,27.8
+13,Tionesta,Forest,2987_3,Dunbar Creek,210.289,130.667,185.6,19.1,27.8
+13,Tionesta,Forest,2990_2,Dunlap Creek,236.4,146.892,206.1,107.6,27.8
+13,Tionesta,Forest,2254_3,Black Moshannon Creek,165.31,102.719,149.8,54.8,27.8
+13,Tionesta,Forest,173_3,Roaring Creek,309.865,192.541,237.7,57.7,27.8
+13,Tionesta,Forest,6052_2,Towanda Creek,337.443,209.677,272.3,216.4,27.8
+13,Tionesta,Forest,2603_2,Woodcock Creek,61.937,38.486,62.7,227.5,27.8
+13,Tionesta,Forest,6226_14,Fishing Creek,221.674,137.742,174.6,12.3,27.8
+13,Tionesta,Forest,370_4,Wissahickon Creek,513.636,319.158,381.6,103.0,27.8
+13,Tionesta,Forest,271_2,Buck Run,426.89,265.257,352.1,91.6,27.8
+13,Tionesta,Forest,1250_2,Mahoning Creek,394.399,245.068,302.4,216.4,27.8
+13,Tionesta,Forest,1837_3,Little Marsh Creek,334.875,208.081,308.0,79.3,27.8
+13,Tionesta,Forest,2652_2,Browns Run,62.107,38.592,58.7,131.9,27.8
+13,Tionesta,Forest,2539_2,Sand Spring Run,386.208,239.978,290.7,139.5,27.8
+13,Tionesta,Forest,2717_9,Monocacy Creek,443.376,275.501,340.4,3.2,27.8
+13,Tionesta,Forest,2979_2,Armstrong Creek,324.534,201.656,267.7,102.7,27.8
+13,Tionesta,Forest,1453_3,South Creek,333.418,207.176,271.3,294.6,27.8
+13,Tionesta,Forest,6008_2,Big Run,84.364,52.421,89.2,117.8,27.8
+13,Tionesta,Forest,1954_4,Cross Fork,209.675,130.286,230.6,64.0,27.8
+13,Tionesta,Forest,6238_2,Mill Run,219.14,136.167,197.3,46.6,27.8
+13,Tionesta,Forest,1349_2,Blacklegs Creek,138.968,86.35,147.6,109.3,27.8
+13,Tionesta,Forest,2962_5,Tohickon Creek,499.058,310.1,381.2,28.0,27.8
+13,Tionesta,Forest,1361_2,Thompson Creek,33.924,21.079,34.8,303.9,27.8
+13,Tionesta,Forest,4028_4,Chest Creek,147.594,91.711,179.0,164.4,27.8
+13,Tionesta,Forest,2217_2,North Witmer Run,145.59,90.466,143.9,153.5,27.8
+13,Tionesta,Forest,2927_3,West Branch Clarion River,95.677,59.451,93.3,56.0,27.8
+13,Tionesta,Forest,456_2,South Branch Tunkhannock Creek,431.557,268.157,319.9,16.7,27.8
+13,Tionesta,Forest,2266_3,Shohola Creek,503.242,312.7,371.9,266.4,27.8
+13,Tionesta,Forest,2571_2,Elevenmile Creek,180.218,111.982,165.8,207.7,27.8
+13,Tionesta,Forest,61_2,Mountain Creek,330.659,205.462,299.7,51.4,27.8
+13,Tionesta,Forest,6031_4,Piney Creek,57.901,35.978,59.9,71.2,27.8
+13,Tionesta,Forest,3380_2,East Branch Mahoning Creek,115.953,72.05,111.1,159.9,27.8
+13,Tionesta,Forest,2271_3,Lackawaxen River,460.363,286.056,357.4,434.9,27.8
+13,Tionesta,Forest,6052_3,Towanda Creek,347.495,215.923,282.3,134.6,27.8
+13,Tionesta,Forest,2375_2,Toms Run,38.504,23.925,50.2,46.1,27.8
+13,Tionesta,Forest,57_1,Little Aughwick Creek,276.505,171.812,242.5,191.7,27.8
+13,Tionesta,Forest,2245_2,Little Muddy Run,164.055,101.939,147.6,157.6,27.8
+13,Tionesta,Forest,3563_2,East Branch Stony Fork,238.027,147.903,239.6,40.2,27.8
+13,Tionesta,Forest,6215_3,Indian Creek,209.412,130.122,185.8,27.7,27.8
+13,Tionesta,Forest,1975_2,Little Toby Creek,93.373,58.019,94.3,318.3,27.8
+13,Tionesta,Forest,3017_2,Beaverdam Run,219.947,136.669,206.2,554.1,27.8
+13,Tionesta,Forest,3291_3,Great Trough Creek,245.426,152.5,219.2,160.3,27.8
+13,Tionesta,Forest,4028_2,Chest Creek,160.287,99.598,155.1,303.4,27.8
+13,Tionesta,Forest,3560_2,South Woods Branch,181.362,112.693,181.6,69.5,27.8
+13,Tionesta,Forest,1148_2,Charleston Creek,236.475,146.939,224.4,132.7,27.8
+13,Tionesta,Forest,2519_5,Bowman Creek,384.754,239.075,319.1,270.2,27.8
+13,Tionesta,Forest,62_4,Bobs Creek,217.577,135.196,201.4,127.8,27.8
+13,Tionesta,Forest,181_3,Mahoning Creek,298.304,185.358,222.2,27.2,27.8
+13,Tionesta,Forest,2649_1,Conneauttee Creek,87.128,54.139,82.8,56.7,27.8
+13,Tionesta,Forest,2522_3,Wallace Run,184.432,114.601,151.8,33.6,27.8
+13,Tionesta,Forest,1707_2,Big Sewickley Creek,165.571,102.881,135.1,42.1,27.8
+13,Tionesta,Forest,3064_2,Wyomissing Creek,421.098,261.658,324.3,7.5,27.8
+13,Tionesta,Forest,1339_5,Pine Creek,214.247,133.127,201.8,55.3,27.8
+13,Tionesta,Forest,300_2,North Fork Little Beaver Creek,144.778,89.961,130.5,49.6,27.8
+13,Tionesta,Forest,2199_3,Bald Eagle Creek,173.381,107.734,147.4,133.2,27.8
+13,Tionesta,Forest,3072_6,Tulpehocken Creek,405.54,251.991,317.9,190.7,27.8
+13,Tionesta,Forest,2712_3,Cedar Creek,431.245,267.963,330.8,76.4,27.8
+13,Tionesta,Forest,6188_2,Little Yellow Creek,171.47,106.547,161.6,295.3,27.8
+13,Tionesta,Forest,6063_4,Deer Creek,154.462,95.979,140.0,151.5,27.8
+13,Tionesta,Forest,1909_3,Oil Creek,38.749,24.078,42.0,265.6,27.8
+13,Tionesta,Forest,3040_4,Manatawny Creek,428.355,266.167,330.5,62.9,27.8
+13,Tionesta,Forest,3437_4,Silver Creek,430.165,267.292,346.4,101.1,27.8
+13,Tionesta,Forest,2660_6,Mcmichael Creek,427.177,265.436,316.6,69.5,27.8
+13,Tionesta,Forest,2832_2,Little Sugar Creek,63.838,39.667,66.7,315.5,27.8
+13,Tionesta,Forest,3160_4,Elk Creek,120.654,74.971,109.5,223.6,27.8
+13,Tionesta,Forest,2157_3,Marsh Creek,206.049,128.033,170.9,100.7,27.8
+13,Tionesta,Forest,282_2,Little Beaver Creek,408.707,253.959,337.9,279.4,27.8
+13,Tionesta,Forest,1802_3,Traverse Creek,193.701,120.36,162.2,250.8,27.8
+13,Tionesta,Forest,6063_3,Deer Creek,139.734,86.827,138.9,13.1,27.8
+13,Tionesta,Forest,59_4,Yellow Creek,248.964,154.699,207.7,41.8,27.8
+13,Tionesta,Forest,49_2,Sherman Valley Run,267.044,165.933,231.1,62.0,27.8
+13,Tionesta,Forest,6140_2,Raccoon Creek,290.192,180.317,237.5,156.9,27.8
+13,Tionesta,Forest,1819_3,Conococheague Creek,305.659,189.928,275.1,162.4,27.8
 11,Reynoldsdale,Bedford,61_3,Mountain Creek,153.092,95.127,142.3,239.2,99.9
 11,Reynoldsdale,Bedford,2997_2,Kooser Run,90.029,55.941,72.6,20.1,99.9
 11,Reynoldsdale,Bedford,399_3,Delaware Canal,367.959,228.639,269.0,22.3,99.9
@@ -7999,6 +8699,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,1704_2,Flaugherty Run,139.832,86.888,121.3,25.0,71.5
 2,Linesville,Crawford,46_2,Oregon Creek,360.198,223.817,293.4,158.9,71.5
 2,Linesville,Crawford,3811_2,Vanscoyoc Run,275.828,171.392,207.1,147.3,71.5
+13,Tionesta,Forest,61_3,Mountain Creek,335.391,208.402,317.6,239.2,27.8
+13,Tionesta,Forest,2997_2,Kooser Run,218.872,136.001,194.4,20.1,27.8
+13,Tionesta,Forest,399_3,Delaware Canal,511.29,317.701,390.2,22.3,27.8
+13,Tionesta,Forest,2795_2,Little Bear Creek,295.26,183.466,239.2,26.5,27.8
+13,Tionesta,Forest,1719_2,Bull Creek,141.047,87.643,132.7,25.7,27.8
+13,Tionesta,Forest,3742_3,Elklick Creek,261.662,162.589,225.5,91.5,27.8
+13,Tionesta,Forest,2766_2,Drakes Creek,399.2,248.051,303.7,50.8,27.8
+13,Tionesta,Forest,2347_2,West Branch Wallenpaupack Creek,429.896,267.125,322.7,41.9,27.8
+13,Tionesta,Forest,329_4,Neshannock Creek,108.254,67.266,96.9,578.2,27.8
+13,Tionesta,Forest,2900_2,Delaware Creek,276.449,171.778,226.8,22.4,27.8
+13,Tionesta,Forest,2905_2,Hemlock Creek,14.674,9.118,14.3,55.1,27.8
+13,Tionesta,Forest,1883_3,Big Mill Creek,87.096,54.119,93.5,54.2,27.8
+13,Tionesta,Forest,6084_2,Shannon Run,177.107,110.049,163.9,100.8,27.8
+13,Tionesta,Forest,2851_3,East Hickory Creek,15.504,9.634,17.5,50.3,27.8
+13,Tionesta,Forest,2728_4,Hokendauqua Creek,417.085,259.165,323.2,200.0,27.8
+13,Tionesta,Forest,413_2,French Creek,451.785,280.726,350.0,67.9,27.8
+13,Tionesta,Forest,2711_2,Twomile Run,68.299,42.439,71.0,118.2,27.8
+13,Tionesta,Forest,3741_2,Flaugherty Creek,266.764,165.76,233.1,142.1,27.8
+13,Tionesta,Forest,2703_6,West Branch Tionesta Creek,73.18,45.472,66.9,178.1,27.8
+13,Tionesta,Forest,1887_2,Spring Creek,58.315,36.235,72.5,160.9,27.8
+13,Tionesta,Forest,3072_8,Tulpehocken Creek,414.074,257.294,317.5,87.6,27.8
+13,Tionesta,Forest,270_1,Three Springs Creek,257.063,159.731,225.9,42.1,27.8
+13,Tionesta,Forest,1557_3,Powell Creek,314.923,195.684,258.5,287.1,27.8
+13,Tionesta,Forest,165_3,Buffalo Creek,101.092,62.816,105.4,89.0,27.8
+13,Tionesta,Forest,1346_2,Aunt Clara Fork,213.507,132.667,183.4,82.5,27.8
+13,Tionesta,Forest,3160_2,Elk Creek,103.437,64.273,97.5,171.0,27.8
+13,Tionesta,Forest,2727_2,Switzer Creek,412.893,256.56,319.8,64.9,27.8
+13,Tionesta,Forest,2033_3,Muddy Creek,404.583,251.396,345.9,208.7,27.8
+13,Tionesta,Forest,204_3,Nescopeck Creek,363.372,225.789,277.0,130.8,27.8
+13,Tionesta,Forest,1339_12,Pine Creek,269.822,167.66,219.8,129.2,27.8
+13,Tionesta,Forest,1797_2,Brush Creek,155.957,96.907,142.6,368.3,27.8
+13,Tionesta,Forest,1332_2,Middle Branch White Clay Creek,449.74,279.456,379.5,27.8,27.8
+13,Tionesta,Forest,3297_7,Quittapahilla Creek,355.88,221.134,294.7,23.6,27.8
+13,Tionesta,Forest,2371_2,Clear Creek,55.495,34.483,57.4,112.5,27.8
+13,Tionesta,Forest,3812_2,Treaster Run,243.676,151.414,219.3,117.4,27.8
+13,Tionesta,Forest,2654_2,Little Brokenstraw Creek,61.201,38.029,54.3,327.9,27.8
+13,Tionesta,Forest,236_2,Pocopson Creek,483.338,300.332,376.3,99.6,27.8
+13,Tionesta,Forest,2851_4,East Hickory Creek,12.1,7.519,10.6,107.4,27.8
+13,Tionesta,Forest,3148_2,Little Cocalico Creek,429.711,267.01,332.8,121.4,27.8
+13,Tionesta,Forest,3472_4,Rapid Run,267.28,166.08,216.1,228.1,27.8
+13,Tionesta,Forest,1443_2,Prather Creek,40.232,24.999,39.0,356.0,27.8
+13,Tionesta,Forest,1444_2,West Hickory Creek,14.514,9.018,15.8,722.5,27.8
+13,Tionesta,Forest,2890_3,Tuscarora Creek,298.498,185.478,257.1,339.3,27.8
+13,Tionesta,Forest,1621_4,Falling Spring Branch,308.437,191.654,280.2,49.3,27.8
+13,Tionesta,Forest,2921_2,Powers Run,95.123,59.107,95.5,3.8,27.8
+13,Tionesta,Forest,6181_2,Millers Run,200.167,124.378,163.2,40.9,27.8
+13,Tionesta,Forest,2923_2,Tionesta Creek,29.853,18.55,29.5,200.7,27.8
+13,Tionesta,Forest,3072_4,Tulpehocken Creek,405.569,252.009,309.9,61.4,27.8
+13,Tionesta,Forest,2608_2,Fourmile Run,75.987,47.216,82.9,118.5,27.8
+13,Tionesta,Forest,3364_3,First Fork Sinnemahoning Creek,177.968,110.584,167.2,3.6,27.8
+13,Tionesta,Forest,2476_2,Middle Branch Bush Kill,462.944,287.66,361.4,64.5,27.8
+13,Tionesta,Forest,1796_5,Loyalhanna Creek,183.913,114.278,166.1,63.3,27.8
+13,Tionesta,Forest,632_3,West Branch Brandywine Creek,430.49,267.494,358.1,92.0,27.8
+13,Tionesta,Forest,2231_4,Swift Run,277.111,172.189,228.6,47.6,27.8
+13,Tionesta,Forest,2556_2,Jackson Run,62.41,38.78,55.1,71.0,27.8
+13,Tionesta,Forest,1942_3,Chester Creek,492.87,306.255,384.1,145.1,27.8
+13,Tionesta,Forest,2232_5,Middle Creek,284.58,176.83,233.2,55.5,27.8
+13,Tionesta,Forest,6239_2,Kings Creek,327.292,203.37,273.5,40.6,27.8
+13,Tionesta,Forest,4341_2,Sugar Run,363.591,225.925,295.9,241.8,27.8
+13,Tionesta,Forest,6237_4,Buckwha Creek,410.857,255.295,318.0,80.3,27.8
+13,Tionesta,Forest,2232_4,Middle Creek,279.951,173.954,235.7,102.1,27.8
+13,Tionesta,Forest,2634_3,Kinzua Creek,103.062,64.04,102.5,133.5,27.8
+13,Tionesta,Forest,6027_2,Beaver Creek,51.035,31.712,53.0,78.9,27.8
+13,Tionesta,Forest,351_2,Mill Creek,83.35,51.791,90.0,177.8,27.8
+13,Tionesta,Forest,2665_3,Hickory Run,385.763,239.702,293.0,32.5,27.8
+13,Tionesta,Forest,2660_5,Mcmichael Creek,430.113,267.26,320.9,132.2,27.8
+13,Tionesta,Forest,22_2,Opossum Creek,349.423,217.122,313.7,154.7,27.8
+13,Tionesta,Forest,2028_3,East Branch White Clay Creek,453.258,281.641,387.7,416.2,27.8
+13,Tionesta,Forest,2906_2,Pithole Creek,16.795,10.436,21.9,343.6,27.8
+13,Tionesta,Forest,2717_8,Monocacy Creek,434.041,269.701,340.2,115.1,27.8
+13,Tionesta,Forest,409_4,Pickering Creek,476.283,295.949,363.3,77.1,27.8
+13,Tionesta,Forest,2634_5,Kinzua Creek,102.817,63.887,117.5,73.3,27.8
+13,Tionesta,Forest,1868_2,Lower Twomile Run,40.693,25.285,46.0,8.3,27.8
+13,Tionesta,Forest,117_4,Loyalsock Creek,317.499,197.285,259.4,32.9,27.8
+13,Tionesta,Forest,1871_2,West Branch Millstone Creek,45.508,28.278,45.0,510.7,27.8
+13,Tionesta,Forest,6023_2,Mill Creek,80.036,49.732,84.0,387.5,27.8
+13,Tionesta,Forest,3007_2,Pike Run,220.084,136.754,202.7,46.0,27.8
+13,Tionesta,Forest,59_5,Yellow Creek,253.082,157.258,217.1,296.2,27.8
+13,Tionesta,Forest,2519_3,Bowman Creek,376.131,233.717,311.6,187.3,27.8
+13,Tionesta,Forest,3341_2,Little Clearfield Creek,140.434,87.262,128.3,119.1,27.8
+13,Tionesta,Forest,2700_3,East Branch Tionesta Creek,86.926,54.013,123.4,84.4,27.8
+13,Tionesta,Forest,2880_2,Buffalo Creek,288.005,178.958,246.2,541.7,27.8
+13,Tionesta,Forest,2636_2,Fishing Creek,155.308,96.504,149.0,200.9,27.8
+13,Tionesta,Forest,2442_3,Tobyhanna Creek,420.106,261.041,309.1,384.6,27.8
+13,Tionesta,Forest,2187_2,Little Chartiers Creek,209.3,130.053,173.0,15.2,27.8
+13,Tionesta,Forest,653_5,Bushkill Creek,447.608,278.13,340.6,42.3,27.8
+13,Tionesta,Forest,3193_6,Little Schuylkill River,382.082,237.415,297.4,66.2,27.8
+13,Tionesta,Forest,1836_2,Little Wills Creek,284.821,176.979,234.1,151.1,27.8
+13,Tionesta,Forest,18_2,Otter Creek,400.191,248.667,336.2,171.7,27.8
+13,Tionesta,Forest,1436_2,Standing Stone Creek,227.296,141.235,198.6,35.2,27.8
+13,Tionesta,Forest,2486_2,Cush Creek,123.054,76.462,123.4,77.3,27.8
+13,Tionesta,Forest,3122_2,Mahantango Creek,350.101,217.543,275.9,177.1,27.8
+13,Tionesta,Forest,69_4,Green Spring Creek,305.435,189.788,278.2,65.8,27.8
+13,Tionesta,Forest,2033_4,Muddy Creek,409.936,254.722,344.8,117.4,27.8
+13,Tionesta,Forest,2280_7,West Branch Lackawaxen River,455.858,283.257,349.0,55.0,27.8
+13,Tionesta,Forest,4515_4,Little Shamokin Creek,305.063,189.558,236.0,3.1,27.8
+13,Tionesta,Forest,2821_2,Laurel Run,441.985,274.637,338.2,36.5,27.8
+13,Tionesta,Forest,1704_2,Flaugherty Run,178.177,110.714,145.6,25.0,27.8
+13,Tionesta,Forest,46_2,Oregon Creek,280.878,174.529,267.1,158.9,27.8
+13,Tionesta,Forest,3811_2,Vanscoyoc Run,173.444,107.773,151.3,147.3,27.8
 11,Reynoldsdale,Bedford,2647_3,Chappel Fork,268.798,167.024,219.3,86.6,99.9
 11,Reynoldsdale,Bedford,2271_1,Lackawaxen River,408.299,253.705,301.6,51.2,99.9
 11,Reynoldsdale,Bedford,2296_2,Beaverdam Run,76.754,47.693,64.8,114.4,99.9
@@ -8999,6 +9799,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,366_2,Ithan Creek,620.872,385.792,434.7,15.6,71.5
 2,Linesville,Crawford,615_2,East Branch Tunkhannock Creek,547.927,340.466,388.2,70.6,71.5
 2,Linesville,Crawford,4181_2,Elk Creek,424.514,263.781,322.7,96.7,71.5
+13,Tionesta,Forest,2647_3,Chappel Fork,96.052,59.684,89.6,86.6,27.8
+13,Tionesta,Forest,2271_1,Lackawaxen River,456.844,283.87,349.8,51.2,27.8
+13,Tionesta,Forest,2296_2,Beaverdam Run,177.565,110.334,169.5,114.4,27.8
+13,Tionesta,Forest,1549_2,West Branch Little Conestoga Creek,394.299,245.006,327.6,89.8,27.8
+13,Tionesta,Forest,430_2,Little Muddy Creek,428.895,266.503,328.4,122.2,27.8
+13,Tionesta,Forest,3382_1,Redbank Creek,69.642,43.274,66.6,49.0,27.8
+13,Tionesta,Forest,2686_2,Caldwell Creek,31.91,19.828,34.8,282.9,27.8
+13,Tionesta,Forest,1567_2,Meetinghouse Creek,417.511,259.429,344.8,216.5,27.8
+13,Tionesta,Forest,274_2,Little Conestoga Creek,385.193,239.348,311.0,20.9,27.8
+13,Tionesta,Forest,2532_2,Sixmile Run,163.746,101.747,141.9,30.7,27.8
+13,Tionesta,Forest,2708_2,West Branch Caldwell Creek,38.814,24.118,43.4,134.9,27.8
+13,Tionesta,Forest,3298_2,Bixler Run,294.11,182.752,251.9,290.8,27.8
+13,Tionesta,Forest,161_6,South Branch Roaring Creek,318.0,197.596,238.3,22.3,27.8
+13,Tionesta,Forest,117_6,Loyalsock Creek,296.744,184.388,237.9,36.6,27.8
+13,Tionesta,Forest,2073_2,Long Run,174.463,108.406,164.5,22.5,27.8
+13,Tionesta,Forest,456_3,South Branch Tunkhannock Creek,431.488,268.114,328.9,201.1,27.8
+13,Tionesta,Forest,2717_3,Monocacy Creek,425.365,264.31,329.6,124.5,27.8
+13,Tionesta,Forest,3541_2,Fall Brook,428.154,266.042,343.3,15.7,27.8
+13,Tionesta,Forest,3744_2,Whiteley Creek,268.257,166.687,214.1,153.5,27.8
+13,Tionesta,Forest,1830_2,West Branch Conococheague Creek,272.62,169.398,241.4,21.4,27.8
+13,Tionesta,Forest,2267_2,East Sandy Creek,31.132,19.344,33.4,37.1,27.8
+13,Tionesta,Forest,1813_2,Licking Creek,310.048,192.655,249.1,84.4,27.8
+13,Tionesta,Forest,2565_2,South Branch French Creek,70.957,44.09,73.9,351.2,27.8
+13,Tionesta,Forest,2714_2,Little Lehigh Creek,425.019,264.095,327.8,11.6,27.8
+13,Tionesta,Forest,2645_3,Marvin Creek,118.226,73.462,113.0,136.1,27.8
+13,Tionesta,Forest,4492_2,Bell Run,170.056,105.668,160.6,17.7,27.8
+13,Tionesta,Forest,5995_5,Harveys Creek,365.151,226.895,285.9,22.1,27.8
+13,Tionesta,Forest,2987_2,Dunbar Creek,215.404,133.846,196.6,47.3,27.8
+13,Tionesta,Forest,3502_2,Genesee River,201.509,125.212,193.0,387.6,27.8
+13,Tionesta,Forest,3546_4,Freeman Run,170.304,105.822,158.7,159.4,27.8
+13,Tionesta,Forest,3661_2,Little Buffalo Run,100.972,62.741,108.8,93.6,27.8
+13,Tionesta,Forest,2364_2,Cathers Run,39.313,24.428,41.0,353.7,27.8
+13,Tionesta,Forest,3516_4,Oswayo Creek,177.854,110.514,162.6,127.7,27.8
+13,Tionesta,Forest,2034_2,Fishing Creek,420.633,261.369,354.6,185.3,27.8
+13,Tionesta,Forest,1625_5,Conewago Creek,342.83,213.025,317.9,12.1,27.8
+13,Tionesta,Forest,4028_5,Chest Creek,135.858,84.418,140.1,40.6,27.8
+13,Tionesta,Forest,3007_4,Pike Run,215.603,133.97,192.1,300.5,27.8
+13,Tionesta,Forest,4163_2,Mill Creek - hillsgrove,316.966,196.954,261.8,134.7,27.8
+13,Tionesta,Forest,2890_2,Tuscarora Creek,272.146,169.103,245.9,39.0,27.8
+13,Tionesta,Forest,2686_4,Caldwell Creek,28.65,17.802,31.3,257.9,27.8
+13,Tionesta,Forest,2192_2,White Deer Hole Creek,273.703,170.071,224.8,392.0,27.8
+13,Tionesta,Forest,2207_6,Penns Creek,260.313,161.751,224.0,38.4,27.8
+13,Tionesta,Forest,7360_3,Honey Creek,239.43,148.775,208.8,46.2,27.8
+13,Tionesta,Forest,388_2,Little Chiques Creek,372.823,231.662,305.0,85.8,27.8
+13,Tionesta,Forest,2011_2,Tubmill Creek,180.269,112.014,166.4,20.2,27.8
+13,Tionesta,Forest,3301_3,Stony Creek,321.814,199.966,272.2,14.8,27.8
+13,Tionesta,Forest,4091_2,Tuscarora Creek,384.452,238.888,312.1,47.9,27.8
+13,Tionesta,Forest,2685_1,Sevenmile Run,110.855,68.882,117.5,80.6,27.8
+13,Tionesta,Forest,6062_2,Bells Gap Run,195.769,121.645,165.9,19.0,27.8
+13,Tionesta,Forest,1796_3,Loyalhanna Creek,194.228,120.688,177.1,98.4,27.8
+13,Tionesta,Forest,2488_2,Big Poe Creek,238.51,148.203,212.0,50.3,27.8
+13,Tionesta,Forest,1339_6,Pine Creek,223.364,138.792,213.8,373.1,27.8
+13,Tionesta,Forest,2730_4,Lehigh River,405.819,252.164,304.5,37.1,27.8
+13,Tionesta,Forest,3354_2,Little Pine Creek,275.746,171.341,222.7,54.9,27.8
+13,Tionesta,Forest,48_2,South Branch Little Aughwick Creek,283.31,176.04,254.5,158.5,27.8
+13,Tionesta,Forest,1909_7,Oil Creek,41.886,26.027,45.7,245.2,27.8
+13,Tionesta,Forest,4345_2,West Branch Meshoppen Creek,398.156,247.402,329.0,166.0,27.8
+13,Tionesta,Forest,3437_2,Silver Creek,425.357,264.304,339.1,138.8,27.8
+13,Tionesta,Forest,3136_2,Bald Eagle Creek,176.281,109.536,149.7,157.1,27.8
+13,Tionesta,Forest,328_3,Big Run,135.14,83.972,114.4,11.8,27.8
+13,Tionesta,Forest,1462_1,Casselman River,268.88,167.074,228.2,185.7,27.8
+13,Tionesta,Forest,3251_2,Tenmile Creek,245.383,152.474,200.0,40.2,27.8
+13,Tionesta,Forest,3130_2,North Branch Mahantango Creek,297.875,185.091,244.9,62.8,27.8
+13,Tionesta,Forest,1337_2,Little Loyalsock Creek,350.715,217.924,270.3,194.1,27.8
+13,Tionesta,Forest,1902_3,Elk Creek,99.737,61.974,93.1,85.6,27.8
+13,Tionesta,Forest,6080_2,West Branch Cowley Run,154.927,96.267,144.6,25.9,27.8
+13,Tionesta,Forest,3197_2,Bear Creek,376.846,234.161,287.3,11.2,27.8
+13,Tionesta,Forest,219_2,Pequea Creek,419.765,260.83,350.6,146.5,27.8
+13,Tionesta,Forest,2973_3,Canoe Creek,215.813,134.1,187.0,43.6,27.8
+13,Tionesta,Forest,113_2,Lycoming Creek,304.049,188.927,237.2,17.9,27.8
+13,Tionesta,Forest,1909_6,Oil Creek,27.63,17.169,34.0,551.3,27.8
+13,Tionesta,Forest,2975_2,Little Buffalo Creek,301.368,187.261,253.9,62.1,27.8
+13,Tionesta,Forest,1824_4,East Branch Antietam Creek,333.427,207.182,306.1,72.2,27.8
+13,Tionesta,Forest,67_2,Beaver Creek,251.451,156.244,212.4,69.9,27.8
+13,Tionesta,Forest,2865_4,Driftwood Branch Sinnemahoning Creek,146.768,91.197,136.1,90.1,27.8
+13,Tionesta,Forest,276_3,Yellow Breeches Creek,330.891,205.606,295.9,34.6,27.8
+13,Tionesta,Forest,2254_4,Black Moshannon Creek,169.137,105.097,159.0,729.0,27.8
+13,Tionesta,Forest,3587_3,Marsh Creek,224.041,139.212,210.5,119.2,27.8
+13,Tionesta,Forest,3012_2,Beaverdam Creek,227.023,141.066,203.4,568.0,27.8
+13,Tionesta,Forest,1802_2,Traverse Creek,187.328,116.401,162.3,21.5,27.8
+13,Tionesta,Forest,3297_4,Quittapahilla Creek,367.16,228.143,301.3,65.6,27.8
+13,Tionesta,Forest,1944_2,Stewart Run,418.977,260.34,349.8,283.3,27.8
+13,Tionesta,Forest,2971_2,Maiden Creek,398.246,247.458,303.4,99.9,27.8
+13,Tionesta,Forest,1974_3,Little Sandy Creek,53.116,33.005,53.1,283.3,27.8
+13,Tionesta,Forest,3960_3,Schrader Creek,354.255,220.124,308.9,229.1,27.8
+13,Tionesta,Forest,3871_2,North Branch Sugar Creek,284.34,176.681,271.5,41.2,27.8
+13,Tionesta,Forest,2115_1,Shehawken Creek,480.754,298.727,371.7,26.5,27.8
+13,Tionesta,Forest,2968_4,Raystown Branch Juniata River,260.926,162.132,210.5,305.8,27.8
+13,Tionesta,Forest,2636_3,Fishing Creek,151.242,93.977,140.9,144.4,27.8
+13,Tionesta,Forest,2894_2,Lower Little Swatara Creek,374.277,232.565,283.4,266.7,27.8
+13,Tionesta,Forest,653_2,Bushkill Creek,441.499,274.335,337.5,122.9,27.8
+13,Tionesta,Forest,275_3,Fishing Creek,393.728,244.651,328.1,367.3,27.8
+13,Tionesta,Forest,2797_3,Northkill Creek,394.957,245.415,305.4,170.1,27.8
+13,Tionesta,Forest,2888_5,East Licking Creek,263.042,163.447,221.5,72.7,27.8
+13,Tionesta,Forest,2347_4,West Branch Wallenpaupack Creek,438.71,272.602,326.3,312.0,27.8
+13,Tionesta,Forest,147_2,Canoe Creek,97.999,60.894,99.8,154.7,27.8
+13,Tionesta,Forest,3961_2,South Branch Towanda Creek,360.883,224.242,274.8,73.5,27.8
+13,Tionesta,Forest,366_2,Ithan Creek,518.488,322.173,378.8,15.6,27.8
+13,Tionesta,Forest,615_2,East Branch Tunkhannock Creek,445.543,276.848,332.3,70.6,27.8
+13,Tionesta,Forest,4181_2,Elk Creek,322.13,200.162,266.8,96.7,27.8
 11,Reynoldsdale,Bedford,2689_2,Shaver Creek,100.396,62.383,91.4,372.2,99.9
 11,Reynoldsdale,Bedford,6149_2,Strodes Run,138.394,85.994,121.6,48.0,99.9
 11,Reynoldsdale,Bedford,1486_2,Scrubgrass Creek,140.357,87.214,131.6,19.6,99.9
@@ -9999,6 +10899,106 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,3303_3,Clark Creek,433.3,269.24,330.7,59.4,71.5
 2,Linesville,Crawford,1250_3,Mahoning Creek,499.106,310.13,359.6,239.3,71.5
 2,Linesville,Crawford,2735_3,Martins Creek,552.45,343.277,397.0,136.9,71.5
+13,Tionesta,Forest,2689_2,Shaver Creek,211.348,131.325,188.7,372.2,27.8
+13,Tionesta,Forest,6149_2,Strodes Run,247.658,153.888,207.2,48.0,27.8
+13,Tionesta,Forest,1486_2,Scrubgrass Creek,85.527,53.144,85.1,19.6,27.8
+13,Tionesta,Forest,2282_1,Millstone Creek,53.324,33.134,61.8,80.9,27.8
+13,Tionesta,Forest,1355_4,Little Bushkill Creek,440.628,273.794,335.2,46.8,27.8
+13,Tionesta,Forest,4035_1,Gazzam Run,133.877,83.187,125.3,168.6,27.8
+13,Tionesta,Forest,183_3,Fishing Creek,342.123,212.585,265.6,52.4,27.8
+13,Tionesta,Forest,4481_2,Antietam Creek,418.947,260.322,322.3,16.8,27.8
+13,Tionesta,Forest,1436_4,Standing Stone Creek,212.848,132.258,183.1,59.6,27.8
+13,Tionesta,Forest,2303_2,Killbuck Run,150.091,93.262,169.8,683.1,27.8
+13,Tionesta,Forest,2220_2,South Witmer Run,149.698,93.018,153.2,64.3,27.8
+13,Tionesta,Forest,2640_2,Muddy Creek,58.423,36.303,56.0,48.4,27.8
+13,Tionesta,Forest,2729_5,Lehigh Canal,407.322,253.098,312.3,26.6,27.8
+13,Tionesta,Forest,2892_2,Wiconisco Creek,343.385,213.37,274.5,160.4,27.8
+13,Tionesta,Forest,2921_1,Powers Run,99.797,62.011,129.1,568.1,27.8
+13,Tionesta,Forest,3847_1,Mudlick Run,106.683,66.29,108.7,58.7,27.8
+13,Tionesta,Forest,350_3,Cool Spring Creek,86.798,53.934,89.4,348.6,27.8
+13,Tionesta,Forest,2254_5,Black Moshannon Creek,178.451,110.884,172.2,216.9,27.8
+13,Tionesta,Forest,183_9,Fishing Creek,318.852,198.125,238.4,37.7,27.8
+13,Tionesta,Forest,2252_3,Clearfield Creek,170.579,105.993,164.3,217.2,27.8
+13,Tionesta,Forest,2281_4,Dyberry Creek,456.649,283.748,348.1,172.0,27.8
+13,Tionesta,Forest,6025_4,North Fork Redbank Creek,65.158,40.487,85.8,301.0,27.8
+13,Tionesta,Forest,1909_4,Oil Creek,28.162,17.499,27.8,66.5,27.8
+13,Tionesta,Forest,2716_6,Jordan Creek,432.626,268.821,331.5,56.5,27.8
+13,Tionesta,Forest,6073_2,Hendricks Creek,183.206,113.839,170.6,7.7,27.8
+13,Tionesta,Forest,1823_2,Evitts Creek,290.581,180.559,243.5,198.8,27.8
+13,Tionesta,Forest,3180_3,Mill Creek,393.813,244.704,304.4,474.1,27.8
+13,Tionesta,Forest,2382_1,Canawacta Creek,453.175,281.59,357.4,192.5,27.8
+13,Tionesta,Forest,2347_3,West Branch Wallenpaupack Creek,434.834,270.194,329.9,39.9,27.8
+13,Tionesta,Forest,2968_11,Raystown Branch Juniata River,218.226,135.599,194.5,29.8,27.8
+13,Tionesta,Forest,2208_2,South Branch Middle Creek,268.349,166.744,225.1,190.5,27.8
+13,Tionesta,Forest,2561_1,Potato Creek,134.697,83.697,128.0,177.1,27.8
+13,Tionesta,Forest,2488_3,Big Poe Creek,241.097,149.811,218.3,31.4,27.8
+13,Tionesta,Forest,2575_1,Willow Creek,122.316,76.004,117.6,83.6,27.8
+13,Tionesta,Forest,3181_2,Sacony Creek,415.967,258.47,320.4,200.8,27.8
+13,Tionesta,Forest,2927_2,West Branch Clarion River,98.735,61.351,95.0,92.1,27.8
+13,Tionesta,Forest,2777_3,Dents Run,152.582,94.81,147.0,36.9,27.8
+13,Tionesta,Forest,2179_5,South Fork Bens Creek,193.308,120.116,183.0,88.2,27.8
+13,Tionesta,Forest,63_2,Fishing Creek,349.887,217.41,293.3,166.9,27.8
+13,Tionesta,Forest,3613_2,North Creek,148.965,92.563,139.5,123.7,27.8
+13,Tionesta,Forest,6013_2,Bear Creek,87.46,54.345,84.6,219.9,27.8
+13,Tionesta,Forest,6025_6,North Fork Redbank Creek,63.687,39.573,70.0,50.9,27.8
+13,Tionesta,Forest,2923_4,Tionesta Creek,4.026,2.501,5.7,99.4,27.8
+13,Tionesta,Forest,2629_3,South Branch Kinzua Creek,91.926,57.12,88.4,131.3,27.8
+13,Tionesta,Forest,1928_2,North Branch Muddy Creek,392.114,243.648,331.6,141.8,27.8
+13,Tionesta,Forest,2714_5,Little Lehigh Creek,430.386,267.429,331.6,31.9,27.8
+13,Tionesta,Forest,3354_4,Little Pine Creek,270.047,167.8,233.6,175.7,27.8
+13,Tionesta,Forest,595_2,Masthope Creek,475.385,295.391,378.0,153.2,27.8
+13,Tionesta,Forest,3740_7,Laurel Hill Creek,252.835,157.105,234.7,35.8,27.8
+13,Tionesta,Forest,278_2,Shade Creek,253.832,157.724,220.4,58.5,27.8
+13,Tionesta,Forest,3351_9,Kettle Creek,205.822,127.892,214.8,153.7,27.8
+13,Tionesta,Forest,34_4,Clear Creek,277.299,172.306,224.9,752.0,27.8
+13,Tionesta,Forest,137_3,Medix Run,136.556,84.852,128.5,52.5,27.8
+13,Tionesta,Forest,2897_2,West Branch Rattling Creek,348.772,216.717,281.1,552.7,27.8
+13,Tionesta,Forest,2436_4,Bush Kill,447.286,277.931,340.3,312.5,27.8
+13,Tionesta,Forest,2550_2,Hemlock Run,68.54,42.589,76.7,61.9,27.8
+13,Tionesta,Forest,2602_1,Perry Magee Run,35.23,21.891,65.9,298.2,27.8
+13,Tionesta,Forest,422_2,Muddy Creek,414.975,257.853,338.2,111.5,27.8
+13,Tionesta,Forest,1363_2,Tidioute Creek,26.742,16.617,26.1,102.0,27.8
+13,Tionesta,Forest,2560_2,Sugar Run,97.59,60.64,90.5,148.5,27.8
+13,Tionesta,Forest,1336_3,Hoagland Branch,322.488,200.385,268.4,54.0,27.8
+13,Tionesta,Forest,378_4,Pennypack Creek,530.025,329.342,394.1,179.1,27.8
+13,Tionesta,Forest,2862_2,Hyner Run,228.679,142.094,212.6,66.7,27.8
+13,Tionesta,Forest,3300_2,West Licking Creek,243.124,151.071,216.6,58.4,27.8
+13,Tionesta,Forest,1909_8,Oil Creek,39.889,24.786,41.2,89.8,27.8
+13,Tionesta,Forest,1883_5,Big Mill Creek,96.245,59.804,92.8,549.1,27.8
+13,Tionesta,Forest,3293_2,Montour Creek,296.729,184.379,254.6,53.7,27.8
+13,Tionesta,Forest,4342_3,Martins Creek,444.19,276.007,344.1,39.5,27.8
+13,Tionesta,Forest,1806_2,Montour Run,183.28,113.885,151.0,127.7,27.8
+13,Tionesta,Forest,2222_2,Pine Creek,339.899,211.203,267.3,320.6,27.8
+13,Tionesta,Forest,2631_2,Combs Creek,145.82,90.608,140.2,116.9,27.8
+13,Tionesta,Forest,276_4,Yellow Breeches Creek,346.081,215.045,289.5,143.9,27.8
+13,Tionesta,Forest,3728_4,Piney Creek,266.918,165.855,227.9,75.2,27.8
+13,Tionesta,Forest,48_3,South Branch Little Aughwick Creek,273.68,170.057,240.7,135.8,27.8
+13,Tionesta,Forest,1966_4,Sinnemahoning Portage Creek,147.255,91.5,136.6,56.7,27.8
+13,Tionesta,Forest,1461_2,Whites Creek,264.618,164.426,235.5,189.8,27.8
+13,Tionesta,Forest,2671_1,Frankstown Branch Juniata River,225.455,140.091,185.0,37.4,27.8
+13,Tionesta,Forest,1304_2,East Branch Dyberry Creek,472.082,293.338,367.4,37.4,27.8
+13,Tionesta,Forest,275_2,Fishing Creek,391.699,243.39,327.3,119.5,27.8
+13,Tionesta,Forest,1571_2,South Branch Muddy Creek,404.615,251.416,346.0,299.8,27.8
+13,Tionesta,Forest,2822_3,East Branch Sugar Creek,50.089,31.124,55.8,285.7,27.8
+13,Tionesta,Forest,3764_1,Dunkard Fork,269.193,167.269,233.4,30.9,27.8
+13,Tionesta,Forest,2603_3,Woodcock Creek,76.602,47.598,73.9,155.3,27.8
+13,Tionesta,Forest,1327_1,Youghiogheny River,247.891,154.032,234.3,41.0,27.8
+13,Tionesta,Forest,1417_2,Globe Run,216.37,134.446,192.1,605.2,27.8
+13,Tionesta,Forest,263_2,Beaver Creek,391.873,243.499,331.5,10.7,27.8
+13,Tionesta,Forest,2537_2,North Branch Mehoopany Creek,364.001,226.18,284.4,137.9,27.8
+13,Tionesta,Forest,1339_10,Pine Creek,293.116,182.134,245.5,34.8,27.8
+13,Tionesta,Forest,1794_3,North Branch Blacklick Creek,152.221,94.586,156.1,248.3,27.8
+13,Tionesta,Forest,6046_2,Pekin Run,67.182,41.745,72.9,324.4,27.8
+13,Tionesta,Forest,6178_2,Spring Creek,286.465,178.001,218.6,54.2,27.8
+13,Tionesta,Forest,3193_8,Little Schuylkill River,382.181,237.476,289.7,62.9,27.8
+13,Tionesta,Forest,5789_2,Beaver Creek,272.414,169.27,224.2,76.3,27.8
+13,Tionesta,Forest,102_4,Muncy Creek,303.471,188.568,234.8,19.2,27.8
+13,Tionesta,Forest,2033_1,Muddy Creek,401.689,249.598,339.6,541.0,27.8
+13,Tionesta,Forest,334_2,Taylor Run,110.303,68.539,96.6,370.0,27.8
+13,Tionesta,Forest,2705_2,South Branch Tionesta Creek,64.176,39.877,66.5,60.3,27.8
+13,Tionesta,Forest,3303_3,Clark Creek,330.916,205.622,274.9,59.4,27.8
+13,Tionesta,Forest,1250_3,Mahoning Creek,396.723,246.512,303.7,239.3,27.8
+13,Tionesta,Forest,2735_3,Martins Creek,450.066,279.658,341.1,136.9,27.8
 11,Reynoldsdale,Bedford,3074_2,Furnace Creek,248.22,154.237,191.3,10.4,99.9
 11,Reynoldsdale,Bedford,2686_3,Caldwell Creek,261.507,162.493,240.1,541.8,99.9
 11,Reynoldsdale,Bedford,204_5,Nescopeck Creek,311.184,193.361,217.8,149.4,99.9
@@ -10449,3 +11449,48 @@ hatchery_id,hatchery,county,section_id,water_name,road_km,road_mi,road_min,snap_
 2,Linesville,Crawford,232_3,East Branch Codorus Creek,486.717,302.432,374.3,7.7,71.5
 2,Linesville,Crawford,4028_6,Chest Creek,226.631,140.822,183.0,211.8,71.5
 2,Linesville,Crawford,2027_1,White Clay Creek,555.044,344.889,440.5,214.6,71.5
+13,Tionesta,Forest,3074_2,Furnace Creek,404.289,251.214,316.0,10.4,27.8
+13,Tionesta,Forest,2686_3,Caldwell Creek,33.86,21.039,37.2,541.8,27.8
+13,Tionesta,Forest,204_5,Nescopeck Creek,359.728,223.525,266.0,149.4,27.8
+13,Tionesta,Forest,1640_2,West Branch Chester Creek,494.819,307.466,386.8,121.4,27.8
+13,Tionesta,Forest,4343_2,Little Schrader Creek,349.558,217.206,312.3,650.1,27.8
+13,Tionesta,Forest,4026_2,Pine Creek,252.305,156.775,210.5,107.0,27.8
+13,Tionesta,Forest,2892_3,Wiconisco Creek,330.574,205.409,276.9,33.2,27.8
+13,Tionesta,Forest,2702_1,West Branch Potato Creek,133.484,82.943,134.7,141.6,27.8
+13,Tionesta,Forest,264_3,Big Spring Creek,309.202,192.129,281.1,30.6,27.8
+13,Tionesta,Forest,2436_6,Bush Kill,447.918,278.323,339.8,73.3,27.8
+13,Tionesta,Forest,3740_5,Laurel Hill Creek,233.896,145.336,218.7,46.7,27.8
+13,Tionesta,Forest,179_2,Scotch Run,329.156,204.528,255.7,55.1,27.8
+13,Tionesta,Forest,1816_2,Middle Creek,340.902,211.826,313.2,441.8,27.8
+13,Tionesta,Forest,462_4,Mehoopany Creek,373.451,232.052,296.9,41.2,27.8
+13,Tionesta,Forest,324_2,Hickory Run,130.442,81.053,117.8,136.1,27.8
+13,Tionesta,Forest,413_4,French Creek,453.548,281.822,357.8,88.2,27.8
+13,Tionesta,Forest,155_2,Mugser Run,321.799,199.957,244.2,49.7,27.8
+13,Tionesta,Forest,2767_2,Young Womans Creek,230.704,143.353,218.6,51.0,27.8
+13,Tionesta,Forest,3033_2,Piney Run,223.372,138.797,213.8,759.9,27.8
+13,Tionesta,Forest,3181_3,Sacony Creek,412.35,256.222,314.1,26.5,27.8
+13,Tionesta,Forest,2966_2,Panther Creek,282.377,175.461,239.0,226.1,27.8
+13,Tionesta,Forest,4502_3,Yellow Creek,156.502,97.246,146.4,354.9,27.8
+13,Tionesta,Forest,1898_2,Sugar Creek,43.097,26.779,41.6,430.3,27.8
+13,Tionesta,Forest,2703_2,West Branch Tionesta Creek,56.1,34.859,87.1,114.3,27.8
+13,Tionesta,Forest,4181_3,Elk Creek,318.182,197.709,260.9,19.8,27.8
+13,Tionesta,Forest,2655_5,Brokenstraw Creek,53.716,33.377,48.3,301.7,27.8
+13,Tionesta,Forest,6031_2,Piney Creek,63.13,39.227,63.4,643.6,27.8
+13,Tionesta,Forest,2647_2,Chappel Fork,99.193,61.636,102.3,151.5,27.8
+13,Tionesta,Forest,1332_3,Middle Branch White Clay Creek,451.928,280.815,384.5,15.4,27.8
+13,Tionesta,Forest,1974_2,Little Sandy Creek,57.442,35.693,57.4,338.6,27.8
+13,Tionesta,Forest,3040_6,Manatawny Creek,432.015,268.442,334.8,81.8,27.8
+13,Tionesta,Forest,2062_2,Mead Run,97.46,60.559,101.1,169.7,27.8
+13,Tionesta,Forest,2253_2,Moose Creek,124.797,77.546,106.9,15.6,27.8
+13,Tionesta,Forest,6220_2,Bailey Run,185.672,115.372,176.9,37.6,27.8
+13,Tionesta,Forest,3846_4,Cowanshannock Creek,100.737,62.595,98.7,2.5,27.8
+13,Tionesta,Forest,1759_2,Gardner Creek,418.241,259.883,322.0,19.3,27.8
+13,Tionesta,Forest,4191_4,Pleasant Stream,301.349,187.25,238.0,21.2,27.8
+13,Tionesta,Forest,2604_2,Red Mill Brook,123.581,76.79,120.0,129.3,27.8
+13,Tionesta,Forest,6026_3,Sandy Lick Creek,95.454,59.313,87.8,131.6,27.8
+13,Tionesta,Forest,1817_3,Mahoning Creek,85.63,53.208,91.9,376.7,27.8
+13,Tionesta,Forest,3541_3,Fall Brook,430.522,267.514,348.4,8.0,27.8
+13,Tionesta,Forest,185_2,Mauses Creek,294.735,183.14,220.9,57.3,27.8
+13,Tionesta,Forest,232_3,East Branch Codorus Creek,384.333,238.814,318.4,7.7,27.8
+13,Tionesta,Forest,4028_6,Chest Creek,123.649,76.832,125.8,211.8,27.8
+13,Tionesta,Forest,2027_1,White Clay Creek,452.661,281.27,384.6,214.6,27.8

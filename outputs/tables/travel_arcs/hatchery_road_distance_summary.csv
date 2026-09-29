@@ -1,11 +1,12 @@
 hatchery_id,hatchery,county,nearest_mi,median_mi,farthest_mi,median_drive_min,sections_closest_to
-8,Benner Spring,Centre,12.6,114.9,215.1,160.3,50
+8,Benner Spring,Centre,12.6,114.9,215.1,160.3,36
 7,Pleasant Gap,Centre,8.4,115.5,216.4,157.8,34
 9,Bellefonte,Centre,9.0,116.9,231.5,158.4,3
 10,Tylersville,Clinton,8.1,119.4,228.4,164.4,102
 12,Huntsdale,Cumberland,5.0,136.8,319.6,185.8,223
-11,Reynoldsdale,Bedford,6.7,141.8,282.5,185.4,179
-5,Oswayo,Potter,4.8,160.3,294.5,249.2,85
-4,Corry,Erie,10.0,192.4,381.0,269.6,133
+11,Reynoldsdale,Bedford,6.7,141.8,282.5,185.4,163
+13,Tionesta,Forest,2.5,158.3,342.0,219.3,161
+5,Oswayo,Potter,4.8,160.3,294.5,249.2,80
+4,Corry,Erie,10.0,192.4,381.0,269.6,32
 6,Pleasant Mount,Wayne,9.0,192.7,375.3,258.1,159
-2,Linesville,Crawford,12.5,207.0,405.6,267.1,77
+2,Linesville,Crawford,12.5,207.0,405.6,267.1,52

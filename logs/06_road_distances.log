@@ -1,6 +1,17 @@
-2026-09-28 14:42:01,059 INFO loaded 10 hatcheries, 165 co-op nurseries, 1045 sections
-2026-09-28 14:42:01,195 INFO straight-line table: 10450 rows (10 hatcheries x 1045 sections)
-2026-09-28 14:42:04,943 INFO co-op nearest sections: 330 rows (165 nurseries x 2)
-2026-09-28 14:42:04,951 INFO road table: loaded the saved copy (10450 rows); set REFRESH = True to re-query OSRM
-2026-09-28 14:42:04,952 INFO road table: 0 pairs with no route
-2026-09-28 14:42:04,988 INFO wrote the road distance (mi) and drive time (min) matrices to data/interim
+2026-09-29 18:42:07,426 INFO loaded 11 hatcheries, 165 co-op nurseries, 1045 sections
+2026-09-29 18:42:07,599 INFO straight-line table: 11495 rows (11 hatcheries x 1045 sections)
+2026-09-29 18:42:10,494 INFO co-op nearest sections: 330 rows (165 nurseries x 2)
+2026-09-29 18:42:11,529 INFO OSRM: sections 0-99 done
+2026-09-29 18:42:13,943 INFO OSRM: sections 100-199 done
+2026-09-29 18:42:16,415 INFO OSRM: sections 200-299 done
+2026-09-29 18:42:18,814 INFO OSRM: sections 300-399 done
+2026-09-29 18:42:21,165 INFO OSRM: sections 400-499 done
+2026-09-29 18:42:23,547 INFO OSRM: sections 500-599 done
+2026-09-29 18:42:26,059 INFO OSRM: sections 600-699 done
+2026-09-29 18:42:28,397 INFO OSRM: sections 700-799 done
+2026-09-29 18:42:30,836 INFO OSRM: sections 800-899 done
+2026-09-29 18:42:33,256 INFO OSRM: sections 900-999 done
+2026-09-29 18:42:36,161 INFO OSRM: sections 1000-1044 done
+2026-09-29 18:42:37,754 INFO road table: queried OSRM and wrote 11495 rows to data\processed\hatchery_to_section_road_distance.parquet (+ csv)
+2026-09-29 18:42:37,755 INFO road table: 0 pairs with no route
+2026-09-29 18:42:37,790 INFO wrote the road distance (mi) and drive time (min) matrices to data/interim

@@ -16,10 +16,11 @@ Outputs: data/processed/hatchery_to_section_road_distance.{parquet,csv}   road t
 
 Run it with VS Code's "Run Python File" button, or cell by cell with the "Run Cell" links above each # %%.
 The road table comes from the public OSRM server (router.project-osrm.org). It's queried only when the
-processed parquet doesn't exist yet, or when REFRESH = True below.
+processed parquet doesn't exist yet, or when run with --refresh (or REFRESH = True below).
 """
 # %% Setup
 import logging
+import sys
 import time
 from pathlib import Path
 
@@ -28,7 +29,7 @@ import numpy as np
 import pandas as pd
 import requests
 
-REFRESH = False       # True = re-query OSRM even if the road table already exists
+REFRESH = "--refresh" in sys.argv   # re-query OSRM even if the road table exists (or set True here)
 CRS_M = 5070          # CONUS Albers, meters (straight-line distances)
 N_NEAREST = 2         # nearest sections kept per co-op nursery
 KM_PER_MI = 1.609344
@@ -134,7 +135,7 @@ def osrm_table(src_lonlat, dst_lonlat):
 
 if ROAD_PARQUET.exists() and not REFRESH:
     road = pd.read_parquet(ROAD_PARQUET)
-    log.info("road table: loaded the saved copy (%d rows); set REFRESH = True to re-query OSRM", len(road))
+    log.info("road table: loaded the saved copy (%d rows); run with --refresh to re-query OSRM", len(road))
 else:
     src = list(zip(hatcheries["Long_"], hatcheries["Lat"]))
     road_frames = []

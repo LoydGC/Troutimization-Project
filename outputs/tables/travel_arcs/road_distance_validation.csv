@@ -1,11 +1,11 @@
 check,expected,result,status
-Row count,"10,450 (hatcheries x sections)","10,450",PASS
+Row count,"11,495 (hatcheries x sections)","11,495",PASS
 Duplicate hatchery/section pairs,0,0,PASS
 Nate's sections covered,"1,045","1,045",PASS
 Sections stocked in 2026 with a road distance,"1,022","1,022",PASS
 Pairs with no road route,0,0,PASS
 Road shorter than straight-line (beyond snap),0,0,PASS
 Median road / straight-line ratio,1.1 to 1.6 (typical detour),1.34,PASS
-Implied average speed (km/h),all between 20 and 120,30 to 87,PASS
+Implied average speed (km/h),all between 20 and 120,29 to 87,PASS
 Hatcheries snapped > 1 km from a road,0,0,PASS
 Sections snapped > 1 km from a road,0 (otherwise review list below),7,WARN

@@ -9,3 +9,4 @@ ID,NAME,COUNTY,REGION,MIXED,production_value,production_units,label_on_page
 11,Reynoldsdale,Bedford,Southcentral,TROUT ONLY,161932.0,lbs,Average Trout Production
 4,Corry,Erie,Northwest,TROUT ONLY,145851.0,lbs,Average Fish Production (species not stated on page)
 2,Linesville,Crawford,Northwest,MIXED,,,No production figure found on page
+13,Tionesta,Forest,Northwest,MIXED,,,
