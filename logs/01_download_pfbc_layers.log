@@ -10,3 +10,7 @@
 2026-09-26 17:51:32,133 INFO nat_repro: 6224 rows, 18 columns, 0 null/empty geometries, geom types {'LineString': 5972, 'MultiLineString': 252} -> nat_repro.parquet
 2026-09-26 17:51:34,884 INFO wilderness: 134 features in 1 page(s) from https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat/MapServer/31
 2026-09-26 17:51:34,974 INFO wilderness: 134 rows, 25 columns, 0 null/empty geometries, geom types {'LineString': 128, 'MultiLineString': 6} -> wilderness.parquet
+--- later run: --only hatcheries (added 2026-09-29) ---
+2026-09-29 18:43:18,548 INFO 01_download_pfbc_layers run from commit 380db03 + uncommitted changes to scripts/01_download_pfbc_layers.py
+2026-09-29 18:43:20,963 INFO hatcheries: 13 features in 1 page(s) from https://fbweb.pa.gov/arcgis/rest/services/PFBC_Map_Services/Hatcheries/MapServer/0
+2026-09-29 18:43:21,055 INFO hatcheries: 13 rows, 16 columns, 0 null/empty geometries, geom types {'Point': 13} -> hatcheries.parquet

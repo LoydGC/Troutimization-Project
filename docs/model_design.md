@@ -74,6 +74,9 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   hatcheries of its scheduled events. This measures what each hatchery actually puts into streams, where the
   earlier split by production pounds mixed in lake and other fish. 9 hatcheries deliver to streams, Tionesta
   included; Linesville and Pleasant Mount deliver none.
+  - **Which hatcheries** (decision 2026-09-29): PFBC's State Fish Hatcheries layer is the authoritative set
+    (13) and gives the locations. The base model turns on the 9 on the 2026 schedule; turning on the other 4
+    is an extension (`scenarios_and_extensions.md`).
   - **Sensitivity:** the pounds split (`data/raw/pa_hatchery_production.csv`) over the 8 hatcheries with a
     pounds figure, with Tionesta kept at its schedule amount. It also serves as a check: shares differ by up
     to 4 points (Tylersville 12.6% by schedule vs 16.5% by pounds, Corry 9.7% vs 6.5%).

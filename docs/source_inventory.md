@@ -20,12 +20,19 @@ PASDA = `https://mapservices.pasda.psu.edu/server/rest/services/pasda/PAFishBoat
 | Natural Reproduction | PASDA `25` | 6,224 | AnglerUse (no species) | river-mile overlap on the same RFP_WaterID (rule 8) | nat_repro_flag |
 | Wilderness Trout Streams | PASDA `31` | 134 | | river-mile overlap | wilderness overlap (none) |
 | Stocked lakes | fbweb `PFBC_Stocked_Trout_Waters/MapServer/5` | 131 polygons | no stocking counts | not used yet | checked 2026-09-26, `known_gaps.md` |
+| State Fish Hatcheries | fbweb `Hatcheries/MapServer/0` | 13 points | NAME (trailing spaces), FULL_NAME, TROUT / WARM_COOL / STEEL_SALMON flags, Lat, Long_ | hatchery name, as in the stocking schedule | **the authoritative hatchery set** (decision 2026-09-29); downloaded by script 01 on 2026-09-29 |
 
 URL notes (rule 5):
 - The 2025 service's section layer is `/2`, not `/0`.
 - The 2024 layer's maxRecordCount is 1000, so it is paged.
 - PASDA's 2026 stocked layer (PAFishBoat #26) has no counts: stocking counts come from fbweb only.
 - No stocked-section layer reaches 2022, the survey year.
+- State Fish Hatcheries is the layer behind PennMAP's "State Fish Hatcheries" page
+  (https://pa-geo-data-pennmap.hub.arcgis.com/maps/25b8cd8915674873add59c31c5bdfc12_0/about; item owner
+  PFBC_GIS_Admin2, credit "Pennsylvania Fish and Boat Commission"; resolved through the ArcGIS item API
+  2026-09-29). Its `TROUT` flag doesn't match the 2026 schedule: it marks Linesville and Pleasant Mount, which
+  stock no streams, and not Tionesta, which does. The model's supply nodes come from the schedule instead
+  (`../CLAUDE.md` Units of analysis).
 
 ## Trout stocking schedule (runs, hatchery per event)
 Found from the page's own script (`/TroutStocking/Scripts/StockedWaters.js`) and checked with small requests
@@ -48,6 +55,10 @@ URL notes (rule 5):
   `TroutStockedSections_2026` have no schedule layer or table (checked 2026-09-28).
 - The page's "Print All Trout Stockings" CSV is built in the browser from the same fields; there is no server export.
 - A section on a county line is listed under each of its counties (merged in script 09).
+- **2026-09-29: the county list came back empty** (`[]`, even with every season selected), so the page's county
+  menu is empty too, while each county's schedule still loads. Script 09 falls back to the 67 counties in
+  `county_region.csv` (spelled "McKean", as the schedule spells it). A fresh pull that day is saved in
+  `data/raw/pfbc_schedule/2026-09-29/` (68 files; `counties.json` is the empty list).
 
 ## PFBC files and documents
 | Source | URL | Retrieved | Local copy | Used for |
@@ -88,9 +99,9 @@ from his `notebooks/01_data_prep.ipynb` where it names them; we haven't verified
 
 | File | Records | Source | Used in |
 |---|---|---|---|
-| `pa_hatcheries.gpkg` | 13 | ArcGIS Online `https://services9.arcgis.com/6EuFgO4fLTqfNOhu/arcgis/rest/services/PA_Hatcheries/FeatureServer/0` | placeholder `hatcheries` layer in pa_trout.gpkg (script 02) |
+| `pa_hatcheries.gpkg` | 13 | ArcGIS Online `https://services9.arcgis.com/6EuFgO4fLTqfNOhu/arcgis/rest/services/PA_Hatcheries/FeatureServer/0`. An older copy of PFBC's State Fish Hatcheries layer (checked 2026-09-29: same 13 points at the same coordinates and the same flags; older web links, and Union City's old name). Superseded by the fbweb layer above | placeholder `hatcheries` layer in pa_trout.gpkg (script 02); `trout_hatcheries.gpkg` and the road distances; hatchery names in script 09 |
 | `pa_boundary.gpkg` | 1 | Census cartographic boundaries, `https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip`, filtered to PA | his maps |
-| `pa_hatchery_production.csv` | 10 | PFBC hatchery web pages, one per row (`source_url` column) | hatchery supply shares |
+| `pa_hatchery_production.csv` | 10 | PFBC hatchery web pages, one per row (`source_url` column) | the pounds-based supply sensitivity (supply itself comes from the stocking schedule since 2026-09-28) |
 | `pa_class_a_trout_streams.gpkg` | 1,361 | not recorded (same count as PASDA #9) | his maps |
 | `pa_natural_repro_trout_streams.gpkg` | 6,224 | not recorded (same count as PASDA #25) | not referenced |
 | `pa_stocked_trout_streams.gpkg` | 1,064 | not recorded (matches none of our year layers; see `known_gaps.md`) | his maps and `travel_arcs` distances |

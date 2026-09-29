@@ -21,9 +21,9 @@ drafted, not opened yet. Done so far, so skip these parts when sending the promp
 **Waiting on Gavin** (questions for the pull request): sources for his 4 raw files (`docs/source_inventory.md`
 § Partner data); distances for the 8 sections stocked in 2026 that his layer lacks (`docs/known_gaps.md`
 § Gavin's stocked-streams layer); OK to `git rm --cached` his raw files (Prompt 0 step 1). From the 2026
-schedule (2026-09-28): Tionesta hatchery stocks 10 sections but isn't flagged TROUT in `pa_hatcheries.gpkg`,
-so his distances need it as a node (Linesville and Pleasant Mount stock no streams); and does he agree to cost
-the baseline from the scheduled hatchery and to take supply from the schedule instead of pounds?
+schedule (2026-09-28): does he agree to cost the baseline from the scheduled hatchery? Supply nodes (decision
+2026-09-29): PFBC's State Fish Hatcheries layer is the authoritative set; the base model uses the 9 on the 2026
+schedule, so his road distances need Tionesta added (Linesville and Pleasant Mount can drop).
 **Waiting on us:** decide the 22 rows of `logs/07_survey_crosswalk_review.csv` (16 undecided names, 6.4% of
 survey mentions, until then spread like proximity) and `logs/03_coop_review.csv`; the detour charge
 (`docs/model_design.md` § Open questions); optionally Raystown/Tionesta as tailwaters (`docs/known_gaps.md`
@@ -262,11 +262,14 @@ Road distances from each hatchery to each section are built by Gavin in
 `notebooks/travel_arcs.ipynb`. Don't rebuild them. Run this once his distance table is keyed on `section_id`.
 
 ```
-1. Supply: merge Gavin's cleaned hatchery layer into data/processed/hatcheries.parquet. Hatchery supply =
-   stream_fish_2026 from data/processed/hatchery_schedule_supply.csv (decision 2026-09-28: the 9 hatcheries
-   on the 2026 schedule, Tionesta included); the lbs split (baseline stream total x share of production
-   pounds, Pleasant Mount excluded) is the sensitivity. Co-ops are fixed background, not supply nodes (see
-   CLAUDE.md).
+1. Supply: data/processed/hatcheries.parquet, one row per hatchery in PFBC's State Fish Hatcheries layer
+   (data/interim/pfbc_gis/hatcheries.parquet, script 01; the authoritative set, decision 2026-09-29): name
+   (strip PFBC's trailing spaces), id, location, in_2026_schedule (the base model's 9 supply nodes; the
+   other 4 are the "more hatcheries" extension), supply = stream_fish_2026 from
+   hatchery_schedule_supply.csv (decision 2026-09-28), and the lbs split (baseline stream total x share of
+   production pounds, Pleasant Mount excluded) as the sensitivity. Point script 09's name check and Gavin's
+   road-distance node list at this table instead of pa_hatcheries.gpkg / the TROUT flag. Co-ops are fixed
+   background, not supply nodes (see CLAUDE.md).
 2. Add the transport parameters from docs/transport_research.md to data/processed/parameters.csv:
    cost_per_truck_mile, fish_per_load, transport_mortality_pct and the others, each with a low/high range
    and a source.
