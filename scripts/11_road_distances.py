@@ -12,7 +12,7 @@ Outputs: data/processed/hatchery_to_section_road_distance.{parquet,csv}   road t
          data/interim/hatchery_to_section_distance_long.csv               straight-line distance, long
          data/interim/hatchery_to_section_distance_matrix.csv             straight-line distance (km), wide
          data/interim/coop_nurseries_nearest_streams.csv                  2 nearest sections per co-op
-         logs/06_road_distances.log
+         logs/11_road_distances.log
 
 Run it with VS Code's "Run Python File" button, or cell by cell with the "Run Cell" links above each # %%.
 The road table comes from the public OSRM server (router.project-osrm.org). It's queried only when the
@@ -47,10 +47,10 @@ ROAD_PARQUET = PROCESSED / "hatchery_to_section_road_distance.parquet"
 ROAD_CSV = PROCESSED / "hatchery_to_section_road_distance.csv"   # csv copy of the same rows
 
 LOG_DIR.mkdir(exist_ok=True)
-log = logging.getLogger("06_road_distances")
+log = logging.getLogger("11_road_distances")
 log.setLevel(logging.INFO)
 log.handlers.clear()
-for handler in (logging.FileHandler(LOG_DIR / "06_road_distances.log", mode="w", encoding="utf-8"),
+for handler in (logging.FileHandler(LOG_DIR / "11_road_distances.log", mode="w", encoding="utf-8"),
                 logging.StreamHandler()):
     handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
     log.addHandler(handler)
