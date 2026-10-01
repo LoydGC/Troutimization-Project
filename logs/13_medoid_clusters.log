@@ -1,19 +1,20 @@
-2026-09-30 21:09:18,126 INFO 13_medoid_clusters run from commit bb8b313 + uncommitted changes to scripts/13_medoid_clusters.py
-2026-09-30 21:09:18,497 INFO 1022 sections; start k = 300, limits: width <= 20 mi, <= 4 sections (Nate's clusters: 351)
-2026-09-30 21:09:18,597 INFO k=25: silhouette 0.344, total distance to medoids 22177 mi
-2026-09-30 21:09:18,761 INFO k=50: silhouette 0.336, total distance to medoids 15276 mi
-2026-09-30 21:09:19,010 INFO k=75: silhouette 0.361, total distance to medoids 11936 mi
-2026-09-30 21:09:19,251 INFO k=100: silhouette 0.350, total distance to medoids 10139 mi
-2026-09-30 21:09:19,583 INFO k=150: silhouette 0.351, total distance to medoids 7792 mi
-2026-09-30 21:09:20,313 INFO k=200: silhouette 0.358, total distance to medoids 6329 mi
-2026-09-30 21:09:21,212 INFO k=250: silhouette 0.371, total distance to medoids 5162 mi
-2026-09-30 21:09:22,319 INFO k=300: silhouette 0.395, total distance to medoids 4241 mi
-2026-09-30 21:09:23,474 INFO k=351: silhouette 0.376, total distance to medoids 3706 mi
-2026-09-30 21:09:24,752 INFO k=400: silhouette 0.374, total distance to medoids 3111 mi
-2026-09-30 21:09:26,171 INFO k=450: silhouette 0.363, total distance to medoids 2667 mi
-2026-09-30 21:09:27,891 INFO k=500: silhouette 0.337, total distance to medoids 2266 mi
-2026-09-30 21:09:29,827 INFO k=600: silhouette 0.303, total distance to medoids 1570 mi
-2026-09-30 21:09:31,644 INFO k=700: silhouette 0.246, total distance to medoids 1025 mi
-2026-09-30 21:09:34,664 INFO start k = 300 -> 407 clusters after splitting 75 that broke the limits
-2026-09-30 21:09:35,547 INFO wrote 1022 rows to section_medoid_clusters (each medoid sits in its own cluster)
-2026-09-30 21:09:48,254 INFO saved figures to outputs\figures\medoid_clusters
+2026-09-30 22:07:26,876 INFO 13_medoid_clusters run from commit d4e18c4 + uncommitted changes to scripts/13_medoid_clusters.py
+2026-09-30 22:07:27,144 INFO 1022 sections; start k = 300, limits: width <= 20 mi, <= 4 sections (Nate's clusters: 351)
+2026-09-30 22:07:27,209 INFO k=25: silhouette 0.344, total distance to medoids 22177 mi
+2026-09-30 22:07:27,298 INFO k=50: silhouette 0.336, total distance to medoids 15276 mi
+2026-09-30 22:07:27,418 INFO k=75: silhouette 0.361, total distance to medoids 11936 mi
+2026-09-30 22:07:27,579 INFO k=100: silhouette 0.350, total distance to medoids 10139 mi
+2026-09-30 22:07:27,815 INFO k=150: silhouette 0.351, total distance to medoids 7792 mi
+2026-09-30 22:07:28,129 INFO k=200: silhouette 0.358, total distance to medoids 6329 mi
+2026-09-30 22:07:28,485 INFO k=250: silhouette 0.371, total distance to medoids 5162 mi
+2026-09-30 22:07:28,907 INFO k=300: silhouette 0.395, total distance to medoids 4241 mi
+2026-09-30 22:07:29,377 INFO k=351: silhouette 0.376, total distance to medoids 3706 mi
+2026-09-30 22:07:29,906 INFO k=400: silhouette 0.374, total distance to medoids 3111 mi
+2026-09-30 22:07:30,484 INFO k=450: silhouette 0.363, total distance to medoids 2667 mi
+2026-09-30 22:07:31,105 INFO k=500: silhouette 0.337, total distance to medoids 2266 mi
+2026-09-30 22:07:31,842 INFO k=600: silhouette 0.303, total distance to medoids 1570 mi
+2026-09-30 22:07:32,638 INFO k=700: silhouette 0.246, total distance to medoids 1025 mi
+2026-09-30 22:07:34,136 INFO start k = 300 -> 407 clusters after splitting 75 that broke the limits
+2026-09-30 22:07:36,023 INFO wrote 1022 rows to section_medoid_clusters (each medoid sits in its own cluster)
+2026-09-30 22:07:41,963 INFO saved figures to outputs\figures\medoid_clusters
+2026-09-30 22:07:51,947 INFO saved approach_comparison.png

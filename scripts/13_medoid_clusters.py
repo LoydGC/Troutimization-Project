@@ -20,9 +20,9 @@ Inputs : data/processed/section_to_section_road_distance.parquet   road miles be
          data/processed/pa_trout.gpkg (sections layer)              section lines, for the maps (gitignored; rebuilt by 01-02)
          data/raw/pa_boundary.gpkg                                   state outline for the maps (optional)
 Outputs: data/processed/section_medoid_clusters.{parquet,csv}       one row per section: its k-medoids cluster and medoid
-         outputs/tables/medoid_clusters/comparison.csv              Nate's clusters vs k-medoids, side by side
+         outputs/tables/medoid_clusters/comparison.csv              the three approaches side by side (Nate, k-medoids, k-medoids with limits)
          outputs/tables/medoid_clusters/silhouette_by_k.csv         silhouette and total distance for a range of k
-         outputs/figures/medoid_clusters/maps.png, silhouette.png
+         outputs/figures/medoid_clusters/maps.png, silhouette.png, approach_comparison.png (all three approaches, statewide and zoomed)
          logs/13_medoid_clusters.log
 
     python scripts/13_medoid_clusters.py [--restarts 30]
@@ -189,23 +189,30 @@ def describe(lab, name):
             "total distance to cluster center (mi)": round(float(np.sum(to_center)), 0)}, sil
 
 
-tab_n, sil_n = describe(nate, "Nate's schedule clusters")
-tab_k, sil_k = describe(kmed, f"k-medoids on road miles with limits ({K} clusters)")
+N_NATE = int(ss["cluster_id"].nunique())
+_, plain, _ = best_of(N_NATE, args.restarts)              # approach 2: plain k-medoids with Nate's count and no limits
+tab_n, sil_n = describe(nate, "1. Nate's schedule clusters")
+tab_p, sil_p = describe(plain, f"2. k-medoids, no limits ({N_NATE} clusters)")
+tab_k, sil_k = describe(kmed, f"3. k-medoids with limits ({K} clusters)")
+
+_hm = pd.read_parquet(PROCESSED_DIR / "hatchery_to_section_road_distance.parquet").pivot_table(index="section_id", columns="hatchery", values="road_mi").reindex(ids)
+H = _hm[[c for c in _hm.columns if any(s.lower() in c.lower() for s in SCHEDULED)]].to_numpy()   # sections x 9 scheduled hatcheries
 
 
 def hatchery_error(lab):
-    """Cluster-average road distance from each scheduled hatchery vs. each member's own, as a share of total distance."""
-    hm = pd.read_parquet(PROCESSED_DIR / "hatchery_to_section_road_distance.parquet").pivot_table(index="section_id", columns="hatchery", values="road_mi").reindex(ids)
-    H = hm[[c for c in hm.columns if any(s.lower() in c.lower() for s in SCHEDULED)]].to_numpy()
+    """Cluster-average road distance from each scheduled hatchery vs. each member's own: (mean mi, p90 mi, share of total distance)."""
     err = np.zeros_like(H)
     for c in np.unique(lab):
         g = np.flatnonzero(lab == c); err[g] = H[g].mean(0) - H[g]
-    return f"{np.abs(err).mean():.1f} mi mean, {np.quantile(np.abs(err), .9):.1f} mi p90 ({100 * np.abs(err).sum() / H.sum():.1f}% of distance)"
+    return np.abs(err).mean(), np.quantile(np.abs(err), .9), 100 * np.abs(err).sum() / H.sum()
 
 
-tab_n["hatchery_distance_error"] = hatchery_error(nate); tab_k["hatchery_distance_error"] = hatchery_error(kmed)
-comparison = pd.DataFrame([tab_n, tab_k]).set_index("method").T
-comparison.loc["agreement between the two (adjusted Rand, 0 to 1)"] = ["", round(adjusted_rand_score(nate, kmed), 2)]
+herr = {}
+for t, lab in ((tab_n, nate), (tab_p, plain), (tab_k, kmed)):
+    herr[t["method"]] = e = hatchery_error(lab)
+    t["hatchery_distance_error"] = f"{e[0]:.1f} mi mean, {e[1]:.1f} mi p90 ({e[2]:.1f}% of distance)"
+comparison = pd.DataFrame([tab_n, tab_p, tab_k]).set_index("method").T
+comparison.loc["agreement with approach 3 (adjusted Rand, 0 to 1)"] = [round(adjusted_rand_score(kmed, x), 2) for x in (nate, plain, kmed)]
 comparison.to_csv(TABLE_DIR / "comparison.csv")
 print(comparison.to_string())
 
@@ -330,3 +337,39 @@ fig.text(0.01, 0.005, "Silhouette compares a section's average road distance to 
 fig.tight_layout(rect=(0, 0.07, 1, 0.92))
 fig.savefig(FIG_DIR / "silhouette.png", dpi=120)
 log.info("saved figures to %s", FIG_DIR.relative_to(ROOT))
+
+
+# %% Figure 3: all three approaches, statewide and zoomed on Nate's biggest cluster
+approaches = [(tab_n["method"], nate, tab_n, sil_n), (tab_p["method"], plain, tab_p, sil_p), (tab_k["method"], kmed, tab_k, sil_k)]
+fig = plt.figure(figsize=(19, 10.6))
+gs = fig.add_gridspec(2, 3, height_ratios=[0.8, 1], hspace=0.12, wspace=0.03)
+fig.suptitle("Three ways to group the 1,022 stocked sections into trip clusters", x=0.01, ha="left", fontsize=15, fontweight="bold")
+fig.text(0.01, 0.935, "Top: statewide (shading = sections per cluster, grey dots = singletons, orange outline = cluster mixes sections whose scheduled hatcheries differ). "
+         "Bottom: the same patch of the state, around Nate's biggest cluster (orange lines).", fontsize=10.5, color=INK2)
+for j, (name, lab, tab, _) in enumerate(approaches):
+    ax = fig.add_subplot(gs[0, j])
+    state_map(ax, lab, name)
+    ax.set_title(name, loc="left", fontsize=12.5, fontweight="bold", pad=46)
+    e = herr[name]
+    ax.text(0, 1.01, f"{tab['clusters']} clusters · {tab['singletons']} singletons · biggest {tab['biggest']} sections\n"
+            f"widest {tab['widest (mi)']:.0f} mi · silhouette {tab['mean silhouette']:.2f} · hatchery-distance error {e[2]:.1f}% ({e[0]:.1f} mi)",
+            transform=ax.transAxes, fontsize=9.8, color=INK, va="bottom")
+    z = fig.add_subplot(gs[1, j])
+    z.set_xlim(minx - 12000, maxx + 12000); z.set_ylim(miny - 12000, maxy + 12000)
+    gpd.GeoSeries(geom).plot(ax=z, color="#cfcec8", lw=0.8)
+    gpd.GeoSeries(geom.iloc[big_idx]).plot(ax=z, color=ORANGE, lw=3.0, zorder=4)
+    hh = hulls_of(lab)
+    for c in {lab[i] for i in range(n) if hh[lab[i]].intersects(big_hull)}:          # every cluster that reaches the patch
+        poly(z, hh[c], facecolor="#00000008", edgecolor=INK, lw=1.2, zorder=2)
+    z.set_aspect("equal"); z.set_xticks([]); z.set_yticks([])
+    for s_ in z.spines.values():
+        s_.set_color(GRID)
+    n_in = len(set(lab[big_idx]))
+    z.set_title(f"Same {len(big_idx)} sections: {n_in} cluster{'s' if n_in > 1 else ''}", loc="left", fontsize=11)
+fig.colorbar(ScalarMappable(norm=norm, cmap=cmap), cax=fig.add_axes([0.915, 0.60, 0.008, 0.2])).set_label("sections in cluster", color=INK2)
+fig.text(0.01, 0.01, "1: built from PFBC's truck-run schedule (carries PFBC's hatchery choices). 2 and 3: built only from road miles between sections; 3 splits any cluster "
+         f"over {MAX_W:.0f} mi wide or {MAX_N} sections. Hatchery-distance error: how far a cluster's average distance from each of the 9 scheduled hatcheries sits from each member's own.",
+         fontsize=9.5, color=INK2, wrap=True)
+fig.savefig(FIG_DIR / "approach_comparison.png", dpi=115, bbox_inches="tight", pad_inches=0.25)
+plt.close(fig)
+log.info("saved approach_comparison.png")
