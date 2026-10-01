@@ -1,0 +1,8 @@
+2026-10-01 16:52:58,082 INFO 14_dbscan_clusters run from commit 4390c2e + uncommitted changes to scripts/14_dbscan_clusters.py, scripts/15_run_limited_clusters.py, scripts/16_compare_methods_map.py
+2026-10-01 16:52:58,578 INFO 1022 sections; road-mile matrix median 149 mi, max 431 mi
+2026-10-01 16:52:58,591 INFO units check, eps = 19.9 mi: sklearn and a hand count agree for all 1022 sections (median 14 neighbours incl. itself)
+2026-10-01 16:52:58,601 INFO units check, eps = 47.5 mi: sklearn and a hand count agree for all 1022 sections (median 73 neighbours incl. itself)
+2026-10-01 16:52:58,617 INFO DBSCAN eps 19.9, min_samples 2: 1 clusters (excluding noise), 0 noise
+2026-10-01 16:52:58,634 INFO DBSCAN eps 47.5, min_samples 2: 1 clusters (excluding noise), 0 noise
+2026-10-01 16:52:58,953 INFO DBSCAN eps with the highest silhouette: 6 mi
+2026-10-01 16:53:09,056 INFO saved figures to outputs\figures\dbscan_clusters

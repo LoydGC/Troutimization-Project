@@ -1,0 +1,6 @@
+eps_mi,min_samples,clusters,noise (remote) sections,singletons,biggest (sections),median width (mi),widest (mi),mean silhouette,sections with negative silhouette (%)
+6.0,1,482,0,271,22,5.6,28.7,0.323,6.8
+6.0,2,482,271,271,22,5.6,28.7,0.323,6.8
+6.0,3,576,459,459,22,8.3,28.7,0.207,7.1
+6.0,5,836,801,801,11,9.9,19.9,0.067,3.6
+6.0,10,1022,1022,1022,1,0.0,0.0,,
