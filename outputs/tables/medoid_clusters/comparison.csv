@@ -1,0 +1,17 @@
+,Nate's schedule clusters,k-medoids on road miles with limits (407 clusters)
+clusters,351,407
+singletons,103,95
+pairs,93,103
+size 3-5,119,209
+size 6+,36,0
+biggest,18,4
+median width (mi),11.0,7.7
+widest (mi),56.6,19.0
+mean silhouette,0.117,0.354
+sections with negative silhouette (%),33.0,8.5
+clusters mixing main hatcheries,8 of 248,49 of 312
+median distance to nearest cluster-mate (mi),4.5,3.8
+median distance to cluster center (mi),3.5,2.3
+total distance to cluster center (mi),6067.0,3117.0
+hatchery_distance_error,"4.1 mi mean, 10.0 mi p90 (3.0% of distance)","2.4 mi mean, 5.4 mi p90 (1.7% of distance)"
+"agreement between the two (adjusted Rand, 0 to 1)",,0.39

@@ -245,6 +245,22 @@ One row per 2026-stocked section (1,022): scheduled hatchery, runs, cluster and 
 | detour_nn_mi | Road-mi to the nearest 2026-stocked section of any cluster (geographic fallback) | mi |
 | cluster_id_strict, cluster_size_strict, detour_mi_strict | The same under the strict-majority rule (528 clusters) | text / count / mi |
 
+## section_medoid_clusters (.parquet, .csv)
+One row per 2026-stocked section (1,022), built by `scripts/13_medoid_clusters.py`. Geography-only clusters (k-medoids on
+section-to-section road miles, split until each is at most `cluster_max_width_mi` wide and `cluster_max_sections`
+sections). They never use the schedule or hatcheries, so they carry none of PFBC's hatchery choices.
+
+| Column | Meaning | Units |
+|---|---|---|
+| section_id | Join key | text |
+| medoid_cluster_id | Cluster, e.g. M001 (407 clusters) | text |
+| medoid_section_id | The cluster's most central section | text |
+| cluster_size | Sections in the cluster | count |
+| dist_to_medoid_mi | Road distance from the section to its medoid | road mi |
+| silhouette | How well the section fits its cluster (1 best, below 0 misplaced) | -1 to 1 |
+
+Cluster cost for hatchery h = average of h's road distance (`hatchery_to_section_road_distance`) to the cluster's sections.
+
 ## clusters.csv
 One row per default-rule cluster (351), built by `scripts/10_runs_clusters.py`.
 

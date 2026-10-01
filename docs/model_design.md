@@ -470,3 +470,10 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
     more than one truck's run (at most 7 sections). The strict rule (> 0.5, up to 7 sections) fits a per-trip
     charge better; the default fits the detour.
   - Real truck routing stays out of scope.
+  - **Geography-only clusters (Gavin, 2026-09-30; `section_medoid_clusters`):** the model chooses the
+    hatchery for each stream, so clusters shouldn't be built from PFBC's schedule (it freezes the hatchery
+    choice). k-medoids on road miles, split until each cluster is at most 20 mi wide and 4 sections (about the
+    90th percentile of real runs), gives 407 clusters. A cluster's trip cost from hatchery h = the average h to
+    section road distance over its sections; that is within about 2% of a member's own distance (Nate's run
+    clusters: 3%). Not tested by any scenario: the 20 mi / 4 section limits come from the schedule's run sizes.
+    Fish counts and truckload size are ignored (see scenarios_and_extensions.md).
