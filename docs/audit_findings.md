@@ -51,7 +51,7 @@ matched its doc. The risks are elsewhere:
 | A4 | Med | Script 12 overwrites the committed table and re-hits the OSRM demo server on a clean clone | S | no | Open |
 | A5 | Med | OSRM rule-3 waiver not reflected in CLAUDE.md; script 11 has no backoff | S | yes (D-6) | Open |
 | A6 | Med | `requirements.txt` missing scikit-learn; lists unused packages; no pins | S | no | Open |
-| A7 | Low | `USER_AGENT` repo URL does not match the git remote | S | no | Open |
+| A7 | Low | Local git remote still points at the old repo name (GitHub redirects); `USER_AGENT` URL is correct | S | no | Open |
 | A8 | Low | Committed logs were produced from uncommitted code | S | no | Open |
 | **B. Model readiness and design consistency** | | | | | |
 | B1 | High | Model, `hatcheries`, `cost_matrix`, `model_input` not built (Prompts 7–9 open) | L | partly (D-5) | Open |
@@ -186,9 +186,12 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
   interpreter is 3.13.5, so say which one is tested.
 - **Done when:** `pip install -r requirements.txt` into a clean venv, then `pytest` and `python -c "import sklearn, pdfplumber, bs4"` pass.
 
-#### A7 — Wrong repo URL in the polite-scraping user agent  (Low, S)
-[common.py:29](../scripts/common.py) says `github.com/LoydGC/Troutimization-Project`; the remote is `LoydGC/Trout-Optimization-Project`.
-The user agent is how fbweb.pa.gov could contact us, so it should resolve.
+#### A7 — Local git remote uses the old repo name  (Low, S)
+*Corrected 2026-10-01: the first version of this finding had it backwards.* The repo was renamed on GitHub; a push printed "This repository moved. Please use the new location:
+`https://github.com/LoydGC/Troutimization-Project.git`". So the `USER_AGENT` in [common.py:29](../scripts/common.py) (`github.com/LoydGC/Troutimization-Project`) is **correct**.
+What is stale is the `origin` URL in the local clone (`.../Trout-Optimization-Project.git`) and any mention of the old name in docs. GitHub redirects it, so pushes work today, but the redirect can break
+if the old name is ever reused.
+- **Fix:** `git remote set-url origin https://github.com/LoydGC/Troutimization-Project.git` in each collaborator's clone; grep docs for the old name (`grep -rn "Trout-Optimization-Project" .`; none in tracked files as of this audit).
 
 #### A8 — Committed logs came from uncommitted code  (Low, S)
 `logs/02…10`, `12…16` start with "run from commit X + uncommitted changes to scripts/…". `logs/04_river_cap.log` is dated 2026-09-28 00:01
