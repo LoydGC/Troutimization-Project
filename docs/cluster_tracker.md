@@ -39,7 +39,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
   representative cost per hatchery. Nothing is routed or assigned to a cluster; the model still decides `x[h, s]`.
 - **Learned:** trip-style limits (width, hops, section count) are not the right yardstick. They described a truck run. What
   matters is how close a cluster's average cost is to each member's own cost.
-- **Decided:** width, hop and size limits superseded; options #3 to #6 kept as options on the table.
+- **Decided:** width, hop and size limits superseded; the geography-only options kept on the table.
 
 ## 6. DBSCAN: a useful dead end (2026-10-01)
 - **Tried:** DBSCAN at eps 19.9 and 47.5 mi (the real-run width numbers).
@@ -54,8 +54,8 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
 - **Saw:** width 19.9 mi gives 234 clusters, silhouette 0.42, but averaging error 2.8% (vs 1.7% for script 13). Width 47.5 mi gives
   74 clusters and doubles the error to 5.7%.
 - **Learned:** the hop limit changed nothing (sections link into 3 groups at 17.7 mi); size cap matters only for trucks, not cost.
-- **Decided:** keep 19.9 mi as a sensitivity candidate; 47.5 mi is an upper bound only.
-- Picture: `outputs/figures/run_limited_clusters/maps.png`, `metrics.png`.
+- **Decided (then):** keep 19.9 mi as a sensitivity candidate; 47.5 mi is an upper bound only. (Superseded: entries 10 to 12.)
+- Picture: `outputs/figures/hierarchical_clusters/maps.png`, `metrics.png`.
 
 ## 8. Plan of record (2026-10-01)
 - **Phase 1:** Nate's clusters. **Sensitivity:** Gavin's, once settled. Clusters are interchangeable labelings; the math applied
@@ -79,7 +79,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
   limit-based version.
 - **Decided:** it replaces the width 47.5 mi example in the comparison. The 47.5 mi result (74 clusters, silhouette 0.34, averaging error
   5.7%, "too wide") stays on record in entry 7 and in `clustering_options.md`.
-- Picture: `outputs/figures/run_limited_clusters/maps.png`, `outputs/figures/method_comparison/options_overview.png`.
+- Picture: `outputs/figures/hierarchical_clusters/maps.png`, `outputs/figures/method_comparison/options_overview.png`.
 
 ## 11. Same limits for k-medoids and hierarchical (2026-10-01)
 - **Tried:** give the hierarchical method the same limits as k-medoids (20 mi wide, 4 sections), so the two are compared like for like.
@@ -90,7 +90,24 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
   sections alone, while k-medoids has a slightly smaller averaging error.
 - **Decided:** option 5 is now hierarchical + limits (options are ordered baseline then limited for each method: k-medoids #2, #3; hierarchical #4, #5). The width-only versions (19.9 mi: 234 clusters; 47.5 mi: 74 clusters) stay on
   record in entries 7 and 10, in `clustering_options.md` and as reference rows in `comparison.csv`.
-- Picture: `outputs/figures/method_comparison/options_overview.png`, `outputs/figures/run_limited_clusters/maps.png`.
+- Picture: `outputs/figures/method_comparison/options_overview.png`, `outputs/figures/hierarchical_clusters/maps.png`.
+
+## 12. Housekeeping: limits become a reference; renames; hatchery list from the data (2026-10-01)
+- **Decided:** width, hop and size do not matter for the objective. The 20 mi / 4-section limits (options #3 and #5) stay as a tertiary
+  reference to show we considered them. The candidates are the no-limits best-silhouette versions (#2 k-medoids, #4 hierarchical).
+- **Hatchery check:** averaging error is graded over the hatcheries that produce fish in the 2026 schedule: 9 of the 13 (Linesville and
+  Pleasant Mount have 0 stream fish). Read from `hatchery_schedule_supply.csv` (`stream_fish_2026 > 0`), not hard-coded. The numbers did not change.
+- **Renamed:** script 15, its outputs and its table said "run_limited", which no longer describes it. Now
+  `scripts/15_hierarchical_clusters.py`, `data/processed/section_hierarchical_clusters`, `outputs/{figures,tables}/hierarchical_clusters/`.
+  Table columns: `silhouette_best_cluster_id`, `limits_cluster_id`, and the reference-only `width_only_19_9_cluster_id`,
+  `width_only_47_5_cluster_id` (formerly `tight_`/`loose_cluster_id`).
+- Picture: `outputs/figures/method_comparison/options_overview.png`.
+
+## 13. Cleanup pass (2026-10-01)
+- **Fixed:** "trip" wording in the figures and scripts (a cluster is not a trip), the algorithm-family descriptions, a seed claim in
+  script 13 that had not been verified, and the `cluster_start_k` note. Script 14 is marked scrapped.
+- **Documented:** the new cluster tables and both road-distance tables in `data_dictionary.md`; OSRM in `source_inventory.md`,
+  `data_methods.md` and `known_gaps.md` (including the CLAUDE.md rule 3 waiver); tests in `tests/test_clusters.py`.
 
 ---
 

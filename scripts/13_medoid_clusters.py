@@ -1,21 +1,24 @@
 """Geography-only clusters of the 1,022 stocked sections (k-medoids on road miles, with size limits), compared with Nate's.
 
-Why: the model chooses x[h, s], which hatchery stocks which stream. A cluster stands in for one trip, with cost = the
-average road distance from a hatchery to the sections in the cluster. So clusters must not carry PFBC's own hatchery
-choices. These ignore the stocking schedule and the hatcheries entirely (Nate's scripts 09-10 build clusters from the
+Why: the model chooses x[h, s], which hatchery stocks which stream. A cluster is a group of sections that cost about the same
+to reach; its cost from a hatchery is the average road distance from that hatchery to its sections (not a trip). So clusters
+must not carry PFBC's own hatchery choices. These ignore the stocking schedule and the hatcheries entirely (Nate's scripts 09-10 build clusters from the
 schedule, so they freeze PFBC's routes). k-medoids is like k-means, but the centers are real sections and it works
 on a distance table (here road miles) instead of coordinates.
 
 Method (decided 2026-09-30, after a sweep of k): k-medoids with `cluster_start_k` clusters, then any cluster wider
 than `cluster_max_width_mi` or bigger than `cluster_max_sections` is split (k-medoids inside it) until none is.
-The final count (407 with the default seed; 407-417 across seeds) follows from the limits. Limits and start k are in data/processed/parameters.csv.
-Check: for each of the 9 scheduled hatcheries, a cluster's average distance is within ~2% of a member's own distance
+The final count (407 with the fixed seeds) follows from the limits. Limits and start k are in data/processed/parameters.csv.
+Check: for each hatchery that produces stream fish in the 2026 schedule (hatchery_schedule_supply.csv), a cluster's average distance is within ~2% of a member's own distance
 (Nate's: 3%); `hatchery_distance_error` in comparison.csv. The clustering never sees the hatcheries; the check does.
+Also saves a no-limits baseline: plain k-medoids with k set by the best silhouette over k = 20 to 700 (silhouette_best_cluster_id).
+The limits are a reference (we considered truck-run limits); the objective does not need them (docs/clustering_options.md).
 Not used (an idea to revisit, docs/scenarios_and_extensions.md): fish counts and truckload size.
 
 Inputs : data/processed/section_to_section_road_distance.parquet   road miles between sections   (12_section_road_distances.py)
          data/processed/section_schedule.parquet                    Nate's run clusters and main hatchery, only for the comparison (10)
          data/processed/hatchery_to_section_road_distance.parquet   for the hatchery-distance check only (11)
+         data/processed/hatchery_schedule_supply.csv                which hatcheries produce fish in 2026 (Nate, 09)
          data/processed/parameters.csv                              cluster_max_width_mi, cluster_max_sections, cluster_start_k
          data/processed/pa_trout.gpkg (sections layer)              section lines, for the maps (gitignored; rebuilt by 01-02)
          data/raw/pa_boundary.gpkg                                   state outline for the maps (optional)
@@ -56,7 +59,6 @@ CRS, MARGIN_M = 26918, 2500
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e6e5e0"
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"          # reference palette slots 1-2: k-medoids = blue, Nate's = orange
 K_GRID = list(range(20, 100, 10)) + list(range(100, 701, 10))   # silhouette curve, unlimited k-medoids; its peak sets the plain version's k
-SCHEDULED = ["Bellefonte", "Benner Spring", "Corry", "Huntsdale", "Oswayo", "Pleasant Gap", "Reynoldsdale", "Tionesta", "Tylersville"]
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--restarts", type=int, default=30)
@@ -203,7 +205,11 @@ tab_p, sil_p = describe(plain, f"2. k-medoids, no limits, best silhouette ({len(
 tab_k, sil_k = describe(kmed, f"3. k-medoids with limits ({K} clusters)")
 
 _hm = pd.read_parquet(PROCESSED_DIR / "hatchery_to_section_road_distance.parquet").pivot_table(index="section_id", columns="hatchery", values="road_mi").reindex(ids)
-H = _hm[[c for c in _hm.columns if any(s.lower() in c.lower() for s in SCHEDULED)]].to_numpy()   # sections x 9 scheduled hatcheries
+supply = pd.read_csv(PROCESSED_DIR / "hatchery_schedule_supply.csv")
+PRODUCING = supply.loc[supply["stream_fish_2026"] > 0, "hatchery"].tolist()      # hatcheries that stock streams in the 2026 schedule
+assert set(PRODUCING) <= set(_hm.columns), "a producing hatchery has no road distances"
+H = _hm[PRODUCING].to_numpy()                                              # sections x producing hatcheries
+log.info("hatchery-distance error is graded over the %d hatcheries producing 2026 stream fish: %s", len(PRODUCING), ", ".join(PRODUCING))
 
 
 def hatchery_error(lab):
@@ -379,7 +385,7 @@ for j, (name, lab, tab, _) in enumerate(approaches):
     z.set_title(f"Same {len(big_idx)} sections: {n_in} cluster{'s' if n_in > 1 else ''}", loc="left", fontsize=11)
 fig.colorbar(ScalarMappable(norm=norm, cmap=cmap), cax=fig.add_axes([0.915, 0.60, 0.008, 0.2])).set_label("sections in cluster", color=INK2)
 fig.text(0.01, 0.01, "1: built from PFBC's truck-run schedule (carries PFBC's hatchery choices). 2 and 3: built only from road miles between sections; 3 splits any cluster "
-         f"over {MAX_W:.0f} mi wide or {MAX_N} sections. Hatchery-distance error: how far a cluster's average distance from each of the 9 scheduled hatcheries sits from each member's own.",
+         f"over {MAX_W:.0f} mi wide or {MAX_N} sections. Hatchery-distance error: how far a cluster's average distance from each hatchery producing 2026 fish sits from each member's own.",
          fontsize=9.5, color=INK2, wrap=True)
 fig.savefig(FIG_DIR / "approach_comparison.png", dpi=115, bbox_inches="tight", pad_inches=0.25)
 plt.close(fig)

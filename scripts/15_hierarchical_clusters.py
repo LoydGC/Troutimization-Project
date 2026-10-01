@@ -1,46 +1,32 @@
-"""Width-limited clusters: a cluster is what one truck can cover on a run, measured as how far apart its sections are.
+"""Hierarchical (complete-linkage) clusters of the 1,022 stocked sections, on road miles between sections.
 
-Idea (Gavin, 2026-10-01): a tank of gas (or a day of driving) doesn't care whether it is spent hopping from stream to stream
-or on one long leg; what matters is the total reach of the run, which the distance between the cluster's two farthest sections
-represents. So the only rule is WIDTH. There is no hop limit and no cap on the number of sections. The limit doesn't depend on
-the hatchery, so it can be measured on the real schedule and applied to geography alone, leaving the model free to choose
-which hatchery serves which stream.
+All versions come from one merge tree. Complete linkage merges groups by their FARTHEST pair, so cutting the tree at distance W
+guarantees no two sections in a cluster are more than W miles apart. Nothing here uses the stocking schedule or the hatcheries
+to build the clusters, so they carry none of PFBC's hatchery choices.
 
-Rule (road miles, from section-to-section OSRM distances): a cluster is valid when its two farthest sections are at most W miles
-apart. Method: complete-linkage hierarchical clustering cut at W. Complete linkage merges groups by their FARTHEST pair, so the cut
-distance is exactly the largest distance between two sections in a cluster and the width limit is guaranteed. (A k-medoids
-start with splitting of too-wide clusters was tried first: more clusters, 270 vs 234 at 19.9 mi, and silhouette 0.34 vs 0.42.)
+Versions (saved as columns of section_hierarchical_clusters):
+  silhouette_best_cluster_id   cut at the number of clusters (k = 20 to 700) with the best silhouette. No limits. Deterministic
+                               (no random starts). The candidate.
+  limits_cluster_id            the SAME limits as script 13 (parameters.csv cluster_max_width_mi 20, cluster_max_sections 4): walk
+                               the tree from the top and split at the first merge that breaks either limit. Reference only: it
+                               shows we considered truck-run limits; the objective does not need them (docs/clustering_options.md).
+  width_only_19_9_cluster_id   cut at 19.9 mi, no section cap. Reference only, not drawn. (The real-run width 90th percentile.)
+  width_only_47_5_cluster_id   cut at 47.5 mi, no section cap. Reference only, not drawn. (The widest real run.)
+The two widths are parameters.csv run_width_max_mi (value = 19.9, high = 47.5), measured on the 632 real multi-section runs.
 
-Downstream use: a cluster supplies an AVERAGE hatchery-to-section cost, applied to depositing fish in a stream, so no cap on
-sections is needed for the cost to be right; width is what keeps a cluster's sections about equally far from any hatchery.
-
-Settings (parameters.csv: run_width_max_mi; value = tight, high = loose), the width of the 632 real multi-section runs on this matrix:
-  tight  W 19.9  (90th percentile of run width)
-  loose  W 47.5  (the widest real run). Both width-only versions (no section cap) were set aside 2026-10-01 in favour of the
-         two options below; they stay in the saved table and comparison.csv as reference rows, but are not drawn.
-
-Added (2026-10-01): hierarchical with the SAME limits as script 13 (cluster_max_width_mi 20, cluster_max_sections 4), so k-medoids and
-hierarchical are compared like for like. The tree is walked from the top and split at the first merge that breaks either limit.
-Saved as limits_cluster_id and drawn first.
-
-Added: the same complete-linkage dendrogram cut at the number of clusters with the best silhouette, with no limits at all
-(deterministic: no random starts). It is saved as silhouette_best_cluster_id and drawn in place of the 47.5 mi version.
-
-Graded with: silhouette; hatchery-distance error (cluster-average distance from each of the 9 scheduled hatcheries vs. each member's
-own; the clustering never sees hatcheries); agreement with real runs (share of multi-section runs kept whole in one cluster, and
-share of same-cluster pairs that really shared a run). Compared with script 13 (k-medoids, which also caps sections at 4) and
-Nate's schedule clusters.
+Graded with: silhouette; hatchery-distance error (cluster-average distance from each hatchery that produces stream fish in the
+2026 schedule, vs. each member's own; the clustering never sees hatcheries); agreement with real runs (share of multi-section runs
+kept whole in one cluster, and share of same-cluster pairs that really shared a run). Compared with script 13 and Nate's clusters.
 
 Inputs : data/processed/section_to_section_road_distance.parquet (12), hatchery_to_section_road_distance.parquet (11),
-         section_schedule.parquet and stocking_events.parquet (Nate), section_medoid_clusters.parquet (13),
-         parameters.csv, pa_trout.gpkg (sections layer), data/raw/pa_boundary.gpkg
-Outputs: data/processed/section_run_limited_clusters.{parquet,csv}   section_id, tight_cluster_id, loose_cluster_id,
-                                                                    silhouette_best_cluster_id, limits_cluster_id
-         outputs/tables/run_limited_clusters/comparison.csv, real_run_yardstick.csv
-         outputs/figures/run_limited_clusters/maps.png, metrics.png
-         logs/15_run_limited_clusters.log
+         hatchery_schedule_supply.csv, section_schedule.parquet and stocking_events.parquet (Nate),
+         section_medoid_clusters.parquet (13), parameters.csv, pa_trout.gpkg (sections layer), data/raw/pa_boundary.gpkg
+Outputs: data/processed/section_hierarchical_clusters.{parquet,csv}   section_id plus the four columns above
+         outputs/tables/hierarchical_clusters/comparison.csv, real_run_yardstick.csv, hierarchical_silhouette_by_k.csv
+         outputs/figures/hierarchical_clusters/maps.png, metrics.png
+         logs/15_hierarchical_clusters.log
 
-    python scripts/15_run_limited_clusters.py
+    python scripts/15_hierarchical_clusters.py
 """
 # %% Setup
 from __future__ import annotations
@@ -63,18 +49,17 @@ from sklearn.metrics import silhouette_samples
 
 from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
 
-FIG_DIR = ROOT / "outputs" / "figures" / "run_limited_clusters"
-TABLE_DIR = ROOT / "outputs" / "tables" / "run_limited_clusters"
+FIG_DIR = ROOT / "outputs" / "figures" / "hierarchical_clusters"
+TABLE_DIR = ROOT / "outputs" / "tables" / "hierarchical_clusters"
 CRS, MARGIN_M = 26918, 2500
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e6e5e0"
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
-SCHEDULED = ["Bellefonte", "Benner Spring", "Corry", "Huntsdale", "Oswayo", "Pleasant Gap", "Reynoldsdale", "Tionesta", "Tylersville"]
 
 
 
 
-setup_logging("15_run_limited_clusters")
-log = logging.getLogger("15_run_limited_clusters")
+setup_logging("15_hierarchical_clusters")
+log = logging.getLogger("15_hierarchical_clusters")
 FIG_DIR.mkdir(parents=True, exist_ok=True); TABLE_DIR.mkdir(parents=True, exist_ok=True)
 plt.rcParams.update({"font.size": 11, "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK,
                      "axes.edgecolor": INK2, "axes.labelcolor": INK2, "xtick.color": INK2, "ytick.color": INK2,
@@ -96,7 +81,11 @@ np.fill_diagonal(D, 0)
 nate = ss["cluster_id"].astype("category").cat.codes.to_numpy()
 kmed = pd.read_parquet(PROCESSED_DIR / "section_medoid_clusters.parquet").set_index("section_id").loc[ids, "medoid_cluster_id"].astype("category").cat.codes.to_numpy()
 hm = pd.read_parquet(PROCESSED_DIR / "hatchery_to_section_road_distance.parquet").pivot_table(index="section_id", columns="hatchery", values="road_mi").reindex(ids)
-H9 = hm[[c for c in hm.columns if any(s.lower() in c.lower() for s in SCHEDULED)]].to_numpy()
+supply = pd.read_csv(PROCESSED_DIR / "hatchery_schedule_supply.csv")
+PRODUCING = supply.loc[supply["stream_fish_2026"] > 0, "hatchery"].tolist()      # hatcheries that stock streams in the 2026 schedule
+assert set(PRODUCING) <= set(hm.columns), "a producing hatchery has no road distances"
+H_PROD = hm[PRODUCING].to_numpy()                                              # sections x producing hatcheries
+log.info("hatchery-distance error is graded over the %d hatcheries producing 2026 stream fish: %s", len(PRODUCING), ", ".join(PRODUCING))
 
 ev = pd.read_parquet(PROCESSED_DIR / "stocking_events.parquet")
 ev = ev[ev.section_id.isin(ix) & ev.run_id.notna()]
@@ -161,14 +150,14 @@ def describe(lab, name):
     lab = np.asarray(lab); sizes = pd.Series(lab).value_counts()
     w = [D[np.ix_(g, g)].max() for g in (np.flatnonzero(lab == c) for c in sizes.index) if len(g) > 1]
     sil = silhouette_samples(D, lab, metric="precomputed")
-    err = np.zeros_like(H9)
+    err = np.zeros_like(H_PROD)
     for c in sizes.index:
-        g = np.flatnonzero(lab == c); err[g] = H9[g].mean(0) - H9[g]
+        g = np.flatnonzero(lab == c); err[g] = H_PROD[g].mean(0) - H_PROD[g]
     same = (sizes * (sizes - 1) // 2).sum()
     return {"method": name, "clusters": len(sizes), "singletons": int((sizes == 1).sum()), "biggest (sections)": int(sizes.max()),
             "median width (mi)": round(float(np.median(w)), 1), "widest (mi)": round(float(np.max(w)), 1),
             "mean silhouette": round(float(sil.mean()), 3),
-            "hatchery-distance error (% of distance)": round(100 * float(np.abs(err).sum() / H9.sum()), 2),
+            "hatchery-distance error (% of distance)": round(100 * float(np.abs(err).sum() / H_PROD.sum()), 2),
             "hatchery-distance error (mean mi)": round(float(np.abs(err).mean()), 2),
             "real runs kept whole (%)": round(100 * float(np.mean([len(set(lab[x])) == 1 for x in multi])), 1),
             "real co-run pairs kept together (%)": round(100 * float((lab[ci] == lab[cj]).mean()), 1),
@@ -186,14 +175,14 @@ comparison.to_csv(TABLE_DIR / "comparison.csv")
 print(comparison.T.to_string())
 
 out = pd.DataFrame({"section_id": ids,
-                    "tight_cluster_id": [f"T{c + 1:03d}" for c in labels["tight"]],
-                    "loose_cluster_id": [f"L{c + 1:03d}" for c in labels["loose"]],
+                    "width_only_19_9_cluster_id": [f"W19_{c + 1:03d}" for c in labels["tight"]],
+                    "width_only_47_5_cluster_id": [f"W47_{c + 1:03d}" for c in labels["loose"]],
                     "silhouette_best_cluster_id": [f"H{c + 1:03d}" for c in hier_best],
                     "limits_cluster_id": [f"HL{c + 1:03d}" for c in hier_lim]})
-out.to_parquet(PROCESSED_DIR / "section_run_limited_clusters.parquet", index=False)
-out.to_csv(PROCESSED_DIR / "section_run_limited_clusters.csv", index=False)
+out.to_parquet(PROCESSED_DIR / "section_hierarchical_clusters.parquet", index=False)
+out.to_csv(PROCESSED_DIR / "section_hierarchical_clusters.csv", index=False)
 assert out.section_id.is_unique and len(out) == n
-log.info("wrote %d rows to section_run_limited_clusters", len(out))
+log.info("wrote %d rows to section_hierarchical_clusters", len(out))
 
 
 # %% Maps
@@ -222,7 +211,7 @@ def state_map(ax, lab, name, c):
     ax.scatter(pts.x, pts.y, s=11, color=ORANGE, zorder=4, linewidth=0)
     ax.set_aspect("equal"); ax.set_axis_off()
     ax.set_title(name, loc="left", fontsize=12, fontweight="bold", pad=44)
-    ax.text(0, 1.01, f"{int(c['clusters'])} clusters · {int(c['singletons'])} single-section trips · biggest {int(c['biggest (sections)'])} sections · widest {c['widest (mi)']:.0f} mi\n"
+    ax.text(0, 1.01, f"{int(c['clusters'])} clusters · {int(c['singletons'])} sections left alone · biggest {int(c['biggest (sections)'])} sections · widest {c['widest (mi)']:.0f} mi\n"
             f"silhouette {c['mean silhouette']:.2f} · real runs kept whole {c['real runs kept whole (%)']:.0f}% · hatchery-distance error {c['hatchery-distance error (% of distance)']:.1f}%",
             transform=ax.transAxes, fontsize=9.4, color=INK, va="bottom")
 
@@ -230,7 +219,7 @@ def state_map(ax, lab, name, c):
 shown = [(comparison.index[0], hier_lim), (comparison.index[1], hier_best), (comparison.index[2], kmed)]
 fig, axs = plt.subplots(1, 3, figsize=(20, 6.2), gridspec_kw={"wspace": 0.03})
 fig.suptitle("Hierarchical clusters (complete linkage) with the same limits as k-medoids, or cut at the best silhouette", x=0.01, ha="left", fontsize=14.5, fontweight="bold")
-fig.text(0.01, 0.9, "Road miles only; no schedule or hatchery information enters the clustering. Left and right share the same limits (4 sections, 20 mi); the middle has none. Orange dots = single-section trips. Shading = sections per cluster.", fontsize=10.5, color=INK2)
+fig.text(0.01, 0.9, "Road miles only; no schedule or hatchery information enters the clustering. Left and right share the same limits (4 sections, 20 mi); the middle has none. Orange dots = sections left alone. Shading = sections per cluster.", fontsize=10.5, color=INK2)
 for ax, (name, lab) in zip(axs, shown):
     state_map(ax, lab, name, comparison.loc[name])
 fig.subplots_adjust(top=0.72)

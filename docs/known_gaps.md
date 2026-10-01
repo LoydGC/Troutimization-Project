@@ -272,3 +272,16 @@ What it lacks:
   matches 1909_6 by name, county and section number), so the processed tables stay on the 2026-09-28 pull;
   the 2026-09-29 raw pull is kept. The schedule is "subject to change", so rerun and compare before relying on
   late-season events.
+
+## OSRM demo server used against CLAUDE.md rule 3 (recorded 2026-10-01)
+- **The rule:** CLAUDE.md rule 3 says never bulk-query public demo services (e.g. the OSRM demo server).
+- **What was done:** road distances came from `router.project-osrm.org`: the hatchery distances (13,585 pairs, script 11) and the
+  section-to-section distances (1,044,484 pairs in 121 block requests, script 12), at most one request per 1.5 s, with each block cached so a
+  re-run does not re-fetch.
+- **Why:** building a road graph from scratch was tried first (Overpass timeouts; a 6.1M-node graph of several GB) and abandoned.
+- **Waiver:** Gavin told Claude "dont worry about the OSRM hard rule" when the hatchery distances were reviewed, and chose to build the
+  section-to-section table ("do option 2"). Gavin to confirm this wording is the waiver he intends.
+- **Rule 2 deviation:** raw OSRM responses are not saved untouched under `data/raw/<source>/<date>/` with a manifest row. The parsed distances
+  are the processed tables; script 12 keeps its per-request blocks in `data/interim/` (gitignored), so the tables can be rebuilt but the raw
+  responses are not committed.
+- **Reproducibility:** the demo server's road data changes over time, so a rebuild can differ slightly. The committed tables are the reference.

@@ -1,11 +1,11 @@
-"""Map every clustering method side by side, with single-section trips (sections that end up alone) highlighted.
+"""Map every clustering method side by side, with the sections left alone (clusters of one section) highlighted.
 
-Visual comparison only. A "single-section trip" is a cluster of one section: the section would get its own truck run.
+Visual comparison only. A section is "left alone" when its cluster has no other section in it.
 Last panel: how many of the methods leave each section alone (sections alone under many methods are the robustly
 remote ones). The methods use only road miles between sections, except Nate's, which is built from the schedule.
 
 Inputs : data/processed/section_to_section_road_distance.parquet (12), section_schedule.parquet (Nate's clusters),
-         section_medoid_clusters.parquet (13), section_run_limited_clusters.parquet (15), pa_trout.gpkg, data/raw/pa_boundary.gpkg
+         section_medoid_clusters.parquet (13), section_hierarchical_clusters.parquet (15), pa_trout.gpkg, data/raw/pa_boundary.gpkg
 Outputs: outputs/figures/method_comparison/single_section_trips.png
          logs/16_compare_methods_map.log
 
@@ -45,7 +45,7 @@ D[r.from_section_id.map(ix).to_numpy(), r.to_section_id.map(ix).to_numpy()] = r.
 D = (D + D.T) / 2
 np.fill_diagonal(D, 0)
 kmed = pd.read_parquet(PROCESSED_DIR / "section_medoid_clusters.parquet").set_index("section_id").loc[ids]
-rl = pd.read_parquet(PROCESSED_DIR / "section_run_limited_clusters.parquet").set_index("section_id").loc[ids]
+rl = pd.read_parquet(PROCESSED_DIR / "section_hierarchical_clusters.parquet").set_index("section_id").loc[ids]
 
 
 # %% Option 2 (k-medoids, no limits, k from the best silhouette) is saved by script 13; DBSCAN is cheap to rebuild
@@ -67,7 +67,7 @@ methods = {
 alone = {name: (pd.Series(lab).map(pd.Series(lab).value_counts()).to_numpy() == 1) for name, lab in methods.items()}
 count = np.sum(list(alone.values()), axis=0)
 for name, a in alone.items():
-    log.info("%s: %d single-section trips", name, a.sum())
+    log.info("%s: %d sections left alone", name, a.sum())
 log.info("alone under all %d methods: %d; under 4 or more: %d; under none: %d", len(methods), (count == len(methods)).sum(), (count >= 4).sum(), (count == 0).sum())
 
 
@@ -87,14 +87,14 @@ def base(ax):
 
 
 fig, axs = plt.subplots(2, 4, figsize=(22, 10.6), gridspec_kw={"hspace": 0.16, "wspace": 0.02})
-fig.suptitle("Which sections get their own truck run? Single-section trips under each clustering method", x=0.01, ha="left", fontsize=15, fontweight="bold")
-fig.text(0.01, 0.925, "Orange dot = the section is a cluster of one (a single-section trip). Grey lines = all 1,022 stocked sections. Every method except Nate's uses only road miles between sections.",
+fig.suptitle("Which sections are left alone? Single-section clusters under each clustering method", x=0.01, ha="left", fontsize=15, fontweight="bold")
+fig.text(0.01, 0.925, "Orange dot = the section is a cluster of one (left alone). Grey lines = all 1,022 stocked sections. Every method except Nate's uses only road miles between sections.",
          fontsize=10.5, color=INK2)
 for ax, (name, lab) in zip(axs.ravel(), methods.items()):
     base(ax)
     a = alone[name]
     ax.scatter(px[a], py[a], s=22, color=ORANGE, edgecolor=SURFACE, linewidth=0.4, zorder=4)
-    ax.set_title(f"{name}\n{len(set(lab))} clusters · {int(a.sum())} single-section trips", loc="left", fontsize=11, fontweight="bold")
+    ax.set_title(f"{name}\n{len(set(lab))} clusters · {int(a.sum())} sections left alone", loc="left", fontsize=11, fontweight="bold")
 
 for extra in axs.ravel()[len(methods) + 1:]:
     extra.set_axis_off()
@@ -124,20 +124,20 @@ cmap_s = LinearSegmentedColormap.from_list("size", ["#dbe7f8", "#2a78d6", "#0b3a
 cards = {
     "Nate's schedule clusters": ("SCHEDULE LINKS (connected groups)", "PHASE 1 (plan of record)", ORANGE,
                                  "Sections that share at least half their truck runs are linked; each linked group is a cluster."),
-    f"k-medoids, no limits, best silhouette ({K_PLAIN})": ("K-MEDOIDS (partitioning)", "BASELINE: k set by best silhouette", BLUE,
+    f"k-medoids, no limits, best silhouette ({K_PLAIN})": ("K-MEDOIDS (partitioning)", "CANDIDATE: k set by best silhouette", AQUA,
                                    f"Try every k; keep the {K_PLAIN} whose clusters score best on silhouette. Centers are real sections. No size or width limit."),
-    "Script 13: k-medoids + limits (4 sections, 20 mi)": ("K-MEDOIDS (partitioning)", "SENSITIVITY CANDIDATE: smallest averaging error", AQUA,
+    "Script 13: k-medoids + limits (4 sections, 20 mi)": ("K-MEDOIDS (partitioning)", "REFERENCE: real-run limits (we considered them)", INK2,
                                                           "Same, then split any cluster wider than 20 mi or with more than 4 sections."),
-    "Hierarchical + limits (4 sections, 20 mi)": ("HIERARCHICAL, complete linkage", "SENSITIVITY CANDIDATE: same limits as #3, fewer clusters", AQUA,
+    "Hierarchical + limits (4 sections, 20 mi)": ("HIERARCHICAL, complete linkage", "REFERENCE: same real-run limits as #3", INK2,
                                            "Merge nearest groups, then split any cluster wider than 20 mi or with more than 4 sections: the same limits as #3."),
-    f"Hierarchical, no limits, best silhouette ({K_HIER})": ("HIERARCHICAL, complete linkage", "BASELINE: k set by best silhouette", BLUE,
+    f"Hierarchical, no limits, best silhouette ({K_HIER})": ("HIERARCHICAL, complete linkage", "CANDIDATE: k set by best silhouette", AQUA,
                                            f"The same merging as #5, cut where the silhouette is best ({K_HIER} clusters). No width or size limit."),
     "DBSCAN, eps 6 mi, min_samples 2": ("DBSCAN (density-based)", "SCRAPPED: chains; only flags remote sections", INK2,
                                         "A section within 6 mi of another joins its cluster, chaining along streams; sections with no neighbour are noise."),
 }
 fam_note = [("SCHEDULE LINKS", "uses what PFBC actually did, so it carries PFBC's hatchery choices"),
-            ("K-MEDOIDS", "you choose how many clusters; centers are real sections"),
-            ("HIERARCHICAL", "you choose a maximum width; the number of clusters follows"),
+            ("K-MEDOIDS", "you give a number of clusters (#2: best silhouette); centers are real sections"),
+            ("HIERARCHICAL", "merges nearest groups; cut at a number of clusters (#4) or a maximum width (#5)"),
             ("DBSCAN", "you choose a neighbour reach; clusters chain, loners become noise")]
 
 
@@ -169,11 +169,11 @@ for k, (ax, (name, lab)) in enumerate(zip(axes, methods.items()), start=1):
     ax.text(0, -0.02, f"{len(sizes)} clusters  ·  {int(a.sum())} alone  ·  widest {widest:.0f} mi", transform=ax.transAxes, fontsize=12, color=INK, fontweight="bold", va="top")
 
 fig.text(0.012, 0.11, "What the algorithm families mean.  " + "\n" + "\n".join(f"{a}  =  {b}" for a, b in fam_note), fontsize=11.5, color=INK2, va="top", linespacing=1.6)
-fig.text(0.50, 0.11, "* #3 and #5 share the same limits, so k-medoids and hierarchical are compared like for like. Where 20 mi and 4 sections come from: the\n"
-         "   2026 schedule has 1,015 truck runs. 90% of the 632 runs with 2 or more sections are no wider than 19.9 mi (rounded to 20), and 99% of all\n"
-         "   runs have 4 or fewer sections. Borrowed from PFBC's schedule, not a PFBC rule; they only set how tight a cluster is, not a truck trip.\n"
-         "   Also tested and set aside: hierarchical with a width limit only (19.9 mi: 234 clusters; 47.5 mi: 74 clusters, averaging error 5.7%).\n"
-         "   Kept in docs/clustering_options.md and cluster_tracker.md.",
+fig.text(0.50, 0.11, "* #3 and #5 apply realistic truck-run limits (20 mi wide, 4 sections) so we can show we considered them; the objective does not need\n"
+         "   them, so they are references, not the candidates. Same limits for both, so k-medoids and hierarchical are compared like for like. Where they come\n"
+         "   from: the 2026 schedule has 1,015 truck runs; 90% of the 632 runs with 2 or more sections are no wider than 19.9 mi (rounded to 20), and 99% of\n"
+         "   all runs have 4 or fewer sections. Borrowed from PFBC's schedule, not a PFBC rule. Also tested and set aside: hierarchical with a width limit\n"
+         "   only (19.9 mi: 234 clusters; 47.5 mi: 74 clusters, averaging error 5.7%). Kept in docs/clustering_options.md and cluster_tracker.md.",
          fontsize=10.5, color=INK2, va="top", linespacing=1.55)
 fig.text(0.012, 0.006, "Retired along the way: a hop limit (a cluster is a representative cost, not a trip), and DBSCAN at 19.9 / 47.5 mi (collapses the whole state into one cluster).",
          fontsize=11, color=INK2, va="bottom")

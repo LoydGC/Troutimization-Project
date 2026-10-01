@@ -13,14 +13,16 @@ truck must visit every section.
 - **Cost vector.** Each section s has `cost[h, s]` for every hatchery h (`2 × road miles × $ per truck-mile ÷ fish per load`).
   A cluster's representative cost from h is the mean of its members' `cost[h, s]`.
 - **Hatchery-agnostic.** No hatchery is attached to a cluster, and PFBC's schedule is not used (except for #1, the reference).
-- **Does not matter:** trip width, hop distance, sections per cluster, fish counts, truckloads.
+- **Does not matter:** trip width, hop distance, sections per cluster, fish counts, truckloads. They describe a truck run, and no run is modelled.
+- **Kept only as a reference:** options #3 and #5 apply realistic truck-run limits (20 mi wide, 4 sections) so we can show that we thought about
+  them. They are not the candidates; the objective does not need them.
 - **Does matter:** how close the cluster's average cost is to each member's own cost, across hatcheries. Judged by mean and
   90th-percentile error, whether the cheapest hatchery for a section is preserved, and the extra cost (regret) if the model used
   the cluster average to pick. The number of clusters follows from an error tolerance, not a trip rule.
 
-**Consequence for the options below.** #3 and #5 carry trip-style limits (width, section count) and group by road
-distance between sections, which is only a proxy for similar cost vectors. Their width, hop and size rules are superseded.
-Nothing below is deleted: they stay as the options on the table. (Clustering the cost vectors directly was considered and dropped.)
+**Consequence for the options below.** The candidates are the no-limits, best-silhouette versions (#2 k-medoids, #4 hierarchical). #3 and #5 add the width and size limits as a reference. All of them group by road distance between sections, which is only a proxy for similar cost vectors. (Clustering the cost vectors directly was considered and dropped.)
+
+**How clusters are graded.** Averaging error is measured over the hatcheries that currently produce fish in the 2026 trout schedule: 9 of the 13 (Bellefonte, Benner Spring, Corry, Huntsdale, Oswayo, Pleasant Gap, Reynoldsdale, Tionesta, Tylersville; Linesville and Pleasant Mount have 0 stream fish). The list is read from `hatchery_schedule_supply.csv` (`stream_fish_2026 > 0`) by scripts 13 and 15, so it follows the schedule if it changes.
 
 ## Plan of record (Gavin, 2026-10-01)
 
@@ -97,19 +99,19 @@ Regenerate: `python scripts/16_compare_methods_map.py` (needs scripts 12, 13, 15
 
 Inside geography-only there are three algorithm families:
 
-- **K-medoids** (#2, #3): you choose how many clusters; centers are real sections. Script 13.
-- **Hierarchical, complete linkage** (#4, #5): you choose a maximum width; the number of clusters follows. Script 15.
+- **K-medoids** (#2, #3): you give a number of clusters (#2 picks it by best silhouette); centers are real sections. Script 13.
+- **Hierarchical, complete linkage** (#4, #5): merges the nearest groups step by step; you cut the tree at a number of clusters (#4 picks it by best silhouette) or at a maximum width (#5). Script 15.
 - **DBSCAN** (#6): you choose a neighbour reach; clusters chain and loners become noise. Script 14 (scrapped, code kept).
 
 ## Where each option stands
 
 1. **Nate's schedule clusters** (351). *Reference.* `section_schedule.cluster_id`.
-2. **k-medoids, no limits, k set by the best silhouette** (310). *Baseline.* Try every k from 20 to 700 (two runs each), keep the one with the best mean silhouette (0.39). The peak is a plateau: every k from 240 to 330 scores within 0.01, so 310 is the top of a flat range, not a sharp optimum. `section_medoid_clusters.silhouette_best_cluster_id`.
-3. **Script 13: k-medoids + limits** (407). *Candidate: most accurate cost estimate* (hatchery-distance error 1.7%). Limits: 20 mi wide, 4 sections. `section_medoid_clusters`.
-4. **Hierarchical, no limits, k set by the best silhouette** (309). *Baseline.* The same complete-linkage merging as #5, cut at the k with the best silhouette (0.44, the highest of any option; averaging error 2.2%; widest cluster 15.6 mi). Deterministic, so no random-start noise. The peak is a plateau: every k from 269 to 392 scores within 0.01. `section_run_limited_clusters.silhouette_best_cluster_id`.
-5. **Hierarchical + limits** (375). *Sensitivity candidate.* The same complete-linkage merging as #4, with the same limits as #3 (20 mi wide, 4 sections), so k-medoids and hierarchical are compared like for like: 375 clusters against 407, silhouette 0.38 vs 0.35, 40 sections alone vs 95, averaging error 1.9% vs 1.7%. `section_run_limited_clusters.limits_cluster_id`.
-   - **Set aside: hierarchical with a width limit only (19.9 mi, no section cap)**: 234 clusters, silhouette 0.42, 15 alone, averaging error 2.8%. Still saved as `tight_cluster_id` and as a reference row in `comparison.csv`.
-   - **Also set aside: width-limited 47.5 mi**, the widest real run: 74 clusters, silhouette 0.34, averaging error 5.7% (double the others). Too wide to give an accurate average cost. Still saved as `loose_cluster_id` and as a reference row in `outputs/tables/run_limited_clusters/comparison.csv`, but no longer drawn.
+2. **k-medoids, no limits, k set by the best silhouette** (310). *Candidate.* Try every k from 20 to 700 (two runs each), keep the one with the best mean silhouette (0.39). The peak is a plateau: every k from 240 to 330 scores within 0.01, so 310 is the top of a flat range, not a sharp optimum. `section_medoid_clusters.silhouette_best_cluster_id`.
+3. **Script 13: k-medoids + limits** (407). *Reference: real-run limits.* Limits: 20 mi wide, 4 sections (hatchery-distance error 1.7%, the smallest of any option). `section_medoid_clusters`.
+4. **Hierarchical, no limits, k set by the best silhouette** (309). *Candidate.* The same complete-linkage merging as #5, cut at the k with the best silhouette (0.44, the highest of any option; averaging error 2.2%; widest cluster 15.6 mi). Deterministic, so no random-start noise. The peak is a plateau: every k from 269 to 392 scores within 0.01. `section_hierarchical_clusters.silhouette_best_cluster_id`.
+5. **Hierarchical + limits** (375). *Reference: real-run limits.* The same complete-linkage merging as #4, with the same limits as #3 (20 mi wide, 4 sections), so k-medoids and hierarchical are compared like for like: 375 clusters against 407, silhouette 0.38 vs 0.35, 40 sections alone vs 95, averaging error 1.9% vs 1.7%. `section_hierarchical_clusters.limits_cluster_id`.
+   - **Set aside: hierarchical with a width limit only (19.9 mi, no section cap)**: 234 clusters, silhouette 0.42, 15 alone, averaging error 2.8%. Still saved as `width_only_19_9_cluster_id` and as a reference row in `comparison.csv`.
+   - **Also set aside: width-limited 47.5 mi**, the widest real run: 74 clusters, silhouette 0.34, averaging error 5.7% (double the others). Too wide to give an accurate average cost. Still saved as `width_only_47_5_cluster_id` and as a reference row in `outputs/tables/hierarchical_clusters/comparison.csv`, but no longer drawn.
 6. **DBSCAN, eps 6 mi** (482, 271 alone). *Scrapped.* Useful only for flagging remote sections.
 
 ## The decision that was left (before the objective above)
@@ -145,5 +147,6 @@ runs; 632 of them stock two or more sections.
 
 ## Where the numbers come from
 
-Tight and loose widths are the real-run width percentiles on the road-mile matrix: 90th = 19.9 mi, maximum = 47.5 mi
-(`parameters.csv`, `run_width_max_mi`). Real runs: 632 multi-section runs; longest single hop 46.5 mi (Codorus State Park).
+The 20 mi and 4-section limits (options #3 and #5, reference only) and the two width-only versions (19.9 mi and 47.5 mi, set aside) come from
+the real-run numbers above: the 90th percentile of run width is 19.9 mi, the widest run is 47.5 mi (`parameters.csv`, `run_width_max_mi`).
+Real runs: 632 multi-section runs; the longest single hop is 46.5 mi (Codorus State Park).

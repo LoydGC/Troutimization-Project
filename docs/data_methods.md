@@ -261,6 +261,19 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
 - **Check:** Bear Creek 3197_2 and 3197_3 share both of their Tylersville runs (Feb 26, May 7) and are each
   other's nearest section (2.7 road-mi).
 
+**Road distances** (`scripts/11_road_distances.py`, `scripts/12_section_road_distances.py`, first used 2026-09-28; Gavin)
+- **Source:** the public OSRM table service (driving, fastest route; data (c) OpenStreetMap contributors). `source_inventory.md` § Road
+  distances; the rule 3 waiver is in `known_gaps.md`.
+- **Points:** each section's midpoint (`mid_lat`, `mid_lon` in `sections.parquet`, Nate's) is snapped by OSRM to the nearest road. Median snap is 97 m
+  (90th percentile 327 m); 7 sections snap more than 1 km (maximum 2,302 m). They are kept, not corrected.
+- **Hatchery table:** all 13 State Fish Hatcheries x the 1,045 sections stocked 2024-26 = 13,585 rows (km, mi, drive minutes, snap distances).
+- **Section-to-section table:** the 1,022 sections stocked in 2026, every ordered pair = 1,044,484 rows, queried as 11 x 11 = 121 blocks of 100 x 100.
+  Asymmetry is small (median 0.3%), so the clustering scripts use the mean of the two directions.
+- **Checks (reported by script 12, all pass):** row count, no duplicate pairs, no missing routes, zero diagonal, snap distances equal the hatchery
+  table's, road never shorter than straight-line beyond the snap, median road / straight-line ratio 1.34, asymmetry, triangle check.
+- **Circuity:** measured road / straight-line runs about 1.5 under 10 mi and 1.3 over 80 mi (`outputs/tables/section_road_distance/circuity_by_distance.csv`),
+  against the flat `circuity_factor` 1.3 Nate's scripts use for straight-line distances.
+
 **Map layers.** The wild-trout context layers in `pa_trout.gpkg` are simplified to a 5 m tolerance to keep
 the file small. All overlaps are computed from the full-resolution layers first.
 

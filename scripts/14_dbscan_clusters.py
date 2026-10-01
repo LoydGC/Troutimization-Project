@@ -1,4 +1,6 @@
-"""DBSCAN on road miles, tested with the width of PFBC's real truck runs, next to a width-limited alternative.
+"""SCRAPPED 2026-10-01 (kept for the record; see docs/clustering_options.md and cluster_tracker.md entry 6): DBSCAN on road miles,
+tested with the width of PFBC's real truck runs, next to a width-limited alternative. DBSCAN chains the whole state into one
+cluster at those widths and only behaves at eps near 6 mi. Script 15 now covers the width-limited (hierarchical) versions.
 
 Question: how far does PFBC make a truck travel on one run, and what do clusters look like if that is the distance
 rule? Real multi-section runs are 19.9 road mi wide at the 90th percentile and 47.5 mi at the maximum (script 13's
@@ -15,7 +17,7 @@ How DBSCAN works here, and the traps:
     included, lie within `eps`. Non-core sections within `eps` of a core point join its cluster; the rest are NOISE
     (label -1). Noise is the useful part: remote sections that no nearby section supports, i.e. the ones that need
     their own trip. 1 means no noise, 2 means "needs one neighbour", larger values demand a denser neighbourhood.
-  - Silhouette needs 2+ clusters (undefined for one). Noise sections count as one-section trips (silhouette 0).
+  - Silhouette needs 2+ clusters (undefined for one). Noise sections count as one-section clusters (silhouette 0).
 
 What the script runs:
   A. DBSCAN at the two real-run widths (the test asked for).
@@ -194,13 +196,13 @@ def state_map(ax, lab, title, stat):
 names = list(runs)
 fig, axs = plt.subplots(2, 3, figsize=(19, 10.4), gridspec_kw={"hspace": 0.28, "wspace": 0.03})
 fig.suptitle("DBSCAN and width-limited clusters at the width of PFBC's real truck runs", x=0.01, ha="left", fontsize=15, fontweight="bold")
-fig.text(0.01, 0.935, "Same 1,022 sections, road miles only. Shading = sections per cluster; orange dots = single-section trips "
+fig.text(0.01, 0.935, "Same 1,022 sections, road miles only. Shading = sections per cluster; orange dots = sections left alone "
          "(DBSCAN noise, i.e. remote sections, or singletons). Silhouette is undefined for a single cluster.", fontsize=10.5, color=INK2)
 order = [names[0], names[1], names[2], names[3], names[4], names[5]]
 for ax, name in zip(axs.ravel(), order):
     lab, noise = runs[name]; c = comparison.loc[name]
     sil = "n/a (one cluster)" if np.isnan(c["mean silhouette"]) else f"{c['mean silhouette']:.2f}"
-    state_map(ax, lab, name, f"{int(c['clusters'])} clusters · {int(c['singletons'])} single-section trips · biggest {int(c['biggest (sections)'])} sections\n"
+    state_map(ax, lab, name, f"{int(c['clusters'])} clusters · {int(c['singletons'])} sections left alone · biggest {int(c['biggest (sections)'])} sections\n"
                               f"widest {c['widest (mi)']:.0f} mi · silhouette {sil}")
 fig.text(0.01, 0.012, "Top row: DBSCAN, where eps is how far one section may sit from its nearest cluster-mate, so clusters chain and can far exceed eps. "
          "Bottom row: complete linkage, where the cut is the largest distance between any two sections in a cluster, then script 13's clusters.", fontsize=9.5, color=INK2)

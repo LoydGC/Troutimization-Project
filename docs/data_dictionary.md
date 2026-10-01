@@ -258,8 +258,42 @@ sections). They never use the schedule or hatcheries, so they carry none of PFBC
 | cluster_size | Sections in the cluster | count |
 | dist_to_medoid_mi | Road distance from the section to its medoid | road mi |
 | silhouette | How well the section fits its cluster (1 best, below 0 misplaced) | -1 to 1 |
+| silhouette_best_cluster_id | Option 2: plain k-medoids with no limits, k set by the best silhouette over k = 20 to 700 (310 clusters), e.g. B001 | text |
 
 Cluster cost for hatchery h = average of h's road distance (`hatchery_to_section_road_distance`) to the cluster's sections.
+
+## section_hierarchical_clusters (.parquet, .csv)
+One row per 2026-stocked section (1,022), built by `scripts/15_hierarchical_clusters.py`. Four labelings from one complete-linkage
+merge tree on section-to-section road miles (no schedule, no hatcheries). Each cluster id appears only within its own column.
+
+| Column | Meaning | Clusters |
+|---|---|---|
+| section_id | Join key | |
+| silhouette_best_cluster_id | Option 4: tree cut at the k with the best silhouette, no limits (ids H001...) | 309 |
+| limits_cluster_id | Option 5: split from the top of the tree so no cluster is over `cluster_max_width_mi` wide or has more than `cluster_max_sections` sections (HL001...). Reference only | 375 |
+| width_only_19_9_cluster_id | Tree cut at 19.9 mi, no section cap (W19_001...). Reference only, set aside | 234 |
+| width_only_47_5_cluster_id | Tree cut at 47.5 mi, no section cap (W47_001...). Reference only, set aside | 74 |
+
+## hatchery_to_section_road_distance (.parquet, .csv)
+Road distance from every state fish hatchery to every section stocked in 2024-26, from the public OSRM server (`scripts/11_road_distances.py`,
+`data_methods.md` § Road distances). 13,585 rows = 13 hatcheries x 1,045 sections.
+
+| Column | Meaning | Units |
+|---|---|---|
+| hatchery_id, hatchery, county | The hatchery (all 13 in PFBC's State Fish Hatcheries layer) | |
+| section_id, water_name | The section | |
+| road_km, road_mi | OSRM driving distance of the fastest route | km / mi |
+| road_min | OSRM drive time | minutes (not miles) |
+| snap_m, hatchery_snap_m | How far the section midpoint / the hatchery was moved to reach the nearest road | m |
+
+## section_to_section_road_distance (.parquet only)
+Road distance between every ordered pair of the 1,022 sections stocked in 2026 (`scripts/12_section_road_distances.py`). 1,044,484 rows, parquet
+only (a csv would be about 50 MB). Not symmetric by a hair (median gap 0.3%); the clustering scripts use the mean of both directions.
+
+| Column | Meaning | Units |
+|---|---|---|
+| from_section_id, to_section_id | The ordered pair | |
+| road_km, road_mi, road_min | OSRM distance and drive time, as above | km / mi / minutes |
 
 ## clusters.csv
 One row per default-rule cluster (351), built by `scripts/10_runs_clusters.py`.

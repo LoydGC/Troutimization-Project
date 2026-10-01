@@ -106,3 +106,12 @@ from his `notebooks/01_data_prep.ipynb` where it names them; we haven't verified
 | `pa_natural_repro_trout_streams.gpkg` | 6,224 | not recorded (same count as PASDA #25) | not referenced |
 | `pa_stocked_trout_streams.gpkg` | 1,064 | not recorded (matches none of our year layers; see `known_gaps.md`) | his maps and `travel_arcs` distances |
 | `Coop_nurseries.geojson` | 165 | not recorded | nursery locations (script 03) |
+
+## Road distances (OSRM public demo server; Gavin)
+- **Endpoint:** `https://router.project-osrm.org/table/v1/driving/` (OSRM table service, driving profile, fastest route; road data
+  from OpenStreetMap, credit "(c) OpenStreetMap contributors"). First used 2026-09-28; works for up to about
+  200 coordinates per request.
+- **Used in:** `scripts/11_road_distances.py` (13 hatcheries x 1,045 sections) and `scripts/12_section_road_distances.py` (1,022 x 1,022
+  sections in 121 blocks of 100 x 100). Pause between requests: 1.5 s. Method and checks: `data_methods.md` § Road distances.
+- **Note:** this is the public demo server that CLAUDE.md rule 3 says never to bulk-query. See `known_gaps.md` § OSRM demo server for
+  the waiver and what was done.
