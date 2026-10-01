@@ -1,5 +1,7 @@
-2026-10-01 16:26:17,396 INFO 15_run_limited_clusters run from commit 4390c2e + uncommitted changes to scripts/14_dbscan_clusters.py, scripts/15_run_limited_clusters.py, scripts/16_compare_methods_map.py
-2026-10-01 16:26:17,870 INFO tight (W 19.9 mi): 234 clusters, widest 19.8 mi
-2026-10-01 16:26:17,875 INFO loose (W 47.5 mi): 74 clusters, widest 47.5 mi
-2026-10-01 16:26:18,001 INFO wrote 1022 rows to section_run_limited_clusters
-2026-10-01 16:26:23,154 INFO saved figures to outputs\figures\run_limited_clusters
+2026-10-01 17:41:41,477 INFO 15_run_limited_clusters run from commit 788ae02 + uncommitted changes to scripts/13_medoid_clusters.py, scripts/15_run_limited_clusters.py, scripts/16_compare_methods_map.py
+2026-10-01 17:41:41,995 INFO tight (W 19.9 mi): 234 clusters, widest 19.8 mi
+2026-10-01 17:41:41,999 INFO loose (W 47.5 mi): 74 clusters, widest 47.5 mi
+2026-10-01 17:41:42,014 INFO hierarchical + limits (<= 20 mi, <= 4 sections): 375 clusters
+2026-10-01 17:41:48,266 INFO hierarchical (complete linkage), no limits: best silhouette 0.438 at k = 309 (309 clusters); every k from 269 to 392 is within 0.01 of it
+2026-10-01 17:41:48,414 INFO wrote 1022 rows to section_run_limited_clusters
+2026-10-01 17:41:55,554 INFO saved figures to outputs\figures\run_limited_clusters

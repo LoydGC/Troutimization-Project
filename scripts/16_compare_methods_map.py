@@ -48,39 +48,20 @@ kmed = pd.read_parquet(PROCESSED_DIR / "section_medoid_clusters.parquet").set_in
 rl = pd.read_parquet(PROCESSED_DIR / "section_run_limited_clusters.parquet").set_index("section_id").loc[ids]
 
 
-# %% The methods not saved as tables are cheap to rebuild
-def kmedoids(Dm, k, rng, max_iter=100):
-    m = len(Dm)
-    med = [int(rng.integers(m))]; d = Dm[med[0]].copy()
-    for _ in range(1, k):
-        p = d ** 2; p[med] = 0
-        nxt = int(rng.choice(m, p=p / p.sum())) if p.sum() > 0 else int(rng.choice(np.setdiff1d(np.arange(m), med)))
-        med.append(nxt); d = np.minimum(d, Dm[nxt])
-    med = np.array(med)
-    for _ in range(max_iter):
-        lab = Dm[:, med].argmin(axis=1); new = med.copy()
-        for c in range(k):
-            members = np.flatnonzero(lab == c)
-            if len(members):
-                new[c] = members[Dm[np.ix_(members, members)].sum(axis=1).argmin()]
-        if np.array_equal(new, med):
-            break
-        med = new
-    lab = Dm[:, med].argmin(axis=1)
-    return lab, float(Dm[np.arange(m), med[lab]].sum())
-
-
-rng = np.random.default_rng(351)
-plain = min((kmedoids(D, 351, rng) for _ in range(10)), key=lambda x: x[1])[0]       # k-medoids at Nate's count, no limits
+# %% Option 2 (k-medoids, no limits, k from the best silhouette) is saved by script 13; DBSCAN is cheap to rebuild
+plain = kmed["silhouette_best_cluster_id"].to_numpy()
+K_PLAIN = len(set(plain))
+HIER = rl["silhouette_best_cluster_id"].to_numpy()
+K_HIER = len(set(HIER))
 db = DBSCAN(eps=6, min_samples=2, metric="precomputed").fit(D).labels_                                       # noise = alone
 db = np.where(db == -1, db.max() + 1 + np.cumsum(db == -1), db)
 
 methods = {
     "Nate's schedule clusters": ss["cluster_id"].to_numpy(),
-    "k-medoids, no limits (351)": plain,
+    f"k-medoids, no limits, best silhouette ({K_PLAIN})": plain,
     "Script 13: k-medoids + limits (4 sections, 20 mi)": kmed["medoid_cluster_id"].to_numpy(),
-    "Width-limited 19.9 mi, no size cap": rl["tight_cluster_id"].to_numpy(),
-    "Width-limited 47.5 mi, no size cap": rl["loose_cluster_id"].to_numpy(),
+    f"Hierarchical, no limits, best silhouette ({K_HIER})": HIER,
+    "Hierarchical + limits (4 sections, 20 mi)": rl["limits_cluster_id"].to_numpy(),
     "DBSCAN, eps 6 mi, min_samples 2": db,
 }
 alone = {name: (pd.Series(lab).map(pd.Series(lab).value_counts()).to_numpy() == 1) for name, lab in methods.items()}
@@ -141,17 +122,17 @@ BLUE, AQUA = "#2a78d6", "#1baf7a"
 cmap_s = LinearSegmentedColormap.from_list("size", ["#dbe7f8", "#2a78d6", "#0b3a7a"]); norm_s = Normalize(2, 12)
 # name -> (algorithm family, status, status colour, plain-language line)
 cards = {
-    "Nate's schedule clusters": ("SCHEDULE LINKS (connected groups)", "REFERENCE: uses PFBC's schedule", ORANGE,
+    "Nate's schedule clusters": ("SCHEDULE LINKS (connected groups)", "PHASE 1 (plan of record)", ORANGE,
                                  "Sections that share at least half their truck runs are linked; each linked group is a cluster."),
-    "k-medoids, no limits (351)": ("K-MEDOIDS (partitioning)", "BASELINE", BLUE,
-                                   "Pick 351 real sections as centers so everyone is as close to a center as possible. No size or width limit."),
-    "Script 13: k-medoids + limits (4 sections, 20 mi)": ("K-MEDOIDS (partitioning)", "CANDIDATE: most accurate cost estimate", AQUA,
+    f"k-medoids, no limits, best silhouette ({K_PLAIN})": ("K-MEDOIDS (partitioning)", "BASELINE: k set by best silhouette", BLUE,
+                                   f"Try every k; keep the {K_PLAIN} whose clusters score best on silhouette. Centers are real sections. No size or width limit."),
+    "Script 13: k-medoids + limits (4 sections, 20 mi)": ("K-MEDOIDS (partitioning)", "SENSITIVITY CANDIDATE: smallest averaging error", AQUA,
                                                           "Same, then split any cluster wider than 20 mi or with more than 4 sections."),
-    "Width-limited 19.9 mi, no size cap": ("HIERARCHICAL, complete linkage", "CANDIDATE: most faithful to real runs, tightest groups", AQUA,
-                                           "Merge nearest groups, never letting two sections in a cluster be over 19.9 mi apart (90% of real runs are narrower)."),
-    "Width-limited 47.5 mi, no size cap": ("HIERARCHICAL, complete linkage", "UPPER BOUND: too wide for an accurate average cost", INK2,
-                                           "Same rule at 47.5 mi, the widest real run."),
-    "DBSCAN, eps 6 mi, min_samples 2": ("DBSCAN (density-based)", "SCRAPPED: chains, but flags remote sections", INK2,
+    "Hierarchical + limits (4 sections, 20 mi)": ("HIERARCHICAL, complete linkage", "SENSITIVITY CANDIDATE: same limits as #3, fewer clusters", AQUA,
+                                           "Merge nearest groups, then split any cluster wider than 20 mi or with more than 4 sections: the same limits as #3."),
+    f"Hierarchical, no limits, best silhouette ({K_HIER})": ("HIERARCHICAL, complete linkage", "BASELINE: k set by best silhouette", BLUE,
+                                           f"The same merging as #5, cut where the silhouette is best ({K_HIER} clusters). No width or size limit."),
+    "DBSCAN, eps 6 mi, min_samples 2": ("DBSCAN (density-based)", "SCRAPPED: chains; only flags remote sections", INK2,
                                         "A section within 6 mi of another joins its cluster, chaining along streams; sections with no neighbour are noise."),
 }
 fam_note = [("SCHEDULE LINKS", "uses what PFBC actually did, so it carries PFBC's hatchery choices"),
@@ -164,12 +145,13 @@ def poly(ax, g, **kw):
     ax.add_patch(Poly(np.array(g.exterior.coords), closed=True, joinstyle="round", **kw))
 
 
-fig = plt.figure(figsize=(21, 16.4))
-gs = fig.add_gridspec(2, 3, hspace=0.82, wspace=0.04, left=0.02, right=0.99, top=0.76, bottom=0.15)
-fig.suptitle("Clustering options so far: six ways to group the 1,022 stocked sections into trips", x=0.015, y=0.995, ha="left", fontsize=17, fontweight="bold")
-fig.text(0.015, 0.915, "Shading = sections per cluster. Orange dots = sections that end up alone (single-section trips). All but #1 use only road miles between sections.\n"
-         "Plain-language labels: top = algorithm family, bold = what we called it, colored = where it stands.", fontsize=11.5, color=INK2, va="bottom")
-for k, (ax, (name, lab)) in enumerate(zip([fig.add_subplot(g) for g in gs], methods.items()), start=1):
+fig = plt.figure(figsize=(21, 14.6))
+gs = fig.add_gridspec(2, 3, hspace=0.78, wspace=0.04, left=0.02, right=0.99, top=0.76, bottom=0.15)
+fig.suptitle("Clustering options so far: six ways to group the 1,022 stocked sections by similar cost", x=0.012, y=0.995, ha="left", fontsize=19, fontweight="bold")
+fig.text(0.012, 0.9, "Shading = sections per cluster. Orange dots = sections left alone in their cluster. All but #1 use only road miles between sections.\n"
+         "Top line = algorithm family, bold = what we called it, colored = where it stands.", fontsize=12.5, color=INK2, va="bottom")
+axes = [fig.add_subplot(g) for g in gs]
+for k, (ax, (name, lab)) in enumerate(zip(axes, methods.items()), start=1):
     fam, status, scol, line = cards[name]
     sizes = pd.Series(lab).value_counts(); a = alone[name]
     base(ax)
@@ -181,13 +163,19 @@ for k, (ax, (name, lab)) in enumerate(zip([fig.add_subplot(g) for g in gs], meth
     ax.scatter(px[a], py[a], s=20, color=ORANGE, edgecolor=SURFACE, linewidth=0.4, zorder=4)
     widest = max(D[np.ix_(g, g)].max() for g in (np.flatnonzero(lab == c) for c in sizes.index) if len(g) > 1)
     ax.text(0, 1.50, fam, transform=ax.transAxes, fontsize=10.5, color=INK2, fontweight="bold", va="bottom")
-    ax.text(0, 1.38, f"{k}. {name}", transform=ax.transAxes, fontsize=13.5, color=INK, fontweight="bold", va="bottom")
-    ax.text(0, 1.27, status, transform=ax.transAxes, fontsize=11.5, color=scol, fontweight="bold", va="bottom")
-    ax.text(0, 1.20, "\n".join(__import__("textwrap").wrap(line, 62)), transform=ax.transAxes, fontsize=10.5, color=INK, va="top")
-    ax.text(0, -0.02, f"{len(sizes)} clusters   ·   {int(a.sum())} alone   ·   widest {widest:.0f} mi", transform=ax.transAxes, fontsize=12.5, color=INK, fontweight="bold", va="top")
-strip = "     ".join(f"{a}: {b}." for a, b in fam_note)
-fig.text(0.015, 0.105, "What the algorithm families mean.  " + "\n" + "\n".join(f"{a}  =  {b}" for a, b in fam_note), fontsize=11, color=INK2, va="top", linespacing=1.6)
-fig.text(0.015, 0.008, "Retired along the way: a hop limit and a section-count cap (not needed when a cluster only supplies an average cost), and DBSCAN at 19.9 / 47.5 mi (collapses the whole state into one cluster).",
-         fontsize=10.5, color=INK2, va="bottom")
+    ax.text(0, 1.38, f"{k}. {name}" + ("*" if name.startswith(("Script 13", "Hierarchical + limits")) else ""), transform=ax.transAxes, fontsize=12.5, color=INK, fontweight="bold", va="bottom")
+    ax.text(0, 1.27, status, transform=ax.transAxes, fontsize=11, color=scol, fontweight="bold", va="bottom")
+    ax.text(0, 1.20, "\n".join(__import__("textwrap").wrap(line, 48)), transform=ax.transAxes, fontsize=10.5, color=INK, va="top")
+    ax.text(0, -0.02, f"{len(sizes)} clusters  ·  {int(a.sum())} alone  ·  widest {widest:.0f} mi", transform=ax.transAxes, fontsize=12, color=INK, fontweight="bold", va="top")
+
+fig.text(0.012, 0.11, "What the algorithm families mean.  " + "\n" + "\n".join(f"{a}  =  {b}" for a, b in fam_note), fontsize=11.5, color=INK2, va="top", linespacing=1.6)
+fig.text(0.50, 0.11, "* #3 and #5 share the same limits, so k-medoids and hierarchical are compared like for like. Where 20 mi and 4 sections come from: the\n"
+         "   2026 schedule has 1,015 truck runs. 90% of the 632 runs with 2 or more sections are no wider than 19.9 mi (rounded to 20), and 99% of all\n"
+         "   runs have 4 or fewer sections. Borrowed from PFBC's schedule, not a PFBC rule; they only set how tight a cluster is, not a truck trip.\n"
+         "   Also tested and set aside: hierarchical with a width limit only (19.9 mi: 234 clusters; 47.5 mi: 74 clusters, averaging error 5.7%).\n"
+         "   Kept in docs/clustering_options.md and cluster_tracker.md.",
+         fontsize=10.5, color=INK2, va="top", linespacing=1.55)
+fig.text(0.012, 0.006, "Retired along the way: a hop limit (a cluster is a representative cost, not a trip), and DBSCAN at 19.9 / 47.5 mi (collapses the whole state into one cluster).",
+         fontsize=11, color=INK2, va="bottom")
 fig.savefig(FIG_DIR / "options_overview.png", dpi=105, bbox_inches="tight", pad_inches=0.2)
 log.info("saved %s", (FIG_DIR / "options_overview.png").relative_to(ROOT))

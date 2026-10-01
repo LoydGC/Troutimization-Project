@@ -1,10 +1,10 @@
-2026-10-01 16:31:59,019 INFO 16_compare_methods_map run from commit 4390c2e + uncommitted changes to scripts/14_dbscan_clusters.py, scripts/15_run_limited_clusters.py, scripts/16_compare_methods_map.py
-2026-10-01 16:31:59,793 INFO Nate's schedule clusters: 103 single-section trips
-2026-10-01 16:31:59,793 INFO k-medoids, no limits (351): 76 single-section trips
-2026-10-01 16:31:59,793 INFO Script 13: k-medoids + limits (4 sections, 20 mi): 95 single-section trips
-2026-10-01 16:31:59,793 INFO Width-limited 19.9 mi, no size cap: 15 single-section trips
-2026-10-01 16:31:59,793 INFO Width-limited 47.5 mi, no size cap: 0 single-section trips
-2026-10-01 16:31:59,793 INFO DBSCAN, eps 6 mi, min_samples 2: 271 single-section trips
-2026-10-01 16:31:59,793 INFO alone under all 6 methods: 0; under 4 or more: 13; under none: 662
-2026-10-01 16:32:05,208 INFO saved outputs\figures\method_comparison\single_section_trips.png
-2026-10-01 16:32:17,304 INFO saved outputs\figures\method_comparison\options_overview.png
+2026-10-01 17:45:14,424 INFO 16_compare_methods_map run from commit 788ae02 + uncommitted changes to scripts/13_medoid_clusters.py, scripts/15_run_limited_clusters.py, scripts/16_compare_methods_map.py
+2026-10-01 17:45:14,864 INFO Nate's schedule clusters: 103 single-section trips
+2026-10-01 17:45:14,864 INFO k-medoids, no limits, best silhouette (310): 54 single-section trips
+2026-10-01 17:45:14,864 INFO Script 13: k-medoids + limits (4 sections, 20 mi): 95 single-section trips
+2026-10-01 17:45:14,864 INFO Hierarchical, no limits, best silhouette (309): 31 single-section trips
+2026-10-01 17:45:14,864 INFO Hierarchical + limits (4 sections, 20 mi): 40 single-section trips
+2026-10-01 17:45:14,864 INFO DBSCAN, eps 6 mi, min_samples 2: 271 single-section trips
+2026-10-01 17:45:14,864 INFO alone under all 6 methods: 4; under 4 or more: 26; under none: 659
+2026-10-01 17:45:20,492 INFO saved outputs\figures\method_comparison\single_section_trips.png
+2026-10-01 17:45:33,513 INFO saved outputs\figures\method_comparison\options_overview.png

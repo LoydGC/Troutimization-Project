@@ -19,7 +19,8 @@ Inputs : data/processed/section_to_section_road_distance.parquet   road miles be
          data/processed/parameters.csv                              cluster_max_width_mi, cluster_max_sections, cluster_start_k
          data/processed/pa_trout.gpkg (sections layer)              section lines, for the maps (gitignored; rebuilt by 01-02)
          data/raw/pa_boundary.gpkg                                   state outline for the maps (optional)
-Outputs: data/processed/section_medoid_clusters.{parquet,csv}       one row per section: its k-medoids cluster and medoid
+Outputs: data/processed/section_medoid_clusters.{parquet,csv}       one row per section: its k-medoids cluster (with limits) and medoid,
+                                                                    plus silhouette_best_cluster_id (no limits, k set by the best silhouette)
          outputs/tables/medoid_clusters/comparison.csv              the three approaches side by side (Nate, k-medoids, k-medoids with limits)
          outputs/tables/medoid_clusters/silhouette_by_k.csv         silhouette and total distance for a range of k
          outputs/figures/medoid_clusters/maps.png, silhouette.png, approach_comparison.png (all three approaches, statewide and zoomed)
@@ -53,8 +54,8 @@ FIG_DIR = ROOT / "outputs" / "figures" / "medoid_clusters"
 TABLE_DIR = ROOT / "outputs" / "tables" / "medoid_clusters"
 CRS, MARGIN_M = 26918, 2500
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e6e5e0"
-BLUE, ORANGE = "#2a78d6", "#eb6834"          # reference palette slots 1-2: k-medoids = blue, Nate's = orange
-K_GRID = [25, 50, 75, 100, 150, 200, 250, 300, 351, 400, 450, 500, 600, 700]   # silhouette curve, unlimited k-medoids
+BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"          # reference palette slots 1-2: k-medoids = blue, Nate's = orange
+K_GRID = list(range(20, 100, 10)) + list(range(100, 701, 10))   # silhouette curve, unlimited k-medoids; its peak sets the plain version's k
 SCHEDULED = ["Bellefonte", "Benner Spring", "Corry", "Huntsdale", "Oswayo", "Pleasant Gap", "Reynoldsdale", "Tionesta", "Tylersville"]
 
 ap = argparse.ArgumentParser()
@@ -150,12 +151,19 @@ def limited_clusters(start_k, restarts):
 # %% Silhouette and total distance across k (unlimited k-medoids, for context)
 rows = []
 for k in K_GRID:
-    med, lab, cost = best_of(k, max(5, args.restarts // 3))
-    sil = silhouette_samples(D, lab, metric="precomputed").mean() if 1 < len(set(lab)) < n else np.nan
-    rows.append({"k": k, "clusters": len(set(lab)), "total_distance_to_medoid_mi": round(cost, 1), "silhouette": round(sil, 3)})
-    log.info("k=%d: silhouette %.3f, total distance to medoids %.0f mi", k, sil, cost)
+    sils = []
+    for seed in (0, 1000):                  # two independent best-of runs per k; the score is their mean (k-medoids silhouette is noisy)
+        med, lab, cost = best_of(k, max(5, args.restarts // 3), seed=seed)
+        sils.append(silhouette_samples(D, lab, metric="precomputed").mean() if 1 < len(set(lab)) < n else np.nan)
+    rows.append({"k": k, "clusters": len(set(lab)), "total_distance_to_medoid_mi": round(cost, 1),
+                 "silhouette": round(float(np.mean(sils)), 3), "silhouette_run_gap": round(abs(sils[0] - sils[1]), 3)})
+    log.info("k=%d: silhouette %.3f (two runs %.3f / %.3f), total distance to medoids %.0f mi", k, np.mean(sils), *sils, cost)
 curve = pd.DataFrame(rows)
 curve.to_csv(TABLE_DIR / "silhouette_by_k.csv", index=False)
+K_SIL = int(curve.loc[curve["silhouette"].idxmax(), "k"])          # plain k-medoids: the k with the best silhouette
+near = curve[curve["silhouette"] >= curve["silhouette"].max() - 0.01]["k"]
+log.info("best silhouette %.3f at k = %d; every k from %d to %d scores within 0.01 of it (the peak is a plateau, "
+         "and two runs at the same k differ by about %.3f)", curve["silhouette"].max(), K_SIL, near.min(), near.max(), curve["silhouette_run_gap"].median())
 
 kmed, n_split = limited_clusters(START_K, args.restarts)
 K = len(set(kmed))
@@ -189,10 +197,9 @@ def describe(lab, name):
             "total distance to cluster center (mi)": round(float(np.sum(to_center)), 0)}, sil
 
 
-N_NATE = int(ss["cluster_id"].nunique())
-_, plain, _ = best_of(N_NATE, args.restarts)              # approach 2: plain k-medoids with Nate's count and no limits
+_, plain, _ = best_of(K_SIL, args.restarts)               # approach 2: plain k-medoids, no limits, k from the best silhouette
 tab_n, sil_n = describe(nate, "1. Nate's schedule clusters")
-tab_p, sil_p = describe(plain, f"2. k-medoids, no limits ({N_NATE} clusters)")
+tab_p, sil_p = describe(plain, f"2. k-medoids, no limits, best silhouette ({len(set(plain))} clusters)")
 tab_k, sil_k = describe(kmed, f"3. k-medoids with limits ({K} clusters)")
 
 _hm = pd.read_parquet(PROCESSED_DIR / "hatchery_to_section_road_distance.parquet").pivot_table(index="section_id", columns="hatchery", values="road_mi").reindex(ids)
@@ -218,7 +225,8 @@ print(comparison.to_string())
 
 out = pd.DataFrame({"section_id": ids, "medoid_cluster_id": [f"M{c + 1:03d}" for c in kmed],
                     "medoid_section_id": [ids[i] for i in medoid_of], "cluster_size": pd.Series(kmed).map(pd.Series(kmed).value_counts()).to_numpy(),
-                    "dist_to_medoid_mi": D[np.arange(n), medoid_of].round(2), "silhouette": sil_k.round(3)})
+                    "dist_to_medoid_mi": D[np.arange(n), medoid_of].round(2), "silhouette": sil_k.round(3),
+                    "silhouette_best_cluster_id": [f"B{c + 1:03d}" for c in plain]})   # option 2: plain k-medoids at the best-silhouette k
 out.to_parquet(PROCESSED_DIR / "section_medoid_clusters.parquet", index=False)
 out.to_csv(PROCESSED_DIR / "section_medoid_clusters.csv", index=False)
 assert out.section_id.is_unique and len(out) == n and (out.dist_to_medoid_mi >= 0).all()
@@ -322,6 +330,9 @@ a.annotate(f"Nate's schedule clusters: {tab_n['mean silhouette']:.2f}", (len(set
            textcoords="offset points", fontsize=10.5, color=INK)
 a.scatter([K], [tab_k["mean silhouette"]], s=110, color=BLUE, edgecolor=SURFACE, linewidth=1.5, zorder=5)
 a.annotate(f"with limits, {K} clusters: {tab_k['mean silhouette']:.2f}", (K, tab_k["mean silhouette"]), xytext=(16, 16), textcoords="offset points", fontsize=10.5, color=INK, ha="left")
+ks = curve[curve.k == K_SIL].iloc[0]
+a.scatter([K_SIL], [ks.silhouette], s=110, color=AQUA, edgecolor=SURFACE, linewidth=1.5, zorder=5)
+a.annotate(f"no limits, best silhouette (k = {K_SIL}): {ks.silhouette:.2f}", (K_SIL, ks.silhouette), xytext=(0, 14), textcoords="offset points", fontsize=10.5, color=INK, ha="center")
 a.set_ylim(0, 0.46)
 a.set_xlabel("number of clusters (k)"); a.set_ylabel("mean silhouette score")
 a.set_title("k-medoids silhouette across k (no limits)", loc="left", fontsize=11.5); a.grid(color=GRID, lw=0.8); a.set_axisbelow(True)
@@ -343,13 +354,13 @@ log.info("saved figures to %s", FIG_DIR.relative_to(ROOT))
 approaches = [(tab_n["method"], nate, tab_n, sil_n), (tab_p["method"], plain, tab_p, sil_p), (tab_k["method"], kmed, tab_k, sil_k)]
 fig = plt.figure(figsize=(19, 10.6))
 gs = fig.add_gridspec(2, 3, height_ratios=[0.8, 1], hspace=0.12, wspace=0.03)
-fig.suptitle("Three ways to group the 1,022 stocked sections into trip clusters", x=0.01, ha="left", fontsize=15, fontweight="bold")
+fig.suptitle("Three ways to group the 1,022 stocked sections by similar cost", x=0.01, ha="left", fontsize=15, fontweight="bold")
 fig.text(0.01, 0.935, "Top: statewide (shading = sections per cluster, grey dots = singletons, orange outline = cluster mixes sections whose scheduled hatcheries differ). "
          "Bottom: the same patch of the state, around Nate's biggest cluster (orange lines).", fontsize=10.5, color=INK2)
 for j, (name, lab, tab, _) in enumerate(approaches):
     ax = fig.add_subplot(gs[0, j])
     state_map(ax, lab, name)
-    ax.set_title(name, loc="left", fontsize=12.5, fontweight="bold", pad=46)
+    ax.set_title(name.split(" (")[0].replace("k-medoids, no limits, best silhouette", "k-medoids, best silhouette"), loc="left", fontsize=12.5, fontweight="bold", pad=46)
     e = herr[name]
     ax.text(0, 1.01, f"{tab['clusters']} clusters · {tab['singletons']} singletons · biggest {tab['biggest']} sections\n"
             f"widest {tab['widest (mi)']:.0f} mi · silhouette {tab['mean silhouette']:.2f} · hatchery-distance error {e[2]:.1f}% ({e[0]:.1f} mi)",

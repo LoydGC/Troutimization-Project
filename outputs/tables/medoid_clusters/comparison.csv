@@ -1,17 +1,17 @@
-,1. Nate's schedule clusters,"2. k-medoids, no limits (351 clusters)",3. k-medoids with limits (407 clusters)
-clusters,351,351,407
-singletons,103,76,95
-pairs,93,90,103
+,1. Nate's schedule clusters,"2. k-medoids, no limits, best silhouette (310 clusters)",3. k-medoids with limits (407 clusters)
+clusters,351,310,407
+singletons,103,54,95
+pairs,93,62,103
 size 3-5,119,157,209
-size 6+,36,28,0
-biggest,18,11,4
-median width (mi),11.0,9.1,7.7
-widest (mi),56.6,28.0,19.0
-mean silhouette,0.117,0.376,0.354
-sections with negative silhouette (%),33.0,9.3,8.5
-clusters mixing main hatcheries,8 of 248,59 of 275,49 of 312
+size 6+,36,37,0
+biggest,18,9,4
+median width (mi),11.0,10.5,7.7
+widest (mi),56.6,32.0,19.0
+mean silhouette,0.117,0.391,0.354
+sections with negative silhouette (%),33.0,8.0,8.5
+clusters mixing main hatcheries,8 of 248,63 of 256,49 of 312
 median distance to nearest cluster-mate (mi),4.5,3.8,3.8
-median distance to cluster center (mi),3.5,3.0,2.3
-total distance to cluster center (mi),6067.0,3706.0,3117.0
-hatchery_distance_error,"4.1 mi mean, 10.0 mi p90 (3.0% of distance)","2.8 mi mean, 6.2 mi p90 (2.0% of distance)","2.4 mi mean, 5.4 mi p90 (1.7% of distance)"
-"agreement with approach 3 (adjusted Rand, 0 to 1)",0.39,0.62,1.0
+median distance to cluster center (mi),3.5,3.4,2.3
+total distance to cluster center (mi),6067.0,4160.0,3117.0
+hatchery_distance_error,"4.1 mi mean, 10.0 mi p90 (3.0% of distance)","3.1 mi mean, 6.8 mi p90 (2.2% of distance)","2.4 mi mean, 5.4 mi p90 (1.7% of distance)"
+"agreement with approach 3 (adjusted Rand, 0 to 1)",0.39,0.63,1.0

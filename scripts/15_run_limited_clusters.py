@@ -16,7 +16,15 @@ sections is needed for the cost to be right; width is what keeps a cluster's sec
 
 Settings (parameters.csv: run_width_max_mi; value = tight, high = loose), the width of the 632 real multi-section runs on this matrix:
   tight  W 19.9  (90th percentile of run width)
-  loose  W 47.5  (the widest real run)
+  loose  W 47.5  (the widest real run). Both width-only versions (no section cap) were set aside 2026-10-01 in favour of the
+         two options below; they stay in the saved table and comparison.csv as reference rows, but are not drawn.
+
+Added (2026-10-01): hierarchical with the SAME limits as script 13 (cluster_max_width_mi 20, cluster_max_sections 4), so k-medoids and
+hierarchical are compared like for like. The tree is walked from the top and split at the first merge that breaks either limit.
+Saved as limits_cluster_id and drawn first.
+
+Added: the same complete-linkage dendrogram cut at the number of clusters with the best silhouette, with no limits at all
+(deterministic: no random starts). It is saved as silhouette_best_cluster_id and drawn in place of the 47.5 mi version.
 
 Graded with: silhouette; hatchery-distance error (cluster-average distance from each of the 9 scheduled hatcheries vs. each member's
 own; the clustering never sees hatcheries); agreement with real runs (share of multi-section runs kept whole in one cluster, and
@@ -26,7 +34,8 @@ Nate's schedule clusters.
 Inputs : data/processed/section_to_section_road_distance.parquet (12), hatchery_to_section_road_distance.parquet (11),
          section_schedule.parquet and stocking_events.parquet (Nate), section_medoid_clusters.parquet (13),
          parameters.csv, pa_trout.gpkg (sections layer), data/raw/pa_boundary.gpkg
-Outputs: data/processed/section_run_limited_clusters.{parquet,csv}   section_id, tight_cluster_id, loose_cluster_id
+Outputs: data/processed/section_run_limited_clusters.{parquet,csv}   section_id, tight_cluster_id, loose_cluster_id,
+                                                                    silhouette_best_cluster_id, limits_cluster_id
          outputs/tables/run_limited_clusters/comparison.csv, real_run_yardstick.csv
          outputs/figures/run_limited_clusters/maps.png, metrics.png
          logs/15_run_limited_clusters.log
@@ -47,7 +56,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap, Normalize
 from matplotlib.patches import Polygon as Poly
-from scipy.cluster.hierarchy import fcluster, linkage
+from scipy.cluster.hierarchy import fcluster, linkage, to_tree
 from scipy.spatial.distance import squareform
 from shapely.ops import unary_union
 from sklearn.metrics import silhouette_samples
@@ -73,6 +82,7 @@ plt.rcParams.update({"font.size": 11, "figure.facecolor": SURFACE, "axes.facecol
 
 par = pd.read_csv(PROCESSED_DIR / "parameters.csv").set_index("parameter")
 SETTINGS = {"tight": float(par.loc["run_width_max_mi", "value"]), "loose": float(par.loc["run_width_max_mi", "high"])}
+LIM_W, LIM_M = float(par.loc["cluster_max_width_mi", "value"]), int(par.loc["cluster_max_sections", "value"])   # the limits script 13 uses
 
 
 # %% Load: road-mile matrix (symmetrized), hatchery distances, real runs, other clusters
@@ -109,6 +119,39 @@ for name, W in SETTINGS.items():
     log.info("%s (W %.1f mi): %d clusters, widest %.1f mi", name, W, len(set(labels[name])), widest)
 
 
+# %% Hierarchical with the same limits as script 13 (apples to apples with k-medoids): at most LIM_W mi wide, LIM_M sections
+def limited_cut(Z, W, M):
+    """Walk the complete-linkage tree from the top; split any node that is wider than W or has more than M sections.
+    For complete linkage a node's merge height is the largest distance inside it, so node.dist is its width."""
+    out, stack = [], [to_tree(Z)]
+    while stack:
+        nd = stack.pop()
+        if nd.get_count() <= M and nd.dist <= W:
+            out.append(nd.pre_order())
+        else:
+            stack += [nd.get_left(), nd.get_right()]
+    lab = np.zeros(n, int)
+    for c, members in enumerate(out):
+        lab[members] = c
+    return lab
+
+
+hier_lim = limited_cut(Z, LIM_W, LIM_M)
+assert pd.Series(hier_lim).value_counts().max() <= LIM_M
+assert max(D[np.ix_(g, g)].max() for g in (np.flatnonzero(hier_lim == c) for c in np.unique(hier_lim)) if len(g) > 1) <= LIM_W + 1e-6
+log.info("hierarchical + limits (<= %.0f mi, <= %d sections): %d clusters", LIM_W, LIM_M, len(set(hier_lim)))
+
+
+# %% Hierarchical with no limits: cut the same dendrogram at the k with the best silhouette
+sil_by_k = {k: silhouette_samples(D, fcluster(Z, k, criterion="maxclust"), metric="precomputed").mean() for k in range(20, 701)}
+K_H = max(sil_by_k, key=sil_by_k.get)
+hier_best = fcluster(Z, K_H, criterion="maxclust") - 1
+near = [k for k, v in sil_by_k.items() if v >= sil_by_k[K_H] - 0.01]
+pd.Series(sil_by_k, name="silhouette").rename_axis("k").round(3).to_csv(TABLE_DIR / "hierarchical_silhouette_by_k.csv")
+log.info("hierarchical (complete linkage), no limits: best silhouette %.3f at k = %d (%d clusters); every k from %d to %d is within 0.01 of it",
+         sil_by_k[K_H], K_H, len(set(hier_best)), min(near), max(near))
+
+
 # %% Grade: tightness, hatchery-distance error, and agreement with real runs
 co_pairs = {(min(a, b), max(a, b)) for x in multi for a, b in itertools.combinations(x, 2)}
 ci = np.array([p[0] for p in co_pairs]); cj = np.array([p[1] for p in co_pairs])
@@ -132,17 +175,21 @@ def describe(lab, name):
             "same-cluster pairs that shared a run (%)": round(100 * float((lab[ci] == lab[cj]).sum() / same), 1)}
 
 
-rows = [describe(labels["tight"], f"Tight: width {SETTINGS['tight']:g} mi"),
-        describe(labels["loose"], f"Loose: width {SETTINGS['loose']:g} mi"),
-        describe(kmed, "Script 13: k-medoids, 4 sections, width 20"),
-        describe(nate, "Nate's schedule clusters")]
+rows = [describe(hier_lim, f"Hierarchical + limits ({LIM_M} sections, {LIM_W:g} mi)"),
+        describe(hier_best, f"Hierarchical, best silhouette, no limits ({len(set(hier_best))} clusters)"),
+        describe(kmed, f"Script 13: k-medoids + limits ({LIM_M} sections, {LIM_W:g} mi)"),
+        describe(nate, "Nate's schedule clusters"),
+        describe(labels["tight"], f"Reference only: hierarchical, width limit {SETTINGS['tight']:g} mi, no size cap (not drawn)"),
+        describe(labels["loose"], f"Reference only: hierarchical, width limit {SETTINGS['loose']:g} mi, no size cap (not drawn)")]
 comparison = pd.DataFrame(rows).set_index("method")
 comparison.to_csv(TABLE_DIR / "comparison.csv")
 print(comparison.T.to_string())
 
 out = pd.DataFrame({"section_id": ids,
                     "tight_cluster_id": [f"T{c + 1:03d}" for c in labels["tight"]],
-                    "loose_cluster_id": [f"L{c + 1:03d}" for c in labels["loose"]]})
+                    "loose_cluster_id": [f"L{c + 1:03d}" for c in labels["loose"]],
+                    "silhouette_best_cluster_id": [f"H{c + 1:03d}" for c in hier_best],
+                    "limits_cluster_id": [f"HL{c + 1:03d}" for c in hier_lim]})
 out.to_parquet(PROCESSED_DIR / "section_run_limited_clusters.parquet", index=False)
 out.to_csv(PROCESSED_DIR / "section_run_limited_clusters.csv", index=False)
 assert out.section_id.is_unique and len(out) == n
@@ -180,10 +227,10 @@ def state_map(ax, lab, name, c):
             transform=ax.transAxes, fontsize=9.4, color=INK, va="bottom")
 
 
-shown = [(comparison.index[0], labels["tight"]), (comparison.index[1], labels["loose"]), (comparison.index[2], kmed)]
+shown = [(comparison.index[0], hier_lim), (comparison.index[1], hier_best), (comparison.index[2], kmed)]
 fig, axs = plt.subplots(1, 3, figsize=(20, 6.2), gridspec_kw={"wspace": 0.03})
-fig.suptitle("Clusters limited only by width: how far apart a truck's farthest sections can be on one run", x=0.01, ha="left", fontsize=14.5, fontweight="bold")
-fig.text(0.01, 0.9, "Road miles only; no schedule or hatchery information enters the clustering. No cap on sections per cluster (script 13 caps at 4). Orange dots = single-section trips. Shading = sections per cluster.", fontsize=10.5, color=INK2)
+fig.suptitle("Hierarchical clusters (complete linkage) with the same limits as k-medoids, or cut at the best silhouette", x=0.01, ha="left", fontsize=14.5, fontweight="bold")
+fig.text(0.01, 0.9, "Road miles only; no schedule or hatchery information enters the clustering. Left and right share the same limits (4 sections, 20 mi); the middle has none. Orange dots = single-section trips. Shading = sections per cluster.", fontsize=10.5, color=INK2)
 for ax, (name, lab) in zip(axs, shown):
     state_map(ax, lab, name, comparison.loc[name])
 fig.subplots_adjust(top=0.72)
@@ -196,15 +243,16 @@ panels = [("mean silhouette", "Silhouette\n(higher = tighter)", 0.0, 0.5), ("hat
           ("real runs kept whole (%)", "Real truck runs kept whole in one cluster, %\n(higher = more faithful to PFBC)", 0, 100),
           ("same-cluster pairs that shared a run (%)", "Same-cluster pairs that really shared a run, %\n(higher = fewer clusters no truck would make)", 0, 100)]
 colors = [AQUA, AQUA, BLUE, ORANGE]
-short = ["Tight", "Loose", "Script 13", "Nate's"]
+short = ["Hierarchical\n+ limits", "Hierarchical\nbest silhouette", "k-medoids\n+ limits", "Nate's"]
 fig, axs = plt.subplots(1, 4, figsize=(21, 5.0))
-fig.suptitle("How the width-limited clusters score", x=0.01, ha="left", fontsize=14, fontweight="bold")
+fig.suptitle("How the hierarchical clusters score", x=0.01, ha="left", fontsize=14, fontweight="bold")
 for ax, (col, title, lo, hi) in zip(axs, panels):
-    ax.bar(short, comparison[col], color=colors, width=0.62)
-    for x, v in enumerate(comparison[col]):
+    vals = comparison[col].iloc[:4]
+    ax.bar(short, vals, color=colors, width=0.62)
+    for x, v in enumerate(vals):
         ax.text(x, v + (hi - lo) * 0.015, f"{v:.2f}" if hi < 10 else f"{v:.0f}", ha="center", fontsize=10, color=INK)
     ax.set_ylim(lo, hi); ax.set_title(title, loc="left", fontsize=10.8); ax.grid(axis="y", color=GRID, lw=0.8); ax.set_axisbelow(True)
-fig.text(0.01, 0.01, "Tight and loose use the real-run width percentiles in parameters.csv (run_width_max_mi). Nate's clusters are built from the runs, so the two run-agreement panels favour them by construction.",
+fig.text(0.01, 0.01, "Both limit-based options use 4 sections and 20 mi (parameters.csv); best silhouette has no limits. The width-only 19.9 mi and 47.5 mi versions are kept in comparison.csv as reference rows. Nate's clusters are built from the runs, so the two run-agreement panels favour them by construction.",
          fontsize=9.5, color=INK2)
 fig.tight_layout(rect=(0, 0.05, 1, 0.9))
 fig.savefig(FIG_DIR / "metrics.png", dpi=115)
