@@ -280,7 +280,7 @@ What it lacks:
   re-run does not re-fetch.
 - **Why:** building a road graph from scratch was tried first (Overpass timeouts; a 6.1M-node graph of several GB) and abandoned.
 - **Waiver:** Gavin told Claude "dont worry about the OSRM hard rule" when the hatchery distances were reviewed, and chose to build the
-  section-to-section table ("do option 2"). Gavin to confirm this wording is the waiver he intends.
+  section-to-section table ("do option 2"). Gavin confirmed this wording on 2026-10-01.
 - **Rule 2 deviation:** raw OSRM responses are not saved untouched under `data/raw/<source>/<date>/` with a manifest row. The parsed distances
   are the processed tables; script 12 keeps its per-request blocks in `data/interim/` (gitignored), so the tables can be rebuilt but the raw
   responses are not committed.
