@@ -1,0 +1,8 @@
+method,clusters,noise (remote) sections,singletons,biggest (sections),median width (mi),widest (mi),mean silhouette,sections with negative silhouette (%)
+DBSCAN eps 19.9 mi (p90 real run),1,0,0,1022,431.1,431.1,,
+DBSCAN eps 47.5 mi (max real run),1,0,0,1022,431.1,431.1,,
+DBSCAN eps 6 mi (best silhouette),482,271,271,22,5.6,28.7,0.323,6.8
+Width limit 19.9 mi (p90 real run),234,0,15,12,13.7,19.8,0.42,4.9
+Width limit 47.5 mi (max real run),74,0,0,45,35.0,47.5,0.337,7.3
+Script 13: k-medoids with limits,407,0,95,4,7.7,19.0,0.354,8.5
+Nate's schedule clusters,351,0,103,18,11.0,56.6,0.117,33.0

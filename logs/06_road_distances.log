@@ -1,6 +1,0 @@
-2026-09-28 14:42:01,059 INFO loaded 10 hatcheries, 165 co-op nurseries, 1045 sections
-2026-09-28 14:42:01,195 INFO straight-line table: 10450 rows (10 hatcheries x 1045 sections)
-2026-09-28 14:42:04,943 INFO co-op nearest sections: 330 rows (165 nurseries x 2)
-2026-09-28 14:42:04,951 INFO road table: loaded the saved copy (10450 rows); set REFRESH = True to re-query OSRM
-2026-09-28 14:42:04,952 INFO road table: 0 pairs with no route
-2026-09-28 14:42:04,988 INFO wrote the road distance (mi) and drive time (min) matrices to data/interim

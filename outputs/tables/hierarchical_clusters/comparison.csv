@@ -1,0 +1,7 @@
+method,clusters,singletons,biggest (sections),median width (mi),widest (mi),mean silhouette,hatchery-distance error (% of distance),hatchery-distance error (mean mi),real runs kept whole (%),real co-run pairs kept together (%),same-cluster pairs that shared a run (%)
+"Hierarchical + limits (4 sections, 20 mi)",375,40,4,7.5,19.7,0.384,1.91,2.64,45.1,46.0,48.4
+"Hierarchical, best silhouette, no limits (309 clusters)",309,31,12,9.9,15.6,0.438,2.17,2.99,57.0,60.8,40.5
+"Script 13: k-medoids + limits (4 sections, 20 mi)",407,95,4,7.7,19.0,0.354,1.74,2.4,41.9,44.4,48.5
+Nate's schedule clusters,351,103,18,11.0,56.6,0.117,2.98,4.11,97.2,97.7,55.9
+"Reference only: hierarchical, width limit 19.9 mi, no size cap (not drawn)",234,15,12,13.7,19.8,0.42,2.8,3.87,65.3,70.2,33.5
+"Reference only: hierarchical, width limit 47.5 mi, no size cap (not drawn)",74,0,45,35.0,47.5,0.337,5.67,7.82,84.8,86.6,11.5
