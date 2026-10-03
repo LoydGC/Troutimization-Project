@@ -101,11 +101,11 @@ from his `notebooks/01_data_prep.ipynb` where it names them; we haven't verified
 |---|---|---|---|
 | `pa_hatcheries.gpkg` | 13 | ArcGIS Online `https://services9.arcgis.com/6EuFgO4fLTqfNOhu/arcgis/rest/services/PA_Hatcheries/FeatureServer/0`. An older copy of PFBC's State Fish Hatcheries layer (checked 2026-09-29: same 13 points at the same coordinates and the same flags; older web links, and Union City's old name). Superseded by the fbweb layer above | placeholder `hatcheries` layer in pa_trout.gpkg (script 02); `trout_hatcheries.gpkg` and the road distances; hatchery names in script 09 |
 | `pa_boundary.gpkg` | 1 | Census cartographic boundaries, `https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip`, filtered to PA | his maps |
-| `pa_hatchery_production.csv` | 10 | PFBC hatchery web pages, one per row (`source_url` column) | the pounds-based supply sensitivity (supply itself comes from the stocking schedule since 2026-09-28) |
+| `pa_hatchery_production.csv` | 10 | Scraped with Claude from PFBC's official [State Fish Hatcheries](https://www.pa.gov/agencies/fishandboat/about-us/agency-overview/bureaus/state-fish-hatcheries) pages, one per row (`source_url` column; e.g. [Bellefonte](https://www.pa.gov/agencies/fishandboat/about-us/agency-overview/bureaus/state-fish-hatcheries/bellefonte-state-fish-hatchery)). The "Average Trout Production" figure was rechecked against that page on 2026-10-03 (338,918 lbs, matches) | the pounds-based supply sensitivity (supply itself comes from the stocking schedule since 2026-09-28) |
 | `pa_class_a_trout_streams.gpkg` | 1,361 | not recorded (same count as PASDA #9) | his maps |
 | `pa_natural_repro_trout_streams.gpkg` | 6,224 | not recorded (same count as PASDA #25) | not referenced |
 | `pa_stocked_trout_streams.gpkg` | 1,064 | not recorded (matches none of our year layers; see `known_gaps.md`) | his maps and `travel_arcs` distances |
-| `Coop_nurseries.geojson` | 165 | not recorded | nursery locations (script 03) |
+| `Coop_nurseries.geojson` | 165 | PFBC Cooperative Nurseries layer on PASDA, [dataset 970](https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=970) (2020 release; [download](https://www.pasda.psu.edu/download/pafish/CooperativeNurseries202002.zip)); source named by Gavin 2026-10-03, and the page confirms the layer. PASDA states no record count, so the 165 is not checked against it | nursery locations (script 03); co-ops are out of the model (team decision 2026-09-27), so this only feeds the `coop_stocked` flag and maps |
 
 ## Road distances (OSRM public demo server; Gavin)
 - **Endpoint:** `https://router.project-osrm.org/table/v1/driving/` (OSRM table service, driving profile, fastest route; road data

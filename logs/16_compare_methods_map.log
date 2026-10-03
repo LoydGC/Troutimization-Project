@@ -1,10 +1,11 @@
-2026-10-01 18:10:12,042 INFO 16_compare_methods_map run from commit de0c1ec + uncommitted changes to scripts/13_medoid_clusters.py, scripts/14_dbscan_clusters.py, scripts/15_run_limited_clusters.py -> scripts/15_hierarchical_clusters.py, scripts/16_compare_methods_map.py
-2026-10-01 18:10:14,034 INFO Nate's schedule clusters: 103 sections left alone
-2026-10-01 18:10:14,034 INFO k-medoids, no limits, best silhouette (310): 54 sections left alone
-2026-10-01 18:10:14,034 INFO Script 13: k-medoids + limits (4 sections, 20 mi): 95 sections left alone
-2026-10-01 18:10:14,034 INFO Hierarchical, no limits, best silhouette (309): 31 sections left alone
-2026-10-01 18:10:14,035 INFO Hierarchical + limits (4 sections, 20 mi): 40 sections left alone
-2026-10-01 18:10:14,035 INFO DBSCAN, eps 6 mi, min_samples 2: 271 sections left alone
-2026-10-01 18:10:14,035 INFO alone under all 6 methods: 4; under 4 or more: 26; under none: 659
-2026-10-01 18:10:26,572 INFO saved outputs\figures\method_comparison\single_section_trips.png
-2026-10-01 18:10:44,957 INFO saved outputs\figures\method_comparison\options_overview.png
+2026-10-03 14:29:21,114 INFO 16_compare_methods_map run from commit c94aeb8 + uncommitted changes to scripts/03_coop_stockings.py, scripts/11_road_distances.py, scripts/13_medoid_clusters.py, scripts/14_dbscan_clusters.py, scripts/15_hierarchical_clusters.py, scripts/16_compare_methods_map.py, scripts/coop_inputs.py
+2026-10-03 14:29:21,655 INFO Nate's schedule clusters: 103 sections left alone
+2026-10-03 14:29:21,656 INFO k-medoids, no limits, best silhouette (310): 54 sections left alone
+2026-10-03 14:29:21,656 INFO Script 13: k-medoids + limits (4 sections, 20 mi): 95 sections left alone
+2026-10-03 14:29:21,656 INFO Hierarchical, no limits, best silhouette (309): 31 sections left alone
+2026-10-03 14:29:21,656 INFO Hierarchical + limits (4 sections, 20 mi): 40 sections left alone
+2026-10-03 14:29:21,656 INFO DBSCAN, eps 6 mi, min_samples 2: 271 sections left alone
+2026-10-03 14:29:21,656 INFO alone under all 6 methods: 4; under 4 or more: 26; under none: 659
+2026-10-03 14:29:32,405 INFO saved outputs\figures\method_comparison\single_section_trips.png
+2026-10-03 14:29:53,299 INFO saved outputs\figures\method_comparison\options_overview.png
+2026-10-03 14:30:09,407 INFO saved outputs\figures\method_comparison\approach_comparison_no_limits.png

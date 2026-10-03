@@ -179,3 +179,84 @@ fig.text(0.012, 0.006, "Retired along the way: a hop limit (a cluster is a repre
          fontsize=11, color=INK2, va="bottom")
 fig.savefig(FIG_DIR / "options_overview.png", dpi=105, bbox_inches="tight", pad_inches=0.2)
 log.info("saved %s", (FIG_DIR / "options_overview.png").relative_to(ROOT))
+
+
+# %% No-limits comparison: Nate's vs k-medoids vs hierarchical (both best silhouette), and how each breaks up Nate's biggest cluster
+from matplotlib.cm import ScalarMappable
+from sklearn.metrics import silhouette_samples
+
+MIX_OUTLINE = "#d81b7c"      # outline of a cluster that mixes scheduled hatcheries (orange is for sections; magenta stands apart from the blue shading)
+
+_supply = pd.read_csv(PROCESSED_DIR / "hatchery_schedule_supply.csv")
+_producing = _supply.loc[_supply["stream_fish_2026"] > 0, "hatchery"].tolist()
+_hm = pd.read_parquet(PROCESSED_DIR / "hatchery_to_section_road_distance.parquet").pivot_table(index="section_id", columns="hatchery", values="road_mi").reindex(ids)
+HP = _hm[_producing].to_numpy()
+prim = ss["primary_hatchery"].to_numpy()
+
+
+def stats(lab):
+    lab = np.asarray(lab)
+    sizes = pd.Series(lab).value_counts()
+    w = [D[np.ix_(g, g)].max() for g in (np.flatnonzero(lab == c) for c in sizes.index) if len(g) > 1]
+    err = np.zeros_like(HP)
+    for c in sizes.index:
+        g = np.flatnonzero(lab == c)
+        err[g] = HP[g].mean(0) - HP[g]
+    return dict(clusters=len(sizes), alone=int((sizes == 1).sum()), biggest=int(sizes.max()), widest=max(w),
+                sil=silhouette_samples(D, lab, metric="precomputed").mean(), err=100 * np.abs(err).sum() / HP.sum(), err_mi=np.abs(err).mean())
+
+
+trio = {"1. Nate's schedule clusters": methods["Nate's schedule clusters"],
+        f"2. k-medoids, no limits, best silhouette ({K_PLAIN})": methods[f"k-medoids, no limits, best silhouette ({K_PLAIN})"],
+        f"3. Hierarchical, no limits, best silhouette ({K_HIER})": methods[f"Hierarchical, no limits, best silhouette ({K_HIER})"]}
+big = ss["cluster_id"].value_counts().idxmax()
+big_idx = np.flatnonzero((ss["cluster_id"] == big).to_numpy())
+big_hull = unary_union(list(geom.iloc[big_idx])).convex_hull.buffer(2500)
+minx, miny, maxx, maxy = big_hull.bounds
+
+fig = plt.figure(figsize=(19, 10.8))
+gs = fig.add_gridspec(2, 3, height_ratios=[0.8, 1], hspace=0.16, wspace=0.04, left=0.02, right=0.93, top=0.84, bottom=0.04)
+fig.suptitle("Three ways to group the 1,022 stocked sections by similar cost, with no limits", x=0.012, y=0.985, ha="left", fontsize=16, fontweight="bold")
+fig.text(0.012, 0.935, "Top: statewide (shading = sections per cluster, dark dots = sections left alone, magenta outline = cluster mixes sections whose scheduled hatcheries differ). "
+         "Bottom: the same patch of the state, around Nate's biggest cluster (orange lines).", fontsize=11, color=INK2, va="bottom")
+for j, (name, lab) in enumerate(trio.items()):
+    s = stats(lab)
+    sizes = pd.Series(lab).value_counts()
+    hulls = {c: unary_union(list(geom.iloc[np.flatnonzero(lab == c)])).convex_hull.buffer(2500) for c in sizes.index}
+    ax = fig.add_subplot(gs[0, j])
+    base(ax)
+    for c, h in sorted(hulls.items(), key=lambda kv: -sizes[kv[0]]):
+        if sizes[c] > 1:
+            poly(ax, h, facecolor=cmap_s(norm_s(min(sizes[c], 12))), alpha=0.6, edgecolor="none", zorder=2)
+    for c, h in hulls.items():
+        if sizes[c] > 1:
+            mixed = len(set(prim[lab == c])) > 1
+            poly(ax, h, fill=False, edgecolor=MIX_OUTLINE if mixed else INK, lw=2.2 if mixed else 0.5, zorder=3)
+    one = np.flatnonzero(pd.Series(lab).map(sizes).to_numpy() == 1)
+    ax.scatter(px[one], py[one], s=9, color=INK2, linewidth=0, zorder=4)
+    ax.set_title(name, loc="left", fontsize=12.5, fontweight="bold", pad=46)
+    ax.text(0, 1.01, f"{s['clusters']} clusters · {s['alone']} left alone · biggest {s['biggest']} sections\n"
+            f"widest {s['widest']:.0f} mi · silhouette {s['sil']:.2f} · hatchery-distance error {s['err']:.1f}% ({s['err_mi']:.1f} mi)",
+            transform=ax.transAxes, fontsize=9.8, color=INK, va="bottom")
+    z = fig.add_subplot(gs[1, j])
+    z.set_xlim(minx - 12000, maxx + 12000)
+    z.set_ylim(miny - 12000, maxy + 12000)
+    gpd.GeoSeries(geom).plot(ax=z, color="#cfcec8", lw=0.8)
+    gpd.GeoSeries(geom.iloc[big_idx]).plot(ax=z, color=ORANGE, lw=3.0, zorder=4)
+    for c, h in hulls.items():
+        if h.intersects(big_hull):
+            poly(z, h, facecolor="#00000008", edgecolor=INK, lw=1.2, zorder=2)
+    z.set_aspect("equal")
+    z.set_xticks([])
+    z.set_yticks([])
+    for sp in z.spines.values():
+        sp.set_color(GRID)
+    n_in = len(set(lab[big_idx]))
+    z.set_title(f"Same {len(big_idx)} sections: {n_in} cluster{'s' if n_in > 1 else ''}", loc="left", fontsize=11)
+fig.colorbar(ScalarMappable(norm=norm_s, cmap=cmap_s), cax=fig.add_axes([0.945, 0.56, 0.008, 0.22])).set_label("sections in cluster", color=INK2)
+fig.text(0.012, 0.008, "1 is built from PFBC's truck-run schedule (carries PFBC's hatchery choices). 2 and 3 use only road miles between sections and no width or size limits; "
+         "each picks its number of clusters by the best silhouette. Hatchery-distance error: how far a cluster's average distance from each hatchery producing 2026 fish sits from each member's own.",
+         fontsize=9.5, color=INK2, wrap=True)
+fig.savefig(FIG_DIR / "approach_comparison_no_limits.png", dpi=115, bbox_inches="tight", pad_inches=0.25)
+plt.close(fig)
+log.info("saved %s", (FIG_DIR / "approach_comparison_no_limits.png").relative_to(ROOT))

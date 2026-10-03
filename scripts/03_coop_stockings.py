@@ -3,7 +3,7 @@
 Co-op fish are fixed background in the model (not PFBC's decision, not in its allocation; co-op policy §III.12).
 The list has no fish counts or years: it says which waters each nursery stocks and with which species.
 
-Inputs : data/raw/pfbc_coop/<date>/cnu-stockings-website.xlsx (latest), data/raw/Coop_nurseries.geojson (Gavin),
+Inputs : data/raw/pfbc_coop/<date>/cnu-stockings-website.xlsx (latest), data/raw/Coop_nurseries.geojson (Gavin; else PASDA dataset 970, see coop_inputs.py),
          data/processed/pa_trout.gpkg (sections), data/interim/pfbc_gis/{nat_repro,class_a}.parquet
 Outputs: data/processed/coop_stockings.{parquet,csv}   one row per co-op listing, with match method
          data/processed/sections.{parquet,csv}         + coop_stocked, coop_species, coop_n_nurseries
@@ -22,6 +22,7 @@ import pandas as pd
 import shapely
 
 from common import INTERIM_DIR, LOG_DIR, PROCESSED_DIR, RAW_DIR, setup_logging
+from coop_inputs import latest_coop_stockings, load_coop_nurseries
 
 METRIC_CRS = "EPSG:26918"
 M_PER_MI = 1609.344
@@ -36,8 +37,10 @@ def norm(s) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", "", str(s).lower())).strip()
 
 
-def load_list() -> pd.DataFrame:
-    path = sorted((RAW_DIR / "pfbc_coop").glob("*/cnu-stockings-website.xlsx"))[-1]
+def load_list() -> pd.DataFrame | None:
+    path = latest_coop_stockings()      # local copy, else a polite download from PFBC; None if neither works
+    if path is None:
+        return None
     d = pd.read_excel(path, header=3)
     d.columns = ["sponsor", "nursery", "county", "stream", "section", *SPECIES]
     n_raw = len(d)
@@ -98,7 +101,13 @@ def contains(name: str, index) -> list[str]:
 
 def add_nursery_distance(d: pd.DataFrame, water_geoms: gpd.GeoSeries) -> pd.DataFrame:
     """Straight-line miles from the nursery (Gavin's co-op layer, matched by nursery then sponsor name)."""
-    c = gpd.read_file(RAW_DIR / "Coop_nurseries.geojson").to_crs(METRIC_CRS)
+    c = load_coop_nurseries()           # local file, else PASDA dataset 970; None if neither works
+    if c is None:
+        log.warning("co-op nursery locations unavailable: nursery coordinates and nursery_to_water_mi are left empty")
+        d["nursery_located_by"] = None
+        d["nursery_lat"] = d["nursery_lon"] = d["nursery_to_water_mi"] = float("nan")
+        return d
+    c = c.to_crs(METRIC_CRS)
     by_nursery = c.assign(k=c.NURSERY_NA.map(norm)).drop_duplicates("k").set_index("k")
     by_sponsor = c.assign(k=c.SPONSOR_NA.map(norm)).drop_duplicates("k").set_index("k")
     pts, how = [], []
@@ -192,6 +201,10 @@ def write_review(d: pd.DataFrame, sections: pd.DataFrame) -> None:
 def main() -> None:
     setup_logging("03_coop_stockings")
     d = load_list()
+    if d is None:
+        log.warning("co-op stocking listing unavailable (no local copy, download failed): skipping script 03; "
+                    "existing co-op outputs are left as they are")
+        return
     d, water_geoms = match_waters(d)
     d = add_nursery_distance(d, water_geoms)
     cols = ["sponsor", "nursery", "county", "stream", "section", *SPECIES, "water_type", "match_method",

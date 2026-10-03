@@ -101,7 +101,7 @@ Inside geography-only there are three algorithm families:
 
 - **K-medoids** (#2, #3): you give a number of clusters (#2 picks it by best silhouette); centers are real sections. Script 13.
 - **Hierarchical, complete linkage** (#4, #5): merges the nearest groups step by step; you cut the tree at a number of clusters (#4 picks it by best silhouette) or at a maximum width (#5). Script 15.
-- **DBSCAN** (#6): you choose a neighbour reach; clusters chain and loners become noise. Script 14 (scrapped, code kept).
+- **DBSCAN** (#6): you choose a neighbour reach; clusters chain and loners become noise. Scrapped; its script and figures were removed on 2026-10-03 (still in git history, commit `38e0b8a`). Shown on the overview from a small inline rebuild in script 16.
 
 ## Where each option stands
 

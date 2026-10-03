@@ -14,7 +14,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
 - **Saw:** 351 clusters, 103 sections alone, biggest 18 sections, widest 57 mi.
 - **Learned:** it reflects what PFBC did, so it also carries PFBC's hatchery choices, which the model is meant to choose.
 - **Decided:** keep as the reference and as the Phase 1 clusters (plan of record, 2026-10-01).
-- Picture: `outputs/figures/medoid_clusters/maps.png` (left panel).
+- Picture: `outputs/figures/medoid_clusters/approach_comparison.png` (left column).
 
 ## 2. Geography only: real road distances between sections (2026-09-29)
 - **Built:** OSRM road miles between all 1,022 x 1,022 stocked sections (script 12), checked: 9 of 9 validation checks pass.
@@ -25,7 +25,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
 - **Tried:** k-medoids (centers are real sections) at Nate's count of 351.
 - **Saw:** silhouette 0.38 vs 0.12, widest cluster 28 mi vs 57 mi. Nate's biggest cluster (18 sections) splits into 7.
 - **Learned:** pure geography gives much tighter groups, but nothing stops a cluster growing large or wide.
-- Picture: `outputs/figures/medoid_clusters/maps.png`, `silhouette.png`.
+- Picture: `outputs/figures/medoid_clusters/approach_comparison.png`, `silhouette.png`.
 
 ## 4. How many clusters? Sweep, then limits from real runs (2026-09-30)
 - **Tried:** k from 10 to 800; compared against what real truck runs look like (632 multi-section runs).
@@ -46,8 +46,9 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
 - **Saw:** one cluster covering the whole state, at both settings.
 - **Learned:** eps is how far a section may sit from its nearest cluster-mate, not a cluster width, so clusters chain along
   streams. DBSCAN only behaves at eps near 6 mi (482 clusters, 271 alone), where it flags remote sections.
-- **Decided:** scrapped (code kept in `scripts/14_dbscan_clusters.py`).
-- Picture: `outputs/figures/dbscan_clusters/maps.png`, `eps_sweep.png`.
+- **Decided:** scrapped. Its script and figures were removed on 2026-10-03; they are in git history (commit `38e0b8a`: `scripts/14_dbscan_clusters.py`,
+  `outputs/figures/dbscan_clusters/`). The overview still shows the eps 6 mi result (card 6).
+- Picture: `outputs/figures/method_comparison/options_overview.png` (card 6).
 
 ## 7. Width-limited clustering (2026-10-01)
 - **Tried:** hop + size + width limits (405 clusters, the same as script 13), then width only with complete linkage.
@@ -55,7 +56,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
   74 clusters and doubles the error to 5.7%.
 - **Learned:** the hop limit changed nothing (sections link into 3 groups at 17.7 mi); size cap matters only for trucks, not cost.
 - **Decided (then):** keep 19.9 mi as a sensitivity candidate; 47.5 mi is an upper bound only. (Superseded: entries 10 to 12.)
-- Picture: `outputs/figures/hierarchical_clusters/maps.png`, `metrics.png`.
+- Picture: `outputs/figures/hierarchical_clusters/metrics.png`.
 
 ## 8. Plan of record (2026-10-01)
 - **Phase 1:** Nate's clusters. **Sensitivity:** Gavin's, once settled. Clusters are interchangeable labelings; the math applied
@@ -79,7 +80,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
   limit-based version.
 - **Decided:** it replaces the width 47.5 mi example in the comparison. The 47.5 mi result (74 clusters, silhouette 0.34, averaging error
   5.7%, "too wide") stays on record in entry 7 and in `clustering_options.md`.
-- Picture: `outputs/figures/hierarchical_clusters/maps.png`, `outputs/figures/method_comparison/options_overview.png`.
+- Picture: `outputs/figures/hierarchical_clusters/metrics.png`, `outputs/figures/method_comparison/options_overview.png`.
 
 ## 11. Same limits for k-medoids and hierarchical (2026-10-01)
 - **Tried:** give the hierarchical method the same limits as k-medoids (20 mi wide, 4 sections), so the two are compared like for like.
@@ -90,7 +91,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
   sections alone, while k-medoids has a slightly smaller averaging error.
 - **Decided:** option 5 is now hierarchical + limits (options are ordered baseline then limited for each method: k-medoids #2, #3; hierarchical #4, #5). The width-only versions (19.9 mi: 234 clusters; 47.5 mi: 74 clusters) stay on
   record in entries 7 and 10, in `clustering_options.md` and as reference rows in `comparison.csv`.
-- Picture: `outputs/figures/method_comparison/options_overview.png`, `outputs/figures/hierarchical_clusters/maps.png`.
+- Picture: `outputs/figures/method_comparison/options_overview.png`, `outputs/figures/hierarchical_clusters/metrics.png`.
 
 ## 12. Housekeeping: limits become a reference; renames; hatchery list from the data (2026-10-01)
 - **Decided:** width, hop and size do not matter for the objective. The 20 mi / 4-section limits (options #3 and #5) stay as a tertiary
@@ -109,6 +110,12 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
 - **Documented:** the new cluster tables and both road-distance tables in `data_dictionary.md`; OSRM in `source_inventory.md`,
   `data_methods.md` and `known_gaps.md` (including the CLAUDE.md rule 3 waiver); tests in `tests/test_clusters.py`.
 
+## 14. Pruning pass (2026-10-03)
+- **Removed:** the scrapped DBSCAN script, figures, tables and log; the older two-panel `medoid_clusters/maps.png` and three-panel
+  `hierarchical_clusters/maps.png`, which the overview and the same-18-sections comparison now cover. All are in git history (commit `38e0b8a`).
+- **Kept as the presentation set:** `options_overview.png`, `approach_comparison.png`, `single_section_trips.png`, `silhouette.png` and the scores
+  chart `hierarchical_clusters/metrics.png`.
+
 ---
 
 ## Slide storyline (draft)
@@ -120,7 +127,7 @@ Current state and definitions: [`clustering_options.md`](clustering_options.md).
 6. **Where we landed:** Nate's for Phase 1, ours as a sensitivity. *(entry 8, overview figure)*
 
 Good pictures to reuse: `options_overview.png` (hero), `single_section_trips.png` (who gets left alone), the zoom panels in
-`outputs/figures/medoid_clusters/maps.png` (Nate's biggest cluster splitting), `dbscan_clusters/maps.png` (the one-blob dead end).
+`outputs/figures/medoid_clusters/approach_comparison.png` (Nate's biggest cluster splitting), the DBSCAN card on the overview (the one-blob dead end is in git history).
 
 ## Entry template
 ```

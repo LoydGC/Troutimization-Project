@@ -26,7 +26,7 @@ Outputs: data/processed/section_medoid_clusters.{parquet,csv}       one row per 
                                                                     plus silhouette_best_cluster_id (no limits, k set by the best silhouette)
          outputs/tables/medoid_clusters/comparison.csv              the three approaches side by side (Nate, k-medoids, k-medoids with limits)
          outputs/tables/medoid_clusters/silhouette_by_k.csv         silhouette and total distance for a range of k
-         outputs/figures/medoid_clusters/maps.png, silhouette.png, approach_comparison.png (all three approaches, statewide and zoomed)
+         outputs/figures/medoid_clusters/silhouette.png, approach_comparison.png (all three approaches, statewide and zoomed)
          logs/13_medoid_clusters.log
 
     python scripts/13_medoid_clusters.py [--restarts 30]
@@ -46,7 +46,6 @@ import numpy as np
 import pandas as pd
 from matplotlib.cm import ScalarMappable
 from matplotlib.colors import LinearSegmentedColormap, Normalize
-from matplotlib.lines import Line2D
 from matplotlib.patches import Polygon as Poly
 from shapely.ops import unary_union
 from sklearn.metrics import adjusted_rand_score, silhouette_samples
@@ -58,6 +57,7 @@ TABLE_DIR = ROOT / "outputs" / "tables" / "medoid_clusters"
 CRS, MARGIN_M = 26918, 2500
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e6e5e0"
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"          # reference palette slots 1-2: k-medoids = blue, Nate's = orange
+MIX_OUTLINE = "#d81b7c"                                             # outline of a cluster that mixes scheduled hatcheries (orange is for sections; magenta stands apart from the blue shading)
 K_GRID = list(range(20, 100, 10)) + list(range(100, 701, 10))   # silhouette curve, unlimited k-medoids; its peak sets the plain version's k
 
 ap = argparse.ArgumentParser()
@@ -240,7 +240,7 @@ assert all(out.set_index("section_id").loc[m, "medoid_cluster_id"] == c for m, c
 log.info("wrote %d rows to section_medoid_clusters (each medoid sits in its own cluster)", len(out))
 
 
-# %% Figure 1: maps
+# %% Map helpers (used by Figure 3)
 sec = gpd.read_file(PROCESSED_DIR / "pa_trout.gpkg", layer="sections")[["section_id", "geometry"]].to_crs(CRS)
 sec = sec.set_index("section_id")
 geom = sec.geometry.reindex(ids)
@@ -268,7 +268,7 @@ def state_map(ax, lab, title):
             poly(ax, h, facecolor=cmap(norm(min(sizes[c], 18))), alpha=0.55, edgecolor="none", zorder=2)
     for c, h in hulls.items():
         if sizes[c] > 1:
-            poly(ax, h, fill=False, edgecolor=ORANGE if mixed[c] else INK, lw=1.6 if mixed[c] else 0.5, zorder=3)
+            poly(ax, h, fill=False, edgecolor=MIX_OUTLINE if mixed[c] else INK, lw=2.2 if mixed[c] else 0.5, zorder=3)
     one = [i for i in range(n) if sizes[lab[i]] == 1]
     pts = gpd.GeoSeries([geom.iloc[i].representative_point() for i in one])
     ax.scatter(pts.x, pts.y, s=9, color=INK2, zorder=4, linewidth=0)
@@ -277,53 +277,11 @@ def state_map(ax, lab, title):
     return sum(mixed[c] for c in hulls if sizes[c] > 1)
 
 
-fig = plt.figure(figsize=(17, 10.6))
-gs = fig.add_gridspec(2, 2, height_ratios=[1, 1], hspace=0.10, wspace=0.04)
-fig.suptitle("Nate's schedule clusters vs k-medoids on road miles: the same 1,022 sections in a similar number of clusters",
-             x=0.01, ha="left", fontsize=14, fontweight="bold")
-fig.text(0.01, 0.948, f"Left: sections PFBC stocks on the same truck runs. Right: sections grouped only by driving distance, ignoring the schedule and hatcheries. "
-         f"Outlines in orange mix sections whose main hatcheries differ.", fontsize=10.5, color=INK2)
-ax1, ax2 = fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[0, 1])
-m1 = state_map(ax1, nate, f"Nate's schedule clusters: {len(set(nate))} clusters, silhouette {tab_n['mean silhouette']:.2f}")
-m2 = state_map(ax2, kmed, f"k-medoids with limits: {len(set(kmed))} clusters, silhouette {tab_k['mean silhouette']:.2f}")
-ax1.text(0.0, 0.0, f"{m1} clusters mix main hatcheries", transform=ax1.transAxes, fontsize=10, color=ORANGE)
-ax2.text(0.0, 0.0, f"{m2} clusters mix main hatcheries", transform=ax2.transAxes, fontsize=10, color=ORANGE)
-cb = fig.colorbar(ScalarMappable(norm=norm, cmap=cmap), ax=[ax1, ax2], shrink=0.5, pad=0.012, aspect=22, location="right")
-cb.set_label("sections in the cluster (shading)", color=INK2); cb.outline.set_visible(False)
-
-# zoom: where Nate's biggest cluster sits, and how k-medoids cuts those sections up
+# Nate's biggest cluster: its bounds frame the zoom panels of the approach comparison (Figure 3)
 big = ss["cluster_id"].value_counts().idxmax()
 big_idx = np.flatnonzero((ss["cluster_id"] == big).to_numpy())
 big_hull = unary_union(list(geom.iloc[big_idx])).convex_hull.buffer(MARGIN_M)
 minx, miny, maxx, maxy = big_hull.bounds
-kh = hulls_of(kmed)
-touch = sorted({kmed[i] for i in big_idx})
-za, zb = fig.add_subplot(gs[1, 0]), fig.add_subplot(gs[1, 1])
-for ax in (za, zb):
-    ax.set_xlim(minx - 12000, maxx + 12000); ax.set_ylim(miny - 12000, maxy + 12000)
-    gpd.GeoSeries(geom).plot(ax=ax, color="#cfcec8", lw=0.8, zorder=1)
-    gpd.GeoSeries(geom.iloc[big_idx]).plot(ax=ax, color=ORANGE, lw=3.0, zorder=4)
-    ax.set_aspect("equal"); ax.set_xticks([]); ax.set_yticks([])
-    for s in ax.spines.values():
-        s.set_color(GRID)
-poly(za, big_hull, facecolor="#00000010", edgecolor=INK, lw=1.5, zorder=2)
-za.set_title(f"Nate's {big}, his biggest cluster: {len(big_idx)} sections in one cluster", loc="left", fontsize=11.5)
-for c in touch:
-    poly(zb, kh[c], facecolor="#00000008", edgecolor=INK, lw=1.3, zorder=2)
-    mi = med[c]
-    p = geom.iloc[mi].representative_point()
-    zb.scatter(p.x, p.y, marker="*", s=230, color=INK, edgecolor=SURFACE, linewidth=0.9, zorder=6)
-poly(zb, big_hull, fill=False, edgecolor=ORANGE, lw=1.4, linestyle="--", zorder=3)
-zb.set_title(f"The same {len(big_idx)} sections under k-medoids: they fall into {len(touch)} clusters", loc="left", fontsize=11.5)
-zb.legend(handles=[Line2D([], [], color=ORANGE, lw=3, label=f"sections in Nate's {big}"),
-                   Line2D([], [], color=ORANGE, lw=1.4, ls="--", label=f"Nate's {big} outline"),
-                   Line2D([], [], color=INK, lw=1.3, label="a k-medoids cluster"),
-                   Line2D([], [], marker="*", ls="", color=INK, markersize=13, label="its medoid (most central section)")],
-          loc="upper center", bbox_to_anchor=(0.5, -0.01), ncol=2, frameon=False, fontsize=9.5)
-fig.text(0.01, 0.008, "Outlines are each cluster's convex hull plus a 2.5 km margin, so they overlap where clusters sit close together. "
-         "Distances are real road miles from OSRM.", fontsize=9.5, color=INK2)
-fig.savefig(FIG_DIR / "maps.png", dpi=120, bbox_inches="tight", pad_inches=0.25)
-plt.close(fig)
 
 
 # %% Figure 2: silhouette graphs
@@ -361,7 +319,7 @@ approaches = [(tab_n["method"], nate, tab_n, sil_n), (tab_p["method"], plain, ta
 fig = plt.figure(figsize=(19, 10.6))
 gs = fig.add_gridspec(2, 3, height_ratios=[0.8, 1], hspace=0.12, wspace=0.03)
 fig.suptitle("Three ways to group the 1,022 stocked sections by similar cost", x=0.01, ha="left", fontsize=15, fontweight="bold")
-fig.text(0.01, 0.935, "Top: statewide (shading = sections per cluster, grey dots = singletons, orange outline = cluster mixes sections whose scheduled hatcheries differ). "
+fig.text(0.01, 0.935, "Top: statewide (shading = sections per cluster, grey dots = singletons, magenta outline = cluster mixes sections whose scheduled hatcheries differ). "
          "Bottom: the same patch of the state, around Nate's biggest cluster (orange lines).", fontsize=10.5, color=INK2)
 for j, (name, lab, tab, _) in enumerate(approaches):
     ax = fig.add_subplot(gs[0, j])

@@ -42,6 +42,8 @@ try:
 except NameError:     # running cell by cell in VS Code's interactive window: find the repo root
     ROOT = next(p for p in [Path.cwd(), *Path.cwd().parents] if (p / ".git").exists())
 RAW, INTERIM, PROCESSED = ROOT / "data" / "raw", ROOT / "data" / "interim", ROOT / "data" / "processed"
+sys.path.insert(0, str(ROOT / "scripts"))      # so the co-op loader is importable when run cell by cell
+from coop_inputs import load_coop_nurseries  # noqa: E402
 LOG_DIR = ROOT / "logs"
 ROAD_PARQUET = PROCESSED / "hatchery_to_section_road_distance.parquet"
 ROAD_CSV = PROCESSED / "hatchery_to_section_road_distance.csv"   # csv copy of the same rows
@@ -64,11 +66,14 @@ for handler in (logging.FileHandler(LOG_DIR / "11_road_distances.log", mode="w",
 hatcheries = gpd.read_file(RAW / "pa_hatcheries.gpkg").to_crs(CRS_M)
 hatcheries["NAME"] = hatcheries["NAME"].str.strip()
 assert len(hatcheries) == 13 and hatcheries["ID"].is_unique and hatcheries["NAME"].is_unique
-coop_nurseries = gpd.read_file(RAW / "Coop_nurseries.geojson").to_crs(CRS_M)
+coop_nurseries = load_coop_nurseries(RAW)   # local file, else PASDA dataset 970; None if neither works (co-ops are not in the model)
+if coop_nurseries is not None:
+    coop_nurseries = coop_nurseries.to_crs(CRS_M)
 sections = gpd.read_file(PROCESSED / "pa_trout.gpkg", layer="sections")[["section_id", "geometry"]].merge(
     pd.read_parquet(PROCESSED / "sections.parquet"), on="section_id", validate="one_to_one"
 ).to_crs(CRS_M)
-log.info("loaded %d hatcheries, %d co-op nurseries, %d sections", len(hatcheries), len(coop_nurseries), len(sections))
+log.info("loaded %d hatcheries, %s co-op nurseries, %d sections", len(hatcheries),
+         len(coop_nurseries) if coop_nurseries is not None else "no", len(sections))
 events_path = PROCESSED / "stocking_events.parquet"
 if events_path.exists():   # every hatchery on the 2026 stocking schedule needs a node (and so road distances)
     scheduled = set(pd.read_parquet(events_path, columns=["hatchery"]).hatchery.dropna())
@@ -101,7 +106,7 @@ log.info("straight-line table: %d rows (%d hatcheries x %d sections)",
 
 # %% Co-op nurseries: the N nearest sections to each (straight-line; context for maps, not a model input)
 rows = []
-for h in coop_nurseries.itertuples():
+for h in (coop_nurseries.itertuples() if coop_nurseries is not None else []):
     d = sections.distance(h.geometry)                      # meters, to nearest point on each section line
     near = sections.assign(dist_m=d).sort_values("dist_m").head(N_NEAREST)
     for rank, s in enumerate(near.itertuples(), start=1):
@@ -115,8 +120,11 @@ for h in coop_nurseries.itertuples():
             "dist_km": round(s.dist_m / 1000, 2),
         })
 coop_nearest = pd.DataFrame(rows)
-coop_nearest.to_csv(INTERIM / "coop_nurseries_nearest_streams.csv", index=False)
-log.info("co-op nearest sections: %d rows (%d nurseries x %d)", len(coop_nearest), len(coop_nurseries), N_NEAREST)
+if coop_nurseries is None:
+    log.warning("co-op nurseries unavailable: skipped the co-op nearest-sections table (map context only)")
+else:
+    coop_nearest.to_csv(INTERIM / "coop_nurseries_nearest_streams.csv", index=False)
+    log.info("co-op nearest sections: %d rows (%d nurseries x %d)", len(coop_nearest), len(coop_nurseries), N_NEAREST)
 
 
 # %% Road distance and drive time: every hatchery to every section, via the OSRM table service

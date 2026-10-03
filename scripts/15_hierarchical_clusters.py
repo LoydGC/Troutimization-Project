@@ -20,10 +20,10 @@ kept whole in one cluster, and share of same-cluster pairs that really shared a 
 
 Inputs : data/processed/section_to_section_road_distance.parquet (12), hatchery_to_section_road_distance.parquet (11),
          hatchery_schedule_supply.csv, section_schedule.parquet and stocking_events.parquet (Nate),
-         section_medoid_clusters.parquet (13), parameters.csv, pa_trout.gpkg (sections layer), data/raw/pa_boundary.gpkg
+         section_medoid_clusters.parquet (13), parameters.csv
 Outputs: data/processed/section_hierarchical_clusters.{parquet,csv}   section_id plus the four columns above
          outputs/tables/hierarchical_clusters/comparison.csv, real_run_yardstick.csv, hierarchical_silhouette_by_k.csv
-         outputs/figures/hierarchical_clusters/maps.png, metrics.png
+         outputs/figures/hierarchical_clusters/metrics.png
          logs/15_hierarchical_clusters.log
 
     python scripts/15_hierarchical_clusters.py
@@ -34,17 +34,13 @@ from __future__ import annotations
 import itertools
 import logging
 
-import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.colors import LinearSegmentedColormap, Normalize
-from matplotlib.patches import Polygon as Poly
 from scipy.cluster.hierarchy import fcluster, linkage, to_tree
 from scipy.spatial.distance import squareform
-from shapely.ops import unary_union
 from sklearn.metrics import silhouette_samples
 
 from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
@@ -183,48 +179,6 @@ out.to_parquet(PROCESSED_DIR / "section_hierarchical_clusters.parquet", index=Fa
 out.to_csv(PROCESSED_DIR / "section_hierarchical_clusters.csv", index=False)
 assert out.section_id.is_unique and len(out) == n
 log.info("wrote %d rows to section_hierarchical_clusters", len(out))
-
-
-# %% Maps
-sec = gpd.read_file(PROCESSED_DIR / "pa_trout.gpkg", layer="sections")[["section_id", "geometry"]].to_crs(CRS).set_index("section_id")
-geom = sec.geometry.reindex(ids)
-pa = gpd.read_file(RAW_DIR / "pa_boundary.gpkg").to_crs(CRS) if (RAW_DIR / "pa_boundary.gpkg").exists() else None
-cmap = LinearSegmentedColormap.from_list("size", ["#dbe7f8", "#2a78d6", "#0b3a7a"]); norm = Normalize(2, 12)
-
-
-def poly(ax, g, **kw):
-    ax.add_patch(Poly(np.array(g.exterior.coords), closed=True, joinstyle="round", **kw))
-
-
-def state_map(ax, lab, name, c):
-    sizes = pd.Series(lab).value_counts()
-    if pa is not None:
-        pa.boundary.plot(ax=ax, color=INK2, lw=1.0)
-    gpd.GeoSeries(geom).plot(ax=ax, color="#cfcec8", lw=0.4, zorder=1)
-    hulls = {k: unary_union(list(geom.iloc[np.flatnonzero(lab == k)])).convex_hull.buffer(MARGIN_M) for k in sizes.index if sizes[k] > 1}
-    for k, h in sorted(hulls.items(), key=lambda kv: -sizes[kv[0]]):
-        poly(ax, h, facecolor=cmap(norm(min(sizes[k], 12))), alpha=0.6, edgecolor="none", zorder=2)
-    for k, h in hulls.items():
-        poly(ax, h, fill=False, edgecolor=INK, lw=0.5, zorder=3)
-    one = [i for i in range(n) if sizes[lab[i]] == 1]
-    pts = gpd.GeoSeries([geom.iloc[i].representative_point() for i in one])
-    ax.scatter(pts.x, pts.y, s=11, color=ORANGE, zorder=4, linewidth=0)
-    ax.set_aspect("equal"); ax.set_axis_off()
-    ax.set_title(name, loc="left", fontsize=12, fontweight="bold", pad=44)
-    ax.text(0, 1.01, f"{int(c['clusters'])} clusters · {int(c['singletons'])} sections left alone · biggest {int(c['biggest (sections)'])} sections · widest {c['widest (mi)']:.0f} mi\n"
-            f"silhouette {c['mean silhouette']:.2f} · real runs kept whole {c['real runs kept whole (%)']:.0f}% · hatchery-distance error {c['hatchery-distance error (% of distance)']:.1f}%",
-            transform=ax.transAxes, fontsize=9.4, color=INK, va="bottom")
-
-
-shown = [(comparison.index[0], hier_lim), (comparison.index[1], hier_best), (comparison.index[2], kmed)]
-fig, axs = plt.subplots(1, 3, figsize=(20, 6.2), gridspec_kw={"wspace": 0.03})
-fig.suptitle("Hierarchical clusters (complete linkage) with the same limits as k-medoids, or cut at the best silhouette", x=0.01, ha="left", fontsize=14.5, fontweight="bold")
-fig.text(0.01, 0.9, "Road miles only; no schedule or hatchery information enters the clustering. Left and right share the same limits (4 sections, 20 mi); the middle has none. Orange dots = sections left alone. Shading = sections per cluster.", fontsize=10.5, color=INK2)
-for ax, (name, lab) in zip(axs, shown):
-    state_map(ax, lab, name, comparison.loc[name])
-fig.subplots_adjust(top=0.72)
-fig.savefig(FIG_DIR / "maps.png", dpi=115, bbox_inches="tight", pad_inches=0.25)
-plt.close(fig)
 
 
 # %% Metrics figure

@@ -30,10 +30,10 @@ retrieved_at,source,path,url,records,bytes,sha256
 ,partner_loydgc,pa_boundary.gpkg,https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip,1,126976,1a5d0f7bcdc78a3f50cbf59ff01225288b44916a13b61bbd0f4f0f27d8f3212c
 ,partner_loydgc,pa_class_a_trout_streams.gpkg,,1361,5124096,78cfa1ab50ca4dbed55aa48d0beb1c5f827134e1fd8a2c43fd1dfcb7f46273eb
 ,partner_loydgc,pa_hatcheries.gpkg,https://services9.arcgis.com/6EuFgO4fLTqfNOhu/arcgis/rest/services/PA_Hatcheries/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson,13,106496,f973006db194b59982bcbbb28265ccbc676e14d89095fd0e9866c555f56ec386
-,partner_loydgc,pa_hatchery_production.csv,,10,1947,f26bc00b1784f82ffc6397bc3698b4057ffead8f801c09c6f7a2c3e9a3ef0043
+,partner_loydgc,pa_hatchery_production.csv,https://www.pa.gov/agencies/fishandboat/about-us/agency-overview/bureaus/state-fish-hatcheries,10,1947,f26bc00b1784f82ffc6397bc3698b4057ffead8f801c09c6f7a2c3e9a3ef0043
 ,partner_loydgc,pa_natural_repro_trout_streams.gpkg,,6224,25743360,1cabc96aa49e48ad9f9b709b193b82c0f4a775226028e72abe60568bfc733e1c
 ,partner_loydgc,pa_stocked_trout_streams.gpkg,,1064,6078464,5959a4cd00e42c15efd5d0af3aedac76145014ec91050d60905ad086ef5de948
-,partner_loydgc,Coop_nurseries.geojson,,165,64955,082cc97979e307b752af4dfcfb07f5e934561f8ed692e46b432a5df2e707cd40
+,partner_loydgc,Coop_nurseries.geojson,https://www.pasda.psu.edu/download/pafish/CooperativeNurseries202002.zip,165,64955,082cc97979e307b752af4dfcfb07f5e934561f8ed692e46b432a5df2e707cd40
 2026-09-28T00:25:44+00:00,pfbc_docs,pfbc_docs/2026-09-27/summarybook.pdf,https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/regulations/summarybook.pdf,42,6098898,ff7fdf4303ed4730f4ec2757fae059fb6fa72c7df4de185dc6bd060a4aab0a35
 2026-09-28T01:19:36+00:00,pfbc_docs,pfbc_docs/2026-09-27/fishinglicensesalesbycounty2024.pdf,https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/fishinglicensesalesbycounty2024.pdf,4,275563,4b393623b8ebbd25ced398e28b6e6135a26cd67a198f68e747261652c928c6fe
 2026-09-28T01:20:33+00:00,census,census/2026-09-27/CenPop2020_Mean_BG42.txt,https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG42.txt,10173,443827,b8eacc866249a33b52cd0c19a941f66fa2e70f4cc7cc43da42b741fadb9b3e1d
