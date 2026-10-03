@@ -295,6 +295,24 @@ only (a csv would be about 50 MB). Not symmetric by a hair (median gap 0.3%); th
 | from_section_id, to_section_id | The ordered pair | |
 | road_km, road_mi, road_min | OSRM distance and drive time, as above | km / mi / minutes |
 
+## cluster_hatchery_distance (.parquet, .csv)
+Average road distance from each hatchery to each cluster, for the five saved cluster labellings (`scripts/18_cluster_hatchery_distance.py`).
+One row per method x cluster x hatchery (all 13 hatcheries): 22,776 rows. This is the representative distance a cluster supplies to the model.
+**Formula:** `avg_road_mi = (1 / n) * sum of road_mi[h, s] over the cluster's n member sections`, an unweighted mean of the one-way OSRM road miles
+in `hatchery_to_section_road_distance`. Cost per fish is linear in miles, so the average cost from h is the same average taken on cost.
+
+| Column | Meaning | Units |
+|---|---|---|
+| method | nate_schedule, kmedoids_best_silhouette, kmedoids_limits, hierarchical_best_silhouette, hierarchical_limits | text |
+| cluster_id | The method's own cluster id (C0001..., B001..., M001..., H001..., HL001...) | text |
+| hatchery_id, hatchery | The hatchery | |
+| produces_2026_stream_fish | True for the 9 hatcheries with 2026 stream fish in the schedule | bool |
+| n_sections | Sections in the cluster | count |
+| avg_road_mi | Mean of the members' road miles from the hatchery | road mi |
+| min_road_mi, max_road_mi | Nearest and farthest member from the hatchery | road mi |
+| mean_abs_dev_mi | Mean absolute gap between the average and each member's own distance (how well the average stands in) | road mi |
+| avg_road_mi_fish_weighted | Same average weighted by 2026 stocked fish (a check on the equal weighting; NA if the cluster has no 2026 fish) | road mi |
+
 ## clusters.csv
 One row per default-rule cluster (351), built by `scripts/10_runs_clusters.py`.
 

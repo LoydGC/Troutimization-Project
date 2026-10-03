@@ -1,11 +1,21 @@
-2026-10-03 14:29:21,114 INFO 16_compare_methods_map run from commit c94aeb8 + uncommitted changes to scripts/03_coop_stockings.py, scripts/11_road_distances.py, scripts/13_medoid_clusters.py, scripts/14_dbscan_clusters.py, scripts/15_hierarchical_clusters.py, scripts/16_compare_methods_map.py, scripts/coop_inputs.py
-2026-10-03 14:29:21,655 INFO Nate's schedule clusters: 103 sections left alone
-2026-10-03 14:29:21,656 INFO k-medoids, no limits, best silhouette (310): 54 sections left alone
-2026-10-03 14:29:21,656 INFO Script 13: k-medoids + limits (4 sections, 20 mi): 95 sections left alone
-2026-10-03 14:29:21,656 INFO Hierarchical, no limits, best silhouette (309): 31 sections left alone
-2026-10-03 14:29:21,656 INFO Hierarchical + limits (4 sections, 20 mi): 40 sections left alone
-2026-10-03 14:29:21,656 INFO DBSCAN, eps 6 mi, min_samples 2: 271 sections left alone
-2026-10-03 14:29:21,656 INFO alone under all 6 methods: 4; under 4 or more: 26; under none: 659
-2026-10-03 14:29:32,405 INFO saved outputs\figures\method_comparison\single_section_trips.png
-2026-10-03 14:29:53,299 INFO saved outputs\figures\method_comparison\options_overview.png
-2026-10-03 14:30:09,407 INFO saved outputs\figures\method_comparison\approach_comparison_no_limits.png
+2026-10-03 16:15:57,986 INFO 16_compare_methods_map run from commit 181d886 + uncommitted changes to scripts/16_compare_methods_map.py, scripts/17_wild_trout_overlap_maps.py
+2026-10-03 16:15:58,326 INFO Nate's schedule clusters: 103 sections left alone
+2026-10-03 16:15:58,326 INFO k-medoids, no limits, best silhouette (310): 54 sections left alone
+2026-10-03 16:15:58,326 INFO Script 13: k-medoids + limits (4 sections, 20 mi): 95 sections left alone
+2026-10-03 16:15:58,326 INFO Hierarchical, no limits, best silhouette (309): 31 sections left alone
+2026-10-03 16:15:58,326 INFO Hierarchical + limits (4 sections, 20 mi): 40 sections left alone
+2026-10-03 16:15:58,326 INFO DBSCAN, eps 6 mi, min_samples 2: 271 sections left alone
+2026-10-03 16:15:58,326 INFO alone under all 6 methods: 4; under 4 or more: 26; under none: 659
+2026-10-03 16:16:04,764 INFO saved outputs\figures\method_comparison\single_section_trips.png
+2026-10-03 16:16:21,078 INFO saved outputs\figures\method_comparison\options_overview.png
+2026-10-03 16:16:21,114 INFO stream events on 2026-stocked sections: 2083 of 2096 matched stream events (13 on sections not stocked in 2026)
+2026-10-03 16:16:21,145 INFO runs: 1015 (sections per run: {1: 383, 2: 366, 3: 180, 4: 77, 5: 7, 6: 1, 7: 1}); co-run pairs: 1107; share distribution: {0.33: 40, 0.5: 362, 0.67: 30, 1.0: 675}
+2026-10-03 16:16:21,180 INFO Nate's grouping re-run with his own functions: 351 clusters, identical to section_schedule.cluster_id (the rule has no distance in it)
+2026-10-03 16:16:21,323 INFO Nate's detour to nearest cluster-mate, median (non-singleton): straight-line x1.3 = 3.76, road miles = 4.52
+2026-10-03 16:16:21,323 INFO Nate's detour to nearest cluster-mate, 90th pct: straight-line x1.3 = 9.75, road miles = 11.76
+2026-10-03 16:16:21,323 INFO Nate's nearest stocked section of any cluster, median: straight-line x1.3 = 3.34, road miles = 4.04
+2026-10-03 16:16:21,323 INFO Nate's cluster span (farthest pair), median (2+ sections): straight-line x1.3 = 9.12, road miles = 10.96
+2026-10-03 16:16:21,323 INFO Nate's cluster span, widest: straight-line x1.3 = 56.91, road miles = 56.57
+2026-10-03 16:16:21,324 INFO Nate's clusters wider than 60 mi (his QA flag): straight-line x1.3 = 0.00, road miles = 0.00
+2026-10-03 16:16:21,324 INFO Nate's route length through a cluster (MST), median (2+ sections): straight-line x1.3 = 10.30, road miles = 12.26
+2026-10-03 16:16:31,759 INFO saved outputs\figures\method_comparison\approach_comparison_no_limits.png
