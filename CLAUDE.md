@@ -2,7 +2,8 @@
 
 School project (From Data to Action), two-person repo. `git pull` before starting; commit small.
 **Division of work:** Gavin (LoydGC) owns hatchery and co-op data and hatchery -> section road distances
-(`notebooks/travel_arcs.ipynb`; co-op distances are for maps/context only). This pipeline owns sections, the stocking baseline, environment and demand.
+(`notebooks/travel_arcs.ipynb`; co-op distances are for maps/context only), and county subdivision -> section
+road distances (`scripts/19_subdivision_road_distances.py`). This pipeline owns sections, the stocking baseline, environment and demand.
 Join his outputs on `section_id`, don't rebuild them. Hatchery data and branches get merged/synced later.
 **Practical over perfect:** take the simplest defensible approach, label assumptions, and treat
 thorough versions as optional upgrades.
@@ -204,6 +205,12 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
   residents), 8.72M angler-days a year, all placed on the 1,022 sections stocked in 2026 (every `demand`
   angler-day column sums to it). The survey crosswalk puts 63% of favorite-water mentions on 160 stocked
   rivers; 16 names wait in `logs/07_survey_crosswalk_review.csv`.
+- County subdivisions (verified 2026-10-03): PA has 2,568 in Census's newest vintage, boundaries as of 1 Jan 2026
+  (TIGERweb `tigerWMS_ACS2026` layer 22; `tigerWMS_Current` is the same data but rolls to the next vintage). The
+  downloadable TIGER/Line files stop at 2025 (no TIGER2026 yet) and PA's set is identical in both. All are minor
+  civil divisions (1,544 townships, 960 boroughs, 56 cities, 6 municipalities, 1 town); 2,567 are kept (the Lake
+  Erie "County subdivisions not defined" row has no land). Their centroids, road distances to all 1,045 sections
+  and the OSRM rule 3 waiver: `scripts/19_subdivision_road_distances.py`, `docs/data_methods.md`.
 - Bear Creek (Schuylkill) test case: Class A (brook trout) is Section 01. The stocked sections 02-03 are
   downstream and only touch it, so they must NOT be flagged Class A. They do sit inside the Natural
   Reproduction reach, so they MUST be flagged for natural reproduction.

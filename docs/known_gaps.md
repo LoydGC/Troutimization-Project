@@ -285,3 +285,30 @@ What it lacks:
   are the processed tables; script 12 keeps its per-request blocks in `data/interim/` (gitignored), so the tables can be rebuilt but the raw
   responses are not committed.
 - **Reproducibility:** the demo server's road data changes over time, so a rebuild can differ slightly. The committed tables are the reference.
+- **Third use (2026-10-03):** `scripts/19_subdivision_road_distances.py` queried the same server for the county-subdivision distances
+  (2,682,515 pairs in 286 block requests, 1.5 s apart, cached per block like script 12). Gavin asked for road distances from the subdivision
+  centroids; the waiver wording above (confirmed 2026-10-01) was not re-asked for this table, so say so if the team wants it revisited. The same
+  rule 2 deviation applies to the OSRM responses; the Census download for this table is saved raw under rule 2.
+
+## County subdivisions (recorded 2026-10-03)
+- **Vintage:** Census's newest is boundaries as of 1 Jan 2026 (TIGERweb `tigerWMS_ACS2026`); no TIGER2026 download exists yet. If it appears, rerun
+  script 19 against it only if PA's set changed: the 2025 and 2026 vintages are identical for PA (`source_inventory.md` § County subdivisions).
+- **Lake Erie row left out:** Census's "County subdivisions not defined" (GEOID 4204900000, Erie County, 1,951 km2 of water, no land) has no
+  population to travel from. The 2010 state guide lists the same placeholder as an "undefined water-area MCD".
+- **Centroids outside their own boundary:** 44 of 2,567 (38 single-part, 6 multi-part polygons; a township wrapped around a borough is the usual
+  shape). All are at most 1,075 m outside (median 119 m), so they were kept as the centroid and flagged (`centroid_in_polygon`); Census's internal
+  point (`intpt_lat`, `intpt_lon`) is the alternative origin if that matters.
+- **Pine township (Armstrong) has no route from its centroid:** the centroid snaps 6 m onto an unnamed road fragment that OSRM cannot route from (the
+  100 nearest road snaps are all fragment, and Census's internal point lands on it too), so its whole row of 1,045 distances came back empty on the first
+  run. Script 19 now routes it from the nearest point of a 250 m grid inside the township that does route (418 m from the centroid, snaps 97 m), recorded in
+  `origin_point` / `origin_shift_m`. It is a hole in the OpenStreetMap network at that spot (a gated or private road area), not a data error to repair;
+  the fallback applies to any subdivision that ever lands in the same trap, and the other 2,566 start at their centroids. The 23 origins that snap more than
+  1 km to a road (worst McNett township, Lycoming, 2,164 m) are routable, so they are kept.
+- **Cold Spring township (Lebanon)** is Census's one inactive government (funcstat I; the 2010 guide names it too) and is kept: it has land, so the model can
+  weight it by population (likely zero) rather than drop it.
+- **Invalid polygons:** 5 subdivisions have a self-intersecting boundary ring in Census's layer (Akron borough and Lancaster city, Lancaster; Lower
+  Turkeyfoot, Somerset; Sandy, Clearfield; South Whitehall, Lehigh). Their centroids still match Census's own to under 2 m, so the polygons were not repaired.
+- **A centroid is not where anglers live.** It is the middle of the municipality's area, not its population. A population-weighted point (block
+  groups, as in script 06) is an upgrade if the distances turn out to be sensitive to it; see `docs/scenarios_and_extensions.md`.
+- **Sections:** the table covers all 1,045 sections stocked in 2024-26, so it includes the 23 not stocked in 2026 (20 last stocked 2025, 3 in 2024).
+  Filter to `sections.latest_year == 2026` for the 1,022 candidates.

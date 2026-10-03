@@ -107,11 +107,27 @@ from his `notebooks/01_data_prep.ipynb` where it names them; we haven't verified
 | `pa_stocked_trout_streams.gpkg` | 1,064 | not recorded (matches none of our year layers; see `known_gaps.md`) | his maps and `travel_arcs` distances |
 | `Coop_nurseries.geojson` | 165 | PFBC Cooperative Nurseries layer on PASDA, [dataset 970](https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=970) (2020 release; [download](https://www.pasda.psu.edu/download/pafish/CooperativeNurseries202002.zip)); source named by Gavin 2026-10-03, and the page confirms the layer. PASDA states no record count, so the 165 is not checked against it | nursery locations (script 03); co-ops are out of the model (team decision 2026-09-27), so this only feeds the `coop_stocked` flag and maps |
 
+## County subdivisions (Census TIGERweb; Gavin)
+- **Endpoint:** `https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_ACS2026/MapServer/22` (County Subdivisions).
+  `?f=pjson` verified 2026-10-03: geoJSON and pagination supported, maxRecordCount 100,000; service description "ACS 2026 Legal and Statistical
+  Entities Web Map Service; January 1, 2026 vintage". Filtered to `STATE='42'`: 2,568 features in 67 counties, pulled as 11 pages of 250
+  (about 18 KB of polygon per feature). Key: `GEOID` (10 digits: state + county + subdivision), kept as `subdivision_id`. Credit: U.S. Census Bureau.
+- **Why this service (the "most recent 2026 version" check, 2026-10-03):** its boundaries are as of 1 Jan 2026, the newest Census publishes.
+  The downloadable TIGER/Line shapefiles stop at 2025 (`TIGER2025/COUSUB/tl_2025_42_cousub.zip`, boundaries as of 1 Jan 2025, released
+  2025-09-22; `TIGER2026/COUSUB/tl_2026_42_cousub.zip` and `GENZ2026` return 404). `tigerWMS_Current` serves the same 1 Jan 2026 data as
+  `tigerWMS_ACS2026` (attributes identical, checked) but rolls to the next vintage, so the script pins ACS2026 and stops if the service
+  description stops saying "January 1, 2026". For PA the 2025 and 2026 vintages agree on all 2,568 GEOIDs, names, types, land areas and points.
+- **Reference guide:** [Guide to 2010 State and Local Census Geography, Pennsylvania](https://www.census.gov/geographies/reference-files/2010/geo/state-local-geo-guides-2010/pennsylvania.html)
+  defines the geography: 2,575 county subdivisions in 2010 (1,546 townships, 1 inactive township, 1,027 boroughs, cities and towns, 1 undefined
+  water-area MCD). It is a 2010 description, not a data vintage: the current set has 2,568, with the same water placeholder.
+- **Used in:** `scripts/19_subdivision_road_distances.py`. Raw pages: `data/raw/census_cousub/2026-10-03/` (manifest rows).
+
 ## Road distances (OSRM public demo server; Gavin)
 - **Endpoint:** `https://router.project-osrm.org/table/v1/driving/` (OSRM table service, driving profile, fastest route; road data
   from OpenStreetMap, credit "(c) OpenStreetMap contributors"). First used 2026-09-28; works for up to about
   200 coordinates per request.
-- **Used in:** `scripts/11_road_distances.py` (13 hatcheries x 1,045 sections) and `scripts/12_section_road_distances.py` (1,022 x 1,022
-  sections in 121 blocks of 100 x 100). Pause between requests: 1.5 s. Method and checks: `data_methods.md` § Road distances.
+- **Used in:** `scripts/11_road_distances.py` (13 hatcheries x 1,045 sections), `scripts/12_section_road_distances.py` (1,022 x 1,022
+  sections in 121 blocks of 100 x 100) and `scripts/19_subdivision_road_distances.py` (2,567 county subdivisions x 1,045 sections in 286
+  blocks of 100 x 100). Pause between requests: 1.5 s. Method and checks: `data_methods.md` § Road distances.
 - **Note:** this is the public demo server that CLAUDE.md rule 3 says never to bulk-query. See `known_gaps.md` § OSRM demo server for
   the waiver and what was done.

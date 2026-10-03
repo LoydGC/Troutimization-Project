@@ -1,0 +1,38 @@
+2026-10-03 17:19:25,473 INFO 19_subdivision_road_distances run from commit 0aee6d7 + uncommitted changes to scripts/common.py, scripts/19_subdivision_road_distances.py
+2026-10-03 17:19:25,491 INFO service: ACS 2026 Legal and Statistical Entities Web Map Service; January 1, 2026 vintage
+2026-10-03 17:19:28,469 INFO cousub_pa: 2568 features in 11 page(s) from https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_ACS2026/MapServer/22
+2026-10-03 17:19:29,174 INFO downloaded 2568 PA county subdivisions in 67 counties; 2568 unique GEOID
+2026-10-03 17:19:29,176 INFO left out 1 row(s) with no land to travel from: County subdivisions not defined (4204900000, water area 1951 km2)
+2026-10-03 17:19:29,179 INFO kept 2567 subdivisions
+2026-10-03 17:19:29,504 INFO invalid polygons: 5; multi-part polygons: 63
+2026-10-03 17:19:29,644 INFO our centroid vs Census CENTLAT/CENTLON: median 0.0 m, max 1.6 m
+2026-10-03 17:19:29,644 INFO centroids outside their own polygon: 44 of 2567 (kept, flagged); distance to Census's internal point: median 231 m, 90th pct 1122 m, max 6871 m
+2026-10-03 17:19:29,662 INFO type counts: {'township': 1544, 'borough': 960, 'city': 56, 'municipality': 6, 'town': 1}
+2026-10-03 17:19:29,739 INFO 2567 subdivisions x 1045 sections = 2682515 pairs -> 26 x 11 = 286 blocks of up to 100 x 100
+2026-10-03 17:19:30,734 INFO requests made this run: 0 (rest came from the block cache)
+2026-10-03 17:19:34,584 INFO wrote 2682515 rows to data\processed\subdivision_to_section_road_distance.parquet (29.8 MB) and 2567 subdivisions to data\processed\county_subdivisions.parquet (+ csv)
+2026-10-03 17:19:34,877 INFO cross-check Reynoldsdale hatchery in East St. Clair township: drive 10.3 min to the origin, 10.3 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,878 INFO cross-check Benner Spring hatchery in Benner township: drive 19.6 min to the origin, 19.6 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,878 INFO cross-check Bellefonte hatchery in Benner township: drive 9.5 min to the origin, 9.5 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,878 INFO cross-check Pleasant Gap hatchery in Benner township: drive 15.9 min to the origin, 15.7 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,879 INFO cross-check Tylersville hatchery in Logan township: drive 7.2 min to the origin, 7.2 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,879 INFO cross-check Huntsdale hatchery in Penn township: drive 4.9 min to the origin, 4.9 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,879 INFO cross-check Pleasant Mount hatchery in Mount Pleasant township: drive 6.7 min to the origin, 6.6 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,880 INFO cross-check Oswayo hatchery in Oswayo township: drive 12.1 min to the origin, 12.2 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,880 INFO cross-check Fairview hatchery in Fairview township: drive 7.8 min to the origin, 7.9 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,880 INFO cross-check Corry hatchery in Wayne township: drive 14.2 min to the origin, 14.1 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,881 INFO cross-check Union City hatchery in Union township: drive 5.0 min to the origin, 5.0 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,881 INFO cross-check Linesville hatchery in Pine township: drive 6.7 min to the origin, 6.7 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:34,881 INFO cross-check Tionesta hatchery in Tionesta borough: drive 4.7 min to the origin, 4.6 min back; 0 of 1045 sections outside the bound
+2026-10-03 17:19:35,212 INFO origin snap to road: median 51 m, 90th pct 330 m, max 2164 m; over 1 km: 23; over 5 km: none
+2026-10-03 17:19:35,212 INFO origins moved off the centroid because it had no route: 1 ['Pine township']
+2026-10-03 17:19:35,212 INFO longest route: Harborcreek township (Erie) to section 399_5: 440.2 road mi
+2026-10-03 17:19:35,528 INFO Row count (subdivisions x sections) | expected 2,682,515 | result 2,682,515 | PASS
+2026-10-03 17:19:35,528 INFO Duplicate (subdivision, section) pairs | expected 0 | result 0 | PASS
+2026-10-03 17:19:35,529 INFO Pairs with no road route | expected 0 | result 0 | PASS
+2026-10-03 17:19:35,529 INFO Section snap distances match the hatchery road table (max diff, m) | expected under 1 | result 0.05 | PASS
+2026-10-03 17:19:35,529 INFO Road shorter than straight-line (beyond snap) | expected 0 | result 0 | PASS
+2026-10-03 17:19:35,529 INFO Median road / straight-line ratio | expected 1.2 to 1.8 | result 1.32 | PASS
+2026-10-03 17:19:35,529 INFO Our centroid vs Census CENTLAT/CENTLON (median offset, m) | expected under 50 | result 0.0 | PASS
+2026-10-03 17:19:35,529 INFO Origin points more than 5 km from a road | expected 0 | result 0 | PASS
+2026-10-03 17:19:35,529 INFO Hatchery vs the subdivision it sits in: drive times to the sections beyond the triangle bound | expected 0 | result 0 of 13,585 | PASS

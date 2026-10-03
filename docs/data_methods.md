@@ -261,7 +261,7 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
 - **Check:** Bear Creek 3197_2 and 3197_3 share both of their Tylersville runs (Feb 26, May 7) and are each
   other's nearest section (2.7 road-mi).
 
-**Road distances** (`scripts/11_road_distances.py`, `scripts/12_section_road_distances.py`, first used 2026-09-28; Gavin)
+**Road distances** (`scripts/11_road_distances.py`, `scripts/12_section_road_distances.py`, first used 2026-09-28; Gavin; the subdivision table below uses the same method)
 - **Source:** the public OSRM table service (driving, fastest route; data (c) OpenStreetMap contributors). `source_inventory.md` § Road
   distances; the rule 3 waiver is in `known_gaps.md`.
 - **Points:** each section's midpoint (`mid_lat`, `mid_lon` in `sections.parquet`, Nate's) is snapped by OSRM to the nearest road. Median snap is 97 m
@@ -273,6 +273,30 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
   table's, road never shorter than straight-line beyond the snap, median road / straight-line ratio 1.34, asymmetry, triangle check.
 - **Circuity:** measured road / straight-line runs about 1.5 under 10 mi and 1.3 over 80 mi (`outputs/tables/section_road_distance/circuity_by_distance.csv`),
   against the flat `circuity_factor` 1.3 Nate's scripts use for straight-line distances.
+
+**County subdivisions** (`scripts/19_subdivision_road_distances.py`, 2026-10-03; Gavin)
+- **Source and vintage:** Census TIGERweb, County Subdivisions layer of `tigerWMS_ACS2026`: boundaries as of 1 Jan 2026, the newest Census publishes
+  (downloadable TIGER/Line stops at 2025; PA's set is identical in both). `source_inventory.md` § County subdivisions has the check and the endpoint.
+  Saved raw under `data/raw/census_cousub/2026-10-03/` (11 pages, 2,568 features, manifest rows).
+- **Changes to the Census data:** the one row with no land (Lake Erie's "County subdivisions not defined", GEOID 4204900000) is left out, leaving 2,567
+  subdivisions in 67 counties. Nothing else is filtered, repaired or moved. County names come from `county_anglers.csv` by FIPS.
+- **Origin point:** each polygon's geometric centroid, computed in EPSG:26918 and stored in EPSG:4326. It equals Census's own CENTLAT/CENTLON to within
+  1.6 m. 44 centroids fall outside their subdivision (at most 1,075 m); they are flagged, not moved, and Census's internal point is kept alongside
+  (`known_gaps.md` § County subdivisions). OSRM snaps each origin to the nearest road: median 51 m, 90th percentile 330 m, 23 over 1 km, maximum
+  2,164 m (McNett township, Lycoming) (`road_snap_m`). They are kept, not corrected, as with the section midpoints.
+- **One origin moved:** Pine township (Armstrong)'s centroid snaps 6 m onto a road fragment cut off from the rest of the road network, so it had no
+  route to any section (1,045 missing pairs on the first run; Census's internal point is on the same fragment). The script now looks, on a 250 m grid
+  inside the polygon, for the point nearest the centroid that does route, and routes from it (418 m away, snaps 97 m): `origin_point`,
+  `origin_shift_m`. Every other subdivision is routed from its centroid. The grid point is saved beside the block cache so reruns make no requests.
+- **Table:** every county subdivision x every section stocked 2024-26 (the same 1,045 midpoints as the hatchery table) = 2,682,515 rows, from the same OSRM
+  service and settings as the other road tables, queried as 26 x 11 = 286 blocks of 100 x 100 in the direction home to stream. Parquet only.
+- **Checks (reported by script 19):** row count, no duplicate pairs, no missing routes, section snap distances equal the hatchery table's, road never shorter
+  than straight-line beyond the snap, median road / straight-line ratio 1.32, our centroids against Census's, origins within 5 km of a road, and a cross-check
+  against the hatchery table (the drive times from a hatchery and from the subdivision it sits in to any section differ by no more than the drive time
+  between them, the triangle inequality; 0 of 13,585 pairs break it). All 9 pass. Results: `outputs/tables/subdivision_road_distance/validation.csv`; circuity by distance band: `circuity_by_distance.csv`
+  (road / straight-line median 1.49 under 5 mi, 1.38 at 20-40 mi, 1.31 over 80 mi).
+- **What the table says:** road miles run from 0 to 440 (median 152); the nearest stocked section is a median 5.1 road miles from a subdivision (90th percentile
+  10.4, maximum 22.7). The parquet is 29.8 MB.
 
 **Map layers.** The wild-trout context layers in `pa_trout.gpkg` are simplified to a 5 m tolerance to keep
 the file small. All overlaps are computed from the full-resolution layers first.

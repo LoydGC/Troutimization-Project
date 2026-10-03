@@ -73,6 +73,16 @@ def test_fetch_layer_pages_and_saves_raw(tmp_path):
     assert all(r["url"].startswith(LAYER) for r in rows)
 
 
+def test_fetch_layer_page_size_is_capped_by_the_server_limit(tmp_path):
+    server = FakeArcGIS(n=5, max_records=3)
+    common.fetch_layer(LAYER, "src", "layer", session=server, raw_dir=tmp_path, page_size=2)
+    assert [p["resultRecordCount"] for u, p in server.calls if "resultOffset" in p] == [2, 2, 2]
+
+    server = FakeArcGIS(n=5, max_records=3)
+    common.fetch_layer(LAYER, "src", "layer2", session=server, raw_dir=tmp_path, page_size=100)
+    assert [p["resultRecordCount"] for u, p in server.calls if "resultOffset" in p] == [3, 3]
+
+
 def test_fetch_layer_count_mismatch_raises(tmp_path):
     server = FakeArcGIS(n=5, reported_count=6)
     with pytest.raises(AssertionError, match="server count 6, downloaded 5"):

@@ -295,6 +295,40 @@ only (a csv would be about 50 MB). Not symmetric by a hair (median gap 0.3%); th
 | from_section_id, to_section_id | The ordered pair | |
 | road_km, road_mi, road_min | OSRM distance and drive time, as above | km / mi / minutes |
 
+## county_subdivisions (.parquet, .csv)
+Pennsylvania's county subdivisions (townships, boroughs, cities, towns): the origins of `subdivision_to_section_road_distance`
+(`scripts/19_subdivision_road_distances.py`, `data_methods.md` § County subdivisions). 2,567 rows from Census's newest vintage (boundaries as of
+1 Jan 2026; `source_inventory.md` § County subdivisions). Census's 2,568th row, Lake Erie's "County subdivisions not defined", has no land and is left out.
+
+| Column | Meaning | Units / values |
+|---|---|---|
+| subdivision_id | Census GEOID: state 42 + county (3 digits) + county subdivision (5 digits). Join key; never join on `name` (there are 8 Pine townships) | text |
+| name, basename | Census name with its type ("Abbottstown borough"); the name without it | text |
+| type | township, borough, city, municipality, town (the name's last word) | text |
+| county, county_fips | County name (as in `county_anglers.csv`) and its 5-digit FIPS | text |
+| funcstat | Census functional status code, as published (A: 1,543 townships; F: 1,023 boroughs, cities, towns and municipalities; I: Cold Spring township, Lebanon, inactive). Kept; not used by the model | text |
+| area_land_km2, area_water_km2 | Census land and water area | km2 |
+| centroid_lat, centroid_lon | Geometric (area-weighted) centroid of the polygon, computed in EPSG:26918, stored in EPSG:4326. Equals Census's own CENTLAT/CENTLON (within 1.6 m). The point the road distances start from | degrees |
+| centroid_in_polygon | False for the 44 subdivisions whose centroid falls outside their own boundary (at most 1.1 km out; kept, not moved) | bool |
+| intpt_lat, intpt_lon | Census internal point (always inside the subdivision): the alternative origin | degrees |
+| centroid_to_intpt_m | Distance from the centroid to the internal point | m |
+| origin_lat, origin_lon | The point the road distances start from: the centroid for 2,566 subdivisions, a nearby routable point for the one whose centroid has no route (below) | degrees |
+| origin_point | `centroid`, or `nearest_routable_grid_point` (Pine township, Armstrong, 4200560280: its centroid sits on a road fragment cut off from the network) | text |
+| origin_shift_m | Distance from the centroid to the origin point (0 except Pine township, 418 m) | m |
+| road_snap_m | How far OSRM moved the origin point to reach the nearest road (median 51 m, maximum 2,164 m) | m |
+
+## subdivision_to_section_road_distance (.parquet only)
+Road distance from every county subdivision's centroid to every section stocked in 2024-26 (`scripts/19_subdivision_road_distances.py`). 2,682,515
+rows = 2,567 subdivisions x 1,045 sections, parquet only (a csv would be about 150 MB; the wide matrices are in `data/interim`). Direction: from the
+subdivision (an angler's home) to the section. Filter to the 1,022 sections stocked in 2026 by joining `sections` on `latest_year == 2026`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| subdivision_id | The origin (`county_subdivisions`) | text |
+| section_id | The destination section (midpoint, as in the hatchery table; its `snap_m` is in `hatchery_to_section_road_distance`) | text |
+| road_km, road_mi | OSRM driving distance of the fastest route | km / mi |
+| road_min | OSRM drive time | minutes (not miles) |
+
 ## cluster_hatchery_distance (.parquet, .csv)
 Average road distance from each hatchery to each cluster, for the five saved cluster labellings (`scripts/18_cluster_hatchery_distance.py`).
 One row per method x cluster x hatchery (all 13 hatcheries): 22,776 rows. This is the representative distance a cluster supplies to the model.
