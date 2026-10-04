@@ -1,0 +1,4 @@
+2026-10-04 16:25:03,251 INFO 20_allocation_map run from commit 844f30a + uncommitted changes to scripts/20_allocation_map.py, scripts/21_bellefonte_heat_map.py
+2026-10-04 16:25:03,682 INFO 9 hatcheries, 1022 sections, 2606465 stream fish in 2026
+2026-10-04 16:25:03,684 INFO marker nudge (inches on the slide): {'Bellefonte': 0.23, 'Benner Spring': 0.21, 'Pleasant Gap': 0.1}
+2026-10-04 16:25:04,589 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\starting_point_map.png

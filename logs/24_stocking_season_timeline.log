@@ -1,0 +1,9 @@
+2026-10-04 17:24:10,939 INFO 24_stocking_season_timeline run from commit 844f30a + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/24_stocking_season_timeline.py
+2026-10-04 17:24:11,194 INFO 2102 stream stockings; 73 listed by week only
+2026-10-04 17:24:11,206 INFO F: 42 stockings (2%), 44340 trout (2%), 2026-10-01 to 2026-10-21
+2026-10-04 17:24:11,207 INFO I: 1058 stockings (50%), 1389880 trout (53%), 2026-04-06 to 2026-09-02
+2026-10-04 17:24:11,207 INFO P: 1002 stockings (48%), 1172248 trout (45%), 2026-02-17 to 2026-04-03
+2026-10-04 17:24:11,207 INFO in-season stockings after May 22: 3 of 1058
+2026-10-04 17:24:11,208 INFO peak week 2026-04-13: 225 stockings
+2026-10-04 17:24:11,364 INFO of 1,022 sections: pre-season + in-season 841, pre-season only 150, in-season only 31; most common 670 with 1 pre + 1 in
+2026-10-04 17:24:11,916 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\stocking_season_timeline.png

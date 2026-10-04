@@ -1,0 +1,3 @@
+2026-10-04 17:00:46,615 INFO 22_pfbc_formula_visual run from commit 844f30a + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py
+2026-10-04 17:00:46,850 INFO 3197_2 Bear Creek DGS3: rate 190/acre x 13.12 acres (3.30 mi x 10 m) = 2493; PFBC stocked 1030 in 2026 (41% of the formula)
+2026-10-04 17:00:47,329 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\pfbc_formula.png
