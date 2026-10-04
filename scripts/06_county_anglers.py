@@ -9,26 +9,57 @@ not home county; online sales have no county): docs/known_gaps.md § Angler numb
 
 Every input is kept as a column, so a PFBC table of permit holders by home county can replace it later.
 
+Population: 2020 Census counts per county subdivision (TIGERweb Census 2020, POP100), summed to counties. The
+same counts, moved onto the 2026 subdivisions Gavin routed from (`county_subdivisions`), are the proximity-demand
+origins: anglers per subdivision = population x its county's angler rate (decision 2026-10-04).
+
 Inputs : data/raw/pfbc_docs/*/fishinglicensesalesbycounty2024.pdf (pages 1-2 annual, 3-4 multi-year)
-         data/raw/census/*/CenPop2020_Mean_BG42.txt (2020 block-group population, summed to counties)
-         data/processed/county_region.csv (04)
+         data/raw/census_pop/*/ (TIGERweb Census 2020 county subdivision and county populations; fetched once)
+         data/processed/county_region.csv (04), county_subdivisions.parquet (19, Gavin)
 Outputs: data/processed/county_anglers.csv   one row per county (67)
+         data/processed/subdivision_anglers.{parquet,csv}   one row per county subdivision (2,567)
          logs/06_county_anglers.log
 
     .venv/bin/python scripts/06_county_anglers.py
 """
 from __future__ import annotations
 
+import csv
+import hashlib
+import io
+import json
 import logging
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import pdfplumber
 
-from common import PROCESSED_DIR, RAW_DIR, setup_logging
+from common import PROCESSED_DIR, RAW_DIR, PoliteSession, full_url, setup_logging
 
 log = logging.getLogger(__name__)
+
+# 2020 Census population (POP100 = PL 94-171 total population) from TIGERweb's Census 2020 vintage (boundaries as of
+# 1 Jan 2020). The Census Data API (api.census.gov) now refuses data requests without a key (2026-10-04).
+CENSUS_SOURCE = "census_pop"
+TIGER2020 = "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer"
+COUSUB_LAYER, COUNTY_LAYER = 20, 82
+POP_QUERY = {"where": "STATE='42'", "outFields": "GEOID,STATE,COUNTY,NAME,POP100", "returnGeometry": "false",
+             "orderByFields": "GEOID", "f": "json"}
+PA_POP_2020 = 13_002_700  # Pennsylvania's 2020 Census resident population
+# 2020 subdivisions with no 2026 GEOID -> the 2026 subdivision holding their 2020 internal point (TIGERweb ACS2026
+# layer 22 point queries, saved as data/raw/census_pop/2026-10-04/cousub2026_containing_<GEOID>.json)
+SUCCESSOR_2026 = {
+    "4200351696": "4200351794",  # Mount Lebanon township -> Mount Lebanon municipality (renamed, new code)
+    "4200359032": "4200359040",  # Penn Hills township -> Penn Hills municipality (renamed, new code)
+    "4203325136": "4206525136",  # Falls Creek borough, Clearfield County part (42) -> Falls Creek borough, Jefferson
+    "4203521328": "4203555744",  # East Keating township, Clinton (7) -> Noyes township
+    "4207372376": "4207370080",  # South New Castle borough, Lawrence (647) -> Shenango township
+    "4208584376": "4208534064",  # Wheatland borough, Mercer (585) -> Hermitage city
+    "4211110808": "4211141568",  # Callimont borough, Somerset (56) -> Larimer township
+}
+NO_LAND = "4204900000"  # Lake Erie's "County subdivisions not defined": 0 people, no origin
 
 # Numbers are right-aligned under their headers and blank cells print nothing, so each number is assigned to
 # the column whose right edge (x1, points) is nearest. Edges read off the PDF's header layout and data rows.
@@ -109,15 +140,98 @@ def read_sales(path: Path) -> pd.DataFrame:
     return annual.join(multi.drop(columns="rank"))
 
 
-def census_population() -> pd.DataFrame:
-    path = sorted(RAW_DIR.glob("census/*/CenPop2020_Mean_BG42.txt"))[-1]
-    bg = pd.read_csv(path, dtype={"STATEFP": str, "COUNTYFP": str}, encoding="utf-8-sig")
-    log.info("Census 2020 block groups: %d, population %s", len(bg), f"{bg.POPULATION.sum():,}")
-    return bg.groupby("COUNTYFP", as_index=False).POPULATION.sum().rename(columns={"POPULATION": "pop_2020"})
+def census_raw(name: str, url: str, params: dict | None = None, records=None) -> bytes:
+    """A Census response: read from data/raw/census_pop/ if saved, else fetched once and saved untouched.
+
+    The manifest row is appended as one LF-terminated line, like the rows already there (save_raw writes CRLF).
+    """
+    found = sorted(RAW_DIR.glob(f"{CENSUS_SOURCE}/*/{name}"))
+    if found:
+        return found[-1].read_bytes()
+    data = PoliteSession().get(url, params).content
+    path = RAW_DIR / CENSUS_SOURCE / datetime.now().strftime("%Y-%m-%d") / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    n = records(data) if callable(records) else records
+    line = io.StringIO()
+    csv.writer(line, lineterminator="\n").writerow([
+        datetime.now(timezone.utc).isoformat(timespec="seconds"), CENSUS_SOURCE, path.relative_to(RAW_DIR).as_posix(),
+        full_url(url, params), "" if n is None else n, len(data), hashlib.sha256(data).hexdigest()])
+    with (RAW_DIR / "manifest.csv").open("a", newline="") as f:
+        f.write(line.getvalue())
+    log.info("saved %s (%d bytes)", path.relative_to(RAW_DIR), len(data))
+    return data
+
+
+def census_pop_layer(layer: int, name: str) -> pd.DataFrame:
+    """GEOID, NAME and POP100 for every PA feature of a TIGERweb Census 2020 layer (one request: no geometry)."""
+    meta = json.loads(census_raw(f"{name}_meta.json", f"{TIGER2020}/{layer}", {"f": "pjson"}))
+    assert "POP100" in {f["name"] for f in meta["fields"]} and meta["maxRecordCount"] >= 5000, meta["name"]
+    body = json.loads(census_raw(f"{name}_pa_pop.json", f"{TIGER2020}/{layer}/query", POP_QUERY,
+                                 records=lambda b: len(json.loads(b)["features"])))
+    assert not body.get("exceededTransferLimit"), f"{name}: more PA features than one page"
+    df = pd.DataFrame([f["attributes"] for f in body["features"]])
+    assert df.GEOID.is_unique and df.STATE.eq("42").all() and df.POP100.notna().all()
+    return df.astype({"POP100": int})
+
+
+def census_subdivisions() -> pd.DataFrame:
+    """2020 Census population per county subdivision (2020 boundaries), checked against the state and county counts."""
+    census_raw("tigerweb_census2020_service.json", TIGER2020, {"f": "pjson"})
+    tw = census_pop_layer(COUSUB_LAYER, "cousub2020").rename(columns={"POP100": "pop_2020"})
+    log.info("Census 2020 county subdivisions (TIGERweb POP100): %d, population %s; %d with no population",
+             len(tw), f"{tw.pop_2020.sum():,}", tw.pop_2020.eq(0).sum())
+    assert tw.pop_2020.sum() == PA_POP_2020, "subdivisions don't add to PA's 2020 population"
+    counties = census_pop_layer(COUNTY_LAYER, "county2020").set_index("GEOID").POP100
+    diff = tw.groupby(tw.GEOID.str[:5]).pop_2020.sum().sub(counties, fill_value=0)
+    assert len(counties) == 67 and diff.eq(0).all(), diff[diff.ne(0)]
+    log.info("every county's 2020 subdivisions add to its own 2020 population (TIGERweb Counties, 67 of 67)")
+    return tw
+
+
+def census_population(tw: pd.DataFrame) -> pd.DataFrame:
+    """County population = the sum of its 2020 county subdivisions (they nest in counties)."""
+    return tw.assign(COUNTYFP=tw.GEOID.str[2:5]).groupby("COUNTYFP", as_index=False).pop_2020.sum()
+
+
+def subdivision_anglers(tw: pd.DataFrame, county: pd.DataFrame) -> pd.DataFrame:
+    """2020 population and anglers on the 2026 county subdivisions (Gavin's origins): population x county rate."""
+    cs = pd.read_parquet(PROCESSED_DIR / "county_subdivisions.parquet")
+    m = cs[["subdivision_id", "name"]].merge(tw[["GEOID", "NAME", "pop_2020"]], left_on="subdivision_id",
+                                             right_on="GEOID", how="outer", validate="1:1", indicator=True)
+    log.info("2020 Census subdivisions (%d) joined to the %d 2026 subdivisions on GEOID: %s", len(tw), len(cs),
+             m._merge.map({"both": "same GEOID", "left_only": "2026 only",
+                           "right_only": "2020 only"}).value_counts().to_dict())
+    gone = m[m._merge.eq("right_only")]
+    assert set(gone.GEOID) == set(SUCCESSOR_2026) | {NO_LAND}, "2020 -> 2026 changes differ from SUCCESSOR_2026"
+    assert gone.loc[gone.GEOID.eq(NO_LAND), "pop_2020"].eq(0).all()
+    names = cs.set_index("subdivision_id").name
+    for r in gone.itertuples():
+        to = SUCCESSOR_2026.get(r.GEOID)
+        log.info("  2020 only: %s %s, %d people -> %s", r.GEOID, r.NAME, r.pop_2020,
+                 f"{to} {names[to]}" if to else "no origin (no land)")
+    log.info("  2026 only (renamed, new code): %s", m.loc[m._merge.eq("left_only"), "name"].tolist())
+
+    tw = tw[tw.GEOID.ne(NO_LAND)].assign(subdivision_id=lambda d: d.GEOID.replace(SUCCESSOR_2026))
+    pop = tw.groupby("subdivision_id").pop_2020.sum()
+    assert set(pop.index) == set(cs.subdivision_id) and pop.sum() == PA_POP_2020
+    sub = cs[["subdivision_id", "name", "county", "county_fips"]].assign(pop_2020=lambda d: d.subdivision_id.map(pop))
+    sub = sub.merge(county[["county_fips", "region", "angler_rate"]], on="county_fips", how="left", validate="m:1")
+    assert sub.region.notna().all() and len(sub) == len(cs)
+    sub["anglers"] = sub.pop_2020 * sub.angler_rate
+    sub = sub[["subdivision_id", "name", "county", "county_fips", "region", "pop_2020", "angler_rate", "anglers"]]
+    moved = tw[tw.GEOID.str[:5].ne(tw.subdivision_id.str[:5])]
+    log.info("moved to another county since 2020: %s; so subdivision population by county differs from the 2020 "
+             "county count there, and statewide anglers are %s (county total %s)",
+             moved[["NAME", "pop_2020"]].values.tolist(), f"{sub.anglers.sum():,.2f}", f"{county.anglers.sum():,.2f}")
+    log.info("subdivisions: %d, population %s, %d with no population; anglers per subdivision min-median-max %s",
+             len(sub), f"{sub.pop_2020.sum():,}", sub.pop_2020.eq(0).sum(),
+             sub.anglers.quantile([0, 0.5, 1]).round(1).tolist())
+    return sub
 
 
 def county_names() -> pd.DataFrame:
-    """County FIPS -> name, from the 2020 Census gazetteer (already downloaded with the block groups)."""
+    """County FIPS -> name, from the 2020 Census gazetteer."""
     import zipfile
     path = sorted(RAW_DIR.glob("census/*/2020_Gaz_counties_national.zip"))[-1]
     with zipfile.ZipFile(path) as z:
@@ -127,7 +241,7 @@ def county_names() -> pd.DataFrame:
     return pd.DataFrame({"COUNTYFP": gz.GEOID.str[2:], "county": gz.NAME.str.removesuffix(" County")})
 
 
-def build(sales: pd.DataFrame) -> pd.DataFrame:
+def build(sales: pd.DataFrame, county_pop: pd.DataFrame) -> pd.DataFrame:
     def permits_less_nonres(r: pd.Series) -> dict:
         return {
             "annual_trout_combo": r.trout_permit + r.combo_permit,
@@ -147,7 +261,7 @@ def build(sales: pd.DataFrame) -> pd.DataFrame:
              f"{oos.annual_trout_combo + oos.multi_trout_combo:,}", f"{oos.nonres_licenses:,}",
              f"{oos.resident_permits:,}")
 
-    pop = census_population().merge(county_names(), on="COUNTYFP", how="outer", validate="1:1")
+    pop = county_pop.merge(county_names(), on="COUNTYFP", how="outer", validate="1:1")
     assert pop.notna().all().all() and len(pop) == 67
     # the PDF prints "Mckean", the Census "McKean": match case-insensitively
     counties = parts.drop(index=NOT_COUNTIES).rename(index=str.lower)
@@ -185,7 +299,8 @@ def build(sales: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     setup_logging("06_county_anglers")
-    df = build(read_sales(license_pdf()))
+    tw = census_subdivisions()
+    df = build(read_sales(license_pdf()), census_population(tw))
     state_rate = df.anglers.sum() / df.pop_2020.sum()
     log.info("resident anglers: %s (population %s, %.1f per 100 residents)", f"{df.anglers.sum():,.0f}",
              f"{df.pop_2020.sum():,}", 100 * state_rate)
@@ -199,6 +314,11 @@ def main() -> None:
     rates = ["pop_share", "angler_rate", "angler_rate_by_sales"]
     df.round(1).assign(**df[rates].round(6)).to_csv(PROCESSED_DIR / "county_anglers.csv", index=False)
     log.info("wrote county_anglers.csv: %d rows", len(df))
+
+    sub = subdivision_anglers(tw, df)
+    sub.to_parquet(PROCESSED_DIR / "subdivision_anglers.parquet", index=False)
+    sub.round({"angler_rate": 6, "anglers": 3}).to_csv(PROCESSED_DIR / "subdivision_anglers.csv", index=False)
+    log.info("wrote subdivision_anglers.{parquet,csv}: %d rows", len(sub))
 
 
 if __name__ == "__main__":

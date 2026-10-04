@@ -147,7 +147,7 @@ county.
 | Column | Meaning | Units |
 |---|---|---|
 | county, county_fips, region | County (spelled as in `sections.county`), 5-digit FIPS, PFBC region | text |
-| pop_2020 | 2020 Census population (block groups summed) | people |
+| pop_2020 | 2020 Census population (TIGERweb Census 2020 `POP100`, county subdivisions summed; equals the county count) | people |
 | annual_trout_combo | Annual trout + combo (trout and Lake Erie) permits sold by the county's agents in 2024 | permits |
 | multi_trout_combo | 3-, 5- and 10-year trout + combo permits sold there in 2024 (earlier multi-year sales aren't in the source) | permits |
 | nonres_licenses | Non-resident, non-resident PA student and 7/3/1-day tourist licenses sold there (annual + multi-year) | licenses |
@@ -157,6 +157,20 @@ county.
 | anglers | resident_permits + online_permits (421,615 statewide) | anglers |
 | angler_rate | anglers / pop_2020 (state 0.032) | anglers per resident |
 | online_permits_by_sales, anglers_by_sales, angler_rate_by_sales | Sensitivity: online permits split like the county's store sales instead of by population | as above |
+
+## subdivision_anglers (.parquet, .csv)
+Resident anglers per county subdivision (2,567 rows), the origins of proximity demand, built by
+`scripts/06_county_anglers.py`. One row per `county_subdivisions` origin (Gavin's 1 Jan 2026 boundaries), with
+the 2020 Census count moved onto them. Method: `docs/data_methods.md` § Subdivision anglers.
+
+| Column | Meaning | Units |
+|---|---|---|
+| subdivision_id | Census GEOID (state + county + county subdivision), as in `county_subdivisions` and `subdivision_to_section_road_distance`. Join key | text |
+| name, county, county_fips | Subdivision name, county (spelled as in `sections.county`) and 5-digit county FIPS, from `county_subdivisions` | text |
+| region | PFBC region of the county (`county_region.csv`); the angler's home region for days fished and travel bands | text |
+| pop_2020 | 2020 Census population (TIGERweb Census 2020 `POP100`), matched on GEOID; the 7 subdivisions that changed code since 2020 are added to their 2026 successor. Sums to 13,002,700; 1 row has 0 | people |
+| angler_rate | The county's `county_anglers.angler_rate` | anglers per resident |
+| anglers | pop_2020 × angler_rate (421,614.3 statewide: Falls Creek's 42 people moved from Clearfield to Jefferson County) | anglers |
 
 ## survey_water_crosswalk.csv
 Survey favorite waters (p76–77) → PFBC rivers, built by `scripts/07_survey_crosswalk.py`. One row per
@@ -178,19 +192,20 @@ Undecided names are in `logs/07_survey_crosswalk_review.csv`.
 ## demand (.parquet, .csv)
 Angler-days per year for each of the 1,022 sections stocked in 2026, built by `scripts/08_demand.py`. The two
 signals are kept separate; the model blends them as `(1 − w) · prox_days + w · pref_days` (`blend_weight_w`).
-Every angler-day column sums to the same statewide total, 8,717,541. Method: `docs/data_methods.md`; design:
+Every angler-day column sums to the same statewide total, 7,121,847 stream angler-days (lake days removed by
+home region, survey p88; 8,717,546 with them). Method: `docs/data_methods.md`; design:
 `docs/model_design.md` § Angler benefit.
 
 | Column | Meaning | Units / values |
 |---|---|---|
 | section_id, river_id | Keys | text / int |
-| prox_days | Proximity demand: block-group angler-days sent out by each home region's p93 trip-distance bands, split within a band by section length | angler-days/yr |
+| prox_days | Proximity demand: each county subdivision's angler-days (`subdivision_anglers`) sent out by its home region's p93 trip-distance bands in road miles (`subdivision_to_section_road_distance`), split within a band by section length | angler-days/yr |
 | prox_days_pooled | Same, with one in-state distance curve (sensitivity) | angler-days/yr |
 | prox_days_pop | Same, with every county at the state angler rate, rescaled to the statewide total (sensitivity) | angler-days/yr |
 | pref_days_named | Preference demand from the survey waters matched to this river, split over its sections by length | angler-days/yr, 0 if none |
 | pref_days | pref_days_named + the unplaced share spread like prox_days | angler-days/yr |
 | survey_waterbody | Survey water(s) matched to the river, "; "-joined | text, NA if none |
-| pref_per_mi_flag | The river's preference per stocked mile exceeds the state's highest prox_days per mile (review flag, not a cap) | bool (Youghiogheny 1327_1 only) |
+| pref_per_mi_flag | The river's preference per stocked mile exceeds the state's highest prox_days per mile (review flag, not a cap) | bool (Youghiogheny 1327_1 and White Clay Creek 2027_1) |
 | destination_index | River's pref_days_named ÷ its prox_days: ~1 = popular because people live nearby, 5+ = a destination | ratio, NA if not named |
 | dhalo, catch_release, keystone_select, open_year_round | Regulation flags from `reg_name` / `program_name` (counts in data_methods.md) | bool |
 
@@ -346,6 +361,65 @@ in `hatchery_to_section_road_distance`. Cost per fish is linear in miles, so the
 | min_road_mi, max_road_mi | Nearest and farthest member from the hatchery | road mi |
 | mean_abs_dev_mi | Mean absolute gap between the average and each member's own distance (how well the average stands in) | road mi |
 | avg_road_mi_fish_weighted | Same average weighted by 2026 stocked fish (a check on the equal weighting; NA if the cluster has no 2026 fish) | road mi |
+
+## hatcheries (.parquet, .csv)
+PFBC's 13 state fish hatcheries, the supply nodes (`scripts/20_transport_cost.py`; layer from script 01, supply from
+`hatchery_schedule_supply.csv`). The base model uses the 9 with `in_2026_schedule`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| hatchery_id | PFBC's `ID` in the State Fish Hatcheries layer; the key in Gavin's road tables | int |
+| hatchery, full_name | Short name (PFBC's `NAME`, trailing spaces stripped) and full name | text |
+| county, region, lat, lon | Location, from the layer | text / degrees |
+| trout_flag | The layer's `TROUT` flag, as published (not used: it includes Linesville and Pleasant Mount, which stock no streams, and leaves out Tionesta) | bool |
+| supply | 2026 stream fish credited to the hatchery by the 2026 schedule (`stream_fish_2026`); 0 for the 4 with no 2026 stream events (Fairview, Union City, Linesville, Pleasant Mount). Sums to T = 2,606,465 | fish/yr |
+| in_2026_schedule | supply > 0: the base model's 9 supply nodes | bool |
+
+## cost_matrix (.parquet, .csv)
+Haul cost per fish for every hatchery x 2026-stocked section (13 x 1,022 = 13,286 rows; `scripts/20_transport_cost.py`).
+Miles are Gavin's (scripts 11 and 18); the cluster averages are checked against a recomputation from `road_mi`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| hatchery_id, hatchery, in_2026_schedule | The hatchery (`hatcheries`) | |
+| section_id | The section | text |
+| cluster_id | The section's k-medoids cluster (`section_medoid_clusters.silhouette_best_cluster_id`, 310 clusters) | text |
+| road_mi | One-way OSRM road miles from the hatchery to this section (`hatchery_to_section_road_distance`) | road mi |
+| cluster_road_mi | Mean of `road_mi` over the section's k-medoids cluster (`cluster_hatchery_distance`): the haul the model uses (decision 2026-10-04) | road mi |
+| cost_per_fish | 2 x `cluster_road_mi` x `cost_per_truck_mile` / `fish_per_load` (parameters.csv; $0.00152 per fish per one-way mile) | $/fish |
+| cluster_road_mi_schedule, cluster_road_mi_hierarchical | The same average over Nate's schedule clusters (351) and Gavin's hierarchical clusters (309): sensitivities | road mi |
+
+## baseline_flows (.parquet, .csv)
+PFBC's 2026 plan as hatchery -> section flows (`scripts/20_transport_cost.py`): 1,071 rows on the 1,022 sections (49 get fish
+from two hatcheries). Each section's 2026 fish are split over its scheduled events by species (`stocking_events.alloc_fish`,
+script 09) and summed by hatchery; they match `total_2026` to within 0.03 fish and each hatchery's supply to within 1.2.
+
+| Column | Meaning | Units |
+|---|---|---|
+| section_id, hatchery_id, hatchery | The flow | |
+| fish | Fish from the hatchery to the section in 2026 (fractional: species splits over events) | fish/yr |
+| road_mi, cluster_road_mi, cost_per_fish | As in `cost_matrix` | |
+| cost | fish x cost_per_fish (sums to $351.5k) | $/yr |
+
+## model_input (.parquet, .csv)
+One row per 2026-stocked section (1,022): everything the optimization reads per section (`scripts/21_model_input.py`).
+Joined from `sections`, `environment` and `demand` without recomputing; supply and costs stay in `hatcheries` and
+`cost_matrix`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| section_id, river_id, water_name, county, region | Keys and labels (`sections`) | |
+| x0 | PFBC's 2026 count (`total_2026`, all five species): the baseline | fish/yr |
+| length_mi, area_acres, width_class, use_potential, biomass_class, allocation_code, class_a_flag, nat_repro_flag, coop_stocked | As in `sections` | |
+| cap_fish, cap_source, cap_fish_mid, cap_fish_river, cap_fish_class_a_grow | Density cap and its variants (`sections`) | fish/yr |
+| share_brook ... share_brood | Share of the 2026 count by species (the section keeps its mix) | 0–1 |
+| exclude, exclude_reason, nat_repro_share, wild_brook_present | From `environment` | |
+| prox_days, pref_days, prox_days_pooled, prox_days_pop, destination_index, dhalo, catch_release, keystone_select, open_year_round | From `demand` | |
+| impact_weighted | Wild-trout impact weight, main version (decision 2026-10-04): biomass density weight (`parameters.csv` `impact_weight`: A 8, B 6, C 3, D 1, E 0; E on the natural-reproduction list 1) × `impact_overlap`, or × 1 for the 111 sections rated B–D but not on the natural-reproduction list. 624 sections > 0; 2026 total 2,274,440 | fish weight, class D = 1 |
+| impact_simple | 1 if `nat_repro_flag` or biomass B–D, else 0: the binary impact weight (sensitivity; 624 sections, 1,445,045 fish in 2026) | 0/1 |
+| impact_overlap | `nat_repro_share`, NA as 0: share of the section on natural-reproduction water (sensitivity; 1,003,731 fish-equivalents in 2026) | 0–1 |
+| n_supply_costs | Hatcheries in the 2026 schedule with a cost to this section (9 for all) | count |
+| complete | Every component the base model needs is present (true for all 1,022) | bool |
 
 ## clusters.csv
 One row per default-rule cluster (351), built by `scripts/10_runs_clusters.py`.
