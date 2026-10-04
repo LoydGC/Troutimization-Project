@@ -1,13 +1,14 @@
-2026-09-28 01:38:56,456 INFO 06_county_anglers run from commit 0df544f + uncommitted changes to scripts/06_county_anglers.py, scripts/07_survey_crosswalk.py, scripts/08_demand.py
-2026-09-28 01:38:57,047 INFO license PDF parsed: 67 counties + Out of State, Total, Internet, Grand Total; every row matches the PDF's row totals, column totals and grand totals
-2026-09-28 01:38:57,097 INFO online: 172,027 trout + combo permits (annual + multi-year) - 54,527 non-resident and tourist licenses = 117,500 resident permits with no county
-2026-09-28 01:38:57,097 INFO dropped: Out of State agents, 818 permits - 1,015 non-resident licenses = -197 (not PA residents)
-2026-09-28 01:38:57,105 INFO Census 2020 block groups: 10173, population 13,002,700
-2026-09-28 01:38:57,136 INFO resident anglers: 421,615 (population 13,002,700, 3.2 per 100 residents)
-2026-09-28 01:38:57,138 INFO county angler rate / state rate, min-p10-median-p90-max: [0.31, 0.62, 1.4, 2.68, 3.56]
-2026-09-28 01:38:57,139 INFO lowest: [['Philadelphia', 0.01], ['Delaware', 0.013], ['Montour', 0.016]]
-2026-09-28 01:38:57,140 INFO highest: [['Elk', 0.116], ['Clinton', 0.109], ['Clearfield', 0.105]]
-2026-09-28 01:38:57,145 INFO by region:
+2026-10-04 14:38:33,207 INFO 06_county_anglers run from commit 844f30a + uncommitted changes to scripts/00_extract_angler_survey.py, scripts/06_county_anglers.py, scripts/08_demand.py
+2026-10-04 14:38:33,222 INFO Census 2020 county subdivisions (TIGERweb POP100): 2573, population 13,002,700; 2 with no population
+2026-10-04 14:38:33,227 INFO every county's 2020 subdivisions add to its own 2020 population (TIGERweb Counties, 67 of 67)
+2026-10-04 14:38:33,800 INFO license PDF parsed: 67 counties + Out of State, Total, Internet, Grand Total; every row matches the PDF's row totals, column totals and grand totals
+2026-10-04 14:38:33,852 INFO online: 172,027 trout + combo permits (annual + multi-year) - 54,527 non-resident and tourist licenses = 117,500 resident permits with no county
+2026-10-04 14:38:33,852 INFO dropped: Out of State agents, 818 permits - 1,015 non-resident licenses = -197 (not PA residents)
+2026-10-04 14:38:33,879 INFO resident anglers: 421,615 (population 13,002,700, 3.2 per 100 residents)
+2026-10-04 14:38:33,880 INFO county angler rate / state rate, min-p10-median-p90-max: [0.31, 0.62, 1.4, 2.68, 3.56]
+2026-10-04 14:38:33,881 INFO lowest: [['Philadelphia', 0.01], ['Delaware', 0.013], ['Montour', 0.016]]
+2026-10-04 14:38:33,882 INFO highest: [['Elk', 0.116], ['Clinton', 0.109], ['Clearfield', 0.105]]
+2026-10-04 14:38:33,887 INFO by region:
                   pop     anglers  share   rate
 region                                         
 Northcentral   760474   51325.088  0.122  0.067
@@ -16,4 +17,17 @@ Northwest      878554   39651.128  0.094  0.045
 Southcentral  1749890   77114.029  0.183  0.044
 Southeast     6030521  122141.314  0.290  0.020
 Southwest     2503968   94415.319  0.224  0.038
-2026-09-28 01:38:57,148 INFO wrote county_anglers.csv: 67 rows
+2026-10-04 14:38:33,890 INFO wrote county_anglers.csv: 67 rows
+2026-10-04 14:38:33,952 INFO 2020 Census subdivisions (2573) joined to the 2567 2026 subdivisions on GEOID: {'same GEOID': 2565, '2020 only': 8, '2026 only': 2}
+2026-10-04 14:38:33,954 INFO   2020 only: 4200351696 Mount Lebanon township, 34075 people -> 4200351794 Mount Lebanon municipality
+2026-10-04 14:38:33,954 INFO   2020 only: 4200359032 Penn Hills township, 41059 people -> 4200359040 Penn Hills municipality
+2026-10-04 14:38:33,954 INFO   2020 only: 4203325136 Falls Creek borough, 42 people -> 4206525136 Falls Creek borough
+2026-10-04 14:38:33,954 INFO   2020 only: 4203521328 East Keating township, 7 people -> 4203555744 Noyes township
+2026-10-04 14:38:33,954 INFO   2020 only: 4204900000 County subdivisions not defined, 0 people -> no origin (no land)
+2026-10-04 14:38:33,954 INFO   2020 only: 4207372376 South New Castle borough, 647 people -> 4207370080 Shenango township
+2026-10-04 14:38:33,954 INFO   2020 only: 4208584376 Wheatland borough, 585 people -> 4208534064 Hermitage city
+2026-10-04 14:38:33,954 INFO   2020 only: 4211110808 Callimont borough, 56 people -> 4211141568 Larimer township
+2026-10-04 14:38:33,955 INFO   2026 only (renamed, new code): ['Mount Lebanon municipality', 'Penn Hills municipality']
+2026-10-04 14:38:33,965 INFO moved to another county since 2020: [['Falls Creek borough', 42]]; so subdivision population by county differs from the 2020 county count there, and statewide anglers are 421,614.32 (county total 421,615.00)
+2026-10-04 14:38:33,966 INFO subdivisions: 2567, population 13,002,700, 1 with no population; anglers per subdivision min-median-max [0.0, 81.4, 16243.8]
+2026-10-04 14:38:33,978 INFO wrote subdivision_anglers.{parquet,csv}: 2567 rows

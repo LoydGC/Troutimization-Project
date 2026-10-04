@@ -152,11 +152,12 @@ def save_raw(source: str, name: str, content: bytes | str, url: str, records: in
 
 
 def fetch_layer(layer_url: str, source: str, name: str, session: PoliteSession | None = None,
-                raw_dir: Path = RAW_DIR, where: str = "1=1") -> dict:
+                raw_dir: Path = RAW_DIR, where: str = "1=1", page_size: int | None = None) -> dict:
     """Download every feature of an ArcGIS MapServer/FeatureServer layer as one GeoJSON FeatureCollection.
 
     Saves the layer metadata and each page raw, pages with resultOffset/resultRecordCount ordered by the
     object-id field, and asserts the downloaded count equals the server's count with no duplicate ids.
+    `page_size` defaults to the layer's maxRecordCount; pass less for layers with heavy geometry.
     """
     session = session or PoliteSession()
     layer_url = layer_url.rstrip("/")
@@ -175,7 +176,7 @@ def fetch_layer(layer_url: str, source: str, name: str, session: PoliteSession |
         (f["name"] for f in meta.get("fields", []) if f.get("type") == "esriFieldTypeOID"), None)
     if oid_field is None:
         raise ArcGISError(f"{layer_url} has no object-id field")
-    page_size = int(meta.get("maxRecordCount") or 1000)
+    page_size = min(page_size or 10**9, int(meta.get("maxRecordCount") or 1000))
 
     query_url = f"{layer_url}/query"
     count_params = {"where": where, "returnCountOnly": "true", "f": "json"}

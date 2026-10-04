@@ -1,0 +1,10 @@
+check,expected,result,status
+Row count (subdivisions x sections),"2,682,515","2,682,515",PASS
+"Duplicate (subdivision, section) pairs",0,0,PASS
+Pairs with no road route,0,0,PASS
+"Section snap distances match the hatchery road table (max diff, m)",under 1,0.05,PASS
+Road shorter than straight-line (beyond snap),0,0,PASS
+Median road / straight-line ratio,1.2 to 1.8,1.32,PASS
+"Our centroid vs Census CENTLAT/CENTLON (median offset, m)",under 50,0.0,PASS
+Origin points more than 5 km from a road,0,0,PASS
+Hatchery vs the subdivision it sits in: drive times to the sections beyond the triangle bound,0,"0 of 13,585",PASS

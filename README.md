@@ -4,7 +4,7 @@ Optimization project (Python). Class: From Data to Action. Rules, model framing 
 
 ## Layout
 - `scripts/` – numbered data pipeline (run in numeric order), plus the model scripts `optimization.py` and `sensitivities.py`
-  (`11` and `12` build road distances; `13` to `16` explore section clusters, see `docs/clustering_options.md`)
+  (`11`, `12` and `19` build road distances; `13`, `15` and `16` explore section clusters, see `docs/clustering_options.md`)
 - `tests/` – pytest tests for the scripts
 - `notebooks/` – exploration and maps only: `01_data_prep`, `travel_arcs`. Data building and the model are scripts
 - `data/raw` → `interim` → `processed` – raw is git-ignored except `manifest.csv`; interim is git-ignored;

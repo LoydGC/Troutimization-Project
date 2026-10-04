@@ -1,93 +1,101 @@
-2026-09-27 22:38:34,577 INFO 00_extract_angler_survey run from commit 9e4adbb + uncommitted changes to scripts/00_extract_angler_survey.py
-2026-09-27 22:38:34,577 INFO survey PDF: data/raw/pfbc_angler_survey_2023/2026-09-27/troutanglersurveyreport-2023.pdf
-2026-09-27 22:38:38,067 INFO p93 northwest: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p93 northcentral: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p93 northeast: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p93 southwest: column sums to 101.0
-2026-09-27 22:38:38,067 INFO p93 southcentral: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p93 southeast: column sums to 101.0
-2026-09-27 22:38:38,067 INFO p93 nonresident: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p93 statewide_all: column sums to 102.0
-2026-09-27 22:38:38,067 INFO p94 northwest: column sums to 101.0
-2026-09-27 22:38:38,067 INFO p94 northcentral: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p94 northeast: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p94 southwest: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p94 southcentral: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p94 southeast: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p94 nonresident: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p94 statewide_all: column sums to 102.0
-2026-09-27 22:38:38,067 INFO p115 northwest: column sums to 101.0
-2026-09-27 22:38:38,067 INFO p115 northcentral: column sums to 101.0
-2026-09-27 22:38:38,067 INFO p115 northeast: column sums to 101.0
-2026-09-27 22:38:38,067 INFO p115 southwest: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p115 southcentral: column sums to 100.0
-2026-09-27 22:38:38,067 INFO p115 southeast: column sums to 99.0
-2026-09-27 22:38:38,067 INFO p115 nonresident: column sums to 102.0
-2026-09-27 22:38:38,068 INFO p115 statewide_all: column sums to 100.0
-2026-09-27 22:38:38,068 INFO p127 northwest: column sums to 100.0
-2026-09-27 22:38:38,068 INFO p127 northcentral: column sums to 100.0
-2026-09-27 22:38:38,068 INFO p127 northeast: column sums to 100.0
-2026-09-27 22:38:38,068 INFO p127 southwest: column sums to 101.0
-2026-09-27 22:38:38,068 INFO p127 southcentral: column sums to 101.0
-2026-09-27 22:38:38,068 INFO p127 southeast: column sums to 100.0
-2026-09-27 22:38:38,068 INFO p127 nonresident: column sums to 101.0
-2026-09-27 22:38:38,068 INFO p127 statewide_all: column sums to 100.0
-2026-09-27 22:38:38,068 INFO p174 northwest: column sums to 100
-2026-09-27 22:38:38,068 INFO p174 northcentral: column sums to 100
-2026-09-27 22:38:38,068 INFO p174 northeast: column sums to 101
-2026-09-27 22:38:38,068 INFO p174 southwest: column sums to 100
-2026-09-27 22:38:38,068 INFO p174 southcentral: column sums to 102
-2026-09-27 22:38:38,068 INFO p174 southeast: column sums to 100
-2026-09-27 22:38:38,068 INFO p174 nonresident: column sums to 101
-2026-09-27 22:38:38,068 INFO p174 statewide_all: column sums to 101
-2026-09-27 22:38:38,068 INFO p95 northwest: column sums to 99
-2026-09-27 22:38:38,068 INFO p95 northcentral: column sums to 100
-2026-09-27 22:38:38,068 INFO p95 northeast: column sums to 101
-2026-09-27 22:38:38,068 INFO p95 southwest: column sums to 99
-2026-09-27 22:38:38,068 INFO p95 southcentral: column sums to 101
-2026-09-27 22:38:38,068 INFO p95 southeast: column sums to 100
-2026-09-27 22:38:38,068 INFO p95 nonresident: column sums to 100
-2026-09-27 22:38:38,068 INFO p95 statewide_all: column sums to 100
-2026-09-27 22:38:38,068 INFO p140 northwest: column sums to 100
-2026-09-27 22:38:38,068 INFO p140 northcentral: column sums to 99
-2026-09-27 22:38:38,068 INFO p140 northeast: column sums to 100
-2026-09-27 22:38:38,068 INFO p140 southwest: column sums to 100
-2026-09-27 22:38:38,068 INFO p140 southcentral: column sums to 99
-2026-09-27 22:38:38,068 INFO p140 southeast: column sums to 100
-2026-09-27 22:38:38,068 INFO p140 nonresident: column sums to 100
-2026-09-27 22:38:38,068 INFO p140 statewide_all: column sums to 99
-2026-09-27 22:38:38,068 INFO p140 statewide Very important + Somewhat important = 81 (page text: 81%)
-2026-09-27 22:38:38,068 INFO p175 northwest: column sums to 100
-2026-09-27 22:38:38,068 INFO p175 northcentral: column sums to 101
-2026-09-27 22:38:38,068 INFO p175 northeast: column sums to 100
-2026-09-27 22:38:38,068 INFO p175 southwest: column sums to 100
-2026-09-27 22:38:38,068 INFO p175 southcentral: column sums to 100
-2026-09-27 22:38:38,068 INFO p175 southeast: column sums to 101
-2026-09-27 22:38:38,068 INFO p175 nonresident: column sums to 99
-2026-09-27 22:38:38,068 INFO p175 statewide_all: column sums to 101
-2026-09-27 22:38:38,068 INFO p175 statewide Strongly support + Moderately support = 80 (page text: 80%)
-2026-09-27 22:38:38,068 INFO p175 statewide Moderately oppose + Strongly oppose = 9 (page text: 9%)
-2026-09-27 22:38:38,069 INFO p178 northwest: column sums to 101
-2026-09-27 22:38:38,069 INFO p178 northcentral: column sums to 100
-2026-09-27 22:38:38,069 INFO p178 northeast: column sums to 101
-2026-09-27 22:38:38,069 INFO p178 southwest: column sums to 100
-2026-09-27 22:38:38,069 INFO p178 southcentral: column sums to 101
-2026-09-27 22:38:38,069 INFO p178 southeast: column sums to 100
-2026-09-27 22:38:38,069 INFO p178 nonresident: column sums to 100
-2026-09-27 22:38:38,069 INFO p178 statewide_all: column sums to 100
-2026-09-27 22:38:38,069 INFO p178 statewide Strongly support + Moderately support = 58 (page text: 58%)
-2026-09-27 22:38:38,069 INFO p178 statewide Moderately oppose + Strongly oppose = 16 (page text: 16%)
-2026-09-27 22:38:38,069 INFO regional table waters: 224, overall table: 223
-2026-09-27 22:38:38,069 INFO only in one table: [['West Branch Hicks Run', 'left_only']]
-2026-09-27 22:38:38,069 INFO overall-column mismatches between p76-77 and p78-83: 0 []
-2026-09-27 22:38:38,069 INFO county tables only-in-one: []
-2026-09-27 22:38:38,069 INFO county overall mismatches: []
-2026-09-27 22:38:38,069 INFO p85 northwest sums to 170
-2026-09-27 22:38:38,069 INFO p85 northcentral sums to 162
-2026-09-27 22:38:38,069 INFO p85 northeast sums to 147
-2026-09-27 22:38:38,069 INFO p85 southwest sums to 168
-2026-09-27 22:38:38,069 INFO p85 southcentral sums to 155
-2026-09-27 22:38:38,069 INFO p85 southeast sums to 156
-2026-09-27 22:38:38,069 INFO p85 nonresident sums to 143
-2026-09-27 22:38:38,069 INFO p85 overall sums to 158
-2026-09-27 22:38:38,077 INFO wrote 13 CSVs to data/processed/angler_survey
+2026-10-03 17:05:33,330 INFO 00_extract_angler_survey run from commit be18a71 + uncommitted changes to scripts/00_extract_angler_survey.py
+2026-10-03 17:05:33,330 INFO survey PDF: data/raw/pfbc_angler_survey_2023/2026-09-27/troutanglersurveyreport-2023.pdf
+2026-10-03 17:05:36,933 INFO p88 northwest: column sums to 99
+2026-10-03 17:05:36,933 INFO p88 northcentral: column sums to 100
+2026-10-03 17:05:36,933 INFO p88 northeast: column sums to 100
+2026-10-03 17:05:36,933 INFO p88 southwest: column sums to 100
+2026-10-03 17:05:36,933 INFO p88 southcentral: column sums to 100
+2026-10-03 17:05:36,933 INFO p88 southeast: column sums to 99
+2026-10-03 17:05:36,933 INFO p88 nonresident: column sums to 100
+2026-10-03 17:05:36,933 INFO p88 statewide_all: column sums to 100
+2026-10-03 17:05:36,933 INFO p93 northwest: column sums to 99.0
+2026-10-03 17:05:36,933 INFO p93 northcentral: column sums to 99.0
+2026-10-03 17:05:36,933 INFO p93 northeast: column sums to 100.0
+2026-10-03 17:05:36,933 INFO p93 southwest: column sums to 101.0
+2026-10-03 17:05:36,933 INFO p93 southcentral: column sums to 100.0
+2026-10-03 17:05:36,933 INFO p93 southeast: column sums to 101.0
+2026-10-03 17:05:36,933 INFO p93 nonresident: column sums to 99.0
+2026-10-03 17:05:36,933 INFO p93 statewide_all: column sums to 102.0
+2026-10-03 17:05:36,933 INFO p94 northwest: column sums to 101.0
+2026-10-03 17:05:36,933 INFO p94 northcentral: column sums to 100.0
+2026-10-03 17:05:36,933 INFO p94 northeast: column sums to 100.0
+2026-10-03 17:05:36,933 INFO p94 southwest: column sums to 99.0
+2026-10-03 17:05:36,933 INFO p94 southcentral: column sums to 99.0
+2026-10-03 17:05:36,933 INFO p94 southeast: column sums to 100.0
+2026-10-03 17:05:36,933 INFO p94 nonresident: column sums to 99.0
+2026-10-03 17:05:36,933 INFO p94 statewide_all: column sums to 102.0
+2026-10-03 17:05:36,933 INFO p115 northwest: column sums to 101.0
+2026-10-03 17:05:36,933 INFO p115 northcentral: column sums to 101.0
+2026-10-03 17:05:36,933 INFO p115 northeast: column sums to 101.0
+2026-10-03 17:05:36,933 INFO p115 southwest: column sums to 100.0
+2026-10-03 17:05:36,933 INFO p115 southcentral: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p115 southeast: column sums to 99.0
+2026-10-03 17:05:36,934 INFO p115 nonresident: column sums to 102.0
+2026-10-03 17:05:36,934 INFO p115 statewide_all: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p127 northwest: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p127 northcentral: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p127 northeast: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p127 southwest: column sums to 101.0
+2026-10-03 17:05:36,934 INFO p127 southcentral: column sums to 101.0
+2026-10-03 17:05:36,934 INFO p127 southeast: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p127 nonresident: column sums to 101.0
+2026-10-03 17:05:36,934 INFO p127 statewide_all: column sums to 100.0
+2026-10-03 17:05:36,934 INFO p174 northwest: column sums to 100
+2026-10-03 17:05:36,934 INFO p174 northcentral: column sums to 100
+2026-10-03 17:05:36,934 INFO p174 northeast: column sums to 101
+2026-10-03 17:05:36,934 INFO p174 southwest: column sums to 100
+2026-10-03 17:05:36,934 INFO p174 southcentral: column sums to 102
+2026-10-03 17:05:36,934 INFO p174 southeast: column sums to 100
+2026-10-03 17:05:36,934 INFO p174 nonresident: column sums to 101
+2026-10-03 17:05:36,934 INFO p174 statewide_all: column sums to 101
+2026-10-03 17:05:36,934 INFO p95 northwest: column sums to 99
+2026-10-03 17:05:36,934 INFO p95 northcentral: column sums to 100
+2026-10-03 17:05:36,934 INFO p95 northeast: column sums to 101
+2026-10-03 17:05:36,934 INFO p95 southwest: column sums to 99
+2026-10-03 17:05:36,934 INFO p95 southcentral: column sums to 101
+2026-10-03 17:05:36,934 INFO p95 southeast: column sums to 100
+2026-10-03 17:05:36,934 INFO p95 nonresident: column sums to 100
+2026-10-03 17:05:36,934 INFO p95 statewide_all: column sums to 100
+2026-10-03 17:05:36,934 INFO p140 northwest: column sums to 100
+2026-10-03 17:05:36,934 INFO p140 northcentral: column sums to 99
+2026-10-03 17:05:36,934 INFO p140 northeast: column sums to 100
+2026-10-03 17:05:36,934 INFO p140 southwest: column sums to 100
+2026-10-03 17:05:36,934 INFO p140 southcentral: column sums to 99
+2026-10-03 17:05:36,934 INFO p140 southeast: column sums to 100
+2026-10-03 17:05:36,934 INFO p140 nonresident: column sums to 100
+2026-10-03 17:05:36,934 INFO p140 statewide_all: column sums to 99
+2026-10-03 17:05:36,934 INFO p140 statewide Very important + Somewhat important = 81 (page text: 81%)
+2026-10-03 17:05:36,934 INFO p175 northwest: column sums to 100
+2026-10-03 17:05:36,934 INFO p175 northcentral: column sums to 101
+2026-10-03 17:05:36,934 INFO p175 northeast: column sums to 100
+2026-10-03 17:05:36,934 INFO p175 southwest: column sums to 100
+2026-10-03 17:05:36,934 INFO p175 southcentral: column sums to 100
+2026-10-03 17:05:36,935 INFO p175 southeast: column sums to 101
+2026-10-03 17:05:36,935 INFO p175 nonresident: column sums to 99
+2026-10-03 17:05:36,935 INFO p175 statewide_all: column sums to 101
+2026-10-03 17:05:36,935 INFO p175 statewide Strongly support + Moderately support = 80 (page text: 80%)
+2026-10-03 17:05:36,935 INFO p175 statewide Moderately oppose + Strongly oppose = 9 (page text: 9%)
+2026-10-03 17:05:36,935 INFO p178 northwest: column sums to 101
+2026-10-03 17:05:36,935 INFO p178 northcentral: column sums to 100
+2026-10-03 17:05:36,935 INFO p178 northeast: column sums to 101
+2026-10-03 17:05:36,935 INFO p178 southwest: column sums to 100
+2026-10-03 17:05:36,935 INFO p178 southcentral: column sums to 101
+2026-10-03 17:05:36,935 INFO p178 southeast: column sums to 100
+2026-10-03 17:05:36,935 INFO p178 nonresident: column sums to 100
+2026-10-03 17:05:36,935 INFO p178 statewide_all: column sums to 100
+2026-10-03 17:05:36,935 INFO p178 statewide Strongly support + Moderately support = 58 (page text: 58%)
+2026-10-03 17:05:36,935 INFO p178 statewide Moderately oppose + Strongly oppose = 16 (page text: 16%)
+2026-10-03 17:05:36,935 INFO regional table waters: 224, overall table: 223
+2026-10-03 17:05:36,935 INFO only in one table: [['West Branch Hicks Run', 'left_only']]
+2026-10-03 17:05:36,935 INFO overall-column mismatches between p76-77 and p78-83: 0 []
+2026-10-03 17:05:36,935 INFO county tables only-in-one: []
+2026-10-03 17:05:36,935 INFO county overall mismatches: []
+2026-10-03 17:05:36,935 INFO p85 northwest sums to 170
+2026-10-03 17:05:36,935 INFO p85 northcentral sums to 162
+2026-10-03 17:05:36,935 INFO p85 northeast sums to 147
+2026-10-03 17:05:36,935 INFO p85 southwest sums to 168
+2026-10-03 17:05:36,935 INFO p85 southcentral sums to 155
+2026-10-03 17:05:36,935 INFO p85 southeast sums to 156
+2026-10-03 17:05:36,935 INFO p85 nonresident sums to 143
+2026-10-03 17:05:36,935 INFO p85 overall sums to 158
+2026-10-03 17:05:36,943 INFO wrote 14 CSVs to data/processed/angler_survey

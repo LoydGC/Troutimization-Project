@@ -13,6 +13,7 @@ Respondents are **stocked trout anglers**, except p178 (all trout anglers). All 
 | p78-83_preferred_waters_by_region.csv | 78–83 | Same question broken out by the angler's home region + overall |
 | p84_preferred_water_county_overall.csv | 84 | County where the preferred water is located, statewide, ranked |
 | p85_preferred_water_county_by_region.csv | 85 | Same, by home region |
+| p88_primary_water_type_by_region.csv | 88 | Primarily fish for stocked trout in lakes, streams, or both equally (lake share of days in `scripts/08_demand.py`) |
 | p93_travel_distance_typical_trip_by_region.csv | 93 | One-way miles on an average stocked trout trip |
 | p94_travel_distance_farthest_by_region.csv | 94 | Farthest one-way miles traveled for stocked trout |
 | p95_importance_near_home_by_region.csv | 95 | Importance of the location being near home when choosing where to fish (first of the page's two tables; the "near camp" one is not extracted) |

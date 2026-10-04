@@ -229,7 +229,8 @@ we found. Proximity demand turns it into a county angler rate (`model_design.md`
 
 ## Survey favorite waters vs stocked sections (checked 2026-09-27; crosswalk built 2026-09-28)
 - The survey names waters, not sections: 221 named waters, plus "Other" (30%) and "Do not know" (8%). The
-  crosswalk (`scripts/07_survey_crosswalk.py`) places 63.1% of all mentions on 160 rivers stocked in 2026.
+  crosswalk (`scripts/07_survey_crosswalk.py`) places 63.1% of all mentions on 160 rivers stocked in 2026
+  (69.5% of stream mentions once the lakes leave with the lake days, `data_methods.md` § Preference demand).
   The rest: 39 lakes, 2 waters not stocked in 2026, 5 with no PFBC section (e.g. the Clarion and Swatara main
   stems), and 16 names left for review (6.4% of mentions: e.g. Bush Kill, Mill Creek, Spring Creek, which
   match several rivers the regional table can't tell apart). Their share is spread like proximity demand
@@ -241,6 +242,24 @@ we found. Proximity demand turns it into a county angler rate (`model_design.md`
   Their share is spread like proximity demand.
 - 98 named waters show as "<0.5%" (counted as 0.25%) and 97 as 1%, so the survey resolves only the 26 waters at
   2% or more with any precision.
+
+## Angler-use data: creel and residence surveys (checked 2026-10-03)
+- **What's public:** per-section angler counts for PA stocked streams survive only in a few management plans and
+  rules: Pine Creek 2008 (sections 11–13, with anglers' ZIP codes), Lehigh 2006 (2730_6), Bald Eagle Creek 2021
+  (2199_6), Spring Creek 1976/1988–89/2006 (no longer stocked). Sources: `source_inventory.md` § Angler-use
+  studies.
+- **What isn't:** PFBC's 2005 statewide survey of ~28–30 stocked sections (Greene et al. 2006; only averages in
+  the Operational Guidelines: 0.63 trips per trout over 8 spring weeks, range 0.07–2.76), most other PFBC creel
+  reports ("PFBC files"), and the opening-day angler count database (Nihart 2021, 338 sections, 2008–19).
+  Nothing at all for Kettle Creek. **Fix:** ask PFBC for the 2005 per-section table and the opening-day counts.
+  They'd allow a real test of proximity vs preference across sections.
+- **Don't fit demand to them:** measured use depends on how many fish PFBC stocked, so matching it would build
+  PFBC's allocation back into demand (team decision 2026-10-03). Used only for things stocking doesn't set:
+  where anglers come from (the origin check in `model_design.md` § Angler benefit), how many stocked trout get
+  caught, and survey days vs counted trips (the k question).
+- **Survey days vs counted trips:** the survey implies ~3.4 days per stocked stream trout, creel counts ~0.6–1.1
+  trips per trout. Recall bias explains 1.3–2× (Connelly & Brown 1995; Fisher et al. 1991) and lake days ~1.2×
+  (now removed); the rest is likely days on waters outside PFBC's sections and avid anglers answering more.
 
 ## Stocking schedule (checked 2026-09-28)
 PFBC's schedule (`scripts/09_stocking_schedule.py`) gives the hatchery and truck meeting for every 2026 event.
@@ -285,3 +304,51 @@ What it lacks:
   are the processed tables; script 12 keeps its per-request blocks in `data/interim/` (gitignored), so the tables can be rebuilt but the raw
   responses are not committed.
 - **Reproducibility:** the demo server's road data changes over time, so a rebuild can differ slightly. The committed tables are the reference.
+- **Third use (2026-10-03):** `scripts/19_subdivision_road_distances.py` queried the same server for the county-subdivision distances
+  (2,682,515 pairs in 286 block requests, 1.5 s apart, cached per block like script 12). Gavin asked for road distances from the subdivision
+  centroids; the waiver wording above (confirmed 2026-10-01) was not re-asked for this table, so say so if the team wants it revisited. The same
+  rule 2 deviation applies to the OSRM responses; the Census download for this table is saved raw under rule 2.
+
+## County subdivisions (recorded 2026-10-03)
+- **Vintage:** Census's newest is boundaries as of 1 Jan 2026 (TIGERweb `tigerWMS_ACS2026`); no TIGER2026 download exists yet. If it appears, rerun
+  script 19 against it only if PA's set changed: the 2025 and 2026 vintages are identical for PA (`source_inventory.md` § County subdivisions).
+- **Lake Erie row left out:** Census's "County subdivisions not defined" (GEOID 4204900000, Erie County, 1,951 km2 of water, no land) has no
+  population to travel from. The 2010 state guide lists the same placeholder as an "undefined water-area MCD".
+- **Centroids outside their own boundary:** 44 of 2,567 (38 single-part, 6 multi-part polygons; a township wrapped around a borough is the usual
+  shape). All are at most 1,075 m outside (median 119 m), so they were kept as the centroid and flagged (`centroid_in_polygon`); Census's internal
+  point (`intpt_lat`, `intpt_lon`) is the alternative origin if that matters.
+- **Pine township (Armstrong) has no route from its centroid:** the centroid snaps 6 m onto an unnamed road fragment that OSRM cannot route from (the
+  100 nearest road snaps are all fragment, and Census's internal point lands on it too), so its whole row of 1,045 distances came back empty on the first
+  run. Script 19 now routes it from the nearest point of a 250 m grid inside the township that does route (418 m from the centroid, snaps 97 m), recorded in
+  `origin_point` / `origin_shift_m`. It is a hole in the OpenStreetMap network at that spot (a gated or private road area), not a data error to repair;
+  the fallback applies to any subdivision that ever lands in the same trap, and the other 2,566 start at their centroids. The 23 origins that snap more than
+  1 km to a road (worst McNett township, Lycoming, 2,164 m) are routable, so they are kept.
+- **Cold Spring township (Lebanon)** is Census's one inactive government (funcstat I; the 2010 guide names it too) and is kept: it has land, so the model can
+  weight it by population (likely zero) rather than drop it.
+- **Invalid polygons:** 5 subdivisions have a self-intersecting boundary ring in Census's layer (Akron borough and Lancaster city, Lancaster; Lower
+  Turkeyfoot, Somerset; Sandy, Clearfield; South Whitehall, Lehigh). Their centroids still match Census's own to under 2 m, so the polygons were not repaired.
+- **A centroid is not where anglers live.** It is the middle of the municipality's area, not its population. A population-weighted point (from
+  block groups, which script 06 used until 2026-10-04) is an upgrade if the distances turn out to be sensitive to it; see `docs/scenarios_and_extensions.md`.
+- **Sections:** the table covers all 1,045 sections stocked in 2024-26, so it includes the 23 not stocked in 2026 (20 last stocked 2025, 3 in 2024).
+  Filter to `sections.latest_year == 2026` for the 1,022 candidates.
+
+## County subdivisions as demand origins (recorded 2026-10-04)
+- **The Census Data API needs a key now.** `api.census.gov` answered the metadata requests for the 2020 PL 94-171
+  data but sent the data request to a "Missing Key" page. No key was used. The same 2020 counts (`POP100`) come
+  keyless from TIGERweb's Census 2020 layers (`source_inventory.md` § Census); the refusal page is saved raw.
+- **2020 counts on 2026 boundaries.** Census's 2020 subdivisions (2,573) and Gavin's 2026 ones (2,567) share 2,565
+  codes. The other 7 went to the 2026 subdivision holding their 2020 internal point: 2 renames with new codes
+  (Mount Lebanon, Penn Hills) and 5 mergers (South New Castle, Wheatland, Callimont, East Keating, and Falls Creek
+  borough's Clearfield part). Annexations that kept both codes can't be seen, so a 2020 count can sit on a slightly
+  different 2026 polygon. All the 2020 people are placed (13,002,700).
+- **One county change:** Falls Creek borough's Clearfield County part (42 people in 2020) is in Jefferson County
+  by 2026. Those people take Jefferson's angler rate, so `subdivision_anglers` holds 0.7 fewer anglers than
+  `county_anglers` (421,614.3 vs 421,615) and the statewide total is 7,121,847 stream angler-days.
+- **A city is one origin.** All of Philadelphia's 1.6M people start from one centroid, and Pittsburgh's 303,000
+  from a point 10.2 road mi from the nearest stocked section. When an origin's 0–10 mi band holds no section, its
+  share goes to the next band out (decision 2026-10-04), so Pittsburgh's near trips land 10–20 mi away rather than
+  on its nearest water. The share moved grew from 2.4% of angler-days on block groups to 4.9%, mostly first-band trips of big origins just past 10 mi (Pittsburgh, State
+  College 10.9, Bristol township 12.0, Cranberry 11.2, Wilkes-Barre 11.0). A population-weighted origin
+  (`scenarios_and_extensions.md`) would soften it, as would splitting the biggest cities into several origins.
+- **Populations:** 1 subdivision has none (Ashland borough's Columbia County part). Cold Spring township
+  (Lebanon), Census's one inactive government, has 59 people.

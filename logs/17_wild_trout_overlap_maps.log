@@ -1,0 +1,4 @@
+2026-10-03 15:18:50,744 INFO 17_wild_trout_overlap_maps run from commit 181d886 + uncommitted changes to scripts/17_wild_trout_overlap_maps.py
+2026-10-03 15:18:51,048 INFO Class A: 18 sections, 55.85 river miles; 17 stocked in 2026
+2026-10-03 15:18:52,242 INFO Natural Reproduction: 531 sections, 2051 river miles; 513 stocked in 2026 carrying 1084300 of 2606468 fish
+2026-10-03 15:18:54,240 INFO saved figures to outputs\figures\wild_trout_overlap

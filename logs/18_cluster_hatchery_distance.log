@@ -1,0 +1,10 @@
+2026-10-03 16:27:54,524 INFO 18_cluster_hatchery_distance run from commit 181d886 + uncommitted changes to scripts/16_compare_methods_map.py, scripts/17_wild_trout_overlap_maps.py, scripts/18_cluster_hatchery_distance.py
+2026-10-03 16:27:54,760 INFO 1022 sections, 13 hatcheries (9 produce 2026 stream fish), 5 labellings
+2026-10-03 16:27:55,435 INFO nate_schedule                  clusters 351 | rows  4563 | hatchery-distance error 2.98% | fish-weighted vs equal-weight average: median gap 0.34 mi, 90th pct 2.53 mi
+2026-10-03 16:27:55,858 INFO kmedoids_best_silhouette       clusters 310 | rows  4030 | hatchery-distance error 2.22% | fish-weighted vs equal-weight average: median gap 0.52 mi, 90th pct 2.33 mi
+2026-10-03 16:27:56,454 INFO kmedoids_limits                clusters 407 | rows  5291 | hatchery-distance error 1.74% | fish-weighted vs equal-weight average: median gap 0.32 mi, 90th pct 2.14 mi
+2026-10-03 16:27:56,847 INFO hierarchical_best_silhouette   clusters 309 | rows  4017 | hatchery-distance error 2.17% | fish-weighted vs equal-weight average: median gap 0.63 mi, 90th pct 2.37 mi
+2026-10-03 16:27:57,318 INFO hierarchical_limits            clusters 375 | rows  4875 | hatchery-distance error 1.91% | fish-weighted vs equal-weight average: median gap 0.48 mi, 90th pct 2.30 mi
+2026-10-03 16:27:57,318 INFO all checks passed
+2026-10-03 16:27:57,322 INFO spot check, C0001 (18 sections) from Bellefonte: members' miles [76.9, 81.7, 100.4, 102.1, 105.2, 117.3, 117.6, 120.3, 116.8, 96.6, 99.2, 101.6, 96.6, 103.5, 86.5, 80.5, 77.4, 82.3] -> mean 97.911; table says 97.911
+2026-10-03 16:27:57,430 INFO wrote 22776 rows to cluster_hatchery_distance

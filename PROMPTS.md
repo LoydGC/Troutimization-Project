@@ -20,10 +20,10 @@ drafted, not opened yet. Done so far, so skip these parts when sending the promp
 
 **Waiting on Gavin** (questions for the pull request): sources for his 4 raw files (`docs/source_inventory.md`
 § Partner data); distances for the 8 sections stocked in 2026 that his layer lacks (`docs/known_gaps.md`
-§ Gavin's stocked-streams layer); OK to `git rm --cached` his raw files (Prompt 0 step 1). From the 2026
+§ Gavin's stocked-streams layer); OK to `git rm --cached` his raw files (Prompt 0 step 1; done by Gavin 2026-09-29). From the 2026
 schedule (2026-09-28): does he agree to cost the baseline from the scheduled hatchery? Supply nodes (decision
 2026-09-29): PFBC's State Fish Hatcheries layer is the authoritative set; the base model uses the 9 on the 2026
-schedule, so his road distances need Tionesta added (Linesville and Pleasant Mount can drop).
+schedule, so his road distances need Tionesta added (done 2026-09-29: all 13 hatcheries).
 **Waiting on us:** decide the 22 rows of `logs/07_survey_crosswalk_review.csv` (16 undecided names, 6.4% of
 survey mentions, until then spread like proximity) and `logs/03_coop_review.csv`; the detour charge
 (`docs/model_design.md` § Open questions); optionally Raystown/Tionesta as tailwaters (`docs/known_gaps.md`
@@ -217,7 +217,8 @@ docs/model_design.md § Angler benefit, and the values no source gives are in da
    importance (95), catching-trout importance (140), overall satisfaction (153), more stocking on
    high-use waters (175), moving stocking off wild trout waters (178; asked of all trout anglers). Use the
    same format and validation.
-2. [DONE 2026-09-28: scripts/06_county_anglers.py]
+2. [DONE 2026-09-28: scripts/06_county_anglers.py. 2026-10-04: population from 2020 county subdivisions
+   (TIGERweb Census 2020; same county totals), plus data/processed/subdivision_anglers for step 4]
    County anglers: parse PFBC's 2024 license sales by agent county
    (data/raw/pfbc_docs/2026-09-27/fishinglicensesalesbycounty2024.pdf, pages 1-4). Numbers are
    right-aligned with blank cells, so assign columns by x position and check every row against the PDF's
@@ -230,7 +231,10 @@ docs/model_design.md § Angler benefit, and the values no source gives are in da
    and county qualifier. Resolve ambiguous names with the by-home-region table (p78-83), e.g. Elk Creek
    -> Erie's. Anything still ambiguous goes to logs/07_survey_crosswalk_review.csv for me; don't guess.
    Write data/processed/survey_water_crosswalk.csv with match_method and confidence.
-4. [DONE 2026-09-28: scripts/08_demand.py, also steps 5-6]
+4. [DONE 2026-09-28: scripts/08_demand.py, also steps 5-6. REVISED and rerun 2026-10-04: origins are the
+   2,567 county subdivisions (2020 Census population) and distance is Gavin's road miles
+   (subdivision_to_section_road_distance, no circuity factor); block groups are dropped. An empty band's share
+   now goes to the next band out, not to the other bands in proportion (decision 2026-10-04)]
    Proximity demand (band version), per 2026-stocked section:
    - angler-days per Census block group = population x county angler rate x mean days fished in its home
      region (p115, with "over 50 days" from parameters.csv)
@@ -258,8 +262,13 @@ prox_days with 2026 fish, fish per acre and prox_days_pop.
 
 ## Prompt 7: Transport cost (distances come from Gavin)
 
-Road distances from each hatchery to each section are built by Gavin in
-`notebooks/travel_arcs.ipynb`. Don't rebuild them. Run this once his distance table is keyed on `section_id`.
+[DONE 2026-10-04: scripts/20_transport_cost.py (hatcheries, cost_matrix, baseline_flows). Changes from the text below:
+no production-pounds split (decision 2026-10-04); haul miles are Gavin's k-medoids cluster averages; Gavin's road table
+already covers all 13 hatcheries, so his node list wasn't re-pointed.]
+
+Road distances from each hatchery to each section are built by Gavin (`scripts/11_road_distances.py`, all 13
+hatcheries including Tionesta, keyed on `section_id`), and so are the cluster-average road miles
+(`scripts/18_cluster_hatchery_distance.py`). Don't rebuild them.
 
 ```
 1. Supply: data/processed/hatcheries.parquet, one row per hatchery in PFBC's State Fish Hatcheries layer
@@ -273,8 +282,10 @@ Road distances from each hatchery to each section are built by Gavin in
 2. Add the transport parameters from docs/transport_research.md to data/processed/parameters.csv:
    cost_per_truck_mile, fish_per_load, transport_mortality_pct and the others, each with a low/high range
    and a source.
-3. data/processed/cost_matrix.parquet (long): node_id, section_id, road_mi (from Gavin), and
-   cost_per_fish = 2 x road_mi x cost_per_truck_mile / fish_per_load.
+3. data/processed/cost_matrix.parquet (long): node_id, section_id, road_mi (the section's own, from Gavin),
+   cluster_road_mi (its cluster's average, cluster_hatchery_distance; method kmedoids_best_silhouette for the
+   first run, decision 2026-10-04; nate_schedule is the sensitivity), and
+   cost_per_fish = 2 x cluster_road_mi x cost_per_truck_mile / fish_per_load. No detour charge in the first run.
 4. baseline_node = each section's scheduled hatchery (section_schedule; split by event share for the 49
    multi-hatchery sections), if the team confirms (docs/model_design.md § Transport cost); the nearest
    hatchery is the sensitivity. Report the implied baseline cost under both and each node's load vs supply. Calibration check: the implied fleet miles vs the ~300,000 mi/yr reported
@@ -331,6 +342,9 @@ stop for review before committing.
 ```
 
 ## Prompt 8: Assemble model inputs
+
+[DONE 2026-10-04: scripts/21_model_input.py (model_input, 1,022 rows, all complete). The EDA section in
+01_data_prep is not done. The model itself is scripts/optimization.py (first run 2026-10-04).]
 
 ```
 Build data/processed/model_input.parquet, one row per destination: baseline fish by species, species mix,

@@ -147,7 +147,7 @@ county.
 | Column | Meaning | Units |
 |---|---|---|
 | county, county_fips, region | County (spelled as in `sections.county`), 5-digit FIPS, PFBC region | text |
-| pop_2020 | 2020 Census population (block groups summed) | people |
+| pop_2020 | 2020 Census population (TIGERweb Census 2020 `POP100`, county subdivisions summed; equals the county count) | people |
 | annual_trout_combo | Annual trout + combo (trout and Lake Erie) permits sold by the county's agents in 2024 | permits |
 | multi_trout_combo | 3-, 5- and 10-year trout + combo permits sold there in 2024 (earlier multi-year sales aren't in the source) | permits |
 | nonres_licenses | Non-resident, non-resident PA student and 7/3/1-day tourist licenses sold there (annual + multi-year) | licenses |
@@ -157,6 +157,20 @@ county.
 | anglers | resident_permits + online_permits (421,615 statewide) | anglers |
 | angler_rate | anglers / pop_2020 (state 0.032) | anglers per resident |
 | online_permits_by_sales, anglers_by_sales, angler_rate_by_sales | Sensitivity: online permits split like the county's store sales instead of by population | as above |
+
+## subdivision_anglers (.parquet, .csv)
+Resident anglers per county subdivision (2,567 rows), the origins of proximity demand, built by
+`scripts/06_county_anglers.py`. One row per `county_subdivisions` origin (Gavin's 1 Jan 2026 boundaries), with
+the 2020 Census count moved onto them. Method: `docs/data_methods.md` § Subdivision anglers.
+
+| Column | Meaning | Units |
+|---|---|---|
+| subdivision_id | Census GEOID (state + county + county subdivision), as in `county_subdivisions` and `subdivision_to_section_road_distance`. Join key | text |
+| name, county, county_fips | Subdivision name, county (spelled as in `sections.county`) and 5-digit county FIPS, from `county_subdivisions` | text |
+| region | PFBC region of the county (`county_region.csv`); the angler's home region for days fished and travel bands | text |
+| pop_2020 | 2020 Census population (TIGERweb Census 2020 `POP100`), matched on GEOID; the 7 subdivisions that changed code since 2020 are added to their 2026 successor. Sums to 13,002,700; 1 row has 0 | people |
+| angler_rate | The county's `county_anglers.angler_rate` | anglers per resident |
+| anglers | pop_2020 × angler_rate (421,614.3 statewide: Falls Creek's 42 people moved from Clearfield to Jefferson County) | anglers |
 
 ## survey_water_crosswalk.csv
 Survey favorite waters (p76–77) → PFBC rivers, built by `scripts/07_survey_crosswalk.py`. One row per
@@ -178,19 +192,20 @@ Undecided names are in `logs/07_survey_crosswalk_review.csv`.
 ## demand (.parquet, .csv)
 Angler-days per year for each of the 1,022 sections stocked in 2026, built by `scripts/08_demand.py`. The two
 signals are kept separate; the model blends them as `(1 − w) · prox_days + w · pref_days` (`blend_weight_w`).
-Every angler-day column sums to the same statewide total, 8,717,541. Method: `docs/data_methods.md`; design:
+Every angler-day column sums to the same statewide total, 7,121,847 stream angler-days (lake days removed by
+home region, survey p88; 8,717,546 with them). Method: `docs/data_methods.md`; design:
 `docs/model_design.md` § Angler benefit.
 
 | Column | Meaning | Units / values |
 |---|---|---|
 | section_id, river_id | Keys | text / int |
-| prox_days | Proximity demand: block-group angler-days sent out by each home region's p93 trip-distance bands, split within a band by section length | angler-days/yr |
+| prox_days | Proximity demand: each county subdivision's angler-days (`subdivision_anglers`) sent out by its home region's p93 trip-distance bands in road miles (`subdivision_to_section_road_distance`), split within a band by section length | angler-days/yr |
 | prox_days_pooled | Same, with one in-state distance curve (sensitivity) | angler-days/yr |
 | prox_days_pop | Same, with every county at the state angler rate, rescaled to the statewide total (sensitivity) | angler-days/yr |
 | pref_days_named | Preference demand from the survey waters matched to this river, split over its sections by length | angler-days/yr, 0 if none |
 | pref_days | pref_days_named + the unplaced share spread like prox_days | angler-days/yr |
 | survey_waterbody | Survey water(s) matched to the river, "; "-joined | text, NA if none |
-| pref_per_mi_flag | The river's preference per stocked mile exceeds the state's highest prox_days per mile (review flag, not a cap) | bool (Youghiogheny 1327_1 only) |
+| pref_per_mi_flag | The river's preference per stocked mile exceeds the state's highest prox_days per mile (review flag, not a cap) | bool (Youghiogheny 1327_1 and White Clay Creek 2027_1) |
 | destination_index | River's pref_days_named ÷ its prox_days: ~1 = popular because people live nearby, 5+ = a destination | ratio, NA if not named |
 | dhalo, catch_release, keystone_select, open_year_round | Regulation flags from `reg_name` / `program_name` (counts in data_methods.md) | bool |
 
@@ -294,6 +309,117 @@ only (a csv would be about 50 MB). Not symmetric by a hair (median gap 0.3%); th
 |---|---|---|
 | from_section_id, to_section_id | The ordered pair | |
 | road_km, road_mi, road_min | OSRM distance and drive time, as above | km / mi / minutes |
+
+## county_subdivisions (.parquet, .csv)
+Pennsylvania's county subdivisions (townships, boroughs, cities, towns): the origins of `subdivision_to_section_road_distance`
+(`scripts/19_subdivision_road_distances.py`, `data_methods.md` § County subdivisions). 2,567 rows from Census's newest vintage (boundaries as of
+1 Jan 2026; `source_inventory.md` § County subdivisions). Census's 2,568th row, Lake Erie's "County subdivisions not defined", has no land and is left out.
+
+| Column | Meaning | Units / values |
+|---|---|---|
+| subdivision_id | Census GEOID: state 42 + county (3 digits) + county subdivision (5 digits). Join key; never join on `name` (there are 8 Pine townships) | text |
+| name, basename | Census name with its type ("Abbottstown borough"); the name without it | text |
+| type | township, borough, city, municipality, town (the name's last word) | text |
+| county, county_fips | County name (as in `county_anglers.csv`) and its 5-digit FIPS | text |
+| funcstat | Census functional status code, as published (A: 1,543 townships; F: 1,023 boroughs, cities, towns and municipalities; I: Cold Spring township, Lebanon, inactive). Kept; not used by the model | text |
+| area_land_km2, area_water_km2 | Census land and water area | km2 |
+| centroid_lat, centroid_lon | Geometric (area-weighted) centroid of the polygon, computed in EPSG:26918, stored in EPSG:4326. Equals Census's own CENTLAT/CENTLON (within 1.6 m). The point the road distances start from | degrees |
+| centroid_in_polygon | False for the 44 subdivisions whose centroid falls outside their own boundary (at most 1.1 km out; kept, not moved) | bool |
+| intpt_lat, intpt_lon | Census internal point (always inside the subdivision): the alternative origin | degrees |
+| centroid_to_intpt_m | Distance from the centroid to the internal point | m |
+| origin_lat, origin_lon | The point the road distances start from: the centroid for 2,566 subdivisions, a nearby routable point for the one whose centroid has no route (below) | degrees |
+| origin_point | `centroid`, or `nearest_routable_grid_point` (Pine township, Armstrong, 4200560280: its centroid sits on a road fragment cut off from the network) | text |
+| origin_shift_m | Distance from the centroid to the origin point (0 except Pine township, 418 m) | m |
+| road_snap_m | How far OSRM moved the origin point to reach the nearest road (median 51 m, maximum 2,164 m) | m |
+
+## subdivision_to_section_road_distance (.parquet only)
+Road distance from every county subdivision's centroid to every section stocked in 2024-26 (`scripts/19_subdivision_road_distances.py`). 2,682,515
+rows = 2,567 subdivisions x 1,045 sections, parquet only (a csv would be about 150 MB; the wide matrices are in `data/interim`). Direction: from the
+subdivision (an angler's home) to the section. Filter to the 1,022 sections stocked in 2026 by joining `sections` on `latest_year == 2026`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| subdivision_id | The origin (`county_subdivisions`) | text |
+| section_id | The destination section (midpoint, as in the hatchery table; its `snap_m` is in `hatchery_to_section_road_distance`) | text |
+| road_km, road_mi | OSRM driving distance of the fastest route | km / mi |
+| road_min | OSRM drive time | minutes (not miles) |
+
+## cluster_hatchery_distance (.parquet, .csv)
+Average road distance from each hatchery to each cluster, for the five saved cluster labellings (`scripts/18_cluster_hatchery_distance.py`).
+One row per method x cluster x hatchery (all 13 hatcheries): 22,776 rows. This is the representative distance a cluster supplies to the model.
+**Formula:** `avg_road_mi = (1 / n) * sum of road_mi[h, s] over the cluster's n member sections`, an unweighted mean of the one-way OSRM road miles
+in `hatchery_to_section_road_distance`. Cost per fish is linear in miles, so the average cost from h is the same average taken on cost.
+
+| Column | Meaning | Units |
+|---|---|---|
+| method | nate_schedule, kmedoids_best_silhouette, kmedoids_limits, hierarchical_best_silhouette, hierarchical_limits | text |
+| cluster_id | The method's own cluster id (C0001..., B001..., M001..., H001..., HL001...) | text |
+| hatchery_id, hatchery | The hatchery | |
+| produces_2026_stream_fish | True for the 9 hatcheries with 2026 stream fish in the schedule | bool |
+| n_sections | Sections in the cluster | count |
+| avg_road_mi | Mean of the members' road miles from the hatchery | road mi |
+| min_road_mi, max_road_mi | Nearest and farthest member from the hatchery | road mi |
+| mean_abs_dev_mi | Mean absolute gap between the average and each member's own distance (how well the average stands in) | road mi |
+| avg_road_mi_fish_weighted | Same average weighted by 2026 stocked fish (a check on the equal weighting; NA if the cluster has no 2026 fish) | road mi |
+
+## hatcheries (.parquet, .csv)
+PFBC's 13 state fish hatcheries, the supply nodes (`scripts/20_transport_cost.py`; layer from script 01, supply from
+`hatchery_schedule_supply.csv`). The base model uses the 9 with `in_2026_schedule`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| hatchery_id | PFBC's `ID` in the State Fish Hatcheries layer; the key in Gavin's road tables | int |
+| hatchery, full_name | Short name (PFBC's `NAME`, trailing spaces stripped) and full name | text |
+| county, region, lat, lon | Location, from the layer | text / degrees |
+| trout_flag | The layer's `TROUT` flag, as published (not used: it includes Linesville and Pleasant Mount, which stock no streams, and leaves out Tionesta) | bool |
+| supply | 2026 stream fish credited to the hatchery by the 2026 schedule (`stream_fish_2026`); 0 for the 4 with no 2026 stream events (Fairview, Union City, Linesville, Pleasant Mount). Sums to T = 2,606,465 | fish/yr |
+| in_2026_schedule | supply > 0: the base model's 9 supply nodes | bool |
+
+## cost_matrix (.parquet, .csv)
+Haul cost per fish for every hatchery x 2026-stocked section (13 x 1,022 = 13,286 rows; `scripts/20_transport_cost.py`).
+Miles are Gavin's (scripts 11 and 18); the cluster averages are checked against a recomputation from `road_mi`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| hatchery_id, hatchery, in_2026_schedule | The hatchery (`hatcheries`) | |
+| section_id | The section | text |
+| cluster_id | The section's k-medoids cluster (`section_medoid_clusters.silhouette_best_cluster_id`, 310 clusters) | text |
+| road_mi | One-way OSRM road miles from the hatchery to this section (`hatchery_to_section_road_distance`) | road mi |
+| cluster_road_mi | Mean of `road_mi` over the section's k-medoids cluster (`cluster_hatchery_distance`): the haul the model uses (decision 2026-10-04) | road mi |
+| cost_per_fish | 2 x `cluster_road_mi` x `cost_per_truck_mile` / `fish_per_load` (parameters.csv; $0.00152 per fish per one-way mile) | $/fish |
+| cluster_road_mi_schedule, cluster_road_mi_hierarchical | The same average over Nate's schedule clusters (351) and Gavin's hierarchical clusters (309): sensitivities | road mi |
+
+## baseline_flows (.parquet, .csv)
+PFBC's 2026 plan as hatchery -> section flows (`scripts/20_transport_cost.py`): 1,071 rows on the 1,022 sections (49 get fish
+from two hatcheries). Each section's 2026 fish are split over its scheduled events by species (`stocking_events.alloc_fish`,
+script 09) and summed by hatchery; they match `total_2026` to within 0.03 fish and each hatchery's supply to within 1.2.
+
+| Column | Meaning | Units |
+|---|---|---|
+| section_id, hatchery_id, hatchery | The flow | |
+| fish | Fish from the hatchery to the section in 2026 (fractional: species splits over events) | fish/yr |
+| road_mi, cluster_road_mi, cost_per_fish | As in `cost_matrix` | |
+| cost | fish x cost_per_fish (sums to $351.5k) | $/yr |
+
+## model_input (.parquet, .csv)
+One row per 2026-stocked section (1,022): everything the optimization reads per section (`scripts/21_model_input.py`).
+Joined from `sections`, `environment` and `demand` without recomputing; supply and costs stay in `hatcheries` and
+`cost_matrix`.
+
+| Column | Meaning | Units |
+|---|---|---|
+| section_id, river_id, water_name, county, region | Keys and labels (`sections`) | |
+| x0 | PFBC's 2026 count (`total_2026`, all five species): the baseline | fish/yr |
+| length_mi, area_acres, width_class, use_potential, biomass_class, allocation_code, class_a_flag, nat_repro_flag, coop_stocked | As in `sections` | |
+| cap_fish, cap_source, cap_fish_mid, cap_fish_river, cap_fish_class_a_grow | Density cap and its variants (`sections`) | fish/yr |
+| share_brook ... share_brood | Share of the 2026 count by species (the section keeps its mix) | 0–1 |
+| exclude, exclude_reason, nat_repro_share, wild_brook_present | From `environment` | |
+| prox_days, pref_days, prox_days_pooled, prox_days_pop, destination_index, dhalo, catch_release, keystone_select, open_year_round | From `demand` | |
+| impact_weighted | Wild-trout impact weight, main version (decision 2026-10-04): biomass density weight (`parameters.csv` `impact_weight`: A 8, B 6, C 3, D 1, E 0; E on the natural-reproduction list 1) × `impact_overlap`, or × 1 for the 111 sections rated B–D but not on the natural-reproduction list. 624 sections > 0; 2026 total 2,274,440 | fish weight, class D = 1 |
+| impact_simple | 1 if `nat_repro_flag` or biomass B–D, else 0: the binary impact weight (sensitivity; 624 sections, 1,445,045 fish in 2026) | 0/1 |
+| impact_overlap | `nat_repro_share`, NA as 0: share of the section on natural-reproduction water (sensitivity; 1,003,731 fish-equivalents in 2026) | 0–1 |
+| n_supply_costs | Hatcheries in the 2026 schedule with a cost to this section (9 for all) | count |
+| complete | Every component the base model needs is present (true for all 1,022) | bool |
 
 ## clusters.csv
 One row per default-rule cluster (351), built by `scripts/10_runs_clusters.py`.
