@@ -77,12 +77,14 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   - **Which hatcheries** (decision 2026-09-29): PFBC's State Fish Hatcheries layer is the authoritative set
     (13) and gives the locations. The base model turns on the 9 on the 2026 schedule; turning on the other 4
     is an extension (`scenarios_and_extensions.md`).
-  - **Sensitivity:** the pounds split (`data/raw/pa_hatchery_production.csv`) over the 8 hatcheries with a
-    pounds figure, with Tionesta kept at its schedule amount. It also serves as a check: shares differ by up
-    to 4 points (Tylersville 12.6% by schedule vs 16.5% by pounds, Corry 9.7% vs 6.5%).
+  - **No pounds split** (decision 2026-10-04): supply comes only from the 2026 schedule, which ties each
+    section's fish to the hatcheries that stock it. The production-pounds split is dropped, also as a
+    sensitivity (shares differed by up to 4 points, e.g. Tylersville 12.6% by schedule vs 16.5% by pounds).
 - **Co-op nurseries are fixed background** (team decision 2026-09-27), not supply nodes. See "Co-op
   nurseries" below.
-- **Total fish:** fixed at the baseline total (same fish, better placement), or relaxed as a scenario.
+- **Total fish:** fixed at the baseline total (same fish, better placement), or relaxed as a scenario. The model
+  uses T = Σ supply = 2,606,465, so every hatchery ships its full supply; the 2026 count is 2,606,468 (rounding in
+  the supply table).
 - **Density bound (`cap_fish`, decision 2026-09-27; replaced the "river cap" the same day):**
   `x_s ≤ cap_s = max(cap_rate_s × length_mi_s × top_width_s, 300)`. The rate depends on wild biomass, width
   and access, never population; `cap_rate` is the higher of `access_rate` and `program_rate` (both below).
@@ -192,15 +194,21 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
     at today's stocking.
 - **Stability (optional):** `x_s ≥ (1−δ)·baseline_s`. The survey found 43% of anglers oppose dropping
   low-use waters (34% support).
+  - **Change limit, built 2026-10-04 as an option** (`scripts/optimization.py --variants`), not yet decided:
+    `none`; `band` (every section within `change_limit_lower`–`change_limit_upper` × today, 0.5–2×, so no
+    section closes and the model is an LP); `close_or_band` (a section closes or stays in the band). The first
+    run reports all three: the limit costs little benefit (+13.4% over PFBC's plan with none, +11.7% close or
+    band, +11.3% band).
 - **Wild-trout lever (scenario):** `Σ_wild x_s ≤ (1−ρ)·Σ_wild baseline_s`, with ρ ∈ {0, .25, .5, 1}.
 
 ## Angler benefit
-Decided 2026-09-27, built 2026-09-28 (`scripts/06`–`08`, table `demand`). Numbers marked *exploratory* come
-from scratchpad prototypes of rejected alternatives; the rest are from the built tables. Values no source
-gives are in `data/processed/parameters.csv`.
+Decided 2026-09-27, built 2026-09-28 (`scripts/06`–`08`, table `demand`). Proximity origins moved from Census
+block groups to county subdivisions, with road miles, on 2026-10-04 (below), and the tables were rebuilt the same
+day. Numbers marked *exploratory* come from scratchpad prototypes of rejected alternatives (run on block groups);
+the rest are from the built tables. Values no source gives are in `data/processed/parameters.csv`.
 
-- **Unit: angler-days of stocked-trout fishing.** Both demand signals are angler-days per section and add up
-  to the same statewide total (8.72M).
+- **Unit: stream angler-days of stocked-trout fishing.** Both demand signals are angler-days per section and
+  add up to the same statewide total (7.12M; 8.72M before lake days are removed, step 2 below).
   - Why: a common unit makes the blend a fair mix and gives readable results (fish per angler-day,
     angler-days with a catch). Counting days rather than people gives avid anglers their weight:
     Northcentral anglers fish about 27 days a year, the other regions 19–22 (p115).
@@ -224,13 +232,28 @@ gives are in `data/processed/parameters.csv`.
     caps and leaves hundreds empty), log and power curves (never level off, and power curves force fish into
     every section), and an expected-catch curve capped at the creel limit (almost straight at realistic
     stocking levels).
-  - **k = 1 fish per angler-day,** swept 0.5 and 2. Every stream management option in the Operational
-    Guidelines has the objective "one angler trip generated per trout stocked" (e.g. High Yield, p. 47). The
-    guideline anchors the scale; the curve's shape is our assumption. Upgrade: k = 1 ÷ the share of stocked
-    trout that get caught, if a PFBC return-to-creel figure turns up. The saturating ratio `r/(r + k)` is a
-    one-run shape sensitivity (it penalizes overstocking less).
-  - **In Gurobi:** each section's curve is piecewise linear, with breakpoints at r = 0, 0.25, 0.5, 1, 2, 4, 8
-    (× `D_s`). Maximizing a concave curve keeps it an LP.
+  - **k = 0.5 fish per angler-day** (decision 2026-10-03), swept 0.3 and 1. In words: the stocked fish per
+    angler-day at which an average angler-day expects one catch (then 63% of days catch a stocked trout).
+    - **Why 0.5, not 1.** Mathematically k = 1/(p·c): p = catches per stocked trout, c = survey days per day an
+      angler is actually on the water. PFBC's objective "one angler trip generated per trout stocked" (every
+      stream management option, e.g. High Yield, p. 47) suggested k = 1, but in counted trips. Survey days run
+      about 3–4.5× PFBC creel trips (0.6–1.1 trips per stocked trout; recall bias alone is 1.3–2×), and 40–77%
+      of stocked trout are harvested in PA creel studies, so k ≈ 0.3–0.8 in survey units.
+    - **Check:** at today's statewide 0.37 fish per stream angler-day, k = 0.5 gives 52% of days with a catch,
+      k = 1 gives 31% and k = 0.3 gives 70%; on-stream surveys find 35–60%.
+    - Counting re-catches of released fish (1.4–2.8 per stocked trout on Pine Creek and Bald Eagle) would push
+      k lower; clumped catches (skilled anglers catch several, others none) push it higher. Evidence:
+      `known_gaps.md` § Angler-use data.
+    - The curve's shape is our assumption. The saturating ratio `r/(r + k)` is a one-run shape sensitivity (it
+      penalizes overstocking less).
+  - **In Gurobi:** each section's curve is piecewise linear in fish per angler-day, with breakpoints (in units
+    of k) at 0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, every 0.05 from 0.5 to 1.5, then 1.75, 2, 2.5, 3, 4, 6, 8
+    (`scripts/optimization.py`). The dense middle covers today's statewide 0.37 fish per angler-day (0.73 k):
+    within one straight segment every section is worth the same per fish, so coarse segments (first tried:
+    0, 0.25, 0.5, 1, 2, 4, 8) left the split between sections to tie-breaking. Segments link to the section's
+    fish by `Σ_j z_sj ≤ x_s` (≤, so fish past the last breakpoint add nothing rather than being forced in).
+    The curve is concave, so no binaries are needed for it; it underestimates the exact benefit by 0.02–0.13%,
+    and results are reported from the exact formula.
 - **Demand:** `D_s = (1 − w) · proximity_s + w · preference_s`, with `w = 0.5`, swept 0 / 0.5 / 1.
   - The two signals estimate the same thing (where anglers fish), so they form one objective, not a fourth
     goal. The ends of the sweep read as "near-home anglers first" (w = 0) and "favorite waters first"
@@ -239,74 +262,139 @@ gives are in `data/processed/parameters.csv`.
     trip), while preference is where anglers' favorite waters are, and naming a favorite doesn't mean most
     days are spent there. w absorbs that.
 - **Proximity demand ("band version")**, for every stocked section:
-  1. **Anglers per Census block group** = 2020 population × the county's trout-permit angler rate: 2024
+  0. **Origins are county subdivisions** (decision 2026-10-04): PA's 2,567 townships, boroughs and cities
+     (Census, 1 Jan 2026 boundaries; `county_subdivisions`, Gavin's script 19). Why: they are PFBC's own unit
+     of population (it sets each section's population-density class from "the township(s) and
+     municipalities in which the stream section is located", Operational Guidelines p. 52, Table 17); Gavin
+     has measured road miles from each one to every section; and 2,567 origins are easier to compute than
+     10,173 block groups. Subdivisions nest in counties, so the statewide total barely moves (7,121,847
+     angler-days vs 7,121,842 on block groups; 42 people changed county after 2020, `data_methods.md`). What
+     it gives up: each subdivision's anglers start from its area centroid, not where its people live (44
+     centroids even fall just outside their own boundary), and a city is one point: Pittsburgh's 303,000
+     people start 10.2 road mi from the nearest stocked section, so their 0–10 mi trips go to the 11–20 mi band (step 4).
+     A population-weighted origin is an idea in `scenarios_and_extensions.md`. Block groups are dropped
+     entirely (no road distances for them).
+  1. **Anglers per county subdivision** = 2020 Census population (moved onto the 2026 boundaries; table
+     `subdivision_anglers`) × the county's trout-permit angler rate: 2024
      trout + combo permits sold in the county (annual and multi-year), minus non-resident and tourist
      licenses, plus the county's population share of online resident permits, ÷ population. Permits because
      they must be bought every year (lifetime license holders still buy one) and are trout-specific. Limits
      (sales are by store county; online sales have no county): `known_gaps.md` § Angler numbers by county.
-  2. **Angler-days** = anglers × the mean days fished for stocked trout in the block group's home region
-     (p115). The survey publishes only the statewide mean (20.6 days); the open "over 50 days" band is set to
-     105 days, the value that reproduces it.
-  3. **Distance** = straight-line miles from the block group's center of population to the section's
-     midpoint × 1.3, because the survey's travel distances are driving miles.
-  4. **Allocation:** each block group sends its angler-days out by its home region's trip-distance bands
+  2. **Stream angler-days** = anglers × the mean days fished for stocked trout in the subdivision's home
+     region (p115) × (1 − the region's lake share). The survey publishes only the statewide mean (20.6 days);
+     the open "over 50 days" band is set to 105 days, the value that reproduces it.
+     - **Lake days removed** (decision 2026-10-03). Days fished include lake days, but lakes aren't in the
+       section set, so leaving them in would push lake anglers onto streams and inflate demand ~1.2× against
+       stream fish. Lake share by home region = % primarily fishing lakes + ½ × % fishing both (p88): 13% in
+       the Northwest and Southeast up to 29% in the Northeast, 18% statewide. That matches the survey's own
+       finding that use per stocked fish is about equal on lakes and streams (report p. 1), with ~20% of PFBC's
+       adult trout going to lakes.
+  3. **Distance** = road miles from the subdivision's centroid to the section's midpoint (OSRM, Gavin's
+     `subdivision_to_section_road_distance`), because the survey's travel distances are driving miles. This
+     replaces straight-line miles × 1.3: measured road / straight-line runs about 1.5 under 5 mi and 1.3
+     over 80 mi, so the flat factor understated short trips, and it ignored rivers and ridges (Middletown
+     borough is 3.8 straight-line mi from York County's Fishing Creek 63_2 but 18.3 road mi, across the
+     Susquehanna).
+     The nearest stocked section is a median 5.2 road mi from a subdivision.
+  4. **Allocation:** each subdivision sends its angler-days out by its home region's trip-distance bands
      (p93, "Don't know" dropped; pooled in-state, 38% of trips are within 10 mi and 25% at 10–20 mi). Within a
      band, the angler-days are split among the stocked sections in that band by length. A band with no
-     section passes its share to the block group's other bands in proportion. The last band (more than
-     150 mi) runs to the farthest block group–section pair in PA (about 416 road mi), so every section is
-     reachable. Every angler-day is placed exactly once.
+     section passes its share to the next band out that has one (decision 2026-10-04): an angler who usually
+     fishes within 10 mi but has no stocked water there drives a little farther, rather than spreading over
+     every distance. If no band farther out has a section, the share goes to the nearest band in (never needed
+     in the build). Built: 312 of 30,804 subdivision × band cells, 4.9% of angler-days, nearly all first-band
+     shares of big origins whose nearest section is just past 10 road mi (Pittsburgh, State College,
+     Wilkes-Barre). Pittsburgh's 28% of trips within 10 mi all go to its 11–20 mi band. Against the earlier
+     proportional re-spread, section demand moves −6% to +5% (p5–p95; 12 sections by more than 10%).
+     A distance of 0 is in the first band. The last band (more than 150 mi) runs to the farthest
+     subdivision–section pair in PA (440 road mi), so every section is reachable. Every angler-day is placed
+     exactly once.
   - **Why not the simpler sum of population × P(travel ≥ d):** it counts each angler at every section within
     reach (about 58 times, *exploratory*), so it measures "how many people live within a long drive" and every
     section near a metro scores high: 46% of Bear Creek 3197_2's value came from people 50–100 mi away.
-    Splitting anglers across sections fixes it: 55% of Bear Creek's demand then comes from within 10 mi
-    (built, regional curves). Splitting each block group's anglers in proportion to P(travel ≥ d) didn't help, because
-    P falls off too gently (14% at 50 mi, times millions of people).
+    Splitting anglers across sections fixes it: 31% of Bear Creek's proximity then comes from within 10 road mi,
+    54% within 20 and 16% from 50–100 mi (built, regional curves; 55% within 10 mi on block groups, where
+    Pottsville, 13.7 road mi away, counted as within 10). Splitting each origin's anglers in proportion to
+    P(travel ≥ d) didn't help, because P falls off too gently (14% at 50 mi, times millions of people).
   - **Regional curves,** by the angler's home region (the survey's regions are home regions too). Southeast
     anglers take 47% of trips within 10 mi, Southwest anglers 28% (mean 40 mi), so Philadelphia-area demand
     stays close to home and Pittsburgh-area demand spreads 30–100 mi out. The pooled in-state curve is the
     sensitivity. The survey has no county-level curve (about 33 in-state respondents per county).
   - **Length split:** a longer section has more water to fish and draws more anglers; survey preference is
-    split the same way.
+    split the same way. Area was considered and rejected (decision 2026-10-03, no sensitivity): anglers spread
+    along banks, so use per acre falls on big rivers (PFBC's Table 18 rates drop from 361 at widths 2–3 to 91
+    at 1L, and its 2026 stocking per mile is about the same at widths 2, 1S and 1L); width is known only as a
+    class; and area already sets the density cap. An area split would move big rivers from 12% to 30% of
+    demand (16% of 2026 fish; computed on block groups).
   - **The curve decides how local demand is:** a steep curve makes demand track where people live, which
     pulls the plan toward PFBC's population-density formula (see the caveat in Framing); a flatter one leaves
     more to cost, impact and the preference signal.
   - Columns: `prox_days` (default), `prox_days_pooled`, `prox_days_pop` (population only: every county at
     the state angler rate).
   - **Check:** each home region's share of angler-days that land inside its own region vs the survey's p85.
-    Built: 74–84%, against 65–89% of each region's favorite waters in the home region ("Not sure of county"
-    left out). Northcentral keeps less than the survey says (74% vs 89%) and the Southwest and Southeast more
-    (76% vs 65%, 84% vs 72%): the regional curves are the same for every block group in a region, whether it
+    Built: 77–86%, against 65–89% of each region's favorite waters in the home region ("Not sure of county"
+    left out). Northcentral keeps less than the survey says (77% vs 89%) and the Southwest and Southeast more
+    (77% vs 65%, 86% vs 72%): the regional curves are the same for every origin in a region, whether it
     sits at the region's center or its edge.
+  - **Check against measured anglers** (2026-10-03, `docs/known_gaps.md` § Angler-use data). Home regions of
+    anglers interviewed on lower Pine Creek in 2008 (Penn State on-site survey, ZIP codes, PFBC Pine Creek
+    plan Appendix C) vs where our demand for 1339_11 + 1339_12 comes from: Northcentral 44% measured; 81%
+    proximity alone, 39% at w = 0.5, 32% preference alone (rebuilt 2026-10-04; preference origins = p78–83
+    mentions × home-region stream angler-days, its unplaced part spread like proximity; block groups gave
+    83 / 41 / 33%). On the Lehigh (2730_6, 2006), 55% of anglers were from Luzerne County; proximity alone
+    gives 53% (52% on block groups). Origin shares don't depend on how many fish PFBC stocked, so this
+    supports w = 0.5: proximity fits ordinary waters, destinations need preference.
 - **Preference demand** (2023 survey, p76–83):
-  - A water's share of anglers = its % ÷ the sum of all mentions (about 220%: up to three waters each, plus
-    "Other" and "Don't know"); "<0.5%" counts as 0.25%. That share × statewide angler-days is split across the
-    water's stocked sections by length. Kettle Creek: 3% → about 1.4% of anglers → 6.9× what proximity
-    gives its sections.
-  - The share we can't place ("Other", "Don't know", lakes, unmatched names, "other county" rows) is spread
-    like `prox_days`, so preference also sums to the statewide total.
+  - A water's share of anglers = its % ÷ the sum of all stream mentions (about 199%: up to three waters each,
+    plus "Other" and "Don't know"; the 39 lakes' 20% leaves with the lake days); "<0.5%" counts as 0.25%. That
+    share × statewide stream angler-days is split across the water's stocked sections by length. Kettle
+    Creek: 3% → about 1.5% of mentions → 10.5× what proximity gives its sections.
+  - The share we can't place ("Other", "Don't know", unmatched names, "other county" rows) is spread like
+    `prox_days`, so preference also sums to the statewide total.
+  - Caveat: favorites are partly favorites because PFBC has stocked them for decades, so preference partly
+    rewards today's plan; proximity is built only from where people live. One more reason to sweep w.
   - Ambiguous names are resolved with the by-home-region table (p78–83): Elk Creek is Erie's (Northwest 10%),
     Bald Eagle Creek mostly Centre's, and French Creek splits between Chester's and Erie's. The rest go to the
-    review list. Built: 63.1% of all mentions land on 160 stocked rivers, and 16 names (6.4%) wait in
+    review list. Built: 69.5% of stream mentions land on 160 stocked rivers, and 16 names (7.0%) wait in
     `logs/07_survey_crosswalk_review.csv`, spread like proximity until decided (`known_gaps.md`).
   - **Per-mile flag:** a water whose preference angler-days per stocked mile exceed the state's highest
-    proximity per mile is flagged for review, not capped. Only the Youghiogheny is flagged: all its preference lands on the 1.1 mi tailwater 1327_1. It keeps its full share (decision
-    2026-09-27): the dam tailwater is among the most heavily fished spots in the state and is open
-    year-round.
+    proximity per mile (28,484, Cascade Creek in Erie) is flagged for review, not capped. Two are flagged.
+    The Youghiogheny (64,171 per mile): all its preference lands on the 1.1 mi tailwater 1327_1. It keeps its
+    full share (decision 2026-09-27): the dam tailwater is among the most heavily fished spots in the state
+    and is open year-round. White Clay Creek 2027_1 (Chester, 1.1 mi, 32,201 per mile) is flagged since the
+    2026-10-04 rebuild: its preference didn't change, but the threshold fell from 34,338 on block groups. It
+    keeps its full share until reviewed (Open questions).
 - **Favorite boost: tested and dropped (2026-09-27).** Boosting favorite waters within each distance band
   until each draws its survey share would honor both survey facts in one number. Remote favorites needed
   boosts of ×60–1,500 (Kettle Creek ×220), which took about 95% of the demand of small streams next to them
   (e.g. Cross Fork and Long Run in Potter and Tioga), and a version limited to trips of 30+ mi couldn't reach
   the targets at all. The two survey facts conflict for remote waters, so the blend is the honest merge. The
   ratio of preference draw to proximity draw is kept as a **destination index** for the report: about 1× =
-  popular because many people live nearby (Tulpehocken 1.0), 5–7× = a true destination (Pine Creek 5.0,
-  Kettle Creek 6.9) (`demand.destination_index`, `figure_ideas.md`).
-- **Access is in the cap, not in demand** (decision 2026-09-27). PFBC's access rating (`use_potential`: road
-  frontage, parking, ownership) limits how many anglers a section holds, so it sets the density bound (see
-  Constraints). It isn't a demand weight: no source says how much parking shifts where anglers go, and the
-  only number to hand, PFBC's High-to-Good stocking ratio, would make demand partly repeat PFBC's formula
-  and the "stocking vs demand" comparison circular. The preference signal already reflects where anglers
-  actually fish, access included. An access-weighted length split is an idea in `scenarios_and_extensions.md`.
-  PFBC's access-point layer isn't used: the rating is measured per section and covers the same thing.
+  popular because many people live nearby (Tulpehocken 1.1, Yellow Breeches 1.3; median 1.5), 6–10× = a true
+  destination (Pine Creek 6.6, Kettle Creek 10.5) (`demand.destination_index`, `figure_ideas.md`).
+- **Access is in the cap, not in demand** (decision 2026-09-27; reconfirmed 2026-10-04: access weighting is a
+  sensitivity only and stays out of the formulation, because no data backs a number). PFBC's access rating
+  (`use_potential`, "recreational use potential") is mostly ownership: High = all public, or 100% open and at
+  least half public; Good = open land that is mostly private, or public land far from roads; Low = more than 15%
+  closed to the public, or no road within 500 m (Operational Guidelines Tables 15–16, p. 42). It limits how many
+  anglers a section holds, so it sets the density bound (see Constraints). Among the 1,022 sections it is
+  nearly two-way: Good 800 (84% of stocked miles), High 216 (15%), Low 6.
+  - **Why not a demand weight:** no source says how much access shifts where anglers fish (checked 2026-10-04).
+    PFBC's own use per stocked trout is about the same on High and Good water (High ÷ Good 1.23 in 1988–90,
+    0.91–0.99 in 2005, from the Guidelines' use tables; small samples, and creel-based, so not used to set a
+    parameter). Wisconsin's 2014 trout-angler survey (Table V-4, p. 52): 14% say public access is essential,
+    57% prefer it, 25% say it doesn't matter (stated preference; our rough conversion is 1.6–1.9× the days on
+    public water). The 2023 PA survey asks nothing about parking or ownership, and only 5% of stocked-trout
+    anglers name access as a constraint. Other states use access as a gate (New York: public rights and
+    parking) or a few points in a score (Virginia), never as a demand weight. Borrowing PFBC's stocking ratio
+    would make demand repeat PFBC's formula and the "stocking vs demand" comparison circular.
+  - **What it means for results:** High sections get 26.3% of PFBC's 2026 fish but hold 22.3% of our demand,
+    and the benefit curve pushes toward equal fish per angler-day, so the model will tend to move fish off
+    High (mostly public) water: about 15% of its fish if nothing else differed. Report that shift as
+    conditional on the access sensitivity (`scenarios_and_extensions.md`, Access-weighted length split), not as
+    a finding on its own. Preference already reflects access between rivers (rivers with a High section are
+    named twice as often, 40% vs 18%), but within a river it is split by length alone.
+  - PFBC's access-point layer isn't used: the rating is measured per section and covers the same thing.
 - **Other benefit inputs (optional):** special-regulation waters, catch importance (p140: 81% say catching a
   trout matters), and thermal suitability (fish in warm water die by summer, so benefit falls). On
   catch-and-release and delayed-harvest waters a stocked trout can be caught more than once, which in the
@@ -314,7 +402,8 @@ gives are in `data/processed/parameters.csv`.
   question.
 
 ## Transport cost
-- **Cost per fish:** `cost[h,s] = 2 × road_mi × cost_per_truck_mile / fish_per_load`.
+- **Cost per fish:** `cost[h,s] = 2 × road_mi × cost_per_truck_mile / fish_per_load`, where `road_mi` is the
+  average over the section's cluster (next bullet).
   - Central values from `docs/transport_research.md`: $1.90/truck-mile and 2,500 fish/load, i.e. about
     $0.0015 per fish per one-way mile (range $0.0007–0.0041). A 50-mile haul is about $0.08/fish.
   - Don't multiply by stockings per year: one truckload is split across sections.
@@ -322,15 +411,30 @@ gives are in `data/processed/parameters.csv`.
   - Truck capital is a fixed cost, left out of the per-mile cost; "+$1/mi" is a sensitivity.
 - **Trucking is small in dollars:** about 4–7% of PFBC's cost per stocked trout. Hatchery output is the
   scarce resource, which is worth saying in the report.
-- **Distance:** road distance per supply node → section, built by Gavin (`notebooks/travel_arcs.ipynb`) and
-  joined on `section_id`. Not on our slate. Don't use the Google API: it costs money and its terms bar
-  storing results.
-- **Calibration check:** implied fleet miles vs the ~300,000 mi/yr reported (unverified). At 2,500
-  fish/load, that implies ~120 mi one-way hauls, which seems long, so fish_per_load or that figure may be off.
+- **Distance:** road distance per supply node → section, built by Gavin (`scripts/11_road_distances.py`, OSRM,
+  all 13 hatcheries including Tionesta) and joined on `section_id`. Not on our slate. Don't use the Google
+  API: it costs money and its terms bar storing results.
+- **Clusters set the haul** (decision 2026-10-04; Gavin's approach, `clustering_options.md`). A cluster is a
+  group of sections that cost about the same to reach from every hatchery. Each section is costed at its
+  cluster's mean road miles from h (`cluster_hatchery_distance.avg_road_mi`, unweighted over members; cost is
+  linear in miles, so averaging miles averages cost). A cluster is a cost, not a trip: nothing is routed, and
+  the model still chooses `x[h, s]` per section, so one cluster can draw on several hatcheries.
+  - First run (decision 2026-10-04): Gavin's k-medoids clusters on road miles, best silhouette
+    (`kmedoids_best_silhouette`, 310; the cluster average is off each member's own miles by 2.2% on Gavin's
+    measure). They are built from geography only, so they carry none of PFBC's hatchery choices.
+    Sensitivity: Nate's schedule clusters (`nate_schedule`, 351; 3.0%), Gavin's hierarchical clusters (309;
+    2.2%) and no clustering (each section's own road miles). The clusterings are interchangeable labels, so a sensitivity swaps the label and reruns.
+  - The baseline is costed with the same cluster miles, so it and the optimized plan are priced alike.
+- **Calibration check** (`logs/20_transport_cost.log`): PFBC's scheduled 2026 plan implies 185,000 stream
+  truck-miles at 2,500 fish per load, against ~300,000 reported for all trips (unverified, and it includes
+  lakes). Matching it would take ~1,540 fish per load, the low end of `fish_per_load`'s range.
 - **Baseline assignment:** PFBC's schedule names the hatchery for every 2026 event
-  (`section_schedule.primary_hatchery`; 49 sections get fish from two). Proposed, not yet decided with Gavin:
-  cost the baseline from the scheduled hatcheries (split by event share), with nearest hatchery as the
-  sensitivity. The nearest-hatchery version understates today's cost: in a 3-county sample only 10 of 54
+  (`section_schedule.primary_hatchery`; 49 sections get fish from two). Built (script 20, `baseline_flows`):
+  each section's 2026 fish go to its scheduled hatcheries, split by species over the events
+  (`stocking_events.alloc_fish`); loads match each hatchery's supply to within 1.2 fish. Baseline cost:
+  **$351.5k/yr** (185,000 truck-miles, mean haul 89 mi). Nearest hatchery is the sensitivity: $270.5k, but
+  it isn't supply-feasible (Tylersville would ship 1.69× its supply), and only 447 of 1,022 sections (42% of
+  fish) are served by their nearest hatchery today. Still to confirm with Gavin. The nearest-hatchery version understates today's cost: in a 3-county sample only 10 of 54
   sections were served by their nearest hatchery. The model still chooses its own assignment.
 - **Simplification to state in the report:** real trucks make multi-stop routes. We model direct
   shipments, a transportation problem, not vehicle routing.
@@ -351,18 +455,32 @@ gives are in `data/processed/parameters.csv`.
     miles are Class A.
   - 25 sections coded E ("no wild trout") are on the natural-reproduction list.
   - 111 sections coded D are not on it.
+- **Main version (decision 2026-10-04): density × overlap** (`model_input.impact_weighted`).
+  `w_s` = biomass density weight × share of the section on wild-trout water. The weights are PFBC's class
+  biomass midpoints relative to class D (Operational Guidelines Table 2, p. 16; `parameters.csv`
+  `impact_weight`): A 8 (≥ 40 kg/ha, the floor), B 6 (20–40), C 3 (10–20), D 1 (0–10), E 0. The share is
+  `nat_repro_share`, with two rules (assumptions): the 111 sections rated B–D but not on the
+  natural-reproduction list count whole (the rating covers the section), and the 22 E sections on the list get
+  weight 1 (reproduction present, the lowest level with wild trout; sensitivity 0). Unit: stocked fish weighted
+  by wild-trout density, class D = 1. 2026: 2,274,440 on 624 sections; B and C waters get 10% of the fish but
+  carry 40% of the score (A 0.28M, B 0.36M, C 0.56M, D 1.03M, E 0.05M).
+  - Why not the overlap share alone: it is nearly binary in the data (509 sections at 0, 474 at ≥ 99%, 39
+    between), so it moves the 2026 score only from 1.08M to 1.00M. The real spread is in how many wild trout
+    live there, which biomass class measures.
 - **Score versions to explore:** each is a different definition of the goal, and all are reported in
   plain units.
-  1. **Simple:** fish stocked on any wild-trout water. `w_s` = 1 if `nat_repro_flag` or biomass B–D,
-     else 0. Unit: "fish on wild-trout water". Easiest to explain; start here.
-  2. **Weighted:** `w_s` = biomass weight (B=3, C=2, D=1, E=0), +1 if natural reproduction, +2 if wild
-     brook trout, and optionally +1 if thermally marginal (upgrade: EcoSHEDS max 30-day mean ≥ 21 °C).
-  3. **Partial overlap:** scale `w_s` by the share of the section on natural-reproduction water
+  1. **Simple (sensitivity):** fish stocked on any wild-trout water. `w_s` = 1 if `nat_repro_flag` or biomass
+     B–D, else 0 (`impact_simple`). Unit: "fish on wild-trout water". The first run (2026-10-04) used it.
+  2. **Weighted (not built):** `w_s` = biomass weight (B=3, C=2, D=1, E=0), +1 if natural reproduction, +2 if
+     wild brook trout, and optionally +1 if thermally marginal (upgrade: EcoSHEDS max 30-day mean ≥ 21 °C).
+     `wild_brook_present` is NA on 1,005 of the 1,022 candidates, so the brook term can't be used yet.
+  3. **Partial overlap (sensitivity, `impact_overlap`):** scale `w_s` by the share of the section on natural-reproduction water
      (`environment.nat_repro_share`, river miles). Most flagged sections are almost fully on it (496 of 531
      at ≥ 90%), but a few large ones aren't: Kettle Creek 3351_9 (5,900 fish, 1%), Sugar Creek 1898_4
      (11,620 fish, 11%). Fish on natural-reproduction water in 2026: 1.08M by flag, 1.00M weighted by share.
 
-  Weights within a score are a judgement call, so show that the conclusions hold across versions 1–2.
+  Weights within a score are a judgement call, so show that the conclusions hold across the main version and
+  versions 1 and 3 (`scripts/optimization.py --impact weighted | simple | overlap`).
 - **The survey supports the goal:** 58% of anglers support moving stocking off quality wild trout waters
   to nearby spots, and 16% oppose. The trade-off curve shows how much angler benefit or cost that move
   takes.
@@ -425,9 +543,9 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
 - Demand is fixed on today's section map: the anglers of a section that gets no fish don't move to other
   sections. Modeling that would need a choice model, where demand depends on the plan.
 - Only Pennsylvania residents create demand (out-of-state anglers are left out, decision 2026-09-27).
-  Sections in neighboring states aren't in the set, so block groups near the border send all their anglers
-  to PA sections. Lakes aren't in the set either (~20% of PFBC's adult trout), so lake anglers are pushed
-  onto streams.
+  Sections in neighboring states aren't in the set, so subdivisions near the border send all their anglers
+  to PA sections. Lakes aren't in the set either (~20% of PFBC's adult trout); their days are removed by
+  home region (p88), not placed on streams.
 - License sales by store county stand in for anglers by home county (`known_gaps.md` § Angler numbers by
   county).
 - Trip distances are per angler (p93), not per day. If avid anglers fish closer to home, trips are more local
@@ -443,6 +561,16 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
 - Hatchery supply is scaled to the stream total, ~83% of PFBC's adult trout (`docs/known_gaps.md`).
 
 ## Report hooks
+- **First run (2026-10-04; `scripts/optimization.py`, `outputs/tables/optimization/runs.csv`,
+  `outputs/figures/optimization/tradeoff_curves.png`; binary impact, before the formulation review, so
+  superseded once the model is rerun with the weighted impact).** PFBC's 2026 plan scores 3.22M angler-days with a catch,
+  $351.5k/yr and 1.45M fish on wild-trout water. With no change limit, the same fish placed better give
+  +13.4% benefit (3.65M) at 2.3% less cost and 2.7% less impact, so PFBC's plan is dominated on all three goals.
+  PFBC's own benefit could cost 31% less to truck ($242.5k) or put 54% fewer fish on wild-trout water. With the
+  close-or-band change limit: +11.7%, 26% and 47%. The gain comes from evening out fish per angler-day
+  (p10–p90 0.15–1.21 today, 0.34–0.43 in the plan): fish move to busy water near people (Pennypack Creek,
+  Elk Creek in Erie, Yellow Breeches) and off sections stocked far above their use. High-access water loses
+  ~20% of its fish, which depends on access being left out of demand (Angler benefit § Access).
 - PFBC's 2025–29 trout plan (Obj. 9.1) says allocation rates "need to be reviewed."
 - The survey found 80% support extra stocking on high-use waters.
 - 79% of stocked-trout anglers say fishing near home is important (p95), which supports proximity demand.
@@ -458,8 +586,12 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
   rainbow only.)
 - Which optional inputs (special regulations, catch importance, thermal suitability) enter the
   benefit score, beyond being collected in Prompt 6?
+- White Clay Creek 2027_1 (Chester, 1.1 mi) now carries the per-mile flag beside the Youghiogheny (2026-10-04
+  rebuild; Angler benefit § Preference): keep its full preference share, as for the Youghiogheny, or review it?
+  It keeps the full share until decided.
 - Transport cost: charge each section for the visit's detour, on top of the hatchery → section haul
-  (team discussion 2026-09-27)? Still undecided. Two versions are built (`section_schedule`, `clusters`,
+  (team discussion 2026-09-27)? Still undecided; the first run leaves it out and uses the cluster-average haul
+  only (decision 2026-10-04, Transport cost). Two versions are built (`section_schedule`, `clusters`,
   2026-09-28):
   - **Geographic (the earlier preference):** detour_s = 2 × `detour_nn_mi` (nearest stocked section, road
     miles) × 2 visits × $1.90/truck-mile, added as detour_s·y_s.
@@ -469,4 +601,22 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
   - Caveat for y_c: the default rule (share ≥ 0.5) chains clusters up to 18 sections and 119 route-miles,
     more than one truck's run (at most 7 sections). The strict rule (> 0.5, up to 7 sections) fits a per-trip
     charge better; the default fits the detour.
+  - What the clusters hold (checked 2026-09-29): every candidate section has one. A section's truck partners
+    change between visits for 71% of sections with 2+ visits, which is why links chain. Under the default rule
+    997 of 1,015 runs stay inside one cluster; under the strict rule 184 runs cross cluster lines.
+  - Singletons are mostly big waters with a truck to themselves: 94 of the 103 are stocked alone on every visit
+    (median 1,771 fish per visit vs 780 for clustered sections; 21% of 2026 fish), so a detour of 0 fits them.
+    The doubtful singletons are those with truck partners but links below the rule: 9 by default, 143 strict.
+  - A run carries a median 2,261 stream fish (p90 4,232), close to the 2,500 fish per load in the transport
+    research: a check on `fish_per_load` for Prompt 7.
+  - **Pre-season runs are a clean, threshold-free grouping** (checked 2026-09-29, on the listings before
+    repeats are merged). Every section stocked pre-season gets exactly one pre-season truck, so the 479
+    pre-season runs split the 991 sections into disjoint groups: 1–7 sections, median span 7.3 road-mi
+    (p90 16.5). Pre-season carries 45% of the year's fish; the 31 sections with no pre-season stocking hold
+    1.3%. In-season trucks regroup the same sections: only 42% of pairs that share a pre-season truck also
+    share an in-season one, though 95% keep the same hatchery and 67% the same meeting place. 99.6% of
+    pre-season runs sit inside one default cluster, so the default clusters are pre-season runs joined by
+    in-season regrouping. Option: use the pre-season run as the cluster (one real truck trip, no threshold,
+    no chaining).
   - Real truck routing stays out of scope.
+

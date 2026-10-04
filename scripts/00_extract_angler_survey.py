@@ -63,12 +63,13 @@ def words(p): return pdf.pages[p-1].extract_words(keep_blank_chars=False, use_te
 def find(ws,text,after=0):
     return [w for w in ws if w['text']==text and w['top']>=after]
 
-def regional(p, ncols, table=-1):
+def regional(p, ncols, table=-1, y_hi=None):
     ws=words(p)
     nws=[w for w in ws if w['text']=='Northwest']
     nw=nws[table]
-    y_hi=780
-    if nw is not nws[-1]:  # another table follows (p95): stop at its title, the top line within 20pt above its header
+    if y_hi is not None: pass  # caller gives the table's lower edge (p88: a trend chart and text follow it)
+    elif nw is nws[-1]: y_hi=780
+    else:  # another table follows (p95): stop at its title, the top line within 20pt above its header
         nxt=nws[nws.index(nw)+1]
         y_hi=min(w['top'] for w in ws if nxt['top']-20<w['top']<nxt['top'])
     hdr_top=nw['top']
@@ -130,8 +131,9 @@ r,_=regional(85,8)
 t4=pd.DataFrame([dict(county=x[0],**{c:num(v) for c,v in zip(R7+['overall'],x[1:])},source_page=85) for x in r])
 
 # 5-13 7-column regional distributions + statewide from chart (manually read, verified against page image)
-# p140's chart shows no "Do not know" bar, so its statewide value is NA (not shown), not 0.
+# p140's and p88's charts show no "Do not know" bar, so their statewide value is NA (not shown), not 0.
 statewide={
+ 88:(2461,[10,74,16,pd.NA],{}),
  93:(2461,[4,3,3,1,2,1,2,6,4,13,24,37,2],{'Mean':(29.8,33.5),'Median':(15,16)}),
  94:(624,[10,12,10,4,3,2,6,9,5,12,12,12,5],{'Mean':(70.3,74.2),'Median':(50,50)}),
  115:(2460,[7,3,4,13,23,24,9,3,5,4,1,4],{'Mean':(None,20.6),'Median':(None,12)}),
@@ -142,11 +144,12 @@ statewide={
  175:(1211,[42,38,10,5,4,2],{}),
  178:(3382,[29,29,20,8,8,6],{}),
 }
-names={93:'travel_distance_typical_trip',94:'travel_distance_farthest',115:'days_fished_stocked_2022',
+names={88:'primary_water_type',93:'travel_distance_typical_trip',94:'travel_distance_farthest',115:'days_fished_stocked_2022',
        127:'stocked_trout_harvest_per_year',174:'support_removing_low_use_waters',
        95:'importance_near_home',140:'importance_catching_trout',175:'support_more_stocking_high_use_waters',
        178:'support_moving_stocking_off_wild_trout_waters'}
-qs={93:'How far, in miles, do you travel, one-way, on an average stocked trout fishing trip in Pennsylvania?',
+qs={88:'Do you primarily fish for stocked trout in lakes or in streams and rivers?',
+    93:'How far, in miles, do you travel, one-way, on an average stocked trout fishing trip in Pennsylvania?',
     94:"What's the farthest distance you travel to fish for stocked trout in Pennsylvania, one-way?",
     115:'How many days did you fish for stocked trout in Pennsylvania in 2022?',
     127:'On average, how many stocked trout do you harvest each year?',
@@ -159,10 +162,11 @@ qs={93:'How far, in miles, do you travel, one-way, on an average stocked trout f
 headline={140:{('Very important','Somewhat important'):81},
           175:{('Strongly support','Moderately support'):80,('Moderately oppose','Strongly oppose'):9},
           178:{('Strongly support','Moderately support'):58,('Moderately oppose','Strongly oppose'):16}}
-first_table={95:0}  # p95 has two tables (near home, near camp); use the first
+first_table={95:0,88:0}  # p95 has two tables (near home, near camp); p88's text below names "Northwest" again
+y_stop={88:410}  # p88: the 2008-vs-2023 trend chart's title starts at y=417, below the table's last row (y=370)
 tabs={}
 for p in statewide:
-    r,ns=regional(p,7,first_table.get(p,-1))
+    r,ns=regional(p,7,first_table.get(p,-1),y_stop.get(p))
     n_all,sw,stats=statewide[p]
     rows=[dict(response='n (respondents)',row_type='n',**{c:int(re.sub(r'\D','',v)) for c,v in zip(R7,ns)},statewide_all=n_all,statewide_instate=pd.NA)]
     i=0

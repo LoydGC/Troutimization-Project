@@ -136,7 +136,7 @@ def test_baseline(sections):
 
 def test_angler_survey():
     survey = PROCESSED / "angler_survey"
-    by_region = ["p93_travel_distance_typical_trip", "p94_travel_distance_farthest", "p95_importance_near_home",
+    by_region = ["p88_primary_water_type", "p93_travel_distance_typical_trip", "p94_travel_distance_farthest", "p95_importance_near_home",
                  "p115_days_fished_stocked_2022", "p127_stocked_trout_harvest_per_year",
                  "p140_importance_catching_trout", "p174_support_removing_low_use_waters",
                  "p175_support_more_stocking_high_use_waters", "p178_support_moving_stocking_off_wild_trout_waters"]
@@ -170,19 +170,41 @@ def test_county_anglers():
     parts = ca["annual_trout_combo"] + ca["multi_trout_combo"] - ca["nonres_licenses"]
     assert (ca["resident_permits"] == parts).all() and (parts >= 0).all()
     assert abs(ca["anglers_by_sales"].sum() - ca["anglers"].sum()) < 5, "the sensitivity moves anglers, same total"
+    assert ca["pop_2020"].sum() == 13_002_700, "data_methods.md County anglers: PA's 2020 Census population"
+
+
+def test_subdivision_anglers():
+    sub = pd.read_parquet(PROCESSED / "subdivision_anglers.parquet")
+    cs = pd.read_parquet(PROCESSED / "county_subdivisions.parquet")
+    ca = pd.read_csv(PROCESSED / "county_anglers.csv", dtype={"county_fips": str}).set_index("county_fips")
+    assert len(sub) == 2567 and sub["subdivision_id"].is_unique, "data_dictionary.md subdivision_anglers: 2,567 rows"
+    assert set(sub["subdivision_id"]) == set(cs["subdivision_id"]), "one row per county_subdivisions origin"
+    assert sub[["pop_2020", "region", "angler_rate", "anglers"]].notna().all().all()
+    assert sub["pop_2020"].sum() == 13_002_700, "data_methods.md County anglers: PA's 2020 Census population"
+    by_county = sub.groupby("county_fips")[["pop_2020", "anglers"]].sum()
+    # Falls Creek borough's Clearfield part (42 people in 2020) is in Jefferson County by 2026 (known_gaps.md)
+    moved = {"42033": -42, "42065": 42}
+    pop_diff = by_county["pop_2020"] - ca.loc[by_county.index, "pop_2020"]
+    assert pop_diff[pop_diff != 0].to_dict() == moved, "data_methods.md County anglers: only Falls Creek moved"
+    assert ((by_county["anglers"] - ca.loc[by_county.index, "anglers"]).abs() < 5).all(), "anglers sum to the county"
+    assert abs(sub["anglers"].sum() - ca["anglers"].sum()) < 1, "data_methods.md: 421,615 anglers statewide"
+    rate = sub["county_fips"].map(ca["angler_rate"])
+    assert ((sub["angler_rate"] - rate).abs() < 1e-6).all(), "each subdivision takes its county's angler rate"
 
 
 def test_demand(sections, stocked_2026):
     d = pd.read_parquet(PROCESSED / "demand.parquet").set_index("section_id")
     assert set(d.index) == set(sections.index[stocked_2026]), "one row per 2026-stocked section"
     total = d["prox_days"].sum()
-    assert abs(total - 8_717_541) < 10, "CLAUDE.md Known facts / data_dictionary.md demand: 8,717,541 angler-days"
+    assert abs(total - 7_121_847) < 10, \
+        "CLAUDE.md Known facts / data_dictionary.md demand: 7,121,847 stream angler-days (lake days removed)"
     for col in ["prox_days_pooled", "prox_days_pop", "pref_days"]:
         assert abs(d[col].sum() - total) < 1, f"data_dictionary.md demand: {col} sums to the statewide total"
     assert (d["prox_days"] > 0).all() and (d["pref_days"] >= d["pref_days_named"]).all()
     named = d["pref_days_named"].sum() / total
-    assert abs(named - 0.631) < 0.001, "data_methods.md Preference demand: 63.1% of mentions placed"
-    assert list(d.index[d["pref_per_mi_flag"]]) == ["1327_1"], "model_design.md Per-mile flag: Youghiogheny only"
+    assert abs(named - 0.695) < 0.001, "data_methods.md Preference demand: 69.5% of stream mentions placed"
+    assert sorted(d.index[d["pref_per_mi_flag"]]) == ["1327_1", "2027_1"], \
+        "model_design.md Per-mile flag: the Youghiogheny and White Clay Creek"
     flags = d[["dhalo", "catch_release", "keystone_select", "open_year_round"]].sum().to_dict()
     assert flags == {"dhalo": 56, "catch_release": 30, "keystone_select": 24, "open_year_round": 16}, \
         "data_methods.md Regulation flags"
@@ -250,3 +272,32 @@ def test_section_schedule_and_clusters(stocked_2026):
     assert len(c) == 351 and c["n_sections"].sum() == 1022
     assert (c["n_sections"] == ss["cluster_id"].value_counts().reindex(c.index)).all()
     assert not c["span_flag"].any(), "data_methods.md Runs and clusters: no cluster spans > 60 road-mi"
+
+
+def test_transport_inputs(sections, stocked_2026):
+    h = pd.read_parquet(PROCESSED / "hatcheries.parquet")
+    assert len(h) == 13, "CLAUDE.md Supply node: 13 hatcheries in PFBC's layer"
+    assert h.in_2026_schedule.sum() == 9, "CLAUDE.md Supply node: 9 on the 2026 schedule"
+    assert h.supply.sum() == 2_606_465, "model_design.md Constraints (Total fish): T = sum of supply"
+    cm = pd.read_parquet(PROCESSED / "cost_matrix.parquet")
+    assert len(cm) == 13 * 1022 and not cm[["road_mi", "cluster_road_mi", "cost_per_fish"]].isna().any().any()
+    assert cm.groupby(["cluster_id", "hatchery_id"]).cluster_road_mi.nunique().eq(1).all()
+    assert cm.cluster_id.nunique() == 310, "model_design.md Transport cost: k-medoids clusters (310) set the haul"
+    bf = pd.read_parquet(PROCESSED / "baseline_flows.parquet")
+    per_section = bf.groupby("section_id").fish.sum()
+    total = sections.loc[stocked_2026, "total_2026"].astype(float)
+    assert (per_section.reindex(total.index) - total).abs().max() < 1, "baseline flows = 2026 counts"
+    load = bf.groupby("hatchery").fish.sum()
+    assert (load - h.set_index("hatchery").supply.reindex(load.index)).abs().max() < 2, "loads = supply (rounding)"
+    assert round(bf.cost.sum()) == 351_524, "model_design.md Transport cost: baseline $351.5k/yr"
+
+
+def test_model_input():
+    m = pd.read_parquet(PROCESSED / "model_input.parquet")
+    assert len(m) == 1022 and m.section_id.is_unique and m.complete.all()
+    assert m.x0.sum() == 2_606_468
+    assert m.impact_simple.sum() == 624, "model_design.md Wild-trout impact: simple score on 624 sections"
+    assert m.loc[m.impact_simple == 1, "x0"].sum() == 1_445_045
+    # main impact version (decision 2026-10-04): biomass weight x share on wild-trout water, class D = 1
+    assert m.impact_weighted.gt(0).sum() == 624
+    assert round((m.impact_weighted * m.x0).sum()) == 2_274_440, "model_design.md Wild-trout impact: weighted 2026 total"

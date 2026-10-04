@@ -1,19 +1,26 @@
 """Angler demand per 2026-stocked section: proximity and preference angler-days, kept as separate columns.
 
 Follows docs/model_design.md § Angler benefit (decision 2026-09-27); the model blends the two with weight w.
-Values no source gives (circuity, "over 50 days", "<0.5%") come from data/processed/parameters.csv.
+Values no source gives ("over 50 days", "<0.5%", the lake share of "both") come from data/processed/parameters.csv.
 
-Proximity ("band version"): each Census block group's angler-days (population x county angler rate x its home
-region's mean days fished, p115) go out by its home region's trip-distance bands (p93). Within a band they're
-split among the stocked sections in that band by length; a band with no section passes its share to the
-block group's other bands in proportion. Every angler-day is placed once.
+Stream angler-days (decision 2026-10-03): the survey's days fished include lake days, and lakes aren't in the
+section set, so each home region's lake share of days (p88: % primarily lakes + lake_days_both_share x % both)
+is removed first. All demand columns are stream angler-days.
 
-Preference: each survey water's share of mentions (p76-77) x statewide angler-days, split over its stocked
-sections by length (crosswalk from 07). The share we can't place is spread like prox_days.
+Proximity ("band version"; origins and distances decided 2026-10-04): each county subdivision's stream angler-days
+(2020 population x county angler rate x its home region's mean days fished, p115, x (1 - its lake share)) go out
+by its home region's trip-distance bands (p93), measured in Gavin's road miles from the subdivision's centroid to
+the section midpoint (no circuity factor). Within a band they're split among the stocked sections in that band by
+length; a band with no section passes its share to the next band out that has one (decision 2026-10-04), or, if
+none farther out does, to the nearest band in. Every angler-day is placed once.
 
-Inputs : data/processed/sections.parquet (02-04), county_anglers.csv (06), survey_water_crosswalk.csv (07),
-         angler_survey/p93, p115, p76-77, p85 (00), parameters.csv
-         data/raw/census/*/CenPop2020_Mean_BG42.txt (2020 block-group population and center of population)
+Preference: each survey stream water's share of mentions (p76-77; lake mentions leave the denominator with the
+lake days) x statewide stream angler-days, split over its stocked sections by length (crosswalk from 07). The
+share we can't place is spread like prox_days.
+
+Inputs : data/processed/sections.parquet (02-04), subdivision_anglers.parquet (06), survey_water_crosswalk.csv (07),
+         subdivision_to_section_road_distance.parquet (19, Gavin), angler_survey/p88, p93, p115, p76-77, p85 (00),
+         parameters.csv
 Outputs: data/processed/demand.{parquet,csv}  one row per 2026-stocked section
          logs/08_demand.log, logs/08_demand_waters.csv (per survey water: preference, proximity, flags)
 
@@ -25,14 +32,13 @@ import logging
 
 import numpy as np
 import pandas as pd
-from pyproj import Transformer
 
-from common import LOG_DIR, PROCESSED_DIR, RAW_DIR, setup_logging
+from common import LOG_DIR, PROCESSED_DIR, setup_logging
 
 SURVEY = PROCESSED_DIR / "angler_survey"
 REGIONS = ["northwest", "northcentral", "northeast", "southwest", "southcentral", "southeast"]
-M_PER_MI = 1609.344
-# p93 bands in driving miles, upper edges; the last (> 150 mi) is open, so every section is in some band
+# p93 bands in driving miles, upper edges; 0 road mi is in the first band, and the last (> 150 mi) is open, so every
+# section is in some band
 BAND_EDGES = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 150, np.inf]
 BANDS = ["0-10 miles", "11-20 miles", "21-30 miles", "31-40 miles", "41-50 miles", "51-60 miles", "61-70 miles",
          "71-80 miles", "81-90 miles", "91-100 miles", "101-150 miles", "More than 150 miles"]
@@ -67,6 +73,16 @@ def days_by_region() -> pd.Series:
     return mean[REGIONS]
 
 
+def lake_shares() -> pd.Series:
+    """Share of stocked-trout days spent on lakes, by home region (p88): % primarily lakes + b x % both."""
+    t = survey_table("p88_primary_water_type_by_region.csv")
+    both = param("lake_days_both_share")
+    pct = t.loc[["Lakes", "Streams and rivers", "Both about equally"], REGIONS].astype(float)
+    share = (pct.loc["Lakes"] + both * pct.loc["Both about equally"]) / pct.sum()  # "Do not know" (0%) dropped
+    log.info("lake share of days (p88: primarily lakes + %g x both): %s", both, share.round(3).to_dict())
+    return share
+
+
 def band_shares() -> pd.DataFrame:
     """Share of trips in each p93 distance band, by home region (columns), "Don't know" dropped."""
     t = survey_table("p93_travel_distance_typical_trip_by_region.csv").loc[BANDS, REGIONS].astype(float)
@@ -74,25 +90,21 @@ def band_shares() -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------- inputs
-def block_groups(days: pd.Series) -> pd.DataFrame:
-    path = sorted(RAW_DIR.glob("census/*/CenPop2020_Mean_BG42.txt"))[-1]
-    bg = pd.read_csv(path, dtype={"STATEFP": str, "COUNTYFP": str, "TRACTCE": str, "BLKGRPCE": str},
-                     encoding="utf-8-sig")
-    ca = pd.read_csv(PROCESSED_DIR / "county_anglers.csv", dtype={"county_fips": str})
-    n = len(bg)
-    bg = bg.assign(county_fips=bg.STATEFP + bg.COUNTYFP).merge(
-        ca[["county_fips", "county", "region", "angler_rate"]], on="county_fips", how="left", validate="m:1")
-    assert len(bg) == n and bg.region.notna().all()
-    empty = bg.POPULATION.eq(0)
-    log.info("block groups: %d, %d with no population (they get no angler-days)", n, empty.sum())
-    state_rate = (bg.POPULATION * bg.angler_rate).sum() / bg.POPULATION.sum()
-    bg["home"] = bg.region.str.lower()
-    bg["days_per_angler"] = bg.home.map(days)
-    bg["angler_days"] = bg.POPULATION * bg.angler_rate * bg.days_per_angler
-    bg["angler_days_pop"] = bg.POPULATION * state_rate * bg.days_per_angler
-    log.info("statewide angler-days: %s (%s anglers x days by home region)", f"{bg.angler_days.sum():,.0f}",
-             f"{(bg.POPULATION * bg.angler_rate).sum():,.0f}")
-    return bg
+def subdivisions(days: pd.Series, lake: pd.Series) -> pd.DataFrame:
+    o = pd.read_parquet(PROCESSED_DIR / "subdivision_anglers.parquet")
+    assert o.subdivision_id.is_unique and o.region.notna().all()
+    log.info("origins: %d county subdivisions, %d with no population (they get no angler-days)", len(o),
+             o.pop_2020.eq(0).sum())
+    state_rate = o.anglers.sum() / o.pop_2020.sum()
+    o["home"] = o.region.str.lower()
+    all_days = o.anglers * o.home.map(days)
+    o["days_per_angler"] = o.home.map(days * (1 - lake))  # stream days only
+    o["angler_days"] = o.anglers * o.days_per_angler
+    o["angler_days_pop"] = o.pop_2020 * state_rate * o.days_per_angler
+    log.info("statewide stream angler-days: %s (%s anglers x days by home region x (1 - lake share); "
+             "%s with lake days, %.1f%% removed)", f"{o.angler_days.sum():,.0f}", f"{o.anglers.sum():,.0f}",
+             f"{all_days.sum():,.0f}", 100 * (1 - o.angler_days.sum() / all_days.sum()))
+    return o
 
 
 def candidates() -> pd.DataFrame:
@@ -102,70 +114,97 @@ def candidates() -> pd.DataFrame:
     return s
 
 
-def road_miles(bg: pd.DataFrame, s: pd.DataFrame) -> np.ndarray:
-    """Straight-line miles (EPSG:26918) from block-group center of population to section midpoint x circuity."""
-    to_utm = Transformer.from_crs(4326, 26918, always_xy=True)
-    bx, by = to_utm.transform(bg.LONGITUDE.values, bg.LATITUDE.values)
-    sx, sy = to_utm.transform(s.mid_lon.values, s.mid_lat.values)
-    straight = np.hypot(bx[:, None] - sx[None, :], by[:, None] - sy[None, :]) / M_PER_MI
-    c = param("circuity_factor")
-    log.info("distances: %d block groups x %d sections; road mi = straight x %g, farthest pair %.0f road mi",
-             len(bg), len(s), c, straight.max() * c)
-    return straight * c
+def road_miles(o: pd.DataFrame, s: pd.DataFrame) -> np.ndarray:
+    """Road miles (OSRM, Gavin's script 19) from each subdivision's centroid to each 2026 section's midpoint."""
+    d = pd.read_parquet(PROCESSED_DIR / "subdivision_to_section_road_distance.parquet",
+                        columns=["subdivision_id", "section_id", "road_mi"])
+    n, n_sec = len(d), d.section_id.nunique()
+    d = d[d.section_id.isin(s.section_id)]
+    assert set(d.section_id) == set(s.section_id), "a 2026 section has no road distances"
+    log.info("road distances: %d pairs (%d sections); kept %d to the %d sections stocked in 2026, left out %d to "
+             "the other %d", n, n_sec, len(d), len(s), n - len(d), n_sec - len(s))
+    road = d.pivot(index="subdivision_id", columns="section_id", values="road_mi")
+    road = road.reindex(index=o.subdivision_id, columns=s.section_id).to_numpy(dtype=float)
+    assert len(d) == road.size and not np.isnan(road).any(), "every subdivision x section pair needs a road distance"
+    log.info("road mi: %d pairs at 0 (first band), median nearest section %.1f, farthest pair %.1f (the last "
+             "band's end)", (road == 0).sum(), np.median(road.min(axis=1)), road.max())
+    return road
 
 
 # ---------------------------------------------------------------- proximity
-def per_mile_rates(band: np.ndarray, length: np.ndarray, shares: np.ndarray) -> np.ndarray:
-    """Angler-day share per stocked mile for each (block group, section) pair.
+def band_targets(has: np.ndarray) -> np.ndarray:
+    """Band each (origin, band) cell's share lands in: itself if it holds a stocked section, else the next band out
+    that does (decision 2026-10-04: an angler whose usual trip length has no stocked water drives a little farther),
+    else, past the last such band, the nearest band in."""
+    n_o, n_b = has.shape
+    out_, in_ = np.full((n_o, n_b), -1), np.full((n_o, n_b), -1)
+    nxt, prv = np.full(n_o, -1), np.full(n_o, -1)
+    for b in range(n_b - 1, -1, -1):
+        nxt = np.where(has[:, b], b, nxt)
+        out_[:, b] = nxt
+    for b in range(n_b):
+        prv = np.where(has[:, b], b, prv)
+        in_[:, b] = prv
+    target = np.where(out_ >= 0, out_, in_)
+    assert (target >= 0).all(), "an origin has no stocked section in any band"
+    return target
 
-    band: (n_bg, n_s) band index of each pair; shares: (n_bg, n_bands) each block group's band shares.
-    Returns rate with sum over s of rate[i, s] * length[s] = 1 for every block group.
+
+def per_mile_rates(band: np.ndarray, length: np.ndarray, shares: np.ndarray) -> np.ndarray:
+    """Angler-day share per stocked mile for each (origin, section) pair.
+
+    band: (n_o, n_s) band index of each pair; shares: (n_o, n_bands) each origin's band shares.
+    Returns rate with sum over s of rate[i, s] * length[s] = 1 for every origin.
     """
-    n_bands = shares.shape[1]
+    n_o, n_bands = shares.shape
     miles = np.stack([(band == b) @ length for b in range(n_bands)], axis=1)  # stocked miles per band
-    live = np.where(miles > 0, shares, 0.0)
-    live = live / live.sum(axis=1, keepdims=True)  # empty bands pass their share on in proportion
+    live = np.zeros_like(shares)  # empty bands pass their share to the next band out (band_targets)
+    np.add.at(live, (np.repeat(np.arange(n_o), n_bands), band_targets(miles > 0).ravel()), shares.ravel())
+    assert np.allclose(live.sum(axis=1), 1) and not (live[miles == 0] > 0).any()
     per_mile = np.divide(live, miles, out=np.zeros_like(live), where=miles > 0)
     rate = np.take_along_axis(per_mile, band, axis=1)
     assert np.allclose(rate @ length, 1)
     return rate
 
 
-def proximity(bg: pd.DataFrame, s: pd.DataFrame, road: np.ndarray, shares: pd.DataFrame) -> tuple:
+def proximity(o: pd.DataFrame, s: pd.DataFrame, road: np.ndarray, shares: pd.DataFrame) -> tuple:
     band = np.searchsorted(BAND_EDGES, road, side="left").astype(np.int8)  # (0,10] -> 0, (10,20] -> 1, ...
     length = s.length_mi.to_numpy()
-    home = bg.home.to_numpy()
+    home = o.home.to_numpy()
 
-    regional = shares[home].T.to_numpy()  # each block group's own region's curve
+    regional = shares[home].T.to_numpy()  # each subdivision's own region's curve
     miles = np.stack([(band == b) @ length for b in range(len(BANDS))], axis=1)
     empty = (miles == 0) & (regional > 0)
-    log.info("band shares passed on: %d of %d block group x band cells have no stocked section (%.1f%% of "
-             "angler-days re-spread)", empty.sum(), empty.size,
-             100 * (regional * empty * bg.angler_days.to_numpy()[:, None]).sum() / bg.angler_days.sum())
+    target = band_targets(miles > 0)
+    inward = empty & (target < np.arange(len(BANDS)))
+    moved = regional * o.angler_days.to_numpy()[:, None] / o.angler_days.sum()
+    log.info("band shares passed on: %d of %d subdivision x band cells have no stocked section (%.1f%% of "
+             "angler-days move to the next band out; %d cells, %.2f%%, have none farther out and move in)",
+             empty.sum(), empty.size, 100 * moved[empty & ~inward].sum(), inward.sum(), 100 * moved[inward].sum())
     rate = per_mile_rates(band, length, regional)
 
-    region_days = bg.groupby("home").angler_days.sum()
+    region_days = o.groupby("home").angler_days.sum()
     pooled_curve = shares.mul(region_days[REGIONS], axis=1).sum(axis=1) / region_days.sum()
     log.info("pooled in-state curve (regions weighted by angler-days): %s",
              dict(zip(BANDS, pooled_curve.round(3))))
-    rate_pooled = per_mile_rates(band, length, np.tile(pooled_curve.to_numpy(), (len(bg), 1)))
+    rate_pooled = per_mile_rates(band, length, np.tile(pooled_curve.to_numpy(), (len(o), 1)))
 
     out = pd.DataFrame({"section_id": s.section_id})
-    out["prox_days"] = (bg.angler_days.to_numpy() @ rate) * length
-    out["prox_days_pooled"] = (bg.angler_days.to_numpy() @ rate_pooled) * length
-    pop_raw = (bg.angler_days_pop.to_numpy() @ rate) * length
+    out["prox_days"] = (o.angler_days.to_numpy() @ rate) * length
+    out["prox_days_pooled"] = (o.angler_days.to_numpy() @ rate_pooled) * length
+    pop_raw = (o.angler_days_pop.to_numpy() @ rate) * length
     # a "where" sensitivity: rescaled to the same statewide total, so it only moves demand around
-    out["prox_days_pop"] = pop_raw * bg.angler_days.sum() / pop_raw.sum()
+    out["prox_days_pop"] = pop_raw * o.angler_days.sum() / pop_raw.sum()
     log.info("prox_days_pop: every county at the state angler rate; %s angler-days before rescaling to %s",
-             f"{pop_raw.sum():,.0f}", f"{bg.angler_days.sum():,.0f}")
+             f"{pop_raw.sum():,.0f}", f"{o.angler_days.sum():,.0f}")
     for c in ["prox_days", "prox_days_pooled", "prox_days_pop"]:
-        assert np.isclose(out[c].sum(), bg.angler_days.sum()), c
+        assert np.isclose(out[c].sum(), o.angler_days.sum()), c
     log.info("proximity: all three columns sum to the statewide total; prox_days quantiles p10/50/90 %s",
              out.prox_days.quantile([0.1, 0.5, 0.9]).round(0).tolist())
     return out, rate, band
 
 
-def proximity_checks(bg, s, out, rate, road) -> None:
+def proximity_checks(o, s, out, rate, road) -> None:
     """Report: angler-days landing in the home region vs the survey's p85, and Bear Creek's catchment."""
     p85 = pd.read_csv(SURVEY / "p85_preferred_water_county_by_region.csv").set_index("county")
     p85 = p85.drop(index="Not sure of county")
@@ -176,16 +215,16 @@ def proximity_checks(bg, s, out, rate, road) -> None:
     sec_region = s.region.str.lower().to_numpy()
     rows = []
     for r in REGIONS:
-        i = bg.home.eq(r).to_numpy()
-        landed = (bg.angler_days.to_numpy()[i] @ rate[i]) * length
+        i = o.home.eq(r).to_numpy()
+        landed = (o.angler_days.to_numpy()[i] @ rate[i]) * length
         rows.append({"home_region": r, "own_region_share": landed[sec_region == r].sum() / landed.sum(),
                      "p85_own_region_share": p85.loc[cr[p85.index] == r, r].sum() / p85[r].sum()})
     log.info("share of each home region's angler-days landing in its own region vs p85 (favorite water's "
              "county in the home region):\n%s", pd.DataFrame(rows).round(2).to_string(index=False))
 
     j = s.index[s.section_id.eq("3197_2")][0]
-    contrib = pd.Series(bg.angler_days.to_numpy() * rate[:, j] * length[j])
-    rings = pd.cut(road[:, j], [0, 10, 20, 30, 50, 100, np.inf])
+    contrib = pd.Series(o.angler_days.to_numpy() * rate[:, j] * length[j])
+    rings = pd.cut(road[:, j], [0, 10, 20, 30, 50, 100, np.inf], include_lowest=True)
     log.info("Bear Creek 3197_2: %.0f prox angler-days; share by road-mile ring %s", contrib.sum(),
              (contrib.groupby(rings, observed=True).sum() / contrib.sum()).round(2).to_dict())
 
@@ -198,9 +237,12 @@ def preference(s: pd.DataFrame, out: pd.DataFrame) -> tuple[pd.DataFrame, pd.Dat
     below = param("survey_pct_below_half")
     waters["pct"] = waters.pct_overall.where(~waters.lt_0_5_pct, below)
     assert waters.pct.notna().all()
-    total_pct = waters.pct.sum()
+    # lake mentions leave the denominator, as lake days left the total (subdivisions)
+    lakes = waters.waterbody.isin(cw.loc[cw.water_type.eq("lake"), "waterbody"])
+    total_pct = waters.pct[~lakes].sum()
     log.info("survey mentions: %.1f%% in all (up to three waters each, incl. Other and Don't know; %d waters "
-             "at '<0.5%%' = %g%%)", total_pct, waters.lt_0_5_pct.sum(), below)
+             "at '<0.5%%' = %g%%); %d lakes (%.2f%%) dropped, leaving %.2f%%", waters.pct.sum(),
+             waters.lt_0_5_pct.sum(), below, lakes.sum(), waters.pct[lakes].sum(), total_pct)
     statewide = out.prox_days.sum()
 
     s = s.assign(prox_days=out.prox_days.to_numpy())
@@ -217,7 +259,7 @@ def preference(s: pd.DataFrame, out: pd.DataFrame) -> tuple[pd.DataFrame, pd.Dat
     assert np.isclose(out.pref_days.sum(), statewide)
     share_named = (placed.pct * placed.match_share).sum() / total_pct
     log.info("preference: %.1f%% of mentions land on %d matched rivers (%d sections); %.1f%% unplaced "
-             "(Other, Don't know, lakes, unmatched, not stocked in 2026) is spread like prox_days",
+             "(Other, Don't know, unmatched, not stocked in 2026) is spread like prox_days",
              100 * named.sum() / statewide, by_river.size, named.gt(0).sum(), 100 * unplaced / statewide)
     assert abs(share_named - named.sum() / statewide) < 1e-9
 
@@ -273,11 +315,11 @@ def main() -> None:
     setup_logging("08_demand")
     days = days_by_region()
     shares = band_shares()
-    bg = block_groups(days)
+    o = subdivisions(days, lake_shares())
     s = candidates()
-    road = road_miles(bg, s)
-    out, rate, _ = proximity(bg, s, road, shares)
-    proximity_checks(bg, s, out, rate, road)
+    road = road_miles(o, s)
+    out, rate, _ = proximity(o, s, road, shares)
+    proximity_checks(o, s, out, rate, road)
     out, _ = preference(s, out)
     out = pd.concat([out, regulation_flags(s).set_axis(out.index)], axis=1)
     out.insert(1, "river_id", s.river_id.to_numpy())

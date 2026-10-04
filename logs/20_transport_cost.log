@@ -1,0 +1,35 @@
+2026-10-04 15:19:15,506 INFO 20_transport_cost run from commit 844f30a + uncommitted changes to scripts/00_extract_angler_survey.py, scripts/06_county_anglers.py, scripts/08_demand.py, scripts/20_transport_cost.py
+2026-10-04 15:19:15,609 INFO hatcheries: 13 in PFBC's layer; 11 in the schedule's supply table; not in it (no 2026 events): ['Fairview', 'Union City']
+2026-10-04 15:19:15,612 INFO supply: 9 hatcheries with 2026 stream fish, 2,606,465 fish (the model's total T); by hatchery {'Corry': 251290, 'Oswayo': 237248, 'Pleasant Gap': 325359, 'Benner Spring': 387530, 'Bellefonte': 481368, 'Tylersville': 326186, 'Reynoldsdale': 130640, 'Huntsdale': 451587, 'Tionesta': 15257}
+2026-10-04 15:19:15,622 INFO road distances: 13585 hatchery x section pairs; kept 13286 to the 1022 sections stocked in 2026
+2026-10-04 15:19:15,644 INFO kmedoids clusters (kmedoids_best_silhouette): 310 clusters; cluster average vs own road miles: mean |gap| 3.2 mi, p90 7.0, max 40.1
+2026-10-04 15:19:15,669 INFO schedule clusters (nate_schedule): 351 clusters; cluster average vs own road miles: mean |gap| 4.2 mi, p90 10.2, max 58.5
+2026-10-04 15:19:15,693 INFO hierarchical clusters (hierarchical_best_silhouette): 309 clusters; cluster average vs own road miles: mean |gap| 3.1 mi, p90 6.4, max 44.0
+2026-10-04 15:19:15,703 INFO cost per fish = 2 x cluster_road_mi x $1.90 / 2500 fish = $0.00152 per fish per one-way mile
+2026-10-04 15:19:15,720 INFO schedule stream events: 2102; 19 are on sections with no 2026 count or unmatched (0.0 fish), left out
+2026-10-04 15:19:15,731 INFO baseline flows vs 2026 counts: largest gap 0.03 fish, total -0.13
+2026-10-04 15:19:15,734 INFO baseline flows: 1071 section x hatchery pairs on 1022 sections (49 get fish from 2 hatcheries), 2,606,467.9 fish
+2026-10-04 15:19:15,740 INFO scheduled baseline: each hatchery's load vs supply (differences are rounding in the supply table):
+               baseline_load  supply  load_minus_supply
+hatchery                                               
+Bellefonte          481368.3  481368                0.3
+Benner Spring       387530.0  387530                0.0
+Corry               251290.7  251290                0.7
+Huntsdale           451587.2  451587                0.2
+Oswayo              237248.3  237248                0.3
+Pleasant Gap        325359.4  325359                0.4
+Reynoldsdale        130639.1  130640               -0.9
+Tionesta             15258.2   15257                1.2
+Tylersville         326186.7  326186                0.7
+2026-10-04 15:19:15,747 INFO nearest-hatchery baseline (cluster miles): load / supply by hatchery {'Corry': 0.36, 'Oswayo': 0.92, 'Pleasant Gap': 0.28, 'Benner Spring': 0.13, 'Bellefonte': 0.04, 'Tylersville': 1.69, 'Reynoldsdale': 2.5, 'Huntsdale': 1.72, 'Tionesta': 31.87} (not supply-feasible)
+2026-10-04 15:19:15,750 INFO sections whose scheduled hatchery is their nearest (cluster miles): 447 of 1022 (fish-weighted 42%)
+2026-10-04 15:19:15,753 INFO baseline transport cost per year (2 x miles x $1.90 / 2500 fish per load):
+                            cost_usd  truck_miles  mean_haul_mi
+scheduled, cluster_road_mi  351524.0     185013.0          89.0
+scheduled, road_mi          350487.0     184467.0          88.0
+nearest, cluster_road_mi    270530.0     142384.0          68.0
+nearest, road_mi            269518.0     141852.0          68.0
+2026-10-04 15:19:15,755 INFO fleet-miles check: the scheduled baseline implies 185,013 stream truck-miles at 2500 fish per load vs ~300,000 reported (all trips); matching it would take 1542 fish per load
+2026-10-04 15:19:15,758 INFO hatcheries: 13 rows, columns ['hatchery_id', 'hatchery', 'full_name', 'county', 'region', 'lat', 'lon', 'trout_flag', 'supply', 'in_2026_schedule']
+2026-10-04 15:19:15,814 INFO cost_matrix: 13286 rows, columns ['hatchery_id', 'hatchery', 'in_2026_schedule', 'section_id', 'cluster_id', 'road_mi', 'cluster_road_mi', 'cost_per_fish', 'cluster_road_mi_schedule', 'cluster_road_mi_hierarchical']
+2026-10-04 15:19:15,822 INFO baseline_flows: 1071 rows, columns ['section_id', 'hatchery_id', 'hatchery', 'fish', 'road_mi', 'cluster_road_mi', 'cost_per_fish', 'cost']

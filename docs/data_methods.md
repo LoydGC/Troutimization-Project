@@ -158,27 +158,79 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
   licenses (117,500). Result: 421,615 resident anglers, 3.2 per 100 residents.
 - **Changes:** "Out of State" agents (818 permits, fewer than their 1,015 non-resident licenses) are dropped as
   non-residents. "Mckean" is matched to the Census "McKean" case-insensitively.
-- **Population:** 2020 Census block groups (Centers of Population file) summed to counties.
+- **Population** (since 2026-10-04): 2020 Census counts (`POP100`, the PL 94-171 total population) per county
+  subdivision from TIGERweb's Census 2020 layers, summed to counties (`source_inventory.md` § Census). Before,
+  2020 block groups were summed; the numbers are the same. Checks (asserted): the 2,573 subdivisions add to
+  PA's 13,002,700, and each county's subdivisions add to its own TIGERweb county count. Those counts equal the
+  block-group sums used before (67 of 67), so `county_anglers` didn't change. The plan was the Census Data API
+  (`api.census.gov`, 2020 PL 94-171 `P1_001N`), but it now refuses data requests without a key.
 
-**Proximity demand** (`scripts/08_demand.py`, 2026-09-28; design in `model_design.md` § Angler benefit)
+**Subdivision anglers** (`scripts/06_county_anglers.py`, 2026-10-04): the proximity origins.
+- **Origins** are Gavin's 2,567 county subdivisions (1 Jan 2026 boundaries, `county_subdivisions`). The 2020
+  counts are matched on GEOID: 2,565 keep their code. Each of the 7 2020 subdivisions with no 2026 code goes
+  to the 2026 subdivision that holds its 2020 internal point (TIGERweb ACS2026 point queries, saved raw):
+  - Mount Lebanon and Penn Hills, Allegheny: renamed from township to municipality, with a new code.
+  - South New Castle borough (647 people) → Shenango township, Lawrence.
+  - Wheatland borough (585) → Hermitage city, Mercer.
+  - Callimont borough (56) → Larimer township, Somerset.
+  - East Keating township (7) → Noyes township, Clinton.
+  - Falls Creek borough's Clearfield County part (42) → Falls Creek borough, Jefferson County: the only
+    county change.
+
+  Lake Erie's "County subdivisions not defined" (0 people) has no origin. Boundary changes that kept their
+  codes (annexations) can't be seen, so the 2020 count of each code sits on its 2026 polygon.
+- **Anglers** = 2020 population × the angler rate of the subdivision's (2026) county. Falls Creek's 42 people
+  take Jefferson's rate, so Clearfield's subdivisions hold 42 fewer people than its 2020 count, Jefferson's
+  42 more, and statewide anglers are 421,614.3 instead of 421,615. One subdivision has no population (Ashland
+  borough's Columbia County part).
+
+**Proximity demand** (`scripts/08_demand.py`, 2026-09-28; origins and distance changed 2026-10-04; design in
+`model_design.md` § Angler benefit)
 - **Days fished:** each home region's mean days fished for stocked trout (p115) from band midpoints (41–50 →
   45.5, ..., 6–10 → 8) and 105 for "Over 50 days" (`parameters.csv`), with "Don't know" dropped. This
   reproduces the published statewide mean (20.57 vs 20.6). Northcentral 26.7, the others 19.1–21.4.
-- **Angler-days per block group** = 2020 population × county angler rate × home-region days: 8.72M statewide.
-  68 block groups have no population.
-- **Distance:** straight-line miles in EPSG:26918 from the block group's center of population (Census) to
-  the section midpoint, × 1.3 (`circuity_factor`). The farthest pair is 417 road mi.
-- **Bands:** each home region's p93 shares ("Don't know" dropped), with a distance in (0, 10] going to
-  "0–10 miles", (10, 20] to "11–20 miles", and so on; "More than 150 miles" is open-ended. Within a band a
-  block group's angler-days are split among the 2026-stocked sections in it by `length_mi`. A band with no
-  section passes its share to the block group's other bands in proportion (783 of 122,076 block group × band
-  cells; 2.4% of angler-days).
+- **Lake days removed** (decision 2026-10-03): the survey's days fished include lake days, and lakes aren't in
+  the section set. Each home region's lake share of days = % primarily fishing lakes + 0.5 × % fishing both about
+  equally (p88; `lake_days_both_share` in `parameters.csv`), so 'primarily streams' anglers count no lake days
+  and 'primarily lakes' anglers all lake days (assumed to offset). Northwest and Southeast 13.1%, Southcentral
+  14.5%, Northcentral 19.0%, Southwest 25.5%, Northeast 29.0%; 18.3% statewide, close to PFBC's ~20% of adult
+  trout stocked in lakes.
+- **Stream angler-days per county subdivision** = `subdivision_anglers.anglers` × home-region days ×
+  (1 − home-region lake share), with the home region taken from the subdivision's county: 7,121,847 statewide
+  (8,717,546 with lake days). It was 7,121,842 on block groups. That build multiplied population by county
+  rates rounded to 6 decimals (about 21 angler-days low), and Falls Creek's 42 people now take Jefferson's
+  lower rate (about 16 fewer).
+- **Distance:** Gavin's OSRM road miles from each subdivision's centroid to the section midpoint
+  (`subdivision_to_section_road_distance`), with no circuity factor. Kept: the 2,623,474 pairs to the 1,022
+  sections stocked in 2026, of 2,682,515 (the other 23 sections are left out). Every pair has a route. No
+  pair is 0 mi (0 would go to the first band); the median nearest section is 5.2 road mi and the farthest pair
+  440.2.
+- **Bands:** each home region's p93 shares ("Don't know" dropped), with a distance in [0, 10] going to
+  "0–10 miles", (10, 20] to "11–20 miles", and so on. "More than 150 miles" runs to the farthest pair. Within a
+  band a subdivision's angler-days are split among the 2026-stocked sections in it by `length_mi`. A band with
+  no section passes its share to the next band out that has one (decision 2026-10-04; to the nearest band in if
+  none farther out does, which never happens in the build): 312 of 30,804 subdivision × band cells, 4.9% of
+  angler-days (2.4% on block groups, where the share was re-spread over the other bands in proportion). Nearly all of it (4.8 points) is first-band trips from
+  origins whose nearest stocked section is just past 10 road mi, because a city is a single point:
+  Pittsburgh 10.2 mi, State College 10.9, Wilkes-Barre 11.0. Their first-band share lands in 11–20 mi. Against
+  the proportional re-spread, section `D_s` moves −6% to +5% (p5–p95), rank correlation 0.999.
 - **Variants:** `prox_days_pooled` uses one in-state curve, the regional curves weighted by each region's
   angler-days. `prox_days_pop` puts every county at the state angler rate and is rescaled to the same
-  statewide total (it was 8.52M, since the regional mix of days changes), so it only moves demand around.
+  statewide total (it was 7.04M, since the regional mix of days changes), so it only moves demand around.
 - **Checks:** all three columns sum to the statewide total (asserted). Each home region's share of angler-days
-  landing in its own region is 74–84%, against 65–89% of favorite waters in the home region in the survey
-  (p85, "Not sure of county" left out; by region in `logs/08_demand.log`).
+  landing in its own region is 77–86% (74–84% on block groups), against 65–89% of favorite waters in the home
+  region in the survey (p85, "Not sure of county" left out; by region in `logs/08_demand.log`).
+- **Change from the block-group build** (2026-10-04, per section; `D_s` at w = 0.5):
+  - New ÷ old `D_s`: 0.78 at p5, 1.00 at the median, 1.29 at p95, rank correlation 0.99. For `prox_days`:
+    0.73 / 1.00 / 1.34, rank correlation 0.97. Each region's share of demand moves 0.3 points or less.
+  - The biggest drops (×0.4–0.6) sit behind rivers and ridges, where road miles run 1.7–2.8× the straight
+    line. Towns that were within 10 mi by straight line × 1.3 are now 15–30 road mi away: East Licking Creek
+    2888_4 (Lewistown), Conoy Creek 396_2 and Fishing Creek 63_2 (across the Susquehanna), West Branch
+    Conestoga 418_2. Another drop: a city whose centroid lands just past 10 road mi (Gardner Creek 1759_2 and
+    Scranton, 10.5).
+  - The biggest gains (×1.6–2.6): a city centroid now inside 10 road mi (Lycoming Creek 113_4 and
+    Williamsport, Blair Gap Run 3211_2 and Logan township), or less first-band competition (Rose Pond Branch
+    2105_2, Meadow Creek 3131_2).
 - **Candidates:** the 1,022 sections stocked in 2026. A scenario that lets dropped sections back needs a rerun
   with them in the section set, since demand is split among the sections that exist.
 
@@ -200,19 +252,22 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
   county or not sure" rows, 2 waters not stocked in 2026 and 5 with no PFBC section at all (e.g. the main stem
   of the Clarion River; only its branches are stocked).
 - **Result:** 63.1% of all mentions (including Other and Don't know) land on 160 rivers stocked in 2026; 16
-  waters (6.4% of mentions) wait for review. The survey's county spelling "Schuykill" is read as Schuylkill.
+  waters (6.4% of mentions) wait for review. With lake mentions left out (Preference demand below), that's
+  69.5% and 7.0% of stream mentions. The survey's county spelling "Schuykill" is read as Schuylkill.
 
 **Preference demand** (`scripts/08_demand.py`, 2026-09-28)
-- A water's share = its % ÷ all mentions (219.5%: up to three waters each, incl. Other and Don't know;
-  "<0.5%" counts as 0.25%, `parameters.csv`). Share × `match_share` × statewide angler-days is split over the
+- A water's share = its % ÷ all stream mentions: 219.5% in all (up to three waters each, incl. Other and
+  Don't know; "<0.5%" counts as 0.25%, `parameters.csv`), minus the 39 lakes' 20.25%, which leave with the lake
+  days (decision 2026-10-03), = 199.25%. Share × `match_share` × statewide stream angler-days is split over the
   river's 2026-stocked sections by `length_mi` (`pref_days_named`).
-- The unplaced 36.9% is spread in proportion to `prox_days`, so `pref_days` sums to the same statewide total
-  (asserted).
+- The unplaced 30.5% (Other, Don't know, unmatched, not stocked in 2026) is spread in proportion to
+  `prox_days`, so `pref_days` sums to the same statewide total (asserted).
 - **Per-mile flag:** a river whose preference per stocked mile exceeds the state's highest `prox_days` per
-  mile (39,537, Cascade Creek in Erie) is flagged, not capped. Only the Youghiogheny is (71,302 per mile on its
-  1.1 mi tailwater).
-- **Destination index** = the river's preference ÷ its proximity angler-days (median 1.4; Tulpehocken 1.0,
-  Yellow Breeches 1.3, Pine Creek 5.0, Kettle Creek 6.9). Per-river detail: `logs/08_demand_waters.csv`.
+  mile (28,484, Cascade Creek in Erie; 34,338 on block groups) is flagged, not capped. Two are: the Youghiogheny
+  (64,171 per mile on its 1.1 mi tailwater) and, since the 2026-10-04 rebuild, White Clay Creek 2027_1 (32,201
+  per mile on 1.1 mi in Chester County).
+- **Destination index** = the river's preference ÷ its proximity angler-days (median 1.5; Tulpehocken 1.1,
+  Yellow Breeches 1.3, Pine Creek 6.6, Kettle Creek 10.5). Per-river detail: `logs/08_demand_waters.csv`.
 
 **Regulation flags** (`scripts/08_demand.py`) come from PFBC's own fields: `dhalo` = `reg_name` contains
 "Delayed Harvest" (56), `catch_release` = any of its 5 catch-and-release spellings (30), `keystone_select` =
@@ -297,6 +352,23 @@ in the Operational Guidelines (Tables 15, 16 and 18). All 1,045 codes match the 
   (road / straight-line median 1.49 under 5 mi, 1.38 at 20-40 mi, 1.31 over 80 mi).
 - **What the table says:** road miles run from 0 to 440 (median 152); the nearest stocked section is a median 5.1 road miles from a subdivision (90th percentile
   10.4, maximum 22.7). The parquet is 29.8 MB.
+
+**Transport cost inputs** (`scripts/20_transport_cost.py`, 2026-10-04; design in `model_design.md` § Transport cost)
+- **Supply nodes:** PFBC's State Fish Hatcheries layer (13), names stripped of trailing spaces. Supply is each hatchery's
+  2026 stream fish from the schedule (`hatchery_schedule_supply.csv`); the 4 with no 2026 stream events get 0. No
+  production-pounds split (decision 2026-10-04).
+- **Haul miles:** Gavin's road miles and cluster averages are joined, not rebuilt. The script recomputes each cluster's mean
+  from `road_mi` and asserts it matches `cluster_hatchery_distance` (all three labellings). Cluster average vs a section's
+  own miles: mean gap 3.2 mi for k-medoids (p90 7.0), 4.2 for the schedule clusters, 3.1 for hierarchical.
+- **Baseline flows:** the 2,102 stream events of the 2026 schedule; 19 on sections with no 2026 count (stocked in 2025, or
+  unmatched) carry no fish and are left out. Flows sum to each section's `total_2026` (largest gap 0.03 fish).
+- **Checks (logged):** loads vs supply, baseline cost under scheduled and nearest hatcheries, and implied truck-miles vs the
+  reported ~300,000 fleet miles.
+
+**Model input** (`scripts/21_model_input.py`, 2026-10-04): a 1:1 join of `sections`, `environment` and `demand` on
+`section_id` for the 1,022 candidates (every join matched all rows, logged). No values are changed; the impact weights
+(`impact_weighted`, `impact_simple`, `impact_overlap`) are computed from `biomass_class` and `nat_repro_share` with
+the `impact_weight` rows of `parameters.csv`.
 
 **Map layers.** The wild-trout context layers in `pa_trout.gpkg` are simplified to a 5 m tolerance to keep
 the file small. All overlaps are computed from the full-resolution layers first.

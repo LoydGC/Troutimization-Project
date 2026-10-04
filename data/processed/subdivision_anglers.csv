@@ -1,0 +1,2568 @@
+subdivision_id,name,county,county_fips,region,pop_2020,angler_rate,anglers
+4200100116,Abbottstown borough,Adams,42001,Southcentral,1022,0.019908,20.346
+4200102928,Arendtsville borough,Adams,42001,Southcentral,867,0.019908,17.26
+4200105536,Bendersville borough,Adams,42001,Southcentral,736,0.019908,14.652
+4200105880,Berwick township,Adams,42001,Southcentral,2403,0.019908,47.839
+4200106296,Biglerville borough,Adams,42001,Southcentral,1225,0.019908,24.387
+4200107560,Bonneauville borough,Adams,42001,Southcentral,1758,0.019908,34.998
+4200110456,Butler township,Adams,42001,Southcentral,2550,0.019908,50.765
+4200111472,Carroll Valley borough,Adams,42001,Southcentral,3940,0.019908,78.437
+4200115632,Conewago township,Adams,42001,Southcentral,7875,0.019908,156.774
+4200117640,Cumberland township,Adams,42001,Southcentral,7033,0.019908,140.012
+4200120792,East Berlin borough,Adams,42001,Southcentral,1542,0.019908,30.698
+4200124560,Fairfield borough,Adams,42001,Southcentral,526,0.019908,10.472
+4200127320,Franklin township,Adams,42001,Southcentral,4676,0.019908,93.089
+4200127704,Freedom township,Adams,42001,Southcentral,825,0.019908,16.424
+4200128936,Germany township,Adams,42001,Southcentral,2844,0.019908,56.618
+4200128960,Gettysburg borough,Adams,42001,Southcentral,7106,0.019908,141.465
+4200132144,Hamilton township,Adams,42001,Southcentral,2714,0.019908,54.03
+4200132200,Hamiltonban township,Adams,42001,Southcentral,2300,0.019908,45.788
+4200134424,Highland township,Adams,42001,Southcentral,997,0.019908,19.848
+4200136424,Huntington township,Adams,42001,Southcentral,2395,0.019908,47.679
+4200141672,Latimore township,Adams,42001,Southcentral,2646,0.019908,52.676
+4200143056,Liberty township,Adams,42001,Southcentral,1376,0.019908,27.393
+4200143944,Littlestown borough,Adams,42001,Southcentral,4782,0.019908,95.199
+4200146376,McSherrystown borough,Adams,42001,Southcentral,3077,0.019908,61.256
+4200148608,Menallen township,Adams,42001,Southcentral,3701,0.019908,73.679
+4200151640,Mount Joy township,Adams,42001,Southcentral,3789,0.019908,75.431
+4200151776,Mount Pleasant township,Adams,42001,Southcentral,4666,0.019908,92.89
+4200153920,New Oxford borough,Adams,42001,Southcentral,1868,0.019908,37.188
+4200157472,Oxford township,Adams,42001,Southcentral,5936,0.019908,118.173
+4200163616,Reading township,Adams,42001,Southcentral,5799,0.019908,115.445
+4200174680,Straban township,Adams,42001,Southcentral,4851,0.019908,96.573
+4200178160,Tyrone township,Adams,42001,Southcentral,2268,0.019908,45.151
+4200178264,Union township,Adams,42001,Southcentral,3076,0.019908,61.236
+4200187136,York Springs borough,Adams,42001,Southcentral,683,0.019908,13.597
+4200300724,Aleppo township,Allegheny,42003,Southwest,1825,0.023929,43.67
+4200303320,Aspinwall borough,Allegheny,42003,Southwest,2916,0.023929,69.777
+4200303608,Avalon borough,Allegheny,42003,Southwest,4762,0.023929,113.949
+4200303928,Baldwin borough,Allegheny,42003,Southwest,21510,0.023929,514.711
+4200303932,Baldwin township,Allegheny,42003,Southwest,1985,0.023929,47.499
+4200305216,Bell Acres borough,Allegheny,42003,Southwest,1505,0.023929,36.013
+4200305312,Bellevue borough,Allegheny,42003,Southwest,8311,0.023929,198.873
+4200305504,Ben Avon borough,Allegheny,42003,Southwest,1918,0.023929,45.896
+4200305520,Ben Avon Heights borough,Allegheny,42003,Southwest,400,0.023929,9.572
+4200306064,Bethel Park municipality,Allegheny,42003,Southwest,33577,0.023929,803.461
+4200307000,Blawnox borough,Allegheny,42003,Southwest,1454,0.023929,34.793
+4200307976,Brackenridge borough,Allegheny,42003,Southwest,3240,0.023929,77.53
+4200307992,Braddock borough,Allegheny,42003,Southwest,1721,0.023929,41.182
+4200308008,Braddock Hills borough,Allegheny,42003,Southwest,1730,0.023929,41.397
+4200308064,Bradford Woods borough,Allegheny,42003,Southwest,1183,0.023929,28.308
+4200308416,Brentwood borough,Allegheny,42003,Southwest,10082,0.023929,241.251
+4200308624,Bridgeville borough,Allegheny,42003,Southwest,4804,0.023929,114.954
+4200311336,Carnegie borough,Allegheny,42003,Southwest,8134,0.023929,194.638
+4200311680,Castle Shannon borough,Allegheny,42003,Southwest,8249,0.023929,197.389
+4200312496,Chalfant borough,Allegheny,42003,Southwest,748,0.023929,17.899
+4200313392,Cheswick borough,Allegheny,42003,Southwest,1672,0.023929,40.009
+4200313608,Churchill borough,Allegheny,42003,Southwest,3157,0.023929,75.544
+4200313704,Clairton municipality,Allegheny,42003,Southwest,6181,0.023929,147.905
+4200315216,Collier township,Allegheny,42003,Southwest,8935,0.023929,213.805
+4200316144,Coraopolis borough,Allegheny,42003,Southwest,5559,0.023929,133.021
+4200316848,Crafton borough,Allegheny,42003,Southwest,6099,0.023929,145.942
+4200317048,Crescent township,Allegheny,42003,Southwest,2488,0.023929,59.535
+4200319576,Dormont borough,Allegheny,42003,Southwest,8244,0.023929,197.27
+4200319856,Dravosburg borough,Allegheny,42003,Southwest,1612,0.023929,38.573
+4200320432,Duquesne city,Allegheny,42003,Southwest,5254,0.023929,125.722
+4200321024,East Deer township,Allegheny,42003,Southwest,1490,0.023929,35.654
+4200321444,East McKeesport borough,Allegheny,42003,Southwest,2076,0.023929,49.676
+4200321712,East Pittsburgh borough,Allegheny,42003,Southwest,1927,0.023929,46.111
+4200322520,Edgewood borough,Allegheny,42003,Southwest,3145,0.023929,75.256
+4200322576,Edgeworth borough,Allegheny,42003,Southwest,1669,0.023929,39.937
+4200322992,Elizabeth borough,Allegheny,42003,Southwest,1398,0.023929,33.453
+4200323000,Elizabeth township,Allegheny,42003,Southwest,12982,0.023929,310.645
+4200323616,Emsworth borough,Allegheny,42003,Southwest,2525,0.023929,60.42
+4200324160,Etna borough,Allegheny,42003,Southwest,3437,0.023929,82.244
+4200325400,Fawn township,Allegheny,42003,Southwest,2210,0.023929,52.883
+4200325904,Findlay township,Allegheny,42003,Southwest,6372,0.023929,152.475
+4200326592,Forest Hills borough,Allegheny,42003,Southwest,6429,0.023929,153.839
+4200326896,Forward township,Allegheny,42003,Southwest,3070,0.023929,73.462
+4200327120,Fox Chapel borough,Allegheny,42003,Southwest,5343,0.023929,127.852
+4200327552,Franklin Park borough,Allegheny,42003,Southwest,15479,0.023929,370.395
+4200327608,Frazer township,Allegheny,42003,Southwest,1161,0.023929,27.781
+4200329432,Glassport borough,Allegheny,42003,Southwest,4475,0.023929,107.082
+4200329592,Glenfield borough,Allegheny,42003,Southwest,212,0.023929,5.073
+4200329732,Glen Osborne borough,Allegheny,42003,Southwest,590,0.023929,14.118
+4200331256,Green Tree borough,Allegheny,42003,Southwest,4941,0.023929,118.233
+4200332328,Hampton township,Allegheny,42003,Southwest,18479,0.023929,442.182
+4200332624,Harmar township,Allegheny,42003,Southwest,3133,0.023929,74.969
+4200332832,Harrison township,Allegheny,42003,Southwest,10157,0.023929,243.046
+4200333312,Haysville borough,Allegheny,42003,Southwest,81,0.023929,1.938
+4200333592,Heidelberg borough,Allegheny,42003,Southwest,1288,0.023929,30.82
+4200335424,Homestead borough,Allegheny,42003,Southwest,2884,0.023929,69.011
+4200336808,Indiana township,Allegheny,42003,Southwest,7254,0.023929,173.58
+4200337000,Ingram borough,Allegheny,42003,Southwest,3391,0.023929,81.143
+4200337955,Jefferson Hills borough,Allegheny,42003,Southwest,12424,0.023929,297.293
+4200339312,Kennedy township,Allegheny,42003,Southwest,8701,0.023929,208.205
+4200339624,Kilbuck township,Allegheny,42003,Southwest,773,0.023929,18.497
+4200342368,Leet township,Allegheny,42003,Southwest,1624,0.023929,38.861
+4200342392,Leetsdale borough,Allegheny,42003,Southwest,1162,0.023929,27.805
+4200343064,Liberty borough,Allegheny,42003,Southwest,2355,0.023929,56.353
+4200343408,Lincoln borough,Allegheny,42003,Southwest,932,0.023929,22.302
+4200345900,McCandless township,Allegheny,42003,Southwest,29698,0.023929,710.64
+4200346072,McDonald borough,Allegheny,42003,Southwest,396,0.023929,9.476
+4200346256,McKeesport city,Allegheny,42003,Southwest,17727,0.023929,424.188
+4200346264,McKees Rocks borough,Allegheny,42003,Southwest,5920,0.023929,141.659
+4200347696,Marshall township,Allegheny,42003,Southwest,10080,0.023929,241.203
+4200349920,Millvale borough,Allegheny,42003,Southwest,3376,0.023929,80.784
+4200350528,Monroeville municipality,Allegheny,42003,Southwest,28640,0.023929,685.324
+4200350784,Moon township,Allegheny,42003,Southwest,27240,0.023929,651.823
+4200351744,Mount Oliver borough,Allegheny,42003,Southwest,3394,0.023929,81.215
+4200351794,Mount Lebanon municipality,Allegheny,42003,Southwest,34075,0.023929,815.377
+4200352320,Munhall borough,Allegheny,42003,Southwest,10774,0.023929,257.81
+4200353136,Neville township,Allegheny,42003,Southwest,1108,0.023929,26.513
+4200354816,North Braddock borough,Allegheny,42003,Southwest,4320,0.023929,103.373
+4200355016,North Fayette township,Allegheny,42003,Southwest,16167,0.023929,386.859
+4200355488,North Versailles township,Allegheny,42003,Southwest,10074,0.023929,241.06
+4200355840,Oakdale borough,Allegheny,42003,Southwest,1475,0.023929,35.295
+4200356088,Oakmont borough,Allegheny,42003,Southwest,6758,0.023929,161.711
+4200356384,O'Hara township,Allegheny,42003,Southwest,9284,0.023929,222.156
+4200356392,Ohio township,Allegheny,42003,Southwest,7178,0.023929,171.762
+4200359040,Penn Hills municipality,Allegheny,42003,Southwest,41059,0.023929,982.497
+4200359152,Pennsbury Village borough,Allegheny,42003,Southwest,677,0.023929,16.2
+4200360272,Pine township,Allegheny,42003,Southwest,14691,0.023929,351.539
+4200360712,Pitcairn borough,Allegheny,42003,Southwest,3101,0.023929,74.204
+4200361000,Pittsburgh city,Allegheny,42003,Southwest,302971,0.023929,7249.762
+4200361328,Pleasant Hills borough,Allegheny,42003,Southwest,8504,0.023929,203.491
+4200361536,Plum borough,Allegheny,42003,Southwest,27144,0.023929,649.526
+4200362320,Port Vue borough,Allegheny,42003,Southwest,3680,0.023929,88.058
+4200363408,Rankin borough,Allegheny,42003,Southwest,1896,0.023929,45.369
+4200364240,Reserve township,Allegheny,42003,Southwest,3255,0.023929,77.889
+4200364528,Richland township,Allegheny,42003,Southwest,11942,0.023929,285.759
+4200365352,Robinson township,Allegheny,42003,Southwest,15503,0.023929,370.97
+4200366264,Ross township,Allegheny,42003,Southwest,33567,0.023929,803.221
+4200366320,Rosslyn Farms borough,Allegheny,42003,Southwest,441,0.023929,10.553
+4200368388,Scott township,Allegheny,42003,Southwest,17649,0.023929,422.321
+4200369376,Sewickley borough,Allegheny,42003,Southwest,3907,0.023929,93.49
+4200369400,Sewickley Heights borough,Allegheny,42003,Southwest,857,0.023929,20.507
+4200369416,Sewickley Hills borough,Allegheny,42003,Southwest,689,0.023929,16.487
+4200369584,Shaler township,Allegheny,42003,Southwest,28132,0.023929,673.168
+4200369776,Sharpsburg borough,Allegheny,42003,Southwest,3187,0.023929,76.261
+4200372160,South Fayette township,Allegheny,42003,Southwest,18358,0.023929,439.287
+4200372400,South Park township,Allegheny,42003,Southwest,13727,0.023929,328.472
+4200372568,South Versailles township,Allegheny,42003,Southwest,310,0.023929,7.418
+4200372960,Springdale borough,Allegheny,42003,Southwest,3400,0.023929,81.358
+4200372968,Springdale township,Allegheny,42003,Southwest,1540,0.023929,36.851
+4200374648,Stowe township,Allegheny,42003,Southwest,6426,0.023929,153.767
+4200375816,Swissvale borough,Allegheny,42003,Southwest,8624,0.023929,206.363
+4200376104,Tarentum borough,Allegheny,42003,Southwest,4352,0.023929,104.139
+4200376560,Thornburg borough,Allegheny,42003,Southwest,466,0.023929,11.151
+4200377272,Trafford borough,Allegheny,42003,Southwest,90,0.023929,2.154
+4200377912,Turtle Creek borough,Allegheny,42003,Southwest,5114,0.023929,122.372
+4200379274,Upper St. Clair township,Allegheny,42003,Southwest,21160,0.023929,506.335
+4200380032,Verona borough,Allegheny,42003,Southwest,2492,0.023929,59.631
+4200380040,Versailles borough,Allegheny,42003,Southwest,1476,0.023929,35.319
+4200380600,Wall borough,Allegheny,42003,Southwest,519,0.023929,12.419
+4200382800,West Deer township,Allegheny,42003,Southwest,12262,0.023929,293.416
+4200382848,West Elizabeth borough,Allegheny,42003,Southwest,403,0.023929,9.643
+4200383200,West Homestead borough,Allegheny,42003,Southwest,1872,0.023929,44.795
+4200383512,West Mifflin borough,Allegheny,42003,Southwest,19589,0.023929,468.743
+4200384144,West View borough,Allegheny,42003,Southwest,6685,0.023929,159.965
+4200384440,Whitaker borough,Allegheny,42003,Southwest,1179,0.023929,28.212
+4200384512,Whitehall borough,Allegheny,42003,Southwest,15064,0.023929,360.465
+4200384704,White Oak borough,Allegheny,42003,Southwest,7630,0.023929,182.577
+4200385184,Wilkins township,Allegheny,42003,Southwest,6350,0.023929,151.949
+4200385188,Wilkinsburg borough,Allegheny,42003,Southwest,14349,0.023929,343.356
+4200385496,Wilmerding borough,Allegheny,42003,Southwest,1781,0.023929,42.617
+4200502720,Apollo borough,Armstrong,42005,Southwest,1615,0.069395,112.073
+4200502752,Applewold borough,Armstrong,42005,Southwest,334,0.069395,23.178
+4200503480,Atwood borough,Armstrong,42005,Southwest,112,0.069395,7.772
+4200505992,Bethel township,Armstrong,42005,Southwest,1098,0.069395,76.196
+4200507416,Boggs township,Armstrong,42005,Southwest,817,0.069395,56.696
+4200508152,Bradys Bend township,Armstrong,42005,Southwest,784,0.069395,54.406
+4200510344,Burrell township,Armstrong,42005,Southwest,656,0.069395,45.523
+4200510680,Cadogan township,Armstrong,42005,Southwest,345,0.069395,23.941
+4200516728,Cowanshannock township,Armstrong,42005,Southwest,2741,0.069395,190.213
+4200518400,Dayton borough,Armstrong,42005,Southwest,549,0.069395,38.098
+4200521160,East Franklin township,Armstrong,42005,Southwest,3816,0.069395,264.813
+4200522832,Elderton borough,Armstrong,42005,Southwest,334,0.069395,23.178
+4200526512,Ford City borough,Armstrong,42005,Southwest,2859,0.069395,198.401
+4200526520,Ford Cliff borough,Armstrong,42005,Southwest,361,0.069395,25.052
+4200527784,Freeport borough,Armstrong,42005,Southwest,1736,0.069395,120.47
+4200529184,Gilpin township,Armstrong,42005,Southwest,2411,0.069395,167.312
+4200535936,Hovey township,Armstrong,42005,Southwest,74,0.069395,5.135
+4200539968,Kiskiminetas township,Armstrong,42005,Southwest,4605,0.069395,319.566
+4200540040,Kittanning borough,Armstrong,42005,Southwest,3921,0.069395,272.099
+4200540056,Kittanning township,Armstrong,42005,Southwest,2035,0.069395,141.22
+4200542280,Leechburg borough,Armstrong,42005,Southwest,2149,0.069395,149.131
+4200546456,Madison township,Armstrong,42005,Southwest,824,0.069395,57.182
+4200546632,Mahoning township,Armstrong,42005,Southwest,1404,0.069395,97.431
+4200546976,Manor township,Armstrong,42005,Southwest,4179,0.069395,290.003
+4200547064,Manorville borough,Armstrong,42005,Southwest,382,0.069395,26.509
+4200554728,North Apollo borough,Armstrong,42005,Southwest,1252,0.069395,86.883
+4200554856,North Buffalo township,Armstrong,42005,Southwest,2699,0.069395,187.298
+4200557976,Parker city,Armstrong,42005,Southwest,695,0.069395,48.23
+4200558160,Parks township,Armstrong,42005,Southwest,2472,0.069395,171.545
+4200559440,Perry township,Armstrong,42005,Southwest,373,0.069395,25.884
+4200560280,Pine township,Armstrong,42005,Southwest,351,0.069395,24.358
+4200561576,Plumcreek township,Armstrong,42005,Southwest,2112,0.069395,146.563
+4200563560,Rayburn township,Armstrong,42005,Southwest,1775,0.069395,123.177
+4200563712,Redbank township,Armstrong,42005,Southwest,974,0.069395,67.591
+4200566720,Rural Valley borough,Armstrong,42005,Southwest,826,0.069395,57.321
+4200571968,South Bend township,Armstrong,42005,Southwest,1006,0.069395,69.812
+4200571976,South Bethlehem borough,Armstrong,42005,Southwest,489,0.069395,33.934
+4200572000,South Buffalo township,Armstrong,42005,Southwest,2709,0.069395,187.992
+4200574992,Sugarcreek township,Armstrong,42005,Southwest,1350,0.069395,93.684
+4200579528,Valley township,Armstrong,42005,Southwest,656,0.069395,45.523
+4200581176,Washington township,Armstrong,42005,Southwest,895,0.069395,62.109
+4200581720,Wayne township,Armstrong,42005,Southwest,1296,0.069395,89.936
+4200583024,West Franklin township,Armstrong,42005,Southwest,1701,0.069395,118.041
+4200583248,West Kittanning borough,Armstrong,42005,Southwest,1192,0.069395,82.719
+4200586560,Worthington borough,Armstrong,42005,Southwest,594,0.069395,41.221
+4200700820,Aliquippa city,Beaver,42007,Southwest,9238,0.032929,304.195
+4200702288,Ambridge borough,Beaver,42007,Southwest,6972,0.032929,229.578
+4200703736,Baden borough,Beaver,42007,Southwest,3904,0.032929,128.553
+4200704688,Beaver borough,Beaver,42007,Southwest,4438,0.032929,146.137
+4200704792,Beaver Falls city,Beaver,42007,Southwest,9005,0.032929,296.522
+4200706240,Big Beaver borough,Beaver,42007,Southwest,1852,0.032929,60.984
+4200708632,Bridgewater borough,Beaver,42007,Southwest,745,0.032929,24.532
+4200708680,Brighton township,Beaver,42007,Southwest,8790,0.032929,289.443
+4200712016,Center township,Beaver,42007,Southwest,11648,0.032929,383.553
+4200713488,Chippewa township,Beaver,42007,Southwest,8042,0.032929,264.812
+4200715872,Conway borough,Beaver,42007,Southwest,2168,0.032929,71.389
+4200718192,Darlington borough,Beaver,42007,Southwest,249,0.032929,8.199
+4200718200,Darlington township,Beaver,42007,Southwest,1818,0.032929,59.864
+4200718264,Daugherty township,Beaver,42007,Southwest,3078,0.032929,101.354
+4200721752,East Rochester borough,Beaver,42007,Southwest,565,0.032929,18.605
+4200721968,Eastvale borough,Beaver,42007,Southwest,184,0.032929,6.059
+4200722264,Economy borough,Beaver,42007,Southwest,9098,0.032929,299.585
+4200723304,Ellwood City borough,Beaver,42007,Southwest,610,0.032929,20.086
+4200725152,Fallston borough,Beaver,42007,Southwest,259,0.032929,8.529
+4200727312,Frankfort Springs borough,Beaver,42007,Southwest,116,0.032929,3.82
+4200727336,Franklin township,Beaver,42007,Southwest,3882,0.032929,127.829
+4200727712,Freedom borough,Beaver,42007,Southwest,1496,0.032929,49.261
+4200728824,Georgetown borough,Beaver,42007,Southwest,208,0.032929,6.849
+4200729392,Glasgow borough,Beaver,42007,Southwest,71,0.032929,2.338
+4200730920,Greene township,Beaver,42007,Southwest,2187,0.032929,72.015
+4200732392,Hanover township,Beaver,42007,Southwest,3343,0.032929,110.08
+4200732680,Harmony township,Beaver,42007,Southwest,3187,0.032929,104.944
+4200735488,Homewood borough,Beaver,42007,Southwest,104,0.032929,3.425
+4200735576,Hookstown borough,Beaver,42007,Southwest,129,0.032929,4.248
+4200735640,Hopewell township,Beaver,42007,Southwest,13495,0.032929,444.372
+4200736776,Independence township,Beaver,42007,Southwest,2248,0.032929,74.024
+4200736944,Industry borough,Beaver,42007,Southwest,1838,0.032929,60.523
+4200740400,Koppel borough,Beaver,42007,Southwest,712,0.032929,23.445
+4200747432,Marion township,Beaver,42007,Southwest,798,0.032929,26.277
+4200749184,Midland borough,Beaver,42007,Southwest,2433,0.032929,80.115
+4200750320,Monaca borough,Beaver,42007,Southwest,5625,0.032929,185.224
+4200753288,New Brighton borough,Beaver,42007,Southwest,5729,0.032929,188.648
+4200753592,New Galilee borough,Beaver,42007,Southwest,330,0.032929,10.866
+4200754072,New Sewickley township,Beaver,42007,Southwest,7183,0.032929,236.526
+4200755400,North Sewickley township,Beaver,42007,Southwest,5495,0.032929,180.943
+4200756432,Ohioville borough,Beaver,42007,Southwest,3349,0.032929,110.278
+4200758375,Patterson township,Beaver,42007,Southwest,3129,0.032929,103.034
+4200758384,Patterson Heights borough,Beaver,42007,Southwest,639,0.032929,21.041
+4200762352,Potter township,Beaver,42007,Southwest,520,0.032929,17.123
+4200762888,Pulaski township,Beaver,42007,Southwest,1300,0.032929,42.807
+4200763224,Raccoon township,Beaver,42007,Southwest,2793,0.032929,91.97
+4200765392,Rochester borough,Beaver,42007,Southwest,3472,0.032929,114.328
+4200765400,Rochester township,Beaver,42007,Southwest,2711,0.032929,89.27
+4200770376,Shippingport borough,Beaver,42007,Southwest,160,0.032929,5.269
+4200771952,South Beaver township,Beaver,42007,Southwest,2680,0.032929,88.249
+4200772216,South Heights borough,Beaver,42007,Southwest,384,0.032929,12.645
+4200779856,Vanport township,Beaver,42007,Southwest,1295,0.032929,42.643
+4200783472,West Mayfield borough,Beaver,42007,Southwest,1195,0.032929,39.35
+4200784444,White township,Beaver,42007,Southwest,1316,0.032929,43.334
+4200904944,Bedford borough,Bedford,42009,Southcentral,2865,0.073501,210.579
+4200904952,Bedford township,Bedford,42009,Southcentral,5105,0.073501,375.22
+4200907024,Bloomfield township,Bedford,42009,Southcentral,1041,0.073501,76.514
+4200908880,Broad Top township,Bedford,42009,Southcentral,1441,0.073501,105.914
+4200914584,Coaldale borough,Bedford,42009,Southcentral,126,0.073501,9.261
+4200915032,Colerain township,Bedford,42009,Southcentral,1132,0.073501,83.203
+4200917664,Cumberland Valley township,Bedford,42009,Southcentral,1454,0.073501,106.87
+4200921736,East Providence township,Bedford,42009,Southcentral,1760,0.073501,129.361
+4200921788,East St. Clair township,Bedford,42009,Southcentral,2908,0.073501,213.739
+4200924304,Everett borough,Bedford,42009,Southcentral,1765,0.073501,129.728
+4200932840,Harrison township,Bedford,42009,Southcentral,932,0.073501,68.502
+4200935648,Hopewell borough,Bedford,42009,Southcentral,189,0.073501,13.892
+4200935656,Hopewell township,Bedford,42009,Southcentral,1889,0.073501,138.842
+4200936640,Hyndman borough,Bedford,42009,Southcentral,863,0.073501,63.431
+4200938576,Juniata township,Bedford,42009,Southcentral,898,0.073501,66.003
+4200939658,Kimmel township,Bedford,42009,Southcentral,1525,0.073501,112.088
+4200939720,King township,Bedford,42009,Southcentral,1181,0.073501,86.804
+4200943072,Liberty township,Bedford,42009,Southcentral,1382,0.073501,101.578
+4200943416,Lincoln township,Bedford,42009,Southcentral,390,0.073501,28.665
+4200944448,Londonderry township,Bedford,42009,Southcentral,1637,0.073501,120.32
+4200946928,Mann township,Bedford,42009,Southcentral,507,0.073501,37.265
+4200946944,Manns Choice borough,Bedford,42009,Southcentral,316,0.073501,23.226
+4200950424,Monroe township,Bedford,42009,Southcentral,1393,0.073501,102.386
+4200952648,Napier township,Bedford,42009,Southcentral,2031,0.073501,149.28
+4200953928,New Paris borough,Bedford,42009,Southcentral,192,0.073501,14.112
+4200958492,Pavia township,Bedford,42009,Southcentral,286,0.073501,21.021
+4200961496,Pleasantville borough,Bedford,42009,Southcentral,191,0.073501,14.039
+4200963312,Rainsburg borough,Bedford,42009,Southcentral,141,0.073501,10.364
+4200967256,St. Clairsville borough,Bedford,42009,Southcentral,76,0.073501,5.586
+4200968072,Saxton borough,Bedford,42009,Southcentral,726,0.073501,53.361
+4200968152,Schellsburg borough,Bedford,42009,Southcentral,330,0.073501,24.255
+4200971544,Snake Spring township,Bedford,42009,Southcentral,1770,0.073501,130.096
+4200971888,Southampton township,Bedford,42009,Southcentral,847,0.073501,62.255
+4200972656,South Woodbury township,Bedford,42009,Southcentral,2083,0.073501,153.102
+4200983920,West Providence township,Bedford,42009,Southcentral,3082,0.073501,226.529
+4200983972,West St. Clair township,Bedford,42009,Southcentral,1658,0.073501,121.864
+4200986128,Woodbury borough,Bedford,42009,Southcentral,286,0.073501,21.021
+4200986136,Woodbury township,Bedford,42009,Southcentral,1179,0.073501,86.657
+4201100364,Adamstown borough,Berks,42011,Southeast,22,0.035526,0.782
+4201100588,Albany township,Berks,42011,Southeast,1660,0.035526,58.973
+4201102120,Alsace township,Berks,42011,Southeast,3834,0.035526,136.207
+4201102328,Amity township,Berks,42011,Southeast,13396,0.035526,475.908
+4201103984,Bally borough,Berks,42011,Southeast,1228,0.035526,43.626
+4201104896,Bechtelsville borough,Berks,42011,Southeast,884,0.035526,31.405
+4201105816,Bern township,Berks,42011,Southeast,6706,0.035526,238.238
+4201105848,Bernville borough,Berks,42011,Southeast,905,0.035526,32.151
+4201106008,Bethel township,Berks,42011,Southeast,4059,0.035526,144.2
+4201106504,Birdsboro borough,Berks,42011,Southeast,5106,0.035526,181.396
+4201107960,Boyertown borough,Berks,42011,Southeast,4264,0.035526,151.483
+4201108344,Brecknock township,Berks,42011,Southeast,4602,0.035526,163.491
+4201110696,Caernarvon township,Berks,42011,Southeast,4234,0.035526,150.417
+4201112104,Centerport borough,Berks,42011,Southeast,314,0.035526,11.155
+4201112344,Centre township,Berks,42011,Southeast,4130,0.035526,146.723
+4201114984,Colebrookdale township,Berks,42011,Southeast,5112,0.035526,181.609
+4201117720,Cumru township,Berks,42011,Southeast,15619,0.035526,554.882
+4201119312,District township,Berks,42011,Southeast,1378,0.035526,48.955
+4201119664,Douglass township,Berks,42011,Southeast,3670,0.035526,130.381
+4201120680,Earl township,Berks,42011,Southeast,3097,0.035526,110.024
+4201124384,Exeter township,Berks,42011,Southeast,25466,0.035526,904.708
+4201126280,Fleetwood borough,Berks,42011,Southeast,4049,0.035526,143.845
+4201131352,Greenwich township,Berks,42011,Southeast,3428,0.035526,121.783
+4201132120,Hamburg borough,Berks,42011,Southeast,4270,0.035526,151.696
+4201133600,Heidelberg township,Berks,42011,Southeast,1731,0.035526,61.496
+4201134016,Hereford township,Berks,42011,Southeast,2962,0.035526,105.228
+4201137824,Jefferson township,Berks,42011,Southeast,2369,0.035526,84.161
+4201139256,Kenhorst borough,Berks,42011,Southeast,3001,0.035526,106.614
+4201140656,Kutztown borough,Berks,42011,Southeast,4162,0.035526,147.86
+4201141768,Laureldale borough,Berks,42011,Southeast,4277,0.035526,151.945
+4201142352,Leesport borough,Berks,42011,Southeast,1954,0.035526,69.418
+4201142688,Lenhartsville borough,Berks,42011,Southeast,180,0.035526,6.395
+4201144584,Longswamp township,Berks,42011,Southeast,5567,0.035526,197.774
+4201144840,Lower Alsace township,Berks,42011,Southeast,4716,0.035526,167.541
+4201144928,Lower Heidelberg township,Berks,42011,Southeast,6230,0.035526,221.328
+4201145752,Lyons borough,Berks,42011,Southeast,439,0.035526,15.596
+4201146680,Maidencreek township,Berks,42011,Southeast,9169,0.035526,325.739
+4201147440,Marion township,Berks,42011,Southeast,1833,0.035526,65.119
+4201148128,Maxatawny township,Berks,42011,Southeast,7181,0.035526,255.113
+4201150272,Mohnton borough,Berks,42011,Southeast,2927,0.035526,103.985
+4201151760,Mount Penn borough,Berks,42011,Southeast,3240,0.035526,115.105
+4201152200,Muhlenberg township,Berks,42011,Southeast,21915,0.035526,778.554
+4201153916,New Morgan borough,Berks,42011,Southeast,54,0.035526,1.918
+4201155088,North Heidelberg township,Berks,42011,Southeast,1220,0.035526,43.342
+4201156672,Oley township,Berks,42011,Southeast,3810,0.035526,135.354
+4201156856,Ontelaunee township,Berks,42011,Southeast,2598,0.035526,92.297
+4201158784,Penn township,Berks,42011,Southeast,2122,0.035526,75.386
+4201159448,Perry township,Berks,42011,Southeast,2475,0.035526,87.927
+4201160176,Pike township,Berks,42011,Southeast,1595,0.035526,56.664
+4201163624,Reading city,Berks,42011,Southeast,95112,0.035526,3378.958
+4201164592,Richmond township,Berks,42011,Southeast,3603,0.035526,128.001
+4201165320,Robeson township,Berks,42011,Southeast,7538,0.035526,267.796
+4201165336,Robesonia borough,Berks,42011,Southeast,2035,0.035526,72.296
+4201165544,Rockland township,Berks,42011,Southeast,3646,0.035526,129.528
+4201166728,Ruscombmanor township,Berks,42011,Southeast,3998,0.035526,142.033
+4201167304,St. Lawrence borough,Berks,42011,Southeast,1892,0.035526,67.215
+4201170248,Shillington borough,Berks,42011,Southeast,5475,0.035526,194.505
+4201170464,Shoemakersville borough,Berks,42011,Southeast,1360,0.035526,48.315
+4201170880,Sinking Spring borough,Berks,42011,Southeast,4286,0.035526,152.265
+4201172208,South Heidelberg township,Berks,42011,Southeast,7663,0.035526,272.236
+4201172824,Spring township,Berks,42011,Southeast,28407,0.035526,1009.19
+4201176712,Tilden township,Berks,42011,Southeast,3603,0.035526,128.001
+4201177104,Topton borough,Berks,42011,Southeast,2041,0.035526,72.509
+4201177752,Tulpehocken township,Berks,42011,Southeast,3415,0.035526,121.322
+4201178280,Union township,Berks,42011,Southeast,3886,0.035526,138.054
+4201178752,Upper Bern township,Berks,42011,Southeast,1606,0.035526,57.055
+4201179328,Upper Tulpehocken township,Berks,42011,Southeast,1856,0.035526,65.936
+4201181184,Washington township,Berks,42011,Southeast,4443,0.035526,157.842
+4201182296,Wernersville borough,Berks,42011,Southeast,2776,0.035526,98.62
+4201183928,West Reading borough,Berks,42011,Southeast,4553,0.035526,161.75
+4201185720,Windsor township,Berks,42011,Southeast,2489,0.035526,88.424
+4201186056,Womelsdorf borough,Berks,42011,Southeast,2892,0.035526,102.741
+4201186880,Wyomissing borough,Berks,42011,Southeast,11114,0.035526,394.837
+4201300852,Allegheny township,Blair,42013,Southcentral,6585,0.078877,519.408
+4201302184,Altoona city,Blair,42013,Southcentral,43963,0.078877,3467.691
+4201302680,Antis township,Blair,42013,Southcentral,6478,0.078877,510.968
+4201305384,Bellwood borough,Blair,42013,Southcentral,1827,0.078877,144.109
+4201306872,Blair township,Blair,42013,Southcentral,4783,0.078877,377.271
+4201311760,Catharine township,Blair,42013,Southcentral,771,0.078877,60.815
+4201320248,Duncansville borough,Blair,42013,Southcentral,1255,0.078877,98.991
+4201327600,Frankstown township,Blair,42013,Southcentral,7399,0.078877,583.615
+4201327720,Freedom township,Blair,42013,Southcentral,3002,0.078877,236.79
+4201331000,Greenfield township,Blair,42013,Southcentral,3788,0.078877,298.788
+4201335224,Hollidaysburg borough,Blair,42013,Southcentral,5641,0.078877,444.948
+4201336496,Huston township,Blair,42013,Southcentral,1252,0.078877,98.755
+4201338592,Juniata township,Blair,42013,Southcentral,968,0.078877,76.353
+4201344328,Logan township,Blair,42013,Southcentral,12413,0.078877,979.106
+4201347872,Martinsburg borough,Blair,42013,Southcentral,1876,0.078877,147.974
+4201354024,Newry borough,Blair,42013,Southcentral,230,0.078877,18.142
+4201355592,North Woodbury township,Blair,42013,Southcentral,2433,0.078877,191.909
+4201365256,Roaring Spring borough,Blair,42013,Southcentral,2384,0.078877,188.044
+4201371624,Snyder township,Blair,42013,Southcentral,3344,0.078877,263.766
+4201376160,Taylor township,Blair,42013,Southcentral,2296,0.078877,181.103
+4201377808,Tunnelhill borough,Blair,42013,Southcentral,108,0.078877,8.519
+4201378168,Tyrone borough,Blair,42013,Southcentral,5480,0.078877,432.249
+4201378176,Tyrone township,Blair,42013,Southcentral,1876,0.078877,147.974
+4201385272,Williamsburg borough,Blair,42013,Southcentral,1233,0.078877,97.256
+4201386144,Woodbury township,Blair,42013,Southcentral,1437,0.078877,113.347
+4201500572,Alba borough,Bradford,42015,Northeast,133,0.031616,4.205
+4201500596,Albany township,Bradford,42015,Northeast,858,0.031616,27.126
+4201503056,Armenia township,Bradford,42015,Northeast,210,0.031616,6.639
+4201503360,Asylum township,Bradford,42015,Northeast,1001,0.031616,31.647
+4201503392,Athens borough,Bradford,42015,Northeast,3267,0.031616,103.288
+4201503400,Athens township,Bradford,42015,Northeast,5184,0.031616,163.896
+4201510240,Burlington borough,Bradford,42015,Northeast,144,0.031616,4.553
+4201510248,Burlington township,Bradford,42015,Northeast,681,0.031616,21.53
+4201511160,Canton borough,Bradford,42015,Northeast,1735,0.031616,54.853
+4201511168,Canton township,Bradford,42015,Northeast,1936,0.031616,61.208
+4201515376,Columbia township,Bradford,42015,Northeast,1167,0.031616,36.895
+4201527344,Franklin township,Bradford,42015,Northeast,620,0.031616,19.602
+4201530464,Granville township,Bradford,42015,Northeast,899,0.031616,28.422
+4201534088,Herrick township,Bradford,42015,Northeast,737,0.031616,23.301
+4201542824,LeRaysville borough,Bradford,42015,Northeast,292,0.031616,9.232
+4201542856,Leroy township,Bradford,42015,Northeast,635,0.031616,20.076
+4201543792,Litchfield township,Bradford,42015,Northeast,1273,0.031616,40.247
+4201550432,Monroe borough,Bradford,42015,Northeast,478,0.031616,15.112
+4201550440,Monroe township,Bradford,42015,Northeast,1104,0.031616,34.904
+4201553152,New Albany borough,Bradford,42015,Northeast,251,0.031616,7.936
+4201555448,North Towanda township,Bradford,42015,Northeast,1051,0.031616,33.228
+4201557176,Orwell township,Bradford,42015,Northeast,1186,0.031616,37.496
+4201557448,Overton township,Bradford,42015,Northeast,241,0.031616,7.619
+4201560184,Pike township,Bradford,42015,Northeast,624,0.031616,19.728
+4201564696,Ridgebury township,Bradford,42015,Northeast,1905,0.031616,60.228
+4201565944,Rome borough,Bradford,42015,Northeast,384,0.031616,12.14
+4201565952,Rome township,Bradford,42015,Northeast,1010,0.031616,31.932
+4201568096,Sayre borough,Bradford,42015,Northeast,5461,0.031616,172.653
+4201570208,Sheshequin township,Bradford,42015,Northeast,1298,0.031616,41.037
+4201571312,Smithfield township,Bradford,42015,Northeast,1457,0.031616,46.064
+4201572096,South Creek township,Bradford,42015,Northeast,1116,0.031616,35.283
+4201572592,South Waverly borough,Bradford,42015,Northeast,1070,0.031616,33.829
+4201573008,Springfield township,Bradford,42015,Northeast,1144,0.031616,36.168
+4201573632,Standing Stone township,Bradford,42015,Northeast,623,0.031616,19.697
+4201574032,Stevens township,Bradford,42015,Northeast,423,0.031616,13.373
+4201575944,Sylvania borough,Bradford,42015,Northeast,215,0.031616,6.797
+4201576408,Terry township,Bradford,42015,Northeast,905,0.031616,28.612
+4201577168,Towanda borough,Bradford,42015,Northeast,2798,0.031616,88.461
+4201577176,Towanda township,Bradford,42015,Northeast,1036,0.031616,32.754
+4201577584,Troy borough,Bradford,42015,Northeast,1249,0.031616,39.488
+4201577592,Troy township,Bradford,42015,Northeast,1585,0.031616,50.111
+4201577936,Tuscarora township,Bradford,42015,Northeast,1056,0.031616,33.386
+4201578232,Ulster township,Bradford,42015,Northeast,1310,0.031616,41.417
+4201580984,Warren township,Bradford,42015,Northeast,1018,0.031616,32.185
+4201582144,Wells township,Bradford,42015,Northeast,1150,0.031616,36.358
+4201582656,West Burlington township,Bradford,42015,Northeast,737,0.031616,23.301
+4201585544,Wilmot township,Bradford,42015,Northeast,1131,0.031616,35.757
+4201585672,Windham township,Bradford,42015,Northeast,818,0.031616,25.862
+4201586656,Wyalusing borough,Bradford,42015,Northeast,613,0.031616,19.38
+4201586664,Wyalusing township,Bradford,42015,Northeast,1175,0.031616,37.148
+4201586912,Wysox township,Bradford,42015,Northeast,1573,0.031616,49.731
+4201704976,Bedminster township,Bucks,42017,Southeast,7541,0.020125,151.762
+4201705616,Bensalem township,Bucks,42017,Southeast,62707,0.020125,1261.97
+4201708592,Bridgeton township,Bucks,42017,Southeast,1234,0.020125,24.834
+4201708760,Bristol borough,Bucks,42017,Southeast,9861,0.020125,198.451
+4201708768,Bristol township,Bucks,42017,Southeast,54291,0.020125,1092.6
+4201709816,Buckingham township,Bucks,42017,Southeast,20851,0.020125,419.624
+4201712504,Chalfont borough,Bucks,42017,Southeast,4253,0.020125,85.591
+4201719784,Doylestown borough,Bucks,42017,Southeast,8300,0.020125,167.036
+4201719792,Doylestown township,Bucks,42017,Southeast,17971,0.020125,361.664
+4201720104,Dublin borough,Bucks,42017,Southeast,2177,0.020125,43.812
+4201720480,Durham township,Bucks,42017,Southeast,1094,0.020125,22.017
+4201721760,East Rockhill township,Bucks,42017,Southeast,5819,0.020125,117.107
+4201725112,Falls township,Bucks,42017,Southeast,34716,0.020125,698.655
+4201733224,Haycock township,Bucks,42017,Southeast,2200,0.020125,44.275
+4201734952,Hilltown township,Bucks,42017,Southeast,16284,0.020125,327.713
+4201736192,Hulmeville borough,Bucks,42017,Southeast,982,0.020125,19.763
+4201737304,Ivyland borough,Bucks,42017,Southeast,955,0.020125,19.219
+4201741392,Langhorne borough,Bucks,42017,Southeast,1643,0.020125,33.065
+4201741416,Langhorne Manor borough,Bucks,42017,Southeast,1496,0.020125,30.107
+4201744968,Lower Makefield township,Bucks,42017,Southeast,33180,0.020125,667.743
+4201745112,Lower Southampton township,Bucks,42017,Southeast,20599,0.020125,414.552
+4201749120,Middletown township,Bucks,42017,Southeast,46040,0.020125,926.549
+4201749384,Milford township,Bucks,42017,Southeast,10243,0.020125,206.139
+4201751144,Morrisville borough,Bucks,42017,Southeast,9809,0.020125,197.405
+4201753296,New Britain borough,Bucks,42017,Southeast,2836,0.020125,57.074
+4201753304,New Britain township,Bucks,42017,Southeast,12327,0.020125,248.079
+4201753712,New Hope borough,Bucks,42017,Southeast,2612,0.020125,52.566
+4201754184,Newtown borough,Bucks,42017,Southeast,2268,0.020125,45.643
+4201754192,Newtown township,Bucks,42017,Southeast,19895,0.020125,400.384
+4201754576,Nockamixon township,Bucks,42017,Southeast,3379,0.020125,68.002
+4201754688,Northampton township,Bucks,42017,Southeast,39915,0.020125,803.284
+4201758936,Penndel borough,Bucks,42017,Southeast,2515,0.020125,50.614
+4201759384,Perkasie borough,Bucks,42017,Southeast,9120,0.020125,183.539
+4201761616,Plumstead township,Bucks,42017,Southeast,14021,0.020125,282.171
+4201763048,Quakertown borough,Bucks,42017,Southeast,9359,0.020125,188.349
+4201764536,Richland township,Bucks,42017,Southeast,13837,0.020125,278.468
+4201764584,Richlandtown borough,Bucks,42017,Southeast,1353,0.020125,27.229
+4201764856,Riegelsville borough,Bucks,42017,Southeast,847,0.020125,17.046
+4201769248,Sellersville borough,Bucks,42017,Southeast,4567,0.020125,91.91
+4201770744,Silverdale borough,Bucks,42017,Southeast,805,0.020125,16.201
+4201771752,Solebury township,Bucks,42017,Southeast,8709,0.020125,175.268
+4201773016,Springfield township,Bucks,42017,Southeast,5175,0.020125,104.146
+4201776304,Telford borough,Bucks,42017,Southeast,2199,0.020125,44.255
+4201776784,Tinicum township,Bucks,42017,Southeast,3818,0.020125,76.837
+4201777704,Trumbauersville borough,Bucks,42017,Southeast,904,0.020125,18.193
+4201777744,Tullytown borough,Bucks,42017,Southeast,2282,0.020125,45.925
+4201779128,Upper Makefield township,Bucks,42017,Southeast,8857,0.020125,178.246
+4201779296,Upper Southampton township,Bucks,42017,Southeast,15269,0.020125,307.287
+4201780952,Warminster township,Bucks,42017,Southeast,33603,0.020125,676.256
+4201781048,Warrington township,Bucks,42017,Southeast,25639,0.020125,515.982
+4201781144,Warwick township,Bucks,42017,Southeast,14851,0.020125,298.874
+4201783960,West Rockhill township,Bucks,42017,Southeast,5439,0.020125,109.459
+4201786624,Wrightstown township,Bucks,42017,Southeast,3286,0.020125,66.13
+4201786920,Yardley borough,Bucks,42017,Southeast,2605,0.020125,52.425
+4201900300,Adams township,Butler,42019,Northwest,14844,0.036446,541.01
+4201900860,Allegheny township,Butler,42019,Northwest,620,0.036446,22.597
+4201908096,Brady township,Butler,42019,Northwest,1214,0.036446,44.246
+4201909528,Bruin borough,Butler,42019,Northwest,423,0.036446,15.417
+4201910000,Buffalo township,Butler,42019,Northwest,7900,0.036446,287.926
+4201910464,Butler city,Butler,42019,Northwest,13502,0.036446,492.099
+4201910472,Butler township,Butler,42019,Northwest,17230,0.036446,627.971
+4201910800,Callery borough,Butler,42019,Northwest,364,0.036446,13.266
+4201912024,Center township,Butler,42019,Northwest,7899,0.036446,287.89
+4201912992,Cherry township,Butler,42019,Northwest,1054,0.036446,38.414
+4201913152,Cherry Valley borough,Butler,42019,Northwest,60,0.036446,2.187
+4201913440,Chicora borough,Butler,42019,Northwest,916,0.036446,33.385
+4201913936,Clay township,Butler,42019,Northwest,2551,0.036446,92.975
+4201914048,Clearfield township,Butler,42019,Northwest,2427,0.036446,88.455
+4201914320,Clinton township,Butler,42019,Northwest,2907,0.036446,105.95
+4201915480,Concord township,Butler,42019,Northwest,1409,0.036446,51.353
+4201915808,Connoquenessing borough,Butler,42019,Northwest,668,0.036446,24.346
+4201915816,Connoquenessing township,Butler,42019,Northwest,4263,0.036446,155.371
+4201916920,Cranberry township,Butler,42019,Northwest,33096,0.036446,1206.229
+4201919456,Donegal township,Butler,42019,Northwest,1823,0.036446,66.442
+4201920904,East Butler borough,Butler,42019,Northwest,764,0.036446,27.845
+4201922128,Eau Claire borough,Butler,42019,Northwest,307,0.036446,11.189
+4201924248,Evans City borough,Butler,42019,Northwest,1737,0.036446,63.307
+4201924832,Fairview borough,Butler,42019,Northwest,180,0.036446,6.56
+4201924840,Fairview township,Butler,42019,Northwest,1940,0.036446,70.706
+4201926904,Forward township,Butler,42019,Northwest,3164,0.036446,115.316
+4201927352,Franklin township,Butler,42019,Northwest,2598,0.036446,94.688
+4201932688,Harmony borough,Butler,42019,Northwest,942,0.036446,34.332
+4201932896,Harrisville borough,Butler,42019,Northwest,819,0.036446,29.85
+4201937344,Jackson township,Butler,42019,Northwest,4883,0.036446,177.968
+4201937848,Jefferson township,Butler,42019,Northwest,5212,0.036446,189.958
+4201938768,Karns City borough,Butler,42019,Northwest,175,0.036446,6.378
+4201941208,Lancaster township,Butler,42019,Northwest,2745,0.036446,100.045
+4201947448,Marion township,Butler,42019,Northwest,1167,0.036446,42.533
+4201947672,Mars borough,Butler,42019,Northwest,1458,0.036446,53.139
+4201948688,Mercer township,Butler,42019,Northwest,993,0.036446,36.191
+4201949056,Middlesex township,Butler,42019,Northwest,6820,0.036446,248.564
+4201952176,Muddy Creek township,Butler,42019,Northwest,2207,0.036446,80.437
+4201955992,Oakland township,Butler,42019,Northwest,2769,0.036446,100.92
+4201957984,Parker township,Butler,42019,Northwest,573,0.036446,20.884
+4201958792,Penn township,Butler,42019,Northwest,4990,0.036446,181.867
+4201959672,Petrolia borough,Butler,42019,Northwest,179,0.036446,6.524
+4201962224,Portersville borough,Butler,42019,Northwest,231,0.036446,8.419
+4201962752,Prospect borough,Butler,42019,Northwest,1123,0.036446,40.929
+4201968056,Saxonburg borough,Butler,42019,Northwest,1426,0.036446,51.973
+4201969309,Seven Fields borough,Butler,42019,Northwest,2919,0.036446,106.387
+4201971184,Slippery Rock borough,Butler,42019,Northwest,3081,0.036446,112.291
+4201971192,Slippery Rock township,Butler,42019,Northwest,6806,0.036446,248.054
+4201975184,Summit township,Butler,42019,Northwest,4504,0.036446,164.154
+4201979504,Valencia borough,Butler,42019,Northwest,537,0.036446,19.572
+4201979904,Venango township,Butler,42019,Northwest,866,0.036446,31.563
+4201981192,Washington township,Butler,42019,Northwest,1288,0.036446,46.943
+4201983376,West Liberty borough,Butler,42019,Northwest,335,0.036446,12.21
+4201984064,West Sunbury borough,Butler,42019,Northwest,182,0.036446,6.633
+4201985784,Winfield township,Butler,42019,Northwest,3361,0.036446,122.496
+4201986536,Worth township,Butler,42019,Northwest,1400,0.036446,51.025
+4201987272,Zelienople borough,Butler,42019,Northwest,3912,0.036446,142.578
+4202100308,Adams township,Cambria,42021,Southwest,5752,0.077695,446.903
+4202100868,Allegheny township,Cambria,42021,Southwest,2815,0.077695,218.712
+4202103296,Ashville borough,Cambria,42021,Southwest,213,0.077695,16.549
+4202104272,Barr township,Cambria,42021,Southwest,2049,0.077695,159.197
+4202106736,Blacklick township,Cambria,42021,Southwest,1876,0.077695,145.756
+4202109400,Brownstown borough,Cambria,42021,Southwest,696,0.077695,54.076
+4202110880,Cambria township,Cambria,42021,Southwest,5814,0.077695,451.72
+4202111456,Carrolltown borough,Cambria,42021,Southwest,1051,0.077695,81.658
+4202111616,Cassandra borough,Cambria,42021,Southwest,162,0.077695,12.587
+4202113192,Chest township,Cambria,42021,Southwest,457,0.077695,35.507
+4202113384,Chest Springs borough,Cambria,42021,Southwest,140,0.077695,10.877
+4202114056,Clearfield township,Cambria,42021,Southwest,1604,0.077695,124.623
+4202115552,Conemaugh township,Cambria,42021,Southwest,1941,0.077695,150.806
+4202117136,Cresson borough,Cambria,42021,Southwest,1525,0.077695,118.485
+4202117144,Cresson township,Cambria,42021,Southwest,2839,0.077695,220.577
+4202117496,Croyle township,Cambria,42021,Southwest,2307,0.077695,179.243
+4202117976,Daisytown borough,Cambria,42021,Southwest,298,0.077695,23.153
+4202118000,Dale borough,Cambria,42021,Southwest,1008,0.077695,78.317
+4202118432,Dean township,Cambria,42021,Southwest,328,0.077695,25.484
+4202120952,East Carroll township,Cambria,42021,Southwest,1425,0.077695,110.716
+4202120992,East Conemaugh borough,Cambria,42021,Southwest,1082,0.077695,84.066
+4202121896,East Taylor township,Cambria,42021,Southwest,2422,0.077695,188.178
+4202122144,Ebensburg borough,Cambria,42021,Southwest,3404,0.077695,264.474
+4202122712,Ehrenfeld borough,Cambria,42021,Southwest,203,0.077695,15.772
+4202122808,Elder township,Cambria,42021,Southwest,1028,0.077695,79.871
+4202125680,Ferndale borough,Cambria,42021,Southwest,1547,0.077695,120.194
+4202127360,Franklin borough,Cambria,42021,Southwest,278,0.077695,21.599
+4202128328,Gallitzin borough,Cambria,42021,Southwest,1536,0.077695,119.34
+4202128336,Gallitzin township,Cambria,42021,Southwest,1273,0.077695,98.906
+4202128720,Geistown borough,Cambria,42021,Southwest,2363,0.077695,183.594
+4202133080,Hastings borough,Cambria,42021,Southwest,1213,0.077695,94.244
+4202137352,Jackson township,Cambria,42021,Southwest,4236,0.077695,329.117
+4202138288,Johnstown city,Cambria,42021,Southwest,18411,0.077695,1430.446
+4202143248,Lilly borough,Cambria,42021,Southwest,879,0.077695,68.294
+4202144664,Lorain borough,Cambria,42021,Southwest,589,0.077695,45.762
+4202144704,Loretto borough,Cambria,42021,Southwest,1196,0.077695,92.923
+4202145160,Lower Yoder township,Cambria,42021,Southwest,2388,0.077695,185.536
+4202149104,Middle Taylor township,Cambria,42021,Southwest,660,0.077695,51.279
+4202152360,Munster township,Cambria,42021,Southwest,653,0.077695,50.735
+4202152616,Nanty-Glo borough,Cambria,42021,Southwest,2511,0.077695,195.093
+4202155000,Northern Cambria borough,Cambria,42021,Southwest,3560,0.077695,276.595
+4202158432,Patton borough,Cambria,42021,Southwest,1728,0.077695,134.257
+4202162048,Portage borough,Cambria,42021,Southwest,2459,0.077695,191.052
+4202162056,Portage township,Cambria,42021,Southwest,3432,0.077695,266.65
+4202163608,Reade township,Cambria,42021,Southwest,1441,0.077695,111.959
+4202164544,Richland township,Cambria,42021,Southwest,12233,0.077695,950.445
+4202167920,Sankertown borough,Cambria,42021,Southwest,630,0.077695,48.948
+4202168104,Scalp Level borough,Cambria,42021,Southwest,744,0.077695,57.805
+4202172168,South Fork borough,Cambria,42021,Southwest,954,0.077695,74.121
+4202172344,Southmont borough,Cambria,42021,Southwest,2045,0.077695,158.887
+4202174432,Stonycreek township,Cambria,42021,Southwest,2771,0.077695,215.293
+4202175136,Summerhill borough,Cambria,42021,Southwest,479,0.077695,37.216
+4202175144,Summerhill township,Cambria,42021,Southwest,2303,0.077695,178.932
+4202175520,Susquehanna township,Cambria,42021,Southwest,1889,0.077695,146.766
+4202177808,Tunnelhill borough,Cambria,42021,Southwest,207,0.077695,16.083
+4202179360,Upper Yoder township,Cambria,42021,Southwest,5147,0.077695,399.897
+4202180288,Vintondale borough,Cambria,42021,Southwest,412,0.077695,32.01
+4202181200,Washington township,Cambria,42021,Southwest,832,0.077695,64.642
+4202182688,West Carroll township,Cambria,42021,Southwest,1186,0.077695,92.146
+4202183584,Westmont borough,Cambria,42021,Southwest,4982,0.077695,387.077
+4202184080,West Taylor township,Cambria,42021,Southwest,729,0.077695,56.64
+4202184448,White township,Cambria,42021,Southwest,931,0.077695,72.334
+4202185528,Wilmore borough,Cambria,42021,Southwest,206,0.077695,16.005
+4202319976,Driftwood borough,Cameron,42023,Northcentral,38,0.037627,1.43
+4202323600,Emporium borough,Cameron,42023,Northcentral,1923,0.037627,72.356
+4202329008,Gibson township,Cameron,42023,Northcentral,181,0.037627,6.81
+4202331632,Grove township,Cameron,42023,Northcentral,113,0.037627,4.252
+4202345432,Lumber township,Cameron,42023,Northcentral,182,0.037627,6.848
+4202362064,Portage township,Cameron,42023,Northcentral,166,0.037627,6.246
+4202370336,Shippen township,Cameron,42023,Northcentral,1944,0.037627,73.147
+4202504048,Banks township,Carbon,42025,Northeast,1164,0.048203,56.109
+4202504816,Beaver Meadows borough,Carbon,42025,Northeast,897,0.048203,43.238
+4202507880,Bowmanstown borough,Carbon,42025,Northeast,889,0.048203,42.853
+4202521664,East Penn township,Carbon,42025,Northeast,2748,0.048203,132.462
+4202521816,East Side borough,Carbon,42025,Northeast,247,0.048203,11.906
+4202527368,Franklin township,Carbon,42025,Northeast,4356,0.048203,209.973
+4202538200,Jim Thorpe borough,Carbon,42025,Northeast,4507,0.048203,217.252
+4202539608,Kidder township,Carbon,42025,Northeast,1791,0.048203,86.332
+4202541464,Lansford borough,Carbon,42025,Northeast,4141,0.048203,199.61
+4202541888,Lausanne township,Carbon,42025,Northeast,228,0.048203,10.99
+4202542400,Lehigh township,Carbon,42025,Northeast,425,0.048203,20.486
+4202542472,Lehighton borough,Carbon,42025,Northeast,5248,0.048203,252.97
+4202545128,Lower Towamensing township,Carbon,42025,Northeast,3046,0.048203,146.827
+4202546640,Mahoning township,Carbon,42025,Northeast,4261,0.048203,205.394
+4202553088,Nesquehoning borough,Carbon,42025,Northeast,3336,0.048203,160.806
+4202557504,Packer township,Carbon,42025,Northeast,1029,0.048203,49.601
+4202557696,Palmerton borough,Carbon,42025,Northeast,5593,0.048203,269.601
+4202558304,Parryville borough,Carbon,42025,Northeast,416,0.048203,20.053
+4202558968,Penn Forest township,Carbon,42025,Northeast,9926,0.048203,478.465
+4202575248,Summit Hill borough,Carbon,42025,Northeast,3120,0.048203,150.394
+4202577160,Towamensing township,Carbon,42025,Northeast,4427,0.048203,213.396
+4202581856,Weatherly borough,Carbon,42025,Northeast,2541,0.048203,122.484
+4202582080,Weissport borough,Carbon,42025,Northeast,413,0.048203,19.908
+4202705256,Bellefonte borough,Centre,42027,Northcentral,6105,0.03884,237.116
+4202705608,Benner township,Centre,42027,Northcentral,8964,0.03884,348.158
+4202707424,Boggs township,Centre,42027,Northcentral,2705,0.03884,105.061
+4202710272,Burnside township,Centre,42027,Northcentral,411,0.03884,15.963
+4202712376,Centre Hall borough,Centre,42027,Northcentral,1268,0.03884,49.249
+4202715136,College township,Centre,42027,Northcentral,10762,0.03884,417.992
+4202717800,Curtin township,Centre,42027,Northcentral,494,0.03884,19.187
+4202725624,Ferguson township,Centre,42027,Northcentral,19009,0.03884,738.302
+4202731472,Gregg township,Centre,42027,Northcentral,2261,0.03884,87.816
+4202731960,Haines township,Centre,42027,Northcentral,1649,0.03884,64.046
+4202731992,Halfmoon township,Centre,42027,Northcentral,2790,0.03884,108.362
+4202732792,Harris township,Centre,42027,Northcentral,5913,0.03884,229.658
+4202735960,Howard borough,Centre,42027,Northcentral,687,0.03884,26.683
+4202735968,Howard township,Centre,42027,Northcentral,875,0.03884,33.985
+4202736504,Huston township,Centre,42027,Northcentral,1317,0.03884,51.152
+4202743080,Liberty township,Centre,42027,Northcentral,1815,0.03884,70.494
+4202747456,Marion township,Centre,42027,Northcentral,1182,0.03884,45.908
+4202749360,Miles township,Centre,42027,Northcentral,1998,0.03884,77.601
+4202749368,Milesburg borough,Centre,42027,Northcentral,1093,0.03884,42.452
+4202749768,Millheim borough,Centre,42027,Northcentral,831,0.03884,32.276
+4202758440,Patton township,Centre,42027,Northcentral,15650,0.03884,607.839
+4202758800,Penn township,Centre,42027,Northcentral,1203,0.03884,46.724
+4202760008,Philipsburg borough,Centre,42027,Northcentral,2789,0.03884,108.324
+4202762280,Port Matilda borough,Centre,42027,Northcentral,578,0.03884,22.449
+4202762360,Potter township,Centre,42027,Northcentral,3581,0.03884,139.085
+4202766736,Rush township,Centre,42027,Northcentral,3668,0.03884,142.464
+4202771600,Snow Shoe borough,Centre,42027,Northcentral,670,0.03884,26.023
+4202771608,Snow Shoe township,Centre,42027,Northcentral,1621,0.03884,62.959
+4202772832,Spring township,Centre,42027,Northcentral,7979,0.03884,309.901
+4202773808,State College borough,Centre,42027,Northcentral,40501,0.03884,1573.042
+4202776168,Taylor township,Centre,42027,Northcentral,848,0.03884,32.936
+4202778288,Union township,Centre,42027,Northcentral,1367,0.03884,53.094
+4202778616,Unionville borough,Centre,42027,Northcentral,267,0.03884,10.37
+4202780552,Walker township,Centre,42027,Northcentral,4596,0.03884,178.507
+4202786544,Worth township,Centre,42027,Northcentral,725,0.03884,28.159
+4202903384,Atglen borough,Chester,42029,Southeast,1313,0.021594,28.353
+4202903656,Avondale borough,Chester,42029,Southeast,1274,0.021594,27.511
+4202906544,Birmingham township,Chester,42029,Southeast,4082,0.021594,88.148
+4202910824,Caln township,Chester,42029,Southeast,14432,0.021594,311.649
+4202912744,Charlestown township,Chester,42029,Southeast,6001,0.021594,129.587
+4202914712,Coatesville city,Chester,42029,Southeast,13350,0.021594,288.284
+4202919752,Downingtown borough,Chester,42029,Southeast,7892,0.021594,170.422
+4202920824,East Bradford township,Chester,42029,Southeast,10339,0.021594,223.263
+4202920864,East Brandywine township,Chester,42029,Southeast,9738,0.021594,210.285
+4202920920,East Caln township,Chester,42029,Southeast,5384,0.021594,116.264
+4202921008,East Coventry township,Chester,42029,Southeast,7068,0.021594,152.628
+4202921104,East Fallowfield township,Chester,42029,Southeast,7626,0.021594,164.678
+4202921192,East Goshen township,Chester,42029,Southeast,18410,0.021594,397.551
+4202921480,East Marlborough township,Chester,42029,Southeast,7306,0.021594,157.768
+4202921576,East Nantmeal township,Chester,42029,Southeast,1832,0.021594,39.561
+4202921624,East Nottingham township,Chester,42029,Southeast,8982,0.021594,193.96
+4202921696,East Pikeland township,Chester,42029,Southeast,8260,0.021594,178.369
+4202921928,Easttown township,Chester,42029,Southeast,10984,0.021594,237.192
+4202922000,East Vincent township,Chester,42029,Southeast,7433,0.021594,160.51
+4202922056,East Whiteland township,Chester,42029,Southeast,13917,0.021594,300.528
+4202923032,Elk township,Chester,42029,Southeast,1698,0.021594,36.667
+4202923440,Elverson borough,Chester,42029,Southeast,1330,0.021594,28.72
+4202927376,Franklin township,Chester,42029,Southeast,4433,0.021594,95.727
+4202934448,Highland township,Chester,42029,Southeast,1259,0.021594,27.187
+4202935528,Honey Brook borough,Chester,42029,Southeast,1892,0.021594,40.856
+4202935536,Honey Brook township,Chester,42029,Southeast,8274,0.021594,178.671
+4202939344,Kennett township,Chester,42029,Southeast,8289,0.021594,178.995
+4202939352,Kennett Square borough,Chester,42029,Southeast,5936,0.021594,128.184
+4202944440,London Britain township,Chester,42029,Southeast,3179,0.021594,68.648
+4202944456,Londonderry township,Chester,42029,Southeast,2476,0.021594,53.467
+4202944480,London Grove township,Chester,42029,Southeast,8797,0.021594,189.965
+4202945040,Lower Oxford township,Chester,42029,Southeast,5420,0.021594,117.041
+4202946792,Malvern borough,Chester,42029,Southeast,3419,0.021594,73.831
+4202950232,Modena borough,Chester,42029,Southeast,541,0.021594,11.683
+4202953608,New Garden township,Chester,42029,Southeast,11363,0.021594,245.376
+4202953784,Newlin township,Chester,42029,Southeast,1358,0.021594,29.325
+4202953816,New London township,Chester,42029,Southeast,5810,0.021594,125.463
+4202954936,North Coventry township,Chester,42029,Southeast,8441,0.021594,182.277
+4202957480,Oxford borough,Chester,42029,Southeast,5736,0.021594,123.865
+4202958032,Parkesburg borough,Chester,42029,Southeast,3862,0.021594,83.397
+4202958808,Penn township,Chester,42029,Southeast,5644,0.021594,121.878
+4202959136,Pennsbury township,Chester,42029,Southeast,3876,0.021594,83.699
+4202960120,Phoenixville borough,Chester,42029,Southeast,18602,0.021594,401.697
+4202961800,Pocopson township,Chester,42029,Southeast,4455,0.021594,96.203
+4202967080,Sadsbury township,Chester,42029,Southeast,4125,0.021594,89.076
+4202968288,Schuylkill township,Chester,42029,Southeast,8780,0.021594,189.598
+4202972072,South Coatesville borough,Chester,42029,Southeast,1601,0.021594,34.572
+4202972088,South Coventry township,Chester,42029,Southeast,2796,0.021594,60.378
+4202972920,Spring City borough,Chester,42029,Southeast,3494,0.021594,75.45
+4202976568,Thornbury township,Chester,42029,Southeast,3177,0.021594,68.605
+4202977344,Tredyffrin township,Chester,42029,Southeast,31927,0.021594,689.441
+4202979208,Upper Oxford township,Chester,42029,Southeast,2560,0.021594,55.281
+4202979352,Upper Uwchlan township,Chester,42029,Southeast,12275,0.021594,265.07
+4202979480,Uwchlan township,Chester,42029,Southeast,19161,0.021594,413.768
+4202979544,Valley township,Chester,42029,Southeast,7985,0.021594,172.43
+4202980616,Wallace township,Chester,42029,Southeast,3711,0.021594,80.136
+4202981160,Warwick township,Chester,42029,Southeast,2590,0.021594,55.929
+4202982544,West Bradford township,Chester,42029,Southeast,14316,0.021594,309.144
+4202982576,West Brandywine township,Chester,42029,Southeast,7331,0.021594,158.308
+4202982664,West Caln township,Chester,42029,Southeast,8910,0.021594,192.405
+4202982704,West Chester borough,Chester,42029,Southeast,18671,0.021594,403.187
+4202982936,West Fallowfield township,Chester,42029,Southeast,2459,0.021594,53.1
+4202983080,West Goshen township,Chester,42029,Southeast,23040,0.021594,497.532
+4202983104,West Grove borough,Chester,42029,Southeast,2770,0.021594,59.816
+4202983464,West Marlborough township,Chester,42029,Southeast,819,0.021594,17.686
+4202983664,West Nantmeal township,Chester,42029,Southeast,2251,0.021594,48.609
+4202983712,West Nottingham township,Chester,42029,Southeast,2764,0.021594,59.687
+4202983832,West Pikeland township,Chester,42029,Southeast,4024,0.021594,86.895
+4202983968,West Sadsbury township,Chester,42029,Southeast,2436,0.021594,52.604
+4202984104,Westtown township,Chester,42029,Southeast,11154,0.021594,240.863
+4202984160,West Vincent township,Chester,42029,Southeast,6668,0.021594,143.991
+4202984192,West Whiteland township,Chester,42029,Southeast,19632,0.021594,423.939
+4202985352,Willistown township,Chester,42029,Southeast,11273,0.021594,243.432
+4203103248,Ashland township,Clarion,42031,Northwest,1119,0.068917,77.118
+4203104696,Beaver township,Clarion,42031,Northwest,1833,0.068917,126.325
+4203108112,Brady township,Clarion,42031,Northwest,77,0.068917,5.307
+4203110792,Callensburg borough,Clarion,42031,Northwest,150,0.068917,10.338
+4203113800,Clarion borough,Clarion,42031,Northwest,3931,0.068917,270.912
+4203113808,Clarion township,Clarion,42031,Northwest,3645,0.068917,251.202
+4203120840,East Brady borough,Clarion,42031,Northwest,818,0.068917,56.374
+4203123040,Elk township,Clarion,42031,Northwest,1434,0.068917,98.827
+4203123568,Emlenton borough,Clarion,42031,Northwest,3,0.068917,0.207
+4203125272,Farmington township,Clarion,42031,Northwest,1781,0.068917,122.741
+4203127112,Foxburg borough,Clarion,42031,Northwest,181,0.068917,12.474
+4203133216,Hawthorn borough,Clarion,42031,Northwest,477,0.068917,32.873
+4203134456,Highland township,Clarion,42031,Northwest,534,0.068917,36.802
+4203140272,Knox borough,Clarion,42031,Northwest,1093,0.068917,75.326
+4203140288,Knox township,Clarion,42031,Northwest,996,0.068917,68.641
+4203143192,Licking township,Clarion,42031,Northwest,577,0.068917,39.765
+4203143344,Limestone township,Clarion,42031,Northwest,1871,0.068917,128.943
+4203146464,Madison township,Clarion,42031,Northwest,1157,0.068917,79.737
+4203149536,Millcreek township,Clarion,42031,Northwest,365,0.068917,25.155
+4203150464,Monroe township,Clarion,42031,Northwest,1487,0.068917,102.479
+4203153248,New Bethlehem borough,Clarion,42031,Northwest,978,0.068917,67.401
+4203157536,Paint township,Clarion,42031,Northwest,1645,0.068917,113.368
+4203159456,Perry township,Clarion,42031,Northwest,919,0.068917,63.335
+4203160648,Piney township,Clarion,42031,Northwest,399,0.068917,27.498
+4203162144,Porter township,Clarion,42031,Northwest,1289,0.068917,88.834
+4203163728,Redbank township,Clarion,42031,Northwest,1332,0.068917,91.797
+4203164552,Richland township,Clarion,42031,Northwest,469,0.068917,32.322
+4203164904,Rimersburg borough,Clarion,42031,Northwest,942,0.068917,64.92
+4203167384,St. Petersburg borough,Clarion,42031,Northwest,336,0.068917,23.156
+4203167432,Salem township,Clarion,42031,Northwest,896,0.068917,61.749
+4203170368,Shippenville borough,Clarion,42031,Northwest,442,0.068917,30.461
+4203171176,Sligo borough,Clarion,42031,Northwest,681,0.068917,46.932
+4203174728,Strattanville borough,Clarion,42031,Northwest,537,0.068917,37.008
+4203176928,Toby township,Clarion,42031,Northwest,982,0.068917,67.676
+4203181208,Washington township,Clarion,42031,Northwest,1865,0.068917,128.53
+4203304888,Beccaria township,Clearfield,42033,Northcentral,1774,0.104888,186.072
+4203305192,Bell township,Clearfield,42033,Northcentral,687,0.104888,72.058
+4203306288,Bigler township,Clearfield,42033,Northcentral,1238,0.104888,129.852
+4203307008,Bloom township,Clearfield,42033,Northcentral,382,0.104888,40.067
+4203307432,Boggs township,Clearfield,42033,Northcentral,1662,0.104888,174.324
+4203308032,Bradford township,Clearfield,42033,Northcentral,2841,0.104888,297.987
+4203308120,Brady township,Clearfield,42033,Northcentral,1936,0.104888,203.064
+4203308744,Brisbin borough,Clearfield,42033,Northcentral,422,0.104888,44.263
+4203310280,Burnside borough,Clearfield,42033,Northcentral,188,0.104888,19.719
+4203310288,Burnside township,Clearfield,42033,Northcentral,1055,0.104888,110.657
+4203313200,Chest township,Clearfield,42033,Northcentral,511,0.104888,53.598
+4203313240,Chester Hill borough,Clearfield,42033,Northcentral,821,0.104888,86.113
+4203314064,Clearfield borough,Clearfield,42033,Northcentral,5962,0.104888,625.344
+4203314656,Coalport borough,Clearfield,42033,Northcentral,425,0.104888,44.577
+4203316040,Cooper township,Clearfield,42033,Northcentral,2594,0.104888,272.08
+4203316656,Covington township,Clearfield,42033,Northcentral,494,0.104888,51.815
+4203317840,Curwensville borough,Clearfield,42033,Northcentral,2567,0.104888,269.248
+4203318456,Decatur township,Clearfield,42033,Northcentral,4558,0.104888,478.081
+4203320136,DuBois city,Clearfield,42033,Northcentral,7510,0.104888,787.711
+4203325632,Ferguson township,Clearfield,42033,Northcentral,544,0.104888,57.059
+4203329224,Girard township,Clearfield,42033,Northcentral,568,0.104888,59.577
+4203329632,Glen Hope borough,Clearfield,42033,Northcentral,127,0.104888,13.321
+4203330152,Goshen township,Clearfield,42033,Northcentral,390,0.104888,40.906
+4203330272,Graham township,Clearfield,42033,Northcentral,1331,0.104888,139.606
+4203330280,Grampian borough,Clearfield,42033,Northcentral,361,0.104888,37.865
+4203331376,Greenwood township,Clearfield,42033,Northcentral,366,0.104888,38.389
+4203331752,Gulich township,Clearfield,42033,Northcentral,1200,0.104888,125.866
+4203335928,Houtzdale borough,Clearfield,42033,Northcentral,764,0.104888,80.135
+4203336512,Huston township,Clearfield,42033,Northcentral,1260,0.104888,132.159
+4203337192,Irvona borough,Clearfield,42033,Northcentral,549,0.104888,57.584
+4203338432,Jordan township,Clearfield,42033,Northcentral,476,0.104888,49.927
+4203338784,Karthaus township,Clearfield,42033,Northcentral,824,0.104888,86.428
+4203340296,Knox township,Clearfield,42033,Northcentral,597,0.104888,62.618
+4203341952,Lawrence township,Clearfield,42033,Northcentral,7500,0.104888,786.662
+4203346568,Mahaffey borough,Clearfield,42033,Northcentral,329,0.104888,34.508
+4203351056,Morris township,Clearfield,42033,Northcentral,2777,0.104888,291.275
+4203353336,Newburg borough,Clearfield,42033,Northcentral,82,0.104888,8.601
+4203354344,New Washington borough,Clearfield,42033,Northcentral,50,0.104888,5.244
+4203357232,Osceola Mills borough,Clearfield,42033,Northcentral,1045,0.104888,109.608
+4203358816,Penn township,Clearfield,42033,Northcentral,1200,0.104888,125.866
+4203360192,Pike township,Clearfield,42033,Northcentral,2298,0.104888,241.033
+4203360288,Pine township,Clearfield,42033,Northcentral,60,0.104888,6.293
+4203363360,Ramey borough,Clearfield,42033,Northcentral,436,0.104888,45.731
+4203367792,Sandy township,Clearfield,42033,Northcentral,11848,0.104888,1242.716
+4203377568,Troutville borough,Clearfield,42033,Northcentral,230,0.104888,24.124
+4203378296,Union township,Clearfield,42033,Northcentral,886,0.104888,92.931
+4203380640,Wallaceton borough,Clearfield,42033,Northcentral,297,0.104888,31.152
+4203383736,Westover borough,Clearfield,42033,Northcentral,361,0.104888,37.865
+4203386440,Woodward township,Clearfield,42033,Northcentral,4137,0.104888,433.923
+4203502032,Allison township,Clinton,42035,Northcentral,229,0.10933,25.037
+4203503632,Avis borough,Clinton,42035,Northcentral,1473,0.10933,161.044
+4203503912,Bald Eagle township,Clinton,42035,Northcentral,2044,0.10933,223.471
+4203504984,Beech Creek borough,Clinton,42035,Northcentral,736,0.10933,80.467
+4203504992,Beech Creek township,Clinton,42035,Northcentral,972,0.10933,106.269
+4203511640,Castanea township,Clinton,42035,Northcentral,1107,0.10933,121.029
+4203512640,Chapman township,Clinton,42035,Northcentral,893,0.10933,97.632
+4203514960,Colebrook township,Clinton,42035,Northcentral,196,0.10933,21.429
+4203516976,Crawford township,Clinton,42035,Northcentral,973,0.10933,106.378
+4203520408,Dunnstable township,Clinton,42035,Northcentral,1005,0.10933,109.877
+4203526296,Flemington borough,Clinton,42035,Northcentral,1271,0.10933,138.959
+4203528296,Gallagher township,Clinton,42035,Northcentral,391,0.10933,42.748
+4203530928,Greene township,Clinton,42035,Northcentral,1763,0.10933,192.749
+4203531680,Grugan township,Clinton,42035,Northcentral,49,0.10933,5.357
+4203541112,Lamar township,Clinton,42035,Northcentral,2623,0.10933,286.773
+4203542544,Leidy township,Clinton,42035,Northcentral,155,0.10933,16.946
+4203544128,Lock Haven city,Clinton,42035,Northcentral,8108,0.10933,886.45
+4203544336,Logan township,Clinton,42035,Northcentral,878,0.10933,95.992
+4203544400,Loganton borough,Clinton,42035,Northcentral,469,0.10933,51.276
+4203549760,Mill Hall borough,Clinton,42035,Northcentral,1479,0.10933,161.7
+4203555744,Noyes township,Clinton,42035,Northcentral,341,0.10933,37.282
+4203560360,Pine Creek township,Clinton,42035,Northcentral,3416,0.10933,373.472
+4203562152,Porter township,Clinton,42035,Northcentral,1487,0.10933,162.574
+4203564200,Renovo borough,Clinton,42035,Northcentral,1061,0.10933,115.999
+4203572448,South Renovo borough,Clinton,42035,Northcentral,411,0.10933,44.935
+4203581728,Wayne township,Clinton,42035,Northcentral,1451,0.10933,158.638
+4203583240,West Keating township,Clinton,42035,Northcentral,16,0.10933,1.749
+4203586448,Woodward township,Clinton,42035,Northcentral,2453,0.10933,268.187
+4203703264,Ashland borough,Columbia,42037,Northeast,0,0.063094,0.0
+4203704704,Beaver township,Columbia,42037,Northeast,876,0.063094,55.271
+4203705680,Benton borough,Columbia,42037,Northeast,823,0.063094,51.927
+4203705688,Benton township,Columbia,42037,Northeast,1323,0.063094,83.474
+4203705888,Berwick borough,Columbia,42037,Northeast,10327,0.063094,651.576
+4203707128,Bloomsburg town,Columbia,42037,Northeast,12711,0.063094,801.993
+4203708472,Briar Creek borough,Columbia,42037,Northeast,597,0.063094,37.667
+4203708480,Briar Creek township,Columbia,42037,Northeast,2982,0.063094,188.147
+4203711736,Catawissa borough,Columbia,42037,Northeast,1536,0.063094,96.913
+4203711744,Catawissa township,Columbia,42037,Northeast,902,0.063094,56.911
+4203712312,Centralia borough,Columbia,42037,Northeast,5,0.063094,0.315
+4203714184,Cleveland township,Columbia,42037,Northeast,1120,0.063094,70.666
+4203715880,Conyngham township,Columbia,42037,Northeast,689,0.063094,43.472
+4203726056,Fishing Creek township,Columbia,42037,Northeast,1523,0.063094,96.093
+4203727384,Franklin township,Columbia,42037,Northeast,550,0.063094,34.702
+4203731392,Greenwood township,Columbia,42037,Northeast,1881,0.063094,118.681
+4203733760,Hemlock township,Columbia,42037,Northeast,2214,0.063094,139.691
+4203737360,Jackson township,Columbia,42037,Northeast,622,0.063094,39.245
+4203744208,Locust township,Columbia,42037,Northeast,1458,0.063094,91.992
+4203746472,Madison township,Columbia,42037,Northeast,1564,0.063094,98.68
+4203746688,Main township,Columbia,42037,Northeast,1271,0.063094,80.193
+4203749256,Mifflin township,Columbia,42037,Northeast,2269,0.063094,143.161
+4203749944,Millville borough,Columbia,42037,Northeast,976,0.063094,61.58
+4203750704,Montour township,Columbia,42037,Northeast,1263,0.063094,79.688
+4203751792,Mount Pleasant township,Columbia,42037,Northeast,1498,0.063094,94.515
+4203754880,North Centre township,Columbia,42037,Northeast,2036,0.063094,128.46
+4203756896,Orange township,Columbia,42037,Northeast,1161,0.063094,73.253
+4203756912,Orangeville borough,Columbia,42037,Northeast,479,0.063094,30.222
+4203760304,Pine township,Columbia,42037,Northeast,1011,0.063094,63.788
+4203765240,Roaring Creek township,Columbia,42037,Northeast,556,0.063094,35.08
+4203768392,Scott township,Columbia,42037,Northeast,5514,0.063094,347.903
+4203772040,South Centre township,Columbia,42037,Northeast,1904,0.063094,120.132
+4203774184,Stillwater borough,Columbia,42037,Northeast,199,0.063094,12.556
+4203775048,Sugarloaf township,Columbia,42037,Northeast,887,0.063094,55.965
+4203903408,Athens township,Crawford,42039,Northwest,636,0.050043,31.827
+4203904720,Beaver township,Crawford,42039,Northwest,788,0.050043,39.434
+4203907032,Bloomfield township,Crawford,42039,Northwest,1862,0.050043,93.18
+4203907120,Blooming Valley borough,Crawford,42039,Northwest,344,0.050043,17.215
+4203910904,Cambridge township,Crawford,42039,Northwest,1439,0.050043,72.012
+4203910912,Cambridge Springs borough,Crawford,42039,Northwest,2590,0.050043,129.611
+4203912184,Centerville borough,Crawford,42039,Northwest,178,0.050043,8.908
+4203914800,Cochranton borough,Crawford,42039,Northwest,1118,0.050043,55.948
+4203915728,Conneaut township,Crawford,42039,Northwest,1332,0.050043,66.657
+4203915744,Conneaut Lake borough,Crawford,42039,Northwest,624,0.050043,31.227
+4203915760,Conneautville borough,Crawford,42039,Northwest,739,0.050043,36.982
+4203917848,Cussewago township,Crawford,42039,Northwest,1429,0.050043,71.512
+4203921096,East Fairfield township,Crawford,42039,Northwest,837,0.050043,41.886
+4203921112,East Fallowfield township,Crawford,42039,Northwest,1515,0.050043,75.815
+4203921504,East Mead township,Crawford,42039,Northwest,1316,0.050043,65.857
+4203924568,Fairfield township,Crawford,42039,Northwest,1011,0.050043,50.594
+4203931400,Greenwood township,Crawford,42039,Northwest,1424,0.050043,71.261
+4203933256,Hayfield township,Crawford,42039,Northwest,2775,0.050043,138.869
+4203936616,Hydetown borough,Crawford,42039,Northwest,529,0.050043,26.473
+4203943656,Linesville borough,Crawford,42039,Northwest,962,0.050043,48.141
+4203948360,Meadville city,Crawford,42039,Northwest,13050,0.050043,653.062
+4203955408,North Shenango township,Crawford,42039,Northwest,1272,0.050043,63.655
+4203956464,Oil Creek township,Crawford,42039,Northwest,1702,0.050043,85.173
+4203960312,Pine township,Crawford,42039,Northwest,432,0.050043,21.619
+4203963400,Randolph township,Crawford,42039,Northwest,1718,0.050043,85.974
+4203964600,Richmond township,Crawford,42039,Northwest,1350,0.050043,67.558
+4203965440,Rockdale township,Crawford,42039,Northwest,1363,0.050043,68.209
+4203965960,Rome township,Crawford,42039,Northwest,1991,0.050043,99.636
+4203967088,Sadsbury township,Crawford,42039,Northwest,2758,0.050043,138.019
+4203967120,Saegertown borough,Crawford,42039,Northwest,871,0.050043,43.587
+4203972472,South Shenango township,Crawford,42039,Northwest,1831,0.050043,91.629
+4203972688,Sparta township,Crawford,42039,Northwest,1910,0.050043,95.582
+4203972704,Spartansburg borough,Crawford,42039,Northwest,281,0.050043,14.062
+4203972840,Spring township,Crawford,42039,Northwest,1402,0.050043,70.16
+4203972872,Springboro borough,Crawford,42039,Northwest,377,0.050043,18.866
+4203974016,Steuben township,Crawford,42039,Northwest,775,0.050043,38.783
+4203975160,Summerhill township,Crawford,42039,Northwest,1200,0.050043,60.052
+4203975200,Summit township,Crawford,42039,Northwest,1895,0.050043,94.832
+4203976904,Titusville city,Crawford,42039,Northwest,5262,0.050043,263.326
+4203977232,Townville borough,Crawford,42039,Northwest,326,0.050043,16.314
+4203977616,Troy township,Crawford,42039,Northwest,1054,0.050043,52.745
+4203978304,Union township,Crawford,42039,Northwest,857,0.050043,42.887
+4203979912,Venango borough,Crawford,42039,Northwest,212,0.050043,10.609
+4203979920,Venango township,Crawford,42039,Northwest,946,0.050043,47.341
+4203980000,Vernon township,Crawford,42039,Northwest,5331,0.050043,266.779
+4203981736,Wayne township,Crawford,42039,Northwest,1405,0.050043,70.31
+4203982944,West Fallowfield township,Crawford,42039,Northwest,577,0.050043,28.875
+4203983480,West Mead township,Crawford,42039,Northwest,5014,0.050043,250.916
+4203984008,West Shenango township,Crawford,42039,Northwest,433,0.050043,21.669
+4203986160,Woodcock borough,Crawford,42039,Northwest,141,0.050043,7.056
+4203986168,Woodcock township,Crawford,42039,Northwest,2754,0.050043,137.819
+4204111000,Camp Hill borough,Cumberland,42041,Southcentral,8130,0.041838,340.144
+4204111272,Carlisle borough,Cumberland,42041,Southcentral,20118,0.041838,841.701
+4204115920,Cooke township,Cumberland,42041,Southcentral,201,0.041838,8.409
+4204119144,Dickinson township,Cumberland,42041,Southcentral,5294,0.041838,221.491
+4204121680,East Pennsboro township,Cumberland,42041,Southcentral,20910,0.041838,874.837
+4204132296,Hampden township,Cumberland,42041,Southcentral,32761,0.041838,1370.661
+4204135672,Hopewell township,Cumberland,42041,Southcentral,2452,0.041838,102.587
+4204142648,Lemoyne borough,Cumberland,42041,Southcentral,4659,0.041838,194.924
+4204144832,Lower Allen township,Cumberland,42041,Southcentral,20099,0.041838,840.906
+4204144904,Lower Frankford township,Cumberland,42041,Southcentral,1757,0.041838,73.51
+4204144984,Lower Mifflin township,Cumberland,42041,Southcentral,1755,0.041838,73.426
+4204148376,Mechanicsburg borough,Cumberland,42041,Southcentral,9311,0.041838,389.555
+4204149072,Middlesex township,Cumberland,42041,Southcentral,7021,0.041838,293.746
+4204150472,Monroe township,Cumberland,42041,Southcentral,6230,0.041838,260.652
+4204151592,Mount Holly Springs borough,Cumberland,42041,Southcentral,1995,0.041838,83.467
+4204153344,Newburg borough,Cumberland,42041,Southcentral,364,0.041838,15.229
+4204153464,New Cumberland borough,Cumberland,42041,Southcentral,7507,0.041838,314.079
+4204154320,Newville borough,Cumberland,42041,Southcentral,1376,0.041838,57.569
+4204155216,North Middleton township,Cumberland,42041,Southcentral,12039,0.041838,503.69
+4204155248,North Newton township,Cumberland,42041,Southcentral,2546,0.041838,106.52
+4204158824,Penn township,Cumberland,42041,Southcentral,2874,0.041838,120.243
+4204170352,Shippensburg borough,Cumberland,42041,Southcentral,4315,0.041838,180.532
+4204170360,Shippensburg township,Cumberland,42041,Southcentral,4286,0.041838,179.318
+4204170384,Shiremanstown borough,Cumberland,42041,Southcentral,1634,0.041838,68.364
+4204170792,Silver Spring township,Cumberland,42041,Southcentral,19557,0.041838,818.23
+4204171904,Southampton township,Cumberland,42041,Southcentral,7504,0.041838,313.954
+4204172336,South Middleton township,Cumberland,42041,Southcentral,16135,0.041838,675.059
+4204172384,South Newton township,Cumberland,42041,Southcentral,1371,0.041838,57.36
+4204178736,Upper Allen township,Cumberland,42041,Southcentral,23183,0.041838,969.935
+4204179032,Upper Frankford township,Cumberland,42041,Southcentral,2128,0.041838,89.032
+4204179152,Upper Mifflin township,Cumberland,42041,Southcentral,1319,0.041838,55.185
+4204183800,West Pennsboro township,Cumberland,42041,Southcentral,5595,0.041838,234.085
+4204186528,Wormleysburg borough,Cumberland,42041,Southcentral,3043,0.041838,127.314
+4204305856,Berrysburg borough,Dauphin,42043,Southcentral,326,0.036823,12.004
+4204315640,Conewago township,Dauphin,42043,Southcentral,2952,0.036823,108.701
+4204318272,Dauphin borough,Dauphin,42043,Southcentral,795,0.036823,29.274
+4204318936,Derry township,Dauphin,42043,Southcentral,24715,0.036823,910.076
+4204321208,East Hanover township,Dauphin,42043,Southcentral,6019,0.036823,221.636
+4204323024,Elizabethville borough,Dauphin,42043,Southcentral,1357,0.036823,49.969
+4204330600,Gratz borough,Dauphin,42043,Southcentral,743,0.036823,27.359
+4204332032,Halifax borough,Dauphin,42043,Southcentral,796,0.036823,29.311
+4204332040,Halifax township,Dauphin,42043,Southcentral,3349,0.036823,123.32
+4204332800,Harrisburg city,Dauphin,42043,Southcentral,50099,0.036823,1844.785
+4204334664,Highspire borough,Dauphin,42043,Southcentral,2741,0.036823,100.931
+4204336232,Hummelstown borough,Dauphin,42043,Southcentral,4544,0.036823,167.323
+4204337368,Jackson township,Dauphin,42043,Southcentral,1827,0.036823,67.275
+4204337864,Jefferson township,Dauphin,42043,Southcentral,360,0.036823,13.256
+4204344464,Londonderry township,Dauphin,42043,Southcentral,4899,0.036823,180.395
+4204345056,Lower Paxton township,Dauphin,42043,Southcentral,53501,0.036823,1970.057
+4204345120,Lower Swatara township,Dauphin,42043,Southcentral,9531,0.036823,350.958
+4204345592,Lykens borough,Dauphin,42043,Southcentral,1873,0.036823,68.969
+4204345600,Lykens township,Dauphin,42043,Southcentral,1559,0.036823,57.407
+4204349040,Middle Paxton township,Dauphin,42043,Southcentral,5048,0.036823,185.881
+4204349128,Middletown borough,Dauphin,42043,Southcentral,9533,0.036823,351.032
+4204349264,Mifflin township,Dauphin,42043,Southcentral,816,0.036823,30.047
+4204349680,Millersburg borough,Dauphin,42043,Southcentral,2545,0.036823,93.714
+4204358504,Paxtang borough,Dauphin,42043,Southcentral,1648,0.036823,60.684
+4204358712,Penbrook borough,Dauphin,42043,Southcentral,3274,0.036823,120.558
+4204360264,Pillow borough,Dauphin,42043,Southcentral,292,0.036823,10.752
+4204363928,Reed township,Dauphin,42043,Southcentral,230,0.036823,8.469
+4204366560,Royalton borough,Dauphin,42043,Southcentral,1138,0.036823,41.904
+4204366744,Rush township,Dauphin,42043,Southcentral,228,0.036823,8.396
+4204372200,South Hanover township,Dauphin,42043,Southcentral,7209,0.036823,265.456
+4204373888,Steelton borough,Dauphin,42043,Southcentral,6263,0.036823,230.621
+4204375528,Susquehanna township,Dauphin,42043,Southcentral,26736,0.036823,984.494
+4204375672,Swatara township,Dauphin,42043,Southcentral,27824,0.036823,1024.558
+4204379216,Upper Paxton township,Dauphin,42043,Southcentral,4010,0.036823,147.659
+4204381216,Washington township,Dauphin,42043,Southcentral,2129,0.036823,78.396
+4204381744,Wayne township,Dauphin,42043,Southcentral,1266,0.036823,46.618
+4204383128,West Hanover township,Dauphin,42043,Southcentral,10697,0.036823,393.893
+4204384976,Wiconisco township,Dauphin,42043,Southcentral,1159,0.036823,42.678
+4204385232,Williams township,Dauphin,42043,Southcentral,1067,0.036823,39.29
+4204385320,Williamstown borough,Dauphin,42043,Southcentral,1303,0.036823,47.98
+4204500676,Aldan borough,Delaware,42045,Southeast,4244,0.013487,57.238
+4204503336,Aston township,Delaware,42045,Southeast,16791,0.013487,226.456
+4204506024,Bethel township,Delaware,42045,Southeast,9574,0.013487,129.122
+4204509080,Brookhaven borough,Delaware,42045,Southeast,8300,0.013487,111.94
+4204512442,Chadds Ford township,Delaware,42045,Southeast,3972,0.013487,53.569
+4204513208,Chester city,Delaware,42045,Southeast,32605,0.013487,439.736
+4204513212,Chester township,Delaware,42045,Southeast,4080,0.013487,55.026
+4204513232,Chester Heights borough,Delaware,42045,Southeast,2897,0.013487,39.071
+4204514264,Clifton Heights borough,Delaware,42045,Southeast,6863,0.013487,92.56
+4204515232,Collingdale borough,Delaware,42045,Southeast,8908,0.013487,120.14
+4204515432,Colwyn borough,Delaware,42045,Southeast,2474,0.013487,33.366
+4204515488,Concord township,Delaware,42045,Southeast,18295,0.013487,246.74
+4204518152,Darby borough,Delaware,42045,Southeast,10715,0.013487,144.511
+4204518160,Darby township,Delaware,42045,Southeast,9219,0.013487,124.335
+4204521384,East Lansdowne borough,Delaware,42045,Southeast,2714,0.013487,36.603
+4204522296,Eddystone borough,Delaware,42045,Southeast,2459,0.013487,33.164
+4204522584,Edgmont township,Delaware,42045,Southeast,4283,0.013487,57.764
+4204526408,Folcroft borough,Delaware,42045,Southeast,6792,0.013487,91.602
+4204529720,Glenolden borough,Delaware,42045,Southeast,7223,0.013487,97.415
+4204533144,Haverford township,Delaware,42045,Southeast,50431,0.013487,680.151
+4204541440,Lansdowne borough,Delaware,42045,Southeast,11107,0.013487,149.798
+4204544888,Lower Chichester township,Delaware,42045,Southeast,3425,0.013487,46.192
+4204547344,Marcus Hook borough,Delaware,42045,Southeast,2454,0.013487,33.097
+4204547616,Marple township,Delaware,42045,Southeast,24214,0.013487,326.569
+4204548480,Media borough,Delaware,42045,Southeast,5901,0.013487,79.585
+4204549136,Middletown township,Delaware,42045,Southeast,16373,0.013487,220.819
+4204549504,Millbourne borough,Delaware,42045,Southeast,1212,0.013487,16.346
+4204551176,Morton borough,Delaware,42045,Southeast,2778,0.013487,37.466
+4204553104,Nether Providence township,Delaware,42045,Southeast,14525,0.013487,195.895
+4204554224,Newtown township,Delaware,42045,Southeast,15002,0.013487,202.329
+4204555664,Norwood borough,Delaware,42045,Southeast,5943,0.013487,80.152
+4204558176,Parkside borough,Delaware,42045,Southeast,2321,0.013487,31.303
+4204562792,Prospect Park borough,Delaware,42045,Southeast,6427,0.013487,86.679
+4204563264,Radnor township,Delaware,42045,Southeast,33228,0.013487,448.138
+4204564800,Ridley township,Delaware,42045,Southeast,31053,0.013487,418.805
+4204564832,Ridley Park borough,Delaware,42045,Southeast,7186,0.013487,96.916
+4204566192,Rose Valley borough,Delaware,42045,Southeast,1017,0.013487,13.716
+4204566928,Rutledge borough,Delaware,42045,Southeast,782,0.013487,10.547
+4204569752,Sharon Hill borough,Delaware,42045,Southeast,6014,0.013487,81.109
+4204573032,Springfield township,Delaware,42045,Southeast,25070,0.013487,338.113
+4204575648,Swarthmore borough,Delaware,42045,Southeast,6543,0.013487,88.244
+4204576576,Thornbury township,Delaware,42045,Southeast,6904,0.013487,93.113
+4204576792,Tinicum township,Delaware,42045,Southeast,3983,0.013487,53.718
+4204577288,Trainer borough,Delaware,42045,Southeast,1976,0.013487,26.65
+4204578712,Upland borough,Delaware,42045,Southeast,3068,0.013487,41.377
+4204578776,Upper Chichester township,Delaware,42045,Southeast,16898,0.013487,227.899
+4204579000,Upper Darby township,Delaware,42045,Southeast,85681,0.013487,1155.56
+4204579248,Upper Providence township,Delaware,42045,Southeast,10852,0.013487,146.358
+4204586968,Yeadon borough,Delaware,42045,Southeast,12054,0.013487,162.57
+4204705576,Benezette township,Elk,42047,Northcentral,216,0.115587,24.967
+4204727088,Fox township,Elk,42047,Northcentral,3576,0.115587,413.339
+4204734464,Highland township,Elk,42047,Northcentral,403,0.115587,46.582
+4204735816,Horton township,Elk,42047,Northcentral,1366,0.115587,157.892
+4204737760,Jay township,Elk,42047,Northcentral,1963,0.115587,226.897
+4204738248,Johnsonburg borough,Elk,42047,Northcentral,2404,0.115587,277.871
+4204738368,Jones township,Elk,42047,Northcentral,1573,0.115587,181.818
+4204749888,Millstone township,Elk,42047,Northcentral,95,0.115587,10.981
+4204764784,Ridgway borough,Elk,42047,Northcentral,4039,0.115587,466.856
+4204764792,Ridgway township,Elk,42047,Northcentral,2416,0.115587,279.258
+4204767344,St. Marys city,Elk,42047,Northcentral,12738,0.115587,1472.348
+4204772928,Spring Creek township,Elk,42047,Northcentral,201,0.115587,23.233
+4204900628,Albion borough,Erie,42049,Northwest,1528,0.045492,69.512
+4204902336,Amity township,Erie,42049,Northwest,985,0.045492,44.81
+4204915504,Concord township,Erie,42049,Northwest,1277,0.045492,58.094
+4204915736,Conneaut township,Erie,42049,Northwest,4191,0.045492,190.659
+4204916296,Corry city,Erie,42049,Northwest,6210,0.045492,282.508
+4204916960,Cranesville borough,Erie,42049,Northwest,570,0.045492,25.931
+4204922608,Edinboro borough,Erie,42049,Northwest,4964,0.045492,225.824
+4204922960,Elgin borough,Erie,42049,Northwest,204,0.045492,9.28
+4204923088,Elk Creek township,Erie,42049,Northwest,1786,0.045492,81.249
+4204924000,Erie city,Erie,42049,Northwest,94831,0.045492,4314.088
+4204924864,Fairview township,Erie,42049,Northwest,11138,0.045492,506.694
+4204927392,Franklin township,Erie,42049,Northwest,1508,0.045492,68.603
+4204929232,Girard borough,Erie,42049,Northwest,2993,0.045492,136.159
+4204929240,Girard township,Erie,42049,Northwest,4869,0.045492,221.502
+4204930936,Greene township,Erie,42049,Northwest,4478,0.045492,203.715
+4204931008,Greenfield township,Erie,42049,Northwest,1803,0.045492,82.023
+4204932520,Harborcreek township,Erie,42049,Northwest,16635,0.045492,756.766
+4204940960,Lake City borough,Erie,42049,Northwest,2935,0.045492,133.52
+4204941984,Lawrence Park township,Erie,42049,Northwest,3820,0.045492,173.781
+4204942208,LeBoeuf township,Erie,42049,Northwest,1659,0.045492,75.472
+4204946216,McKean borough,Erie,42049,Northwest,476,0.045492,21.654
+4204946224,McKean township,Erie,42049,Northwest,4437,0.045492,201.85
+4204949548,Millcreek township,Erie,42049,Northwest,54073,0.045492,2459.909
+4204949936,Mill Village borough,Erie,42049,Northwest,388,0.045492,17.651
+4204954952,North East borough,Erie,42049,Northwest,4106,0.045492,186.792
+4204954960,North East township,Erie,42049,Northwest,6529,0.045492,297.02
+4204961168,Platea borough,Erie,42049,Northwest,442,0.045492,20.108
+4204973048,Springfield township,Erie,42049,Northwest,3076,0.045492,139.935
+4204975208,Summit township,Erie,42049,Northwest,7342,0.045492,334.005
+4204978312,Union township,Erie,42049,Northwest,1541,0.045492,70.104
+4204978448,Union City borough,Erie,42049,Northwest,2927,0.045492,133.156
+4204979928,Venango township,Erie,42049,Northwest,2256,0.045492,102.631
+4204981224,Washington township,Erie,42049,Northwest,4393,0.045492,199.848
+4204981456,Waterford borough,Erie,42049,Northwest,1476,0.045492,67.147
+4204981472,Waterford township,Erie,42049,Northwest,3915,0.045492,178.103
+4204981648,Wattsburg borough,Erie,42049,Northwest,353,0.045492,16.059
+4204981760,Wayne township,Erie,42049,Northwest,1540,0.045492,70.058
+4204982344,Wesleyville borough,Erie,42049,Northwest,3222,0.045492,146.576
+4205105288,Belle Vernon borough,Fayette,42051,Southwest,1024,0.068282,69.92
+4205109432,Brownsville borough,Fayette,42051,Southwest,2185,0.068282,149.195
+4205109434,Brownsville township,Fayette,42051,Southwest,534,0.068282,36.462
+4205110152,Bullskin township,Fayette,42051,Southwest,6740,0.068282,460.218
+4205115776,Connellsville city,Fayette,42051,Southwest,7031,0.068282,480.088
+4205115784,Connellsville township,Fayette,42051,Southwest,2076,0.068282,141.753
+4205118360,Dawson borough,Fayette,42051,Southwest,352,0.068282,24.035
+4205120216,Dunbar borough,Fayette,42051,Southwest,1013,0.068282,69.169
+4205120224,Dunbar township,Fayette,42051,Southwest,6672,0.068282,455.575
+4205124336,Everson borough,Fayette,42051,Southwest,771,0.068282,52.645
+4205124536,Fairchance borough,Fayette,42051,Southwest,1890,0.068282,129.052
+4205125456,Fayette City borough,Fayette,42051,Southwest,502,0.068282,34.277
+4205127400,Franklin township,Fayette,42051,Southwest,2378,0.068282,162.374
+4205128792,Georges township,Fayette,42051,Southwest,6346,0.068282,433.315
+4205128856,German township,Fayette,42051,Southwest,4669,0.068282,318.807
+4205133896,Henry Clay township,Fayette,42051,Southwest,1761,0.068282,120.244
+4205137872,Jefferson township,Fayette,42051,Southwest,2004,0.068282,136.836
+4205145144,Lower Tyrone township,Fayette,42051,Southwest,1073,0.068282,73.266
+4205145560,Luzerne township,Fayette,42051,Southwest,5586,0.068282,381.421
+4205147560,Markleysburg borough,Fayette,42051,Southwest,246,0.068282,16.797
+4205148000,Masontown borough,Fayette,42051,Southwest,3276,0.068282,223.691
+4205148616,Menallen township,Fayette,42051,Southwest,4098,0.068282,279.818
+4205153504,Newell borough,Fayette,42051,Southwest,513,0.068282,35.028
+4205154392,Nicholson township,Fayette,42051,Southwest,1732,0.068282,118.264
+4205155464,North Union township,Fayette,42051,Southwest,11828,0.068282,807.635
+4205156408,Ohiopyle borough,Fayette,42051,Southwest,37,0.068282,2.526
+4205159464,Perry township,Fayette,42051,Southwest,2338,0.068282,159.642
+4205159520,Perryopolis borough,Fayette,42051,Southwest,1705,0.068282,116.42
+4205161864,Point Marion borough,Fayette,42051,Southwest,1156,0.068282,78.934
+4205163904,Redstone township,Fayette,42051,Southwest,5079,0.068282,346.802
+4205167640,Saltlick township,Fayette,42051,Southwest,3037,0.068282,207.371
+4205169336,Seven Springs borough,Fayette,42051,Southwest,12,0.068282,0.819
+4205171320,Smithfield borough,Fayette,42051,Southwest,831,0.068282,56.742
+4205172080,South Connellsville borough,Fayette,42051,Southwest,1917,0.068282,130.896
+4205172544,South Union township,Fayette,42051,Southwest,10890,0.068282,743.587
+4205173064,Springfield township,Fayette,42051,Southwest,2732,0.068282,186.545
+4205173240,Springhill township,Fayette,42051,Southwest,2722,0.068282,185.863
+4205174080,Stewart township,Fayette,42051,Southwest,623,0.068282,42.539
+4205178528,Uniontown city,Fayette,42051,Southwest,9984,0.068282,681.724
+4205179344,Upper Tyrone township,Fayette,42051,Southwest,1773,0.068282,121.063
+4205179768,Vanderbilt borough,Fayette,42051,Southwest,419,0.068282,28.61
+4205181232,Washington township,Fayette,42051,Southwest,3894,0.068282,265.889
+4205184344,Wharton township,Fayette,42051,Southwest,3355,0.068282,229.085
+4205304224,Barnett township,Forest,42053,Northwest,309,0.061668,19.055
+4205330808,Green township,Forest,42053,Northwest,376,0.061668,23.187
+4205332704,Harmony township,Forest,42053,Northwest,468,0.061668,28.861
+4205334240,Hickory township,Forest,42053,Northwest,413,0.061668,25.469
+4205335992,Howe township,Forest,42053,Northwest,194,0.061668,11.964
+4205338016,Jenks township,Forest,42053,Northwest,3858,0.061668,237.916
+4205339760,Kingsley township,Forest,42053,Northwest,259,0.061668,15.972
+4205376848,Tionesta borough,Forest,42053,Northwest,428,0.061668,26.394
+4205376864,Tionesta township,Forest,42053,Northwest,668,0.061668,41.194
+4205502696,Antrim township,Franklin,42055,Southcentral,15778,0.049734,784.7
+4205512536,Chambersburg borough,Franklin,42055,Southcentral,21903,0.049734,1089.32
+4205525176,Fannett township,Franklin,42055,Southcentral,2483,0.049734,123.489
+4205530896,Greencastle borough,Franklin,42055,Southcentral,4251,0.049734,211.418
+4205530944,Greene township,Franklin,42055,Southcentral,18436,0.049734,916.893
+4205531720,Guilford township,Franklin,42055,Southcentral,14627,0.049734,727.456
+4205532152,Hamilton township,Franklin,42055,Southcentral,11374,0.049734,565.672
+4205542888,Letterkenny township,Franklin,42055,Southcentral,2462,0.049734,122.445
+4205545496,Lurgan township,Franklin,42055,Southcentral,2207,0.049734,109.763
+4205548704,Mercersburg borough,Franklin,42055,Southcentral,1507,0.049734,74.949
+4205548888,Metal township,Franklin,42055,Southcentral,1768,0.049734,87.929
+4205550544,Mont Alto borough,Franklin,42055,Southcentral,1580,0.049734,78.579
+4205550616,Montgomery township,Franklin,42055,Southcentral,5740,0.049734,285.472
+4205557112,Orrstown borough,Franklin,42055,Southcentral,214,0.049734,10.643
+4205559600,Peters township,Franklin,42055,Southcentral,4462,0.049734,221.912
+4205563200,Quincy township,Franklin,42055,Southcentral,5318,0.049734,264.484
+4205567400,St. Thomas township,Franklin,42055,Southcentral,5917,0.049734,294.275
+4205570352,Shippensburg borough,Franklin,42055,Southcentral,1163,0.049734,57.84
+4205571912,Southampton township,Franklin,42055,Southcentral,8566,0.049734,426.02
+4205580992,Warren township,Franklin,42055,Southcentral,328,0.049734,16.313
+4205581240,Washington township,Franklin,42055,Southcentral,14897,0.049734,740.885
+4205581824,Waynesboro borough,Franklin,42055,Southcentral,10951,0.049734,544.635
+4205703704,Ayr township,Fulton,42057,Southcentral,2036,0.058226,118.548
+4205705144,Belfast township,Fulton,42057,Southcentral,1361,0.058226,79.245
+4205706032,Bethel township,Fulton,42057,Southcentral,1555,0.058226,90.541
+4205709568,Brush Creek township,Fulton,42057,Southcentral,732,0.058226,42.621
+4205720112,Dublin township,Fulton,42057,Southcentral,1193,0.058226,69.464
+4205743200,Licking Creek township,Fulton,42057,Southcentral,1575,0.058226,91.706
+4205746000,McConnellsburg borough,Fulton,42057,Southcentral,1151,0.058226,67.018
+4205776176,Taylor township,Fulton,42057,Southcentral,1065,0.058226,62.011
+4205776488,Thompson township,Fulton,42057,Southcentral,1029,0.058226,59.914
+4205776984,Todd township,Fulton,42057,Southcentral,1612,0.058226,93.86
+4205778320,Union township,Fulton,42057,Southcentral,747,0.058226,43.495
+4205779644,Valley-Hi borough,Fulton,42057,Southcentral,6,0.058226,0.349
+4205782152,Wells township,Fulton,42057,Southcentral,494,0.058226,28.764
+4205900740,Aleppo township,Greene,42059,Southwest,429,0.057487,24.662
+4205911328,Carmichaels borough,Greene,42059,Southwest,432,0.057487,24.835
+4205912032,Center township,Greene,42059,Southwest,1113,0.057487,63.983
+4205913896,Clarksville borough,Greene,42059,Southwest,203,0.057487,11.67
+4205917648,Cumberland township,Greene,42059,Southwest,6383,0.057487,366.942
+4205920296,Dunkard township,Greene,42059,Southwest,2177,0.057487,125.15
+4205927408,Franklin township,Greene,42059,Southwest,7056,0.057487,405.631
+4205927800,Freeport township,Greene,42059,Southwest,269,0.057487,15.464
+4205929152,Gilmore township,Greene,42059,Southwest,234,0.057487,13.452
+4205930640,Gray township,Greene,42059,Southwest,182,0.057487,10.463
+4205930952,Greene township,Greene,42059,Southwest,401,0.057487,23.052
+4205931192,Greensboro borough,Greene,42059,Southwest,264,0.057487,15.177
+4205937376,Jackson township,Greene,42059,Southwest,381,0.057487,21.903
+4205937880,Jefferson borough,Greene,42059,Southwest,253,0.057487,14.544
+4205937888,Jefferson township,Greene,42059,Southwest,2351,0.057487,135.153
+4205950400,Monongahela township,Greene,42059,Southwest,1480,0.057487,85.081
+4205950992,Morgan township,Greene,42059,Southwest,2335,0.057487,134.233
+4205951064,Morris township,Greene,42059,Southwest,564,0.057487,32.423
+4205959472,Perry township,Greene,42059,Southwest,1396,0.057487,80.252
+4205964432,Rices Landing borough,Greene,42059,Southwest,425,0.057487,24.432
+4205964512,Richhill township,Greene,42059,Southwest,775,0.057487,44.553
+4205973248,Springhill township,Greene,42059,Southwest,319,0.057487,18.338
+4205981248,Washington township,Greene,42059,Southwest,932,0.057487,53.578
+4205981768,Wayne township,Greene,42059,Southwest,1025,0.057487,58.925
+4205981832,Waynesburg borough,Greene,42059,Southwest,4006,0.057487,230.294
+4205984608,Whiteley township,Greene,42059,Southwest,569,0.057487,32.71
+4206100756,Alexandria borough,Huntingdon,42061,Southcentral,384,0.071066,27.289
+4206104288,Barree township,Huntingdon,42061,Southcentral,434,0.071066,30.843
+4206106560,Birmingham borough,Huntingdon,42061,Southcentral,89,0.071066,6.325
+4206108128,Brady township,Huntingdon,42061,Southcentral,1034,0.071066,73.482
+4206108896,Broad Top City borough,Huntingdon,42061,Southcentral,367,0.071066,26.081
+4206111208,Carbon township,Huntingdon,42061,Southcentral,318,0.071066,22.599
+4206111600,Cass township,Huntingdon,42061,Southcentral,1018,0.071066,72.345
+4206111632,Cassville borough,Huntingdon,42061,Southcentral,135,0.071066,9.594
+4206113944,Clay township,Huntingdon,42061,Southcentral,868,0.071066,61.685
+4206114640,Coalmont borough,Huntingdon,42061,Southcentral,90,0.071066,6.396
+4206117280,Cromwell township,Huntingdon,42061,Southcentral,1478,0.071066,105.036
+4206120120,Dublin township,Huntingdon,42061,Southcentral,1183,0.071066,84.071
+4206120152,Dudley borough,Huntingdon,42061,Southcentral,184,0.071066,13.076
+4206127416,Franklin township,Huntingdon,42061,Southcentral,495,0.071066,35.178
+4206133808,Henderson township,Huntingdon,42061,Southcentral,922,0.071066,65.523
+4206135688,Hopewell township,Huntingdon,42061,Southcentral,453,0.071066,32.193
+4206136368,Huntingdon borough,Huntingdon,42061,Southcentral,6827,0.071066,485.167
+4206137384,Jackson township,Huntingdon,42061,Southcentral,859,0.071066,61.046
+4206138608,Juniata township,Huntingdon,42061,Southcentral,437,0.071066,31.056
+4206143424,Lincoln township,Huntingdon,42061,Southcentral,321,0.071066,22.812
+4206144344,Logan township,Huntingdon,42061,Southcentral,611,0.071066,43.421
+4206147248,Mapleton borough,Huntingdon,42061,Southcentral,418,0.071066,29.706
+4206147544,Marklesburg borough,Huntingdon,42061,Southcentral,200,0.071066,14.213
+4206149552,Mill Creek borough,Huntingdon,42061,Southcentral,285,0.071066,20.254
+4206149624,Miller township,Huntingdon,42061,Southcentral,459,0.071066,32.619
+4206151080,Morris township,Huntingdon,42061,Southcentral,428,0.071066,30.416
+4206151984,Mount Union borough,Huntingdon,42061,Southcentral,2308,0.071066,164.02
+4206156808,Oneida township,Huntingdon,42061,Southcentral,1012,0.071066,71.919
+4206156928,Orbisonia borough,Huntingdon,42061,Southcentral,449,0.071066,31.909
+4206158832,Penn township,Huntingdon,42061,Southcentral,1077,0.071066,76.538
+4206159616,Petersburg borough,Huntingdon,42061,Southcentral,419,0.071066,29.777
+4206162160,Porter township,Huntingdon,42061,Southcentral,1904,0.071066,135.31
+4206165496,Rockhill borough,Huntingdon,42061,Southcentral,379,0.071066,26.934
+4206167632,Saltillo borough,Huntingdon,42061,Southcentral,309,0.071066,21.959
+4206169456,Shade Gap borough,Huntingdon,42061,Southcentral,78,0.071066,5.543
+4206170400,Shirley township,Huntingdon,42061,Southcentral,2405,0.071066,170.914
+4206170408,Shirleysburg borough,Huntingdon,42061,Southcentral,141,0.071066,10.02
+4206171328,Smithfield township,Huntingdon,42061,Southcentral,4618,0.071066,328.183
+4206173072,Springfield township,Huntingdon,42061,Southcentral,693,0.071066,49.249
+4206173488,Spruce Creek township,Huntingdon,42061,Southcentral,199,0.071066,14.142
+4206176312,Tell township,Huntingdon,42061,Southcentral,550,0.071066,39.086
+4206176632,Three Springs borough,Huntingdon,42061,Southcentral,448,0.071066,31.838
+4206177000,Todd township,Huntingdon,42061,Southcentral,898,0.071066,63.817
+4206178328,Union township,Huntingdon,42061,Southcentral,947,0.071066,67.299
+4206180560,Walker township,Huntingdon,42061,Southcentral,1963,0.071066,139.503
+4206181104,Warriors Mark township,Huntingdon,42061,Southcentral,1871,0.071066,132.964
+4206182352,West township,Huntingdon,42061,Southcentral,515,0.071066,36.599
+4206186080,Wood township,Huntingdon,42061,Southcentral,612,0.071066,43.492
+4206303032,Armagh borough,Indiana,42063,Southwest,102,0.071334,7.276
+4206303064,Armstrong township,Indiana,42063,Southwest,2761,0.071334,196.953
+4206304056,Banks township,Indiana,42063,Southwest,899,0.071334,64.129
+4206306752,Black Lick township,Indiana,42063,Southwest,1117,0.071334,79.68
+4206306904,Blairsville borough,Indiana,42063,Southwest,3214,0.071334,229.267
+4206309624,Brush Valley township,Indiana,42063,Southwest,1675,0.071334,119.484
+4206310104,Buffington township,Indiana,42063,Southwest,1225,0.071334,87.384
+4206310352,Burrell township,Indiana,42063,Southwest,3491,0.071334,249.027
+4206311120,Canoe township,Indiana,42063,Southwest,1432,0.071334,102.15
+4206312040,Center township,Indiana,42063,Southwest,4391,0.071334,313.227
+4206313072,Cherryhill township,Indiana,42063,Southwest,2445,0.071334,174.411
+4206313120,Cherry Tree borough,Indiana,42063,Southwest,268,0.071334,19.117
+4206314520,Clymer borough,Indiana,42063,Southwest,1321,0.071334,94.232
+4206315560,Conemaugh township,Indiana,42063,Southwest,2060,0.071334,146.948
+4206317024,Creekside borough,Indiana,42063,Southwest,288,0.071334,20.544
+4206321456,East Mahoning township,Indiana,42063,Southwest,965,0.071334,68.837
+4206322048,East Wheatfield township,Indiana,42063,Southwest,2136,0.071334,152.369
+4206324040,Ernest borough,Indiana,42063,Southwest,417,0.071334,29.746
+4206329512,Glen Campbell borough,Indiana,42063,Southwest,256,0.071334,18.261
+4206330416,Grant township,Indiana,42063,Southwest,626,0.071334,44.655
+4206330816,Green township,Indiana,42063,Southwest,3414,0.071334,243.534
+4206335408,Homer City borough,Indiana,42063,Southwest,1730,0.071334,123.408
+4206336816,Indiana borough,Indiana,42063,Southwest,14044,0.071334,1001.813
+4206347472,Marion Center borough,Indiana,42063,Southwest,405,0.071334,28.89
+4206350624,Montgomery township,Indiana,42063,Southwest,1430,0.071334,102.007
+4206355184,North Mahoning township,Indiana,42063,Southwest,1331,0.071334,94.945
+4206360320,Pine township,Indiana,42063,Southwest,1860,0.071334,132.681
+4206361632,Plumville borough,Indiana,42063,Southwest,255,0.071334,18.19
+4206363584,Rayne township,Indiana,42063,Southwest,2786,0.071334,198.736
+4206367648,Saltsburg borough,Indiana,42063,Southwest,780,0.071334,55.64
+4206370040,Shelocta borough,Indiana,42063,Southwest,102,0.071334,7.276
+4206371256,Smicksburg borough,Indiana,42063,Southwest,56,0.071334,3.995
+4206372304,South Mahoning township,Indiana,42063,Southwest,1825,0.071334,130.184
+4206381256,Washington township,Indiana,42063,Southwest,1649,0.071334,117.63
+4206383416,West Mahoning township,Indiana,42063,Southwest,1324,0.071334,94.446
+4206384184,West Wheatfield township,Indiana,42063,Southwest,2142,0.071334,152.797
+4206384472,White township,Indiana,42063,Southwest,15336,0.071334,1093.976
+4206387160,Young township,Indiana,42063,Southwest,1688,0.071334,120.412
+4206504240,Barnett township,Jefferson,42065,Northcentral,234,0.088669,20.749
+4206504728,Beaver township,Jefferson,42065,Northcentral,465,0.088669,41.231
+4206505200,Bell township,Jefferson,42065,Northcentral,2010,0.088669,178.224
+4206506344,Big Run borough,Jefferson,42065,Northcentral,647,0.088669,57.369
+4206508960,Brockway borough,Jefferson,42065,Northcentral,2276,0.088669,201.81
+4206509224,Brookville borough,Jefferson,42065,Northcentral,3995,0.088669,354.232
+4206514408,Clover township,Jefferson,42065,Northcentral,432,0.088669,38.305
+4206516304,Corsica borough,Jefferson,42065,Northcentral,319,0.088669,28.285
+4206522872,Eldred township,Jefferson,42065,Northcentral,1271,0.088669,112.698
+4206525136,Falls Creek borough,Jefferson,42065,Northcentral,1036,0.088669,91.861
+4206528592,Gaskill township,Jefferson,42065,Northcentral,673,0.088669,59.674
+4206533448,Heath township,Jefferson,42065,Northcentral,114,0.088669,10.108
+4206533816,Henderson township,Jefferson,42065,Northcentral,1940,0.088669,172.018
+4206540304,Knox township,Jefferson,42065,Northcentral,1011,0.088669,89.644
+4206545888,McCalmont township,Jefferson,42065,Northcentral,1137,0.088669,100.817
+4206556712,Oliver township,Jefferson,42065,Northcentral,1000,0.088669,88.669
+4206559480,Perry township,Jefferson,42065,Northcentral,1248,0.088669,110.659
+4206560368,Pine Creek township,Jefferson,42065,Northcentral,1323,0.088669,117.309
+4206561920,Polk township,Jefferson,42065,Northcentral,284,0.088669,25.182
+4206562176,Porter township,Jefferson,42065,Northcentral,295,0.088669,26.157
+4206562920,Punxsutawney borough,Jefferson,42065,Northcentral,5769,0.088669,511.531
+4206564376,Reynoldsville borough,Jefferson,42065,Northcentral,2549,0.088669,226.017
+4206564960,Ringgold township,Jefferson,42065,Northcentral,773,0.088669,68.541
+4206566032,Rose township,Jefferson,42065,Northcentral,1156,0.088669,102.501
+4206571632,Snyder township,Jefferson,42065,Northcentral,2370,0.088669,210.145
+4206575168,Summerville borough,Jefferson,42065,Northcentral,504,0.088669,44.689
+4206575888,Sykesville borough,Jefferson,42065,Northcentral,1115,0.088669,98.866
+4206576744,Timblin borough,Jefferson,42065,Northcentral,147,0.088669,13.034
+4206578336,Union township,Jefferson,42065,Northcentral,844,0.088669,74.837
+4206581120,Warsaw township,Jefferson,42065,Northcentral,1368,0.088669,121.299
+4206581264,Washington township,Jefferson,42065,Northcentral,1892,0.088669,167.762
+4206585840,Winslow township,Jefferson,42065,Northcentral,2546,0.088669,225.751
+4206586568,Worthville borough,Jefferson,42065,Northcentral,80,0.088669,7.094
+4206587168,Young township,Jefferson,42065,Northcentral,1711,0.088669,151.712
+4206704560,Beale township,Juniata,42067,Southcentral,768,0.06795,52.186
+4206718680,Delaware township,Juniata,42067,Southcentral,1610,0.06795,109.4
+4206725440,Fayette township,Juniata,42067,Southcentral,3340,0.06795,226.954
+4206725648,Fermanagh township,Juniata,42067,Southcentral,2866,0.06795,194.745
+4206731424,Greenwood township,Juniata,42067,Southcentral,534,0.06795,36.285
+4206740752,Lack township,Juniata,42067,Southcentral,636,0.06795,43.216
+4206749272,Mifflin borough,Juniata,42067,Southcentral,530,0.06795,36.014
+4206749304,Mifflintown borough,Juniata,42067,Southcentral,840,0.06795,57.078
+4206749392,Milford township,Juniata,42067,Southcentral,1993,0.06795,135.425
+4206750480,Monroe township,Juniata,42067,Southcentral,2055,0.06795,139.638
+4206762304,Port Royal borough,Juniata,42067,Southcentral,807,0.06795,54.836
+4206773504,Spruce Hill township,Juniata,42067,Southcentral,793,0.06795,53.885
+4206775536,Susquehanna township,Juniata,42067,Southcentral,1204,0.06795,81.812
+4206776536,Thompsontown borough,Juniata,42067,Southcentral,631,0.06795,42.877
+4206777824,Turbett township,Juniata,42067,Southcentral,978,0.06795,66.455
+4206777952,Tuscarora township,Juniata,42067,Southcentral,1134,0.06795,77.056
+4206780568,Walker township,Juniata,42067,Southcentral,2790,0.06795,189.581
+4206902832,Archbald borough,Lackawanna,42069,Northeast,7297,0.029208,213.133
+4206905696,Benton township,Lackawanna,42069,Northeast,1726,0.029208,50.414
+4206906928,Blakely borough,Lackawanna,42069,Northeast,6657,0.029208,194.44
+4206911232,Carbondale city,Lackawanna,42069,Northeast,8828,0.029208,257.851
+4206911240,Carbondale township,Lackawanna,42069,Northeast,1125,0.029208,32.859
+4206913864,Clarks Green borough,Lackawanna,42069,Northeast,1524,0.029208,44.514
+4206913880,Clarks Summit borough,Lackawanna,42069,Northeast,5107,0.029208,149.167
+4206914256,Clifton township,Lackawanna,42069,Northeast,1493,0.029208,43.608
+4206916664,Covington township,Lackawanna,42069,Northeast,2198,0.029208,64.2
+4206918088,Dalton borough,Lackawanna,42069,Northeast,1284,0.029208,37.504
+4206919160,Dickson City borough,Lackawanna,42069,Northeast,6038,0.029208,176.36
+4206920352,Dunmore borough,Lackawanna,42069,Northeast,14042,0.029208,410.143
+4206923336,Elmhurst township,Lackawanna,42069,Northeast,842,0.029208,24.593
+4206925560,Fell township,Lackawanna,42069,Northeast,2338,0.029208,68.289
+4206929504,Glenburn township,Lackawanna,42069,Northeast,1434,0.029208,41.885
+4206931016,Greenfield township,Lackawanna,42069,Northeast,2260,0.029208,66.011
+4206937896,Jefferson township,Lackawanna,42069,Northeast,3765,0.029208,109.969
+4206938096,Jermyn borough,Lackawanna,42069,Northeast,2150,0.029208,62.798
+4206938160,Jessup borough,Lackawanna,42069,Northeast,4520,0.029208,132.022
+4206941504,La Plume township,Lackawanna,42069,Northeast,476,0.029208,13.903
+4206946480,Madison township,Lackawanna,42069,Northeast,2469,0.029208,72.115
+4206948176,Mayfield borough,Lackawanna,42069,Northeast,1763,0.029208,51.494
+4206950880,Moosic borough,Lackawanna,42069,Northeast,5959,0.029208,174.052
+4206951208,Moscow borough,Lackawanna,42069,Northeast,2039,0.029208,59.556
+4206954136,Newton township,Lackawanna,42069,Northeast,2816,0.029208,82.251
+4206954680,North Abington township,Lackawanna,42069,Northeast,706,0.029208,20.621
+4206956576,Old Forge borough,Lackawanna,42069,Northeast,8497,0.029208,248.183
+4206956792,Olyphant borough,Lackawanna,42069,Northeast,5383,0.029208,157.228
+4206963432,Ransom township,Lackawanna,42069,Northeast,1397,0.029208,40.804
+4206965224,Roaring Brook township,Lackawanna,42069,Northeast,2273,0.029208,66.391
+4206968400,Scott township,Lackawanna,42069,Northeast,4629,0.029208,135.205
+4206969000,Scranton city,Lackawanna,42069,Northeast,76328,0.029208,2229.414
+4206971872,South Abington township,Lackawanna,42069,Northeast,9532,0.029208,278.414
+4206972896,Spring Brook township,Lackawanna,42069,Northeast,2748,0.029208,80.265
+4206976184,Taylor borough,Lackawanna,42069,Northeast,6294,0.029208,183.837
+4206976601,Thornhurst township,Lackawanna,42069,Northeast,1008,0.029208,29.442
+4206976648,Throop borough,Lackawanna,42069,Northeast,4065,0.029208,118.732
+4206979792,Vandling borough,Lackawanna,42069,Northeast,730,0.029208,21.322
+4206981668,Waverly township,Lackawanna,42069,Northeast,1856,0.029208,54.211
+4206982360,West Abington township,Lackawanna,42069,Northeast,300,0.029208,8.763
+4207100364,Adamstown borough,Lancaster,42071,Southeast,1916,0.031332,60.032
+4207100540,Akron borough,Lancaster,42071,Southeast,4152,0.031332,130.09
+4207104376,Bart township,Lancaster,42071,Southeast,3181,0.031332,99.667
+4207108352,Brecknock township,Lancaster,42071,Southeast,7557,0.031332,236.776
+4207110704,Caernarvon township,Lancaster,42071,Southeast,4609,0.031332,144.409
+4207113512,Christiana borough,Lancaster,42071,Southeast,1112,0.031332,34.841
+4207113960,Clay township,Lancaster,42071,Southeast,6857,0.031332,214.843
+4207115056,Colerain township,Lancaster,42071,Southeast,3883,0.031332,121.662
+4207115384,Columbia borough,Lancaster,42071,Southeast,10207,0.031332,319.806
+4207115592,Conestoga township,Lancaster,42071,Southeast,3914,0.031332,122.633
+4207115824,Conoy township,Lancaster,42071,Southeast,3361,0.031332,105.307
+4207118888,Denver borough,Lancaster,42071,Southeast,3792,0.031332,118.811
+4207120032,Drumore township,Lancaster,42071,Southeast,2561,0.031332,80.241
+4207120688,Earl township,Lancaster,42071,Southeast,7144,0.031332,223.836
+4207120984,East Cocalico township,Lancaster,42071,Southeast,10767,0.031332,337.351
+4207121032,East Donegal township,Lancaster,42071,Southeast,8684,0.031332,272.087
+4207121040,East Drumore township,Lancaster,42071,Southeast,3936,0.031332,123.323
+4207121072,East Earl township,Lancaster,42071,Southeast,6699,0.031332,209.893
+4207121232,East Hempfield township,Lancaster,42071,Southeast,26304,0.031332,824.157
+4207121344,East Lampeter township,Lancaster,42071,Southeast,17776,0.031332,556.957
+4207121688,East Petersburg borough,Lancaster,42071,Southeast,4573,0.031332,143.281
+4207122336,Eden township,Lancaster,42071,Southeast,2239,0.031332,70.152
+4207123008,Elizabeth township,Lancaster,42071,Southeast,3985,0.031332,124.858
+4207123016,Elizabethtown borough,Lancaster,42071,Southeast,11639,0.031332,364.673
+4207123832,Ephrata borough,Lancaster,42071,Southeast,13794,0.031332,432.193
+4207123840,Ephrata township,Lancaster,42071,Southeast,10386,0.031332,325.414
+4207128168,Fulton township,Lancaster,42071,Southeast,3214,0.031332,100.701
+4207141216,Lancaster city,Lancaster,42071,Southeast,58039,0.031332,1818.477
+4207141224,Lancaster township,Lancaster,42071,Southeast,18642,0.031332,584.091
+4207142080,Leacock township,Lancaster,42071,Southeast,5652,0.031332,177.088
+4207143816,Lititz borough,Lancaster,42071,Southeast,9381,0.031332,293.925
+4207143832,Little Britain township,Lancaster,42071,Southeast,4118,0.031332,129.025
+4207146888,Manheim borough,Lancaster,42071,Southeast,5046,0.031332,158.101
+4207146896,Manheim township,Lancaster,42071,Southeast,43977,0.031332,1377.887
+4207146992,Manor township,Lancaster,42071,Southeast,21849,0.031332,684.573
+4207147424,Marietta borough,Lancaster,42071,Southeast,2623,0.031332,82.184
+4207147824,Martic township,Lancaster,42071,Southeast,5221,0.031332,163.584
+4207149728,Millersville borough,Lancaster,42071,Southeast,7903,0.031332,247.617
+4207151656,Mount Joy borough,Lancaster,42071,Southeast,8325,0.031332,260.839
+4207151664,Mount Joy township,Lancaster,42071,Southeast,10721,0.031332,335.91
+4207152016,Mountville borough,Lancaster,42071,Southeast,3017,0.031332,94.529
+4207153696,New Holland borough,Lancaster,42071,Southeast,5743,0.031332,179.94
+4207157848,Paradise township,Lancaster,42071,Southeast,5672,0.031332,177.715
+4207158840,Penn township,Lancaster,42071,Southeast,10210,0.031332,319.9
+4207159360,Pequea township,Lancaster,42071,Southeast,5474,0.031332,171.511
+4207162832,Providence township,Lancaster,42071,Southeast,6995,0.031332,219.167
+4207163064,Quarryville borough,Lancaster,42071,Southeast,2843,0.031332,89.077
+4207163440,Rapho township,Lancaster,42071,Southeast,12024,0.031332,376.736
+4207167096,Sadsbury township,Lancaster,42071,Southeast,3536,0.031332,110.79
+4207167568,Salisbury township,Lancaster,42071,Southeast,11494,0.031332,360.13
+4207174712,Strasburg borough,Lancaster,42071,Southeast,3117,0.031332,97.662
+4207174720,Strasburg township,Lancaster,42071,Southeast,4457,0.031332,139.647
+4207176400,Terre Hill borough,Lancaster,42071,Southeast,1357,0.031332,42.518
+4207179080,Upper Leacock township,Lancaster,42071,Southeast,8921,0.031332,279.513
+4207181168,Warwick township,Lancaster,42071,Southeast,19022,0.031332,595.997
+4207182728,West Cocalico township,Lancaster,42071,Southeast,7456,0.031332,233.611
+4207182816,West Donegal township,Lancaster,42071,Southeast,8944,0.031332,280.233
+4207182824,West Earl township,Lancaster,42071,Southeast,8560,0.031332,268.202
+4207183152,West Hempfield township,Lancaster,42071,Southeast,17020,0.031332,533.27
+4207183256,West Lampeter township,Lancaster,42071,Southeast,17383,0.031332,544.644
+4207305936,Bessemer borough,Lawrence,42073,Northwest,1076,0.04266,45.903
+4207323280,Ellport borough,Lawrence,42073,Northwest,1082,0.04266,46.159
+4207323304,Ellwood City borough,Lawrence,42073,Northwest,7032,0.04266,299.988
+4207323768,Enon Valley borough,Lawrence,42073,Northwest,301,0.04266,12.841
+4207334248,Hickory township,Lawrence,42073,Northwest,2320,0.04266,98.972
+4207343824,Little Beaver township,Lawrence,42073,Northwest,1224,0.04266,52.216
+4207346648,Mahoning township,Lawrence,42073,Northwest,2708,0.04266,115.524
+4207353064,Neshannock township,Lawrence,42073,Northwest,9843,0.04266,419.906
+4207353184,New Beaver borough,Lawrence,42073,Northwest,1372,0.04266,58.53
+4207353368,New Castle city,Lawrence,42073,Northwest,21926,0.04266,935.371
+4207354352,New Wilmington borough,Lawrence,42073,Northwest,2092,0.04266,89.246
+4207354768,North Beaver township,Lawrence,42073,Northwest,3962,0.04266,169.02
+4207359488,Perry township,Lawrence,42073,Northwest,1853,0.04266,79.05
+4207361104,Plain Grove township,Lawrence,42073,Northwest,777,0.04266,33.147
+4207362904,Pulaski township,Lawrence,42073,Northwest,3102,0.04266,132.332
+4207368408,Scott township,Lawrence,42073,Northwest,2176,0.04266,92.829
+4207370080,Shenango township,Lawrence,42073,Northwest,7780,0.04266,331.898
+4207371200,Slippery Rock township,Lawrence,42073,Northwest,2913,0.04266,124.27
+4207371620,S.N.P.J. borough,Lawrence,42073,Northwest,18,0.04266,0.768
+4207376192,Taylor township,Lawrence,42073,Northwest,989,0.04266,42.191
+4207378368,Union township,Lawrence,42073,Northwest,4996,0.04266,213.131
+4207380368,Volant borough,Lawrence,42073,Northwest,126,0.04266,5.375
+4207380880,Wampum borough,Lawrence,42073,Northwest,559,0.04266,23.847
+4207381272,Washington township,Lawrence,42073,Northwest,711,0.04266,30.332
+4207381776,Wayne township,Lawrence,42073,Northwest,2469,0.04266,105.328
+4207385504,Wilmington township,Lawrence,42073,Northwest,2663,0.04266,113.605
+4207502600,Annville township,Lebanon,42075,Southcentral,4759,0.04225,201.066
+4207506040,Bethel township,Lebanon,42075,Southcentral,5132,0.04225,216.825
+4207514160,Cleona borough,Lebanon,42075,Southcentral,2013,0.04225,85.048
+4207514944,Cold Spring township,Lebanon,42075,Southcentral,59,0.04225,2.493
+4207516256,Cornwall borough,Lebanon,42075,Southcentral,4604,0.04225,194.517
+4207521224,East Hanover township,Lebanon,42075,Southcentral,2658,0.04225,112.299
+4207533608,Heidelberg township,Lebanon,42075,Southcentral,4095,0.04225,173.012
+4207537392,Jackson township,Lebanon,42075,Southcentral,9348,0.04225,394.949
+4207538400,Jonestown borough,Lebanon,42075,Southcentral,1638,0.04225,69.205
+4207542168,Lebanon city,Lebanon,42075,Southcentral,26814,0.04225,1132.881
+4207549560,Millcreek township,Lebanon,42075,Southcentral,4368,0.04225,184.546
+4207551568,Mount Gretna borough,Lebanon,42075,Southcentral,193,0.04225,8.154
+4207552488,Myerstown borough,Lebanon,42075,Southcentral,3094,0.04225,130.72
+4207554720,North Annville township,Lebanon,42075,Southcentral,2267,0.04225,95.78
+4207554928,North Cornwall township,Lebanon,42075,Southcentral,8489,0.04225,358.657
+4207555160,North Lebanon township,Lebanon,42075,Southcentral,12041,0.04225,508.728
+4207555176,North Londonderry township,Lebanon,42075,Southcentral,8911,0.04225,376.486
+4207557720,Palmyra borough,Lebanon,42075,Southcentral,7830,0.04225,330.815
+4207564560,Richland borough,Lebanon,42075,Southcentral,1496,0.04225,63.205
+4207571928,South Annville township,Lebanon,42075,Southcentral,3438,0.04225,145.254
+4207572288,South Lebanon township,Lebanon,42075,Southcentral,10416,0.04225,440.072
+4207572296,South Londonderry township,Lebanon,42075,Southcentral,8776,0.04225,370.783
+4207575680,Swatara township,Lebanon,42075,Southcentral,5061,0.04225,213.825
+4207578376,Union township,Lebanon,42075,Southcentral,2932,0.04225,123.876
+4207582752,West Cornwall township,Lebanon,42075,Southcentral,1992,0.04225,84.161
+4207583312,West Lebanon township,Lebanon,42075,Southcentral,833,0.04225,35.194
+4207700660,Alburtis borough,Lehigh,42077,Southeast,2596,0.02799,72.661
+4207702000,Allentown city,Lehigh,42077,Southeast,125845,0.02799,3522.356
+4207706088,Bethlehem city,Lehigh,42077,Southeast,19772,0.02799,553.411
+4207711720,Catasauqua borough,Lehigh,42077,Southeast,6518,0.02799,182.436
+4207716056,Coopersburg borough,Lehigh,42077,Southeast,2447,0.02799,68.491
+4207716128,Coplay borough,Lehigh,42077,Southeast,3348,0.02799,93.709
+4207723584,Emmaus borough,Lehigh,42077,Southeast,11652,0.02799,326.135
+4207727008,Fountain Hill borough,Lehigh,42077,Southeast,4832,0.02799,135.246
+4207732400,Hanover township,Lehigh,42077,Southeast,1689,0.02799,47.275
+4207733616,Heidelberg township,Lehigh,42077,Southeast,3324,0.02799,93.038
+4207744952,Lower Macungie township,Lehigh,42077,Southeast,32426,0.02799,907.592
+4207744992,Lower Milford township,Lehigh,42077,Southeast,3861,0.02799,108.068
+4207745168,Lowhill township,Lehigh,42077,Southeast,2292,0.02799,64.152
+4207745656,Lynn township,Lehigh,42077,Southeast,4232,0.02799,118.452
+4207746392,Macungie borough,Lehigh,42077,Southeast,3257,0.02799,91.162
+4207755576,North Whitehall township,Lehigh,42077,Southeast,15655,0.02799,438.178
+4207767576,Salisbury township,Lehigh,42077,Southeast,13621,0.02799,381.247
+4207771144,Slatington borough,Lehigh,42077,Southeast,4283,0.02799,119.88
+4207772632,South Whitehall township,Lehigh,42077,Southeast,21080,0.02799,590.022
+4207779104,Upper Macungie township,Lehigh,42077,Southeast,26377,0.02799,738.283
+4207779160,Upper Milford township,Lehigh,42077,Southeast,7777,0.02799,217.675
+4207779288,Upper Saucon township,Lehigh,42077,Southeast,16973,0.02799,475.068
+4207781280,Washington township,Lehigh,42077,Southeast,6551,0.02799,183.36
+4207782064,Weisenberg township,Lehigh,42077,Southeast,4976,0.02799,139.276
+4207784528,Whitehall township,Lehigh,42077,Southeast,29173,0.02799,816.542
+4207903272,Ashley borough,Luzerne,42079,Northeast,2596,0.030686,79.661
+4207903640,Avoca borough,Luzerne,42079,Northeast,2507,0.030686,76.93
+4207904592,Bear Creek township,Luzerne,42079,Northeast,2754,0.030686,84.51
+4207904599,Bear Creek Village borough,Luzerne,42079,Northeast,291,0.030686,8.93
+4207906672,Black Creek township,Luzerne,42079,Northeast,1909,0.030686,58.58
+4207909760,Buck township,Luzerne,42079,Northeast,379,0.030686,11.63
+4207910480,Butler township,Luzerne,42079,Northeast,9485,0.030686,291.059
+4207915888,Conyngham borough,Luzerne,42079,Northeast,1825,0.030686,56.002
+4207915904,Conyngham township,Luzerne,42079,Northeast,1312,0.030686,40.26
+4207916568,Courtdale borough,Luzerne,42079,Northeast,689,0.030686,21.143
+4207918048,Dallas borough,Luzerne,42079,Northeast,2694,0.030686,82.669
+4207918056,Dallas township,Luzerne,42079,Northeast,9099,0.030686,279.214
+4207918868,Dennison township,Luzerne,42079,Northeast,963,0.030686,29.551
+4207919616,Dorrance township,Luzerne,42079,Northeast,2076,0.030686,63.705
+4207920424,Dupont borough,Luzerne,42079,Northeast,2539,0.030686,77.912
+4207920512,Duryea borough,Luzerne,42079,Northeast,5036,0.030686,154.536
+4207922672,Edwardsville borough,Luzerne,42079,Northeast,4929,0.030686,151.253
+4207924392,Exeter borough,Luzerne,42079,Northeast,5514,0.030686,169.204
+4207924400,Exeter township,Luzerne,42079,Northeast,2051,0.030686,62.937
+4207924752,Fairmount township,Luzerne,42079,Northeast,1210,0.030686,37.13
+4207924888,Fairview township,Luzerne,42079,Northeast,4703,0.030686,144.317
+4207926880,Forty Fort borough,Luzerne,42079,Northeast,4239,0.030686,130.079
+4207926928,Foster township,Luzerne,42079,Northeast,3408,0.030686,104.579
+4207927424,Franklin township,Luzerne,42079,Northeast,1716,0.030686,52.658
+4207927744,Freeland borough,Luzerne,42079,Northeast,3833,0.030686,117.62
+4207932416,Hanover township,Luzerne,42079,Northeast,11445,0.030686,351.204
+4207933000,Harveys Lake borough,Luzerne,42079,Northeast,2788,0.030686,85.553
+4207933376,Hazle township,Luzerne,42079,Northeast,10160,0.030686,311.772
+4207933408,Hazleton city,Luzerne,42079,Northeast,29963,0.030686,919.452
+4207935192,Hollenback township,Luzerne,42079,Northeast,1162,0.030686,35.657
+4207936152,Hughestown borough,Luzerne,42079,Northeast,1329,0.030686,40.782
+4207936296,Hunlock township,Luzerne,42079,Northeast,2223,0.030686,68.216
+4207936432,Huntington township,Luzerne,42079,Northeast,2053,0.030686,62.999
+4207937400,Jackson township,Luzerne,42079,Northeast,4631,0.030686,142.108
+4207937792,Jeddo borough,Luzerne,42079,Northeast,108,0.030686,3.314
+4207937984,Jenkins township,Luzerne,42079,Northeast,4283,0.030686,131.429
+4207939784,Kingston borough,Luzerne,42079,Northeast,13349,0.030686,409.631
+4207939792,Kingston township,Luzerne,42079,Northeast,7108,0.030686,218.118
+4207940848,Laflin borough,Luzerne,42079,Northeast,1451,0.030686,44.526
+4207940920,Lake township,Luzerne,42079,Northeast,1993,0.030686,61.158
+4207941608,Larksville borough,Luzerne,42079,Northeast,4225,0.030686,129.649
+4207941848,Laurel Run borough,Luzerne,42079,Northeast,558,0.030686,17.123
+4207942504,Lehman township,Luzerne,42079,Northeast,3346,0.030686,102.676
+4207945568,Luzerne borough,Luzerne,42079,Northeast,2711,0.030686,83.19
+4207952584,Nanticoke city,Luzerne,42079,Northeast,10628,0.030686,326.133
+4207952984,Nescopeck borough,Luzerne,42079,Northeast,1480,0.030686,45.416
+4207952992,Nescopeck township,Luzerne,42079,Northeast,1081,0.030686,33.172
+4207953448,New Columbus borough,Luzerne,42079,Northeast,222,0.030686,6.812
+4207953960,Newport township,Luzerne,42079,Northeast,4433,0.030686,136.032
+4207955752,Nuangola borough,Luzerne,42079,Northeast,666,0.030686,20.437
+4207959054,Penn Lake Park borough,Luzerne,42079,Northeast,360,0.030686,11.047
+4207961048,Pittston city,Luzerne,42079,Northeast,7591,0.030686,232.939
+4207961056,Pittston township,Luzerne,42079,Northeast,3186,0.030686,97.766
+4207961120,Plains township,Luzerne,42079,Northeast,9808,0.030686,300.971
+4207961648,Plymouth borough,Luzerne,42079,Northeast,5763,0.030686,176.845
+4207961656,Plymouth township,Luzerne,42079,Northeast,1717,0.030686,52.688
+4207962712,Pringle borough,Luzerne,42079,Northeast,893,0.030686,27.403
+4207964424,Rice township,Luzerne,42079,Northeast,3632,0.030686,111.452
+4207966272,Ross township,Luzerne,42079,Northeast,2726,0.030686,83.651
+4207967456,Salem township,Luzerne,42079,Northeast,4027,0.030686,123.574
+4207970224,Shickshinny borough,Luzerne,42079,Northeast,632,0.030686,19.394
+4207971216,Slocum township,Luzerne,42079,Northeast,1054,0.030686,32.343
+4207975064,Sugarloaf township,Luzerne,42079,Northeast,3846,0.030686,118.019
+4207975072,Sugar Notch borough,Luzerne,42079,Northeast,1001,0.030686,30.717
+4207975832,Swoyersville borough,Luzerne,42079,Northeast,5021,0.030686,154.076
+4207978384,Union township,Luzerne,42079,Northeast,2035,0.030686,62.447
+4207981080,Warrior Run borough,Luzerne,42079,Northeast,527,0.030686,16.172
+4207983136,West Hazleton borough,Luzerne,42079,Northeast,5163,0.030686,158.433
+4207983856,West Pittston borough,Luzerne,42079,Northeast,4652,0.030686,142.752
+4207984272,West Wyoming borough,Luzerne,42079,Northeast,2638,0.030686,80.95
+4207984552,White Haven borough,Luzerne,42079,Northeast,1166,0.030686,35.78
+4207985152,Wilkes-Barre city,Luzerne,42079,Northeast,44328,0.030686,1360.26
+4207985160,Wilkes-Barre township,Luzerne,42079,Northeast,3213,0.030686,98.595
+4207986584,Wright township,Luzerne,42079,Northeast,5722,0.030686,175.587
+4207986856,Wyoming borough,Luzerne,42079,Northeast,3102,0.030686,95.189
+4207986952,Yatesville borough,Luzerne,42079,Northeast,638,0.030686,19.578
+4208102656,Anthony township,Lycoming,42081,Northcentral,867,0.055513,48.129
+4208103072,Armstrong township,Lycoming,42081,Northcentral,686,0.055513,38.082
+4208104424,Bastress township,Lycoming,42081,Northcentral,527,0.055513,29.255
+4208108136,Brady township,Lycoming,42081,Northcentral,501,0.055513,27.812
+4208109280,Brown township,Lycoming,42081,Northcentral,93,0.055513,5.163
+4208111560,Cascade township,Lycoming,42081,Northcentral,422,0.055513,23.426
+4208114336,Clinton township,Lycoming,42081,Northcentral,3720,0.055513,206.507
+4208114872,Cogan House township,Lycoming,42081,Northcentral,935,0.055513,51.904
+4208117696,Cummings township,Lycoming,42081,Northcentral,265,0.055513,14.711
+4208120144,Duboistown borough,Lycoming,42081,Northcentral,1200,0.055513,66.615
+4208122880,Eldred township,Lycoming,42081,Northcentral,1997,0.055513,110.859
+4208124592,Fairfield township,Lycoming,42081,Northcentral,2834,0.055513,157.323
+4208127432,Franklin township,Lycoming,42081,Northcentral,903,0.055513,50.128
+4208128352,Gamble township,Lycoming,42081,Northcentral,778,0.055513,43.189
+4208133944,Hepburn township,Lycoming,42081,Northcentral,2578,0.055513,143.111
+4208136160,Hughesville borough,Lycoming,42081,Northcentral,2154,0.055513,119.574
+4208137408,Jackson township,Lycoming,42081,Northcentral,396,0.055513,21.983
+4208138128,Jersey Shore borough,Lycoming,42081,Northcentral,4166,0.055513,231.265
+4208138448,Jordan township,Lycoming,42081,Northcentral,850,0.055513,47.186
+4208142944,Lewis township,Lycoming,42081,Northcentral,862,0.055513,47.852
+4208143352,Limestone township,Lycoming,42081,Northcentral,1966,0.055513,109.138
+4208145224,Loyalsock township,Lycoming,42081,Northcentral,11561,0.055513,641.781
+4208145584,Lycoming township,Lycoming,42081,Northcentral,1491,0.055513,82.769
+4208146184,McHenry township,Lycoming,42081,Northcentral,122,0.055513,6.773
+4208146208,McIntyre township,Lycoming,42081,Northcentral,461,0.055513,25.591
+4208146352,McNett township,Lycoming,42081,Northcentral,143,0.055513,7.938
+4208149280,Mifflin township,Lycoming,42081,Northcentral,1089,0.055513,60.453
+4208149568,Mill Creek township,Lycoming,42081,Northcentral,582,0.055513,32.308
+4208150632,Montgomery borough,Lycoming,42081,Northcentral,1568,0.055513,87.044
+4208150720,Montoursville borough,Lycoming,42081,Northcentral,4750,0.055513,263.685
+4208150936,Moreland township,Lycoming,42081,Northcentral,1015,0.055513,56.345
+4208152264,Muncy borough,Lycoming,42081,Northcentral,2440,0.055513,135.451
+4208152280,Muncy township,Lycoming,42081,Northcentral,1178,0.055513,65.394
+4208152288,Muncy Creek township,Lycoming,42081,Northcentral,3573,0.055513,198.346
+4208154504,Nippenose township,Lycoming,42081,Northcentral,661,0.055513,36.694
+4208156608,Old Lycoming township,Lycoming,42081,Northcentral,4975,0.055513,276.175
+4208158848,Penn township,Lycoming,42081,Northcentral,895,0.055513,49.684
+4208160128,Piatt township,Lycoming,42081,Northcentral,1047,0.055513,58.122
+4208160136,Picture Rocks borough,Lycoming,42081,Northcentral,643,0.055513,35.695
+4208160328,Pine township,Lycoming,42081,Northcentral,258,0.055513,14.322
+4208161640,Plunketts Creek township,Lycoming,42081,Northcentral,597,0.055513,33.141
+4208162184,Porter township,Lycoming,42081,Northcentral,1528,0.055513,84.823
+4208167616,Salladasburg borough,Lycoming,42081,Northcentral,250,0.055513,13.878
+4208170552,Shrewsbury township,Lycoming,42081,Northcentral,418,0.055513,23.204
+4208172648,South Williamsport borough,Lycoming,42081,Northcentral,6261,0.055513,347.564
+4208175544,Susquehanna township,Lycoming,42081,Northcentral,968,0.055513,53.736
+4208179024,Upper Fairfield township,Lycoming,42081,Northcentral,1807,0.055513,100.311
+4208181288,Washington township,Lycoming,42081,Northcentral,1768,0.055513,98.146
+4208181576,Watson township,Lycoming,42081,Northcentral,534,0.055513,29.644
+4208185312,Williamsport city,Lycoming,42081,Northcentral,27754,0.055513,1540.696
+4208185984,Wolf township,Lycoming,42081,Northcentral,3105,0.055513,172.367
+4208186456,Woodward township,Lycoming,42081,Northcentral,2046,0.055513,113.579
+4208302576,Annin township,Mckean,42083,Northcentral,709,0.084719,60.066
+4208308040,Bradford city,Mckean,42083,Northcentral,7849,0.084719,664.961
+4208308048,Bradford township,Mckean,42083,Northcentral,4793,0.084719,406.059
+4208312408,Ceres township,Mckean,42083,Northcentral,846,0.084719,71.672
+4208316352,Corydon township,Mckean,42083,Northcentral,283,0.084719,23.976
+4208322888,Eldred borough,Mckean,42083,Northcentral,765,0.084719,64.81
+4208322896,Eldred township,Mckean,42083,Northcentral,1394,0.084719,118.099
+4208326936,Foster township,Mckean,42083,Northcentral,4038,0.084719,342.096
+4208332168,Hamilton township,Mckean,42083,Northcentral,549,0.084719,46.511
+4208332232,Hamlin township,Mckean,42083,Northcentral,681,0.084719,57.694
+4208338688,Kane borough,Mckean,42083,Northcentral,3630,0.084719,307.531
+4208338912,Keating township,Mckean,42083,Northcentral,2725,0.084719,230.86
+4208340808,Lafayette township,Mckean,42083,Northcentral,1768,0.084719,149.784
+4208342984,Lewis Run borough,Mckean,42083,Northcentral,583,0.084719,49.391
+4208343096,Liberty township,Mckean,42083,Northcentral,1607,0.084719,136.144
+4208351632,Mount Jewett borough,Mckean,42083,Northcentral,858,0.084719,72.689
+4208355632,Norwich township,Mckean,42083,Northcentral,501,0.084719,42.444
+4208357312,Otto township,Mckean,42083,Northcentral,1516,0.084719,128.434
+4208362088,Port Allegany borough,Mckean,42083,Northcentral,2135,0.084719,180.876
+4208369304,Sergeant township,Mckean,42083,Northcentral,145,0.084719,12.284
+4208371248,Smethport borough,Mckean,42083,Northcentral,1436,0.084719,121.657
+4208384312,Wetmore township,Mckean,42083,Northcentral,1621,0.084719,137.33
+4208513832,Clark borough,Mercer,42085,Northwest,576,0.036944,21.28
+4208515992,Coolspring township,Mercer,42085,Northwest,2107,0.036944,77.841
+4208518536,Deer Creek township,Mercer,42085,Northwest,458,0.036944,16.92
+4208518688,Delaware township,Mercer,42085,Northwest,2084,0.036944,76.991
+4208521336,East Lackawannock township,Mercer,42085,Northwest,1669,0.036944,61.659
+4208524904,Fairview township,Mercer,42085,Northwest,953,0.036944,35.208
+4208525360,Farrell city,Mercer,42085,Northwest,4258,0.036944,157.307
+4208525912,Findley township,Mercer,42085,Northwest,2843,0.036944,105.032
+4208527688,Fredonia borough,Mercer,42085,Northwest,436,0.036944,16.108
+4208527824,French Creek township,Mercer,42085,Northwest,710,0.036944,26.23
+4208530968,Greene township,Mercer,42085,Northwest,1052,0.036944,38.865
+4208531328,Greenville borough,Mercer,42085,Northwest,5540,0.036944,204.669
+4208531656,Grove City borough,Mercer,42085,Northwest,7871,0.036944,290.785
+4208533784,Hempfield township,Mercer,42085,Northwest,3735,0.036944,137.985
+4208534064,Hermitage city,Mercer,42085,Northwest,16815,0.036944,621.212
+4208537416,Jackson township,Mercer,42085,Northwest,1178,0.036944,43.52
+4208537496,Jackson Center borough,Mercer,42085,Northwest,194,0.036944,7.167
+4208537696,Jamestown borough,Mercer,42085,Northwest,582,0.036944,21.501
+4208537904,Jefferson township,Mercer,42085,Northwest,1919,0.036944,70.895
+4208540760,Lackawannock township,Mercer,42085,Northwest,2471,0.036944,91.288
+4208540928,Lake township,Mercer,42085,Northwest,699,0.036944,25.824
+4208543104,Liberty township,Mercer,42085,Northwest,1405,0.036944,51.906
+4208548696,Mercer borough,Mercer,42085,Northwest,1982,0.036944,73.223
+4208549576,Mill Creek township,Mercer,42085,Northwest,778,0.036944,28.742
+4208553768,New Lebanon borough,Mercer,42085,Northwest,183,0.036944,6.761
+4208554304,New Vernon township,Mercer,42085,Northwest,497,0.036944,18.361
+4208557304,Otter Creek township,Mercer,42085,Northwest,523,0.036944,19.322
+4208559496,Perry township,Mercer,42085,Northwest,1332,0.036944,49.209
+4208560336,Pine township,Mercer,42085,Northwest,4806,0.036944,177.552
+4208563008,Pymatuning township,Mercer,42085,Northwest,3118,0.036944,115.191
+4208567472,Salem township,Mercer,42085,Northwest,753,0.036944,27.819
+4208567816,Sandy Creek township,Mercer,42085,Northwest,802,0.036944,29.629
+4208567848,Sandy Lake borough,Mercer,42085,Northwest,649,0.036944,23.977
+4208567856,Sandy Lake township,Mercer,42085,Northwest,1202,0.036944,44.407
+4208569720,Sharon city,Mercer,42085,Northwest,13147,0.036944,485.701
+4208569800,Sharpsville borough,Mercer,42085,Northwest,4255,0.036944,157.196
+4208569936,Sheakleyville borough,Mercer,42085,Northwest,151,0.036944,5.579
+4208570096,Shenango township,Mercer,42085,Northwest,3522,0.036944,130.116
+4208572440,South Pymatuning township,Mercer,42085,Northwest,2653,0.036944,98.012
+4208573080,Springfield township,Mercer,42085,Northwest,1853,0.036944,68.457
+4208574288,Stoneboro borough,Mercer,42085,Northwest,945,0.036944,34.912
+4208575008,Sugar Grove township,Mercer,42085,Northwest,947,0.036944,34.986
+4208583496,West Middlesex borough,Mercer,42085,Northwest,818,0.036944,30.22
+4208583976,West Salem township,Mercer,42085,Northwest,3216,0.036944,118.812
+4208585512,Wilmington township,Mercer,42085,Northwest,1420,0.036944,52.46
+4208585992,Wolf Creek township,Mercer,42085,Northwest,718,0.036944,26.526
+4208586552,Worth township,Mercer,42085,Northwest,827,0.036944,30.553
+4208703040,Armagh township,Mifflin,42087,Southcentral,4018,0.087813,352.834
+4208708304,Bratton township,Mifflin,42087,Southcentral,1191,0.087813,104.586
+4208709288,Brown township,Mifflin,42087,Southcentral,4112,0.087813,361.089
+4208710256,Burnham borough,Mifflin,42087,Southcentral,1991,0.087813,174.837
+4208718464,Decatur township,Mifflin,42087,Southcentral,2968,0.087813,260.63
+4208718944,Derry township,Mifflin,42087,Southcentral,7212,0.087813,633.31
+4208730480,Granville township,Mifflin,42087,Southcentral,4629,0.087813,406.488
+4208738640,Juniata Terrace borough,Mifflin,42087,Southcentral,564,0.087813,49.527
+4208740016,Kistler borough,Mifflin,42087,Southcentral,291,0.087813,25.554
+4208743000,Lewistown borough,Mifflin,42087,Southcentral,8579,0.087813,753.351
+4208746400,McVeytown borough,Mifflin,42087,Southcentral,344,0.087813,30.208
+4208748664,Menno township,Mifflin,42087,Southcentral,1974,0.087813,173.344
+4208754160,Newton Hamilton borough,Mifflin,42087,Southcentral,196,0.087813,17.211
+4208756720,Oliver township,Mifflin,42087,Southcentral,2061,0.087813,180.983
+4208778392,Union township,Mifflin,42087,Southcentral,3653,0.087813,320.782
+4208781784,Wayne township,Mifflin,42087,Southcentral,2360,0.087813,207.24
+4208904320,Barrett township,Monroe,42089,Northeast,4053,0.032634,132.264
+4208913328,Chestnuthill township,Monroe,42089,Northeast,16723,0.032634,545.73
+4208915960,Coolbaugh township,Monroe,42089,Northeast,20805,0.032634,678.94
+4208918736,Delaware Water Gap borough,Monroe,42089,Northeast,675,0.032634,22.028
+4208921872,East Stroudsburg borough,Monroe,42089,Northeast,9669,0.032634,315.533
+4208922904,Eldred township,Monroe,42089,Northeast,2596,0.032634,84.717
+4208932176,Hamilton township,Monroe,42089,Northeast,8597,0.032634,280.55
+4208937424,Jackson township,Monroe,42089,Northeast,6578,0.032634,214.663
+4208949080,Middle Smithfield township,Monroe,42089,Northeast,16053,0.032634,523.866
+4208951912,Mount Pocono borough,Monroe,42089,Northeast,3089,0.032634,100.805
+4208957856,Paradise township,Monroe,42089,Northeast,2899,0.032634,94.605
+4208961728,Pocono township,Monroe,42089,Northeast,10884,0.032634,355.183
+4208961928,Polk township,Monroe,42089,Northeast,7473,0.032634,243.87
+4208962632,Price township,Monroe,42089,Northeast,3678,0.032634,120.026
+4208966280,Ross township,Monroe,42089,Northeast,5475,0.032634,178.668
+4208971344,Smithfield township,Monroe,42089,Northeast,7967,0.032634,259.991
+4208974880,Stroud township,Monroe,42089,Northeast,19834,0.032634,647.253
+4208974888,Stroudsburg borough,Monroe,42089,Northeast,5927,0.032634,193.419
+4208976960,Tobyhanna township,Monroe,42089,Northeast,8315,0.032634,271.348
+4208977776,Tunkhannock township,Monroe,42089,Northeast,7037,0.032634,229.642
+4209100156,Abington township,Montgomery,42091,Southeast,58502,0.018335,1072.662
+4209102264,Ambler borough,Montgomery,42091,Southeast,6807,0.018335,124.81
+4209108568,Bridgeport borough,Montgomery,42091,Southeast,5015,0.018335,91.952
+4209109696,Bryn Athyn borough,Montgomery,42091,Southeast,1272,0.018335,23.323
+4209112968,Cheltenham township,Montgomery,42091,Southeast,37452,0.018335,686.701
+4209115192,Collegeville borough,Montgomery,42091,Southeast,5043,0.018335,92.466
+4209115848,Conshohocken borough,Montgomery,42091,Southeast,9261,0.018335,169.805
+4209119672,Douglass township,Montgomery,42091,Southeast,10585,0.018335,194.081
+4209121200,East Greenville borough,Montgomery,42091,Southeast,3166,0.018335,58.05
+4209121600,East Norriton township,Montgomery,42091,Southeast,14021,0.018335,257.082
+4209127280,Franconia township,Montgomery,42091,Southeast,13259,0.018335,243.11
+4209131088,Green Lane borough,Montgomery,42091,Southeast,490,0.018335,8.984
+4209133088,Hatboro borough,Montgomery,42091,Southeast,8238,0.018335,151.048
+4209133112,Hatfield borough,Montgomery,42091,Southeast,3496,0.018335,64.101
+4209133120,Hatfield township,Montgomery,42091,Southeast,18640,0.018335,341.773
+4209135808,Horsham township,Montgomery,42091,Southeast,26564,0.018335,487.064
+4209138000,Jenkintown borough,Montgomery,42091,Southeast,4719,0.018335,86.525
+4209141432,Lansdale borough,Montgomery,42091,Southeast,18773,0.018335,344.212
+4209143312,Limerick township,Montgomery,42091,Southeast,20458,0.018335,375.107
+4209144912,Lower Frederick township,Montgomery,42091,Southeast,4830,0.018335,88.56
+4209144920,Lower Gwynedd township,Montgomery,42091,Southeast,12076,0.018335,221.419
+4209144976,Lower Merion township,Montgomery,42091,Southeast,63633,0.018335,1166.742
+4209145008,Lower Moreland township,Montgomery,42091,Southeast,13917,0.018335,255.175
+4209145072,Lower Pottsgrove township,Montgomery,42091,Southeast,12217,0.018335,224.005
+4209145080,Lower Providence township,Montgomery,42091,Southeast,25625,0.018335,469.847
+4209145096,Lower Salford township,Montgomery,42091,Southeast,15896,0.018335,291.461
+4209147592,Marlborough township,Montgomery,42091,Southeast,3520,0.018335,64.541
+4209150640,Montgomery township,Montgomery,42091,Southeast,25862,0.018335,474.192
+4209152664,Narberth borough,Montgomery,42091,Southeast,4492,0.018335,82.363
+4209153664,New Hanover township,Montgomery,42091,Southeast,12973,0.018335,237.866
+4209154656,Norristown borough,Montgomery,42091,Southeast,35748,0.018335,655.457
+4209155512,North Wales borough,Montgomery,42091,Southeast,3426,0.018335,62.817
+4209159120,Pennsburg borough,Montgomery,42091,Southeast,3889,0.018335,71.307
+4209159392,Perkiomen township,Montgomery,42091,Southeast,8959,0.018335,164.268
+4209161664,Plymouth township,Montgomery,42091,Southeast,18256,0.018335,334.733
+4209162416,Pottstown borough,Montgomery,42091,Southeast,23433,0.018335,429.655
+4209163808,Red Hill borough,Montgomery,42091,Southeast,2496,0.018335,45.765
+4209165568,Rockledge borough,Montgomery,42091,Southeast,2638,0.018335,48.369
+4209166576,Royersford borough,Montgomery,42091,Southeast,4940,0.018335,90.577
+4209167528,Salford township,Montgomery,42091,Southeast,3035,0.018335,55.648
+4209168328,Schwenksville borough,Montgomery,42091,Southeast,1296,0.018335,23.763
+4209171016,Skippack township,Montgomery,42091,Southeast,14389,0.018335,263.829
+4209171856,Souderton borough,Montgomery,42091,Southeast,7191,0.018335,131.85
+4209173088,Springfield township,Montgomery,42091,Southeast,20814,0.018335,381.635
+4209176304,Telford borough,Montgomery,42091,Southeast,2729,0.018335,50.038
+4209177152,Towamencin township,Montgomery,42091,Southeast,18009,0.018335,330.204
+4209177304,Trappe borough,Montgomery,42091,Southeast,4002,0.018335,73.379
+4209179008,Upper Dublin township,Montgomery,42091,Southeast,26665,0.018335,488.916
+4209179040,Upper Frederick township,Montgomery,42091,Southeast,3703,0.018335,67.896
+4209179056,Upper Gwynedd township,Montgomery,42091,Southeast,17072,0.018335,313.023
+4209179064,Upper Hanover township,Montgomery,42091,Southeast,8350,0.018335,153.101
+4209179136,Upper Merion township,Montgomery,42091,Southeast,33613,0.018335,616.311
+4209179176,Upper Moreland township,Montgomery,42091,Southeast,26116,0.018335,478.849
+4209179240,Upper Pottsgrove township,Montgomery,42091,Southeast,5870,0.018335,107.629
+4209179256,Upper Providence township,Montgomery,42091,Southeast,24091,0.018335,441.72
+4209179280,Upper Salford township,Montgomery,42091,Southeast,3172,0.018335,58.16
+4209182736,West Conshohocken borough,Montgomery,42091,Southeast,1493,0.018335,27.375
+4209183696,West Norriton township,Montgomery,42091,Southeast,16201,0.018335,297.053
+4209183912,West Pottsgrove township,Montgomery,42091,Southeast,3798,0.018335,69.638
+4209184624,Whitemarsh township,Montgomery,42091,Southeast,19707,0.018335,361.337
+4209184888,Whitpain township,Montgomery,42091,Southeast,20333,0.018335,372.815
+4209186496,Worcester township,Montgomery,42091,Southeast,10317,0.018335,189.167
+4209302664,Anthony township,Montour,42093,Northcentral,1452,0.016094,23.369
+4209316048,Cooper township,Montour,42093,Northcentral,944,0.016094,15.193
+4209318136,Danville borough,Montour,42093,Northcentral,4239,0.016094,68.224
+4209318952,Derry township,Montour,42093,Northcentral,1096,0.016094,17.639
+4209343112,Liberty township,Montour,42093,Northcentral,1795,0.016094,28.889
+4209343360,Limestone township,Montour,42093,Northcentral,1004,0.016094,16.159
+4209346656,Mahoning township,Montour,42093,Northcentral,4559,0.016094,73.374
+4209348152,Mayberry township,Montour,42093,Northcentral,232,0.016094,3.734
+4209379552,Valley township,Montour,42093,Northcentral,2159,0.016094,34.748
+4209381424,Washingtonville borough,Montour,42093,Northcentral,202,0.016094,3.251
+4209383144,West Hemlock township,Montour,42093,Northcentral,454,0.016094,7.307
+4209500948,Allen township,Northampton,42095,Southeast,5456,0.028525,155.634
+4209504032,Bangor borough,Northampton,42095,Southeast,5187,0.028525,147.961
+4209504432,Bath borough,Northampton,42095,Southeast,2808,0.028525,80.099
+4209506088,Bethlehem city,Northampton,42095,Southeast,56009,0.028525,1597.671
+4209506096,Bethlehem township,Northampton,42095,Southeast,25868,0.028525,737.891
+4209510400,Bushkill township,Northampton,42095,Southeast,8482,0.028525,241.951
+4209512656,Chapman borough,Northampton,42095,Southeast,223,0.028525,6.361
+4209520736,East Allen township,Northampton,42095,Southeast,5013,0.028525,142.997
+4209520776,East Bangor borough,Northampton,42095,Southeast,1124,0.028525,32.062
+4209521648,Easton city,Northampton,42095,Southeast,28127,0.028525,802.33
+4209526728,Forks township,Northampton,42095,Southeast,16074,0.028525,458.515
+4209527760,Freemansburg borough,Northampton,42095,Southeast,2875,0.028525,82.01
+4209529568,Glendon borough,Northampton,42095,Southeast,373,0.028525,10.64
+4209532432,Hanover township,Northampton,42095,Southeast,11783,0.028525,336.113
+4209533744,Hellertown borough,Northampton,42095,Southeast,6132,0.028525,174.917
+4209542424,Lehigh township,Northampton,42095,Southeast,10774,0.028525,307.331
+4209545016,Lower Mount Bethel township,Northampton,42095,Southeast,2921,0.028525,83.322
+4209545024,Lower Nazareth township,Northampton,42095,Southeast,6922,0.028525,197.452
+4209545104,Lower Saucon township,Northampton,42095,Southeast,11094,0.028525,316.459
+4209550824,Moore township,Northampton,42095,Southeast,9322,0.028525,265.912
+4209552808,Nazareth borough,Northampton,42095,Southeast,6053,0.028525,172.663
+4209554696,Northampton borough,Northampton,42095,Southeast,10395,0.028525,296.52
+4209554872,North Catasauqua borough,Northampton,42095,Southeast,2971,0.028525,84.749
+4209557672,Palmer township,Northampton,42095,Southeast,22317,0.028525,636.598
+4209558696,Pen Argyl borough,Northampton,42095,Southeast,3510,0.028525,100.124
+4209561088,Plainfield township,Northampton,42095,Southeast,6263,0.028525,178.654
+4209562264,Portland borough,Northampton,42095,Southeast,494,0.028525,14.091
+4209566168,Roseto borough,Northampton,42095,Southeast,1581,0.028525,45.098
+4209574232,Stockertown borough,Northampton,42095,Southeast,919,0.028525,26.215
+4209576144,Tatamy borough,Northampton,42095,Southeast,1203,0.028525,34.316
+4209579184,Upper Mount Bethel township,Northampton,42095,Southeast,6439,0.028525,183.674
+4209579192,Upper Nazareth township,Northampton,42095,Southeast,8127,0.028525,231.825
+4209580800,Walnutport borough,Northampton,42095,Southeast,2067,0.028525,58.962
+4209581296,Washington township,Northampton,42095,Southeast,5148,0.028525,146.848
+4209582832,West Easton borough,Northampton,42095,Southeast,1237,0.028525,35.286
+4209585256,Williams township,Northampton,42095,Southeast,6581,0.028525,187.725
+4209585592,Wilson borough,Northampton,42095,Southeast,8259,0.028525,235.59
+4209585664,Wind Gap borough,Northampton,42095,Southeast,2820,0.028525,80.441
+4209714536,Coal township,Northumberland,42097,Northcentral,10139,0.041149,417.209
+4209718696,Delaware township,Northumberland,42097,Northcentral,4303,0.041149,177.064
+4209720928,East Cameron township,Northumberland,42097,Northcentral,626,0.041149,25.759
+4209720976,East Chillisquaque township,Northumberland,42097,Northcentral,676,0.041149,27.817
+4209734080,Herndon borough,Northumberland,42097,Northcentral,347,0.041149,14.279
+4209737432,Jackson township,Northumberland,42097,Northcentral,898,0.041149,36.952
+4209738456,Jordan township,Northumberland,42097,Northcentral,783,0.041149,32.22
+4209740584,Kulpmont borough,Northumberland,42097,Northcentral,2758,0.041149,113.489
+4209742952,Lewis township,Northumberland,42097,Northcentral,1944,0.041149,79.994
+4209743912,Little Mahanoy township,Northumberland,42097,Northcentral,425,0.041149,17.488
+4209744856,Lower Augusta township,Northumberland,42097,Northcentral,1042,0.041149,42.877
+4209744960,Lower Mahanoy township,Northumberland,42097,Northcentral,1626,0.041149,66.908
+4209746120,McEwensville borough,Northumberland,42097,Northcentral,293,0.041149,12.057
+4209747480,Marion Heights borough,Northumberland,42097,Northcentral,560,0.041149,23.043
+4209750016,Milton borough,Northumberland,42097,Northcentral,6609,0.041149,271.953
+4209751496,Mount Carmel borough,Northumberland,42097,Northcentral,5725,0.041149,235.578
+4209751504,Mount Carmel township,Northumberland,42097,Northcentral,2500,0.041149,102.872
+4209755456,Northumberland borough,Northumberland,42097,Northcentral,3911,0.041149,160.933
+4209761832,Point township,Northumberland,42097,Northcentral,3832,0.041149,157.683
+4209763328,Ralpho township,Northumberland,42097,Northcentral,4186,0.041149,172.249
+4209765112,Riverside borough,Northumberland,42097,Northcentral,2040,0.041149,83.944
+4209765472,Rockefeller township,Northumberland,42097,Northcentral,2362,0.041149,97.194
+4209766752,Rush township,Northumberland,42097,Northcentral,1199,0.041149,49.338
+4209769600,Shamokin city,Northumberland,42097,Northcentral,6942,0.041149,285.656
+4209769608,Shamokin township,Northumberland,42097,Northcentral,2373,0.041149,97.646
+4209771688,Snydertown borough,Northumberland,42097,Northcentral,325,0.041149,13.373
+4209775304,Sunbury city,Northumberland,42097,Northcentral,9719,0.041149,399.926
+4209777830,Turbot township,Northumberland,42097,Northcentral,1815,0.041149,74.685
+4209777832,Turbotville borough,Northumberland,42097,Northcentral,677,0.041149,27.858
+4209778744,Upper Augusta township,Northumberland,42097,Northcentral,2478,0.041149,101.967
+4209779112,Upper Mahanoy township,Northumberland,42097,Northcentral,648,0.041149,26.665
+4209781304,Washington township,Northumberland,42097,Northcentral,753,0.041149,30.985
+4209781616,Watsontown borough,Northumberland,42097,Northcentral,2237,0.041149,92.05
+4209782680,West Cameron township,Northumberland,42097,Northcentral,497,0.041149,20.451
+4209782712,West Chillisquaque township,Northumberland,42097,Northcentral,2597,0.041149,106.864
+4209787280,Zerbe township,Northumberland,42097,Northcentral,1802,0.041149,74.15
+4209906824,Blain borough,Perry,42099,Southcentral,229,0.060823,13.929
+4209907040,Bloomfield borough,Perry,42099,Southcentral,1219,0.060823,74.143
+4209910008,Buffalo township,Perry,42099,Southcentral,1224,0.060823,74.448
+4209911416,Carroll township,Perry,42099,Southcentral,5238,0.060823,318.592
+4209912360,Centre township,Perry,42099,Southcentral,2529,0.060823,153.822
+4209920240,Duncannon borough,Perry,42099,Southcentral,1478,0.060823,89.897
+4209931440,Greenwood township,Perry,42099,Southcentral,1030,0.060823,62.648
+4209936000,Howe township,Perry,42099,Southcentral,379,0.060823,23.052
+4209937440,Jackson township,Perry,42099,Southcentral,590,0.060823,35.886
+4209938616,Juniata township,Perry,42099,Southcentral,1537,0.060823,93.485
+4209941272,Landisburg borough,Perry,42099,Southcentral,221,0.060823,13.442
+4209943968,Liverpool borough,Perry,42099,Southcentral,960,0.060823,58.39
+4209943976,Liverpool township,Perry,42099,Southcentral,1037,0.060823,63.074
+4209947968,Marysville borough,Perry,42099,Southcentral,2652,0.060823,161.303
+4209949632,Miller township,Perry,42099,Southcentral,962,0.060823,58.512
+4209949720,Millerstown borough,Perry,42099,Southcentral,691,0.060823,42.029
+4209953320,New Buffalo borough,Perry,42099,Southcentral,124,0.060823,7.542
+4209953968,Newport borough,Perry,42099,Southcentral,1485,0.060823,90.322
+4209954968,Northeast Madison township,Perry,42099,Southcentral,831,0.060823,50.544
+4209956728,Oliver township,Perry,42099,Southcentral,2043,0.060823,124.262
+4209958856,Penn township,Perry,42099,Southcentral,3098,0.060823,188.43
+4209966976,Rye township,Perry,42099,Southcentral,2263,0.060823,137.643
+4209968032,Saville township,Perry,42099,Southcentral,2597,0.060823,157.958
+4209972624,Southwest Madison township,Perry,42099,Southcentral,1017,0.060823,61.857
+4209972848,Spring township,Perry,42099,Southcentral,2295,0.060823,139.589
+4209976920,Toboyne township,Perry,42099,Southcentral,469,0.060823,28.526
+4209977960,Tuscarora township,Perry,42099,Southcentral,1313,0.060823,79.861
+4209978184,Tyrone township,Perry,42099,Southcentral,1897,0.060823,115.382
+4209981640,Watts township,Perry,42099,Southcentral,1231,0.060823,74.873
+4209984368,Wheatfield township,Perry,42099,Southcentral,3203,0.060823,194.817
+4210160000,Philadelphia city,Philadelphia,42101,Southeast,1603797,0.010128,16243.847
+4210307088,Blooming Grove township,Pike,42103,Northeast,5415,0.019799,107.214
+4210318704,Delaware township,Pike,42103,Northeast,7453,0.019799,147.565
+4210319272,Dingman township,Pike,42103,Northeast,12490,0.019799,247.294
+4210330976,Greene township,Pike,42103,Northeast,3452,0.019799,68.347
+4210340776,Lackawaxen township,Pike,42103,Northeast,5072,0.019799,100.422
+4210342512,Lehman township,Pike,42103,Northeast,10843,0.019799,214.685
+4210348048,Matamoras borough,Pike,42103,Northeast,2362,0.019799,46.766
+4210349400,Milford borough,Pike,42103,Northeast,1103,0.019799,21.839
+4210349408,Milford township,Pike,42103,Northeast,1523,0.019799,30.154
+4210357728,Palmyra township,Pike,42103,Northeast,3206,0.019799,63.477
+4210362192,Porter township,Pike,42103,Northeast,551,0.019799,10.909
+4210370496,Shohola township,Pike,42103,Northeast,2528,0.019799,50.053
+4210382928,Westfall township,Pike,42103,Northeast,2537,0.019799,50.231
+4210500108,Abbott township,Potter,42105,Northcentral,228,0.068441,15.605
+4210500836,Allegany township,Potter,42105,Northcentral,397,0.068441,27.171
+4210503576,Austin borough,Potter,42105,Northcentral,482,0.068441,32.989
+4210506432,Bingham township,Potter,42105,Northcentral,619,0.068441,42.365
+4210513760,Clara township,Potter,42105,Northcentral,177,0.068441,12.114
+4210516448,Coudersport borough,Potter,42105,Northcentral,2381,0.068441,162.959
+4210524184,Eulalia township,Potter,42105,Northcentral,909,0.068441,62.213
+4210528280,Galeton borough,Potter,42105,Northcentral,990,0.068441,67.757
+4210528760,Genesee township,Potter,42105,Northcentral,726,0.068441,49.688
+4210532848,Harrison township,Potter,42105,Northcentral,1022,0.068441,69.947
+4210533512,Hebron township,Potter,42105,Northcentral,591,0.068441,40.449
+4210533568,Hector township,Potter,42105,Northcentral,343,0.068441,23.475
+4210535400,Homer township,Potter,42105,Northcentral,438,0.068441,29.977
+4210538920,Keating township,Potter,42105,Northcentral,286,0.068441,19.574
+4210557280,Oswayo borough,Potter,42105,Northcentral,134,0.068441,9.171
+4210557288,Oswayo township,Potter,42105,Northcentral,224,0.068441,15.331
+4210560200,Pike township,Potter,42105,Northcentral,325,0.068441,22.243
+4210561400,Pleasant Valley township,Potter,42105,Northcentral,78,0.068441,5.338
+4210562072,Portage township,Potter,42105,Northcentral,162,0.068441,11.087
+4210566416,Roulette township,Potter,42105,Northcentral,1099,0.068441,75.217
+4210569736,Sharon township,Potter,42105,Northcentral,784,0.068441,53.658
+4210570304,Shinglehouse borough,Potter,42105,Northcentral,1103,0.068441,75.491
+4210574072,Stewardson township,Potter,42105,Northcentral,62,0.068441,4.243
+4210575224,Summit township,Potter,42105,Northcentral,131,0.068441,8.966
+4210575720,Sweden township,Potter,42105,Northcentral,867,0.068441,59.339
+4210575952,Sylvania township,Potter,42105,Northcentral,78,0.068441,5.338
+4210578240,Ulysses borough,Potter,42105,Northcentral,599,0.068441,40.996
+4210578248,Ulysses township,Potter,42105,Northcentral,643,0.068441,44.008
+4210582568,West Branch township,Potter,42105,Northcentral,401,0.068441,27.445
+4210584360,Wharton township,Potter,42105,Northcentral,117,0.068441,8.008
+4210703264,Ashland borough,Schuylkill,42107,Southeast,2471,0.041165,101.72
+4210703488,Auburn borough,Schuylkill,42107,Southeast,660,0.041165,27.169
+4210704352,Barry township,Schuylkill,42107,Southeast,916,0.041165,37.708
+4210707336,Blythe township,Schuylkill,42107,Southeast,811,0.041165,33.385
+4210708200,Branch township,Schuylkill,42107,Southeast,1752,0.041165,72.122
+4210710488,Butler township,Schuylkill,42107,Southeast,4906,0.041165,201.958
+4210711608,Cass township,Schuylkill,42107,Southeast,1765,0.041165,72.657
+4210714600,Coaldale borough,Schuylkill,42107,Southeast,2426,0.041165,99.867
+4210717152,Cressona borough,Schuylkill,42107,Southeast,1601,0.041165,65.906
+4210718576,Deer Lake borough,Schuylkill,42107,Southeast,670,0.041165,27.581
+4210718672,Delano township,Schuylkill,42107,Southeast,408,0.041165,16.795
+4210720880,East Brunswick township,Schuylkill,42107,Southeast,1845,0.041165,75.95
+4210721616,East Norwegian township,Schuylkill,42107,Southeast,863,0.041165,35.526
+4210721952,East Union township,Schuylkill,42107,Southeast,1647,0.041165,67.799
+4210722912,Eldred township,Schuylkill,42107,Southeast,713,0.041165,29.351
+4210726944,Foster township,Schuylkill,42107,Southeast,241,0.041165,9.921
+4210727232,Frackville borough,Schuylkill,42107,Southeast,3860,0.041165,158.899
+4210727248,Frailey township,Schuylkill,42107,Southeast,418,0.041165,17.207
+4210729088,Gilberton borough,Schuylkill,42107,Southeast,579,0.041165,23.835
+4210729264,Girardville borough,Schuylkill,42107,Southeast,1308,0.041165,53.844
+4210730128,Gordon borough,Schuylkill,42107,Southeast,761,0.041165,31.327
+4210733584,Hegins township,Schuylkill,42107,Southeast,3337,0.041165,137.369
+4210736072,Hubley township,Schuylkill,42107,Southeast,861,0.041165,35.443
+4210740096,Kline township,Schuylkill,42107,Southeast,1470,0.041165,60.513
+4210741264,Landingville borough,Schuylkill,42107,Southeast,138,0.041165,5.681
+4210745824,McAdoo borough,Schuylkill,42107,Southeast,2471,0.041165,101.72
+4210746584,Mahanoy township,Schuylkill,42107,Southeast,3192,0.041165,131.4
+4210746592,Mahanoy City borough,Schuylkill,42107,Southeast,3499,0.041165,144.038
+4210748448,Mechanicsville borough,Schuylkill,42107,Southeast,461,0.041165,18.977
+4210749048,Middleport borough,Schuylkill,42107,Southeast,362,0.041165,14.902
+4210750088,Minersville borough,Schuylkill,42107,Southeast,4370,0.041165,179.893
+4210751488,Mount Carbon borough,Schuylkill,42107,Southeast,91,0.041165,3.746
+4210753376,New Castle township,Schuylkill,42107,Southeast,347,0.041165,14.284
+4210753944,New Philadelphia borough,Schuylkill,42107,Southeast,1054,0.041165,43.388
+4210754016,New Ringgold borough,Schuylkill,42107,Southeast,253,0.041165,10.415
+4210755192,North Manheim township,Schuylkill,42107,Southeast,4059,0.041165,167.091
+4210755472,North Union township,Schuylkill,42107,Southeast,1411,0.041165,58.084
+4210755624,Norwegian township,Schuylkill,42107,Southeast,2159,0.041165,88.876
+4210757184,Orwigsburg borough,Schuylkill,42107,Southeast,3000,0.041165,123.496
+4210757752,Palo Alto borough,Schuylkill,42107,Southeast,970,0.041165,39.93
+4210760456,Pine Grove borough,Schuylkill,42107,Southeast,2049,0.041165,84.348
+4210760464,Pine Grove township,Schuylkill,42107,Southeast,4016,0.041165,165.32
+4210762128,Port Carbon borough,Schuylkill,42107,Southeast,1806,0.041165,74.345
+4210762136,Port Clinton borough,Schuylkill,42107,Southeast,278,0.041165,11.444
+4210762200,Porter township,Schuylkill,42107,Southeast,2145,0.041165,88.3
+4210762432,Pottsville city,Schuylkill,42107,Southeast,13346,0.041165,549.394
+4210764088,Reilly township,Schuylkill,42107,Southeast,639,0.041165,26.305
+4210765000,Ringtown borough,Schuylkill,42107,Southeast,721,0.041165,29.68
+4210766760,Rush township,Schuylkill,42107,Southeast,3417,0.041165,140.662
+4210766944,Ryan township,Schuylkill,42107,Southeast,2589,0.041165,106.577
+4210767224,St. Clair borough,Schuylkill,42107,Southeast,2745,0.041165,112.999
+4210768304,Schuylkill township,Schuylkill,42107,Southeast,1074,0.041165,44.212
+4210768312,Schuylkill Haven borough,Schuylkill,42107,Southeast,5236,0.041165,215.542
+4210770056,Shenandoah borough,Schuylkill,42107,Southeast,4243,0.041165,174.665
+4210772312,South Manheim township,Schuylkill,42107,Southeast,2723,0.041165,112.093
+4210776032,Tamaqua borough,Schuylkill,42107,Southeast,6916,0.041165,284.7
+4210777184,Tower City borough,Schuylkill,42107,Southeast,1419,0.041165,58.414
+4210777392,Tremont borough,Schuylkill,42107,Southeast,1676,0.041165,68.993
+4210777400,Tremont township,Schuylkill,42107,Southeast,283,0.041165,11.65
+4210778400,Union township,Schuylkill,42107,Southeast,1228,0.041165,50.551
+4210779120,Upper Mahantongo township,Schuylkill,42107,Southeast,609,0.041165,25.07
+4210780576,Walker township,Schuylkill,42107,Southeast,989,0.041165,40.713
+4210781312,Washington township,Schuylkill,42107,Southeast,3130,0.041165,128.848
+4210781792,Wayne township,Schuylkill,42107,Southeast,5213,0.041165,214.595
+4210782632,West Brunswick township,Schuylkill,42107,Southeast,3278,0.041165,134.94
+4210783408,West Mahanoy township,Schuylkill,42107,Southeast,2785,0.041165,114.646
+4210783792,West Penn township,Schuylkill,42107,Southeast,4370,0.041165,179.893
+4210900316,Adams township,Snyder,42109,Northcentral,895,0.086221,77.168
+4210904736,Beaver township,Snyder,42109,Northcentral,501,0.086221,43.197
+4210904848,Beavertown borough,Snyder,42109,Northcentral,1004,0.086221,86.566
+4210912060,Center township,Snyder,42109,Northcentral,2413,0.086221,208.051
+4210912672,Chapman township,Snyder,42109,Northcentral,1565,0.086221,134.936
+4210927440,Franklin township,Snyder,42109,Northcentral,2213,0.086221,190.807
+4210927696,Freeburg borough,Snyder,42109,Northcentral,557,0.086221,48.025
+4210937448,Jackson township,Snyder,42109,Northcentral,1587,0.086221,136.833
+4210945992,McClure borough,Snyder,42109,Northcentral,889,0.086221,76.65
+4210948960,Middleburg borough,Snyder,42109,Northcentral,1325,0.086221,114.243
+4210949016,Middlecreek township,Snyder,42109,Northcentral,2065,0.086221,178.046
+4210950488,Monroe township,Snyder,42109,Northcentral,4146,0.086221,357.472
+4210958864,Penn township,Snyder,42109,Northcentral,4037,0.086221,348.074
+4210959504,Perry township,Snyder,42109,Northcentral,2070,0.086221,178.477
+4210969216,Selinsgrove borough,Snyder,42109,Northcentral,5713,0.086221,492.581
+4210969616,Shamokin Dam borough,Snyder,42109,Northcentral,1652,0.086221,142.437
+4210972856,Spring township,Snyder,42109,Northcentral,1631,0.086221,140.626
+4210978408,Union township,Snyder,42109,Northcentral,1496,0.086221,128.987
+4210981320,Washington township,Snyder,42109,Northcentral,1761,0.086221,151.835
+4210982464,West Beaver township,Snyder,42109,Northcentral,1130,0.086221,97.43
+4210983808,West Perry township,Snyder,42109,Northcentral,1086,0.086221,93.636
+4211100396,Addison borough,Somerset,42111,Southwest,166,0.054862,9.107
+4211100404,Addison township,Somerset,42111,Southwest,931,0.054862,51.077
+4211100876,Allegheny township,Somerset,42111,Southwest,613,0.054862,33.63
+4211105648,Benson borough,Somerset,42111,Southwest,187,0.054862,10.259
+4211105776,Berlin borough,Somerset,42111,Southwest,2003,0.054862,109.889
+4211106640,Black township,Somerset,42111,Southwest,905,0.054862,49.65
+4211107712,Boswell borough,Somerset,42111,Southwest,1224,0.054862,67.151
+4211109256,Brothersvalley township,Somerset,42111,Southwest,2379,0.054862,130.517
+4211111624,Casselman borough,Somerset,42111,Southwest,104,0.054862,5.706
+4211112296,Central City borough,Somerset,42111,Southwest,998,0.054862,54.752
+4211115568,Conemaugh township,Somerset,42111,Southwest,6760,0.054862,370.868
+4211115680,Confluence borough,Somerset,42111,Southwest,722,0.054862,39.61
+4211123168,Elk Lick township,Somerset,42111,Southwest,2263,0.054862,124.153
+4211124680,Fairhope township,Somerset,42111,Southwest,100,0.054862,5.486
+4211128520,Garrett borough,Somerset,42111,Southwest,415,0.054862,22.768
+4211131336,Greenville township,Somerset,42111,Southwest,752,0.054862,41.256
+4211135608,Hooversville borough,Somerset,42111,Southwest,628,0.054862,34.453
+4211136888,Indian Lake borough,Somerset,42111,Southwest,390,0.054862,21.396
+4211137920,Jefferson township,Somerset,42111,Southwest,1426,0.054862,78.233
+4211138032,Jenner township,Somerset,42111,Southwest,3710,0.054862,203.538
+4211138048,Jennerstown borough,Somerset,42111,Southwest,678,0.054862,37.197
+4211141568,Larimer township,Somerset,42111,Southwest,600,0.054862,32.917
+4211143440,Lincoln township,Somerset,42111,Southwest,1457,0.054862,79.934
+4211145136,Lower Turkeyfoot township,Somerset,42111,Southwest,546,0.054862,29.955
+4211148912,Meyersdale borough,Somerset,42111,Southwest,2070,0.054862,113.565
+4211149024,Middlecreek township,Somerset,42111,Southwest,832,0.054862,45.645
+4211149416,Milford township,Somerset,42111,Southwest,1490,0.054862,81.745
+4211153168,New Baltimore borough,Somerset,42111,Southwest,142,0.054862,7.79
+4211153416,New Centerville borough,Somerset,42111,Southwest,128,0.054862,7.022
+4211154704,Northampton township,Somerset,42111,Southwest,305,0.054862,16.733
+4211156352,Ogle township,Somerset,42111,Southwest,469,0.054862,25.73
+4211157544,Paint borough,Somerset,42111,Southwest,906,0.054862,49.705
+4211157552,Paint township,Somerset,42111,Southwest,3041,0.054862,166.836
+4211163144,Quemahoning township,Somerset,42111,Southwest,1840,0.054862,100.946
+4211165736,Rockwood borough,Somerset,42111,Southwest,843,0.054862,46.249
+4211167584,Salisbury borough,Somerset,42111,Southwest,706,0.054862,38.733
+4211169336,Seven Springs borough,Somerset,42111,Southwest,14,0.054862,0.768
+4211169448,Shade township,Somerset,42111,Southwest,2455,0.054862,134.686
+4211169680,Shanksville borough,Somerset,42111,Southwest,199,0.054862,10.918
+4211171776,Somerset borough,Somerset,42111,Southwest,6048,0.054862,331.806
+4211171784,Somerset township,Somerset,42111,Southwest,12083,0.054862,662.899
+4211171920,Southampton township,Somerset,42111,Southwest,603,0.054862,33.082
+4211174440,Stonycreek township,Somerset,42111,Southwest,2087,0.054862,114.497
+4211174672,Stoystown borough,Somerset,42111,Southwest,300,0.054862,16.459
+4211175232,Summit township,Somerset,42111,Southwest,2147,0.054862,117.789
+4211179336,Upper Turkeyfoot township,Somerset,42111,Southwest,1062,0.054862,58.264
+4211179424,Ursina borough,Somerset,42111,Southwest,247,0.054862,13.551
+4211182128,Wellersburg borough,Somerset,42111,Southwest,214,0.054862,11.74
+4211185632,Windber borough,Somerset,42111,Southwest,3941,0.054862,216.212
+4211313000,Cherry township,Sullivan,42113,Northeast,1481,0.095338,141.196
+4211315208,Colley township,Sullivan,42113,Northeast,615,0.095338,58.633
+4211318296,Davidson township,Sullivan,42113,Northeast,549,0.095338,52.341
+4211320528,Dushore borough,Sullivan,42113,Northeast,451,0.095338,42.997
+4211320648,Eagles Mere borough,Sullivan,42113,Northeast,148,0.095338,14.11
+4211323144,Elkland township,Sullivan,42113,Northeast,549,0.095338,52.341
+4211326736,Forks township,Sullivan,42113,Northeast,374,0.095338,35.656
+4211326760,Forksville borough,Sullivan,42113,Northeast,111,0.095338,10.583
+4211327096,Fox township,Sullivan,42113,Northeast,310,0.095338,29.555
+4211334840,Hillsgrove township,Sullivan,42113,Northeast,227,0.095338,21.642
+4211341512,Laporte borough,Sullivan,42113,Northeast,314,0.095338,29.936
+4211341520,Laporte township,Sullivan,42113,Northeast,407,0.095338,38.803
+4211370560,Shrewsbury township,Sullivan,42113,Northeast,304,0.095338,28.983
+4211502712,Apolacon township,Susquehanna,42115,Northeast,426,0.0196,8.35
+4211502792,Ararat township,Susquehanna,42115,Northeast,529,0.0196,10.368
+4211503496,Auburn township,Susquehanna,42115,Northeast,1732,0.0196,33.947
+4211508648,Bridgewater township,Susquehanna,42115,Northeast,2636,0.0196,51.666
+4211509128,Brooklyn township,Susquehanna,42115,Northeast,787,0.0196,15.425
+4211513504,Choconut township,Susquehanna,42115,Northeast,679,0.0196,13.309
+4211514224,Clifford township,Susquehanna,42115,Northeast,2097,0.0196,41.102
+4211519264,Dimock township,Susquehanna,42115,Northeast,1228,0.0196,24.069
+4211526560,Forest City borough,Susquehanna,42115,Northeast,1780,0.0196,34.888
+4211526648,Forest Lake township,Susquehanna,42115,Northeast,1114,0.0196,21.835
+4211527448,Franklin township,Susquehanna,42115,Northeast,833,0.0196,16.327
+4211527968,Friendsville borough,Susquehanna,42115,Northeast,101,0.0196,1.98
+4211529024,Gibson township,Susquehanna,42115,Northeast,1012,0.0196,19.835
+4211530728,Great Bend borough,Susquehanna,42115,Northeast,627,0.0196,12.289
+4211530736,Great Bend township,Susquehanna,42115,Northeast,1708,0.0196,33.477
+4211532080,Hallstead borough,Susquehanna,42115,Northeast,1174,0.0196,23.011
+4211532568,Harford township,Susquehanna,42115,Northeast,1254,0.0196,24.579
+4211532720,Harmony township,Susquehanna,42115,Northeast,508,0.0196,9.957
+4211534096,Herrick township,Susquehanna,42115,Northeast,710,0.0196,13.916
+4211535624,Hop Bottom borough,Susquehanna,42115,Northeast,311,0.0196,6.096
+4211537464,Jackson township,Susquehanna,42115,Northeast,856,0.0196,16.778
+4211538168,Jessup township,Susquehanna,42115,Northeast,464,0.0196,9.094
+4211541336,Lanesboro borough,Susquehanna,42115,Northeast,508,0.0196,9.957
+4211541656,Lathrop township,Susquehanna,42115,Northeast,766,0.0196,15.014
+4211542760,Lenox township,Susquehanna,42115,Northeast,1603,0.0196,31.419
+4211543120,Liberty township,Susquehanna,42115,Northeast,1130,0.0196,22.148
+4211543928,Little Meadows borough,Susquehanna,42115,Northeast,245,0.0196,4.802
+4211549152,Middletown township,Susquehanna,42115,Northeast,284,0.0196,5.566
+4211550736,Montrose borough,Susquehanna,42115,Northeast,1290,0.0196,25.284
+4211553880,New Milford borough,Susquehanna,42115,Northeast,812,0.0196,15.915
+4211553888,New Milford township,Susquehanna,42115,Northeast,1789,0.0196,35.065
+4211556008,Oakland borough,Susquehanna,42115,Northeast,563,0.0196,11.035
+4211556016,Oakland township,Susquehanna,42115,Northeast,488,0.0196,9.565
+4211566776,Rush township,Susquehanna,42115,Northeast,1133,0.0196,22.207
+4211570776,Silver Lake township,Susquehanna,42115,Northeast,1513,0.0196,29.655
+4211573440,Springville township,Susquehanna,42115,Northeast,1467,0.0196,28.753
+4211575568,Susquehanna Depot borough,Susquehanna,42115,Northeast,1365,0.0196,26.754
+4211576496,Thompson borough,Susquehanna,42115,Northeast,254,0.0196,4.978
+4211576504,Thompson township,Susquehanna,42115,Northeast,438,0.0196,8.585
+4211578456,Union Dale borough,Susquehanna,42115,Northeast,220,0.0196,4.312
+4211707152,Bloss township,Tioga,42117,Northcentral,343,0.088315,30.292
+4211707160,Blossburg borough,Tioga,42117,Northcentral,1533,0.088315,135.388
+4211709072,Brookfield township,Tioga,42117,Northcentral,371,0.088315,32.765
+4211712728,Charleston township,Tioga,42117,Northcentral,3565,0.088315,314.844
+4211712880,Chatham township,Tioga,42117,Northcentral,610,0.088315,53.872
+4211714528,Clymer township,Tioga,42117,Northcentral,623,0.088315,55.021
+4211716680,Covington township,Tioga,42117,Northcentral,1032,0.088315,91.142
+4211718552,Deerfield township,Tioga,42117,Northcentral,544,0.088315,48.044
+4211718760,Delmar township,Tioga,42117,Northcentral,2793,0.088315,246.665
+4211720232,Duncan township,Tioga,42117,Northcentral,189,0.088315,16.692
+4211723056,Elk township,Tioga,42117,Northcentral,48,0.088315,4.239
+4211723152,Elkland borough,Tioga,42117,Northcentral,1827,0.088315,161.352
+4211725296,Farmington township,Tioga,42117,Northcentral,658,0.088315,58.112
+4211728264,Gaines township,Tioga,42117,Northcentral,608,0.088315,53.696
+4211732192,Hamilton township,Tioga,42117,Northcentral,531,0.088315,46.895
+4211737472,Jackson township,Tioga,42117,Northcentral,1881,0.088315,166.121
+4211740360,Knoxville borough,Tioga,42117,Northcentral,680,0.088315,60.054
+4211741960,Lawrence township,Tioga,42117,Northcentral,1614,0.088315,142.541
+4211742016,Lawrenceville borough,Tioga,42117,Northcentral,691,0.088315,61.026
+4211743128,Liberty borough,Tioga,42117,Northcentral,234,0.088315,20.666
+4211743136,Liberty township,Tioga,42117,Northcentral,1033,0.088315,91.23
+4211747080,Mansfield borough,Tioga,42117,Northcentral,2839,0.088315,250.727
+4211748968,Middlebury township,Tioga,42117,Northcentral,1312,0.088315,115.87
+4211751096,Morris township,Tioga,42117,Northcentral,569,0.088315,50.251
+4211752960,Nelson township,Tioga,42117,Northcentral,547,0.088315,48.309
+4211757224,Osceola township,Tioga,42117,Northcentral,591,0.088315,52.194
+4211762960,Putnam township,Tioga,42117,Northcentral,400,0.088315,35.326
+4211764624,Richmond township,Tioga,42117,Northcentral,2169,0.088315,191.556
+4211766232,Roseville borough,Tioga,42117,Northcentral,178,0.088315,15.72
+4211766912,Rutland township,Tioga,42117,Northcentral,779,0.088315,68.798
+4211770344,Shippen township,Tioga,42117,Northcentral,500,0.088315,44.158
+4211775104,Sullivan township,Tioga,42117,Northcentral,1466,0.088315,129.47
+4211776808,Tioga borough,Tioga,42117,Northcentral,606,0.088315,53.519
+4211776824,Tioga township,Tioga,42117,Northcentral,938,0.088315,82.84
+4211778416,Union township,Tioga,42117,Northcentral,946,0.088315,83.546
+4211780936,Ward township,Tioga,42117,Northcentral,228,0.088315,20.136
+4211782160,Wellsboro borough,Tioga,42117,Northcentral,3469,0.088315,306.366
+4211782968,Westfield borough,Tioga,42117,Northcentral,1112,0.088315,98.207
+4211782976,Westfield township,Tioga,42117,Northcentral,988,0.088315,87.256
+4211910016,Buffalo township,Union,42119,Northcentral,3593,0.068852,247.387
+4211920888,East Buffalo township,Union,42119,Northcentral,7405,0.068852,509.852
+4211931480,Gregg township,Union,42119,Northcentral,4096,0.068852,282.02
+4211932936,Hartleton borough,Union,42119,Northcentral,251,0.068852,17.282
+4211932952,Hartley township,Union,42119,Northcentral,1748,0.068852,120.354
+4211939136,Kelly township,Union,42119,Northcentral,3994,0.068852,274.997
+4211942960,Lewis township,Union,42119,Northcentral,1476,0.068852,101.626
+4211942976,Lewisburg borough,Union,42119,Northcentral,5158,0.068852,355.141
+4211943368,Limestone township,Union,42119,Northcentral,1751,0.068852,120.561
+4211949288,Mifflinburg borough,Union,42119,Northcentral,3485,0.068852,239.951
+4211953200,New Berlin borough,Union,42119,Northcentral,801,0.068852,55.151
+4211978424,Union township,Union,42119,Northcentral,1633,0.068852,112.436
+4211982640,West Buffalo township,Union,42119,Northcentral,2886,0.068852,198.708
+4211984496,White Deer township,Union,42119,Northcentral,4404,0.068852,303.226
+4212100884,Allegheny township,Venango,42121,Northwest,284,0.058844,16.712
+4212104136,Barkeyville borough,Venango,42121,Northwest,188,0.058844,11.063
+4212111080,Canal township,Venango,42121,Northwest,937,0.058844,55.137
+4212113136,Cherrytree township,Venango,42121,Northwest,1308,0.058844,76.968
+4212114344,Clinton township,Venango,42121,Northwest,953,0.058844,56.079
+4212114376,Clintonville borough,Venango,42121,Northwest,439,0.058844,25.833
+4212116080,Cooperstown borough,Venango,42121,Northwest,399,0.058844,23.479
+4212116232,Cornplanter township,Venango,42121,Northwest,2320,0.058844,136.519
+4212116944,Cranberry township,Venango,42121,Northwest,6342,0.058844,373.191
+4212123568,Emlenton borough,Venango,42121,Northwest,611,0.058844,35.954
+4212127456,Franklin city,Venango,42121,Northwest,6077,0.058844,357.597
+4212127832,Frenchcreek township,Venango,42121,Northwest,1427,0.058844,83.971
+4212137200,Irwin township,Venango,42121,Northwest,1253,0.058844,73.732
+4212137480,Jackson township,Venango,42121,Northwest,917,0.058844,53.96
+4212150048,Mineral township,Venango,42121,Northwest,498,0.058844,29.304
+4212156024,Oakland township,Venango,42121,Northwest,1361,0.058844,80.087
+4212156456,Oil City city,Venango,42121,Northwest,9613,0.058844,565.671
+4212156480,Oil Creek township,Venango,42121,Northwest,753,0.058844,44.31
+4212160472,Pinegrove township,Venango,42121,Northwest,1328,0.058844,78.145
+4212161512,Pleasantville borough,Venango,42121,Northwest,846,0.058844,49.782
+4212161552,Plum township,Venango,42121,Northwest,903,0.058844,53.136
+4212161936,Polk borough,Venango,42121,Northwest,634,0.058844,37.307
+4212162544,President township,Venango,42121,Northwest,448,0.058844,26.362
+4212164568,Richland township,Venango,42121,Northwest,777,0.058844,45.722
+4212165560,Rockland township,Venango,42121,Northwest,1243,0.058844,73.144
+4212166440,Rouseville borough,Venango,42121,Northwest,457,0.058844,26.892
+4212167824,Sandycreek township,Venango,42121,Northwest,2055,0.058844,120.925
+4212169016,Scrubgrass township,Venango,42121,Northwest,749,0.058844,44.074
+4212175000,Sugarcreek borough,Venango,42121,Northwest,4775,0.058844,280.982
+4212179472,Utica borough,Venango,42121,Northwest,184,0.058844,10.827
+4212180168,Victory township,Venango,42121,Northwest,375,0.058844,22.067
+4212304608,Bear Lake borough,Warren,42123,Northwest,148,0.06066,8.978
+4212309024,Brokenstraw township,Warren,42123,Northwest,1730,0.06066,104.942
+4212313056,Cherry Grove township,Warren,42123,Northwest,174,0.06066,10.555
+4212313776,Clarendon borough,Warren,42123,Northwest,410,0.06066,24.871
+4212315408,Columbus township,Warren,42123,Northwest,1604,0.06066,97.299
+4212315672,Conewango township,Warren,42123,Northwest,3427,0.06066,207.882
+4212318560,Deerfield township,Warren,42123,Northwest,269,0.06066,16.318
+4212322920,Eldred township,Warren,42123,Northwest,584,0.06066,35.426
+4212323064,Elk township,Warren,42123,Northwest,481,0.06066,29.178
+4212325304,Farmington township,Warren,42123,Northwest,1281,0.06066,77.706
+4212327736,Freehold township,Warren,42123,Northwest,1211,0.06066,73.459
+4212329328,Glade township,Warren,42123,Northwest,2042,0.06066,123.868
+4212343372,Limestone township,Warren,42123,Northwest,309,0.06066,18.744
+4212348272,Mead township,Warren,42123,Northwest,1296,0.06066,78.616
+4212360480,Pine Grove township,Warren,42123,Northwest,2604,0.06066,157.959
+4212361040,Pittsfield township,Warren,42123,Northwest,1282,0.06066,77.766
+4212361208,Pleasant township,Warren,42123,Northwest,2249,0.06066,136.425
+4212369992,Sheffield township,Warren,42123,Northwest,1844,0.06066,111.857
+4212372600,Southwest township,Warren,42123,Northwest,427,0.06066,25.902
+4212372952,Spring Creek township,Warren,42123,Northwest,780,0.06066,47.315
+4212375024,Sugar Grove borough,Warren,42123,Northwest,564,0.06066,34.212
+4212375032,Sugar Grove township,Warren,42123,Northwest,1609,0.06066,97.602
+4212376696,Tidioute borough,Warren,42123,Northwest,626,0.06066,37.973
+4212377512,Triumph township,Warren,42123,Northwest,276,0.06066,16.742
+4212381000,Warren city,Warren,42123,Northwest,9404,0.06066,570.448
+4212381584,Watson township,Warren,42123,Northwest,230,0.06066,13.952
+4212387224,Youngsville borough,Warren,42123,Northwest,1726,0.06066,104.699
+4212500988,Allenport borough,Washington,42125,Southwest,484,0.0355,17.182
+4212502384,Amwell township,Washington,42125,Southwest,3679,0.0355,130.603
+4212504568,Beallsville borough,Washington,42125,Southwest,393,0.0355,13.951
+4212505672,Bentleyville borough,Washington,42125,Southwest,2352,0.0355,83.495
+4212506840,Blaine township,Washington,42125,Southwest,617,0.0355,21.903
+4212510032,Buffalo township,Washington,42125,Southwest,1991,0.0355,70.68
+4212510224,Burgettstown borough,Washington,42125,Southwest,1425,0.0355,50.587
+4212510768,California borough,Washington,42125,Southwest,5362,0.0355,190.349
+4212511152,Canonsburg borough,Washington,42125,Southwest,9744,0.0355,345.908
+4212511176,Canton township,Washington,42125,Southwest,8209,0.0355,291.416
+4212511424,Carroll township,Washington,42125,Southwest,5380,0.0355,190.988
+4212511800,Cecil township,Washington,42125,Southwest,14609,0.0355,518.613
+4212512224,Centerville borough,Washington,42125,Southwest,3256,0.0355,115.587
+4212512704,Charleroi borough,Washington,42125,Southwest,4234,0.0355,150.305
+4212512848,Chartiers township,Washington,42125,Southwest,8632,0.0355,306.432
+4212514000,Claysville borough,Washington,42125,Southwest,733,0.0355,26.021
+4212514568,Coal Center borough,Washington,42125,Southwest,110,0.0355,3.905
+4212514896,Cokeburg borough,Washington,42125,Southwest,629,0.0355,22.329
+4212517314,Cross Creek township,Washington,42125,Southwest,1371,0.0355,48.67
+4212518496,Deemston borough,Washington,42125,Southwest,754,0.0355,26.767
+4212519464,Donegal township,Washington,42125,Southwest,2395,0.0355,85.021
+4212519536,Donora borough,Washington,42125,Southwest,4569,0.0355,162.198
+4212520328,Dunlevy borough,Washington,42125,Southwest,371,0.0355,13.17
+4212520808,East Bethlehem township,Washington,42125,Southwest,2311,0.0355,82.04
+4212521144,East Finley township,Washington,42125,Southwest,1288,0.0355,45.723
+4212522016,East Washington borough,Washington,42125,Southwest,1853,0.0355,65.781
+4212522800,Elco borough,Washington,42125,Southwest,267,0.0355,9.478
+4212523296,Ellsworth borough,Washington,42125,Southwest,945,0.0355,33.547
+4212525104,Fallowfield township,Washington,42125,Southwest,4099,0.0355,145.513
+4212525944,Finleyville borough,Washington,42125,Southwest,376,0.0355,13.348
+4212531082,Green Hills borough,Washington,42125,Southwest,20,0.0355,0.71
+4212532440,Hanover township,Washington,42125,Southwest,2416,0.0355,85.767
+4212535696,Hopewell township,Washington,42125,Southwest,852,0.0355,30.246
+4212535896,Houston borough,Washington,42125,Southwest,1172,0.0355,41.605
+4212536800,Independence township,Washington,42125,Southwest,1515,0.0355,53.782
+4212537936,Jefferson township,Washington,42125,Southwest,1119,0.0355,39.724
+4212544512,Long Branch borough,Washington,42125,Southwest,421,0.0355,14.945
+4212546072,McDonald borough,Washington,42125,Southwest,1664,0.0355,59.071
+4212547400,Marianna borough,Washington,42125,Southwest,399,0.0355,14.164
+4212549240,Midway borough,Washington,42125,Southwest,924,0.0355,32.802
+4212550408,Monongahela city,Washington,42125,Southwest,4159,0.0355,147.643
+4212551104,Morris township,Washington,42125,Southwest,909,0.0355,32.269
+4212551864,Mount Pleasant township,Washington,42125,Southwest,3290,0.0355,116.794
+4212553496,New Eagle borough,Washington,42125,Southwest,2049,0.0355,72.739
+4212554800,North Bethlehem township,Washington,42125,Southwest,1553,0.0355,55.131
+4212554888,North Charleroi borough,Washington,42125,Southwest,1303,0.0355,46.256
+4212555040,North Franklin township,Washington,42125,Southwest,4825,0.0355,171.285
+4212555432,North Strabane township,Washington,42125,Southwest,15700,0.0355,557.343
+4212555712,Nottingham township,Washington,42125,Southwest,2941,0.0355,104.404
+4212559608,Peters township,Washington,42125,Southwest,22946,0.0355,814.573
+4212565376,Robinson township,Washington,42125,Southwest,1707,0.0355,60.598
+4212566016,Roscoe borough,Washington,42125,Southwest,720,0.0355,25.56
+4212571288,Smith township,Washington,42125,Southwest,4233,0.0355,150.27
+4212571792,Somerset township,Washington,42125,Southwest,2581,0.0355,91.624
+4212572176,South Franklin township,Washington,42125,Southwest,2868,0.0355,101.813
+4212572504,South Strabane township,Washington,42125,Southwest,9613,0.0355,341.257
+4212572736,Speers borough,Washington,42125,Southwest,1088,0.0355,38.624
+4212574224,Stockdale borough,Washington,42125,Southwest,421,0.0355,14.945
+4212578008,Twilight borough,Washington,42125,Southwest,216,0.0355,7.668
+4212578432,Union township,Washington,42125,Southwest,5374,0.0355,190.775
+4212581328,Washington city,Washington,42125,Southwest,13176,0.0355,467.742
+4212582512,West Bethlehem township,Washington,42125,Southwest,1291,0.0355,45.83
+4212582616,West Brownsville borough,Washington,42125,Southwest,977,0.0355,34.683
+4212583000,West Finley township,Washington,42125,Southwest,813,0.0355,28.861
+4212583504,West Middletown borough,Washington,42125,Southwest,109,0.0355,3.869
+4212583840,West Pike Run township,Washington,42125,Southwest,1547,0.0355,54.918
+4212705784,Berlin township,Wayne,42127,Northeast,2478,0.034958,86.625
+4212705976,Bethany borough,Wayne,42127,Northeast,241,0.034958,8.425
+4212709824,Buckingham township,Wayne,42127,Northeast,506,0.034958,17.689
+4212711056,Canaan township,Wayne,42127,Northeast,3610,0.034958,126.198
+4212713096,Cherry Ridge township,Wayne,42127,Northeast,1913,0.034958,66.874
+4212714352,Clinton township,Wayne,42127,Northeast,2040,0.034958,71.314
+4212718104,Damascus township,Wayne,42127,Northeast,3674,0.034958,128.435
+4212719864,Dreher township,Wayne,42127,Northeast,1350,0.034958,47.193
+4212720576,Dyberry township,Wayne,42127,Northeast,1397,0.034958,48.836
+4212733200,Hawley borough,Wayne,42127,Northeast,1229,0.034958,42.963
+4212735520,Honesdale borough,Wayne,42127,Northeast,4458,0.034958,155.842
+4212740936,Lake township,Wayne,42127,Northeast,4850,0.034958,169.545
+4212742176,Lebanon township,Wayne,42127,Northeast,678,0.034958,23.701
+4212742432,Lehigh township,Wayne,42127,Northeast,1876,0.034958,65.581
+4212746856,Manchester township,Wayne,42127,Northeast,785,0.034958,27.442
+4212751872,Mount Pleasant township,Wayne,42127,Northeast,1439,0.034958,50.304
+4212757000,Oregon township,Wayne,42127,Northeast,841,0.034958,29.4
+4212757736,Palmyra township,Wayne,42127,Northeast,1251,0.034958,43.732
+4212758480,Paupack township,Wayne,42127,Northeast,3676,0.034958,128.505
+4212762600,Preston township,Wayne,42127,Northeast,1000,0.034958,34.958
+4212762744,Prompton borough,Wayne,42127,Northeast,237,0.034958,8.285
+4212767488,Salem township,Wayne,42127,Northeast,4115,0.034958,143.851
+4212768416,Scott township,Wayne,42127,Northeast,483,0.034958,16.885
+4212772024,South Canaan township,Wayne,42127,Northeast,1793,0.034958,62.679
+4212773784,Starrucca borough,Wayne,42127,Northeast,169,0.034958,5.908
+4212773968,Sterling township,Wayne,42127,Northeast,1482,0.034958,51.807
+4212776424,Texas township,Wayne,42127,Northeast,2287,0.034958,79.948
+4212781712,Waymart borough,Wayne,42127,Northeast,1297,0.034958,45.34
+4212900332,Adamsburg borough,Westmoreland,42129,Southwest,142,0.04436,6.299
+4212900892,Allegheny township,Westmoreland,42129,Southwest,8328,0.04436,369.432
+4212903088,Arnold city,Westmoreland,42129,Southwest,4772,0.04436,211.687
+4212903120,Arona borough,Westmoreland,42129,Southwest,255,0.04436,11.312
+4212903688,Avonmore borough,Westmoreland,42129,Southwest,900,0.04436,39.924
+4212905208,Bell township,Westmoreland,42129,Southwest,2080,0.04436,92.269
+4212907480,Bolivar borough,Westmoreland,42129,Southwest,435,0.04436,19.297
+4212915912,Cook township,Westmoreland,42129,Southwest,1896,0.04436,84.107
+4212918768,Delmont borough,Westmoreland,42129,Southwest,2596,0.04436,115.159
+4212918960,Derry borough,Westmoreland,42129,Southwest,2639,0.04436,117.067
+4212918968,Derry township,Westmoreland,42129,Southwest,13631,0.04436,604.675
+4212919472,Donegal borough,Westmoreland,42129,Southwest,102,0.04436,4.525
+4212919480,Donegal township,Westmoreland,42129,Southwest,2192,0.04436,97.238
+4212921304,East Huntingdon township,Westmoreland,42129,Southwest,7721,0.04436,342.506
+4212921976,East Vandergrift borough,Westmoreland,42129,Southwest,602,0.04436,26.705
+4212924432,Export borough,Westmoreland,42129,Southwest,894,0.04436,39.658
+4212924608,Fairfield township,Westmoreland,42129,Southwest,2046,0.04436,90.761
+4212931200,Greensburg city,Westmoreland,42129,Southwest,14976,0.04436,664.339
+4212933792,Hempfield township,Westmoreland,42129,Southwest,41466,0.04436,1839.442
+4212936288,Hunker borough,Westmoreland,42129,Southwest,310,0.04436,13.752
+4212936592,Hyde Park borough,Westmoreland,42129,Southwest,509,0.04436,22.579
+4212937208,Irwin borough,Westmoreland,42129,Southwest,3902,0.04436,173.094
+4212937784,Jeannette city,Westmoreland,42129,Southwest,8780,0.04436,389.483
+4212941680,Latrobe borough,Westmoreland,42129,Southwest,8060,0.04436,357.544
+4212941834,Laurel Mountain borough,Westmoreland,42129,Southwest,146,0.04436,6.477
+4212943232,Ligonier borough,Westmoreland,42129,Southwest,1513,0.04436,67.117
+4212943240,Ligonier township,Westmoreland,42129,Southwest,6056,0.04436,268.646
+4212944864,Lower Burrell city,Westmoreland,42129,Southwest,11758,0.04436,521.588
+4212945200,Loyalhanna township,Westmoreland,42129,Southwest,2088,0.04436,92.624
+4212946488,Madison borough,Westmoreland,42129,Southwest,364,0.04436,16.147
+4212947000,Manor borough,Westmoreland,42129,Southwest,3585,0.04436,159.032
+4212950344,Monessen city,Westmoreland,42129,Southwest,6876,0.04436,305.021
+4212951880,Mount Pleasant borough,Westmoreland,42129,Southwest,4245,0.04436,188.309
+4212951888,Mount Pleasant township,Westmoreland,42129,Southwest,10119,0.04436,448.881
+4212952432,Murrysville municipality,Westmoreland,42129,Southwest,21006,0.04436,931.832
+4212953160,New Alexandria borough,Westmoreland,42129,Southwest,501,0.04436,22.224
+4212953544,New Florence borough,Westmoreland,42129,Southwest,671,0.04436,29.766
+4212953736,New Kensington city,Westmoreland,42129,Southwest,12170,0.04436,539.864
+4212954104,New Stanton borough,Westmoreland,42129,Southwest,2339,0.04436,103.759
+4212954776,North Belle Vernon borough,Westmoreland,42129,Southwest,1873,0.04436,83.087
+4212955128,North Huntingdon township,Westmoreland,42129,Southwest,31880,0.04436,1414.205
+4212955136,North Irwin borough,Westmoreland,42129,Southwest,823,0.04436,36.508
+4212956496,Oklahoma borough,Westmoreland,42129,Southwest,788,0.04436,34.956
+4212958872,Penn borough,Westmoreland,42129,Southwest,435,0.04436,19.297
+4212958880,Penn township,Westmoreland,42129,Southwest,20079,0.04436,890.71
+4212966376,Rostraver township,Westmoreland,42129,Southwest,11393,0.04436,505.396
+4212967240,St. Clair township,Westmoreland,42129,Southwest,1340,0.04436,59.443
+4212967496,Salem township,Westmoreland,42129,Southwest,6093,0.04436,270.287
+4212968432,Scottdale borough,Westmoreland,42129,Southwest,4430,0.04436,196.516
+4212969368,Seward borough,Westmoreland,42129,Southwest,411,0.04436,18.232
+4212969392,Sewickley township,Westmoreland,42129,Southwest,5647,0.04436,250.502
+4212971424,Smithton borough,Westmoreland,42129,Southwest,351,0.04436,15.57
+4212972192,South Greensburg borough,Westmoreland,42129,Southwest,2135,0.04436,94.709
+4212972256,South Huntingdon township,Westmoreland,42129,Southwest,5418,0.04436,240.344
+4212972616,Southwest Greensburg borough,Westmoreland,42129,Southwest,2219,0.04436,98.435
+4212975584,Sutersville borough,Westmoreland,42129,Southwest,561,0.04436,24.886
+4212977272,Trafford borough,Westmoreland,42129,Southwest,3227,0.04436,143.151
+4212978656,Unity township,Westmoreland,42129,Southwest,21606,0.04436,958.448
+4212978768,Upper Burrell township,Westmoreland,42129,Southwest,2164,0.04436,95.996
+4212979776,Vandergrift borough,Westmoreland,42129,Southwest,5075,0.04436,225.128
+4212981336,Washington township,Westmoreland,42129,Southwest,6883,0.04436,305.332
+4212983328,West Leechburg borough,Westmoreland,42129,Southwest,1269,0.04436,56.293
+4212983680,West Newton borough,Westmoreland,42129,Southwest,2665,0.04436,118.22
+4212987208,Youngstown borough,Westmoreland,42129,Southwest,252,0.04436,11.179
+4212987232,Youngwood borough,Westmoreland,42129,Southwest,2975,0.04436,131.972
+4213108176,Braintrim township,Wyoming,42131,Northeast,461,0.069798,32.177
+4213114360,Clinton township,Wyoming,42131,Northeast,1309,0.069798,91.366
+4213122112,Eaton township,Wyoming,42131,Northeast,1435,0.069798,100.161
+4213124408,Exeter township,Wyoming,42131,Northeast,625,0.069798,43.624
+4213124488,Factoryville borough,Wyoming,42131,Northeast,1165,0.069798,81.315
+4213125128,Falls township,Wyoming,42131,Northeast,1692,0.069798,118.099
+4213126752,Forkston township,Wyoming,42131,Northeast,307,0.069798,21.428
+4213140744,Laceyville borough,Wyoming,42131,Northeast,361,0.069798,25.197
+4213142616,Lemon township,Wyoming,42131,Northeast,1136,0.069798,79.291
+4213148528,Mehoopany township,Wyoming,42131,Northeast,899,0.069798,62.749
+4213148856,Meshoppen borough,Wyoming,42131,Northeast,326,0.069798,22.754
+4213148864,Meshoppen township,Wyoming,42131,Northeast,937,0.069798,65.401
+4213150496,Monroe township,Wyoming,42131,Northeast,1668,0.069798,116.424
+4213154400,Nicholson borough,Wyoming,42131,Northeast,696,0.069798,48.58
+4213154408,Nicholson township,Wyoming,42131,Northeast,1265,0.069798,88.295
+4213154824,North Branch township,Wyoming,42131,Northeast,232,0.069798,16.193
+4213155232,Northmoreland township,Wyoming,42131,Northeast,1406,0.069798,98.137
+4213155736,Noxen township,Wyoming,42131,Northeast,917,0.069798,64.005
+4213157408,Overfield township,Wyoming,42131,Northeast,1424,0.069798,99.393
+4213177784,Tunkhannock borough,Wyoming,42131,Northeast,1767,0.069798,123.334
+4213177792,Tunkhannock township,Wyoming,42131,Northeast,3974,0.069798,277.379
+4213181344,Washington township,Wyoming,42131,Northeast,1334,0.069798,93.111
+4213185680,Windham township,Wyoming,42131,Northeast,733,0.069798,51.162
+4213311432,Carroll township,York,42133,Southcentral,6853,0.031184,213.705
+4213312584,Chanceford township,York,42133,Southcentral,5936,0.031184,185.109
+4213314832,Codorus township,York,42133,Southcentral,3904,0.031184,121.743
+4213315656,Conewago township,York,42133,Southcentral,8528,0.031184,265.939
+4213317416,Cross Roads borough,York,42133,Southcentral,523,0.031184,16.309
+4213318072,Dallastown borough,York,42133,Southcentral,4195,0.031184,130.818
+4213318800,Delta borough,York,42133,Southcentral,707,0.031184,22.047
+4213319208,Dillsburg borough,York,42133,Southcentral,2635,0.031184,82.17
+4213319696,Dover borough,York,42133,Southcentral,1954,0.031184,60.934
+4213319704,Dover township,York,42133,Southcentral,22366,0.031184,697.465
+4213321296,East Hopewell township,York,42133,Southcentral,2422,0.031184,75.528
+4213321464,East Manchester township,York,42133,Southcentral,8337,0.031184,259.982
+4213321728,East Prospect borough,York,42133,Southcentral,934,0.031184,29.126
+4213324936,Fairview township,York,42133,Southcentral,17451,0.031184,544.195
+4213325408,Fawn township,York,42133,Southcentral,3012,0.031184,93.927
+4213325416,Fawn Grove borough,York,42133,Southcentral,476,0.031184,14.844
+4213325584,Felton borough,York,42133,Southcentral,501,0.031184,15.623
+4213327480,Franklin township,York,42133,Southcentral,5032,0.031184,156.919
+4213327576,Franklintown borough,York,42133,Southcentral,518,0.031184,16.153
+4213329760,Glen Rock borough,York,42133,Southcentral,2121,0.031184,66.142
+4213330016,Goldsboro borough,York,42133,Southcentral,932,0.031184,29.064
+4213332056,Hallam borough,York,42133,Southcentral,2775,0.031184,86.536
+4213332448,Hanover borough,York,42133,Southcentral,16429,0.031184,512.325
+4213333624,Heidelberg township,York,42133,Southcentral,3031,0.031184,94.519
+4213333728,Hellam township,York,42133,Southcentral,5923,0.031184,184.704
+4213335704,Hopewell township,York,42133,Southcentral,5271,0.031184,164.372
+4213337488,Jackson township,York,42133,Southcentral,8748,0.031184,272.799
+4213337640,Jacobus borough,York,42133,Southcentral,1830,0.031184,57.067
+4213337944,Jefferson borough,York,42133,Southcentral,658,0.031184,20.519
+4213342968,Lewisberry borough,York,42133,Southcentral,382,0.031184,11.912
+4213344416,Loganville borough,York,42133,Southcentral,1426,0.031184,44.469
+4213344872,Lower Chanceford township,York,42133,Southcentral,3031,0.031184,94.519
+4213345152,Lower Windsor township,York,42133,Southcentral,7519,0.031184,234.474
+4213346864,Manchester borough,York,42133,Southcentral,2800,0.031184,87.316
+4213346872,Manchester township,York,42133,Southcentral,19515,0.031184,608.559
+4213346904,Manheim township,York,42133,Southcentral,3462,0.031184,107.96
+4213350328,Monaghan township,York,42133,Southcentral,2675,0.031184,83.418
+4213352056,Mount Wolf borough,York,42133,Southcentral,1368,0.031184,42.66
+4213353224,Newberry township,York,42133,Southcentral,15672,0.031184,488.718
+4213353568,New Freedom borough,York,42133,Southcentral,4877,0.031184,152.085
+4213354056,New Salem borough,York,42133,Southcentral,822,0.031184,25.633
+4213354904,North Codorus township,York,42133,Southcentral,9152,0.031184,285.398
+4213355112,North Hopewell township,York,42133,Southcentral,2723,0.031184,84.914
+4213355608,North York borough,York,42133,Southcentral,2200,0.031184,68.605
+4213357872,Paradise township,York,42133,Southcentral,3969,0.031184,123.77
+4213358560,Peach Bottom township,York,42133,Southcentral,4966,0.031184,154.861
+4213358888,Penn township,York,42133,Southcentral,17487,0.031184,545.318
+4213363288,Railroad borough,York,42133,Southcentral,256,0.031184,7.983
+4213363840,Red Lion borough,York,42133,Southcentral,6512,0.031184,203.071
+4213369360,Seven Valleys borough,York,42133,Southcentral,480,0.031184,14.968
+4213370568,Shrewsbury borough,York,42133,Southcentral,3848,0.031184,119.997
+4213370576,Shrewsbury township,York,42133,Southcentral,6649,0.031184,207.344
+4213372992,Springettsbury township,York,42133,Southcentral,27058,0.031184,843.781
+4213373096,Springfield township,York,42133,Southcentral,6026,0.031184,187.916
+4213373168,Spring Garden township,York,42133,Southcentral,13683,0.031184,426.693
+4213373192,Spring Grove borough,York,42133,Southcentral,2372,0.031184,73.969
+4213374104,Stewartstown borough,York,42133,Southcentral,2129,0.031184,66.391
+4213381056,Warrington township,York,42133,Southcentral,4552,0.031184,141.95
+4213381352,Washington township,York,42133,Southcentral,2573,0.031184,80.237
+4213382200,Wellsville borough,York,42133,Southcentral,301,0.031184,9.386
+4213383432,West Manchester township,York,42133,Southcentral,19206,0.031184,598.923
+4213383440,West Manheim township,York,42133,Southcentral,9072,0.031184,282.903
+4213384288,West York borough,York,42133,Southcentral,5094,0.031184,158.852
+4213385728,Windsor borough,York,42133,Southcentral,1358,0.031184,42.348
+4213385736,Windsor township,York,42133,Southcentral,17853,0.031184,556.731
+4213385872,Winterstown borough,York,42133,Southcentral,608,0.031184,18.96
+4213386640,Wrightsville borough,York,42133,Southcentral,2261,0.031184,70.507
+4213387040,Yoe borough,York,42133,Southcentral,1055,0.031184,32.899
+4213387048,York city,York,42133,Southcentral,44800,0.031184,1397.051
+4213387056,York township,York,42133,Southcentral,29719,0.031184,926.762
+4213387064,Yorkana borough,York,42133,Southcentral,239,0.031184,7.453
+4213387080,York Haven borough,York,42133,Southcentral,686,0.031184,21.392

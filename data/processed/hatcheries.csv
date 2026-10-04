@@ -1,0 +1,14 @@
+hatchery_id,hatchery,full_name,county,region,lat,lon,trout_flag,supply,in_2026_schedule
+1,Fairview,Fairview State Fish Hatchery,Erie,Northwest,42.04262,-80.2763,False,0,False
+2,Linesville,Linesville State Fish Hatchery,Crawford,Northwest,41.64583,-80.42748,True,0,False
+3,Union City,Union City Aquatic Conservation Center,Erie,Northwest,41.9075,-79.81782,False,0,False
+4,Corry,Corry State Fish Hatchery,Erie,Northwest,41.93019,-79.67036,True,251290,True
+5,Oswayo,Oswayo State Fish Hatchery,Potter,Northcentral,41.92444,-78.00806,True,237248,True
+6,Pleasant Mount,Pleasant Mount State Fish Hatchery,Wayne,Northeast,41.73972,-75.44806,True,0,False
+7,Pleasant Gap,Pleasant Gap State Fish Hatchery,Centre,Northcentral,40.86878,-77.7575,True,325359,True
+8,Benner Spring,Benner Spring State Fish Hatchery,Centre,Northcentral,40.85762,-77.81694,True,387530,True
+9,Bellefonte,Bellefonte State Fish Hatchery,Centre,Northcentral,40.88273,-77.79402,True,481368,True
+10,Tylersville,Tylersville State Fish Hatchery,Clinton,Northcentral,40.98244,-77.47062,True,326186,True
+11,Reynoldsdale,Reynoldsdale State Fish Hatchery,Bedford,Southcentral,40.1575,-78.58,True,130640,True
+12,Huntsdale,Huntsdale State Fish Hatchery,Cumberland,Southcentral,40.10306,-77.30833,True,451587,True
+13,Tionesta,Tionesta State Fish Hatchery,Forest,Northwest,41.50756,-79.44988,False,15257,True

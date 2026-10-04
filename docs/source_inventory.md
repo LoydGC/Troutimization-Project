@@ -68,17 +68,54 @@ URL notes (rule 5):
 | 2026 Pennsylvania Fishing Summary (summary book, 42 pages) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/fishing/regulations/summarybook.pdf | 2026-09-27 | `data/raw/pfbc_docs/` | county → region (`county_region.csv`, script 04), from the regulated trout waters lists (pdf pp. 25–36) |
 | 2023 trout angler survey: Responsive Management for PFBC, *Trout Fishing in Pennsylvania* (PDF, 201 pages; describes 2022 fishing). Byte-identical to the copy saved by hand 2026-09-26 that the tables were first extracted from | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutanglersurveyreport-2023.pdf | 2026-09-27 | `data/raw/pfbc_angler_survey_2023/` | survey tables in `data/processed/angler_survey/` (script 00); demand (Prompt 6) |
 | 2024 Pennsylvania Annual Fishing License & Permit Sales by Agent County (PDF, 4 pages: annual and multi-year licenses and permits by the county of the selling agent, plus Internet and out-of-state rows) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/fishinglicensesalesbycounty2024.pdf | 2026-09-27 | `data/raw/pfbc_docs/` | county angler rate for proximity demand (Prompt 6). Sales are by store county, not home county (`known_gaps.md` § Angler numbers by county) |
-| 2020–24 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/troutplan2020.pdf | not downloaded | | `env_research.md` |
-| 2025–29 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutplan2025.pdf | not downloaded | | `env_research.md`, report hook (Obj. 9.1) |
+| 2020–24 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/reports/troutplan2020.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | `env_research.md` |
+| 2025–29 Trout Management Plan | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/species-mgmt-plans/troutplan2025.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | `env_research.md`, report hook (Obj. 9.1) |
 | Summary of the 165th Commission meeting (Jan 2026) | https://www.pa.gov/agencies/fishandboat/newsroom/summary-165th-meeting-pfbc-jan2026 | web page, not saved | | Class A exemptions (`env_research.md` § 3) |
 
-## Census
-Verified with a HEAD request before download (2026-09-27).
+## Angler-use studies (creel and residence surveys, recall bias)
+Found by a research pass on 2026-10-03 (the request list and every download are in `data/raw/manifest.csv`;
+none was refused). Used for the demand checks and the k evidence in `model_design.md` § Angler benefit and
+`known_gaps.md` § Angler-use data. Downloads that held nothing we use (Youghiogheny and Big Spring plans, WV
+appendix, NYSDEC comment assessment, PFBC news pages, a bioRxiv preprint, Semantic Scholar abstract records for
+paywalled papers) are only in the manifest.
 
 | Source | URL | Retrieved | Local copy | Used for |
 |---|---|---|---|---|
-| 2020 Census centers of population by block group, Pennsylvania (10,173 block groups: population and population-weighted latitude/longitude) | https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG42.txt | 2026-09-27 | `data/raw/census/` | proximity demand and county population (Prompt 6) |
+| PFBC Pine Creek Fisheries Management Plan (2012), Appendix B: Kristine & Detar, angler use, catch and harvest survey, Sections 11–13, Apr–Oct 2008 | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/pine-creek-plan-apdxb.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | trips, trips per trout, return to creel, reasons for choosing the spot |
+| Same plan, Appendix C: Graefe et al. 2010 (Penn State), on-site and mail survey | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/pine-creek-plan-apdxc.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | anglers' home regions (demand origin check), trip length, overnight stays |
+| Same plan, main text (Hollender et al. 1982 creel summary) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/pine-creek-plan.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | return to creel 43% |
+| PFBC Lehigh River management plan (Pierce & Arnold 2007 creel summary) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/5_lehigh_plan.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | anglers' home county (demand origin check, 2730_6) |
+| Carline et al. 2011, Spring Creek fishery (PFBC technical report) | https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/springck_fishery.pdf | 2026-10-03 | `data/raw/pfbc_creel/` | angler use before and after stocking stopped |
+| Pa. Bulletin 53-49, doc. 1685 (Dec 2023): Class A + stocked sections final rule | https://www.pacodeandbulletin.gov/Display/pabull?file=/secure/pabulletin/data/vol53/53-49/1685.html | 2026-10-03 | `data/raw/pfbc_creel/` | Bald Eagle Creek 2021 harvest, opening-day counts |
+| Connelly & Brown 1995, angler diaries vs 12-month recall (via SEDAR) | https://sedarweb.org/documents/s17rd19-use-of-angler-diaries-to-examine-biases-associated-with-12-month-recall-on-mail-questionnaires/ | 2026-10-03 | `data/raw/angler_use_literature/` | recall bias (+44–45%) |
+| Fisher et al. 1991, recall period and the National Survey (via SEDAR) | https://sedarweb.org/documents/s24rd63-length-of-recall-period-and-accuracy-of-estimates-from-the-national-survey-of-fishing-hunting-and-wildlife-associated-recreation/ | 2026-10-03 | `data/raw/angler_use_literature/` | recall bias (annual vs quarterly +34%) |
+| Ready, Delavan & Epp 2003, PA trout license demand (USDA FS) | https://research.fs.usda.gov/download/treesearch/21141.pdf | 2026-10-03 | `data/raw/angler_use_literature/` | license sales vs trout stocked, 1970–2000 |
+| NYSDEC, Catch Rate Oriented Trout Stocking evaluation (Alexiades et al. 2014) | https://extapps.dec.ny.gov/docs/fish_marine_pdf/crots.pdf | 2026-10-03 | `data/raw/angler_use_literature/` | New York's allocation method (comparison) |
+| NYSDEC Trout Stream Management Plan (2020) | https://extapps.dec.ny.gov/docs/fish_marine_pdf/troutstreammp.pdf | 2026-10-03 | `data/raw/angler_use_literature/` | New York's allocation rules (comparison) |
+| Virginia DWR Stocked Trout Management Plan 2016–2025 | https://dwr.virginia.gov/wp-content/uploads/stocked-trout-management-plan-final.pdf | 2026-10-03 | `data/raw/angler_use_literature/` | Virginia's allocation formula (comparison) |
+| Hyman 2015, Virginia stocked trout program (Virginia Tech thesis) | https://vtechworks.lib.vt.edu/server/api/core/bitstreams/98cc031c-5d61-4ada-9fec-7481a26d80da/content | 2026-10-03 | `data/raw/angler_use_literature/` | Virginia return to creel, travel distance |
+| NJ DFW 2018 trout allocation meeting slides | https://www.nj.gov/dep/fgw/pdf/2018/trout_allocations_mtg.pdf | 2026-10-03 | `data/raw/angler_use_literature/` | New Jersey's lake allocation (comparison) |
+| Iowa DNR 2016 trout angler survey | https://publications.iowa.gov/35021/1/Trout%20Angler%20Survey.pdf | 2026-10-03 | `data/raw/angler_use_literature/` | anglers following stocking schedules |
+| Wisconsin DNR 2014, *Trout Fishing in Wisconsin: Angler Behavior, Program Assessment and Regulation and Season Preferences* (Petchenik) | https://dnr.wisconsin.gov/sites/default/files/topic/Fishing/Trout_TroutReportJan2014.pdf | 2026-10-04 | `data/raw/angler_use_literature/` | public-access preference (Table V-4, p. 52): the access sensitivity |
+
+## Census
+Verified with a HEAD request before download (2026-09-27); the TIGERweb rows with `?f=pjson` (2026-10-04).
+
+| Source | URL | Retrieved | Local copy | Used for |
+|---|---|---|---|---|
+| 2020 Census centers of population by block group, Pennsylvania (10,173 block groups: population and population-weighted latitude/longitude) | https://www2.census.gov/geo/docs/reference/cenpop2020/blkgrp/CenPop2020_Mean_BG42.txt | 2026-09-27 | `data/raw/census/` | **No longer used (2026-10-04).** Was proximity demand and county population (Prompt 6); replaced by the county-subdivision counts below. Raw files and manifest rows kept |
 | 2020 Census Gazetteer, counties (national file; names, land area) | https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_Gaz_counties_national.zip | 2026-09-27 | `data/raw/census/` | county names and land area (rural-county check) |
+| 2020 Census population by county subdivision, PA (`POP100` = PL 94-171 total population; 2,573 rows, 1 Jan 2020 boundaries). TIGERweb Census 2020, layer 20 "County Subdivisions"; attribute query, no geometry, one request (`maxRecordCount` 100,000) | https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/20/query?where=STATE='42'&outFields=GEOID,STATE,COUNTY,NAME,POP100&returnGeometry=false&orderByFields=GEOID&f=json | 2026-10-04 | `data/raw/census_pop/2026-10-04/` (`cousub2020_pa_pop.json`, layer and service metadata) | proximity-demand origins (`subdivision_anglers`) and county population (script 06) |
+| 2020 Census population by county, PA (`POP100`; 67 rows). TIGERweb Census 2020, layer 82 "Counties"; same query | https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/82/query (same parameters) | 2026-10-04 | `data/raw/census_pop/2026-10-04/county2020_pa_pop.json` | check: each county's subdivisions add to its count (67 of 67) |
+| 2026 county subdivision holding each 2020 subdivision with no 2026 code (7 point queries on the 2020 internal points, from a `GEOID IN (...)` query of layer 20) | https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_ACS2026/MapServer/22/query (`geometry=<lon,lat>`, `esriGeometryPoint`, `returnGeometry=false`) | 2026-10-04 | `data/raw/census_pop/2026-10-04/cousub2026_containing_<GEOID>.json`, `cousub2020_gone_by_2026.json` | 2020 → 2026 crosswalk (`SUCCESSOR_2026` in script 06) |
+
+**Census Data API: refused without a key (2026-10-04).** The plan was 2020 PL 94-171 `P1_001N` by county subdivision from
+`https://api.census.gov/data/2020/dec/pl?get=NAME,P1_001N&for=county%20subdivision:*&in=state:42&in=county:*`. Its
+`geography.json` and `variables/P1_001N.json` answered (summary level 060 requires state and county, with county
+wildcardable; `P1_001N` = "Total"), but the data request was redirected to a "Missing Key" page ("A valid key must be
+included with each data API request"). No key was used. The metadata and the refusal page are saved under
+`data/raw/census_pop/2026-10-04/`. No 2020 Centers of Population file exists for county subdivisions either (the
+`cenpop2020/` folder has state, county, tract and block group only).
 
 ## Local reference copies (`data/references/`, gitignored)
 Saved by hand, not by a script, so they aren't in the manifest. This table is the record of where each came

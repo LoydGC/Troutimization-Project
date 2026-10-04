@@ -1,0 +1,10 @@
+2026-10-04 16:54:25,111 INFO 21_model_input run from commit 844f30a + uncommitted changes to scripts/00_extract_angler_survey.py, scripts/06_county_anglers.py, scripts/08_demand.py, scripts/optimization.py, scripts/20_transport_cost.py, scripts/21_model_input.py
+2026-10-04 16:54:25,218 INFO sections: 1045 stocked 2024-26, 1022 stocked in 2026 (the candidates)
+2026-10-04 16:54:25,281 INFO join environment: 1022 rows, 1022 matched, 0 missing
+2026-10-04 16:54:25,289 INFO join demand: 1022 rows, 1022 matched, 0 missing
+2026-10-04 16:54:25,318 INFO impact_weighted: weights {'A': 8.0, 'B': 6.0, 'C': 3.0, 'D': 1.0, 'E': 0.0}; 111 sections rated B-D but not on the natural-reproduction list count whole; 22 E sections on the list get weight 1; 624 sections > 0; 2026 total 2,274,440 (class D = 1)
+2026-10-04 16:54:25,327 INFO n_stockings: {2: 769, 3: 253} (3 from demand 108, High-Yield-like 163)
+2026-10-04 16:54:25,354 INFO complete for the base model: 1022 of 1022; excluded 0; impact_simple = 1 on 624 sections (1,445,045 fish, 55.4%)
+2026-10-04 16:54:25,359 INFO x0 total 2,606,468; cap_fish total 7,828,646 (3.00x); cap = today's count on 7 sections ({'access_rate': 989, 'class_a': 17, 'program_rate': 9, 'baseline': 7})
+2026-10-04 16:54:25,362 INFO null shares (non-zero): {'exclude_reason': 1.0, 'wild_brook_present': 0.983, 'destination_index': 0.621}
+2026-10-04 16:54:25,446 INFO model_input: 1022 rows, columns ['section_id', 'x0', 'river_id', 'water_name', 'county', 'region', 'length_mi', 'area_acres', 'width_class', 'use_potential', 'biomass_class', 'allocation_code', 'class_a_flag', 'nat_repro_flag', 'coop_stocked', 'cap_fish', 'cap_source', 'cap_fish_mid', 'cap_fish_river', 'cap_fish_class_a_grow', 'share_brook', 'share_brown', 'share_rainbow', 'share_golden', 'share_brood', 'exclude', 'exclude_reason', 'nat_repro_share', 'wild_brook_present', 'prox_days', 'pref_days', 'prox_days_pooled', 'prox_days_pop', 'destination_index', 'dhalo', 'catch_release', 'keystone_select', 'open_year_round', 'impact_simple', 'impact_overlap', 'impact_weighted', 'n_stockings', 'n_supply_costs', 'complete']

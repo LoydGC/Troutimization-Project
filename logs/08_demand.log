@@ -1,25 +1,27 @@
-2026-09-28 01:38:58,968 INFO 08_demand run from commit 0df544f + uncommitted changes to scripts/06_county_anglers.py, scripts/07_survey_crosswalk.py, scripts/08_demand.py
-2026-09-28 01:38:58,984 INFO days fished (p115 midpoints, over 50 = 105): {'northwest': 19.8, 'northcentral': 26.7, 'northeast': 21.4, 'southwest': 19.1, 'southcentral': 20.2, 'southeast': 19.7}; statewide 20.57 vs published 20.6
-2026-09-28 01:38:59,002 INFO block groups: 10173, 68 with no population (they get no angler-days)
-2026-09-28 01:38:59,006 INFO statewide angler-days: 8,717,541 (421,614 anglers x days by home region)
-2026-09-28 01:38:59,276 INFO distances: 10173 block groups x 1022 sections; road mi = straight x 1.3, farthest pair 417 road mi
-2026-09-28 01:38:59,634 INFO band shares passed on: 783 of 122076 block group x band cells have no stocked section (2.4% of angler-days re-spread)
-2026-09-28 01:38:59,954 INFO pooled in-state curve (regions weighted by angler-days): {'0-10 miles': 0.381, '11-20 miles': 0.253, '21-30 miles': 0.132, '31-40 miles': 0.037, '41-50 miles': 0.063, '51-60 miles': 0.023, '61-70 miles': 0.01, '71-80 miles': 0.016, '81-90 miles': 0.005, '91-100 miles': 0.03, '101-150 miles': 0.03, 'More than 150 miles': 0.022}
-2026-09-28 01:39:00,248 INFO prox_days_pop: every county at the state angler rate; 8,524,633 angler-days before rescaling to 8,717,541
-2026-09-28 01:39:00,249 INFO proximity: all three columns sum to the statewide total; prox_days quantiles p10/50/90 [1764.0, 5949.0, 16901.0]
-2026-09-28 01:39:00,291 INFO share of each home region's angler-days landing in its own region vs p85 (favorite water's county in the home region):
+2026-10-04 14:50:26,111 INFO 08_demand run from commit 844f30a + uncommitted changes to scripts/00_extract_angler_survey.py, scripts/06_county_anglers.py, scripts/08_demand.py
+2026-10-04 14:50:26,124 INFO days fished (p115 midpoints, over 50 = 105): {'northwest': 19.8, 'northcentral': 26.7, 'northeast': 21.4, 'southwest': 19.1, 'southcentral': 20.2, 'southeast': 19.7}; statewide 20.57 vs published 20.6
+2026-10-04 14:50:26,129 INFO lake share of days (p88: primarily lakes + 0.5 x both): {'northwest': 0.131, 'northcentral': 0.19, 'northeast': 0.29, 'southwest': 0.255, 'southcentral': 0.145, 'southeast': 0.131}
+2026-10-04 14:50:26,185 INFO origins: 2567 county subdivisions, 1 with no population (they get no angler-days)
+2026-10-04 14:50:26,190 INFO statewide stream angler-days: 7,121,847 (421,614 anglers x days by home region x (1 - lake share); 8,717,546 with lake days, 18.3% removed)
+2026-10-04 14:50:27,752 INFO road distances: 2682515 pairs (1045 sections); kept 2623474 to the 1022 sections stocked in 2026, left out 59041 to the other 23
+2026-10-04 14:50:28,307 INFO road mi: 0 pairs at 0 (first band), median nearest section 5.2, farthest pair 440.2 (the last band's end)
+2026-10-04 14:50:28,402 INFO band shares passed on: 312 of 30804 subdivision x band cells have no stocked section (4.9% of angler-days move to the next band out; 0 cells, 0.00%, have none farther out and move in)
+2026-10-04 14:50:28,480 INFO pooled in-state curve (regions weighted by angler-days): {'0-10 miles': 0.385, '11-20 miles': 0.252, '21-30 miles': 0.13, '31-40 miles': 0.037, '41-50 miles': 0.062, '51-60 miles': 0.022, '61-70 miles': 0.01, '71-80 miles': 0.016, '81-90 miles': 0.005, '91-100 miles': 0.03, '101-150 miles': 0.029, 'More than 150 miles': 0.023}
+2026-10-04 14:50:28,561 INFO prox_days_pop: every county at the state angler rate; 7,039,685 angler-days before rescaling to 7,121,847
+2026-10-04 14:50:28,563 INFO proximity: all three columns sum to the statewide total; prox_days quantiles p10/50/90 [1276.0, 4654.0, 14783.0]
+2026-10-04 14:50:28,577 INFO share of each home region's angler-days landing in its own region vs p85 (favorite water's county in the home region):
  home_region  own_region_share  p85_own_region_share
-   northwest              0.81                  0.70
-northcentral              0.74                  0.89
-   northeast              0.83                  0.81
-   southwest              0.76                  0.65
-southcentral              0.83                  0.83
-   southeast              0.84                  0.72
-2026-09-28 01:39:00,296 INFO Bear Creek 3197_2: 9112 prox angler-days; share by road-mile ring {Interval(0.0, 10.0, closed='right'): 0.55, Interval(10.0, 20.0, closed='right'): 0.11, Interval(20.0, 30.0, closed='right'): 0.12, Interval(30.0, 50.0, closed='right'): 0.11, Interval(50.0, 100.0, closed='right'): 0.1, Interval(100.0, inf, closed='right'): 0.02}
-2026-09-28 01:39:00,302 INFO survey mentions: 219.5% in all (up to three waters each, incl. Other and Don't know; 98 waters at '<0.5%' = 0.25%)
-2026-09-28 01:39:00,310 INFO preference: 63.1% of mentions land on 160 matched rivers (387 sections); 36.9% unplaced (Other, Don't know, lakes, unmatched, not stocked in 2026) is spread like prox_days
-2026-09-28 01:39:00,320 INFO flagged (preference per stocked mile > the state's highest prox_days per mile, 39537): [[1327, 'Youghiogheny River', 1.1, 71302.4]]
-2026-09-28 01:39:00,326 INFO regulation flags (2026 sections): {'dhalo': 56, 'catch_release': 30, 'keystone_select': 24, 'open_year_round': 16}
-2026-09-28 01:39:00,327 INFO 2026 fish on survey-named waters: 54.3% (387 of 1022 sections)
-2026-09-28 01:39:01,368 INFO rank correlation of prox_days with: {'total_2026': 0.51, 'fish_per_acre': 0.16, 'prox_days_pop': 0.94, 'prox_days_pooled': 0.99, 'pref_days': 0.67}
-2026-09-28 01:39:01,385 INFO demand: 1022 rows, columns ['section_id', 'river_id', 'prox_days', 'prox_days_pooled', 'prox_days_pop', 'pref_days_named', 'pref_days', 'survey_waterbody', 'pref_per_mi_flag', 'destination_index', 'dhalo', 'catch_release', 'keystone_select', 'open_year_round']
+   northwest              0.82                  0.70
+northcentral              0.77                  0.89
+   northeast              0.84                  0.81
+   southwest              0.77                  0.65
+southcentral              0.84                  0.83
+   southeast              0.86                  0.72
+2026-10-04 14:50:28,580 INFO Bear Creek 3197_2: 6311 prox angler-days; share by road-mile ring {Interval(-0.001, 10.0, closed='right'): 0.31, Interval(10.0, 20.0, closed='right'): 0.23, Interval(20.0, 30.0, closed='right'): 0.15, Interval(30.0, 50.0, closed='right'): 0.14, Interval(50.0, 100.0, closed='right'): 0.16, Interval(100.0, inf, closed='right'): 0.02}
+2026-10-04 14:50:28,587 INFO survey mentions: 219.5% in all (up to three waters each, incl. Other and Don't know; 98 waters at '<0.5%' = 0.25%); 39 lakes (20.25%) dropped, leaving 199.25%
+2026-10-04 14:50:28,594 INFO preference: 69.5% of mentions land on 160 matched rivers (387 sections); 30.5% unplaced (Other, Don't know, unmatched, not stocked in 2026) is spread like prox_days
+2026-10-04 14:50:28,604 INFO flagged (preference per stocked mile > the state's highest prox_days per mile, 28484): [[1327, 'Youghiogheny River', 1.1, 64171.0], [2027, 'White Clay Creek', 1.1, 32201.1]]
+2026-10-04 14:50:28,611 INFO regulation flags (2026 sections): {'dhalo': 56, 'catch_release': 30, 'keystone_select': 24, 'open_year_round': 16}
+2026-10-04 14:50:28,611 INFO 2026 fish on survey-named waters: 54.3% (387 of 1022 sections)
+2026-10-04 14:50:29,523 INFO rank correlation of prox_days with: {'total_2026': 0.48, 'fish_per_acre': 0.18, 'prox_days_pop': 0.95, 'prox_days_pooled': 0.99, 'pref_days': 0.62}
+2026-10-04 14:50:29,533 INFO demand: 1022 rows, columns ['section_id', 'river_id', 'prox_days', 'prox_days_pooled', 'prox_days_pop', 'pref_days_named', 'pref_days', 'survey_waterbody', 'pref_per_mi_flag', 'destination_index', 'dhalo', 'catch_release', 'keystone_select', 'open_year_round']

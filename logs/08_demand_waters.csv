@@ -1,161 +1,161 @@
 river_id,water_name,stocked_mi,prox_days,pref_days_named,pref_per_mi,pref_per_mi_flag,destination_index,survey_waterbody
-1339,Pine Creek,55.958,39506.946,198577.251,3548.684,False,5.026,Pine Creek (Lycoming or Tioga County)
-276,Yellow Breeches Creek,44.638,151190.156,198577.251,4448.614,False,1.313,Yellow Breeches Creek
-329,Neshannock Creek,23.759,38506.782,119146.35,5014.788,False,3.094,Neshannock Creek
-3351,Kettle Creek,33.585,17316.426,119146.35,3547.606,False,6.881,Kettle Creek
-1785,Allegheny River,29.766,16930.313,79430.9,2668.511,False,4.692,Allegheny River
-2207,Penns Creek,19.858,25729.889,79430.9,3999.945,False,3.087,Penns Creek
-2634,Kinzua Creek,16.317,12341.962,79430.9,4867.984,False,6.436,Kinzua Creek
-3160,Elk Creek,13.037,60580.002,79430.9,6092.728,False,1.311,Elk Creek
-1819,Conococheague Creek,24.171,51806.253,79430.9,3286.207,False,1.533,Conococheague Creek
-2714,Little Lehigh Creek,16.925,56799.302,79430.9,4693.111,False,1.398,Little Lehigh Creek
-2730,Lehigh River,22.974,51243.247,79430.9,3457.426,False,1.55,Lehigh River
-3072,Tulpehocken Creek,17.333,77603.277,79430.9,4582.64,False,1.024,Tulpehocken Creek
-1796,Loyalhanna Creek,13.918,35524.585,79430.9,5707.063,False,2.236,Loyalhanna Creek
-312,Slippery Rock Creek,21.835,39829.15,79430.9,3637.779,False,1.994,Slippery Rock Creek
-1327,Youghiogheny River,1.114,1236.428,79430.9,71302.424,True,64.242,Youghiogheny River
-3303,Clark Creek,24.869,53412.748,79430.9,3193.972,False,1.487,Clark Creek
-165,Buffalo Creek,25.711,52172.027,79430.9,3089.374,False,1.522,Buffalo Creek (Armstrong County); Buffalo Creek (Butler County)
-3364,First Fork Sinnemahoning Creek,31.233,14397.577,79430.9,2543.172,False,5.517,First Fork Sinnemahoning Creek
-3740,Laurel Hill Creek,30.403,28421.257,79430.9,2612.601,False,2.795,Laurel Hill Creek
-1798,Pine Creek,7.919,85115.62,79430.9,10030.421,False,0.933,Pine Creek (Allegheny County)
-2716,Jordan Creek,25.877,65898.105,79430.9,3069.556,False,1.205,Jordan Creek
-2923,Tionesta Creek,22.272,12187.546,79430.9,3566.402,False,6.517,Tionesta Creek
-1909,Oil Creek,36.865,27189.099,79430.9,2154.643,False,2.921,Oil Creek
-413,French Creek,12.897,60552.477,59964.457,4649.489,False,0.99,French Creek
-2199,Bald Eagle Creek,28.687,58334.603,56343.502,1964.078,False,0.966,Bald Eagle Creek
-2266,Shohola Creek,5.597,7440.203,39715.45,7095.846,False,5.338,Shohola Creek
-2655,Brokenstraw Creek,13.979,8641.602,39715.45,2841.079,False,4.596,Brokenstraw Creek
-409,Pickering Creek,3.559,22794.391,39715.45,11159.16,False,1.742,Pickering Creek
-2865,Driftwood Branch Sinnemahoning Creek,22.468,11948.44,39715.45,1767.645,False,3.324,Driftwood Branch Sinnemahoning Creek
-1719,Bull Creek,8.711,50250.677,39715.45,4559.23,False,0.79,Bull Creek
-2973,Canoe Creek,7.317,31324.361,39715.45,5427.832,False,1.268,Canoe Creek
-3301,Stony Creek,19.818,47064.947,39715.45,2004.009,False,0.844,Stony Creek (Dauphin County)
-2271,Lackawaxen River,20.225,16821.502,39715.45,1963.681,False,2.361,Lackawaxen River
-4481,Antietam Creek,3.33,23661.504,39715.45,11926.562,False,1.678,Antietam Creek
-2442,Tobyhanna Creek,6.713,19038.553,39715.45,5916.2,False,2.086,Tobyhanna Creek
-59,Yellow Creek,8.703,10637.647,39715.45,4563.421,False,3.733,Yellow Creek (Bedford County)
-2532,Sixmile Run,5.189,15542.589,39715.45,7653.777,False,2.555,Six Mile Run
-2232,Middle Creek,14.179,21045.274,39715.45,2801.005,False,1.887,Middle Creek (Snyder County)
-2175,White Deer Creek,20.178,38284.332,39715.45,1968.255,False,1.037,White Deer Creek
-2254,Black Moshannon Creek,14.573,19551.014,39715.45,2725.276,False,2.031,Black Moshannon Creek
-2260,Fourmile Run,11.78,24906.966,39715.45,3371.43,False,1.595,Four Mile Run
-2662,Brodhead Creek,12.867,25536.832,39715.45,3086.613,False,1.555,Brodhead Creek
-2717,Monocacy Creek,7.305,30150.26,39715.45,5436.749,False,1.317,Monocacy Creek
-4029,West Branch Susquehanna River,5.625,17594.678,39715.45,7060.524,False,2.257,West Branch Susquehanna River
-4028,Chest Creek,36.487,56436.341,39715.45,1088.482,False,0.704,Chest Creek
-3354,Little Pine Creek,12.486,13705.667,39715.45,3180.799,False,2.898,Little Pine Creek
-3306,Sherman Creek,14.825,11782.249,39715.45,2678.951,False,3.371,Sherman Creek
-5995,Harveys Creek,10.481,47288.749,39715.45,3789.281,False,0.84,Harveys Creek
-3178,Twentymile Creek,1.78,7674.458,39715.45,22312.051,False,5.175,Twenty Mile Creek
-3127,Deep Creek,17.279,21241.849,39715.45,2298.481,False,1.87,Deep Creek
-3122,Mahantango Creek,26.756,32501.616,39715.45,1484.357,False,1.222,Mahantango Creek
-2968,Raystown Branch Juniata River,31.127,33131.122,39715.45,1275.916,False,1.199,Raystown Branch
-2962,Tohickon Creek,5.546,23033.605,39715.45,7161.098,False,1.724,Tohickon Creek
-2928,East Branch Clarion River,6.083,6121.899,39715.45,6528.925,False,6.487,East Branch Clarion River
-2844,Salmon Creek,14.933,8865.281,39715.45,2659.576,False,4.48,Salmon Creek
-2783,Hicks Run,2.201,1383.362,39715.45,18044.275,False,28.709,Hicks Run
-2734,Trout Creek,6.099,11168.541,39715.45,6511.797,False,3.556,Trout Creek
-2718,Saucon Creek,2.547,11478.637,39715.45,15593.031,False,3.46,Saucon Creek
-2027,White Clay Creek,1.11,1554.34,39715.45,35779.685,False,25.551,White Clay Creek
-4502,Yellow Creek,5.937,17827.302,39715.45,6689.481,False,2.228,Yellow Creek (Indiana County)
-407,Perkiomen Creek,3.199,12807.645,39715.45,12414.958,False,3.101,Perkiomen Creek
-1849,Lackawanna River,6.613,8851.746,39715.45,6005.663,False,4.487,Lackawanna River
-421,Skippack Creek,8.186,64014.571,39715.45,4851.631,False,0.62,Skippack Creek
-403,Stony Creek,2.755,28205.866,39715.45,14415.771,False,1.408,Stony Creek (Montgomery County)
-399,Delaware Canal,8.908,73738.316,39715.45,4458.403,False,0.539,Delaware Canal
-378,Pennypack Creek,9.939,146985.8,39715.45,3995.92,False,0.27,Pennypack Creek
-370,Wissahickon Creek,8.445,142390.136,39715.45,4702.836,False,0.279,Wissahickon Creek
-1588,Unami Creek,7.448,37983.803,39715.45,5332.364,False,1.046,Unami Creek
-1834,Big Cove Creek,13.347,9490.798,39715.45,2975.609,False,4.185,Big Cove Creek
-6228,Pohopoco Creek,2.845,5090.491,39715.45,13959.736,False,7.802,Pohopoco Creek
-183,Fishing Creek,13.699,23701.638,39715.45,2899.15,False,1.676,Fishing Creek (Columbia County)
-137,Medix Run,6.205,7421.233,39715.45,6400.556,False,5.352,Medix Run
-1898,Sugar Creek,17.833,16652.577,39715.45,2227.076,False,2.385,Sugar Creek
-117,Loyalsock Creek,36.706,33974.419,39715.45,1081.988,False,1.169,Loyalsock Creek
-113,Lycoming Creek,22.227,28728.863,39715.45,1786.811,False,1.382,Lycoming Creek
-62,Bobs Creek,13.666,19811.828,39715.45,2906.15,False,2.005,Bobs Creek
-61,Mountain Creek,14.925,26699.305,39715.45,2661.002,False,1.488,Mountain Creek
-264,Big Spring Creek,2.248,4733.042,39715.45,17667.015,False,8.391,Big Spring Creek
-2628,Kishacoquillas Creek,15.381,25035.513,39715.45,2582.111,False,1.586,Kishacoquillas Creek
-3040,Manatawny Creek,10.076,48041.05,39715.45,3941.589,False,0.827,Manatawny Creek
-350,Cool Spring Creek,6.233,10007.538,39715.45,6371.803,False,3.969,Cool Spring Creek
-1943,Ridley Creek,4.676,31398.224,39715.45,8493.467,False,1.265,Ridley Creek
-425,Hammer Creek,8.373,37271.212,39715.45,4743.276,False,1.066,Hammer Creek
-495,Lizard Creek,9.13,15109.444,39715.45,4349.995,False,2.629,Lizard Creek
-1942,Chester Creek,8.419,45717.462,39715.45,4717.36,False,0.869,Chester Creek
-2281,Dyberry Creek,7.01,5902.476,39715.45,5665.542,False,6.729,Dyberry Creek
-1550,Darby Creek,11.991,131558.895,39715.45,3312.105,False,0.302,Darby Creek
-2033,Muddy Creek,6.379,11655.935,27668.939,4337.504,False,2.374,Muddy Creek
-1974,Little Sandy Creek,5.287,5763.762,24895.473,4708.809,False,4.319,Little Sandy Creek
-3136,Bald Eagle Creek,7.243,15674.977,23087.398,3187.546,False,1.473,Bald Eagle Creek
-6063,Deer Creek,9.923,68279.366,23045.49,2322.432,False,0.338,Deer Creek
-1882,French Creek,4.029,13650.982,19466.443,4831.582,False,1.426,French Creek
-6009,Little Sandy Creek,17.622,19361.521,14819.977,840.993,False,0.765,Little Sandy Creek
-2971,Maiden Creek,6.049,10881.071,9928.863,1641.406,False,0.912,Maiden Creek
-6052,Towanda Creek,15.697,11017.296,9928.863,632.532,False,0.901,Towanda Creek
-1622,Cove Creek,18.022,15800.638,9928.863,550.93,False,0.628,Cove Creek
-2906,Pithole Creek,8.17,6137.188,9928.863,1215.283,False,1.618,Pithole Creek
-3032,Clear Shade Creek,11.049,16797.107,9928.863,898.621,False,0.591,Clear Shade Creek
-1414,Ontelaunee Creek,8.052,12021.957,9928.863,1233.093,False,0.826,Ontelaunee Creek
-2550,Hemlock Run,1.666,1512.142,9928.863,5959.701,False,6.566,Hemlock Run
-3357,Wykoff Run,7.038,4484.189,9928.863,1410.751,False,2.214,Wykoff Run
-4191,Pleasant Stream,2.846,2421.696,9928.863,3488.708,False,4.1,Pleasant Stream
-1707,Big Sewickley Creek,4.088,30831.359,9928.863,2428.782,False,0.322,Big Swickley Creek
-322,Shenango River,3.472,8007.656,9928.863,2859.695,False,1.24,Shenango River
-1829,Little Tonoloway Creek,11.0,6441.543,9928.863,902.624,False,1.541,Little Tonoloway Creek
-4042,Curry Run,8.894,14795.732,9928.863,1116.355,False,0.671,Curry Run
-310,Connoquenessing Creek,6.826,16570.813,9928.863,1454.565,False,0.599,Connoquenessing Creek
-6062,Bells Gap Run,3.663,18891.91,9928.863,2710.582,False,0.526,Bells Gap Run
-102,Muncy Creek,24.402,30353.499,9928.863,406.887,False,0.327,Muncy Creek
-304,Thorn Creek,10.917,40707.79,9928.863,909.486,False,0.244,Thorn Creek
-285,Blacklog Creek,22.043,16696.501,9928.863,450.432,False,0.595,Blacklog Creek
-3190,Buffalo Creek,14.993,33177.038,9928.863,662.233,False,0.299,Buffalo Creek (Union County)
-278,Shade Creek,5.595,4460.894,9928.863,1774.596,False,2.226,Shade Creek
-3292,Bull Run,2.639,2077.586,9928.863,3762.358,False,4.779,Bull Run
-3502,Genesee River,5.975,3559.901,9928.863,1661.734,False,2.789,Genesee River
-3382,Redbank Creek,19.298,19582.038,9928.863,514.502,False,0.507,Redbank Creek
-2987,Dunbar Creek,6.585,28561.335,9928.863,1507.8,False,0.348,Dunbar Creek
-1887,Spring Creek,11.727,8380.896,9928.863,846.667,False,1.185,Spring Creek (Elk County)
-1989,North Branch Little Conemaugh River,2.514,6159.813,9928.863,3949.428,False,1.612,North Branch Little Conemaugh River
-204,Nescopeck Creek,11.126,38087.422,9928.863,892.402,False,0.261,Nescopeck Creek
-2603,Woodcock Creek,13.199,23546.8,9928.863,752.244,False,0.422,Woodcock Creek
-2978,Clover Creek,13.759,24777.245,9928.863,721.627,False,0.401,Clover Creek
-336,Wolf Creek,3.015,4562.864,9928.863,3293.155,False,2.176,Wolf Creek
-1337,Little Loyalsock Creek,9.292,6990.338,9928.863,1068.539,False,1.42,Little Loyalsock Creek
-6025,North Fork Redbank Creek,16.143,16790.558,9928.863,615.057,False,0.591,North Fork Red Bank Creek
-604,Wysox Creek,8.147,8858.347,9928.863,1218.714,False,1.121,Wysox Creek
-2659,Pocono Creek,1.612,3119.281,9928.863,6159.344,False,3.183,Pocono Creek
-2670,Bluejay Creek,4.963,2636.433,9928.863,2000.577,False,3.766,Blue Jay Creek
-456,South Branch Tunkhannock Creek,16.488,38661.885,9928.863,602.187,False,0.257,South Branch Tunkhannock Creek
-426,Middle Creek,7.114,25103.649,9928.863,1395.679,False,0.396,Middle Creek (Lancaster County)
-2728,Hokendauqua Creek,13.981,35503.364,9928.863,710.168,False,0.28,Hokendauqua Creek
-6171,Aquashicola Creek,3.378,6540.162,9928.863,2939.273,False,1.518,Aquashicola Creek
-2519,Bowman Creek,19.21,33032.238,9928.863,516.859,False,0.301,Bowman Creek
-2735,Martins Creek,6.107,13634.69,9928.863,1625.817,False,0.728,Martins Creek
-2767,Young Womans Creek,11.36,7256.183,9928.863,874.02,False,1.368,Young Womans Creek
-2797,Northkill Creek,5.847,13227.21,9928.863,1698.112,False,0.751,Northkill Creek
-1561,Wills Creek,19.169,11136.879,9928.863,517.965,False,0.892,Wills Creek
-2282,Millstone Creek,1.915,1501.402,9928.863,5184.785,False,6.613,Millstone Creek
-2866,Mix Run,3.863,2526.265,9928.863,2570.247,False,3.93,Mix Run
-2880,Buffalo Creek,16.909,16475.191,9928.863,587.194,False,0.603,Buffalo Creek (Perry County)
-2888,East Licking Creek,22.29,29134.232,9928.863,445.44,False,0.341,East Licking Creek
-2927,West Branch Clarion River,16.188,12011.22,9928.863,613.347,False,0.827,West Branch Clarion River
-2276,Maple Creek,10.997,7691.077,9928.863,902.87,False,1.291,Maple Creek
-2561,Potato Creek,15.154,9450.944,9928.863,655.197,False,1.051,Potato Creek
-2488,Big Poe Creek,3.566,4548.523,9928.863,2784.314,False,2.183,Big Poe Creek
-6226,Fishing Creek,3.2,24273.025,9928.863,3102.77,False,0.409,Fishing Creek (Clinton County)
-6026,Sandy Lick Creek,16.036,21716.922,9928.863,619.161,False,0.457,Sandy Lick Creek
-18,Otter Creek,9.974,27296.019,9928.863,995.474,False,0.364,Otter Creek
-3284,Manada Creek,10.669,43397.427,9928.863,930.627,False,0.229,Manada Creek
-2975,Little Buffalo Creek,8.568,12477.358,9928.863,1158.831,False,0.796,Little Buffalo Creek
-2645,Marvin Creek,12.965,10271.506,9928.863,765.82,False,0.967,Marvin Creek
-1975,Little Toby Creek,17.137,19731.209,9928.863,579.382,False,0.503,Little Toby Creek
-462,Mehoopany Creek,7.501,8656.962,9928.863,1323.672,False,1.147,Mehoopany Creek
-2023,Deer Creek,2.705,6601.402,9411.239,3479.201,False,1.426,Deer Creek
-422,Muddy Creek,1.39,5783.066,7304.165,5254.795,False,1.263,Muddy Creek
-345,Deer Creek,2.942,6892.721,7258.721,2467.274,False,1.053,Deer Creek
-4384,Little Fishing Creek,12.946,17614.178,6787.64,524.304,False,0.385,Little Fishing Creek
-7360,Honey Creek,11.432,13616.037,6557.219,573.585,False,0.482,Honey Creek
-2640,Muddy Creek,7.355,7710.453,4742.346,644.779,False,0.615,Muddy Creek
-313,Honey Creek,5.624,7765.82,3371.644,599.51,False,0.434,Honey Creek
+1339,Pine Creek,55.958,27256.558,178716.371,3193.759,False,6.557,Pine Creek (Lycoming or Tioga County)
+276,Yellow Breeches Creek,44.638,141981.762,178716.371,4003.682,False,1.259,Yellow Breeches Creek
+329,Neshannock Creek,23.759,32062.573,107229.822,4513.23,False,3.344,Neshannock Creek
+3351,Kettle Creek,33.585,10234.465,107229.822,3192.789,False,10.477,Kettle Creek
+3072,Tulpehocken Creek,17.333,66006.31,71486.548,4124.303,False,1.083,Tulpehocken Creek
+1798,Pine Creek,7.919,57913.648,71486.548,9027.219,False,1.234,Pine Creek (Allegheny County)
+3160,Elk Creek,13.037,56512.922,71486.548,5483.359,False,1.265,Elk Creek
+1327,Youghiogheny River,1.114,795.308,71486.548,64171.049,True,89.885,Youghiogheny River
+2730,Lehigh River,22.974,40242.832,71486.548,3111.628,False,1.776,Lehigh River
+2634,Kinzua Creek,16.317,9922.415,71486.548,4381.109,False,7.205,Kinzua Creek
+2923,Tionesta Creek,22.272,7473.504,71486.548,3209.705,False,9.565,Tionesta Creek
+1785,Allegheny River,29.766,15169.033,71486.548,2401.618,False,4.713,Allegheny River
+1796,Loyalhanna Creek,13.918,36768.435,71486.548,5136.266,False,1.944,Loyalhanna Creek
+2714,Little Lehigh Creek,16.925,48719.16,71486.548,4223.725,False,1.467,Little Lehigh Creek
+312,Slippery Rock Creek,21.835,35458.109,71486.548,3273.943,False,2.016,Slippery Rock Creek
+2716,Jordan Creek,25.877,55401.279,71486.548,2762.552,False,1.29,Jordan Creek
+1819,Conococheague Creek,24.171,47008.274,71486.548,2957.534,False,1.521,Conococheague Creek
+3740,Laurel Hill Creek,30.403,18908.012,71486.548,2351.299,False,3.781,Laurel Hill Creek
+3303,Clark Creek,24.869,49639.199,71486.548,2874.524,False,1.44,Clark Creek
+1909,Oil Creek,36.865,23197.311,71486.548,1939.144,False,3.082,Oil Creek
+2207,Penns Creek,19.858,21665.623,71486.548,3599.887,False,3.3,Penns Creek
+165,Buffalo Creek,25.711,38758.811,71486.548,2780.388,False,1.844,Buffalo Creek (Armstrong County); Buffalo Creek (Butler County)
+3364,First Fork Sinnemahoning Creek,31.233,9297.407,71486.548,2288.815,False,7.689,First Fork Sinnemahoning Creek
+413,French Creek,12.897,49193.978,53967.059,4184.466,False,1.097,French Creek
+2199,Bald Eagle Creek,28.687,54109.034,50708.257,1767.639,False,0.937,Bald Eagle Creek
+1719,Bull Creek,8.711,41296.618,35743.274,4103.234,False,0.866,Bull Creek
+2254,Black Moshannon Creek,14.573,14452.836,35743.274,2452.705,False,2.473,Black Moshannon Creek
+2266,Shohola Creek,5.597,6229.844,35743.274,6386.149,False,5.737,Shohola Creek
+2281,Dyberry Creek,7.01,4413.992,35743.274,5098.898,False,8.098,Dyberry Creek
+2260,Fourmile Run,11.78,18265.555,35743.274,3034.234,False,1.957,Four Mile Run
+59,Yellow Creek,8.703,8958.698,35743.274,4107.006,False,3.99,Yellow Creek (Bedford County)
+2628,Kishacoquillas Creek,15.381,26283.694,35743.274,2323.859,False,1.36,Kishacoquillas Creek
+2232,Middle Creek,14.179,17667.197,35743.274,2520.86,False,2.023,Middle Creek (Snyder County)
+2655,Brokenstraw Creek,13.979,7850.949,35743.274,2556.926,False,4.553,Brokenstraw Creek
+2175,White Deer Creek,20.178,28685.382,35743.274,1771.398,False,1.246,White Deer Creek
+2662,Brodhead Creek,12.867,19487.004,35743.274,2777.903,False,1.834,Brodhead Creek
+2442,Tobyhanna Creek,6.713,11529.601,35743.274,5324.486,False,3.1,Tobyhanna Creek
+2271,Lackawaxen River,20.225,10462.199,35743.274,1767.282,False,3.416,Lackawaxen River
+2717,Monocacy Creek,7.305,25654.919,35743.274,4892.988,False,1.393,Monocacy Creek
+3122,Mahantango Creek,26.756,22282.502,35743.274,1335.898,False,1.604,Mahantango Creek
+4502,Yellow Creek,5.937,7718.079,35743.274,6020.427,False,4.631,Yellow Creek (Indiana County)
+4481,Antietam Creek,3.33,21955.065,35743.274,10733.716,False,1.628,Antietam Creek
+4029,West Branch Susquehanna River,5.625,16257.906,35743.274,6354.36,False,2.199,West Branch Susquehanna River
+4028,Chest Creek,36.487,43368.302,35743.274,979.617,False,0.824,Chest Creek
+3354,Little Pine Creek,12.486,10658.563,35743.274,2862.668,False,3.353,Little Pine Creek
+3306,Sherman Creek,14.825,7391.018,35743.274,2411.013,False,4.836,Sherman Creek
+3301,Stony Creek,19.818,30623.723,35743.274,1803.576,False,1.167,Stony Creek (Dauphin County)
+3178,Twentymile Creek,1.78,6869.071,35743.274,20080.491,False,5.204,Twenty Mile Creek
+3127,Deep Creek,17.279,16352.043,35743.274,2068.596,False,2.186,Deep Creek
+3040,Manatawny Creek,10.076,44767.745,35743.274,3547.367,False,0.798,Manatawny Creek
+2718,Saucon Creek,2.547,10235.659,35743.274,14033.48,False,3.492,Saucon Creek
+2973,Canoe Creek,7.317,13392.016,35743.274,4884.963,False,2.669,Canoe Creek
+2968,Raystown Branch Juniata River,31.127,25220.754,35743.274,1148.304,False,1.417,Raystown Branch
+2962,Tohickon Creek,5.546,22289.162,35743.274,6444.875,False,1.604,Tohickon Creek
+2928,East Branch Clarion River,6.083,4204.473,35743.274,5875.929,False,8.501,East Branch Clarion River
+2865,Driftwood Branch Sinnemahoning Creek,22.468,8491.056,35743.274,1590.853,False,4.21,Driftwood Branch Sinnemahoning Creek
+2844,Salmon Creek,14.933,7671.084,35743.274,2393.576,False,4.659,Salmon Creek
+1943,Ridley Creek,4.676,28560.083,35743.274,7643.985,False,1.252,Ridley Creek
+2783,Hicks Run,2.201,896.243,35743.274,16239.561,False,39.881,Hicks Run
+2734,Trout Creek,6.099,9018.509,35743.274,5860.514,False,3.963,Trout Creek
+2027,White Clay Creek,1.11,1129.089,35743.274,32201.148,True,31.657,White Clay Creek
+5995,Harveys Creek,10.481,32644.127,35743.274,3410.292,False,1.095,Harveys Creek
+407,Perkiomen Creek,3.199,12170.81,35743.274,11173.265,False,2.937,Perkiomen Creek
+183,Fishing Creek,13.699,19784.748,35743.274,2609.189,False,1.807,Fishing Creek (Columbia County)
+1550,Darby Creek,11.991,102047.525,35743.274,2980.842,False,0.35,Darby Creek
+421,Skippack Creek,8.186,47940.31,35743.274,4366.391,False,0.746,Skippack Creek
+409,Pickering Creek,3.559,19826.437,35743.274,10043.067,False,1.803,Pickering Creek
+403,Stony Creek,2.755,26463.259,35743.274,12973.965,False,1.351,Stony Creek (Montgomery County)
+399,Delaware Canal,8.908,66126.441,35743.274,4012.491,False,0.541,Delaware Canal
+378,Pennypack Creek,9.939,161402.416,35743.274,3596.265,False,0.221,Pennypack Creek
+1588,Unami Creek,7.448,30413.556,35743.274,4799.043,False,1.175,Unami Creek
+370,Wissahickon Creek,8.445,117139.81,35743.274,4232.478,False,0.305,Wissahickon Creek
+6228,Pohopoco Creek,2.845,4558.952,35743.274,12563.541,False,7.84,Pohopoco Creek
+495,Lizard Creek,9.13,11724.872,35743.274,3914.926,False,3.049,Lizard Creek
+264,Big Spring Creek,2.248,5977.193,35743.274,15900.033,False,5.98,Big Spring Creek
+1834,Big Cove Creek,13.347,7134.91,35743.274,2678.001,False,5.01,Big Cove Creek
+1849,Lackawanna River,6.613,5714.805,35743.274,5405.001,False,6.255,Lackawanna River
+117,Loyalsock Creek,36.706,24672.49,35743.274,973.772,False,1.449,Loyalsock Creek
+113,Lycoming Creek,22.227,31322.173,35743.274,1608.102,False,1.141,Lycoming Creek
+1898,Sugar Creek,17.833,13599.362,35743.274,2004.333,False,2.628,Sugar Creek
+1942,Chester Creek,8.419,33617.538,35743.274,4245.549,False,1.063,Chester Creek
+62,Bobs Creek,13.666,15381.705,35743.274,2615.489,False,2.324,Bobs Creek
+61,Mountain Creek,14.925,20848.842,35743.274,2394.859,False,1.714,Mountain Creek
+425,Hammer Creek,8.373,33390.807,35743.274,4268.873,False,1.07,Hammer Creek
+137,Medix Run,6.205,4111.22,35743.274,5760.399,False,8.694,Medix Run
+350,Cool Spring Creek,6.233,8847.453,35743.274,5734.522,False,4.04,Cool Spring Creek
+2532,Sixmile Run,5.189,11822.967,35743.274,6888.278,False,3.023,Six Mile Run
+2033,Muddy Creek,6.379,10436.125,24901.606,3903.685,False,2.386,Muddy Creek
+1974,Little Sandy Creek,5.287,5124.978,22405.53,4237.853,False,4.372,Little Sandy Creek
+3136,Bald Eagle Creek,7.243,13994.944,20778.291,2868.741,False,1.485,Bald Eagle Creek
+6063,Deer Creek,9.923,55182.86,20740.575,2090.152,False,0.376,Deer Creek
+1882,French Creek,4.029,15497.331,17519.49,4348.347,False,1.13,French Creek
+6009,Little Sandy Creek,17.622,13520.05,13337.744,756.88,False,0.987,Little Sandy Creek
+6052,Towanda Creek,15.697,7499.944,8935.819,569.269,False,1.191,Towanda Creek
+6226,Fishing Creek,3.2,20370.071,8935.819,2792.443,False,0.439,Fishing Creek (Clinton County)
+336,Wolf Creek,3.015,3990.126,8935.819,2963.787,False,2.239,Wolf Creek
+322,Shenango River,3.472,6332.983,8935.819,2573.68,False,1.411,Shenango River
+2276,Maple Creek,10.997,6950.217,8935.819,812.569,False,1.286,Maple Creek
+310,Connoquenessing Creek,6.826,14049.025,8935.819,1309.086,False,0.636,Connoquenessing Creek
+304,Thorn Creek,10.917,32080.461,8935.819,818.523,False,0.279,Thorn Creek
+3190,Buffalo Creek,14.993,29355.08,8935.819,595.999,False,0.304,Buffalo Creek (Union County)
+3284,Manada Creek,10.669,42394.648,8935.819,837.55,False,0.211,Manada Creek
+3292,Bull Run,2.639,1134.379,8935.819,3386.062,False,7.877,Bull Run
+285,Blacklog Creek,22.043,10959.201,8935.819,405.381,False,0.815,Blacklog Creek
+278,Shade Creek,5.595,3378.247,8935.819,1597.108,False,2.645,Shade Creek
+204,Nescopeck Creek,11.126,29655.922,8935.819,803.147,False,0.301,Nescopeck Creek
+2987,Dunbar Creek,6.585,17314.853,8935.819,1356.996,False,0.516,Dunbar Creek
+1707,Big Sewickley Creek,4.088,19721.377,8935.819,2185.866,False,0.453,Big Swickley Creek
+3357,Wykoff Run,7.038,3188.66,8935.819,1269.653,False,2.802,Wykoff Run
+1829,Little Tonoloway Creek,11.0,5176.505,8935.819,812.347,False,1.726,Little Tonoloway Creek
+3382,Redbank Creek,19.298,17663.694,8935.819,463.044,False,0.506,Redbank Creek
+3502,Genesee River,5.975,2818.34,8935.819,1495.534,False,3.171,Genesee River
+1887,Spring Creek,11.727,4402.279,8935.819,761.987,False,2.03,Spring Creek (Elk County)
+102,Muncy Creek,24.402,24716.413,8935.819,366.192,False,0.362,Muncy Creek
+4042,Curry Run,8.894,11694.146,8935.819,1004.702,False,0.764,Curry Run
+4191,Pleasant Stream,2.846,1908.915,8935.819,3139.782,False,4.681,Pleasant Stream
+6025,North Fork Redbank Creek,16.143,14121.494,8935.819,553.541,False,0.633,North Fork Red Bank Creek
+1989,North Branch Little Conemaugh River,2.514,4164.962,8935.819,3554.423,False,2.145,North Branch Little Conemaugh River
+3032,Clear Shade Creek,11.049,11341.45,8935.819,808.745,False,0.788,Clear Shade Creek
+2978,Clover Creek,13.759,17865.578,8935.819,649.453,False,0.5,Clover Creek
+1337,Little Loyalsock Creek,9.292,4576.593,8935.819,961.668,False,1.953,Little Loyalsock Creek
+6026,Sandy Lick Creek,16.036,17001.813,8935.819,557.235,False,0.526,Sandy Lick Creek
+2659,Pocono Creek,1.612,2538.773,8935.819,5543.312,False,3.52,Pocono Creek
+604,Wysox Creek,8.147,7186.369,8935.819,1096.823,False,1.243,Wysox Creek
+2670,Bluejay Creek,4.963,2505.967,8935.819,1800.487,False,3.566,Blue Jay Creek
+6062,Bells Gap Run,3.663,22553.379,8935.819,2439.481,False,0.396,Bells Gap Run
+462,Mehoopany Creek,7.501,3615.765,8935.819,1191.284,False,2.471,Mehoopany Creek
+456,South Branch Tunkhannock Creek,16.488,26941.094,8935.819,541.959,False,0.332,South Branch Tunkhannock Creek
+426,Middle Creek,7.114,22997.905,8935.819,1256.089,False,0.389,Middle Creek (Lancaster County)
+2728,Hokendauqua Creek,13.981,28032.365,8935.819,639.14,False,0.319,Hokendauqua Creek
+1414,Ontelaunee Creek,8.052,8972.961,8935.819,1109.764,False,0.996,Ontelaunee Creek
+6171,Aquashicola Creek,3.378,5326.691,8935.819,2645.299,False,1.678,Aquashicola Creek
+2735,Martins Creek,6.107,12465.645,8935.819,1463.209,False,0.717,Martins Creek
+2767,Young Womans Creek,11.36,5103.419,8935.819,786.604,False,1.751,Young Womans Creek
+2603,Woodcock Creek,13.199,20052.785,8935.819,677.007,False,0.446,Woodcock Creek
+2797,Northkill Creek,5.847,11669.394,8935.819,1528.274,False,0.766,Northkill Creek
+2561,Potato Creek,15.154,8280.882,8935.819,589.667,False,1.079,Potato Creek
+1975,Little Toby Creek,17.137,16996.487,8935.819,521.434,False,0.526,Little Toby Creek
+2866,Mix Run,3.863,1598.57,8935.819,2313.181,False,5.59,Mix Run
+2880,Buffalo Creek,16.909,9940.77,8935.819,528.465,False,0.899,Buffalo Creek (Perry County)
+2888,East Licking Creek,22.29,15667.925,8935.819,400.889,False,0.57,East Licking Creek
+2906,Pithole Creek,8.17,4484.496,8935.819,1093.735,False,1.993,Pithole Creek
+2550,Hemlock Run,1.666,830.273,8935.819,5363.637,False,10.763,Hemlock Run
+2927,West Branch Clarion River,16.188,10983.193,8935.819,552.003,False,0.814,West Branch Clarion River
+2519,Bowman Creek,19.21,25868.425,8935.819,465.165,False,0.345,Bowman Creek
+1561,Wills Creek,19.169,7918.524,8935.819,466.16,False,1.128,Wills Creek
+2282,Millstone Creek,1.915,1209.9,8935.819,4666.224,False,7.386,Millstone Creek
+2971,Maiden Creek,6.049,7950.762,8935.819,1477.239,False,1.124,Maiden Creek
+1622,Cove Creek,18.022,12452.107,8935.819,495.828,False,0.718,Cove Creek
+2488,Big Poe Creek,3.566,2428.451,8935.819,2505.838,False,3.68,Big Poe Creek
+18,Otter Creek,9.974,16558.031,8935.819,895.911,False,0.54,Otter Creek
+2975,Little Buffalo Creek,8.568,8761.77,8935.819,1042.929,False,1.02,Little Buffalo Creek
+2645,Marvin Creek,12.965,7969.279,8935.819,689.226,False,1.121,Marvin Creek
+2023,Deer Creek,2.705,6070.991,8469.966,3131.226,False,1.395,Deer Creek
+422,Muddy Creek,1.39,5628.023,6573.632,4729.232,False,1.168,Muddy Creek
+345,Deer Creek,2.942,5374.741,6532.733,2220.508,False,1.215,Deer Creek
+4384,Little Fishing Creek,12.946,14011.234,6108.768,471.865,False,0.436,Little Fishing Creek
+7360,Honey Creek,11.432,8702.135,5901.393,516.217,False,0.678,Honey Creek
+2640,Muddy Creek,7.355,6804.153,4268.036,580.29,False,0.627,Muddy Creek
+313,Honey Creek,5.624,3180.615,3034.426,539.549,False,0.954,Honey Creek

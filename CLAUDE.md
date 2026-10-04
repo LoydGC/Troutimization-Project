@@ -9,7 +9,7 @@ Join his outputs on `section_id`, don't rebuild them. Hatchery data and branches
 thorough versions as optional upgrades.
 
 ## What the data is for
-Everything here feeds a multi-objective stocking model (Gurobi, `notebooks/02_optimization.ipynb`):
+Everything here feeds a multi-objective stocking model (Gurobi, `scripts/optimization.py`):
 
 ```
 x[h, s] = adult trout per year trucked from PFBC hatchery h to destination s
@@ -28,7 +28,7 @@ constraints: hatchery supply, per-section density bound, environmental exclusion
 | Base (all components join to it on `section_id`) | Stocked sections 2024–26: ids, location, allocation category, counts, wild-trout overlap; geometry | `sections`, `pa_trout.gpkg` |
 | Baseline | What PFBC actually stocked: section x species x year | `stocking_section_year` |
 | Angler benefit | Survey preference for named waters; population-by-distance for the rest; access | `demand` |
-| Transport cost | Hatchery supply, road distance (Gavin, travel_arcs), cost parameters | `hatcheries`, `cost_matrix`, `parameters` |
+| Transport cost | Hatchery supply, road distance and cluster-average road miles (Gavin, scripts 11 and 18), cost parameters | `hatcheries`, `cost_matrix`, `parameters` |
 | Environment | Exclusions, wild brook trout, natural reproduction, area for density bound, (temperature) | `environment` |
 
 The historical allocation is the **baseline** the optimized plan is compared against. Keep it as observed:
@@ -40,27 +40,40 @@ don't smooth, impute, or "fix" it.
   hatchery instead of the nearest one. Proposed, to confirm with Gavin; nearest hatchery would be the sensitivity.
 - **Hatchery supply** (decision 2026-09-28) = each hatchery's 2026 stream fish from the schedule
   (`hatchery_schedule_supply.csv`): each section's 2026 count is split equally over its scheduled events and
-  credited to their hatcheries. Lake fish have no counts, so supply is stream-only. Sensitivity and check: the
-  earlier split by production pounds (`data/raw/pa_hatchery_production.csv`; Pleasant Mount's figure is a fish
-  count, so it's excluded).
+  credited to their hatcheries. Lake fish have no counts, so supply is stream-only. Production pounds are not
+  used, not even as a sensitivity (decision 2026-10-04). Built in `hatcheries` (script 20); the model's total
+  T = Σ supply = 2,606,465 (the 2026 count is 2,606,468; the gap is rounding in the supply table).
 - **Co-op nurseries are fixed background, not decisions** (team decision 2026-09-27). The clubs choose their
   waters and PFBC leaves co-op fish out of its allocation (co-op policy §III.12, §IV.10), so the base model
   optimizes PFBC hatchery fish only. Co-op waters are a flag on sections (`coop_stocked`, 292 sections, from
   `scripts/03_coop_stockings.py`). **Extension "what if the state coordinated more?"**: add a fixed co-op
   fish count per section to the angler-benefit score (needs counts; see `docs/model_design.md`).
-- **Distance** = road distance from each supply node to each section, built by Gavin in
-  `notebooks/travel_arcs.ipynb`. Not on our slate: join it on `section_id`. No Google Maps API (cost;
-  terms bar storing results).
+- **Distance** = road distance from each supply node to each section, built by Gavin
+  (`scripts/11_road_distances.py`, all 13 hatcheries including Tionesta). Not on our slate: join it on `section_id`.
+  No Google Maps API (cost; terms bar storing results).
+- **Clusters set the haul cost** (decision 2026-10-04; Gavin's approach, `docs/clustering_options.md`): each section
+  is costed at its cluster's average road miles from each hatchery (`cluster_hatchery_distance.avg_road_mi`). A
+  cluster is a representative cost, not a truck trip: the model still chooses `x[h, s]` per section. First run:
+  Gavin's k-medoids clusters on road miles (`kmedoids_best_silhouette`, 310). Sensitivity: Nate's schedule
+  clusters (`nate_schedule`, 351) and no clustering (each section's own road miles). No detour charge in the
+  first run.
 - **Angler demand** (decision 2026-09-27; reasoning in `docs/model_design.md` § Angler benefit): angler-days
   per section from two signals, kept as separate columns and blended in the model with weight `w` (0.5,
-  swept 0 / 0.5 / 1). PA residents only.
-  - **Proximity ("band version"):** each Census block group's angler-days (population × county trout-permit
+  swept 0 / 0.5 / 1). PA residents only. Stream days only (decision 2026-10-03): each home region's lake share of
+  days (survey p88: % primarily lakes + ½ × % both) is removed first, and lake mentions leave the preference
+  denominator. Split by length, not area (decision 2026-10-03).
+  - **Proximity ("band version"):** each county subdivision's angler-days (2020 population × county trout-permit
     rate from PFBC's 2024 sales by store county × home region's mean days fished, p115) go out by its home
-    region's trip-distance bands (p93; straight-line miles × 1.3), split within each band by section length.
-    Every angler-day is placed once.
+    region's trip-distance bands (p93; Gavin's road miles from the subdivision centroid,
+    `subdivision_to_section_road_distance`), split within each band by section length. Every angler-day is
+    placed once. Origins are county subdivisions, not block groups (decision 2026-10-04): 2,567 instead of
+    10,173 origins, measured road miles instead of straight-line × 1.3, and the municipal units PFBC itself
+    uses for population density (Operational Guidelines p. 52). Block groups are dropped, not kept as a
+    sensitivity: there are no road distances for them.
   - **Preference:** each named water's share of survey mentions (p76-77) × statewide angler-days, split over
     its stocked sections by length; the unplaced share is spread like proximity.
-  - **Benefit** = `D_s × (1 − e^(−r/k))`, r = fish per angler-day, k = 1 (PFBC's "one angler trip per trout").
+  - **Benefit** = `D_s × (1 − e^(−r/k))`, r = fish per angler-day, k = 0.5 (decision 2026-10-03; swept 0.3 / 1):
+    PFBC's "one angler trip per trout" scale, adjusted because survey days run ~3–4.5× counted trips.
 - **Density bound** (`cap_fish`; decision 2026-09-27, replacing the "river cap"; details in
   `docs/model_design.md`): `cap_rate` x `length_mi` x top of the PFBC width class, and at least 300 fish.
   The rate depends on biomass, width and access, never population. `cap_rate` is the higher of `access_rate`
@@ -100,8 +113,9 @@ don't smooth, impute, or "fix" it.
 - **Environment** follows `docs/env_research.md`: exclude Wilderness and Buffalo Creek 3190_2 (Class A since
   Jan 2026, not stocked in 2026), cap the other Class A overlaps at today's stocking, no stocked
   brook trout over wild brook trout. Everything else is the **wild-trout impact objective** (its own goal, not
-  a penalty on benefit): a per-fish weight from biomass class, natural reproduction, wild brook trout, and
-  (if time) thermal marginality. Versions are in `docs/model_design.md`.
+  a penalty on benefit): a per-fish weight. Main version (decision 2026-10-04): biomass-class density weight
+  (Guidelines Table 2 midpoints relative to D: A 8, B 6, C 3, D 1, E 0) × the section's share on natural-reproduction
+  water (`impact_weighted`). Binary and overlap-only versions are sensitivities. Versions are in `docs/model_design.md`.
 
 ## Units of analysis
 - **Section** = PFBC stream section, key `section_id = f"{RFP_WaterID}_{SecNum}"`. Base unit for all joins.
@@ -157,7 +171,8 @@ data/references/           reference PDFs and trout.app snapshots. GITIGNORED (l
                            from is in docs/source_inventory.md.
 scripts/                   numbered pipeline scripts, each re-runnable end to end
 tests/                     pytest tests for scripts/, and test_processed.py (facts data/processed must match)
-notebooks/                 01_data_prep (EDA), 02_optimization, 03_sensitivities: read data/processed only
+notebooks/                 01_data_prep (EDA), travel_arcs (maps): read data/processed only. The model and its
+                           sensitivity runs are scripts: scripts/optimization.py, scripts/sensitivities.py
 docs/                      source_inventory, data_dictionary, data_methods (data handling + assumptions),
                            model_design (model + assumptions + open questions), scenarios_and_extensions,
                            known_gaps, figure_ideas (figures to make for the report); env_research,
@@ -201,16 +216,21 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
   all 67 counties, matches PFBC's region polygons). No stocked section spans two regions.
 - 2023 angler survey (Responsive Management for PFBC) describes **2022** fishing. Regions are the six PFBC
   regions by angler **home** county, not where they fish. The named-water tables cover ~223 waters.
-- Angler demand (built 2026-09-28, scripts 06–08): 421,615 resident trout anglers (2024 permits, 3.2 per 100
-  residents), 8.72M angler-days a year, all placed on the 1,022 sections stocked in 2026 (every `demand`
-  angler-day column sums to it). The survey crosswalk puts 63% of favorite-water mentions on 160 stocked
-  rivers; 16 names wait in `logs/07_survey_crosswalk_review.csv`.
+- Angler demand (built 2026-09-28, scripts 06–08; proximity rebuilt 2026-10-04 on county subdivisions and road miles): 421,615 resident trout anglers (2024 permits, 3.2 per 100
+  residents), 8.72M angler-days a year, 7.12M on streams once lake days are removed (18%), all placed on the
+  1,022 sections stocked in 2026 (every `demand` angler-day column sums to it). The survey crosswalk puts 63%
+  of favorite-water mentions (69.5% of stream mentions) on 160 stocked rivers; 16 names wait in `logs/07_survey_crosswalk_review.csv`.
 - County subdivisions (verified 2026-10-03): PA has 2,568 in Census's newest vintage, boundaries as of 1 Jan 2026
   (TIGERweb `tigerWMS_ACS2026` layer 22; `tigerWMS_Current` is the same data but rolls to the next vintage). The
   downloadable TIGER/Line files stop at 2025 (no TIGER2026 yet) and PA's set is identical in both. All are minor
   civil divisions (1,544 townships, 960 boroughs, 56 cities, 6 municipalities, 1 town); 2,567 are kept (the Lake
   Erie "County subdivisions not defined" row has no land). Their centroids, road distances to all 1,045 sections
   and the OSRM rule 3 waiver: `scripts/19_subdivision_road_distances.py`, `docs/data_methods.md`.
+- 2020 population (verified 2026-10-04): the Census Data API (`api.census.gov`) refuses data requests without a
+  key, so 2020 counts come from TIGERweb `tigerWMS_Census2020` (`POP100`; layer 20 county subdivisions, 82
+  counties). The 2,573 2020 subdivisions add to 13,002,700, and every county to its own count. On 2026 boundaries,
+  2 were renamed with new codes, 5 merged into neighbors, and Falls Creek borough's Clearfield part (42 people)
+  is now in Jefferson County (`subdivision_anglers`, script 06).
 - Bear Creek (Schuylkill) test case: Class A (brook trout) is Section 01. The stocked sections 02-03 are
   downstream and only touch it, so they must NOT be flagged Class A. They do sit inside the Natural
   Reproduction reach, so they MUST be flagged for natural reproduction.
