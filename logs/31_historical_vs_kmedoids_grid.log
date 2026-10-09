@@ -1,0 +1,4 @@
+2026-10-04 23:01:01,876 INFO 31_historical_vs_kmedoids_grid run from commit 9167373 + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py, scripts/28_one_truck_example.py, scripts/29_road_distance_appendix.py, scripts/30_trips_vs_clusters_grid.py, scripts/31_historical_vs_kmedoids_grid.py
+2026-10-04 23:01:02,356 INFO 1  Historical: sections that shared truck runs: {'clusters': 351.0, 'alone': 103.0, 'biggest': 18.0, 'widest': 56.57, 'sil': 0.12, 'err': 2.98, 'err_mi': 4.11}
+2026-10-04 23:01:02,356 INFO 2  k-medoids on road miles, no limits (the model): {'clusters': 310.0, 'alone': 54.0, 'biggest': 9.0, 'widest': 32.01, 'sil': 0.39, 'err': 2.22, 'err_mi': 3.06}
+2026-10-04 23:01:09,194 INFO saved outputs\figures\method_comparison\historical_vs_kmedoids.png

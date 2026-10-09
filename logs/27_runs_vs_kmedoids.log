@@ -1,0 +1,4 @@
+2026-10-04 21:13:39,468 INFO 27_runs_vs_kmedoids run from commit 9167373 + uncommitted changes to scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py
+2026-10-04 21:13:40,097 INFO stats: {'runs': 479, 'multi': 317, 'single': 162, 'sec_in_multi': 829, 'n_run_sections': 991, 'run_med': 2.0, 'run_max': 7, 'run_width': 8.3, 'run_w90': 19.4, 'km_clusters': 310, 'km_med': 3.0, 'km_max': 9, 'km_width': 10.6, 'whole': 170, 'whole_pct': 53.6, 'pairs': 1659, 'same_pct': 29.9}
+2026-10-04 21:13:40,346 INFO patch: x -79.90..-78.95, y 41.20..41.82 holds 23 multi-section runs
+2026-10-04 21:13:45,923 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\kmedoids\runs_vs_kmedoids.png
