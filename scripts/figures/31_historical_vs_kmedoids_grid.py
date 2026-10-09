@@ -11,7 +11,7 @@ Inputs : data/processed/section_schedule.parquet, section_medoid_clusters.parque
          hatchery_to_section_road_distance.parquet, hatchery_schedule_supply.csv, pa_trout.gpkg (sections), data/raw/pa_boundary.gpkg
 Outputs: outputs/figures/method_comparison/historical_vs_kmedoids.png   logs/31_historical_vs_kmedoids_grid.log
 
-    python scripts/31_historical_vs_kmedoids_grid.py
+    python scripts/figures/31_historical_vs_kmedoids_grid.py
 """
 # %% Setup
 from __future__ import annotations
@@ -30,6 +30,10 @@ from matplotlib.patches import Polygon as Poly
 from shapely.ops import unary_union
 from sklearn.metrics import silhouette_samples
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
 from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
 
 FIG_DIR = ROOT / "outputs" / "figures" / "method_comparison"

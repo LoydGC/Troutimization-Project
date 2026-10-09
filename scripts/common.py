@@ -234,6 +234,28 @@ def setup_logging(script_name: str) -> Path:
     return path
 
 
+def register_open_sans(weights=(("Regular", 400), ("Bold", 700))) -> bool:
+    """Register Open Sans (the deck's font; SIL Open Font License) with matplotlib. False if the font file is absent.
+
+    Local only, data/references is gitignored: download Google Fonts' variable file
+    https://github.com/google/fonts/tree/main/ofl/opensans -> data/references/fonts/OpenSans.ttf (the weights are cut from it).
+    Without it figures fall back to DejaVu Sans.
+    """
+    font_dir = ROOT / "data" / "references" / "fonts"
+    if not (font_dir / "OpenSans.ttf").exists():
+        log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+        return False
+    from fontTools.ttLib import TTFont
+    from fontTools.varLib import instancer
+    from matplotlib import font_manager
+    for style, wght in weights:
+        cut = font_dir / f"OpenSans-{style}.ttf"
+        if not cut.exists():
+            instancer.instantiateVariableFont(TTFont(font_dir / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
+        font_manager.fontManager.addfont(str(cut))
+    return True
+
+
 def dump_json(obj, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, default=str))

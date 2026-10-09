@@ -28,15 +28,16 @@ the final word if a doc disagrees with it.
 
 ## Layout
 ```
-scripts/      numbered pipeline scripts (re-runnable end to end), plus optimization.py and sensitivities.py
+scripts/      numbered pipeline scripts (re-runnable end to end), plus optimization.py
+scripts/figures/  scripts that only draw figures (they keep their original numbers)
 tests/        pytest tests; test_processed.py pins the documented counts in data/processed
 notebooks/    01_data_prep (EDA) and travel_arcs (maps). They read data/processed and build nothing
-data/raw/         untouched downloads. Gitignored except manifest.csv, which is enough to re-fetch
+data/raw/         untouched downloads. Gitignored except manifest.csv (enough to re-fetch) and 4 small partner files
 data/interim/     scratch tables, gitignored
 data/processed/   model-ready tables (parquet + csv), committed. Overview: data/README.md
 docs/         methods, model design, data dictionary, source inventory, known gaps (see below)
+docs/archive/ working notes kept for the record, not maintained (phase plan, old audit, cluster tracker, figure ideas)
 outputs/      figures and tables for the report; outputs/tables/optimization holds the model runs
-report/       LaTeX source of the final report (final_report.tex, sections/, references.bib)
 logs/         run logs and QA reports
 CLAUDE.md     project rules, agreed simplifications and verified facts
 ```
@@ -79,15 +80,17 @@ distance scripts (11, 12, 19) sit between the section build and the demand build
 | 6. Model inputs | `20_transport_cost`, `21_model_input` | `hatcheries`, `cost_matrix`, `baseline_flows`; one row per section with everything the model reads |
 | 7. Model | `optimization` | the Gurobi runs above |
 
-The numbers 20 and 21 are each used twice. `20_transport_cost.py` and `21_model_input.py` are the pipeline;
-`20_allocation_map.py` and `21_hatchery_heat_maps.py` make slide figures.
+`scripts/37_truck_capacity_sensitivity.py` re-solves the model at other truck capacities (fractional or integer
+trips) and writes `outputs/tables/sensitivity_truck_capacity/`. Other scenarios are listed, not run, in
+`docs/scenarios_and_extensions.md`.
 
-Other scripts make figures, not data:
+The scripts in `scripts/figures/` make figures, not data, each logging to `logs/`. They kept their original
+numbers, so 20 and 21 exist in both folders:
 - `16`, `17`: cluster-method comparison and wild-trout overlap maps
-- `20_allocation_map`, `21_hatchery_heat_maps`, `22`-`36`: slide and appendix visuals (hatchery maps, the PFBC
-  allocation formula, stocking-season timeline, k-medoids clusters, one-truck example, model plan maps), each logging
-  to `logs/`
-- `sensitivities.py` is a scaffold; the scenarios it lists are in `docs/scenarios_and_extensions.md`
+- `20_allocation_map`, `21_hatchery_heat_maps`, `22`-`33`: slide and appendix visuals (hatchery maps, the PFBC
+  allocation formula, stocking-season timeline, k-medoids clusters, one-truck example, road-distance appendix)
+- `34`-`36`, `39`: maps of the model's plans against PFBC's 2026 plan
+- `38`: the truck-capacity sensitivity figure
 
 Scripts 06 and 09 also read PFBC documents saved under `data/raw/` (license sales PDF, stocking schedule); where each
 comes from is in `docs/source_inventory.md` and `data/raw/manifest.csv`.
@@ -104,9 +107,8 @@ comes from is in `docs/source_inventory.md` and `data/raw/manifest.csv`.
 | `docs/scenarios_and_extensions.md` | sensitivities and extensions (additional analysis) |
 | `docs/clustering_options.md` | how section clusters set the haul cost |
 
-`CLAUDE.md` holds the agreed simplifications and verified facts. Some docs (`model_design.md`,
-`clustering_options.md`) can lag the code; the transport-cost sections described a per-fish cost before the model
-moved to counting truck trips.
+`CLAUDE.md` holds the agreed simplifications and verified facts. Where a doc and the code differ, the code
+(`scripts/optimization.py`) and `docs/model_formulation.md` win.
 
 ## Data and credits
 Official public sources only: PFBC (fbweb.pa.gov ArcGIS services, stocking schedule, Operational Guidelines),

@@ -4,7 +4,7 @@ of the benefit-maximizing plans at each truck capacity, with PFBC's 2026 plan re
 Reads : outputs/tables/sensitivity_truck_capacity/truck_capacity_runs_<mode>.csv
 Writes: outputs/figures/sensitivity_truck_capacity/truck_capacity_sensitivity_<mode>.png      logs/38_truck_capacity_figure.log
 
-    python scripts/38_truck_capacity_figure.py [fractional|integer]      (default fractional)
+    python scripts/figures/38_truck_capacity_figure.py [fractional|integer]      (default fractional)
 """
 # %% Setup
 from __future__ import annotations
@@ -17,7 +17,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import ROOT, setup_logging
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import ROOT, setup_logging, register_open_sans
 
 MODE = sys.argv[1] if len(sys.argv) > 1 else "fractional"
 T = ROOT / "outputs" / "tables" / "sensitivity_truck_capacity"
@@ -27,16 +30,7 @@ setup_logging("38_truck_capacity_figure")
 log = logging.getLogger("38_truck_capacity_figure")
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e6e5e0"
 GREY, BLUE, ORANGE = "#8d8c86", "#2a78d6", "#e8890c"
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in [("Regular", 400), ("SemiBold", 600)]:
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
+if register_open_sans((("Regular", 400), ("SemiBold", 600))):
     plt.rcParams["font.family"] = "Open Sans"
 plt.rcParams.update({"text.color": INK, "axes.labelcolor": INK2, "xtick.color": INK2, "ytick.color": INK2, "axes.edgecolor": GRID,
                      "axes.spines.top": False, "axes.spines.right": False, "figure.facecolor": "white", "axes.facecolor": "white", "savefig.facecolor": "white"})

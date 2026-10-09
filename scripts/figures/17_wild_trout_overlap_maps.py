@@ -10,7 +10,7 @@ Outputs: outputs/figures/wild_trout_overlap/class_a_overlap_map.png        18 se
          outputs/figures/wild_trout_overlap/nat_repro_overlap_map.png      531 sections, coloured by overlap miles, top 15 and a share histogram
          logs/17_wild_trout_overlap_maps.log
 
-    python scripts/17_wild_trout_overlap_maps.py
+    python scripts/figures/17_wild_trout_overlap_maps.py
 """
 # %% Setup
 from __future__ import annotations
@@ -26,6 +26,10 @@ import pandas as pd
 from matplotlib.cm import ScalarMappable
 from matplotlib.colors import LinearSegmentedColormap, Normalize
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
 from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
 
 FIG_DIR = ROOT / "outputs" / "figures" / "wild_trout_overlap"

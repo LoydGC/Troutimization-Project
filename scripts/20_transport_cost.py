@@ -7,7 +7,8 @@ Follows docs/model_design.md § Transport cost. Distances are Gavin's (scripts 1
 - Haul miles (decision 2026-10-04): each section is costed at its cluster's mean road miles from the hatchery, using
   Gavin's k-medoids clusters (best silhouette, 310). Nate's schedule clusters, Gavin's hierarchical clusters and each
   section's own road miles are kept as sensitivity columns. A cluster is a cost, not a trip; no detour charge.
-- cost_per_fish = 2 x cluster_road_mi x cost_per_truck_mile / fish_per_load (parameters.csv).
+- cost_per_fish = 2 x cluster_road_mi x cost_per_truck_mile / fish_per_load (parameters.csv): the per-fish cost, kept for the linear
+  baseline and as a sensitivity. The model counts truck trips from cluster_road_mi instead (scripts/optimization.py).
 - Baseline flows: PFBC's 2026 schedule names the hatchery for every event; each section's 2026 fish are split over its
   events by species (stocking_events.alloc_fish, script 09). The nearest-hatchery assignment is the sensitivity.
 

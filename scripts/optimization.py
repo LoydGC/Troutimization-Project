@@ -2,14 +2,17 @@
 
 Model (docs/model_formulation.md, docs/model_design.md):
   sets         h = the 9 hatcheries with 2026 stream fish; s = the 1,022 sections stocked in 2026
-  variables    x[h, s] >= 0 fish/yr; y[s] binary (section stocked); z[s, j] >= 0 piecewise-linear benefit segments
+  variables    x[h, s] >= 0 fish/yr; y[s] binary (section stocked); zz[s] binary (more than 600 fish, so a second stocking);
+               a[h, s] round-1 fish; tau[r, h, g] truck trips by round, hatchery and cluster (continuous by default);
+               z[s, j] >= 0 piecewise-linear benefit segments
   objectives   kept separate, never weighted together:
                benefit B = sum_s D_s (1 - exp(-x_s / (k D_s)))   angler-days with a catch       (max)
-               cost    C = sum_hs cost_per_fish[h, s] x[h, s]     $/yr, k-medoids cluster miles  (min)
+               cost    C = sum_rhg 2 t_cost miles[h, g] tau[r, h, g]   $/yr, truck trips at k-medoids cluster miles (min)
                impact  I = sum_s omega_s x_s   wild-trout impact (min): omega = impact_weighted (main: biomass weight
                        x share on wild-trout water, class D = 1), or impact_simple / impact_overlap (--impact)
   constraints  supply: sum_s x[h, s] <= supply_h; total: sum_s x_s = T = sum_h supply_h
                minimum: 300 y_s <= x_s; density cap: x_s <= cap_fish_s y_s
+               stockings: one up to 600 fish, n_s above (zz); trips: round fish in a cluster <= 3,500 tau (docs/model_formulation.md, Transit)
                change limit (option): none | band (L x0 <= x_s <= U x0) | close_or_band (the band, or 0)
   solve        payoff table (each objective alone, ties broken lexicographically), PFBC's 2026 baseline scored on
                the same three objectives, the dominance run (max B with C <= C0 and I <= I0), PFBC's benefit for

@@ -8,7 +8,7 @@ Inputs : data/processed/sections.parquet, data/processed/pa_trout.gpkg (sections
 Outputs: outputs/figures/allocation_problem/stocked_sections_map.png   (16:9, 300 dpi)
          logs/25_stocked_sections_map.log
 
-    python scripts/25_stocked_sections_map.py
+    python scripts/figures/25_stocked_sections_map.py
 """
 # %% Setup
 from __future__ import annotations
@@ -23,7 +23,11 @@ import numpy as np
 import pandas as pd
 from matplotlib.lines import Line2D
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
 SURFACE, INK, INK2 = "#ffffff", "#0b0b0b", "#52514e"
@@ -32,19 +36,8 @@ setup_logging("25_stocked_sections_map")
 log = logging.getLogger("25_stocked_sections_map")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-# Open Sans (the deck's font; SIL Open Font License), local only: see scripts/20_allocation_map.py. Falls back to DejaVu Sans if absent.
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+# Open Sans (the deck's font; SIL Open Font License), local only: see common.register_open_sans. Falls back to DejaVu Sans if absent.
+register_open_sans()
 
 # %% Load
 tab = pd.read_parquet(PROCESSED_DIR / "sections.parquet", columns=["section_id", "total_2026", "length_mi"])

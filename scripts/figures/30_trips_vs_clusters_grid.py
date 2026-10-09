@@ -11,7 +11,7 @@ Inputs : data/processed/section_schedule.parquet, stocking_events.parquet, secti
          pa_trout.gpkg (sections), data/raw/pa_boundary.gpkg
 Outputs: outputs/figures/method_comparison/trips_vs_clusters.png   logs/30_trips_vs_clusters_grid.log
 
-    python scripts/30_trips_vs_clusters_grid.py
+    python scripts/figures/30_trips_vs_clusters_grid.py
 """
 # %% Setup
 from __future__ import annotations
@@ -30,6 +30,10 @@ from matplotlib.colors import LinearSegmentedColormap, Normalize
 from matplotlib.patches import Polygon as Poly
 from shapely.ops import unary_union
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
 from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
 
 FIG_DIR = ROOT / "outputs" / "figures" / "method_comparison"

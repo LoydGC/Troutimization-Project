@@ -24,7 +24,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 OPT = ROOT / "outputs" / "tables" / "optimization"
 FIG_DIR = ROOT / "outputs" / "figures" / "statewide_results"
@@ -33,18 +37,7 @@ setup_logging("39_pct_change_maps")
 log = logging.getLogger("39_pct_change_maps")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+register_open_sans()
 plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
 
 MINUS = "−"

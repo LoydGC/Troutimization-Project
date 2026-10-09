@@ -10,7 +10,7 @@ Inputs : data/processed/stocking_events.parquet, section_medoid_clusters.parquet
          parameters.csv, pa_trout.gpkg (sections layer), data/raw/pa_hatcheries.gpkg, data/raw/pa_boundary.gpkg
 Outputs: outputs/figures/kmedoids/one_truck_example.png   logs/28_one_truck_example.log
 
-    python scripts/28_one_truck_example.py
+    python scripts/figures/28_one_truck_example.py
 """
 # %% Setup
 from __future__ import annotations
@@ -29,7 +29,11 @@ import pandas as pd
 from shapely.geometry import LineString
 from shapely.ops import nearest_points
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, PoliteSession, full_url, save_raw, setup_logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, PoliteSession, full_url, save_raw, setup_logging, register_open_sans
 
 FIG_DIR = ROOT / "outputs" / "figures" / "kmedoids"
 SURFACE, INK, INK2 = "#ffffff", "#0b0b0b", "#52514e"
@@ -39,19 +43,8 @@ setup_logging("28_one_truck_example")
 log = logging.getLogger("28_one_truck_example")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-# Open Sans (the deck's font; SIL Open Font License), local only: see scripts/20_allocation_map.py. Falls back to DejaVu Sans if absent.
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+# Open Sans (the deck's font; SIL Open Font License), local only: see common.register_open_sans. Falls back to DejaVu Sans if absent.
+register_open_sans()
 plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK, "mathtext.fontset": "cm"})
 
 # %% The example, from the data

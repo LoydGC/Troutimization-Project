@@ -6,7 +6,7 @@ saved tables where one exists. No title on purpose: it is added in the deck.
 Inputs : data/processed/sections.parquet, hatcheries.parquet, county_subdivisions.parquet
 Outputs: outputs/figures/allocation_problem/data_sources_table.png   logs/33_data_sources_table.log
 
-    python scripts/33_data_sources_table.py
+    python scripts/figures/33_data_sources_table.py
 """
 # %% Setup
 from __future__ import annotations
@@ -18,7 +18,11 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common import PROCESSED_DIR, ROOT, setup_logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, ROOT, setup_logging, register_open_sans
 
 FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
 SURFACE, INK, INK2, GRID, BLUE = "#ffffff", "#0b0b0b", "#52514e", "#e6e5e0", "#2a78d6"
@@ -26,18 +30,7 @@ setup_logging("33_data_sources_table")
 log = logging.getLogger("33_data_sources_table")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+register_open_sans()
 plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
 
 # %% Checks on the counts quoted in the table

@@ -115,10 +115,10 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
 ### A. Reproducibility and pipeline integrity
 
 #### A1 — Fresh clone fails: scripts need untracked partner raw files  (High, M)
-- **Where:** [02_build_sections.py:408](../scripts/02_build_sections.py) (`pa_hatcheries.gpkg`),
-  [03_coop_stockings.py:101](../scripts/03_coop_stockings.py) and [11_road_distances.py:67](../scripts/11_road_distances.py)
-  (`Coop_nurseries.geojson`), [09_stocking_schedule.py:280-281](../scripts/09_stocking_schedule.py)
-  (`pa_hatchery_production.csv`, `pa_hatcheries.gpkg`), [11_road_distances.py:64](../scripts/11_road_distances.py).
+- **Where:** [02_build_sections.py:408](../../scripts/02_build_sections.py) (`pa_hatcheries.gpkg`),
+  [03_coop_stockings.py:101](../../scripts/03_coop_stockings.py) and [11_road_distances.py:67](../../scripts/11_road_distances.py)
+  (`Coop_nurseries.geojson`), [09_stocking_schedule.py:280-281](../../scripts/09_stocking_schedule.py)
+  (`pa_hatchery_production.csv`, `pa_hatcheries.gpkg`), [11_road_distances.py:64](../../scripts/11_road_distances.py).
 - **What:** commit `8e5151c` untracked these under `data/raw/`. `git ls-files data/raw` now shows only `manifest.csv`. The manifest rows
   for `Coop_nurseries.geojson` and `pa_hatchery_production.csv` have no source URL, so they cannot be re-fetched at all
   (`pa_hatcheries.gpkg` does have an ArcGIS Online URL, and `pa_hatchery_production.csv` has a per-row `source_url` column).
@@ -136,9 +136,9 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
   you changed.
 
 #### A2 — Manifest has URLs, but no code downloads them  (High, M)
-- **Where:** [03:40](../scripts/03_coop_stockings.py) (`sorted(glob)[-1]` raises `IndexError` if the xlsx is absent),
-  [06:53-56](../scripts/06_county_anglers.py) (`assert found, "see data/raw/manifest.csv for its URL"`),
-  [06:113,122](../scripts/06_county_anglers.py) and [08:78](../scripts/08_demand.py) (Census files).
+- **Where:** [03:40](../../scripts/03_coop_stockings.py) (`sorted(glob)[-1]` raises `IndexError` if the xlsx is absent),
+  [06:53-56](../../scripts/06_county_anglers.py) (`assert found, "see data/raw/manifest.csv for its URL"`),
+  [06:113,122](../../scripts/06_county_anglers.py) and [08:78](../../scripts/08_demand.py) (Census files).
   Scripts 00 and 04 already do it right (download if missing).
 - **What:** CLAUDE.md says "manifest.csv is enough to re-fetch". It is, but only by hand.
 - **Fix:** add `common.ensure_raw(source, filename, url, date=None) -> Path` (latest `data/raw/<source>/*/<filename>`, else download with
@@ -148,7 +148,7 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
   manifest row", and 03/06/08 no longer assert on a missing file.
 
 #### A3 — No orchestrator; run order lives in stale prose  (Med, M)
-- **Where:** [PROMPTS.md:34-35](../PROMPTS.md) ("Script order … 00 → … → 10"), README "Run".
+- **Where:** [PROMPTS.md:34-35](PROMPTS.md) ("Script order … 00 → … → 10"), README "Run".
 - **What:** scripts 02 → 03 → 04 each read-modify-write the same committed file `data/processed/sections.parquet` (03 and 04 drop and re-add
   their own columns, so reruns are idempotent, but 02 overwrites everything). Running 02 alone silently leaves a `sections.parquet` without
   cap or co-op columns, which `tests/test_processed.py` and 05–10 expect. The order for 11–16 is documented nowhere (see Appendix A).
@@ -157,8 +157,8 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
 - **Done when:** `python scripts/run_all.py --dry-run` prints all stages in dependency order and exits 0.
 
 #### A4 — Script 12 overwrites the committed table and re-queries OSRM on a clean clone  (Med, S)
-- **Where:** [12_section_road_distances.py:92-128](../scripts/12_section_road_distances.py) vs the guard in
-  [11:148](../scripts/11_road_distances.py).
+- **Where:** [12_section_road_distances.py:92-128](../../scripts/12_section_road_distances.py) vs the guard in
+  [11:148](../../scripts/11_road_distances.py).
 - **What:** script 11 skips the network when its output exists unless `--refresh`; script 12 has no such guard. Its per-block cache is in
   gitignored `data/interim/`, so on a clean clone it sends 121 requests to the public demo server and rewrites
   `section_to_section_road_distance.parquet`, which `known_gaps.md` calls "the reference" because rebuilds can differ slightly.
@@ -166,8 +166,8 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
 - **Done when:** running the script on this checkout with the cache deleted makes zero requests.
 
 #### A5 — Rule 3 contradicted by committed code; script 11 lacks backoff  (Med, S) — Decision D-6
-- **Where:** [CLAUDE.md:130](../CLAUDE.md) ("Never bulk-query public demo services (e.g. the OSRM demo server)");
-  [11_road_distances.py:132](../scripts/11_road_distances.py) (bare `requests.get`, `raise_for_status`, no retry).
+- **Where:** [CLAUDE.md:130](../../CLAUDE.md) ("Never bulk-query public demo services (e.g. the OSRM demo server)");
+  [11_road_distances.py:132](../../scripts/11_road_distances.py) (bare `requests.get`, `raise_for_status`, no retry).
 - **What:** the waiver and the rule-2 deviation are recorded only in `docs/known_gaps.md` (end of file). A future Claude session reading
   CLAUDE.md will see committed scripts that break a hard rule and may "fix" them. Script 12 uses `PoliteSession` (retry/backoff);
   script 11 does not.
@@ -175,7 +175,7 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
   `PoliteSession(min_interval=PAUSE_S, cache_path=None)` like script 12.
 
 #### A6 — `requirements.txt`  (Med, S)
-- **Where:** [requirements.txt](../requirements.txt).
+- **Where:** [requirements.txt](../../requirements.txt).
 - **What:** `scikit-learn` is imported by scripts 13, 14, 15 and 16 but not listed (a `pip install -r` environment fails there).
   Listed but never imported in `scripts/`, `tests/` or notebooks: `duckdb`, `seaborn`, `folium`, `tqdm`, `pynhd` (the last is an optional
   upgrade). `ipywidgets` is imported by `travel_arcs.ipynb`. Nothing is pinned. On this machine `pdfplumber` and `pynhd` are not installed
@@ -188,7 +188,7 @@ Record the answer in the last column. Agents: an item with a blank answer is **n
 
 #### A7 — Local git remote uses the old repo name  (Low, S)
 *Corrected 2026-10-01: the first version of this finding had it backwards.* The repo was renamed on GitHub; a push printed "This repository moved. Please use the new location:
-`https://github.com/LoydGC/Troutimization-Project.git`". So the `USER_AGENT` in [common.py:29](../scripts/common.py) (`github.com/LoydGC/Troutimization-Project`) is **correct**.
+`https://github.com/LoydGC/Troutimization-Project.git`". So the `USER_AGENT` in [common.py:29](../../scripts/common.py) (`github.com/LoydGC/Troutimization-Project`) is **correct**.
 What is stale is the `origin` URL in the local clone (`.../Trout-Optimization-Project.git`) and any mention of the old name in docs. GitHub redirects it, so pushes work today, but the redirect can break
 if the old name is ever reused.
 - **Fix:** `git remote set-url origin https://github.com/LoydGC/Troutimization-Project.git` in each collaborator's clone; grep docs for the old name (`grep -rn "Trout-Optimization-Project" .`; none in tracked files as of this audit).
@@ -203,8 +203,8 @@ offline (02–08, 10, 13, 15, 16 on committed inputs) once on a clean tree and c
 ### B. Model readiness and design consistency
 
 #### B1 — The model and its three input tables are not built  (High, L)
-- **Where:** [optimization.py](../scripts/optimization.py) (56 lines, all `# TODO`), [sensitivities.py](../scripts/sensitivities.py) (47 lines, all
-  `# TODO`); [PROMPTS.md:259-282, 333-352](../PROMPTS.md) (Prompts 7, 8, 9 not marked done).
+- **Where:** [optimization.py](../../scripts/optimization.py) (56 lines, all `# TODO`), [sensitivities.py](../../scripts/sensitivities.py) (47 lines, all
+  `# TODO`); [PROMPTS.md:259-282, 333-352](PROMPTS.md) (Prompts 7, 8, 9 not marked done).
 - **What is missing**, in dependency order (specs are already in the docs; this is the checklist):
   1. **`data/processed/hatcheries.parquet`** (Prompt 7 step 1): the 13 hatcheries from PFBC's official layer: stripped `name`, `hatchery_id`,
      county, lat/lon, `in_2026_schedule` (9 true), `supply` = `stream_fish_2026` from `hatchery_schedule_supply.csv` (see B3), the lbs-split
@@ -234,8 +234,8 @@ offline (02–08, 10, 13, 15, 16 on committed inputs) once on a clean tree and c
 - **Done when:** the baseline and the three single-objective extremes are scored and written to `outputs/tables/optimization/`.
 
 #### B2 — The clusters have no consumer in the model  (High, decide first) — Decision D-1
-- **Where:** [docs/clustering_options.md](clustering_options.md) § Objective (lines 5–23) and § Plan of record (27–36);
-  [model_design.md:461-472](model_design.md) (detour charge); scripts 12–16.
+- **Where:** [docs/clustering_options.md](../clustering_options.md) § Objective (lines 5–23) and § Plan of record (27–36);
+  [model_design.md:461-472](../model_design.md) (detour charge); scripts 12–16.
 - **What:** two incompatible purposes are in the repo.
   - *Schedule clusters* (scripts 09–10, in `model_design.md` § Open questions): a **detour or trip charge** per cluster (`y_c`). Here
     truck-run width and sections-per-run matter.
@@ -252,7 +252,7 @@ offline (02–08, 10, 13, 15, 16 on committed inputs) once on a clean tree and c
 - **Done when:** `model_design.md` contains one sentence naming where clusters enter the model, or says they do not.
 
 #### B3 — Hatchery supply is 3 fish short of the baseline total  (Med, S)
-- **Where:** [09_stocking_schedule.py:292-306](../scripts/09_stocking_schedule.py) (per-species allocations are rounded to 0.01, summed per
+- **Where:** [09_stocking_schedule.py:292-306](../../scripts/09_stocking_schedule.py) (per-species allocations are rounded to 0.01, summed per
   hatchery, **each species rounded to an integer**, then summed).
 - **Evidence:** Σ `stream_fish_2026` in `hatchery_schedule_supply.csv` = **2,606,465**; Σ `sections.total_2026` = **2,606,468**. Per species the supply
   is short by 1 brown, 1 rainbow and 1 golden. `tests/test_hatchery_schedule_supply` allows a gap < 10, so it does not catch this.
@@ -262,7 +262,7 @@ offline (02–08, 10, 13, 15, 16 on committed inputs) once on a clean tree and c
 - **Done when:** `hatchery_schedule_supply.stream_fish_2026.sum() == sections.total_2026.sum()` and the test asserts it.
 
 #### B4 — Golden and brood fish are inside every total; the doc calls it open  (Med, S) — Decision D-2
-- **Where:** `total_20xx` = sum of all five species ([02:333](../scripts/02_build_sections.py)); [model_design.md:457-458](model_design.md)
+- **Where:** `total_20xx` = sum of all five species ([02:333](../../scripts/02_build_sections.py)); [model_design.md:457-458](../model_design.md)
   ("Include golden and brood in the model's fish total?" listed as an **open question**); CLAUDE.md Known facts quote Bear Creek as
   "150 brown + 1,750 rainbow".
 - **Evidence:** Bear Creek `3197_2` has `total_2026 = 1,030` (150 + 850 + 30 brood) and `3197_3` has 920, so the tables say 1,950, not 1,900
@@ -277,14 +277,14 @@ offline (02–08, 10, 13, 15, 16 on committed inputs) once on a clean tree and c
 An implementer cannot tell which is meant. Pick one and make all three places agree; if mortality is in, add the parameter row (B1 item 2).
 
 #### B6 — 300-fish minimum is per section-year; PFBC's is per stocking  (Low, S) — Decision D-4
-- **Where:** [parameters.csv:8](../data/processed/parameters.csv) (the note admits it); `model_design.md:144`.
+- **Where:** [parameters.csv:8](../../data/processed/parameters.csv) (the note admits it); `model_design.md:144`.
 - **Evidence:** 847 of the 1,022 candidate sections have two or more scheduled events (`section_schedule.n_events`), and PFBC's own 2026 baseline
   never falls below 300 fish **per event** (0 sections have `total_2026 < 300 × n_events`). So `x_s ≥ 300·y_s` lets the model give a two-event section
   300–599 fish, below PFBC's floor, in a plan that is supposed to be "realistic".
 - **Fix:** keep as base (it is labelled), and add the sensitivity `x_s ≥ 300·n_events_s·y_s` to `scenarios_and_extensions.md` § Constraint scenarios.
 
 #### B7 — "Cap is 3.06× baseline" includes non-candidate sections  (Med, S)
-- **Where:** [model_design.md:145-146](model_design.md) and [04_river_cap.py:231-234](../scripts/04_river_cap.py) (log line); `logs/04_river_cap.log`.
+- **Where:** [model_design.md:145-146](../model_design.md) and [04_river_cap.py:231-234](../../scripts/04_river_cap.py) (log line); `logs/04_river_cap.log`.
 - **Evidence:** the ratio sums `cap_fish` over all 1,045 sections but divides by 2026 fish (which only the 1,022 candidates have).
   Over the candidates: `cap_fish` **3.00×**, `cap_fish_mid` **2.19×**, `cap_fish_river` **3.39×** (docs: 3.06 / 2.23 / 3.45).
 - **Fix:** compute the log and the doc over `fish > 0` rows; update the three numbers in `model_design.md`; add the figure to `test_density_cap`.
@@ -294,18 +294,18 @@ An implementer cannot tell which is meant. Pick one and make all three places ag
 ### C. Code and data details
 
 #### C1 — Script 13 silhouette table reports the last seed only  (Low, S)
-[13_medoid_clusters.py:155-163](../scripts/13_medoid_clusters.py): `silhouette` is the mean of two seeds, but `clusters` and
+[13_medoid_clusters.py:155-163](../../scripts/13_medoid_clusters.py): `silhouette` is the mean of two seeds, but `clusters` and
 `total_distance_to_medoid_mi` come from whichever seed ran last (and with `restarts // 3` starts, not the 30 used for the final tables).
 Result: `silhouette_by_k.csv` says 4,181.9 for k = 310 while `comparison.csv` says 4,160. Record the min cost over seeds and the number of clusters of
 the seed that was kept, or label the column "second run".
 
 #### C2 — Hard-coded `1022` and two definitions of "2026-stocked"  (Low, S)
-`assert len(s) == 1022` in [08:101](../scripts/08_demand.py) and [10:175](../scripts/10_runs_clusters.py); script 12 selects
-`latest_year == 2026` ([12:54-57](../scripts/12_section_road_distances.py)), scripts 08 and 10 select `total_2026 > 0`. They agree today (both 1,022)
+`assert len(s) == 1022` in [08:101](../../scripts/08_demand.py) and [10:175](../../scripts/10_runs_clusters.py); script 12 selects
+`latest_year == 2026` ([12:54-57](../../scripts/12_section_road_distances.py)), scripts 08 and 10 select `total_2026 > 0`. They agree today (both 1,022)
 but nothing enforces it. Add `common.candidate_sections()`, use it everywhere, and keep the literal only in `tests/test_processed.py`.
 
 #### C3 — Script 11 distance conventions  (Low, S)
-[11:33](../scripts/11_road_distances.py) uses EPSG:5070 and distance-to-nearest-point-on-line for the straight-line table, while the road table routes to the
+[11:33](../../scripts/11_road_distances.py) uses EPSG:5070 and distance-to-nearest-point-on-line for the straight-line table, while the road table routes to the
 section *midpoint* and CLAUDE.md says EPSG:26918 for distances. The notebook's validation recomputes midpoint distances itself, so nothing is wrong
 in the road table, but the two "straight-line" files mean different things. Switch to 26918, name the definition in the filename or header,
 and fix the stale comment at line 37 ("10 hatcheries + 100 points" is now 13 + 100).
@@ -317,7 +317,7 @@ and fix the stale comment at line 37 ("10 hatcheries + 100 points" is now 13 + 1
 - Both notebooks read untracked raw files (A1) and cannot run on a fresh clone.
 
 #### C5 — Class A flag and Class A attributes use different overlap routines (latent)  (Low, S)
-[02:224-233](../scripts/02_build_sections.py) merges Class A intervals before applying the 100 m rule; [02:254-270](../scripts/02_build_sections.py) applies it per
+[02:224-233](../../scripts/02_build_sections.py) merges Class A intervals before applying the 100 m rule; [02:254-270](../../scripts/02_build_sections.py) applies it per
 record. A section overlapping two adjacent Class A records of < 100 m each would be flagged but have no species text. **No current section is affected**
 (`class_a_flag` and `class_a_gis_keys.notna()` agree on all 18). Add that equality as an assertion in `validate()`.
 
@@ -355,7 +355,7 @@ Lines 80–85 say 8 candidate sections "would have no distance". The road tables
 `notebooks/01_data_prep.ipynb`.
 
 #### D5 — `.gitignore` comment  (Low, S)
-[.gitignore:9](../.gitignore) says partner files "stay tracked until we agree to untrack them". They were untracked in `8e5151c`.
+[.gitignore:9](../../.gitignore) says partner files "stay tracked until we agree to untrack them". They were untracked in `8e5151c`.
 
 #### D6 — `figure_ideas.md` and `scenarios_and_extensions.md`  (Low, S)
 `figure_ideas.md` ("Last updated 2026-09-27") still marks the demand figures "Prompt 6" although `demand` is built; the numbers it quotes are correct (verified),
@@ -387,13 +387,13 @@ so flip them to **ready**, and add the cluster figures that exist. `scenarios_an
 - **Skip this item** if D-1 resolves to (a).
 
 #### E2 — Scrapped script 14 is still in the numbered sequence  (Low, S)
-[14_dbscan_clusters.py](../scripts/14_dbscan_clusters.py) says "SCRAPPED" in its first line, but README says to run scripts "in numeric order", and script 16
+[14_dbscan_clusters.py](../../scripts/14_dbscan_clusters.py) says "SCRAPPED" in its first line, but README says to run scripts "in numeric order", and script 16
 re-implements DBSCAN inline. Move it to `scripts/archive/`, update the paths mentioned in `docs/clustering_options.md`, `docs/cluster_tracker.md` and README, and leave
 its outputs where they are.
 
 #### E3 — Numbers typed into text  (Low, S)
-[16:125-178](../scripts/16_compare_methods_map.py) hard-codes "1,015 truck runs", "632 runs", "19.9 mi", "234 clusters", "74 clusters", "5.7%"; [13:282](../scripts/13_medoid_clusters.py) says
-"in a similar number of clusters"; [15:222](../scripts/15_hierarchical_clusters.py) hard-codes "4 sections, 20 mi"; the 13 docstring says "407 with the fixed seeds". They match today and
+[16:125-178](../../scripts/figures/16_compare_methods_map.py) hard-codes "1,015 truck runs", "632 runs", "19.9 mi", "234 clusters", "74 clusters", "5.7%"; [13:282](../../scripts/13_medoid_clusters.py) says
+"in a similar number of clusters"; [15:222](../../scripts/15_hierarchical_clusters.py) hard-codes "4 sections, 20 mi"; the 13 docstring says "407 with the fixed seeds". They match today and
 will drift silently. Build the strings from the computed tables and `parameters.csv`.
 
 #### E4 — Personal names in code and figures  (Low, S) — Decision D-8

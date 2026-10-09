@@ -11,7 +11,7 @@ Inputs : data/processed/sections.parquet, data/processed/hatchery_schedule_suppl
 Outputs: outputs/figures/allocation_problem/starting_point_map.png   (16:9, 300 dpi)
          logs/20_allocation_map.log
 
-    python scripts/20_allocation_map.py
+    python scripts/figures/20_allocation_map.py
 """
 # %% Setup
 from __future__ import annotations
@@ -25,7 +25,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
 SURFACE, INK, INK2, TITLE = "#ffffff", "#0b0b0b", "#52514e", "#a6192e"      # TITLE = the deck's dark red berry
@@ -34,21 +38,8 @@ setup_logging("20_allocation_map")
 log = logging.getLogger("20_allocation_map")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-# Open Sans (the deck's font; SIL Open Font License). Local only, data/references is gitignored: download Google Fonts' variable file
-# https://github.com/google/fonts/tree/main/ofl/opensans -> data/references/fonts/OpenSans.ttf (this script cuts Regular and Bold from it).
-# If the file is absent the figure falls back to DejaVu Sans.
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+# Open Sans (the deck's font; SIL Open Font License), local only: see common.register_open_sans. Falls back to DejaVu Sans if absent.
+register_open_sans()
 
 # %% Load
 tab = pd.read_parquet(PROCESSED_DIR / "sections.parquet", columns=["section_id", "total_2026"])
