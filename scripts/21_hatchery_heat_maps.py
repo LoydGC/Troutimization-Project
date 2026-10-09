@@ -92,7 +92,7 @@ def draw(name: str):
 
     fig = plt.figure(figsize=(13.333, 7.5))
     ax = fig.add_axes([0.02, 0.06, 0.61, 0.82])
-    pa.plot(ax=ax, facecolor="#f4f3ef", edgecolor=INK2, lw=1.2, zorder=0)
+    pa.plot(ax=ax, facecolor="#ffffff", edgecolor=INK2, lw=1.2, zorder=0)
     sec[sec.fish.isna()].plot(ax=ax, color=OTHER, lw=0.8, zorder=1)
     sec[sec.fish.notna()].sort_values("fish").plot(ax=ax, column="fish", cmap=cmap, norm=norm, lw=2.8, zorder=2)   # biggest amounts on top
     ax.set_xlim(-80.85, -74.45)

@@ -1,0 +1,6 @@
+2026-10-04 23:00:36,314 INFO 28_one_truck_example run from commit 9167373 + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py, scripts/28_one_truck_example.py, scripts/29_road_distance_appendix.py, scripts/30_trips_vs_clusters_grid.py, scripts/31_historical_vs_kmedoids_grid.py
+2026-10-04 23:00:36,616 INFO cluster B015 ['Dents Run', 'Hicks Run', 'West Branch Hicks Run']: fish 2743 ({'2777_3': 970.0, '2783_1': 980.0, '4363_3': 793.0}), avg 72.9 road mi, trucks 1, cost per truck $277, per fish $0.101, if each section sent its own truck: $832
+2026-10-04 23:00:36,822 INFO cluster centre (-78.28, 41.37); hatchery (-77.79, 40.88); straight-line 42 mi
+2026-10-04 23:00:36,862 INFO route to the nearest point of the cluster: 71.1 road miles, 2410 vertices (the table's cluster average is 72.9 mi, per-section see log above)
+2026-10-04 23:00:38,122 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\kmedoids\one_truck_example.png
+2026-10-04 23:00:38,846 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\kmedoids\one_truck_example_tall.png

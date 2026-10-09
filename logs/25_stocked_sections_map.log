@@ -1,0 +1,3 @@
+2026-10-04 23:00:27,181 INFO 25_stocked_sections_map run from commit 9167373 + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py, scripts/28_one_truck_example.py, scripts/29_road_distance_appendix.py, scripts/30_trips_vs_clusters_grid.py, scripts/31_historical_vs_kmedoids_grid.py
+2026-10-04 23:00:27,593 INFO 1022 stocked stream sections, 4639 river miles (length_mi), 0 with missing length
+2026-10-04 23:00:28,305 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\stocked_sections_map.png

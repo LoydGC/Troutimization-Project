@@ -1,7 +1,7 @@
-2026-10-04 16:56:17,060 INFO 21_hatchery_heat_maps run from commit 844f30a + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py
-2026-10-04 16:56:17,597 INFO Bellefonte: 198 sections, 481368 fish; road miles 36 to 179, median 108; per-section fish median 1625, max 16965; 3 sections above 10000 fish
-2026-10-04 16:56:18,542 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\bellefonte_heat_map.png
-2026-10-04 16:56:18,547 INFO Benner Spring: 151 sections, 387530 fish; road miles 21 to 185, median 118; per-section fish median 2010, max 9970; 0 sections above 10000 fish
-2026-10-04 16:56:19,555 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\benner_spring_heat_map.png
-2026-10-04 16:56:19,560 INFO Pleasant Gap: 126 sections, 325359 fish; road miles 8 to 196, median 98; per-section fish median 1580, max 18630; 3 sections above 10000 fish
-2026-10-04 16:56:20,360 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\pleasant_gap_heat_map.png
+2026-10-04 23:00:15,318 INFO 21_hatchery_heat_maps run from commit 9167373 + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py, scripts/28_one_truck_example.py, scripts/29_road_distance_appendix.py, scripts/30_trips_vs_clusters_grid.py, scripts/31_historical_vs_kmedoids_grid.py
+2026-10-04 23:00:15,780 INFO Bellefonte: 198 sections, 481368 fish; road miles 36 to 179, median 108; per-section fish median 1625, max 16965; 3 sections above 10000 fish
+2026-10-04 23:00:16,626 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\bellefonte_heat_map.png
+2026-10-04 23:00:16,631 INFO Benner Spring: 151 sections, 387530 fish; road miles 21 to 185, median 118; per-section fish median 2010, max 9970; 0 sections above 10000 fish
+2026-10-04 23:00:17,595 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\benner_spring_heat_map.png
+2026-10-04 23:00:17,600 INFO Pleasant Gap: 126 sections, 325359 fish; road miles 8 to 196, median 98; per-section fish median 1580, max 18630; 3 sections above 10000 fish
+2026-10-04 23:00:18,678 INFO wrote C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\figures\allocation_problem\pleasant_gap_heat_map.png

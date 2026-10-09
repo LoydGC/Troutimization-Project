@@ -1,0 +1,6 @@
+2026-10-04 23:15:02,708 INFO 26_kmedoids_visuals run from commit 9167373 + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py, scripts/28_one_truck_example.py, scripts/29_road_distance_appendix.py, scripts/30_trips_vs_clusters_grid.py, scripts/31_historical_vs_kmedoids_grid.py, scripts/32_stream_types_map.py, scripts/33_data_sources_table.py
+2026-10-04 23:15:03,406 INFO 310 clusters; sizes: alone 54, pairs 62, 3-5 157, 6+ 37, biggest 9, mean 3.30; widest 32 mi; hatchery-distance error: 3.1 mi mean, 6.8 mi p90 (2.2% of distance)
+2026-10-04 23:15:04,173 INFO wrote kmedoids_map.png
+2026-10-04 23:15:04,214 INFO example cluster B174: ['Back Creek', 'Mill Run', 'Meadow Run', 'Meadow Run'] road miles from Bellefonte [130.8, 137.0, 145.5, 146.6], average 140.0
+2026-10-04 23:15:05,222 INFO wrote kmedoids_example.png
+2026-10-04 23:15:05,760 INFO wrote kmedoids_choosing_k.png

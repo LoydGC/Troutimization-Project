@@ -30,7 +30,7 @@ from matplotlib.patches import FancyBboxPatch
 from common import PROCESSED_DIR, ROOT, setup_logging
 
 FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
-SURFACE, INK, INK2, PANEL = "#ffffff", "#0b0b0b", "#52514e", "#f4f3ef"
+SURFACE, INK, INK2, PANEL = "#ffffff", "#0b0b0b", "#52514e", "#ffffff"
 BLUE, BLUE_LIGHT, AMBER, AMBER_LIGHT, BERRY = "#2a78d6", "#e3eefb", "#f5ae00", "#fdf0cc", "#a6192e"   # BERRY = the deck's dark red
 setup_logging("22_pfbc_formula_visual")
 log = logging.getLogger("22_pfbc_formula_visual")
@@ -103,7 +103,7 @@ for yy, line in ((4.52, "The rate is a maximum,"), (4.2, "not a target. Managers
     ax.text(CX["result"], yy, line, fontsize=12, color=INK2, ha="center", va="center")
 
 # worked example, aligned under the same three columns
-box(0.55, 0.6, 12.2, 1.9, PANEL, rad=0.15)
+box(0.55, 0.6, 12.2, 1.9, PANEL, ec="#d9d8d2", lw=1.5, rad=0.15)
 ax.text(0.85, 2.22, f"Example: {r.water_name}, section 2", fontsize=14, fontweight="bold", va="center")
 ax.text(0.85 + 3.55, 2.22, f"category {r.allocation_code}  ·  {miles:.1f} miles long, up to 10 m wide (width class 3)", fontsize=12, color=INK2, va="center")
 ax.text(CX["rate"], 1.5, f"{rate:.0f}", fontsize=34, fontweight="bold", color=BLUE, ha="center", va="center")

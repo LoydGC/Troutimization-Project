@@ -1,0 +1,26 @@
+2026-10-07 12:41:55,980 INFO 37_truck_capacity_sensitivity run from commit 9167373 + uncommitted changes to scripts/20_allocation_map.py, scripts/21_hatchery_heat_maps.py, scripts/22_pfbc_formula_visual.py, scripts/23_all_hatcheries_map.py, scripts/25_stocked_sections_map.py, scripts/26_kmedoids_visuals.py, scripts/27_runs_vs_kmedoids.py, scripts/28_one_truck_example.py, scripts/29_road_distance_appendix.py, scripts/30_trips_vs_clusters_grid.py, scripts/31_historical_vs_kmedoids_grid.py, scripts/32_stream_types_map.py, scripts/33_data_sources_table.py, scripts/34_model_plan_heat_map.py, scripts/35_model_vs_pfbc_overlay_map.py, scripts/36_who_replaced_hatchery_map.py, scripts/37_truck_capacity_sensitivity.py
+2026-10-07 12:41:56,652 INFO inputs: 9 hatcheries (supply 2,606,465), 1022 sections, demand 7,121,847 angler-days (w = 0.5), k = 0.5, impact weighted (impact_weighted)
+2026-10-07 12:41:56,659 INFO cap  1000  PFBC 2026: B 3,220,851  C $1,046,622  I 2,274,440  trips 3101
+2026-10-07 12:41:56,691 INFO Set parameter Username
+2026-10-07 12:41:56,691 INFO Set parameter LicenseID to value 2858324
+2026-10-07 12:41:56,693 INFO Academic license - for non-commercial use only - expires 2027-08-28
+2026-10-07 12:42:53,589 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-07 12:43:21,521 INFO cap  1000  max_benefit  B 3,651,053  C $981,822 (model $852,322)  I 2,382,471  trips 3017  closed 7  moved 25%  16.9s
+2026-10-07 12:43:58,835 INFO cap  1000  more_benefit B 3,630,999  C $943,066 (model $809,050)  I 2,274,440  trips 3025  closed 9  moved 25%  15.3s
+2026-10-07 12:43:58,899 INFO cap  2500  PFBC 2026: B 3,220,851  C $533,573  I 2,274,440  trips 1586
+2026-10-07 12:44:41,956 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-07 12:45:02,751 INFO cap  2500  max_benefit  B 3,651,053  C $476,342 (model $340,929)  I 2,382,471  trips 1472  closed 7  moved 25%  12.4s
+2026-10-07 12:45:29,009 INFO cap  2500  more_benefit B 3,646,699  C $474,311 (model $337,311)  I 2,234,730  trips 1477  closed 7  moved 25%  12.1s
+2026-10-07 12:45:29,079 INFO cap  3500  PFBC 2026: B 3,220,851  C $446,144  I 2,274,440  trips 1328
+2026-10-07 12:46:11,428 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-07 12:46:31,564 INFO cap  3500  max_benefit  B 3,651,053  C $385,359 (model $243,522)  I 2,382,483  trips 1194  closed 7  moved 25%  11.5s
+2026-10-07 12:46:53,465 INFO cap  3500  more_benefit B 3,645,738  C $382,837 (model $239,435)  I 2,274,440  trips 1204  closed 11  moved 25%  10.2s
+2026-10-07 12:46:53,514 INFO cap  5000  PFBC 2026: B 3,220,851  C $385,922  I 2,274,440  trips 1151
+2026-10-07 12:47:36,590 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-07 12:47:59,136 INFO cap  5000  max_benefit  B 3,651,053  C $327,323 (model $170,712)  I 2,348,868  trips 1009  closed 7  moved 25%  13.8s
+2026-10-07 12:48:23,661 INFO cap  5000  more_benefit B 3,648,460  C $330,552 (model $170,169)  I 2,237,139  trips 1015  closed 9  moved 25%  12.2s
+2026-10-07 12:48:23,732 INFO cap 10000  PFBC 2026: B 3,220,851  C $331,617  I 2,274,440  trips 993
+2026-10-07 12:49:06,055 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-07 12:49:26,847 INFO cap 10000  max_benefit  B 3,651,060  C $268,125 (model $85,549)  I 2,330,185  trips 833  closed 8  moved 25%  12.5s
+2026-10-07 12:49:55,157 INFO cap 10000  more_benefit B 3,648,178  C $278,256 (model $84,612)  I 2,274,440  trips 864  closed 11  moved 25%  14.7s
+2026-10-07 12:49:56,970 INFO wrote 15 rows to C:\Users\loydg\OneDrive\Desktop\Class\From Data to Action\Trout Optimization Project\outputs\tables\sensitivity_truck_capacity

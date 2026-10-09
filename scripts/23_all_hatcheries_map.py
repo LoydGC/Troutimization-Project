@@ -91,7 +91,7 @@ plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.faceco
 fig = plt.figure(figsize=(13.333, 7.5))
 # No title on purpose: added in PowerPoint. The space above the map is left clear for it.
 ax = fig.add_axes([0.02, 0.06, 0.61, 0.82])
-pa.plot(ax=ax, facecolor="#f4f3ef", edgecolor=INK2, lw=1.2, zorder=0)
+pa.plot(ax=ax, facecolor="#ffffff", edgecolor=INK2, lw=1.2, zorder=0)
 sec.plot(ax=ax, color=STREAM, lw=0.8, zorder=1)
 ax.set_xlim(*XLIM)
 ax.set_ylim(*YLIM)

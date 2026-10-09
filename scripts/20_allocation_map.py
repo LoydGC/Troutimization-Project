@@ -100,7 +100,7 @@ plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.faceco
 fig = plt.figure(figsize=(13.333, 7.5))
 # No title on purpose: it is added in PowerPoint (Open Sans 40, TITLE colour), e.g. "9 trout hatcheries and 1,022 stocked streams". The space above the map is left clear for it.
 ax = fig.add_axes([0.02, 0.06, 0.61, 0.82])
-pa.plot(ax=ax, facecolor="#f4f3ef", edgecolor=INK2, lw=1.2, zorder=0)
+pa.plot(ax=ax, facecolor="#ffffff", edgecolor=INK2, lw=1.2, zorder=0)
 for lo, hi, lw, _ in BINS:
     sec[(sec.total_2026 >= lo) & (sec.total_2026 < hi)].plot(ax=ax, color=BLUE, lw=lw, alpha=0.95, zorder=2)
 ax.set_xlim(*XLIM)
