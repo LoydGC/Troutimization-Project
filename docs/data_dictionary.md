@@ -376,8 +376,10 @@ PFBC's 13 state fish hatcheries, the supply nodes (`scripts/20_transport_cost.py
 | in_2026_schedule | supply > 0: the base model's 9 supply nodes | bool |
 
 ## cost_matrix (.parquet, .csv)
-Haul cost per fish for every hatchery x 2026-stocked section (13 x 1,022 = 13,286 rows; `scripts/20_transport_cost.py`).
-Miles are Gavin's (scripts 11 and 18); the cluster averages are checked against a recomputation from `road_mi`.
+Road miles and per-fish haul cost for every hatchery x 2026-stocked section (13 x 1,022 = 13,286 rows; `scripts/20_transport_cost.py`).
+Miles are Gavin's (scripts 11 and 18); the cluster averages are checked against a recomputation from `road_mi`. The model reads
+`cluster_road_mi` and counts truck trips (`truck_capacity`, `cost_per_truck_mile` in `parameters.csv`); `cost_per_fish` is the older per-fish
+cost, kept for the linear baseline cost and as a sensitivity.
 
 | Column | Meaning | Units |
 |---|---|---|
@@ -386,7 +388,7 @@ Miles are Gavin's (scripts 11 and 18); the cluster averages are checked against 
 | cluster_id | The section's k-medoids cluster (`section_medoid_clusters.silhouette_best_cluster_id`, 310 clusters) | text |
 | road_mi | One-way OSRM road miles from the hatchery to this section (`hatchery_to_section_road_distance`) | road mi |
 | cluster_road_mi | Mean of `road_mi` over the section's k-medoids cluster (`cluster_hatchery_distance`): the haul the model uses (decision 2026-10-04) | road mi |
-| cost_per_fish | 2 x `cluster_road_mi` x `cost_per_truck_mile` / `fish_per_load` (parameters.csv; $0.00152 per fish per one-way mile) | $/fish |
+| cost_per_fish | 2 x `cluster_road_mi` x `cost_per_truck_mile` / `fish_per_load` (parameters.csv; $0.00152 per fish per one-way mile). Not used by the trip-counted objective | $/fish |
 | cluster_road_mi_schedule, cluster_road_mi_hierarchical | The same average over Nate's schedule clusters (351) and Gavin's hierarchical clusters (309): sensitivities | road mi |
 
 ## baseline_flows (.parquet, .csv)
@@ -399,7 +401,7 @@ script 09) and summed by hatchery; they match `total_2026` to within 0.03 fish a
 | section_id, hatchery_id, hatchery | The flow | |
 | fish | Fish from the hatchery to the section in 2026 (fractional: species splits over events) | fish/yr |
 | road_mi, cluster_road_mi, cost_per_fish | As in `cost_matrix` | |
-| cost | fish x cost_per_fish (sums to $351.5k) | $/yr |
+| cost | fish x cost_per_fish (sums to $351.5k, the per-fish basis; whole-trip scoring gives $446.1k, `outputs/tables/optimization/runs.csv`) | $/yr |
 
 ## model_input (.parquet, .csv)
 One row per 2026-stocked section (1,022): everything the optimization reads per section (`scripts/21_model_input.py`).
@@ -480,7 +482,7 @@ Tables from the 2023 PFBC trout angler survey (Responsive Management), one CSV p
 `survey_water_crosswalk.csv`. File list, columns and caveats: `data/processed/angler_survey/README.md`.
 
 ## pa_trout.gpkg (GeoPackage, EPSG:4326)
-For mapping and spatial joins; join to the tables on `section_id`. Gitignored (16 MB): rebuild it with
+For mapping and spatial joins; join to the tables on `section_id`. Committed (16 MB); rebuild it with
 `scripts/01_download_pfbc_layers.py` and `scripts/02_build_sections.py`.
 
 | Layer | Features | Contents |

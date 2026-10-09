@@ -1,7 +1,7 @@
 """Appendix map: all 13 PFBC state fish hatcheries, marking the 9 the model ships from and the 4 it does not.
 
 In the model = hatcheries with stream fish on PFBC's 2026 stocking schedule (hatchery_schedule_supply.csv, stream_fish_2026 > 0), numbered 1-9 by
-trout sent, the same numbers as scripts/20_allocation_map.py. Not in the model = the other 4 (Linesville and Pleasant Mount are on the schedule but
+trout sent, the same numbers as scripts/figures/20_allocation_map.py. Not in the model = the other 4 (Linesville and Pleasant Mount are on the schedule but
 stock no streams; Fairview and Union City are not on it), lettered A-D. Locations: PFBC's State Fish Hatcheries layer (13 points). Stocked stream
 sections are drawn pale grey for context. Markers that would overlap are nudged apart (relative positions kept; noted on the slide). No title on
 purpose: it is added in PowerPoint.
@@ -11,7 +11,7 @@ Inputs : data/raw/pa_hatcheries.gpkg, data/processed/hatchery_schedule_supply.cs
 Outputs: outputs/figures/allocation_problem/all_hatcheries_map.png   (16:9, 300 dpi)
          logs/23_all_hatcheries_map.log
 
-    python scripts/23_all_hatcheries_map.py
+    python scripts/figures/23_all_hatcheries_map.py
 """
 # %% Setup
 from __future__ import annotations
@@ -25,7 +25,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
 SURFACE, INK, INK2 = "#ffffff", "#0b0b0b", "#52514e"
@@ -34,19 +38,8 @@ setup_logging("23_all_hatcheries_map")
 log = logging.getLogger("23_all_hatcheries_map")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-# Open Sans (the deck's font; SIL Open Font License), local only: see scripts/20_allocation_map.py. Falls back to DejaVu Sans if absent.
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+# Open Sans (the deck's font; SIL Open Font License), local only: see common.register_open_sans. Falls back to DejaVu Sans if absent.
+register_open_sans()
 
 # %% Load
 hat = gpd.read_file(RAW_DIR / "pa_hatcheries.gpkg")[["NAME", "COUNTY", "geometry"]].rename(columns={"NAME": "hatchery", "COUNTY": "county"})

@@ -1,6 +1,6 @@
 # Clustering options for the cost model (status 2026-10-01)
 
-**Story so far (running tracker for the presentation): [`cluster_tracker.md`](cluster_tracker.md).**
+**Story so far (running tracker for the presentation): [`archive/cluster_tracker.md`](archive/cluster_tracker.md).**
 
 ## Objective (on record, Gavin, 2026-10-01)
 
@@ -30,14 +30,15 @@ truck must visit every section.
   What math is applied to a cluster afterwards (a representative cost, with or without a detour charge) is a separate, later
   step and is the same whichever clusters are used.
 - **Clusters are interchangeable inputs.** Nate's clusters are expected to ultimately serve as a representative cost too, so
-  the clusterings can be switched in and out with everything downstream held fixed. (The repo does not yet say that Nate's
-  clusters become a representative cost; his written docs describe a detour charge, which is still an open question. Treat the
-  representative-cost use as not yet captured in the repo.)
-- **Phase 1 uses Nate's clusters.** Gavin's come in as a **sensitivity** once settled: swap the labelling, re-run, compare.
+  the clusterings can be switched in and out with everything downstream held fixed. (Settled 2026-10-04: every clustering is used
+  as a representative cost, with no detour charge.)
+- **Which clusters the model uses (decision 2026-10-04, replacing the earlier plan to start from Nate's):** Gavin's k-medoids
+  clusters (`kmedoids_best_silhouette`, 310) in the first run; Nate's schedule clusters and the hierarchical clusters are
+  sensitivities: swap the labelling, re-run, compare.
 
 ## How the identification differs from Nate's on record
 
-Checked against `docs/model_design.md`, `docs/data_methods.md` and `PROMPTS.md` on `origin/main`. Only how the clusters are
+Checked against `docs/model_design.md`, `docs/data_methods.md` and `docs/archive/PROMPTS.md` on `origin/main`. Only how the clusters are
 *identified* is compared here, not what is done with them.
 
 **Basis for grouping**
@@ -74,7 +75,8 @@ clusters), and update `CLAUDE.md` (Agreed simplifications) only after Nate agree
 ## Formal statement
 
 - Each section s has a cost vector `c_s = (cost[h, s] for every hatchery h)`, with
-  `cost[h, s] = 2 × road_mi[h, s] × cost_per_truck_mile / fish_per_load` (the existing `model_design.md` § Transport cost formula).
+  `cost[h, s] = 2 × road_mi[h, s] × cost_per_truck_mile / fish_per_load` (the per-fish cost; the model itself counts truck trips at the
+  cluster's average road miles, `model_formulation.md` § Objectives 2, but the clustering argument is the same because both are linear in miles).
 - A clustering assigns each section to a cluster k. The representative cost from h is `cbar[h, k]` = mean of `cost[h, s]` over
   the members of k, used in place of `cost[h, s]` for any s in k. The decision variables stay `x[h, s]`.
 - Grade a clustering by (a) mean and 90th-percentile absolute error of `cbar[h, k]` against `cost[h, s]` over all hatchery and
@@ -88,7 +90,7 @@ clusters), and update `CLAUDE.md` (Agreed simplifications) only after Nate agree
 
 ![The options](../outputs/figures/method_comparison/options_overview.png)
 
-Regenerate: `python scripts/16_compare_methods_map.py` (needs scripts 12, 13, 15 run first).
+Regenerate: `python scripts/figures/16_compare_methods_map.py` (needs scripts 12, 13, 15 run first).
 
 ## The two families that matter
 

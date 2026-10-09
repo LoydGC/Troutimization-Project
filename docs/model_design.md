@@ -1,8 +1,12 @@
 # Model design
 
 The optimization model: objectives, constraints, assumptions and open questions (started 2026-09-26).
-Environmental background and citations are in `docs/env_research.md`. The data pipeline plan is in `PROMPTS.md`.
+Environmental background and citations are in `docs/env_research.md`. The data pipeline plan is in `docs/archive/PROMPTS.md`.
 Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions.md`.
+
+**Status:** `docs/model_formulation.md` is the model as built and `scripts/optimization.py` is the final word. This file records why each
+choice was made and what was considered; where the two differ, the formulation wins. Last brought in line with the code 2026-10-09 (the
+transport objective counts truck trips, not fish-miles).
 
 ## Framing: formula vs optimization
 - **PFBC allocates by formula, not optimization.**
@@ -51,8 +55,9 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   depends on the travel curve (see Angler benefit).
 
 ## Model shape
-- **Decision:** `x[h,s]` = adult trout per year from PFBC hatchery `h` to destination `s`. Add a binary
-  `y[s]` (section stocked or not) if we use the minimum-stocking rule.
+- **Decision:** `x[h,s]` = adult trout per year from PFBC hatchery `h` to destination `s`. Supporting variables: `y[s]` (section stocked),
+  `zz[s]` (section gets more than 600 fish, so a second stocking), `a[h,s]` (round-1 fish) and `τ[r,h,g]` (truck trips by round, hatchery and
+  cluster). `model_formulation.md` lists them all.
 - **Species** stay out of the transport part. Each section keeps its historical species mix (shares from
   2024–26), except that brook trout are never stocked over wild brook trout. A per-species model is an upgrade.
   Wild brook presence is known only for Class A, and none of the stocked Class A sections is brook water, so
@@ -85,6 +90,10 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
 - **Total fish:** fixed at the baseline total (same fish, better placement), or relaxed as a scenario. The model
   uses T = Σ supply = 2,606,465, so every hatchery ships its full supply; the 2026 count is 2,606,468 (rounding in
   the supply table).
+- **Stockings and trips** (decision 2026-10-04; `model_formulation.md` § C3b and Transit): a section with up to 600 fish (twice PFBC's
+  300-fish minimum per stocking) is stocked once; above that it gets `n_s` stockings (3 if demand is at least 15,000 angler-days or it is
+  High-Yield-like, else 2, restating Guidelines Table 44). A fraction `p = 0.55` goes out preseason (round 1) and the rest is split over the
+  in-season rounds. Trucks carry up to 3,500 fish, and cost is counted in trips (see Transport cost).
 - **Density bound (`cap_fish`, decision 2026-09-27; replaced the "river cap" the same day):**
   `x_s ≤ cap_s = max(cap_rate_s × length_mi_s × top_width_s, 300)`. The rate depends on wild biomass, width
   and access, never population; `cap_rate` is the higher of `access_rate` and `program_rate` (both below).
@@ -196,9 +205,8 @@ Scenarios, sensitivity runs and extensions are in `docs/scenarios_and_extensions
   low-use waters (34% support).
   - **Change limit, built 2026-10-04 as an option** (`scripts/optimization.py --variants`), not yet decided:
     `none`; `band` (every section within `change_limit_lower`–`change_limit_upper` × today, 0.5–2×, so no
-    section closes and the model is an LP); `close_or_band` (a section closes or stays in the band). The first
-    run reports all three: the limit costs little benefit (+13.4% over PFBC's plan with none, +11.7% close or
-    band, +11.3% band).
+    section closes and the model is an LP); `close_or_band` (a section closes or stays in the band). The default run reports `none` and `close_or_band`: the limit costs little benefit (+13.3% over PFBC's plan with none, +11.6% close
+    or band; `--variants band` adds the band-only run).
 - **Wild-trout lever (scenario):** `Σ_wild x_s ≤ (1−ρ)·Σ_wild baseline_s`, with ρ ∈ {0, .25, .5, 1}.
 
 ## Angler benefit
@@ -371,7 +379,7 @@ the rest are from the built tables. Values no source gives are in `data/processe
   the targets at all. The two survey facts conflict for remote waters, so the blend is the honest merge. The
   ratio of preference draw to proximity draw is kept as a **destination index** for the report: about 1× =
   popular because many people live nearby (Tulpehocken 1.1, Yellow Breeches 1.3; median 1.5), 6–10× = a true
-  destination (Pine Creek 6.6, Kettle Creek 10.5) (`demand.destination_index`, `figure_ideas.md`).
+  destination (Pine Creek 6.6, Kettle Creek 10.5) (`demand.destination_index`, `archive/figure_ideas.md`).
 - **Access is in the cap, not in demand** (decision 2026-09-27; reconfirmed 2026-10-04: access weighting is a
   sensitivity only and stays out of the formulation, because no data backs a number). PFBC's access rating
   (`use_potential`, "recreational use potential") is mostly ownership: High = all public, or 100% open and at
@@ -402,11 +410,17 @@ the rest are from the built tables. Values no source gives are in `data/processe
   question.
 
 ## Transport cost
-- **Cost per fish:** `cost[h,s] = 2 × road_mi × cost_per_truck_mile / fish_per_load`, where `road_mi` is the
-  average over the section's cluster (next bullet).
+- **The model counts truck trips** (decision 2026-10-04; `model_formulation.md` § Objectives 2 and Transit is the as-built statement):
+  `C = Σ_r Σ_h Σ_g 2 × miles[h,g] × t_cost × τ[r,h,g]`, where `τ` is the number of truck trips from hatchery `h` to cluster `g` in stocking
+  round `r` (1 = preseason, 2 and 3 = in-season), `t_cost` = $1.90 per truck-mile and each trip carries at most `t_max` = 3,500 fish (PFBC
+  trucks carry up to 3,500, `transport_research.md` § 2; `truck_capacity` in `parameters.csv`). Sections in the same cluster and round
+  share trucks, a costing convention and not a real route. `τ` is continuous in the default run (so the model's cost is a lower bound and
+  solves in seconds); every reported plan is rescored with whole trips, each (round, hatchery, cluster) rounded up.
+- **Per-fish cost, kept as a sensitivity:** `cost[h,s] = 2 × road_mi × cost_per_truck_mile / fish_per_load`, with `fish_per_load` = 2,500
+  (an effective average that already includes part-full trucks, so it isn't used inside a round-up). It is still built
+  (`cost_matrix.cost_per_fish`) and gives the linear baseline cost `C_linear` in `runs.csv`.
   - Central values from `docs/transport_research.md`: $1.90/truck-mile and 2,500 fish/load, i.e. about
     $0.0015 per fish per one-way mile (range $0.0007–0.0041). A 50-mile haul is about $0.08/fish.
-  - Don't multiply by stockings per year: one truckload is split across sections.
   - Transit mortality is a flat ~1% (0–2%), or left out.
   - Truck capital is a fixed cost, left out of the per-mile cost; "+$1/mi" is a sensitivity.
 - **Trucking is small in dollars:** about 4–7% of PFBC's cost per stocked trout. Hatchery output is the
@@ -417,28 +431,33 @@ the rest are from the built tables. Values no source gives are in `data/processe
 - **Clusters set the haul** (decision 2026-10-04; Gavin's approach, `clustering_options.md`). A cluster is a
   group of sections that cost about the same to reach from every hatchery. Each section is costed at its
   cluster's mean road miles from h (`cluster_hatchery_distance.avg_road_mi`, unweighted over members; cost is
-  linear in miles, so averaging miles averages cost). A cluster is a cost, not a trip: nothing is routed, and
-  the model still chooses `x[h, s]` per section, so one cluster can draw on several hatcheries.
+  linear in miles, so averaging miles averages cost). Nothing is routed: the model still chooses `x[h, s]` per
+  section, so one cluster can draw on several hatcheries, and trips are counted per cluster and round.
   - First run (decision 2026-10-04): Gavin's k-medoids clusters on road miles, best silhouette
     (`kmedoids_best_silhouette`, 310; the cluster average is off each member's own miles by 2.2% on Gavin's
     measure). They are built from geography only, so they carry none of PFBC's hatchery choices.
     Sensitivity: Nate's schedule clusters (`nate_schedule`, 351; 3.0%), Gavin's hierarchical clusters (309;
     2.2%) and no clustering (each section's own road miles). The clusterings are interchangeable labels, so a sensitivity swaps the label and reruns.
   - The baseline is costed with the same cluster miles, so it and the optimized plan are priced alike.
-- **Calibration check** (`logs/20_transport_cost.log`): PFBC's scheduled 2026 plan implies 185,000 stream
+- **Truck-capacity sensitivity** (`scripts/37_truck_capacity_sensitivity.py`, figure `scripts/figures/38_truck_capacity_figure.py`):
+  re-solves at other `t_max` values, scoring PFBC's plan at the same capacity.
+- **Calibration check** (`logs/20_transport_cost.log`): on the per-fish basis, PFBC's scheduled 2026 plan implies 185,000 stream
   truck-miles at 2,500 fish per load, against ~300,000 reported for all trips (unverified, and it includes
   lakes). Matching it would take ~1,540 fish per load, the low end of `fish_per_load`'s range.
 - **Baseline assignment:** PFBC's schedule names the hatchery for every 2026 event
   (`section_schedule.primary_hatchery`; 49 sections get fish from two). Built (script 20, `baseline_flows`):
   each section's 2026 fish go to its scheduled hatcheries, split by species over the events
-  (`stocking_events.alloc_fish`); loads match each hatchery's supply to within 1.2 fish. Baseline cost:
-  **$351.5k/yr** (185,000 truck-miles, mean haul 89 mi). Nearest hatchery is the sensitivity: $270.5k, but
-  it isn't supply-feasible (Tylersville would ship 1.69× its supply), and only 447 of 1,022 sections (42% of
-  fish) are served by their nearest hatchery today. Still to confirm with Gavin. The nearest-hatchery version understates today's cost: in a 3-county sample only 10 of 54
-  sections were served by their nearest hatchery. The model still chooses its own assignment.
-- **Simplification to state in the report:** real trucks make multi-stop routes. We model direct
-  shipments, a transportation problem, not vehicle routing.
-- Truck cost per mile and fish per load go in `parameters.csv` with source or assumption and a low/high range.
+  (`stocking_events.alloc_fish`); loads match each hatchery's supply to within 1.2 fish. Baseline cost scored
+  with whole trips: **$446.1k/yr** (1,328 trips; `runs.csv`), the figure the optimized plans are compared with. On
+  the per-fish basis it is $351.5k (185,000 truck-miles, mean haul 89 mi). Nearest hatchery is the sensitivity
+  ($270.5k per-fish), but it isn't supply-feasible (Tylersville would ship 1.69× its supply), and only 447 of 1,022
+  sections (42% of fish) are served by their nearest hatchery today. The nearest-hatchery version understates today's
+  cost: in a 3-county sample only 10 of 54 sections were served by their nearest hatchery. The model still chooses
+  its own assignment.
+- **Simplification to state in the report:** real trucks make multi-stop routes. We count trips per cluster and
+  round, a transportation problem with trip counting, not vehicle routing.
+- Truck cost per mile, truck capacity, fish per load, the preseason share and the 600-fish stocking rule go in `parameters.csv` with
+  source or assumption and a low/high range.
 
 ## Wild-trout impact (third objective)
 - **Its own goal:** minimize `Impact = Σ w_s · x_s`, the stocked fish on wild-trout water weighted by how
@@ -470,8 +489,9 @@ the rest are from the built tables. Values no source gives are in `data/processe
 - **Score versions to explore:** each is a different definition of the goal, and all are reported in
   plain units.
   1. **Simple (sensitivity):** fish stocked on any wild-trout water. `w_s` = 1 if `nat_repro_flag` or biomass
-     B–D, else 0 (`impact_simple`). Unit: "fish on wild-trout water". The first run (2026-10-04) used it.
-  2. **Weighted (not built):** `w_s` = biomass weight (B=3, C=2, D=1, E=0), +1 if natural reproduction, +2 if
+     B–D, else 0 (`impact_simple`). Unit: "fish on wild-trout water" (`--impact simple`). The first run (2026-10-04) used it; the main run now uses the
+     biomass-weighted version above.
+  2. **Additive weights (not built):** `w_s` = biomass weight (B=3, C=2, D=1, E=0), +1 if natural reproduction, +2 if
      wild brook trout, and optionally +1 if thermally marginal (upgrade: EcoSHEDS max 30-day mean ≥ 21 °C).
      `wild_brook_present` is NA on 1,005 of the 1,022 candidates, so the brook term can't be used yet.
   3. **Partial overlap (sensitivity, `impact_overlap`):** scale `w_s` by the share of the section on natural-reproduction water
@@ -561,16 +581,13 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
 - Hatchery supply is scaled to the stream total, ~83% of PFBC's adult trout (`docs/known_gaps.md`).
 
 ## Report hooks
-- **First run (2026-10-04; `scripts/optimization.py`, `outputs/tables/optimization/runs.csv`,
-  `outputs/figures/optimization/tradeoff_curves.png`; binary impact, before the formulation review, so
-  superseded once the model is rerun with the weighted impact).** PFBC's 2026 plan scores 3.22M angler-days with a catch,
-  $351.5k/yr and 1.45M fish on wild-trout water. With no change limit, the same fish placed better give
-  +13.4% benefit (3.65M) at 2.3% less cost and 2.7% less impact, so PFBC's plan is dominated on all three goals.
-  PFBC's own benefit could cost 31% less to truck ($242.5k) or put 54% fewer fish on wild-trout water. With the
-  close-or-band change limit: +11.7%, 26% and 47%. The gain comes from evening out fish per angler-day
-  (p10–p90 0.15–1.21 today, 0.34–0.43 in the plan): fish move to busy water near people (Pennypack Creek,
-  Elk Creek in Erie, Yellow Breeches) and off sections stocked far above their use. High-access water loses
-  ~20% of its fish, which depends on access being left out of demand (Angler benefit § Access).
+- **Main results (`scripts/optimization.py`; `outputs/tables/optimization/runs.csv`,
+  `outputs/figures/optimization/tradeoff_curves.png`; weighted impact, trip-counted cost scored with whole trips).** PFBC's 2026 plan
+  scores 3.22M angler-days with a catch, $446.1k/yr in truck costs (1,328 trips) and a wild-trout impact of 2.27M. With no change limit,
+  the same fish placed better give +13.3% benefit (3.65M) at 7.1% less cost and no more impact, so PFBC's plan is dominated on all three
+  goals. PFBC's own benefit could cost 35% less to truck ($290.7k) or carry 73% less wild-trout impact (0.62M). With the
+  close-or-band change limit: +11.6%, 32% and 68%. The gain comes from evening out fish per angler-day (p10–p90 0.15–1.21 today,
+  0.34–0.43 in the plan): fish move to busy water near people and off sections stocked far above their use.
 - PFBC's 2025–29 trout plan (Obj. 9.1) says allocation rates "need to be reviewed."
 - The survey found 80% support extra stocking on high-use waters.
 - 79% of stocked-trout anglers say fishing near home is important (p95), which supports proximity demand.
@@ -590,9 +607,9 @@ null counts as 0, overlap by river miles, length choice) are in `docs/data_metho
   rebuild; Angler benefit § Preference): keep its full preference share, as for the Youghiogheny, or review it?
   It keeps the full share until decided.
 - Transport cost: charge each section for the visit's detour, on top of the hatchery → section haul
-  (team discussion 2026-09-27)? Still undecided; the first run leaves it out and uses the cluster-average haul
-  only (decision 2026-10-04, Transport cost). Two versions are built (`section_schedule`, `clusters`,
-  2026-09-28):
+  (team discussion 2026-09-27)? **Settled 2026-10-04: no detour charge.** The model uses the cluster-average haul and counts trips
+  (Transport cost). The versions explored are kept below for the record and are built in `section_schedule` and `clusters`
+  (2026-09-28):
   - **Geographic (the earlier preference):** detour_s = 2 × `detour_nn_mi` (nearest stocked section, road
     miles) × 2 visits × $1.90/truck-mile, added as detour_s·y_s.
   - **Run clusters (proposed):** sections PFBC stocks on the same runs form a cluster; `detour_mi` is the

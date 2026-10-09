@@ -2,16 +2,16 @@
 
 Reads x[h, s] from the model's saved plans (outputs/tables/optimization/flows.parquet, written by scripts/optimization.py; one run_id per plan).
 Default plan = "none|dominance": the best plan that is no worse than PFBC's 2026 plan on transport cost and wild-trout impact (the "more benefit" way to
-beat PFBC; no change limit). Same colour scale, map frame and style as scripts/21_hatchery_heat_maps.py (which draws PFBC's 2026 schedule), so the two
+beat PFBC; no change limit). Same colour scale, map frame and style as scripts/figures/21_hatchery_heat_maps.py (which draws PFBC's 2026 schedule), so the two
 can be set side by side. No title on purpose.
 
 Checks asserted: the hatchery ships exactly its 2026 supply, and every section it supplies is one of the 1,022 candidates.
 
 Inputs : outputs/tables/optimization/{flows.parquet,runs.csv}, data/processed/{hatcheries.parquet,sections.parquet,pa_trout.gpkg},
          data/raw/pa_hatcheries.gpkg, data/raw/pa_boundary.gpkg
-Outputs: outputs/figures/allocation_problem/<hatchery>_model_plan_heat_map.png   logs/34_model_plan_heat_map.log
+Outputs: outputs/figures/<hatchery>_results/1_model_plan_heat_map.png   logs/34_model_plan_heat_map.log
 
-    python scripts/34_model_plan_heat_map.py [hatchery] [run_id]       (defaults: Bellefonte, none|dominance)
+    python scripts/figures/34_model_plan_heat_map.py [hatchery] [run_id]       (defaults: Bellefonte, none|dominance)
 """
 # %% Setup
 from __future__ import annotations
@@ -29,30 +29,22 @@ import pandas as pd
 from matplotlib.cm import ScalarMappable
 from matplotlib.colors import LinearSegmentedColormap, PowerNorm
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 NAME = sys.argv[1] if len(sys.argv) > 1 else "Bellefonte"
 RUN = sys.argv[2] if len(sys.argv) > 2 else "none|dominance"
 OPT = ROOT / "outputs" / "tables" / "optimization"
-FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
+FIG_DIR = ROOT / "outputs" / "figures" / f"{NAME.lower().replace(' ', '_')}_results"
 SURFACE, INK, INK2 = "#ffffff", "#0b0b0b", "#52514e"
 BLUE, HATCH, HATCH_EDGE, OTHER = "#2a78d6", "#f5ae00", "#2b2100", "#cdccc5"
 setup_logging("34_model_plan_heat_map")
 log = logging.getLogger("34_model_plan_heat_map")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+register_open_sans()
 
 # %% Load and check
 flows = pd.read_parquet(OPT / "flows.parquet")
@@ -110,6 +102,6 @@ pan.plot([0.0, 0.07], [0.47, 0.47], color=OTHER, lw=2.0, solid_capstyle="butt")
 pan.text(0.09, 0.47, f"Sections {NAME} does not supply", fontsize=10.5, color=INK2, va="center")
 pan.scatter([0.035], [0.395], s=260, c=HATCH, edgecolors=HATCH_EDGE, linewidths=1.4)
 pan.text(0.09, 0.395, f"{NAME} hatchery", fontsize=10.5, color=INK2, va="center")
-out = FIG_DIR / f"{NAME.lower().replace(' ', '_')}_model_plan_heat_map.png"
+out = FIG_DIR / "1_model_plan_heat_map.png"
 fig.savefig(out, dpi=300, facecolor=SURFACE)
 log.info("wrote %s", out)

@@ -7,9 +7,9 @@ hatchery with the larger share (4 sections are split between hatcheries in the p
 Reads outputs/tables/optimization/flows.parquet (scripts/optimization.py). No title on purpose.
 
 Inputs : outputs/tables/optimization/flows.parquet, data/processed/{hatcheries,sections}.parquet, pa_trout.gpkg, data/raw/pa_hatcheries.gpkg, pa_boundary.gpkg
-Outputs: outputs/figures/allocation_problem/<hatchery>_who_replaced_map.png   logs/36_who_replaced_hatchery_map.log
+Outputs: outputs/figures/<hatchery>_results/3_who_replaced_<hatchery>.png   logs/36_who_replaced_hatchery_map.log
 
-    python scripts/36_who_replaced_hatchery_map.py [hatchery] [run_id]       (defaults: Bellefonte, none|dominance)
+    python scripts/figures/36_who_replaced_hatchery_map.py [hatchery] [run_id]       (defaults: Bellefonte, none|dominance)
 """
 # %% Setup
 from __future__ import annotations
@@ -25,11 +25,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 NAME = sys.argv[1] if len(sys.argv) > 1 else "Bellefonte"
 RUN = sys.argv[2] if len(sys.argv) > 2 else "none|dominance"
-FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
+FIG_DIR = ROOT / "outputs" / "figures" / f"{NAME.lower().replace(' ', '_')}_results"
 SURFACE, INK, INK2, OTHER = "#ffffff", "#0b0b0b", "#52514e", "#dddcd6"
 COLOR = {"Bellefonte": "#f5ae00", "Benner Spring": "#2a78d6", "Tylersville": "#1baf7a", "Oswayo": "#a6192e", "Pleasant Gap": "#7b4fb0",
          "Tionesta": "#d81b7c", "Reynoldsdale": "#56b4e9", "Corry": "#8c9a1b", "Huntsdale": "#8a5d00"}
@@ -37,18 +40,7 @@ setup_logging("36_who_replaced_hatchery_map")
 log = logging.getLogger("36_who_replaced_hatchery_map")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+register_open_sans()
 plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
 
 # %% Who serves the old sections
@@ -108,6 +100,6 @@ for i, (h, n) in enumerate(order.items()):
     pan.text(0.10, y, h + (" (stays)" if h == NAME else ""), fontsize=12.5, fontweight="bold" if h == NAME else "normal", va="center")
     pan.text(0.98, y, f"{n}", fontsize=13, fontweight="bold", color=INK, ha="right", va="center")
 pan.plot([0, 1], [0.78 - len(order) * 0.082 + 0.04] * 2, color="#e6e5e0", lw=1.2)
-out = FIG_DIR / f"{NAME.lower().replace(' ', '_')}_who_replaced_map.png"
+out = FIG_DIR / f"3_who_replaced_{NAME.lower().replace(' ', '_')}.png"
 fig.savefig(out, dpi=300, facecolor=SURFACE)
 log.info("wrote %s", out)

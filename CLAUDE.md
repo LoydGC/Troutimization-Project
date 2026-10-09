@@ -133,7 +133,7 @@ don't smooth, impute, or "fix" it.
   Extension: turn on the other 4 (`docs/scenarios_and_extensions.md`). Co-op nurseries (~160) and fingerlings
   are fixed, not decisions; Gavin's `data/raw/Coop_nurseries.geojson` is the co-op reference.
   `trout_hatcheries.gpkg` (built on the `TROUT` flag) and the `hatcheries` layer in `pa_trout.gpkg` are
-  placeholders until Prompt 7 builds `hatcheries` from the official layer.
+  early placeholders; the model's supply nodes are the `hatcheries` table built from the official layer (script 20).
 
 ## Hard rules
 1. Official/public sources only. **Never request anything from trout.app** (robots.txt disallows it).
@@ -156,34 +156,39 @@ don't smooth, impute, or "fix" it.
    Reproduction river miles are shorter than their own line, so 18 sections are missed (`docs/known_gaps.md`).
 
 ## Stack
-Python 3.11+, venv. pandas, geopandas, shapely, pyproj, requests, requests-cache, beautifulsoup4, lxml, tqdm,
-pyarrow, duckdb, pdfplumber, pynhd (optional NHDPlus upgrade). Solver: gurobipy (academic license). Tests: pytest.
+Python 3.11+, venv. pandas, geopandas, shapely, pyproj, scikit-learn, requests, requests-cache, beautifulsoup4,
+lxml, pyarrow, openpyxl, pdfplumber, matplotlib. Solver: gurobipy (academic license). Tests: pytest. `requirements.txt`
+lists exactly what the scripts import.
 Road routing lives in Gavin's notebook. CRS: EPSG:26918 for distances/lengths/areas; store in EPSG:4326.
 
 ## Layout
 ```
-data/raw/<source>/<date>/  untouched downloads. GITIGNORED except manifest.csv, which is enough to re-fetch.
+data/raw/<source>/<date>/  untouched downloads. GITIGNORED except manifest.csv (enough to re-fetch) and four small partner files
+                           (pa_boundary.gpkg, pa_hatcheries.gpkg, pa_hatchery_production.csv, Coop_nurseries.geojson) that the
+                           scripts read, so a clone runs the map scripts.
 data/interim/              scratch parsed tables (gitignored, regenerable)
 data/processed/            model-ready tables (parquet + csv), COMMITTED. Keep each file < 50 MB.
-                           Exception: pa_trout.gpkg is GITIGNORED (16 MB; rebuilt by scripts 01-02).
+                           pa_trout.gpkg (16 MB, all geometry) is committed too; scripts 01-02 rebuild it.
                            angler_survey/: survey tables, csv only (script 00; column notes in its README).
 data/references/           reference PDFs and trout.app snapshots. GITIGNORED (local only); where each came
                            from is in docs/source_inventory.md.
-scripts/                   numbered pipeline scripts, each re-runnable end to end
+scripts/                   numbered pipeline scripts, each re-runnable end to end, plus optimization.py (the model)
+scripts/figures/           figure-only scripts (slide and appendix visuals); they keep their original numbers
 tests/                     pytest tests for scripts/, and test_processed.py (facts data/processed must match)
 notebooks/                 01_data_prep (EDA), travel_arcs (maps): read data/processed only. The model and its
-                           sensitivity runs are scripts: scripts/optimization.py, scripts/sensitivities.py
+                           sensitivity runs are scripts: scripts/optimization.py, scripts/37_truck_capacity_sensitivity.py
 docs/                      source_inventory, data_dictionary, data_methods (data handling + assumptions),
                            model_design (model + assumptions + open questions), scenarios_and_extensions,
-                           known_gaps, figure_ideas (figures to make for the report); env_research,
-                           transport_research (research snapshots, not maintained)
+                           known_gaps; env_research, transport_research (research snapshots, not maintained)
+docs/archive/              working notes kept for the record, not maintained: PROMPTS (the phase plan),
+                           audit_findings, cluster_tracker, figure_ideas, dashboard_concept + mockups
 logs/                      run logs and QA reports
 outputs/                   figures and tables for the report
 ```
 
 **File formats.** Tables are parquet plus a csv copy. Geometry lives only in `data/processed/pa_trout.gpkg`
-(gitignored, rebuilt by scripts 01-02; EPSG:4326; layers sections, hatcheries, class_a, nat_repro,
-wilderness). Join everything on `section_id`. GeoJSON is for ad-hoc export only (e.g. folium maps). The
+(committed, rebuilt by scripts 01-02; EPSG:4326; layers sections, hatcheries, class_a, nat_repro,
+wilderness). Join everything on `section_id`. GeoJSON is for ad-hoc export only (e.g. web maps). The
 gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from the full-resolution raw data.
 
 ## Known facts
@@ -237,7 +242,7 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
   2026 stocking: 150 brown + 1,750 rainbow (3197_2: 150 brown + 850 rainbow; 3197_3: 900 rainbow).
 
 ## Workflow expectations
-- One phase (one PROMPTS.md prompt) at a time. At the end of each phase:
+- One phase at a time (the original phase plan is `docs/archive/PROMPTS.md`). At the end of each phase:
   1. Update the checkpoint files below that the phase touched.
   2. Run pytest. Show 5 sample rows per new table, row counts, and null rates for key columns.
   3. Commit with a descriptive message, then stop for review.
@@ -247,11 +252,9 @@ gpkg's wild-trout context layers are simplified to 5 m; compute overlaps from th
 | `docs/data_dictionary.md` | Any column in `data/processed/` is added or changed |
 | `docs/data_methods.md` | Source data is modified or a data-handling assumption is made (PFBC license: credit unaltered data, describe every change) |
 | `docs/scenarios_and_extensions.md` | A new scenario, sensitivity or extension idea comes up (additional analysis only) |
-| `docs/figure_ideas.md` | A figure or report-table idea comes up |
 | `docs/known_gaps.md` | Missing data or a source problem is found |
 | `docs/model_design.md` | The model formulation changes, an assumption is decided (flag it if no scenario tests it), or an open question comes up |
 | `data/processed/parameters.csv` | A value no source gives directly is used (rule 7) |
 | `docs/source_inventory.md` | A new endpoint is used, or a URL moved or was wrong (rule 5) |
-| `PROMPTS.md` | The prompt is done (mark [DONE date] and update the Status line), or the plan changed |
 | `CLAUDE.md` | A team decision is made (Agreed simplifications) or a fact is verified (Known facts) |
 | `tests/test_processed.py` | A documented count changes on purpose (also fix the doc its failing assert names) |

@@ -2,26 +2,23 @@
 numpy
 pandas
 scipy
+scikit-learn
 pyarrow
-duckdb
-openpyxl
+openpyxl          # pandas.read_excel: PFBC co-op stocking spreadsheet (scripts 03, coop_inputs)
 # geo
 geopandas
 shapely
 pyproj
 pyogrio
-pynhd
 # fetching / parsing
 requests
 requests-cache
 beautifulsoup4
-lxml
+lxml              # parser for BeautifulSoup in script 09
 pdfplumber
-tqdm
 # viz / notebooks
 matplotlib
-seaborn
-folium
+fonttools         # cuts Open Sans weights for the figure scripts (register_open_sans in scripts/common.py)
 jupyter
 # optimization
 gurobipy

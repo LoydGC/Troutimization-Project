@@ -1,7 +1,7 @@
 # Cluster journey: running tracker (Gavin)
 
 The story of how we got to the cluster options, kept in order so it can be presented. Newest entry goes at the bottom.
-Current state and definitions: [`clustering_options.md`](clustering_options.md). The hero picture for a slide is
+Current state and definitions: [`clustering_options.md`](../clustering_options.md). The hero picture for a slide is
 `outputs/figures/method_comparison/options_overview.png` (regenerate: `python scripts/16_compare_methods_map.py`).
 
 **To add an entry:** copy the template at the bottom, fill in the four lines (tried / saw / learned / decided), link one picture.

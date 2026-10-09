@@ -6,12 +6,19 @@ __pycache__/
 .env
 .DS_Store
 # data: raw downloads stay local (manifest.csv is enough to re-fetch); processed tables are committed.
-# Files the partner committed under data/raw/ before this rule stay tracked until we agree to untrack them.
 data/raw/*
 !data/raw/manifest.csv
+# four small partner files (~300 KB) that scripts 02, 03, 09, 11 and every map script read; tracked so a clone can run them
+!data/raw/pa_boundary.gpkg
+!data/raw/pa_hatcheries.gpkg
+!data/raw/pa_hatchery_production.csv
+!data/raw/Coop_nurseries.geojson
 data/interim/*
 !data/**/.gitkeep
 # reference documents (PDFs, news articles, trout.app snapshots): local only. Sources: docs/source_inventory.md.
 data/references/*
-# 16 MB and rewritten on every build: regenerate with scripts/01 and 02
-data/processed/pa_trout.gpkg
+# pa_trout.gpkg (16 MB, all geometry) is tracked so the map scripts and notebooks run from a clone
+# integer-trip truck-capacity runs (script 37, integer mode): local only, the fractional run is the reported one
+*_integer.log
+*_integer_stdout.txt
+outputs/tables/sensitivity_truck_capacity/*_integer.*

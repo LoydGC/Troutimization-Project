@@ -9,9 +9,9 @@ wild-trout impact). Both read from outputs/tables/optimization/flows.parquet. No
 Checks asserted: both plans ship exactly the hatchery's 2026 supply.
 
 Inputs : outputs/tables/optimization/flows.parquet, data/processed/{hatcheries,sections}.parquet, pa_trout.gpkg, data/raw/pa_hatcheries.gpkg, pa_boundary.gpkg
-Outputs: outputs/figures/allocation_problem/<hatchery>_model_vs_pfbc_map.png   logs/35_model_vs_pfbc_overlay_map.log
+Outputs: outputs/figures/<hatchery>_results/2_model_vs_pfbc_overlay.png   logs/35_model_vs_pfbc_overlay_map.log
 
-    python scripts/35_model_vs_pfbc_overlay_map.py [hatchery] [run_id]       (defaults: Bellefonte, none|dominance)
+    python scripts/figures/35_model_vs_pfbc_overlay_map.py [hatchery] [run_id]       (defaults: Bellefonte, none|dominance)
 """
 # %% Setup
 from __future__ import annotations
@@ -28,11 +28,14 @@ import numpy as np
 import pandas as pd
 from matplotlib.lines import Line2D
 
-from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
+from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging, register_open_sans
 
 NAME = sys.argv[1] if len(sys.argv) > 1 else "Bellefonte"
 RUN = sys.argv[2] if len(sys.argv) > 2 else "none|dominance"
-FIG_DIR = ROOT / "outputs" / "figures" / "allocation_problem"
+FIG_DIR = ROOT / "outputs" / "figures" / f"{NAME.lower().replace(' ', '_')}_results"
 SURFACE, INK, INK2 = "#ffffff", "#0b0b0b", "#52514e"
 BOTH, OLD, NEW, OTHER = "#7b4fb0", "#a6192e", "#2a78d6", "#d9d8d2"
 HATCH, HATCH_EDGE = "#f5ae00", "#2b2100"
@@ -40,18 +43,7 @@ setup_logging("35_model_vs_pfbc_overlay_map")
 log = logging.getLogger("35_model_vs_pfbc_overlay_map")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
-FONT_DIR = ROOT / "data" / "references" / "fonts"
-if (FONT_DIR / "OpenSans.ttf").exists():
-    from fontTools.ttLib import TTFont
-    from fontTools.varLib import instancer
-    from matplotlib import font_manager
-    for style, wght in (("Regular", 400), ("Bold", 700)):
-        cut = FONT_DIR / f"OpenSans-{style}.ttf"
-        if not cut.exists():
-            instancer.instantiateVariableFont(TTFont(FONT_DIR / "OpenSans.ttf"), {"wght": wght, "wdth": 100}, updateFontNames=True).save(cut)
-        font_manager.fontManager.addfont(str(cut))
-else:
-    log.warning("data/references/fonts/OpenSans.ttf not found: falling back to DejaVu Sans")
+register_open_sans()
 plt.rcParams.update({"font.family": ["Open Sans", "DejaVu Sans"], "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "text.color": INK})
 
 # %% Load and compare
@@ -111,6 +103,6 @@ for i, (c, lw, t) in enumerate(rows):
     pan.text(0.11, y, t, fontsize=11.5, color=INK, va="center")
 pan.scatter([0.04], [0.66 - 4 * 0.085], s=260, c=HATCH, edgecolors=HATCH_EDGE, linewidths=1.4)
 pan.text(0.11, 0.66 - 4 * 0.085, f"{NAME} hatchery", fontsize=11.5, color=INK, va="center")
-out = FIG_DIR / f"{NAME.lower().replace(' ', '_')}_model_vs_pfbc_map.png"
+out = FIG_DIR / "2_model_vs_pfbc_overlay.png"
 fig.savefig(out, dpi=300, facecolor=SURFACE)
 log.info("wrote %s", out)

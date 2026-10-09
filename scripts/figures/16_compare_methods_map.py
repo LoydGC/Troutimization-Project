@@ -9,7 +9,7 @@ Inputs : data/processed/section_to_section_road_distance.parquet (12), section_s
 Outputs: outputs/figures/method_comparison/single_section_trips.png
          logs/16_compare_methods_map.log
 
-    python scripts/16_compare_methods_map.py
+    python scripts/figures/16_compare_methods_map.py
 """
 # %% Setup
 from __future__ import annotations
@@ -26,6 +26,10 @@ from matplotlib.colors import BoundaryNorm, ListedColormap
 from matplotlib.cm import ScalarMappable
 from sklearn.cluster import DBSCAN
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))   # scripts/, where common.py lives
 from common import PROCESSED_DIR, RAW_DIR, ROOT, setup_logging
 
 FIG_DIR = ROOT / "outputs" / "figures" / "method_comparison"
@@ -173,7 +177,7 @@ fig.text(0.50, 0.11, "* #3 and #5 apply realistic truck-run limits (20 mi wide, 
          "   them, so they are references, not the candidates. Same limits for both, so k-medoids and hierarchical are compared like for like. Where they come\n"
          "   from: the 2026 schedule has 1,015 truck runs; 90% of the 632 runs with 2 or more sections are no wider than 19.9 mi (rounded to 20), and 99% of\n"
          "   all runs have 4 or fewer sections. Borrowed from PFBC's schedule, not a PFBC rule. Also tested and set aside: hierarchical with a width limit\n"
-         "   only (19.9 mi: 234 clusters; 47.5 mi: 74 clusters, averaging error 5.7%). Kept in docs/clustering_options.md and cluster_tracker.md.",
+         "   only (19.9 mi: 234 clusters; 47.5 mi: 74 clusters, averaging error 5.7%). Kept in docs/clustering_options.md and docs/archive/cluster_tracker.md.",
          fontsize=10.5, color=INK2, va="top", linespacing=1.55)
 fig.text(0.012, 0.006, "Retired along the way: a hop limit (a cluster is a representative cost, not a trip), and DBSCAN at 19.9 / 47.5 mi (collapses the whole state into one cluster).",
          fontsize=11, color=INK2, va="bottom")
