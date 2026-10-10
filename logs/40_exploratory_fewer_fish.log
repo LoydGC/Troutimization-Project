@@ -1,0 +1,187 @@
+2026-10-04 22:42:12,073 INFO exploratory_fewer_fish run from commit cdbb0e7 + uncommitted changes to scripts/optimization.py, scripts/exploratory_fewer_fish.py
+2026-10-04 22:42:12,228 INFO inputs: 9 hatcheries (supply 2,606,465), 1022 sections, demand 7,121,847 angler-days (w = 0.5), k = 0.5, impact weighted (impact_weighted)
+2026-10-04 22:42:12,230 INFO PFBC 2026: B 3,220,851, C $446,144, I 2,274,440, fish 2,606,465
+2026-10-04 22:42:12,232 INFO Set parameter WLSAccessID
+2026-10-04 22:42:12,232 INFO Set parameter WLSSecret
+2026-10-04 22:42:12,232 INFO Set parameter LicenseID to value 2865708
+2026-10-04 22:42:12,235 INFO Academic license 2865708 - for non-commercial use only - registered to ne___@andrew.cmu.edu
+2026-10-04 22:42:27,537 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-04 22:42:30,481 INFO A1_min_fish            fish lower bound 2,161,793
+2026-10-04 22:42:30,481 INFO A1_min_fish            fish 2,163,542 (saved 442,923, 17.0%)  B 3,221,498  C $337,046 (model $195,553)  I 1,983,132  gap 0.001  3s
+2026-10-04 22:42:33,612 INFO A1_min_fish_gap0.1pct  fish lower bound 2,161,793
+2026-10-04 22:42:33,612 INFO A1_min_fish_gap0.1pct  fish 2,162,355 (saved 444,110, 17.0%)  B 3,221,490  C $339,950 (model $195,634)  I 1,978,724  gap 0.001  3s
+2026-10-04 22:42:35,818 INFO A2_min_fish_B_only     fish lower bound 2,161,793
+2026-10-04 22:42:35,818 INFO A2_min_fish_B_only     fish 2,162,355 (saved 444,110, 17.0%)  B 3,221,490  C $339,950 (model $195,634)  I 1,978,724  gap 0.001  2s
+2026-10-04 22:42:38,390 INFO B_close_Corry          fish lower bound 2,161,925
+2026-10-04 22:42:38,390 INFO B_close_Corry          fish 2,163,734 (saved 442,731, 17.0%)  B 3,221,507  C $394,155 (model $218,350)  I 1,987,106  gap 0.001  3s
+2026-10-04 22:42:40,562 INFO B_close_Oswayo         fish lower bound 2,161,835
+2026-10-04 22:42:40,562 INFO B_close_Oswayo         fish 2,163,543 (saved 442,922, 17.0%)  B 3,221,500  C $366,534 (model $202,980)  I 1,980,803  gap 0.001  2s
+2026-10-04 22:42:43,122 INFO B_close_Pleasant_Gap   fish lower bound 2,161,801
+2026-10-04 22:42:43,122 INFO B_close_Pleasant_Gap   fish 2,175,745 (saved 430,720, 16.5%)  B 3,221,577  C $332,972 (model $197,943)  I 1,990,331  gap 0.007  3s
+2026-10-04 22:42:45,420 INFO B_close_Benner_Spring  fish lower bound 2,161,800
+2026-10-04 22:42:45,421 INFO B_close_Benner_Spring  fish 2,163,016 (saved 443,449, 17.0%)  B 3,221,502  C $336,215 (model $196,726)  I 1,980,270  gap 0.001  2s
+2026-10-04 22:42:47,229 INFO B_close_Bellefonte     status 3 (infeasible / no solution)  2s
+2026-10-04 22:42:49,578 INFO B_close_Tylersville    fish lower bound 2,161,841
+2026-10-04 22:42:49,578 INFO B_close_Tylersville    fish 2,162,834 (saved 443,631, 17.0%)  B 3,221,496  C $343,266 (model $203,590)  I 1,981,268  gap 0.001  2s
+2026-10-04 22:42:52,053 INFO B_close_Reynoldsdale   fish lower bound 2,161,847
+2026-10-04 22:42:52,053 INFO B_close_Reynoldsdale   fish 2,169,263 (saved 437,202, 16.8%)  B 3,221,516  C $379,468 (model $206,747)  I 1,985,914  gap 0.004  2s
+2026-10-04 22:42:54,055 INFO B_close_Huntsdale      status 3 (infeasible / no solution)  2s
+2026-10-04 22:42:56,722 INFO B_close_Tionesta       fish lower bound 2,161,801
+2026-10-04 22:42:56,723 INFO B_close_Tionesta       fish 2,177,101 (saved 429,364, 16.5%)  B 3,221,544  C $346,661 (model $198,655)  I 1,994,490  gap 0.008  3s
+2026-10-04 22:43:12,272 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-04 22:43:16,980 INFO C1: fewest hatcheries open (model cost) = 6 (Corry, Pleasant Gap, Benner Spring, Bellefonte, Tylersville, Huntsdale)
+2026-10-04 22:43:17,007 INFO closure Corry+Oswayo                             remaining supply 2,117,927 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:17,007 INFO closure Corry+Pleasant Gap                       remaining supply 2,029,816 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:17,007 INFO closure Corry+Benner Spring                      remaining supply 1,967,645 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:17,007 INFO closure Corry+Bellefonte                         remaining supply 1,873,807 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:17,007 INFO closure Corry+Tylersville                        remaining supply 2,028,989 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:19,183 INFO C_close_Corry+Reynoldsdale fish lower bound 2,161,979
+2026-10-04 22:43:19,183 INFO C_close_Corry+Reynoldsdale fish 2,167,274 (saved 439,191, 16.9%)  B 3,221,515  C $414,690 (model $228,613)  I 1,946,963  gap 0.003  2s
+2026-10-04 22:43:19,184 INFO closure Corry+Huntsdale                          remaining supply 1,903,588 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:21,546 INFO C_close_Corry+Tionesta fish lower bound 2,161,936
+2026-10-04 22:43:21,546 INFO C_close_Corry+Tionesta fish 2,179,163 (saved 427,302, 16.4%)  B 3,221,555  C $392,356 (model $222,016)  I 1,985,627  gap 0.008  2s
+2026-10-04 22:43:21,546 INFO closure Oswayo+Pleasant Gap                      remaining supply 2,043,858 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:21,546 INFO closure Oswayo+Benner Spring                     remaining supply 1,981,687 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:21,546 INFO closure Oswayo+Bellefonte                        remaining supply 1,887,849 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:21,546 INFO closure Oswayo+Tylersville                       remaining supply 2,043,031 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:23,646 INFO C_close_Oswayo+Reynoldsdale fish lower bound 2,161,890
+2026-10-04 22:43:23,646 INFO C_close_Oswayo+Reynoldsdale fish 2,163,672 (saved 442,793, 17.0%)  B 3,221,506  C $392,200 (model $212,321)  I 1,981,457  gap 0.001  2s
+2026-10-04 22:43:23,646 INFO closure Oswayo+Huntsdale                         remaining supply 1,917,630 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:25,904 INFO C_close_Oswayo+Tionesta fish lower bound 2,161,844
+2026-10-04 22:43:25,904 INFO C_close_Oswayo+Tionesta fish 2,169,683 (saved 436,782, 16.8%)  B 3,221,538  C $365,472 (model $205,503)  I 1,982,356  gap 0.004  2s
+2026-10-04 22:43:25,905 INFO closure Pleasant Gap+Benner Spring               remaining supply 1,893,576 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:25,905 INFO closure Pleasant Gap+Bellefonte                  remaining supply 1,799,738 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:25,905 INFO closure Pleasant Gap+Tylersville                 remaining supply 1,954,920 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:25,905 INFO closure Pleasant Gap+Reynoldsdale                remaining supply 2,150,466 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:25,905 INFO closure Pleasant Gap+Huntsdale                   remaining supply 1,829,519 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:28,263 INFO C_close_Pleasant_Gap+Tionesta fish lower bound 2,161,808
+2026-10-04 22:43:28,264 INFO C_close_Pleasant_Gap+Tionesta fish 2,167,280 (saved 439,185, 16.8%)  B 3,221,545  C $345,630 (model $199,465)  I 1,966,155  gap 0.003  2s
+2026-10-04 22:43:28,265 INFO closure Benner Spring+Bellefonte                 remaining supply 1,737,567 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:28,265 INFO closure Benner Spring+Tylersville                remaining supply 1,892,749 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:28,265 INFO closure Benner Spring+Reynoldsdale               remaining supply 2,088,295 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:28,265 INFO closure Benner Spring+Huntsdale                  remaining supply 1,767,348 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:30,435 INFO C_close_Benner_Spring+Tionesta fish lower bound 2,161,808
+2026-10-04 22:43:30,435 INFO C_close_Benner_Spring+Tionesta fish 2,163,142 (saved 443,323, 17.0%)  B 3,221,497  C $351,198 (model $198,055)  I 1,978,462  gap 0.001  2s
+2026-10-04 22:43:30,435 INFO closure Bellefonte+Tylersville                   remaining supply 1,798,911 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:30,435 INFO closure Bellefonte+Reynoldsdale                  remaining supply 1,994,457 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:30,436 INFO closure Bellefonte+Huntsdale                     remaining supply 1,673,510 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:30,436 INFO closure Bellefonte+Tionesta                      remaining supply 2,109,840 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:30,436 INFO closure Tylersville+Reynoldsdale                 remaining supply 2,149,639 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:30,436 INFO closure Tylersville+Huntsdale                    remaining supply 1,828,692 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:32,517 INFO C_close_Tylersville+Tionesta fish lower bound 2,161,849
+2026-10-04 22:43:32,517 INFO C_close_Tylersville+Tionesta fish 2,164,799 (saved 441,666, 16.9%)  B 3,221,497  C $349,752 (model $205,354)  I 1,982,140  gap 0.002  2s
+2026-10-04 22:43:32,517 INFO closure Reynoldsdale+Huntsdale                   remaining supply 2,024,238 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,712 INFO C_close_Reynoldsdale+Tionesta fish lower bound 2,161,855
+2026-10-04 22:43:34,713 INFO C_close_Reynoldsdale+Tionesta fish 2,170,103 (saved 436,362, 16.7%)  B 3,221,545  C $377,295 (model $207,725)  I 1,981,297  gap 0.004  2s
+2026-10-04 22:43:34,714 INFO closure Huntsdale+Tionesta                       remaining supply 2,139,621 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Pleasant Gap                remaining supply 1,792,568 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Benner Spring               remaining supply 1,730,397 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Bellefonte                  remaining supply 1,636,559 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Tylersville                 remaining supply 1,791,741 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Reynoldsdale                remaining supply 1,987,287 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Huntsdale                   remaining supply 1,666,340 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Oswayo+Tionesta                    remaining supply 2,102,670 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Pleasant Gap+Benner Spring         remaining supply 1,642,286 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Pleasant Gap+Bellefonte            remaining supply 1,548,448 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Pleasant Gap+Tylersville           remaining supply 1,703,630 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Pleasant Gap+Reynoldsdale          remaining supply 1,899,176 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Pleasant Gap+Huntsdale             remaining supply 1,578,229 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Pleasant Gap+Tionesta              remaining supply 2,014,559 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Benner Spring+Bellefonte           remaining supply 1,486,277 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,714 INFO closure Corry+Benner Spring+Tylersville          remaining supply 1,641,459 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Benner Spring+Reynoldsdale         remaining supply 1,837,005 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Benner Spring+Huntsdale            remaining supply 1,516,058 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Benner Spring+Tionesta             remaining supply 1,952,388 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Bellefonte+Tylersville             remaining supply 1,547,621 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Bellefonte+Reynoldsdale            remaining supply 1,743,167 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Bellefonte+Huntsdale               remaining supply 1,422,220 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Bellefonte+Tionesta                remaining supply 1,858,550 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Tylersville+Reynoldsdale           remaining supply 1,898,349 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Tylersville+Huntsdale              remaining supply 1,577,402 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Tylersville+Tionesta               remaining supply 2,013,732 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:34,715 INFO closure Corry+Reynoldsdale+Huntsdale             remaining supply 1,772,948 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,541 INFO C_close_Corry+Reynoldsdale+Tionesta fish lower bound 2,161,990
+2026-10-04 22:43:36,542 INFO C_close_Corry+Reynoldsdale+Tionesta fish 2,162,832 (saved 443,633, 17.0%)  B 3,221,492  C $422,846 (model $229,214)  I 1,982,729  gap 0.001  2s
+2026-10-04 22:43:36,542 INFO closure Corry+Huntsdale+Tionesta                 remaining supply 1,888,331 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Pleasant Gap+Benner Spring        remaining supply 1,656,328 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Pleasant Gap+Bellefonte           remaining supply 1,562,490 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Pleasant Gap+Tylersville          remaining supply 1,717,672 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Pleasant Gap+Reynoldsdale         remaining supply 1,913,218 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Pleasant Gap+Huntsdale            remaining supply 1,592,271 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Pleasant Gap+Tionesta             remaining supply 2,028,601 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Benner Spring+Bellefonte          remaining supply 1,500,319 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Benner Spring+Tylersville         remaining supply 1,655,501 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Benner Spring+Reynoldsdale        remaining supply 1,851,047 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Benner Spring+Huntsdale           remaining supply 1,530,100 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,542 INFO closure Oswayo+Benner Spring+Tionesta            remaining supply 1,966,430 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Bellefonte+Tylersville            remaining supply 1,561,663 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Bellefonte+Reynoldsdale           remaining supply 1,757,209 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Bellefonte+Huntsdale              remaining supply 1,436,262 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Bellefonte+Tionesta               remaining supply 1,872,592 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Tylersville+Reynoldsdale          remaining supply 1,912,391 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Tylersville+Huntsdale             remaining supply 1,591,444 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Tylersville+Tionesta              remaining supply 2,027,774 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:36,543 INFO closure Oswayo+Reynoldsdale+Huntsdale            remaining supply 1,786,990 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,316 INFO C_close_Oswayo+Reynoldsdale+Tionesta fish lower bound 2,161,898
+2026-10-04 22:43:38,316 INFO C_close_Oswayo+Reynoldsdale+Tionesta fish 2,166,032 (saved 440,433, 16.9%)  B 3,221,505  C $403,005 (model $215,352)  I 1,983,298  gap 0.002  2s
+2026-10-04 22:43:38,316 INFO closure Oswayo+Huntsdale+Tionesta                remaining supply 1,902,373 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,316 INFO closure Pleasant Gap+Benner Spring+Bellefonte    remaining supply 1,412,208 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,316 INFO closure Pleasant Gap+Benner Spring+Tylersville   remaining supply 1,567,390 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,316 INFO closure Pleasant Gap+Benner Spring+Reynoldsdale  remaining supply 1,762,936 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,316 INFO closure Pleasant Gap+Benner Spring+Huntsdale     remaining supply 1,441,989 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,316 INFO closure Pleasant Gap+Benner Spring+Tionesta      remaining supply 1,878,319 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Bellefonte+Tylersville      remaining supply 1,473,552 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Bellefonte+Reynoldsdale     remaining supply 1,669,098 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Bellefonte+Huntsdale        remaining supply 1,348,151 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Bellefonte+Tionesta         remaining supply 1,784,481 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Tylersville+Reynoldsdale    remaining supply 1,824,280 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Tylersville+Huntsdale       remaining supply 1,503,333 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Tylersville+Tionesta        remaining supply 1,939,663 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Reynoldsdale+Huntsdale      remaining supply 1,698,879 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Reynoldsdale+Tionesta       remaining supply 2,135,209 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Pleasant Gap+Huntsdale+Tionesta          remaining supply 1,814,262 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Bellefonte+Tylersville     remaining supply 1,411,381 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Bellefonte+Reynoldsdale    remaining supply 1,606,927 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Bellefonte+Huntsdale       remaining supply 1,285,980 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Bellefonte+Tionesta        remaining supply 1,722,310 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Tylersville+Reynoldsdale   remaining supply 1,762,109 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Tylersville+Huntsdale      remaining supply 1,441,162 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Tylersville+Tionesta       remaining supply 1,877,492 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Reynoldsdale+Huntsdale     remaining supply 1,636,708 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Reynoldsdale+Tionesta      remaining supply 2,073,038 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Benner Spring+Huntsdale+Tionesta         remaining supply 1,752,091 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Bellefonte+Tylersville+Reynoldsdale      remaining supply 1,668,271 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Bellefonte+Tylersville+Huntsdale         remaining supply 1,347,324 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Bellefonte+Tylersville+Tionesta          remaining supply 1,783,654 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Bellefonte+Reynoldsdale+Huntsdale        remaining supply 1,542,870 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Bellefonte+Reynoldsdale+Tionesta         remaining supply 1,979,200 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Bellefonte+Huntsdale+Tionesta            remaining supply 1,658,253 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Tylersville+Reynoldsdale+Huntsdale       remaining supply 1,698,052 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Tylersville+Reynoldsdale+Tionesta        remaining supply 2,134,382 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Tylersville+Huntsdale+Tionesta           remaining supply 1,813,435 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,317 INFO closure Reynoldsdale+Huntsdale+Tionesta          remaining supply 2,008,981 < 2,161,793 fish needed: infeasible
+2026-10-04 22:43:38,358 INFO runs:
+                              run_id  total_fish  fish_saved  fish_saved_pct         B     B_pwl        C  C_model         I  gap            hatcheries_closed
+                            baseline   2606467.9        -2.9             0.0 3220851.3       NaN 446143.5      NaN 2274439.7  NaN                             
+                         A1_min_fish   2163542.2    442922.8            17.0 3221497.6 3220851.3 337046.1 195552.6 1983132.1  0.0                             
+               A1_min_fish_gap0.1pct   2162355.1    444109.9            17.0 3221490.2 3220851.3 339949.9 195634.1 1978723.5  0.0                             
+                  A2_min_fish_B_only   2162355.1    444109.9            17.0 3221490.2 3220851.3 339949.9 195634.1 1978723.5  0.0                             
+                       B_close_Corry   2163733.9    442731.1            17.0 3221506.8 3220851.3 394155.4 218349.6 1987106.5  0.0                        Corry
+                      B_close_Oswayo   2163543.0    442922.0            17.0 3221499.8 3220851.3 366533.8 202979.6 1980803.3  0.0                       Oswayo
+                B_close_Pleasant_Gap   2175745.4    430719.6            16.5 3221576.7 3220851.3 332971.9 197943.0 1990330.5  0.0                 Pleasant Gap
+               B_close_Benner_Spring   2163016.4    443448.6            17.0 3221501.9 3220851.3 336215.5 196725.7 1980270.3  0.0                Benner Spring
+                  B_close_Bellefonte         NaN         NaN             NaN       NaN       NaN      NaN      NaN       NaN  NaN                   Bellefonte
+                 B_close_Tylersville   2162833.7    443631.3            17.0 3221495.8 3220851.3 343266.2 203590.3 1981268.3  0.0                  Tylersville
+                B_close_Reynoldsdale   2169262.6    437202.4            16.8 3221516.3 3220851.3 379468.1 206746.8 1985914.1  0.0                 Reynoldsdale
+                   B_close_Huntsdale         NaN         NaN             NaN       NaN       NaN      NaN      NaN       NaN  NaN                    Huntsdale
+                    B_close_Tionesta   2177100.6    429364.4            16.5 3221544.0 3220851.3 346660.7 198655.2 1994489.8  0.0                     Tionesta
+          C_close_Corry+Reynoldsdale   2167274.1    439190.9            16.9 3221515.1 3220851.3 414690.5 228613.3 1946963.2  0.0           Corry;Reynoldsdale
+              C_close_Corry+Tionesta   2179162.8    427302.2            16.4 3221555.1 3220851.3 392356.2 222015.7 1985627.5  0.0               Corry;Tionesta
+         C_close_Oswayo+Reynoldsdale   2163672.3    442792.7            17.0 3221506.0 3220851.3 392199.7 212321.0 1981457.0  0.0          Oswayo;Reynoldsdale
+             C_close_Oswayo+Tionesta   2169683.0    436782.0            16.8 3221538.4 3220851.3 365471.7 205502.8 1982356.3  0.0              Oswayo;Tionesta
+       C_close_Pleasant_Gap+Tionesta   2167280.0    439185.0            16.8 3221544.5 3220851.3 345629.6 199465.0 1966155.3  0.0        Pleasant Gap;Tionesta
+      C_close_Benner_Spring+Tionesta   2163142.1    443322.9            17.0 3221497.3 3220851.3 351197.6 198055.2 1978462.3  0.0       Benner Spring;Tionesta
+        C_close_Tylersville+Tionesta   2164798.7    441666.3            16.9 3221497.1 3220851.3 349751.6 205353.7 1982140.3  0.0         Tylersville;Tionesta
+       C_close_Reynoldsdale+Tionesta   2170103.1    436361.9            16.7 3221544.7 3220851.3 377294.9 207725.2 1981297.1  0.0        Reynoldsdale;Tionesta
+ C_close_Corry+Reynoldsdale+Tionesta   2162832.4    443632.6            17.0 3221492.2 3220851.3 422846.4 229214.4 1982728.7  0.0  Corry;Reynoldsdale;Tionesta
+C_close_Oswayo+Reynoldsdale+Tionesta   2166032.4    440432.6            16.9 3221504.9 3220851.3 403005.1 215351.8 1983297.8  0.0 Oswayo;Reynoldsdale;Tionesta

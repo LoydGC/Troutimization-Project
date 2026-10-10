@@ -286,12 +286,15 @@ def run_variant(d: dict, variant: str, points: int, base_row: dict, trip_mode: s
     for name, order in [("max_B", [("B", GRB.MAXIMIZE), ("C", GRB.MINIMIZE), ("I", GRB.MINIMIZE)]),
                         ("min_C", [("C", GRB.MINIMIZE), ("B", GRB.MAXIMIZE), ("I", GRB.MINIMIZE)]),
                         ("min_I", [("I", GRB.MINIMIZE), ("B", GRB.MAXIMIZE), ("C", GRB.MINIMIZE)])]:
-        pay[name] = record(f"{variant}|payoff|{name}", "payoff", sm.lexicographic(order))
+        r = sm.lexicographic(order)
+        pay[name] = record(f"{variant}|payoff|{name}", "payoff", r)
+        if "x" in r:
+            pay[name]["C_model"] = float(sm.C.getValue())   # the model's own cost (fractional trips), what eps_C limits
     if any("B" not in p for p in pay.values()):
         log.warning("%s: a payoff run failed, skipping its curves", variant)
         return rows, plans
     R = {"B": pay["max_B"]["B_pwl"] - min(pay["min_C"]["B_pwl"], pay["min_I"]["B_pwl"]),
-         "C": max(pay["max_B"]["C"], pay["min_I"]["C"]) - pay["min_C"]["C"],
+         "C": max(pay["max_B"]["C_model"], pay["min_I"]["C_model"]) - pay["min_C"]["C_model"],
          "I": max(pay["max_B"]["I"], pay["min_C"]["I"]) - pay["min_I"]["I"]}
     R = {k: max(v, 1e-6) for k, v in R.items()}
     log.info("%s ranges (payoff table): B %s, C $%s, I %s", variant, f"{R['B']:,.0f}", f"{R['C']:,.0f}", f"{R['I']:,.0f}")
@@ -303,8 +306,10 @@ def run_variant(d: dict, variant: str, points: int, base_row: dict, trip_mode: s
     for name, obj, kw in [("same_benefit_min_C", sm.C + ETA * R["C"] / R["I"] * sm.I, dict(eps_I=base_row["I"])),
                           ("same_benefit_min_I", sm.I + ETA * R["I"] / R["C"] * sm.C, dict(eps_C=base_row["C"]))]:   # small weight on the other goal breaks ties
         record(f"{variant}|{name}", "same_benefit", sm.solve(obj, GRB.MINIMIZE, eps_B=base_row["B"], **kw), **kw)
-    # 1-D curves from each objective's best to its value at max B
-    for obj, lo, hi in [("C", pay["min_C"]["C"], pay["max_B"]["C"]), ("I", pay["min_I"]["I"], pay["max_B"]["I"])]:
+    # 1-D curves from each objective's best to its value at max B. Cost limits are in model units (fractional
+    # trips), which run below the whole-trip cost every plan is scored with: a range in scored units would put
+    # most points past max B, where they all repeat it
+    for obj, lo, hi in [("C", pay["min_C"]["C_model"], pay["max_B"]["C_model"]), ("I", pay["min_I"]["I"], pay["max_B"]["I"])]:
         for i, eps in enumerate(np.linspace(lo, hi, points)):
             kw = {f"eps_{obj}": eps}
             record(f"{variant}|curve_{obj}|{i}", f"curve_{obj}", sm.augmecon(R, **kw), **kw)
@@ -474,39 +479,60 @@ def main(variants: list[str], points: int, impact: str = "weighted", trip_mode: 
     log.info("runs:\n%s", runs[[c for c in cols if c in runs]].round(3).to_string(index=False))
 
 
-IMPACT_LABELS = {"weighted": "Wild-trout impact (million fish, weighted by wild-trout density, class D = 1)",
-                 "simple": "Wild-trout impact (million fish on wild-trout water)",
-                 "overlap": "Wild-trout impact (million fish x share on natural-reproduction water)"}
+def frontier(df: pd.DataFrame, col: str) -> pd.DataFrame:
+    """Efficient points only: sorted by col, each keeps more benefit than every cheaper point (drops gap ties)."""
+    df = df.sort_values([col, "B"], ascending=[True, False])
+    return df[df.B > df.B.cummax().shift(fill_value=-np.inf) + 1]
 
 
 def plot(runs: pd.DataFrame, impact: str = "weighted") -> None:
+    """Main figure: benefit vs cost and benefit vs impact (as % of PFBC 2026), frontier per change-limit variant."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     base = runs[runs.kind == "baseline"].iloc[0]
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), sharey=True)
-    labels = {"none": "no change limit", "close_or_band": "close or stay within 0.5-2x today",
-              "band": "stay within 0.5-2x today (no closing)"}
-    for ax, kind, col, scale, xlabel in [
-            (axes[0], "curve_C", "C", 1e3, "Transport cost ($ thousand / yr)"),
-            (axes[1], "curve_I", "I", 1e6, IMPACT_LABELS[impact])]:
-        for v, g in runs[runs.kind == kind].groupby("variant", sort=False):
-            g = g.sort_values(col)
-            ax.plot(g[col] / scale, g.B / 1e6, marker="o", ms=4, label=labels.get(v, v))
-        dom = runs[runs.kind == "dominance"]
-        ax.scatter(dom[col] / scale, dom.B / 1e6, marker="*", s=90, color="k", zorder=5,
-                   label="best plan no worse than PFBC on cost and impact")
-        ax.scatter([base[col] / scale], [base.B / 1e6], marker="X", s=90, color="crimson", zorder=6,
-                   label="PFBC 2026 plan")
-        ax.set_xlabel(xlabel)
-        ax.grid(alpha=0.3)
-    axes[0].set_ylabel("Angler benefit (million angler-days with a catch)")
-    axes[0].set_title("Benefit vs cost (impact free)")
-    axes[1].set_title("Benefit vs wild-trout impact (cost free)")
-    axes[1].legend(fontsize=8, loc="lower right")
+    style = {"none": ("No change limit", "#1f3b57"), "close_or_band": ("Close, or stay within ½–2× today", "#e07b39"),
+             "band": ("Stay within ½–2× today", "#7b6fb0")}
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6.3), dpi=200, sharey=True)
+    for ax, col, scale, xlabel, title in [
+            (axes[0], "C", 1e-3, "Transport cost (\\$ thousand per year)", "Benefit vs transport cost"),
+            (axes[1], "I", 100 / base.I, "Wild-trout impact (% of PFBC 2026)", "Benefit vs wild-trout impact")]:
+        pts = runs[runs.kind.isin([f"curve_{col}", "payoff"])]
+        lines = {v: frontier(g, col) for v, g in pts.groupby("variant", sort=False)}
+        bx, by = base[col] * scale, base.B / 1e6
+        xmax = 1.05 * max(bx, max(q[col].max() * scale for q in lines.values()))
+        xmin = min(q[col].min() * scale for q in lines.values())
+        xmin -= 0.05 * (xmax - xmin)
+        for v, q in lines.items():
+            lab, c = style.get(v, (v, None))
+            ax.plot(q[col] * scale, q.B / 1e6, "-o", color=c, lw=2.6, ms=5, label=lab, zorder=3)
+            ax.plot([q[col].iloc[-1] * scale, xmax], [q.B.iloc[-1] / 1e6] * 2, "--", color=c, lw=1.8, zorder=2)  # past max B
+            if v == "none":
+                ax.fill_between(q[col] * scale, q.B / 1e6, 0, color=c, alpha=0.06, zorder=1)
+        ytop = 1.04 * runs.B.max() / 1e6
+        ax.fill_between([xmin, bx], by, ytop, color="#2e7d5b", alpha=0.10, lw=0, zorder=0)
+        ax.text(xmin + 0.02 * (xmax - xmin), 0.995 * ytop, "Better than PFBC", color="#2e7d5b", fontsize=11,
+                weight="bold", va="top")
+        ax.axhline(by, color="#c0392b", lw=0.8, ls=":", zorder=1)
+        ax.axvline(bx, color="#c0392b", lw=0.8, ls=":", zorder=1)
+        ax.plot(bx, by, "X", color="#c0392b", ms=16, mec="white", mew=1.5, zorder=5)
+        ax.annotate("PFBC 2026", (bx, by), xytext=(10, -22), textcoords="offset points", color="#c0392b",
+                    fontsize=12, weight="bold")
+        ax.set_xlim(xmin, xmax)
+        ax.set_xlabel(xlabel, fontsize=13)
+        ax.set_title(title, fontsize=15, weight="bold", loc="left")
+        ax.spines[["top", "right"]].set_visible(False)
+        ax.grid(alpha=0.25)
+        ax.tick_params(labelsize=11)
+    lo = runs[runs.kind.str.startswith("curve") | (runs.kind == "baseline")].B.min() / 1e6
+    axes[0].set_ylim(0.95 * lo, 1.04 * runs.B.max() / 1e6)
+    axes[0].set_ylabel("Angler-days with a catch (millions per year)", fontsize=13)
+    axes[1].legend(loc="lower right", fontsize=11.5, frameon=False)
+    fig.text(0.01, -0.02, "Each line: the most benefit possible at each cost (left) or impact (right) limit. Same 2.6M fish "
+             f"in every plan; costs counted in whole truck trips. Impact: {impact} version.", fontsize=10.5, color="#555")
     fig.tight_layout()
-    fig.savefig(FIG_DIR / "tradeoff_curves.png", dpi=150)
+    fig.savefig(FIG_DIR / "tradeoff_curves.png", bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
 
@@ -514,7 +540,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--variants", nargs="+", default=["none", "close_or_band"],
                     choices=["none", "band", "close_or_band"])
-    ap.add_argument("--points", type=int, default=8)
+    ap.add_argument("--points", type=int, default=16)
     ap.add_argument("--impact", default="weighted", choices=list(IMPACT_COLS))
     ap.add_argument("--trip-mode", default=TRIP_MODE, choices=["fractional", "integer"],
                     help="trips in the model: continuous and rounded up when scored (fast), or whole trips (slow)")

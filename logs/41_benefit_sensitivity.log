@@ -1,0 +1,43 @@
+2026-10-09 23:55:23,360 INFO 41_benefit_sensitivity run from commit 538b48c + uncommitted changes to scripts/optimization.py, scripts/40_exploratory_fewer_fish.py, scripts/41_benefit_sensitivity.py, scripts/figures/42_fewer_fish_figure.py, scripts/figures/43_fish_by_area_type.py
+2026-10-09 23:55:23,610 INFO inputs: 9 hatcheries (supply 2,606,465), 1022 sections, demand 7,121,847 angler-days (w = 0.5), k = 0.5, impact weighted (impact_weighted)
+2026-10-09 23:55:23,614 INFO Set parameter WLSAccessID
+2026-10-09 23:55:23,614 INFO Set parameter WLSSecret
+2026-10-09 23:55:23,614 INFO Set parameter LicenseID to value 2865708
+2026-10-09 23:55:23,617 INFO Academic license 2865708 - for non-commercial use only - registered to ne___@andrew.cmu.edu
+2026-10-09 23:55:39,433 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-09 23:55:42,864 INFO base (w 0.5, k 0.5)      More benefit             B +13.3%  C -8.5%  I +0.0%
+2026-10-09 23:55:46,072 INFO base (w 0.5, k 0.5)      Less cost                B +0.0%  C -34.9%  I -0.0%
+2026-10-09 23:55:49,429 INFO base (w 0.5, k 0.5)      Less wild-trout impact   B +0.0%  C -6.4%  I -72.7%
+2026-10-09 23:56:04,906 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-09 23:56:08,358 INFO w 0 (proximity only)     More benefit             B +17.3%  C -5.3%  I +0.0%
+2026-10-09 23:56:11,511 INFO w 0 (proximity only)     Less cost                B +0.0%  C -35.8%  I +0.0%
+2026-10-09 23:56:14,991 INFO w 0 (proximity only)     Less wild-trout impact   B +0.0%  C -2.4%  I -77.3%
+2026-10-09 23:56:30,627 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-09 23:56:33,926 INFO w 1 (preference only)    More benefit             B +22.8%  C -10.9%  I -0.0%
+2026-10-09 23:56:37,222 INFO w 1 (preference only)    Less cost                B +0.0%  C -42.2%  I -0.0%
+2026-10-09 23:56:41,348 INFO w 1 (preference only)    Less wild-trout impact   B +0.1%  C -11.2%  I -78.2%
+2026-10-09 23:56:57,276 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-09 23:57:00,629 INFO k 0.3                    More benefit             B +14.8%  C -7.4%  I +0.0%
+2026-10-09 23:57:03,784 INFO k 0.3                    Less cost                B +0.0%  C -31.9%  I -0.0%
+2026-10-09 23:57:07,056 INFO k 0.3                    Less wild-trout impact   B +0.0%  C -5.1%  I -69.9%
+2026-10-09 23:57:22,517 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-09 23:57:26,185 INFO k 1                      More benefit             B +9.4%  C -7.5%  I -0.0%
+2026-10-09 23:57:29,671 INFO k 1                      Less cost                B +0.0%  C -37.2%  I -0.0%
+2026-10-09 23:57:32,886 INFO k 1                      Less wild-trout impact   B +0.1%  C -6.3%  I -75.7%
+2026-10-09 23:57:33,281 INFO benefit assumptions:
+              setting   w   k                   plan  status         B        C         I  n_closed  B_pct  C_pct  I_pct
+  base (w 0.5, k 0.5) 0.5 0.5           More benefit       2 3650386.8 408358.3 2274439.7         0   13.3   -8.5    0.0
+  base (w 0.5, k 0.5) 0.5 0.5              Less cost       2 3221507.2 290580.8 2274439.7        58    0.0  -34.9   -0.0
+  base (w 0.5, k 0.5) 0.5 0.5 Less wild-trout impact       2 3221637.5 417592.9  620569.7       185    0.0   -6.4  -72.7
+ w 0 (proximity only) 0.0 0.5           More benefit       2 3636668.4 422382.7 2274439.7         0   17.3   -5.3    0.0
+ w 0 (proximity only) 0.0 0.5              Less cost       2 3099696.1 286272.5 2274439.7        61    0.0  -35.8    0.0
+ w 0 (proximity only) 0.0 0.5 Less wild-trout impact       2 3100012.7 435415.5  516903.0       180    0.0   -2.4  -77.3
+w 1 (preference only) 1.0 0.5           More benefit       2 3592686.3 397442.9 2274439.7         1   22.8  -10.9   -0.0
+w 1 (preference only) 1.0 0.5              Less cost       2 2925629.5 258074.6 2274439.7       184    0.0  -42.2   -0.0
+w 1 (preference only) 1.0 0.5 Less wild-trout impact       2 2926130.9 396109.8  494727.6       289    0.1  -11.2  -78.2
+                k 0.3 0.5 0.3           More benefit       2 4935692.2 413154.5 2274439.7         0   14.8   -7.4    0.0
+                k 0.3 0.5 0.3              Less cost       2 4301186.0 303881.1 2274439.7        39    0.0  -31.9   -0.0
+                k 0.3 0.5 0.3 Less wild-trout impact       2 4301488.7 423561.0  683520.3       176    0.0   -5.1  -69.9
+                  k 1 0.5 1.0           More benefit       2 2165546.5 412496.6 2274439.7         0    9.4   -7.5   -0.0
+                  k 1 0.5 1.0              Less cost       2 1979775.0 280044.1 2274439.7       110    0.0  -37.2   -0.0
+                  k 1 0.5 1.0 Less wild-trout impact       2 1980286.4 418072.3  552365.1       190    0.1   -6.3  -75.7

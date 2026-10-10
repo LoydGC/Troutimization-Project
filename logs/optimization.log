@@ -1,102 +1,166 @@
-2026-10-04 19:35:36,301 INFO optimization run from commit 844f30a + uncommitted changes to scripts/00_extract_angler_survey.py, scripts/06_county_anglers.py, scripts/08_demand.py, scripts/optimization.py, scripts/20_transport_cost.py, scripts/21_model_input.py
-2026-10-04 19:35:36,458 INFO inputs: 9 hatcheries (supply 2,606,465), 1022 sections, demand 7,121,847 angler-days (w = 0.5), k = 0.5, impact weighted (impact_weighted)
-2026-10-04 19:35:36,461 INFO baseline (PFBC 2026): B 3,220,851 angler-days with a catch, C $446,144/yr, I 2,274,440 (impact, weighted), 234,812 truck-miles
-2026-10-04 19:35:36,468 INFO Set parameter WLSAccessID
-2026-10-04 19:35:36,468 INFO Set parameter WLSSecret
-2026-10-04 19:35:36,468 INFO Set parameter LicenseID to value 2865708
-2026-10-04 19:35:36,788 INFO Academic license 2865708 - for non-commercial use only - registered to ne___@andrew.cmu.edu
-2026-10-04 19:35:52,269 INFO model none: 62181 vars (2044 binary), 40732 constraints
-2026-10-04 19:36:03,054 INFO none|payoff|max_B                  status 2  B 3,651,056  C $389,963  I 2,313,263  stocked 1015  6.6s
-2026-10-04 19:36:13,058 INFO none|payoff|min_C                  status 2  B 1,687,148  C $132,263  I 3,304,663  stocked 338  6.1s
-2026-10-04 19:36:14,365 INFO none|payoff|min_I                  status 2  B 2,238,937  C $366,894  I 0  stocked 398  0.8s
-2026-10-04 19:36:14,365 INFO none ranges (payoff table): B 1,965,390, C $257,701, I 3,304,663
-2026-10-04 19:36:17,415 INFO none|dominance                     status 2  B 3,649,831  C $414,551  I 2,274,440  stocked 1011  3.0s
-2026-10-04 19:36:20,583 INFO none|same_benefit_min_C            status 2  B 3,221,493  C $290,654  I 2,274,440  stocked 964  3.1s
-2026-10-04 19:36:23,812 INFO none|same_benefit_min_I            status 2  B 3,221,660  C $419,195  I 621,244  stocked 834  3.2s
-2026-10-04 19:36:27,200 INFO none|curve_C|0                     status 2  B 2,704,220  C $216,788  I 3,070,419  stocked 827  3.3s
-2026-10-04 19:36:30,325 INFO none|curve_C|1                     status 2  B 3,236,064  C $296,819  I 2,898,210  stocked 976  3.1s
-2026-10-04 19:36:33,496 INFO none|curve_C|2                     status 2  B 3,528,822  C $348,877  I 2,619,558  stocked 1002  3.1s
-2026-10-04 19:36:36,526 INFO none|curve_C|3                     status 2  B 3,648,413  C $386,953  I 2,381,605  stocked 1006  3.0s
-2026-10-04 19:36:37,278 INFO none|curve_C|4                     status 2  B 3,648,413  C $386,953  I 2,381,605  stocked 1006  0.7s
-2026-10-04 19:36:38,033 INFO none|curve_C|5                     status 2  B 3,648,413  C $386,953  I 2,381,605  stocked 1006  0.7s
-2026-10-04 19:36:38,765 INFO none|curve_C|6                     status 2  B 3,648,413  C $386,953  I 2,381,605  stocked 1006  0.7s
-2026-10-04 19:36:39,504 INFO none|curve_C|7                     status 2  B 3,648,413  C $386,953  I 2,381,605  stocked 1006  0.7s
-2026-10-04 19:36:40,353 INFO none|curve_I|0                     status 2  B 2,238,939  C $367,122  I 0  stocked 398  0.8s
-2026-10-04 19:36:43,212 INFO none|curve_I|1                     status 2  B 2,882,661  C $409,623  I 330,466  stocked 761  2.8s
-2026-10-04 19:36:45,949 INFO none|curve_I|2                     status 2  B 3,252,011  C $414,905  I 660,932  stocked 821  2.7s
-2026-10-04 19:36:49,036 INFO none|curve_I|3                     status 2  B 3,450,836  C $416,599  I 991,398  stocked 917  3.0s
-2026-10-04 19:36:52,276 INFO none|curve_I|4                     status 2  B 3,554,795  C $418,237  I 1,321,865  stocked 963  3.2s
-2026-10-04 19:36:55,428 INFO none|curve_I|5                     status 2  B 3,605,129  C $425,058  I 1,652,331  stocked 997  3.1s
-2026-10-04 19:36:56,330 INFO none|curve_I|6                     status 2  B 3,605,129  C $425,058  I 1,652,331  stocked 997  0.9s
-2026-10-04 19:36:59,314 INFO none|curve_I|7                     status 2  B 3,651,014  C $414,124  I 2,313,263  stocked 1012  2.9s
-2026-10-04 19:37:15,357 INFO model close_or_band: 62181 vars (2044 binary), 40732 constraints
-2026-10-04 19:37:33,104 INFO close_or_band|payoff|max_B         status 2  B 3,590,636  C $376,786  I 2,352,619  stocked 978  11.4s
-2026-10-04 19:37:45,558 INFO close_or_band|payoff|min_C         status 2  B 2,351,074  C $195,722  I 2,598,076  stocked 589  7.2s
-2026-10-04 19:38:01,216 INFO close_or_band|payoff|min_I         status 2  B 2,672,952  C $378,997  I 343,775  stocked 617  14.2s
-2026-10-04 19:38:01,216 INFO close_or_band ranges (payoff table): B 1,240,887, C $183,275, I 2,254,301
-2026-10-04 19:38:04,281 INFO close_or_band|dominance            status 2  B 3,593,116  C $416,870  I 2,271,029  stocked 954  3.0s
-2026-10-04 19:38:07,966 INFO close_or_band|same_benefit_min_C   status 2  B 3,222,130  C $303,209  I 2,274,440  stocked 890  3.7s
-2026-10-04 19:38:11,565 INFO close_or_band|same_benefit_min_I   status 2  B 3,222,155  C $415,574  I 739,903  stocked 778  3.6s
-2026-10-04 19:38:15,215 INFO close_or_band|curve_C|0            status 2  B 3,361,756  C $324,339  I 2,514,848  stocked 924  3.6s
-2026-10-04 19:38:18,401 INFO close_or_band|curve_C|1            status 2  B 3,539,130  C $364,856  I 2,432,376  stocked 951  3.1s
-2026-10-04 19:38:21,559 INFO close_or_band|curve_C|2            status 2  B 3,593,393  C $411,219  I 2,268,269  stocked 953  3.1s
-2026-10-04 19:38:22,589 INFO close_or_band|curve_C|3            status 2  B 3,593,393  C $411,219  I 2,268,269  stocked 953  1.0s
-2026-10-04 19:38:23,456 INFO close_or_band|curve_C|4            status 2  B 3,593,393  C $411,219  I 2,268,269  stocked 953  0.8s
-2026-10-04 19:38:24,341 INFO close_or_band|curve_C|5            status 2  B 3,593,393  C $411,219  I 2,268,269  stocked 953  0.8s
-2026-10-04 19:38:25,189 INFO close_or_band|curve_C|6            status 2  B 3,593,393  C $411,219  I 2,268,269  stocked 953  0.8s
-2026-10-04 19:38:26,038 INFO close_or_band|curve_C|7            status 2  B 3,593,393  C $411,219  I 2,268,269  stocked 953  0.8s
-2026-10-04 19:38:29,419 INFO close_or_band|curve_I|0            status 2  B 2,678,407  C $389,645  I 343,775  stocked 596  3.3s
-2026-10-04 19:38:32,159 INFO close_or_band|curve_I|1            status 2  B 3,111,362  C $406,558  I 630,753  stocked 755  2.7s
-2026-10-04 19:38:34,942 INFO close_or_band|curve_I|2            status 2  B 3,353,140  C $403,745  I 917,730  stocked 810  2.7s
-2026-10-04 19:38:37,998 INFO close_or_band|curve_I|3            status 2  B 3,463,502  C $411,039  I 1,204,708  stocked 870  3.0s
-2026-10-04 19:38:41,311 INFO close_or_band|curve_I|4            status 2  B 3,523,143  C $418,815  I 1,491,686  stocked 923  3.3s
-2026-10-04 19:38:44,302 INFO close_or_band|curve_I|5            status 2  B 3,563,991  C $412,213  I 1,778,663  stocked 954  3.0s
-2026-10-04 19:38:47,158 INFO close_or_band|curve_I|6            status 2  B 3,588,333  C $408,540  I 2,065,641  stocked 957  2.8s
-2026-10-04 19:38:48,007 INFO close_or_band|curve_I|7            status 2  B 3,588,333  C $408,540  I 2,065,641  stocked 957  0.8s
-2026-10-04 19:38:48,683 INFO runs:
+2026-10-04 22:32:15,349 INFO optimization run from commit cdbb0e7 + uncommitted changes to scripts/optimization.py
+2026-10-04 22:32:15,500 INFO inputs: 9 hatcheries (supply 2,606,465), 1022 sections, demand 7,121,847 angler-days (w = 0.5), k = 0.5, impact weighted (impact_weighted)
+2026-10-04 22:32:15,502 INFO baseline (PFBC 2026): B 3,220,851 angler-days with a catch, C $446,144/yr, I 2,274,440 (impact, weighted), 234,812 truck-miles
+2026-10-04 22:32:15,508 INFO Set parameter WLSAccessID
+2026-10-04 22:32:15,508 INFO Set parameter WLSSecret
+2026-10-04 22:32:15,508 INFO Set parameter LicenseID to value 2865708
+2026-10-04 22:32:15,840 INFO Academic license 2865708 - for non-commercial use only - registered to ne___@andrew.cmu.edu
+2026-10-04 22:32:31,107 INFO model none: 62181 vars (2044 binary), 40732 constraints
+2026-10-04 22:32:41,859 INFO none|payoff|max_B                  status 2  B 3,651,056  C $389,963  I 2,313,263  stocked 1015  6.4s
+2026-10-04 22:32:51,950 INFO none|payoff|min_C                  status 2  B 1,687,148  C $132,263  I 3,304,663  stocked 338  6.2s
+2026-10-04 22:32:53,262 INFO none|payoff|min_I                  status 2  B 2,238,937  C $366,894  I 0  stocked 398  0.8s
+2026-10-04 22:32:53,266 INFO none ranges (payoff table): B 1,965,390, C $166,536, I 3,304,663
+2026-10-04 22:32:56,312 INFO none|dominance                     status 2  B 3,649,226  C $413,847  I 2,274,440  stocked 1009  3.0s
+2026-10-04 22:32:59,534 INFO none|same_benefit_min_C            status 2  B 3,221,466  C $294,545  I 2,274,440  stocked 963  3.2s
+2026-10-04 22:33:02,868 INFO none|same_benefit_min_I            status 2  B 3,221,646  C $413,966  I 620,053  stocked 840  3.3s
+2026-10-04 22:33:06,753 INFO none|curve_C|0                     status 2  B 1,687,169  C $133,082  I 3,301,726  stocked 338  3.8s
+2026-10-04 22:33:09,749 INFO none|curve_C|1                     status 2  B 2,372,802  C $175,626  I 3,174,968  stocked 638  3.0s
+2026-10-04 22:33:12,844 INFO none|curve_C|2                     status 2  B 2,625,914  C $205,316  I 3,075,249  stocked 750  3.1s
+2026-10-04 22:33:15,897 INFO none|curve_C|3                     status 2  B 2,802,341  C $236,365  I 3,055,713  stocked 840  3.0s
+2026-10-04 22:33:18,922 INFO none|curve_C|4                     status 2  B 2,948,255  C $253,607  I 3,024,233  stocked 906  3.0s
+2026-10-04 22:33:22,058 INFO none|curve_C|5                     status 2  B 3,072,636  C $277,366  I 2,971,023  stocked 948  3.1s
+2026-10-04 22:33:25,251 INFO none|curve_C|6                     status 2  B 3,182,323  C $288,150  I 2,900,841  stocked 964  3.1s
+2026-10-04 22:33:28,254 INFO none|curve_C|7                     status 2  B 3,278,317  C $300,818  I 2,852,443  stocked 983  3.0s
+2026-10-04 22:33:31,489 INFO none|curve_C|8                     status 2  B 3,359,997  C $316,700  I 2,780,254  stocked 994  3.2s
+2026-10-04 22:33:34,750 INFO none|curve_C|9                     status 2  B 3,431,354  C $321,801  I 2,722,654  stocked 996  3.2s
+2026-10-04 22:33:37,949 INFO none|curve_C|10                    status 2  B 3,494,747  C $345,659  I 2,666,937  stocked 998  3.2s
+2026-10-04 22:33:41,090 INFO none|curve_C|11                    status 2  B 3,546,799  C $354,741  I 2,603,467  stocked 1000  3.1s
+2026-10-04 22:33:44,217 INFO none|curve_C|12                    status 2  B 3,589,504  C $367,732  I 2,544,052  stocked 1006  3.1s
+2026-10-04 22:33:46,825 INFO none|curve_C|13                    status 2  B 3,589,504  C $367,732  I 2,544,052  stocked 1006  2.6s
+2026-10-04 22:33:49,910 INFO none|curve_C|14                    status 2  B 3,640,887  C $378,990  I 2,433,045  stocked 1011  3.0s
+2026-10-04 22:33:50,671 INFO none|curve_C|15                    status 2  B 3,640,887  C $378,990  I 2,433,045  stocked 1011  0.7s
+2026-10-04 22:33:51,449 INFO none|curve_I|0                     status 2  B 2,238,939  C $366,233  I 0  stocked 398  0.7s
+2026-10-04 22:33:54,265 INFO none|curve_I|1                     status 2  B 2,616,157  C $398,335  I 154,218  stocked 667  2.8s
+2026-10-04 22:33:57,083 INFO none|curve_I|2                     status 2  B 2,854,713  C $409,882  I 308,435  stocked 765  2.8s
+2026-10-04 22:34:00,145 INFO none|curve_I|3                     status 2  B 3,057,911  C $426,856  I 462,653  stocked 816  3.0s
+2026-10-04 22:34:03,110 INFO none|curve_I|4                     status 2  B 3,219,045  C $411,175  I 616,870  stocked 840  2.9s
+2026-10-04 22:34:05,996 INFO none|curve_I|5                     status 2  B 3,344,801  C $415,149  I 771,088  stocked 843  2.8s
+2026-10-04 22:34:09,024 INFO none|curve_I|6                     status 2  B 3,430,145  C $413,967  I 925,305  stocked 876  3.0s
+2026-10-04 22:34:12,117 INFO none|curve_I|7                     status 2  B 3,491,993  C $420,803  I 1,079,523  stocked 914  3.1s
+2026-10-04 22:34:15,301 INFO none|curve_I|8                     status 2  B 3,534,526  C $419,393  I 1,233,740  stocked 945  3.1s
+2026-10-04 22:34:16,370 INFO none|curve_I|9                     status 2  B 3,534,526  C $419,393  I 1,233,740  stocked 945  1.0s
+2026-10-04 22:34:19,603 INFO none|curve_I|10                    status 2  B 3,589,971  C $420,774  I 1,542,175  stocked 1006  3.2s
+2026-10-04 22:34:20,371 INFO none|curve_I|11                    status 2  B 3,589,971  C $420,774  I 1,542,175  stocked 1006  0.7s
+2026-10-04 22:34:23,490 INFO none|curve_I|12                    status 2  B 3,626,705  C $410,970  I 1,850,610  stocked 1015  3.1s
+2026-10-04 22:34:24,221 INFO none|curve_I|13                    status 2  B 3,626,705  C $410,970  I 1,850,610  stocked 1015  0.7s
+2026-10-04 22:34:24,960 INFO none|curve_I|14                    status 2  B 3,626,705  C $410,970  I 1,850,610  stocked 1015  0.7s
+2026-10-04 22:34:25,773 INFO none|curve_I|15                    status 2  B 3,626,705  C $410,970  I 1,850,610  stocked 1015  0.8s
+2026-10-04 22:34:41,457 INFO model close_or_band: 62181 vars (2044 binary), 40732 constraints
+2026-10-04 22:34:59,232 INFO close_or_band|payoff|max_B         status 2  B 3,590,636  C $376,786  I 2,352,619  stocked 978  11.6s
+2026-10-04 22:35:11,873 INFO close_or_band|payoff|min_C         status 2  B 2,351,074  C $195,722  I 2,598,076  stocked 589  7.4s
+2026-10-04 22:35:27,521 INFO close_or_band|payoff|min_I         status 2  B 2,672,952  C $378,997  I 343,775  stocked 617  13.8s
+2026-10-04 22:35:27,526 INFO close_or_band ranges (payoff table): B 1,240,887, C $112,550, I 2,254,301
+2026-10-04 22:35:30,642 INFO close_or_band|dominance            status 2  B 3,592,159  C $407,427  I 2,274,431  stocked 951  3.1s
+2026-10-04 22:35:34,747 INFO close_or_band|same_benefit_min_C   status 2  B 3,222,106  C $302,961  I 2,274,440  stocked 889  4.1s
+2026-10-04 22:35:38,311 INFO close_or_band|same_benefit_min_I   status 2  B 3,222,150  C $414,929  I 740,930  stocked 773  3.5s
+2026-10-04 22:35:41,306 INFO close_or_band|curve_C|0            status 2  B 2,343,066  C $193,812  I 2,598,479  stocked 587  3.0s
+2026-10-04 22:35:45,054 INFO close_or_band|curve_C|1            status 2  B 2,685,074  C $226,414  I 2,574,760  stocked 720  3.7s
+2026-10-04 22:35:48,776 INFO close_or_band|curve_C|2            status 2  B 2,840,704  C $249,195  I 2,546,313  stocked 773  3.7s
+2026-10-04 22:35:52,364 INFO close_or_band|curve_C|3            status 2  B 2,959,347  C $266,063  I 2,553,835  stocked 814  3.5s
+2026-10-04 22:35:55,761 INFO close_or_band|curve_C|4            status 2  B 3,065,688  C $281,634  I 2,587,658  stocked 848  3.4s
+2026-10-04 22:35:59,217 INFO close_or_band|curve_C|5            status 2  B 3,158,366  C $294,933  I 2,573,874  stocked 883  3.4s
+2026-10-04 22:36:02,859 INFO close_or_band|curve_C|6            status 2  B 3,236,376  C $305,537  I 2,547,866  stocked 904  3.6s
+2026-10-04 22:36:06,328 INFO close_or_band|curve_C|7            status 2  B 3,303,105  C $312,198  I 2,540,830  stocked 914  3.4s
+2026-10-04 22:36:09,915 INFO close_or_band|curve_C|8            status 2  B 3,361,334  C $323,248  I 2,514,507  stocked 923  3.5s
+2026-10-04 22:36:13,199 INFO close_or_band|curve_C|9            status 2  B 3,412,268  C $339,506  I 2,508,454  stocked 937  3.2s
+2026-10-04 22:36:16,533 INFO close_or_band|curve_C|10           status 2  B 3,459,536  C $348,355  I 2,485,787  stocked 942  3.3s
+2026-10-04 22:36:20,552 INFO close_or_band|curve_C|11           status 2  B 3,499,115  C $355,147  I 2,461,168  stocked 946  4.0s
+2026-10-04 22:36:24,276 INFO close_or_band|curve_C|12           status 2  B 3,531,493  C $368,064  I 2,444,029  stocked 952  3.7s
+2026-10-04 22:36:27,965 INFO close_or_band|curve_C|13           status 2  B 3,554,561  C $368,982  I 2,416,041  stocked 949  3.6s
+2026-10-04 22:36:31,642 INFO close_or_band|curve_C|14           status 2  B 3,575,155  C $379,316  I 2,383,859  stocked 955  3.6s
+2026-10-04 22:36:35,012 INFO close_or_band|curve_C|15           status 2  B 3,587,943  C $382,753  I 2,348,045  stocked 958  3.3s
+2026-10-04 22:36:38,758 INFO close_or_band|curve_I|0            status 2  B 2,677,207  C $393,445  I 343,775  stocked 598  3.7s
+2026-10-04 22:36:41,369 INFO close_or_band|curve_I|1            status 2  B 2,915,195  C $395,050  I 477,698  stocked 699  2.6s
+2026-10-04 22:36:44,089 INFO close_or_band|curve_I|2            status 2  B 3,089,784  C $399,240  I 611,621  stocked 755  2.7s
+2026-10-04 22:36:46,813 INFO close_or_band|curve_I|3            status 2  B 3,228,897  C $415,618  I 745,544  stocked 785  2.7s
+2026-10-04 22:36:49,473 INFO close_or_band|curve_I|4            status 2  B 3,330,074  C $413,698  I 879,467  stocked 805  2.6s
+2026-10-04 22:36:52,506 INFO close_or_band|curve_I|5            status 2  B 3,398,070  C $419,450  I 1,013,390  stocked 825  3.0s
+2026-10-04 22:36:55,643 INFO close_or_band|curve_I|6            status 2  B 3,445,862  C $409,615  I 1,147,312  stocked 854  3.1s
+2026-10-04 22:36:58,820 INFO close_or_band|curve_I|7            status 2  B 3,483,135  C $415,397  I 1,281,235  stocked 884  3.1s
+2026-10-04 22:37:02,090 INFO close_or_band|curve_I|8            status 2  B 3,510,121  C $415,580  I 1,415,158  stocked 913  3.2s
+2026-10-04 22:37:05,320 INFO close_or_band|curve_I|9            status 2  B 3,532,155  C $417,326  I 1,549,081  stocked 925  3.2s
+2026-10-04 22:37:08,417 INFO close_or_band|curve_I|10           status 2  B 3,550,216  C $408,475  I 1,683,004  stocked 941  3.1s
+2026-10-04 22:37:11,502 INFO close_or_band|curve_I|11           status 2  B 3,567,882  C $408,016  I 1,816,927  stocked 954  3.0s
+2026-10-04 22:37:14,457 INFO close_or_band|curve_I|12           status 2  B 3,580,519  C $410,755  I 1,950,850  stocked 954  2.9s
+2026-10-04 22:37:15,378 INFO close_or_band|curve_I|13           status 2  B 3,580,519  C $410,755  I 1,950,850  stocked 954  0.9s
+2026-10-04 22:37:18,601 INFO close_or_band|curve_I|14           status 2  B 3,593,302  C $407,641  I 2,218,696  stocked 955  3.2s
+2026-10-04 22:37:19,406 INFO close_or_band|curve_I|15           status 2  B 3,593,302  C $407,641  I 2,218,696  stocked 955  0.8s
+2026-10-04 22:37:20,221 INFO runs:
                           run_id           B          C           I  truck_miles  n_stocked  n_closed  share_moved  high_access_fish_vs_2026   gap  runtime_s
                         baseline 3220851.342 446143.545 2274439.735   234812.392       1022         0        0.000                     1.000   NaN        NaN
-               none|payoff|max_B 3651056.348 389963.497 2313262.957   205243.946       1015         7        0.250                     0.793 0.001        6.6
-               none|payoff|min_C 1687148.112 132262.659 3304662.607    69611.926        338       684        0.687                     0.458 0.001        6.1
+               none|payoff|max_B 3651056.348 389963.497 2313262.957   205243.946       1015         7        0.250                     0.793 0.001        6.4
+               none|payoff|min_C 1687148.112 132262.659 3304662.607    69611.926        338       684        0.687                     0.458 0.001        6.2
                none|payoff|min_I 2238936.907 366893.773       0.000   193101.986        398       624        0.562                     0.663 0.000        0.8
-                  none|dominance 3649830.920 414550.531 2274439.735   218184.490       1011        11        0.252                     0.789 0.001        3.0
-         none|same_benefit_min_C 3221492.664 290654.244 2274439.735   152975.918        964        58        0.339                     0.607 0.001        3.1
-         none|same_benefit_min_I 3221659.880 419194.796  621244.283   220628.840        834       188        0.348                     0.694 0.005        3.2
-                  none|curve_C|0 2704219.993 216788.393 3070418.599   114099.154        827       195        0.467                     0.563 0.001        3.3
-                  none|curve_C|1 3236064.252 296819.148 2898209.997   156220.604        976        46        0.340                     0.649 0.001        3.1
-                  none|curve_C|2 3528821.645 348877.042 2619557.952   183619.496       1002        20        0.269                     0.729 0.001        3.1
-                  none|curve_C|3 3648413.231 386953.392 2381604.790   203659.680       1006        16        0.252                     0.792 0.001        3.0
-                  none|curve_C|4 3648413.231 386953.392 2381604.790   203659.680       1006        16        0.252                     0.792 0.010        0.7
-                  none|curve_C|5 3648413.231 386953.392 2381604.790   203659.680       1006        16        0.252                     0.792 0.010        0.7
-                  none|curve_C|6 3648413.231 386953.392 2381604.790   203659.680       1006        16        0.252                     0.792 0.010        0.7
-                  none|curve_C|7 3648413.231 386953.392 2381604.790   203659.680       1006        16        0.252                     0.792 0.010        0.7
-                  none|curve_I|0 2238938.853 367122.416       0.000   193222.324        398       624        0.562                     0.663 0.000        0.8
-                  none|curve_I|1 2882660.777 409622.657  330466.137   215590.872        761       261        0.427                     0.669 0.002        2.8
-                  none|curve_I|2 3252010.736 414905.158  660932.273   218371.136        821       201        0.341                     0.695 0.002        2.7
-                  none|curve_I|3 3450836.177 416599.487  991398.410   219262.888        917       105        0.298                     0.719 0.003        3.0
-                  none|curve_I|4 3554794.606 418236.751 1321864.547   220124.606        963        59        0.273                     0.741 0.000        3.2
-                  none|curve_I|5 3605129.115 425057.626 1652330.683   223714.540        997        25        0.262                     0.758 0.001        3.1
-                  none|curve_I|6 3605129.115 425057.626 1652330.683   223714.540        997        25        0.262                     0.758 0.010        0.9
-                  none|curve_I|7 3651014.406 414123.996 2313262.957   217959.998       1012        10        0.251                     0.794 0.000        2.9
-      close_or_band|payoff|max_B 3590636.319 376785.933 2352618.774   198308.386        978        44        0.222                     0.807 0.010       11.4
-      close_or_band|payoff|min_C 2351074.090 195721.557 2598075.975   103011.346        589       433        0.454                     0.767 0.008        7.2
-      close_or_band|payoff|min_I 2672951.637 378996.754  343774.962   199471.976        617       405        0.413                     0.733 0.001       14.2
-         close_or_band|dominance 3593115.612 416870.268 2271028.505   219405.404        954        68        0.230                     0.796 0.007        3.0
-close_or_band|same_benefit_min_C 3222129.533 303208.646 2274439.735   159583.498        890       132        0.287                     0.673 0.010        3.7
-close_or_band|same_benefit_min_I 3222155.236 415573.806  739902.767   218723.056        778       244        0.301                     0.732 0.007        3.6
-         close_or_band|curve_C|0 3361755.731 324339.002 2514847.950   170704.738        924        98        0.258                     0.727 0.009        3.6
-         close_or_band|curve_C|1 3539130.341 364856.248 2432376.227   192029.604        951        71        0.232                     0.766 0.008        3.1
-         close_or_band|curve_C|2 3593393.274 411219.276 2268268.750   216431.198        953        69        0.230                     0.799 0.007        3.1
-         close_or_band|curve_C|3 3593393.274 411219.276 2268268.750   216431.198        953        69        0.230                     0.799 0.010        1.0
-         close_or_band|curve_C|4 3593393.274 411219.276 2268268.750   216431.198        953        69        0.230                     0.799 0.010        0.8
-         close_or_band|curve_C|5 3593393.274 411219.276 2268268.750   216431.198        953        69        0.230                     0.799 0.010        0.8
-         close_or_band|curve_C|6 3593393.274 411219.276 2268268.750   216431.198        953        69        0.230                     0.799 0.010        0.8
-         close_or_band|curve_C|7 3593393.274 411219.276 2268268.750   216431.198        953        69        0.230                     0.799 0.010        0.8
-         close_or_band|curve_I|0 2678407.131 389644.776  343774.962   205076.198        596       426        0.415                     0.735 0.010        3.3
-         close_or_band|curve_I|1 3111362.232 406558.424  630752.649   213978.118        755       267        0.324                     0.731 0.007        2.7
-         close_or_band|curve_I|2 3353140.417 403745.170  917730.337   212497.458        810       212        0.276                     0.733 0.005        2.7
-         close_or_band|curve_I|3 3463501.867 411038.624 1204708.024   216336.118        870       152        0.257                     0.738 0.007        3.0
-         close_or_band|curve_I|4 3523142.655 418814.921 1491685.712   220428.906        923        99        0.244                     0.754 0.007        3.3
-         close_or_band|curve_I|5 3563990.987 412213.041 1778663.399   216954.232        954        68        0.234                     0.781 0.007        3.0
-         close_or_band|curve_I|6 3588332.578 408539.873 2065641.086   215020.986        957        65        0.230                     0.790 0.007        2.8
-         close_or_band|curve_I|7 3588332.578 408539.873 2065641.086   215020.986        957        65        0.230                     0.790 0.010        0.8
+                  none|dominance 3649226.094 413847.474 2274439.735   217814.460       1009        13        0.252                     0.792 0.001        3.0
+         none|same_benefit_min_C 3221465.935 294544.817 2274439.735   155023.588        963        59        0.339                     0.604 0.001        3.2
+         none|same_benefit_min_I 3221646.278 413965.601  620053.028   217876.632        840       182        0.348                     0.694 0.003        3.3
+                  none|curve_C|0 1687169.441 133081.913 3301726.031    70043.112        338       684        0.687                     0.459 0.000        3.8
+                  none|curve_C|1 2372802.244 175626.188 3174968.291    92434.836        638       384        0.544                     0.516 0.001        3.0
+                  none|curve_C|2 2625913.743 205316.056 3075248.823   108061.082        750       272        0.485                     0.560 0.001        3.1
+                  none|curve_C|3 2802341.426 236365.134 3055712.706   124402.702        840       182        0.445                     0.566 0.001        3.0
+                  none|curve_C|4 2948254.818 253606.608 3024233.158   133477.162        906       116        0.412                     0.585 0.001        3.0
+                  none|curve_C|5 3072635.948 277366.089 2971022.959   145982.152        948        74        0.382                     0.610 0.001        3.1
+                  none|curve_C|6 3182323.278 288150.466 2900840.996   151658.140        964        58        0.355                     0.629 0.001        3.1
+                  none|curve_C|7 3278316.835 300817.762 2852442.595   158325.138        983        39        0.330                     0.649 0.000        3.0
+                  none|curve_C|8 3359997.050 316700.470 2780253.942   166684.458        994        28        0.310                     0.672 0.001        3.2
+                  none|curve_C|9 3431354.484 321801.427 2722654.115   169369.172        996        26        0.293                     0.686 0.001        3.2
+                 none|curve_C|10 3494746.927 345658.625 2666936.609   181925.592        998        24        0.275                     0.712 0.001        3.2
+                 none|curve_C|11 3546798.591 354740.541 2603466.948   186705.548       1000        22        0.265                     0.728 0.001        3.1
+                 none|curve_C|12 3589503.700 367731.537 2544052.082   193542.914       1006        16        0.259                     0.750 0.001        3.1
+                 none|curve_C|13 3589503.700 367731.537 2544052.082   193542.914       1006        16        0.259                     0.750 0.010        2.6
+                 none|curve_C|14 3640886.513 378990.355 2433044.582   199468.608       1011        11        0.252                     0.786 0.001        3.0
+                 none|curve_C|15 3640886.513 378990.355 2433044.582   199468.608       1011        11        0.252                     0.786 0.010        0.7
+                  none|curve_I|0 2238938.853 366233.474       0.000   192754.460        398       624        0.562                     0.663 0.000        0.7
+                  none|curve_I|1 2616157.223 398334.806  154217.530   209649.898        667       355        0.486                     0.656 0.001        2.8
+                  none|curve_I|2 2854712.506 409882.448  308435.061   215727.604        765       257        0.435                     0.674 0.001        2.8
+                  none|curve_I|3 3057911.196 426856.428  462652.591   224661.278        816       206        0.387                     0.685 0.001        3.0
+                  none|curve_I|4 3219044.863 411174.854  616870.122   216407.818        840       182        0.349                     0.693 0.001        2.9
+                  none|curve_I|5 3344801.108 415148.997  771087.652   218499.472        843       179        0.321                     0.701 0.001        2.8
+                  none|curve_I|6 3430145.313 413966.927  925305.183   217877.330        876       146        0.303                     0.712 0.001        3.0
+                  none|curve_I|7 3491992.934 420803.488 1079522.713   221475.520        914       108        0.290                     0.721 0.001        3.1
+                  none|curve_I|8 3534525.731 419392.632 1233740.244   220732.964        945        77        0.277                     0.734 0.001        3.1
+                  none|curve_I|9 3534525.731 419392.632 1233740.244   220732.964        945        77        0.277                     0.734 0.010        1.0
+                 none|curve_I|10 3589971.249 420774.357 1542175.304   221460.188       1006        16        0.262                     0.757 0.001        3.2
+                 none|curve_I|11 3589971.249 420774.357 1542175.304   221460.188       1006        16        0.262                     0.757 0.010        0.7
+                 none|curve_I|12 3626705.056 410969.544 1850610.365   216299.760       1015         7        0.256                     0.768 0.001        3.1
+                 none|curve_I|13 3626705.056 410969.544 1850610.365   216299.760       1015         7        0.256                     0.768 0.010        0.7
+                 none|curve_I|14 3626705.056 410969.544 1850610.365   216299.760       1015         7        0.256                     0.768 0.010        0.7
+                 none|curve_I|15 3626705.056 410969.544 1850610.365   216299.760       1015         7        0.256                     0.768 0.010        0.8
+      close_or_band|payoff|max_B 3590636.319 376785.933 2352618.774   198308.386        978        44        0.222                     0.807 0.010       11.6
+      close_or_band|payoff|min_C 2351074.090 195721.557 2598075.975   103011.346        589       433        0.454                     0.767 0.008        7.4
+      close_or_band|payoff|min_I 2672951.637 378996.754  343774.962   199471.976        617       405        0.413                     0.733 0.001       13.8
+         close_or_band|dominance 3592159.068 407426.998 2274430.692   214435.262        951        71        0.230                     0.798 0.008        3.1
+close_or_band|same_benefit_min_C 3222106.086 302960.909 2274439.735   159453.110        889       133        0.285                     0.663 0.010        4.1
+close_or_band|same_benefit_min_I 3222149.761 414928.779  740930.042   218383.568        773       249        0.302                     0.731 0.009        3.5
+         close_or_band|curve_C|0 2343066.364 193812.221 2598478.715   102006.432        587       435        0.457                     0.769 0.005        3.0
+         close_or_band|curve_C|1 2685073.559 226413.945 2574759.802   119165.234        720       302        0.393                     0.746 0.004        3.7
+         close_or_band|curve_C|2 2840703.849 249194.945 2546313.302   131155.234        773       249        0.363                     0.716 0.006        3.7
+         close_or_band|curve_C|3 2959346.727 266063.308 2553835.092   140033.320        814       208        0.341                     0.696 0.008        3.5
+         close_or_band|curve_C|4 3065687.951 281634.139 2587658.110   148228.494        848       174        0.318                     0.696 0.007        3.4
+         close_or_band|curve_C|5 3158366.247 294932.535 2573874.403   155227.650        883       139        0.299                     0.689 0.007        3.4
+         close_or_band|curve_C|6 3236376.420 305536.864 2547866.491   160808.876        904       118        0.282                     0.702 0.008        3.6
+         close_or_band|curve_C|7 3303104.621 312197.717 2540829.751   164314.588        914       108        0.269                     0.708 0.008        3.4
+         close_or_band|curve_C|8 3361333.873 323248.113 2514507.331   170130.586        923        99        0.257                     0.728 0.008        3.5
+         close_or_band|curve_C|9 3412268.426 339505.881 2508453.709   178687.306        937        85        0.249                     0.743 0.008        3.2
+        close_or_band|curve_C|10 3459536.424 348355.135 2485786.982   183344.808        942        80        0.240                     0.756 0.007        3.3
+        close_or_band|curve_C|11 3499114.586 355146.526 2461167.501   186919.224        946        76        0.233                     0.752 0.007        4.0
+        close_or_band|curve_C|12 3531492.701 368063.881 2444029.104   193717.832        952        70        0.230                     0.771 0.007        3.7
+        close_or_band|curve_C|13 3554561.305 368981.790 2416040.519   194200.942        949        73        0.231                     0.776 0.007        3.6
+        close_or_band|curve_C|14 3575155.022 379315.962 2383859.249   199639.980        955        67        0.227                     0.787 0.007        3.6
+        close_or_band|curve_C|15 3587942.972 382753.130 2348044.784   201449.016        958        64        0.228                     0.794 0.007        3.3
+         close_or_band|curve_I|0 2677207.144 393445.361  343774.962   207076.506        598       424        0.416                     0.734 0.010        3.7
+         close_or_band|curve_I|1 2915195.340 395050.212  477697.883   207921.164        699       323        0.361                     0.736 0.008        2.6
+         close_or_band|curve_I|2 3089783.516 399240.213  611620.803   210126.428        755       267        0.325                     0.742 0.007        2.7
+         close_or_band|curve_I|3 3228897.200 415618.183  745543.724   218746.412        785       237        0.300                     0.730 0.006        2.7
+         close_or_band|curve_I|4 3330074.342 413697.572  879466.645   217735.564        805       217        0.280                     0.730 0.005        2.6
+         close_or_band|curve_I|5 3398070.116 419449.544 1013389.566   220762.918        825       197        0.271                     0.736 0.006        3.0
+         close_or_band|curve_I|6 3445862.345 409614.757 1147312.487   215586.714        854       168        0.262                     0.738 0.007        3.1
+         close_or_band|curve_I|7 3483134.843 415396.833 1281235.407   218629.912        884       138        0.252                     0.741 0.007        3.1
+         close_or_band|curve_I|8 3510120.940 415580.487 1415158.328   218726.572        913       109        0.245                     0.747 0.007        3.2
+         close_or_band|curve_I|9 3532155.195 417325.785 1549081.249   219645.150        925        97        0.242                     0.765 0.007        3.2
+        close_or_band|curve_I|10 3550215.852 408475.163 1683004.170   214986.928        941        81        0.238                     0.766 0.008        3.1
+        close_or_band|curve_I|11 3567882.401 408015.975 1816927.091   214745.250        954        68        0.235                     0.779 0.007        3.0
+        close_or_band|curve_I|12 3580519.483 410754.973 1950850.011   216186.828        954        68        0.233                     0.786 0.007        2.9
+        close_or_band|curve_I|13 3580519.483 410754.973 1950850.011   216186.828        954        68        0.233                     0.786 0.010        0.9
+        close_or_band|curve_I|14 3593302.054 407641.322 2218695.853   214548.064        955        67        0.229                     0.797 0.007        3.2
+        close_or_band|curve_I|15 3593302.054 407641.322 2218695.853   214548.064        955        67        0.229                     0.797 0.010        0.8

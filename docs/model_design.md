@@ -68,6 +68,11 @@ transport objective counts truck trips, not fish-miles).
 - **Solve method:** ε-constraint. Maximize benefit subject to cost ≤ C and impact ≤ E, then sweep C and E to
   trace trade-off curves. This is easier to explain than arbitrary weights. Alternatives: Gurobi's built-in
   multi-objective (`setObjectiveN`, with priorities or weights) or a weighted-sum sweep.
+  - **Main run (2026-10-04):** 16 points per curve, no change limit and close-or-band. Cost limits are set in the
+    model's own cost (fractional trips) from min cost to the max-benefit plan's cost; every plan is then scored with
+    whole trips, which runs higher for plans that spread fish thin. So a cost limit doesn't bound the scored cost:
+    a plan solved at the midpoint cost ($261k model) scored $421k. The figure plots scored values and keeps only
+    efficient points. Integer trips (`--trip-mode integer`) would close the gap at ~2 min per solve.
 - **Baseline:** the historical allocation (2024–26 PFBC stocked-section layers), evaluated on the same three
   objectives, is the point we compare against. 1,045 sections (1,007 stocked all three years), ~2.6M stream
   fish/yr. 2026: brook 68,305; brown 659,290; rainbow 1,800,505; golden 15,123; brood 63,245. No layer
