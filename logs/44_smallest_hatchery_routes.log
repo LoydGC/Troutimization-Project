@@ -1,0 +1,35 @@
+2026-11-02 01:16:32,988 INFO 44_smallest_hatchery_routes run from commit 2302c2d + uncommitted changes to scripts/figures/44_smallest_hatchery_routes.py
+2026-11-02 01:16:33,186 INFO supply by hatchery: {'Tionesta': 15257, 'Reynoldsdale': 130640, 'Oswayo': 237248, 'Corry': 251290, 'Pleasant Gap': 325359, 'Tylersville': 326186, 'Benner Spring': 387530, 'Huntsdale': 451587, 'Bellefonte': 481368} -> smallest Tionesta (15257 fish)
+2026-11-02 01:16:33,535 INFO PFBC 2026: 10 sections in 7 clusters, 15258 fish, fish-weighted 79.5 road mi, farthest 140 mi, 15% of fish within 25 mi
+2026-11-02 01:16:33,535 INFO model: 13 sections in 4 clusters, 15257 fish, fish-weighted 20.9 road mi, farthest 53 mi, 90% of fish within 25 mi
+2026-11-02 01:16:33,541 INFO PFBC 2026 clusters:
+            fish       mi  n   county                               waters
+cluster                                                                   
+B158     2235.00   17.126  3  Venango  [West Pithole Creek, Pithole Creek]
+B031     3043.33   40.427  1   Warren                  [Farnsworth Branch]
+B002     1059.00   59.360  1   Mercer                     [Shenango River]
+B033     2860.00   68.380  1   Butler                        [Thorn Creek]
+B005     1930.00  125.212  1   Potter                      [Genesee River]
+B052     3504.16  132.257  2  Fayette                       [Dunbar Creek]
+B174      626.66  139.878  1  Fayette                         [Meadow Run]
+2026-11-02 01:16:33,545 INFO model clusters:
+                fish      mi  n   county                                                                waters
+cluster                                                                                                       
+B153     2475.560182   8.617  5   Forest  [West Hickory Creek, East Hickory Creek, Beaver Run, Tionesta Creek]
+B212     2053.205746  14.219  2  Venango                                       [Horse Creek, East Sandy Creek]
+B264     9160.377635  20.242  4   Forest                  [Ross Run, The Branch, Salmon Creek, Tionesta Creek]
+B011     1567.856436  52.558  2   Butler                                            [Silver Creek, Bear Creek]
+2026-11-02 01:16:33,546 INFO sections in both plans: 0
+2026-11-02 01:16:33,560 INFO dropped Tionesta sections and their model supplier:
+  section_id               water   county     fish       mi       hatchery             x
+0     2630_2   Farnsworth Branch   Warren  3043.33   40.427         Oswayo    861.903610
+1     2833_2  West Pithole Creek  Venango   465.00   17.126          Corry    569.466373
+2     2906_2       Pithole Creek  Venango   785.00   17.126          Corry   1741.576105
+3     2906_3       Pithole Creek  Venango   985.00   17.126          Corry   1140.282604
+4     2987_2        Dunbar Creek  Fayette  2486.66  132.257   Reynoldsdale   3548.300577
+5     2987_3        Dunbar Creek  Fayette  1017.50  132.257   Reynoldsdale   2759.045156
+6      304_2         Thorn Creek   Butler  2860.00   68.380  Benner Spring  10797.153234
+7      322_3      Shenango River   Mercer  1059.00   59.360          Corry   3655.467540
+8     3502_2       Genesee River   Potter  1930.00  125.212         Oswayo   2522.913960
+9     3748_6          Meadow Run  Fayette   626.66  139.878  Benner Spring    751.908804
+2026-11-02 01:16:37,088 INFO wrote /home/claude/Troutimization-Project/outputs/figures/smallest_hatchery/tionesta_truck_routes.png
